@@ -1,0 +1,54 @@
+{"char_start": 44032, "char_end": 44098, "unit": "/(100 sqrt(14)) = 3024", "reps": 3, "span": 66, "case_key": "spec_casc_tok_semantic_guard_future_guard_and_pilot/aime24/case_002/seed_0", "arm": "specCascTok0p3", "output_len": 91044}
+{"char_start": 44032, "char_end": 44098, "unit": "/(100 sqrt(14)) = 3024", "reps": 3, "span": 66, "case_key": "spec_casc_tok_semantic_guard_and_pilot/aime24/case_002/seed_0", "arm": "specCascTok0p3", "output_len": 91044}
+{"char_start": 44032, "char_end": 44098, "unit": "/(100 sqrt(14)) = 3024", "reps": 3, "span": 66, "case_key": "spec_casc_tok_semantic_guard_v2_pilot/aime24/case_002/seed_0", "arm": "specCascTok0p3", "output_len": 91044}
+{"char_start": 5679, "char_end": 5787, "unit": ", 7*269=1883", "reps": 9, "span": 108, "case_key": "spec_casc_tok_semantic_guard_future_guard_pilot/aime24/case_028/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k8", "output_len": 14444}
+{"char_start": 44032, "char_end": 44098, "unit": "/(100 sqrt(14)) = 3024", "reps": 3, "span": 66, "case_key": "spec_casc_tok_semantic_guard_future_guard_pilot/aime24/case_002/seed_0", "arm": "specCascTok0p3", "output_len": 91044}
+{"char_start": 105555, "char_end": 105771, "unit": " 4-?", "reps": 54, "span": 216, "case_key": "spec_casc_tok_semantic_guard_future_guard_pilot/aime24/case_003/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k8", "output_len": 107657}
+{"char_start": 44032, "char_end": 44098, "unit": "/(100 sqrt(14)) = 3024", "reps": 3, "span": 66, "case_key": "spec_casc_tok_semantic_guard_pilot/aime24/case_002/seed_0", "arm": "specCascTok0p3", "output_len": 91044}
+{"char_start": 5679, "char_end": 5787, "unit": ", 7*269=1883", "reps": 9, "span": 108, "case_key": "aime24_fresh/case_028/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k8", "output_len": 14444}
+{"char_start": 6807, "char_end": 6867, "unit": " = 1000 - 1000a", "reps": 4, "span": 60, "case_key": "aime24_fresh/case_028/seed_0", "arm": "specCascOpt0p05", "output_len": 70703}
+{"char_start": 3908, "char_end": 4016, "unit": " = 2*3*5*169", "reps": 9, "span": 108, "case_key": "aime24_fresh/case_017/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k8", "output_len": 16230}
+{"char_start": 14691, "char_end": 14790, "unit": " = (7/4)(1 - 2s + s^2) + (3/4)s^2", "reps": 3, "span": 99, "case_key": "aime24_fresh/case_019/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k8", "output_len": 21460}
+{"char_start": 66391, "char_end": 66451, "unit": " = (s,0) + b + c - a", "reps": 3, "span": 60, "case_key": "aime24_fresh/case_026/seed_0", "arm": "specCascOpt0p05", "output_len": 102904}
+{"char_start": 89227, "char_end": 89305, "unit": " = 62900*9100", "reps": 6, "span": 78, "case_key": "aime24_fresh/case_026/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k4", "output_len": 92440}
+{"char_start": 88535, "char_end": 88631, "unit": " = (1 + u + v) / (1 + (1 + v)/u)", "reps": 3, "span": 96, "case_key": "aime24_fresh/case_026/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p5k8", "output_len": 97340}
+{"char_start": 27191, "char_end": 27255, "unit": " = 209*210 + 210", "reps": 4, "span": 64, "case_key": "aime24_fresh/case_021/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p7k8", "output_len": 31245}
+{"char_start": 52775, "char_end": 52856, "unit": " = 10000 + 100x + 100y + xy", "reps": 3, "span": 81, "case_key": "aime24_fresh/case_018/seed_0", "arm": "specCascOpt0p05", "output_len": 86364}
+{"char_start": 69687, "char_end": 69751, "unit": "00 = 300 - c - 2", "reps": 4, "span": 64, "case_key": "aime24_fresh/case_018/seed_0", "arm": "specCascOpt0p05", "output_len": 86364}
+{"char_start": 69799, "char_end": 69927, "unit": "00 = 300 - c - 2", "reps": 8, "span": 128, "case_key": "aime24_fresh/case_018/seed_0", "arm": "specCascOpt0p05", "output_len": 86364}
+{"char_start": 6981, "char_end": 7221, "unit": "9,899 = 5,? 5,990,101 + ", "reps": 10, "span": 240, "case_key": "aime24_fresh/case_018/seed_0", "arm": "specCascTok0p7", "output_len": 13815}
+{"char_start": 71670, "char_end": 71760, "unit": ".25 = 34,225 + 185", "reps": 5, "span": 90, "case_key": "aime24_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 81153}
+{"char_start": 18671, "char_end": 18736, "unit": " = 121/(1089)", "reps": 5, "span": 65, "case_key": "aime24_fresh/case_029/seed_0", "arm": "specCascTokSemanticGuardV20p3", "output_len": 36683}
+{"char_start": 8268, "char_end": 8376, "unit": " = 900 - (x + y + z + w + u + v + t)", "reps": 3, "span": 108, "case_key": "aime24_fresh/case_016/seed_0", "arm": "specCascOpt0p05", "output_len": 17061}
+{"char_start": 8114, "char_end": 8198, "unit": "121*8=", "reps": 14, "span": 84, "case_key": "aime24_fresh/case_005/seed_0", "arm": "specCascOpt0p05", "output_len": 75517}
+{"char_start": 12136, "char_end": 12201, "unit": "121 = 1210 - ", "reps": 5, "span": 65, "case_key": "aime24_fresh/case_005/seed_0", "arm": "specCascOpt0p05", "output_len": 75517}
+{"char_start": 44032, "char_end": 44098, "unit": "/(100 sqrt(14)) = 3024", "reps": 3, "span": 66, "case_key": "aime24_fresh/case_002/seed_0", "arm": "specCascTok0p3", "output_len": 91044}
+{"char_start": 105555, "char_end": 105771, "unit": " 4-?", "reps": 54, "span": 216, "case_key": "aime24_fresh/case_003/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p3k8", "output_len": 107657}
+{"char_start": 87076, "char_end": 87141, "unit": " B+1 = B+3 =>", "reps": 5, "span": 65, "case_key": "aime24_fresh/case_003/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p7k8", "output_len": 107876}
+{"char_start": 11378, "char_end": 11581, "unit": "\n0.5894", "reps": 29, "span": 203, "case_key": "aime24_fresh/case_004/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p7k8", "output_len": 47836}
+{"char_start": 12387, "char_end": 12801, "unit": "\n0.5894? disregard", "reps": 23, "span": 414, "case_key": "aime24_fresh/case_004/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p7k8", "output_len": 47836}
+{"char_start": 53324, "char_end": 53390, "unit": " r/s - r_in(1 - s)/s =", "reps": 3, "span": 66, "case_key": "aime24_fresh/case_014/seed_0", "arm": "specCascTokSemanticGuardFutureGuardAnd0p3k8", "output_len": 119650}
+{"char_start": 18859, "char_end": 18928, "unit": " = r c + (5 - r)(5 - c)", "reps": 3, "span": 69, "case_key": "aime24_fresh/case_030/seed_0", "arm": "specCascTokSemanticGuardFutureGuardAnd0p3k8", "output_len": 43575}
+{"char_start": 71917, "char_end": 71977, "unit": ".1524? Wait 10 r = 1", "reps": 3, "span": 60, "case_key": "aime24_fresh/case_008/seed_0", "arm": "specCascOpt0p05", "output_len": 75835}
+{"char_start": 15161, "char_end": 15233, "unit": " 4.582575695*24 = 110.0?", "reps": 3, "span": 72, "case_key": "aime24_fresh/case_006/seed_0", "arm": "specCascTokSemanticGuardFutureGuardAnd0p3k8", "output_len": 45101}
+{"char_start": 31087, "char_end": 31295, "unit": " = sqrt(21/41) / sqrt(189)", "reps": 8, "span": 208, "case_key": "aime24_fresh/case_006/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p7k8", "output_len": 43519}
+{"char_start": 8286, "char_end": 8350, "unit": " (a+b+c)/2 - a =", "reps": 4, "span": 64, "case_key": "aime24_fresh/case_006/seed_0", "arm": "specCascOpt0p05", "output_len": 80098}
+{"char_start": 12307, "char_end": 12407, "unit": " - 2\u221a41 x + 41 = 89 => 80", "reps": 4, "span": 100, "case_key": "aime24_fresh/case_006/seed_0", "arm": "specCascOpt0p05", "output_len": 80098}
+{"char_start": 12556, "char_end": 12631, "unit": " - 2\u221a41 x + 41 = 89 => 80", "reps": 3, "span": 75, "case_key": "aime24_fresh/case_006/seed_0", "arm": "specCascOpt0p05", "output_len": 80098}
+{"char_start": 51306, "char_end": 51366, "unit": " p^2(27 - p)^2 / p =", "reps": 3, "span": 60, "case_key": "aime24_fresh/case_007/seed_0", "arm": "specCascOpt0p05", "output_len": 84472}
+{"char_start": 12273, "char_end": 12357, "unit": " 24033.8-17410.3=663?", "reps": 4, "span": 84, "case_key": "aime24_fresh/case_007/seed_0", "arm": "specCascTokSemanticGuardFutureGuard0p5k8", "output_len": 22842}
+{"char_start": 3849, "char_end": 3909, "unit": " 'cata' + 'c' =", "reps": 4, "span": 60, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 4477, "char_end": 4537, "unit": " 'cata' + 'c' =", "reps": 4, "span": 60, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 14003, "char_end": 14071, "unit": " 'cata' + 'tac' =", "reps": 4, "span": 68, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 14663, "char_end": 14765, "unit": " 'cata' + 'tac' =", "reps": 6, "span": 102, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 21221, "char_end": 21293, "unit": " 'cata' + 'tac' ->", "reps": 4, "span": 72, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 23094, "char_end": 23166, "unit": " 'cata' + 'tac' ->", "reps": 4, "span": 72, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 23567, "char_end": 23675, "unit": " 'cata' + 'tac' ->", "reps": 6, "span": 108, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 24067, "char_end": 24175, "unit": " 'cata' + 'tac' -> 'cata' + 'tac' =>", "reps": 3, "span": 108, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 24192, "char_end": 24300, "unit": " 'cata' + 'tac' ->", "reps": 6, "span": 108, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 24389, "char_end": 24551, "unit": " 'cata' + 'tac' ->", "reps": 9, "span": 162, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 25243, "char_end": 25333, "unit": "> 'cata' + 'tac' -", "reps": 5, "span": 90, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 26038, "char_end": 26110, "unit": "c' -> 'cata' + 'ta", "reps": 4, "span": 72, "case_key": "humaneval_fresh/case_011/seed_0", "arm": "specCascOpt0p05", "output_len": 26730}
+{"char_start": 11464, "char_end": 11709, "unit": "Abs=2; subtract 2*1=0 -> not counted.\n\n-11 -> sum", "reps": 5, "span": 245, "case_key": "humaneval_fresh/case_109/seed_0", "arm": "specCascOpt0p05", "output_len": 13404}
+{"char_start": 12100, "char_end": 13637, "unit": "'\n    >>> fix_spaces(\"Example  111\")\n    'Example_111", "reps": 26, "span": 1378, "case_key": "humaneval_fresh/case_141/seed_0", "arm": "specCascOpt0p05", "output_len": 15261}
+{"char_start": 2462, "char_end": 2566, "unit": "\n            max_val = val", "reps": 4, "span": 104, "case_key": "humaneval_fresh/case_036/seed_0", "arm": "rFuzzySemanticGuard0p3", "output_len": 2852}

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>lossy-token-eff run viewer</title>
+<style>
+  :root {
+    --bg: #14161a; --panel: #1c1f26; --border: #2c313c; --fg: #d8dce4;
+    --dim: #6b7280; --chrome: #8a919e; --accent: #5eb0ff; --good: #4ade80;
+    --bad: #f87171; --warn: #fbbf24; --mark: #7c5800; --prefix: #575e6b;
+    --body: #e9edf3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 13px/1.45 -apple-system, "Segoe UI", sans-serif;
+    height: 100vh; display: flex; flex-direction: column;
+  }
+  header {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    padding: 8px 12px; background: var(--panel); border-bottom: 1px solid var(--border);
+    color: var(--chrome);
+  }
+  header label { color: var(--dim); }
+  select, input[type=text], button {
+    background: #262b35; color: var(--chrome); border: 1px solid var(--border);
+    border-radius: 5px; padding: 4px 8px; font-size: 13px;
+  }
+  select:focus, input:focus { outline: 1px solid var(--accent); }
+  button { cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  #divbar {
+    padding: 5px 12px; background: #20242c; border-bottom: 1px solid var(--border);
+    color: var(--dim); min-height: 27px; display: flex; gap: 14px; flex-wrap: wrap;
+    align-items: center;
+  }
+  #divbar .pair { color: var(--chrome); }
+  #divbar .pair b { color: var(--warn); font-weight: 600; }
+  main { flex: 1; display: flex; min-height: 0; }
+  .pane.hidden { display: none; }
+  .pane {
+    flex: 1 1 0%; min-width: 0; display: flex; flex-direction: column;
+  }
+  .divider {
+    flex: 0 0 5px; cursor: col-resize; background: var(--border);
+  }
+  .divider:hover, .divider.active { background: var(--accent); }
+  .divider.hidden { display: none; }
+  .vhandle {
+    flex: 0 0 5px; height: 5px; cursor: row-resize; background: var(--border);
+    display: none;
+  }
+  .vhandle:hover, .vhandle.active { background: var(--accent); }
+  .pane-head {
+    padding: 6px 8px; background: var(--panel); border-bottom: 1px solid var(--border);
+    display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+  }
+  .pane-head select { max-width: 62%; }
+  .badges { display: flex; gap: 5px; flex-wrap: wrap; font-size: 11px; }
+  .badge {
+    padding: 1px 7px; border-radius: 9px; background: #262b35;
+    border: 1px solid var(--border); color: var(--dim);
+  }
+  .badge.correct { color: var(--good); border-color: var(--good); }
+  .badge.wrong, .badge.incorrect, .badge.no_answer { color: var(--bad); border-color: var(--bad); }
+  .badge.cap { color: var(--warn); border-color: var(--warn); }
+  .text {
+    flex: 1; overflow: auto; padding: 10px 12px; white-space: pre-wrap;
+    word-break: break-word; color: var(--body);
+    font: 12px/1.5 ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .text .prefix { color: var(--prefix); }
+  .text mark { background: var(--mark); color: #ffe9a8; border-radius: 2px; }
+  .text mark.cur { outline: 2px solid var(--warn); }
+  .text .tokcur {
+    background: #1d4ed8; color: #fff; border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .loopitem {
+    padding: 3px 8px; cursor: pointer; border-bottom: 1px solid #232833;
+    font-family: ui-monospace, Menlo, monospace; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .loopitem:hover { background: #232833; }
+  .loopitem .cnt { color: var(--warn); margin-right: 8px; }
+  .loopitem .rng { color: var(--dim); margin-right: 8px; }
+  #divmark, .divmark {
+    background: var(--bad); color: #fff; border-radius: 3px; padding: 0 3px;
+    font-weight: bold;
+  }
+  .tracebox {
+    height: 220px; overflow: auto; border-top: 1px solid var(--border);
+    background: #171a20; font-size: 11px; display: none;
+  }
+  .tracebox th[draggable] { cursor: grab; }
+  .tracebox table { border-collapse: collapse; width: 100%; }
+  .tracebox th, .tracebox td {
+    padding: 2px 6px; border-bottom: 1px solid #232833; text-align: left;
+    font-family: ui-monospace, Menlo, monospace; white-space: nowrap;
+  }
+  .tracebox th { color: var(--dim); position: sticky; top: 0; background: #171a20; }
+  .tracebox tr.guarded td { background: #241b38; }
+  .tracebox tr.cursor td { background: #2c2410; }
+  .tracebox td.no { color: var(--bad); }
+  .tracebox td.yes { color: var(--good); }
+  .tracebox td.rule-strict { color: #c084fc; }
+  .tracebox td.rule-relaxed { color: var(--warn); }
+  .hint { color: var(--dim); font-size: 11px; }
+  .count { color: var(--warn); min-width: 60px; display: inline-block; }
+</style>
+</head>
+<body>
+<header>
+  <label>case</label>
+  <select id="caseSel" style="max-width:340px"></select>
+  <input id="caseFilter" type="text" placeholder="filter cases…" size="14">
+  <span style="border-left:1px solid var(--border);height:20px"></span>
+  <label>find</label>
+  <input id="searchBox" type="text" placeholder="phrase e.g. Not bad" size="18">
+  <button id="searchPrev" title="previous match">◀</button>
+  <button id="searchNext" title="next match">▶</button>
+  <span style="border-left:1px solid var(--border);height:20px"></span>
+  <label>view</label>
+  <select id="viewSel"><option value="2" selected>2 panes</option><option value="3">3 panes</option></select>
+  <label><input type="checkbox" id="syncScroll"> sync scroll</label>
+  <button id="jumpDiv">jump to divergence</button>
+  <span class="hint">grey = shared prefix; ◆ = first divergence; ←/→ steps the token cursor; double-click text to jump the cursor there</span>
+</header>
+<div id="divbar"><span class="hint">select a case…</span></div>
+<main id="panes"></main>
+
+<script>
+"use strict";
+const N_PANES = 3;
+const state = {
+  tree: {},            // case_key -> [arm,...]
+  caseKey: null,
+  armsMeta: {},        // arm -> meta for current case
+  panes: [],           // per-pane: {arm, text, matches, matchIdx}
+  visible: N_PANES,    // 2- or 3-pane view; hidden panes are excluded from diff/search
+  globalDiv: -1,
+  query: "",
+};
+
+const $ = (id) => document.getElementById(id);
+function dragHelper(e, onMove, el) {
+  e.preventDefault();
+  if (el) el.classList.add("active");
+  const up = () => {
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseup", up);
+    document.body.style.userSelect = "";
+    if (el) el.classList.remove("active");
+  };
+  document.addEventListener("mousemove", onMove);
+  document.addEventListener("mouseup", up);
+  document.body.style.userSelect = "none";
+}
+function setTraceboxVisible(i, show) {
+  tracebox(i).style.display = show ? "block" : "none";
+  const h = document.querySelector(`.vhandle[data-i="${i}"]`);
+  if (h) h.style.display = show ? "block" : "none";
+  if (show) tracebox(i).style.height = (state.panes[i].traceH || 220) + "px";
+}
+const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const api = async (path, params) => {
+  const q = new URLSearchParams(params).toString();
+  const r = await fetch(path + (q ? "?" + q : ""));
+  const j = await r.json();
+  if (j.error) throw new Error(j.error);
+  return j;
+};
+
+// ---------------------------------------------------------------- layout
+function buildPanes() {
+  const main = $("panes");
+  for (let i = 0; i < N_PANES; i++) {
+    const pane = document.createElement("div");
+    pane.className = "pane";
+    pane.innerHTML = `
+      <div class="pane-head">
+        <select data-i="${i}" class="armSel"><option value="">— arm —</option></select>
+        <button class="flagsBtn" data-i="${i}" title="lossy-only / guard-intervention counts from proposals.jsonl">flags</button>
+        <button class="traceBtn" data-i="${i}" title="trace rows at the divergence point; ←/→ arrow keys step the token cursor">trace@◆</button>
+        <button class="loopsBtn" data-i="${i}" title="detect repeated phrases (degenerate loops) in this output">loops</button>
+        <div class="badges" data-i="${i}"></div>
+      </div>
+      <div class="text" data-i="${i}" tabindex="0"></div>
+      <div class="vhandle" data-i="${i}" title="drag up/down to resize the trace panel"></div>
+      <div class="tracebox" data-i="${i}"></div>`;
+    main.appendChild(pane);
+    if (i < N_PANES - 1) {
+      const div = document.createElement("div");
+      div.className = "divider";
+      div.dataset.d = i;
+      div.title = "drag to resize panes";
+      main.appendChild(div);
+    }
+    state.panes.push({ arm: null, text: null, matches: [], matchIdx: -1 });
+  }
+  document.querySelectorAll(".divider").forEach(div => {
+    div.addEventListener("mousedown", e => {
+      const d = +div.dataset.d;
+      const panes = document.querySelectorAll(".pane");
+      const A = panes[d], B = panes[d + 1];
+      const wA = A.getBoundingClientRect().width, wB = B.getBoundingClientRect().width;
+      const gTot = (parseFloat(A.style.flexGrow) || 1) + (parseFloat(B.style.flexGrow) || 1);
+      const startX = e.clientX, total = wA + wB;
+      dragHelper(e, ev => {
+        const fA = Math.min(0.88, Math.max(0.12, (wA + ev.clientX - startX) / total));
+        A.style.flex = `${fA * gTot} 1 0%`;
+        B.style.flex = `${(1 - fA) * gTot} 1 0%`;
+      }, div);
+    });
+  });
+  document.querySelectorAll(".vhandle").forEach(h => {
+    h.addEventListener("mousedown", e => {
+      const i = +h.dataset.i, box = tracebox(i);
+      const startY = e.clientY, startH = box.getBoundingClientRect().height;
+      dragHelper(e, ev => {
+        const nh = Math.min(window.innerHeight * 0.8, Math.max(60, startH - (ev.clientY - startY)));
+        state.panes[i].traceH = nh;
+        box.style.height = nh + "px";
+      }, h);
+    });
+  });
+  document.querySelectorAll(".armSel").forEach(sel =>
+    sel.addEventListener("change", () => setArm(+sel.dataset.i, sel.value || null)));
+  document.querySelectorAll(".flagsBtn").forEach(b =>
+    b.addEventListener("click", () => showFlags(+b.dataset.i)));
+  document.querySelectorAll(".traceBtn").forEach(b =>
+    b.addEventListener("click", () => activateTrace(null)));
+  document.querySelectorAll(".loopsBtn").forEach(b =>
+    b.addEventListener("click", () => showLoops(+b.dataset.i)));
+  document.querySelectorAll(".text").forEach(div => {
+    div.addEventListener("dblclick", e => {
+      const i = +div.dataset.i;
+      const p = state.panes[i];
+      if (!p || p.text == null) return;
+      let node, off;
+      if (document.caretRangeFromPoint) {
+        const r = document.caretRangeFromPoint(e.clientX, e.clientY);
+        if (!r) return;
+        node = r.startContainer; off = r.startOffset;
+      } else if (document.caretPositionFromPoint) {
+        const cp = document.caretPositionFromPoint(e.clientX, e.clientY);
+        if (!cp) return;
+        node = cp.offsetNode; off = cp.offset;
+      } else return;
+      if (node.nodeType !== Node.TEXT_NODE) return;
+      activateTrace(domOffsetToChar(i, node, off));
+    });
+    div.addEventListener("scroll", () => {
+      if (!$("syncScroll").checked || div._syncing) return;
+      const frac = div.scrollTop / Math.max(1, div.scrollHeight - div.clientHeight);
+      document.querySelectorAll(".text").forEach(other => {
+        if (other === div) return;
+        other._syncing = true;
+        other.scrollTop = frac * (other.scrollHeight - other.clientHeight);
+        setTimeout(() => { other._syncing = false; }, 0);
+      });
+    });
+  });
+}
+
+// ---------------------------------------------------------------- cases
+async function loadTree() {
+  const j = await api("/api/tree");
+  state.tree = j.cases;
+  renderCaseOptions("");
+}
+
+function renderCaseOptions(filter) {
+  const sel = $("caseSel");
+  const prev = sel.value;
+  sel.innerHTML = "<option value=''>— case —</option>";
+  const groups = {};
+  for (const key of Object.keys(state.tree)) {
+    if (filter && !key.toLowerCase().includes(filter.toLowerCase())) continue;
+    const top = key.split("/")[0];
+    (groups[top] = groups[top] || []).push(key);
+  }
+  for (const [top, keys] of Object.entries(groups)) {
+    const og = document.createElement("optgroup");
+    og.label = top;
+    for (const k of keys) {
+      const o = document.createElement("option");
+      o.value = k;
+      o.textContent = k.slice(top.length + 1).replace(/\/seed_0$/, "") || k;
+      og.appendChild(o);
+    }
+    sel.appendChild(og);
+  }
+  if (prev && state.tree[prev]) sel.value = prev;
+}
+
+async function setCase(caseKey) {
+  const prevArms = state.panes.map(p => p.arm);
+  state.caseKey = caseKey;
+  state.armsMeta = {};
+  state.globalDiv = -1;
+  $("divbar").innerHTML = "<span class='hint'>loading…</span>";
+  let arms = [];
+  if (caseKey) {
+    const j = await api("/api/case", { case: caseKey });
+    for (const m of j.arms) state.armsMeta[m.arm] = m;
+    arms = j.arms.map(m => m.arm);
+  }
+  document.querySelectorAll(".armSel").forEach(sel => {
+    const i = +sel.dataset.i;
+    sel.innerHTML = "<option value=''>— arm —</option>";
+    for (const a of arms) {
+      const m = state.armsMeta[a];
+      const tag = m.verdict ? ` [${m.verdict}${m.hit_cap ? "*" : ""}]` : "";
+      const o = document.createElement("option");
+      o.value = a;
+      o.textContent = a + tag;
+      sel.appendChild(o);
+    }
+    state.panes[i] = { arm: null, text: null, matches: [], matchIdx: -1,
+                       traceH: state.panes[i] && state.panes[i].traceH,
+                       boxMode: state.panes[i] && state.panes[i].boxMode };
+    paneText(i).innerHTML = "";
+    badges(i).innerHTML = "";
+    setTraceboxVisible(i, false);
+  });
+  // keep the arms the user had selected wherever this case has the same run
+  const used = new Set();
+  const filled = [];
+  for (let i = 0; i < N_PANES; i++) {
+    const a = prevArms[i];
+    if (a && arms.includes(a) && !used.has(a)) {
+      used.add(a);
+      filled[i] = true;
+      document.querySelector(`.armSel[data-i="${i}"]`).value = a;
+      setArm(i, a);
+    }
+  }
+  // default arms only for panes with nothing carried over
+  const prefer = [
+    [a => a === "specCascTokSemanticGuardAnd0p3", a => a === "strict"],
+    [a => a === "specCascTokSemanticGuardFutureGuard0p3k8", a => a === "specCascTok0p3"],
+    [a => a === "strict", a => /Guard/i.test(a)],
+  ];
+  prefer.forEach((tests, i) => {
+    if (filled[i]) return;
+    for (const test of tests) {
+      const pick = arms.find(a => test(a) && !used.has(a));
+      if (pick) { used.add(pick); document.querySelector(`.armSel[data-i="${i}"]`).value = pick; setArm(i, pick); break; }
+    }
+  });
+  if (!arms.length) $("divbar").innerHTML = "<span class='hint'>no runs found</span>";
+}
+
+// ---------------------------------------------------------------- panes
+const paneText = (i) => document.querySelector(`.text[data-i="${i}"]`);
+const badges = (i) => document.querySelector(`.badges[data-i="${i}"]`);
+const tracebox = (i) => document.querySelector(`.tracebox[data-i="${i}"]`);
+
+async function setArm(i, arm) {
+  const p = state.panes[i];
+  p.arm = arm; p.text = null; p.matches = []; p.matchIdx = -1;
+  p.trace = null; p.cursorRange = null;
+  setTraceboxVisible(i, false);
+  badges(i).innerHTML = "";
+  if (!arm) { paneText(i).innerHTML = ""; await refreshDivergence(); return; }
+  paneText(i).innerHTML = "<span class='hint'>loading…</span>";
+  const j = await api("/api/output", { case: state.caseKey, arm });
+  p.text = j.text;
+  renderBadges(i, j.meta);
+  await refreshDivergence();   // re-renders all panes with new prefix info
+  // restore whichever bottom panel was open (trace reopens via
+  // refreshDivergence once a divergence point exists)
+  if (p.boxMode === "flags") showFlags(i);
+  else if (p.boxMode === "loops") showLoops(i);
+}
+
+function renderBadges(i, m) {
+  const bits = [];
+  if (m.verdict) bits.push(`<span class="badge ${m.verdict}">${m.verdict}</span>`);
+  if (m.output_tokens != null) bits.push(`<span class="badge ${m.hit_cap ? "cap" : ""}">${m.output_tokens.toLocaleString()} tok${m.hit_cap ? " (cap)" : ""}</span>`);
+  if (m.finish_reason) bits.push(`<span class="badge">${m.finish_reason}</span>`);
+  if (m.l_bar != null) bits.push(`<span class="badge">l̄ ${m.l_bar.toFixed(2)}</span>`);
+  if (m.wall_time_seconds != null) bits.push(`<span class="badge">${m.wall_time_seconds.toFixed(0)}s</span>`);
+  badges(i).innerHTML = bits.join("");
+}
+
+function setView(n) {
+  state.visible = n;
+  document.querySelectorAll(".pane").forEach((el, i) =>
+    el.classList.toggle("hidden", i >= n));
+  document.querySelectorAll(".divider").forEach(el =>
+    el.classList.toggle("hidden", +el.dataset.d + 1 >= n));
+  refreshDivergence().then(applySearch);
+}
+
+async function refreshDivergence() {
+  const active = state.panes.filter((p, i) => i < state.visible && p.arm && p.text != null);
+  const bar = $("divbar");
+  if (active.length < 2) {
+    state.globalDiv = -1;
+    bar.innerHTML = "<span class='hint'>select ≥2 arms to diff</span>";
+    state.panes.forEach((p, i) => p.text != null && renderPane(i));
+    return;
+  }
+  const arms = active.map(p => p.arm).join("|");
+  const j = await api("/api/divergence", { case: state.caseKey, arms });
+  state.globalDiv = j.global_char;
+  const pairHtml = j.pairs.map(p =>
+    `<span class="pair">${p.a} ⇄ ${p.b}: ${p.char < 0 ? "identical" : "<b>char " + p.char.toLocaleString() + "</b>"}</span>`
+  ).join("");
+  bar.innerHTML = (j.global_char < 0
+    ? "<span class='hint'>outputs identical</span>"
+    : `<span class="hint">first divergence at char <b style="color:var(--warn)">${j.global_char.toLocaleString()}</b></span>`)
+    + pairHtml;
+  state.panes.forEach((p, i) => p.text != null && renderPane(i));
+  // reopen trace panels that were open before the case/arm change, now that
+  // the new divergence anchor is known
+  if (state.globalDiv >= 0) {
+    state.panes.forEach((p, i) => {
+      if (i < state.visible && p.text != null && p.boxMode === "trace" && !p.trace)
+        showTrace(i);
+    });
+  }
+}
+
+// render text with shared-prefix dimming, divergence marker, search marks,
+// and the trace token cursor (blue highlight, ←/→ to step)
+const MAX_MARKS = 3000;
+function renderPane(i) {
+  const p = state.panes[i];
+  if (p.text == null) return;
+  const len = p.text.length;
+  const div = (state.globalDiv > 0 && state.globalDiv <= len) ? state.globalDiv : -1;
+  const q = state.query;
+  p.matches = [];
+  const cuts = new Set([0, len]);
+  if (div > 0) cuts.add(div);
+  const cr = p.cursorRange;
+  if (cr) {
+    cuts.add(Math.max(0, Math.min(cr[0], len)));
+    cuts.add(Math.max(0, Math.min(cr[1], len)));
+  }
+  const pts = [...cuts].sort((x, y) => x - y);
+  let html = "";
+  for (let s = 0; s < pts.length - 1; s++) {
+    const a = pts[s], b = pts[s + 1];
+    let chunk = "";
+    if (q) {
+      let from = a;
+      while (from < b && p.matches.length < MAX_MARKS) {
+        const at = p.text.indexOf(q, from);
+        if (at < 0 || at + q.length > b) break;
+        chunk += esc(p.text.slice(from, at))
+              + `<mark data-m="${p.matches.length}">${esc(p.text.slice(at, at + q.length))}</mark>`;
+        p.matches.push(at);
+        from = at + q.length;
+      }
+      chunk += esc(p.text.slice(from, b));
+    } else {
+      chunk = esc(p.text.slice(a, b));
+    }
+    if (cr && a >= cr[0] && b <= cr[1]) chunk = `<span class="tokcur">${chunk}</span>`;
+    if (div > 0 && b <= div) chunk = `<span class="prefix">${chunk}</span>`;
+    html += chunk;
+    if (b === div) html += `<span class="divmark" title="first divergence across selected arms">◆</span>`;
+  }
+  paneText(i).innerHTML = html;
+  const el = document.querySelector(`.armSel[data-i="${i}"]`);
+  if (el && el.value !== (p.arm || "")) el.value = p.arm || "";
+}
+
+// ---------------------------------------------------------------- search
+function applySearch() {
+  state.query = $("searchBox").value;
+  state.panes.forEach((p, i) => { p.matchIdx = -1; if (p.text != null) renderPane(i); });
+  const counts = state.panes.map((p, i) =>
+    (i >= state.visible || p.text == null) ? null : `${p.arm ? p.arm.slice(0, 24) : "pane " + (i+1)}: <span class="count">${p.matches.length}×</span>`)
+    .filter(Boolean);
+  if (state.query && counts.length) {
+    const extra = document.createElement("span");
+    extra.className = "pair";
+    extra.innerHTML = " | find: " + counts.join(" · ");
+    const old = $("divbar").querySelector(".findcounts");
+    if (old) old.remove();
+    extra.classList.add("findcounts");
+    $("divbar").appendChild(extra);
+  } else {
+    const old = $("divbar").querySelector(".findcounts");
+    if (old) old.remove();
+  }
+}
+
+function stepMatch(dir) {
+  for (let i = 0; i < state.visible; i++) {
+    const p = state.panes[i];
+    if (!p.matches.length) continue;
+    p.matchIdx = (p.matchIdx + dir + p.matches.length) % p.matches.length;
+    const marks = paneText(i).querySelectorAll("mark");
+    marks.forEach(m => m.classList.remove("cur"));
+    const m = marks[p.matchIdx];
+    if (m) { m.classList.add("cur"); m.scrollIntoView({ block: "center" }); }
+  }
+}
+
+function jumpToDivergence() {
+  document.querySelectorAll(".divmark").forEach(m =>
+    m.scrollIntoView({ block: "center" }));
+}
+
+// ---------------------------------------------------------------- trace/flags
+const TRACE_COLS = ["output_position","emitted_token_text","draft_token_text","emission_source","strict_would_accept","lossy_would_accept","actually_accepted","lossy_only_accepted","token_marker_guard_active","guard_evidence","window_remaining","p","q"];
+let traceCols = (() => {
+  try {
+    const s = JSON.parse(localStorage.getItem("traceCols") || "null");
+    if (Array.isArray(s) && s.length === TRACE_COLS.length && TRACE_COLS.every(c => s.includes(c))) return s;
+  } catch (e) {}
+  return [...TRACE_COLS];
+})();
+function reorderTraceCols(from, to) {
+  const a = traceCols.indexOf(from), b = traceCols.indexOf(to);
+  if (a < 0 || b < 0 || a === b) return;
+  traceCols.splice(b, 0, traceCols.splice(a, 1)[0]);
+  localStorage.setItem("traceCols", JSON.stringify(traceCols));
+  for (let i = 0; i < N_PANES; i++) {
+    const p = state.panes[i];
+    if (p.trace) { renderTraceTable(i, p.trace.anchorPos); updateTraceCursor(i, false); }
+  }
+}
+const TRACE_SHORT = {output_position:"pos",emitted_token_text:"emitted",draft_token_text:"draft",emission_source:"src",strict_would_accept:"strict✓",lossy_would_accept:"lossy✓",accepted:"accepted",actually_accepted:"accepted",lossy_only_accepted:"lossy-only",token_marker_guard_active:"marker",guard_evidence:"rule",window_remaining:"~win",p:"p",q:"q"};
+
+// map a DOM text-node position inside a pane back to a char offset in the
+// raw output text (the rendered DOM is the raw text plus the inserted ◆)
+function domOffsetToChar(i, node, off) {
+  const walker = document.createTreeWalker(paneText(i), NodeFilter.SHOW_TEXT);
+  let total = 0;
+  while (walker.nextNode()) {
+    const tn = walker.currentNode;
+    if (tn.parentElement && tn.parentElement.closest(".divmark")) continue;
+    if (tn === node) return total + off;
+    total += tn.nodeValue.length;
+  }
+  return total;
+}
+
+// enter trace mode on every visible pane at once; null = anchor at ◆
+function activateTrace(centerChar) {
+  $("syncScroll").checked = true;
+  for (let i = 0; i < state.visible; i++) {
+    const p = state.panes[i];
+    if (p.arm && p.text != null) showTrace(i, centerChar);
+  }
+}
+
+async function showTrace(i, centerChar = null) {
+  const p = state.panes[i];
+  const box = tracebox(i);
+  if (!p.arm) return;
+  p.boxMode = "trace";
+  const at = centerChar != null ? centerChar : state.globalDiv;
+  if (at < 0) { setTraceboxVisible(i, true); box.innerHTML = "<div class='hint' style='padding:6px'>no divergence point (need ≥2 differing arms)</div>"; return; }
+  setTraceboxVisible(i, true);
+  if (!p.trace) box.innerHTML = "<div class='hint' style='padding:6px'>loading trace…</div>";
+  try {
+    const j = await api("/api/trace_at", { case: state.caseKey, arm: p.arm, char: at, span: 80 });
+    p.trace = { rows: j.rows, cur: j.anchor_index, anchorPos: j.output_position };
+    renderTraceTable(i, j.output_position);
+    updateTraceCursor(i);
+  } catch (e) {
+    p.trace = null;
+    box.innerHTML = `<div class='hint' style='padding:6px'>${esc(e.message)}</div>`;
+  }
+}
+
+function renderTraceTable(i, anchorPos) {
+  const p = state.panes[i];
+  const cell = (c, r) => {
+    const v = r[c];
+    if (c === "guard_evidence")
+      return v === "strict" ? "<td class='rule-strict' title='proven strict: relaxed rule would accept, token was rejected'>🔒strict</td>"
+           : v === "relaxed" ? "<td class='rule-relaxed' title='proven relaxed: strict would reject, token was accepted'>≈relaxed</td>"
+           : "<td title='rules agree here — actual rule not observable'>·</td>";
+    if (c === "window_remaining")
+      return v > 0 ? `<td class='rule-strict'>${v}</td>` : "<td>·</td>";
+    return v === true ? "<td class='yes'>✓</td>" : v === false ? "<td class='no'>✗</td>"
+      : v == null ? "<td>·</td>" : typeof v === "number" && !Number.isInteger(v) ? `<td>${v.toFixed(3)}</td>` : `<td>${esc(JSON.stringify(v))}</td>`;
+  };
+  const hasWin = p.trace.rows.some(r => r.window_remaining != null);
+  const box = tracebox(i);
+  box.innerHTML =
+    `<div class='hint' style='padding:4px 6px'>trace → output_position ${anchorPos} · ←/→ steps the cursor · drag column headers to reorder · rule: 🔒/≈ = rule PROVEN by a strict-vs-relaxed disagreement, · = rules agreed (not observable)${hasWin ? " · ~win = replayed K-window countdown, tinted rows = window believed active (approximate: the kernel’s real carry across rounds provably deviates — trust the rule column where they conflict)" : ""}</div>
+    <table><tr>${traceCols.map(c => `<th draggable="true" data-col="${c}" title="drag to reorder columns">${TRACE_SHORT[c]}</th>`).join("")}</tr>` +
+    p.trace.rows.map((r, k) => `<tr data-idx="${k}" class="${r.window_remaining > 0 ? "guarded" : ""}">${traceCols.map(c => cell(c, r)).join("")}</tr>`).join("") +
+    "</table>";
+  box.querySelectorAll("th").forEach(th => {
+    th.addEventListener("dragstart", e => e.dataTransfer.setData("text/plain", th.dataset.col));
+    th.addEventListener("dragover", e => e.preventDefault());
+    th.addEventListener("drop", e => {
+      e.preventDefault();
+      reorderTraceCols(e.dataTransfer.getData("text/plain"), th.dataset.col);
+    });
+  });
+}
+
+function updateTraceCursor(i, scrollBody = true) {
+  const p = state.panes[i];
+  if (!p.trace) return;
+  const row = p.trace.rows[p.trace.cur];
+  if (!row) return;
+  const box = tracebox(i);
+  box.querySelectorAll("tr.cursor").forEach(tr => tr.classList.remove("cursor"));
+  const tr = box.querySelector(`tr[data-idx="${p.trace.cur}"]`);
+  if (tr) { tr.classList.add("cursor"); tr.scrollIntoView({ block: "nearest" }); }
+  if (row.char_start != null) {
+    // zero-width span = token with no own rendering (e.g. the second half of
+    // a multi-byte symbol): highlight the nearest preceding rendered token
+    let a = row.char_start, b = row.char_end, k = p.trace.cur;
+    while (a === b && k > 0) {
+      k--;
+      a = p.trace.rows[k].char_start; b = p.trace.rows[k].char_end;
+    }
+    p.cursorRange = [a, b];
+    renderPane(i);
+    const tok = paneText(i).querySelector(".tokcur");
+    if (tok && scrollBody) {
+      // each pane centres its own token; suppress sync-scroll echo so panes
+      // don't drag each other off their cursors
+      const div = paneText(i);
+      div._syncing = true;
+      tok.scrollIntoView({ block: "center" });
+      setTimeout(() => { div._syncing = false; }, 100);
+    }
+  }
+}
+
+async function stepTraceCursor(dir) {
+  for (let i = 0; i < state.visible; i++) {
+    const p = state.panes[i];
+    if (!p.trace) continue;
+    const next = p.trace.cur + dir;
+    if (next < 0 || next >= p.trace.rows.length) {
+      // ran off the fetched window -- recentre on the edge token and keep going
+      const edge = p.trace.rows[Math.max(0, Math.min(p.trace.rows.length - 1, next))];
+      if (edge && edge.char_start != null) {
+        await showTrace(i, edge.char_start);
+        if (p.trace) {
+          p.trace.cur = Math.max(0, Math.min(p.trace.rows.length - 1, p.trace.cur + dir));
+          updateTraceCursor(i);
+        }
+      }
+      continue;
+    }
+    p.trace.cur = next;
+    updateTraceCursor(i);
+  }
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+  const tag = (document.activeElement && document.activeElement.tagName) || "";
+  if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return;
+  if (!state.panes.some((p, i) => i < state.visible && p.trace)) return;
+  e.preventDefault();
+  stepTraceCursor(e.key === "ArrowRight" ? 1 : -1);
+});
+
+async function showLoops(i) {
+  const p = state.panes[i];
+  const box = tracebox(i);
+  if (!p.arm) return;
+  p.boxMode = "loops";
+  setTraceboxVisible(i, true);
+  box.innerHTML = "<div class='hint' style='padding:6px'>scanning for repeated phrases…</div>";
+  try {
+    const j = await api("/api/loops", { case: state.caseKey, arm: p.arm });
+    if (!j.loops.length) { box.innerHTML = "<div class='hint' style='padding:6px'>no phrase repeated ≥3× found</div>"; return; }
+    p.loopPhrases = j.loops.map(l => l.phrase);
+    box.innerHTML = `<div class='hint' style='padding:4px 6px'>repeated phrases in ${esc(p.arm)} — click one to highlight it in all panes</div>` +
+      j.loops.map((l, k) =>
+        `<div class="loopitem" data-k="${k}"><span class="cnt">${l.count}×</span><span class="rng">${Math.round(l.first_frac*100)}–${Math.round(l.last_frac*100)}%</span>${esc(l.phrase.length > 110 ? l.phrase.slice(0, 110) + "…" : l.phrase)}</div>`).join("");
+    box.querySelectorAll(".loopitem").forEach(el => el.addEventListener("click", () => {
+      $("searchBox").value = p.loopPhrases[+el.dataset.k];
+      applySearch();
+      stepMatch(1);
+    }));
+  } catch (e) {
+    box.innerHTML = `<div class='hint' style='padding:6px'>${esc(e.message)}</div>`;
+  }
+}
+
+async function showFlags(i) {
+  const p = state.panes[i];
+  const box = tracebox(i);
+  if (!p.arm) return;
+  p.boxMode = "flags";
+  setTraceboxVisible(i, true);
+  box.innerHTML = "<div class='hint' style='padding:6px'>scanning proposals.jsonl…</div>";
+  try {
+    const j = await api("/api/flags", { case: state.caseKey, arm: p.arm });
+    box.innerHTML = `<div style="padding:8px 10px">
+      <b>${esc(p.arm)}</b> — trace rows: ${j.trace_rows.toLocaleString()},
+      emitted: ${j.emitted_accepted_or_bonus.toLocaleString()}<br>
+      lossy-only accepted: <b style="color:var(--warn)">${j.lossy_only_accepted}</b> ·
+      guard interventions (lossy✓ but rejected): <b style="color:var(--bad)">${j.guard_interventions}</b> ·
+      marker tokens: ${j.marker_tokens}<br>
+      <span class="hint">intervention positions: ${j.guard_intervention_positions.slice(0, 40).join(", ") || "—"}${j.guard_interventions > 40 ? " …" : ""}</span>
+    </div>`;
+  } catch (e) {
+    box.innerHTML = `<div class='hint' style='padding:6px'>${esc(e.message)}</div>`;
+  }
+}
+
+// ---------------------------------------------------------------- wire up
+buildPanes();
+setView(2);   // default: 2-pane view
+loadTree();
+$("caseSel").addEventListener("change", e => setCase(e.target.value || null));
+$("viewSel").addEventListener("change", e => setView(+e.target.value));
+$("caseFilter").addEventListener("input", e => renderCaseOptions(e.target.value));
+let searchTimer = null;
+$("searchBox").addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(applySearch, 250);
+});
+$("searchBox").addEventListener("keydown", e => { if (e.key === "Enter") stepMatch(e.shiftKey ? -1 : 1); });
+$("searchNext").addEventListener("click", () => stepMatch(1));
+$("searchPrev").addEventListener("click", () => stepMatch(-1));
+$("jumpDiv").addEventListener("click", jumpToDivergence);
+</script>
+</body>
+</html>
