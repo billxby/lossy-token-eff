@@ -180,15 +180,16 @@ def main():
 
             resp = client.messages.create(
                 model=args.model,
-                max_tokens=1024,
+                max_tokens=8000,  # thinking is on by default and counts against this
                 output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
                 messages=[{"role": "user", "content": prompt}],
             )
-            if resp.stop_reason == "refusal":
+            resp_text = next((b.text for b in resp.content if b.type == "text"), None)
+            if resp.stop_reason == "refusal" or resp_text is None:
                 verdict = {"is_degenerate_loop": None, "events": [],
-                           "judge_status": "refusal"}
+                           "judge_status": resp.stop_reason or "no_text_output"}
             else:
-                data = json.loads(next(b.text for b in resp.content if b.type == "text"))
+                data = json.loads(resp_text)
                 onset_char, onset_status = None, "no_onset"
                 if data["is_degenerate_loop"] and data.get("onset_quote"):
                     onset_char, onset_status = locate(
