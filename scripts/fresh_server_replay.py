@@ -83,6 +83,13 @@ def parse_args() -> argparse.Namespace:
         help="spec_casc_tok_semantic_guard_future_guard_and only: length of the AND-combined window after an accepted marker.",
     )
     parser.add_argument(
+        "--spec-casc-opt-head-beta",
+        type=float,
+        default=0.8,
+        help="spec_casc_opt_head only: head width beta in (-inf, 1]; the drafted token gets opt's free pass "
+        "only if p(x) >= (1-beta)*max p. 1 = plain spec_casc_opt. See cascade/METHODS.md.",
+    )
+    parser.add_argument(
         "--spec-casc-tok-force-commit-threshold",
         type=int,
         default=28000,
@@ -267,6 +274,8 @@ def method_and_params_for(args: argparse.Namespace, arm: str) -> tuple[str, str]
     params = f"alpha{alpha:g}".replace("-", "neg")
     if arm == "spec_casc_tok_semantic_guard_future_guard":
         params += f"_k{args.spec_casc_tok_semantic_guard_future_guard_k}"
+    if arm == "spec_casc_opt_head":
+        params += f"_beta{args.spec_casc_opt_head_beta:g}".replace("-", "neg")
     if arm == "spec_casc_tok_semantic_guard_future_guard_and":
         params += f"_k{args.spec_casc_tok_semantic_guard_future_guard_and_k}"
     if arm == "spec_casc_tok_force_commit":
@@ -452,6 +461,8 @@ def start_server(args: argparse.Namespace, arm: str, log_path: pathlib.Path):
         env[METHODS[arm].env_var] = f"{alpha_for(args, arm):g}"
         if arm == "spec_casc_tok_semantic_guard_future_guard":
             env["SPEC_CASC_TOK_FUTURE_GUARD_K"] = str(args.spec_casc_tok_semantic_guard_future_guard_k)
+        if arm == "spec_casc_opt_head":
+            env["SPEC_CASC_OPT_HEAD_BETA"] = f"{args.spec_casc_opt_head_beta:g}"
         if arm == "spec_casc_tok_semantic_guard_future_guard_and":
             env["SPEC_CASC_TOK_FUTURE_GUARD_AND_K"] = str(args.spec_casc_tok_semantic_guard_future_guard_and_k)
         if arm == "spec_casc_tok_force_commit":
