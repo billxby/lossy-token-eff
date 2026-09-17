@@ -10,7 +10,7 @@ Newest entry last. Dates are UTC-ish calendar days.
   further, try modifications, and check what speed is achievable if
   accuracy is ignored but garbage output is excluded. HaoChen to ask Prof.
   Zhang for a single H100 for Bill.
-- **Compute.** Alliance (CCDB) account approved: username `billxby`, RAPs
+- **Compute.** Alliance (CCDB) account approved, RAPs
   `def-hongyanz` (default allocation, Nibi etc.) and `aip-hongyanz` (PAICE,
   AI clusters). SSH key + Duo verified end-to-end against
   `nibi.alliancecan.ca`; login still closes right after "Success. Logging
@@ -290,6 +290,124 @@ with a narrow head — **E6-aime24 with β ∈ {0.15, 0.35}** is the next run.
   Stopping the GPU experiments here unless the group wants seeds on E6
   (would only tighten error bars on "no gain") or the residual-sampling
   hint from E1F pursued (a different question).
+## 2026-09-14 — E1P: the AIME24 protocol on the other five benchmarks (staged)
+
+Bill asked for the "proper" run (tok_lt and tok at α 0.15/0.20/0.25, 3
+seeds, strict × 3) on gsm8k, humaneval, mtbench, livecodebench and
+longbench_v2. Sized from the campaign's own per-answer wall times (mean:
+gsm8k 2.2 s, humaneval 6.5 s, mtbench 8.8 s, livecodebench 25 s,
+longbench_v2 73 s) with 21 warm servers per dataset: gsm8k 150 problems
+≈ 4 h, humaneval 150 ≈ 7 h, mtbench 80 ≈ 6 h, livecodebench 90 ≈ 15 h,
+longbench_v2 at 150 would be ≈ 66 h so it runs at 30 problems (AIME24's
+90-runs-per-point power) ≈ 15 h. Added `E1P-<ds>` to `run.sh` (reports to
+`campaign/*/<ds>_proper.*`) and `SBATCH_EXTRA` so the five jobs chain with
+`--dependency=afterany` on one GPU (~47 h total sequential; ~15 h if run in
+parallel on five GPUs). Dry-runs validated for all five.
+
+- **Submitted 2026-09-14**, chained with `afterany` on one GPU: gsm8k
+  21910960 → humaneval 21910961 → mtbench 21910962 → livecodebench 21910964
+  → longbench_v2 21910965. Outputs `campaign/{results,tables,graphs}/<ds>_proper.*`
+  on Nibi; job logs `casc-<jobid>.out` in the repo dir.
+  **Re-wired the same day into two lanes (Bill's call, two GPUs):**
+  GPU 1: gsm8k 21910960 → humaneval 21910961 → livecodebench 21910964
+  (~26 h); GPU 2: mtbench 21910962 → longbench_v2 21910965 (~21 h). Done
+  with `scontrol update jobid=… dependency=…`, no resubmission. Nibi has
+  no per-user GPU cap under QOS `normal`; the constraint is fair-share
+  (group score fell 0.49 → 0.32 after ~30 GPU-h this weekend).
+- **2026-09-15: all five failed after 20–80 min — my mistake.** Every job
+  shares `.venv-vllm`, and every arm switches the installed patch in it
+  (the patches are mutually exclusive on one file). One job at a time is
+  safe (that is why E0 and SAMPLE were chained `afterok`); two lanes
+  rewrote the sampler under each other: `apply.sh` self-tests found the
+  other job's patch (`no attribute _SPEC_CASC_TOK_ALPHA … did you mean
+  _SPEC_CASC_TOK_LT_ALPHA`), servers died when Triton re-read a changed
+  file (`@jit functions should be defined in a Python file`), requests
+  then got `Connection refused`. Completed `run.json`s are sound (a
+  request only succeeds against a healthy server; a mismatched patch
+  crashes rather than runs) and are reused by skip-if-done.
+  **Fix:** one repo + venv copy per lane (`lossy-token-eff-lane2/`,
+  11 GB), lanes pinned to disjoint H100 nodes (`--exclude=g[15-28]` /
+  `--exclude=g[1-14]`) because the `/tmp` knob files are per node, not per
+  job. Rule for the future: **concurrent jobs must never share a venv.**
+  Resubmitted 2026-09-15: lane 1 (main dir, g1–g14) gsm8k 21986969 →
+  humaneval 21986970 → livecodebench 21986971; lane 2 (`lossy-token-eff-lane2`,
+  `REPO_DIR` exported, g15–g28) mtbench 21987918 → longbench_v2 21987919.
+  The 11 GB venv copy took ~50 min on project storage. Lane-2 outputs live
+  in the lane-2 directory (`campaign/*/{mtbench,longbench_v2}_proper.*`).
+  Lane 2's first submission (21987918/21987919) died in 5 min: the copy
+  had used *unanchored* `--exclude runs/ --exclude logs/`, which rsync
+  applies at every depth, so `openai/types/beta/threads/runs` (and every
+  other `runs`/`logs` dir inside site-packages) was missing →
+  `ModuleNotFoundError`. Re-synced with anchored `/runs/` `/logs/`,
+  verified imports + no missing dirs, resubmitted: mtbench 21988492 →
+  longbench_v2 21988496. (Lesson: anchor rsync excludes with a leading
+  slash when copying a venv.)
+
+## 2026-09-15 — E1P-gsm8k done (job 21986969, 150 problems × 3 seeds = 450 runs per point)
+
+Lossless: l̄ 2.59, mean 326 tokens, 7 of 450 runs hit the 2,048-token
+budget, acc 0.96. Files `campaign/*/gsm8k_proper.*`; scored as
+`gsm8k_proper` in `cascade/results/speed_ignoring_accuracy.md`.
+
+| rule | α | accepted per pass | mean len | median len | budget hits /450 | passes speedup | acc |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| tok | 0.15 / 0.20 / 0.25 | 1.05 / 1.04 / 1.06 | 0.97 / 0.94 / 0.94 | 0.93 / 0.90 / 0.87 | 7 / 7 / 10 | 1.06 / 1.10 / 1.11 | 0.96 / 0.95 / 0.95 |
+| tok_lt | 0.15 / 0.20 / 0.25 | 1.12 / 1.12 / 1.13 | 1.02 / 1.04 / 1.03 | 0.98 / 0.98 / 0.94 | 8 / 10 / 11 | 1.07 / 1.04 / 1.07 | 0.95 / 0.95 / 0.96 |
+
+Read-out: same shape as AIME24. tok_lt accepts 12–13% more per pass than
+lossless (tok 4–6%), answers stay at lossless length, accuracy unchanged,
+end-to-end **~1.05–1.10× for both rules** — the quick look's 1.27× at
+α=0.8 (30 runs) was optimistic. Per-seed speedups swing 0.95–1.21 even at
+150 problems because the handful of 2,048-token budget hits carry ~10–15%
+of all tokens; gsm8k length statistics are loop-dominated too, just at a
+smaller scale. tok's slightly shorter answers (0.94–0.97×) cancel tok_lt's
+larger acceptance gain, so on this benchmark the two rules tie.
+
+## 2026-09-16 — E1P: humaneval, livecodebench, mtbench done; longbench_v2 refilling
+
+- humaneval 21986970 (3 h 33 m), livecodebench 21986971 (5 h 11 m — the
+  15 h estimate was 3× too pessimistic; generation on the H100 SXM is much
+  faster than the old box's PCIe), mtbench 21988492 (3 h 15 m): all clean.
+  Tables in `RESULTS.md` §2.3b. Pattern identical to AIME24/gsm8k: tok_lt
+  +9–13% accepted/pass, length ≈ lossless, accuracy unchanged, end-to-end
+  1.06–1.10× at the best α; tok +2–6% and ~1.00–1.04×.
+- **Two data-hygiene problems found and fixed.** (1) humaneval's tok_lt
+  α=0.15 arm had 227 *failed* placeholder `run.json`s (status != ok) from
+  the 2026-09-14 collision; skip-if-done treats any run.json as done, so
+  they were never redone. Removed them; the arm is re-running (job
+  22068663, lane 1). Rule: after any failed job, delete non-ok run.jsons
+  before resubmitting. (2) longbench_v2 21988496 died at 11/21 arms with
+  `OSError: Address already in use` — `remote/stop_server.sh` waits for
+  the GPU to free, not for the API server's socket, so the next arm's
+  server could bind before the previous one closed. Added a port-free
+  wait (≤90 s) to `fresh_server_replay.start_server`; resubmitted as
+  22068664 (lane 2); it reuses the 330 completed longbench runs.
+- Scan of both lane dirs: the humaneval arm was the only place with
+  non-ok records.
+- **Both gap-fills done**: humaneval 22068663 (30 min; tok_lt α=0.15 now
+  450/450: accepted 1.10, len 1.00, 0 budget hits, passes 1.08, acc 95%),
+  longbench_v2 22068664 (59 min, port-wait fix held).
+- **Report bug found and fixed:** `campaign_report.grade_accuracy` keyed
+  verdicts by (method, params, case) — no seed — so for multi-seed runs
+  the last-graded seed's verdict stood in for all three. Fixed to key by
+  seed, verified identical on single-seed old_runs, all multi-seed reports
+  regenerated on Nibi and re-pulled. Corrected lossless accuracies: AIME24
+  78% (was 73%), livecodebench 89% (was 85.5%), longbench_v2 60% (was
+  63%); gsm8k/humaneval unchanged. RESULTS.md updated throughout.
+- **longbench_v2 (30 × 3 seeds)**: lossless l̄ 1.97, 1,382 tokens, 0 budget
+  hits, 60% (17/18/19 of 30 by seed). tok_lt: accepted 1.11–1.13, len
+  1.09/0.99/1.27, passes 1.00/1.09/0.88, acc 56/53/56%; tok: 1.08–1.11,
+  len 1.10/1.23/0.99, passes 0.95/0.87/1.09, acc 56/57/52%. No consistent
+  speedup (per-seed 0.63–1.40) and every arm 3–8 points below lossless —
+  the one benchmark where the head-restricted rules are not free, in line
+  with the campaign's 150-problem tok result (−3/−4 points).
+- **E1P complete on all five benchmarks.** Five-benchmark picture: tok_lt
+  1.06–1.10× at unchanged accuracy on gsm8k/humaneval/livecodebench/
+  mtbench/AIME24; nothing on longbench_v2. Total GPU time this week ≈ 60 h.
+  Read-out per dataset: pull the `_proper` files (tables under a distinct
+  local name), rerun `speed_ignoring_accuracy.py`, compare tok_lt/tok at
+  0.15/0.2/0.25 vs strict with the same table as AIME24's.
+
 - Nibi facts learned: the multiplexed SSH master dies after ~10 min of
   inactivity server-side (each new round needs one Duo tap; batch work
   per login); `pkill -f` on the login node matches your own ssh command
@@ -308,3 +426,10 @@ with a narrow head — **E6-aime24 with β ∈ {0.15, 0.35}** is the next run.
   already on file (`--retarget` opts out). Refactor reproduces all 8
   recorded calibrations exactly. Also cleaned an ugly expectation override
   in `test_spec_casc_diff.py`.
+
+## 2026-09-17 — final results PDF
+
+`cascade/analysis/results_pdf.py` → `cascade/results/final_results.pdf` (8 pages): summary table of the best tok_lt
+point per benchmark, then one page per benchmark (lossless / tok α 0.15, 0.25 / tok_lt α 0.15, 0.20, 0.25; accepted per
+pass, answer length, budget hits, verifier passes, accuracy — all ÷ lossless, paired per problem and seed — plus the two
+graphs), then notes and caveats. Regenerate after any result change with `python3 cascade/analysis/results_pdf.py`.

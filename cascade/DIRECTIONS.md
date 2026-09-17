@@ -6,6 +6,10 @@ E3, D5 -> E5 (Diff/Chow) + E6 (opt_head; entropy-gated head not built),
 D6 -> E4, D7 -> not built (needs Chiatzen's split), D8 -> E8, D9 -> not
 built.
 
+**Status 2026-09-17:** D1 (E1/E1F/E1P), D2 (E7) and D5's opt_head (E6) are
+done — results in `RESULTS.md`; D3 (opt_ent), D4 (timing), D5's Diff/Chow,
+D6 (draft length) are built and unrun; D7–D9 not built.
+
 Ranked by (information per GPU-hour) for a single H100. Each entry: the
 hypothesis, the concrete run, what each outcome would mean, and a rough
 cost using the campaign's own timings (~90-100 s fixed server overhead per

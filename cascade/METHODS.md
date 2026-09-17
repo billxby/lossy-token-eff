@@ -18,11 +18,11 @@ file written by `remote/run_server_vllm.sh`, never from the environment.
 | `r_fuzzy` | `r-fuzzy` | if `JSD(p,q) < a`: accept always; else strict | divergence threshold | -inf | 0.3 | 0.03 0.08 0.15 0.25 | switch | campaign |
 | `spec_casc_opt` | `spec-casc-opt` | defer iff `max q < max p - a*TV(p,q)`; deferred -> strict, else accept | deferral cost (Eq. 10) | -inf | 0.05 | -0.3 -0.1 -0.02 0.05 | switch | campaign |
 | `spec_casc_tok` | `spec-casc-tok` | `A = {v: p(v) >= (1-a) max p}`, `eta = 1 - q(A)`, `pi(v) = q(v)+eta p(v)` on A else `eta p(v)`; accept iff `pi(x)/q(x) >= u`; residual on `pi` | head width (Eq. 15) | **-inf, not 0** | 0.3 | 0.15 0.35 0.55 0.8 | blend | campaign |
-| `spec_casc_tok_lt` | `spec-casc-tok-lt` | accept always iff `p(x) >= (1-a) max p`; else strict | head width; lossless tail | **-inf, not 0**; a <= 1 | 0.3 | 0.15 0.35 0.55 0.8 | switch | new, untested on GPU |
-| `spec_casc_opt_ent` | `spec-casc-opt-ent` | defer iff `H(q) > H(p) + a*TV(p,q)` (nats); deferred -> strict, else accept | deferral cost, entropy plug-in (App. C.2) | -inf | 0.0 | -2 -0.5 0 0.5 (guess) | switch | new, untested on GPU |
-| `spec_casc_diff` | `spec-casc-diff` | defer iff `max q < max p - a`; deferred -> strict, else accept | constant margin (Eq. 5) | -inf | 0.0 | -0.3 -0.1 -0.02 0.05 | switch | new, untested on GPU |
-| `spec_casc_chow` | `spec-casc-chow` | defer iff `max q < 1 - a`; deferred -> strict, else accept | drafter confidence threshold (Eq. 2) | -inf; a <= 1 | 0.5 | 0.1 0.3 0.5 0.7 | switch | new, untested on GPU |
-| `spec_casc_opt_head` | `spec-casc-opt-head` | defer iff (`max q < max p - a*TV`) **or** (`p(x) < (1-b) max p`); deferred -> strict, else accept | a as opt; **b** = head width, second knob | -inf (any b); b = 1 is plain opt | a 0.05, b 0.8 | a: opt's grid; b in {0.5, 0.8} | switch | new, untested on GPU |
+| `spec_casc_tok_lt` | `spec-casc-tok-lt` | accept always iff `p(x) >= (1-a) max p`; else strict | head width; lossless tail | **-inf, not 0**; a <= 1 | 0.3 | 0.15 0.35 0.55 0.8 | switch | verified on H100 (E0); run at scale on all 6 benchmarks (RESULTS.md) |
+| `spec_casc_opt_ent` | `spec-casc-opt-ent` | defer iff `H(q) > H(p) + a*TV(p,q)` (nats); deferred -> strict, else accept | deferral cost, entropy plug-in (App. C.2) | -inf | 0.0 | -2 -0.5 0 0.5 (guess) | switch | verified on H100 (E0); not yet run at scale |
+| `spec_casc_diff` | `spec-casc-diff` | defer iff `max q < max p - a`; deferred -> strict, else accept | constant margin (Eq. 5) | -inf | 0.0 | -0.3 -0.1 -0.02 0.05 | switch | verified on H100 (E0); not yet run at scale |
+| `spec_casc_chow` | `spec-casc-chow` | defer iff `max q < 1 - a`; deferred -> strict, else accept | drafter confidence threshold (Eq. 2) | -inf; a <= 1 | 0.5 | 0.1 0.3 0.5 0.7 | switch | verified on H100 (E0); not yet run at scale |
+| `spec_casc_opt_head` | `spec-casc-opt-head` | defer iff (`max q < max p - a*TV`) **or** (`p(x) < (1-b) max p`); deferred -> strict, else accept | a as opt; **b** = head width, second knob | -inf (any b); b = 1 is plain opt | a 0.05, b 0.8 | a: opt's grid; b in {0.15, 0.35} | switch | verified on H100 (E0); run on AIME24 (E6, RESULTS.md) |
 
 "switch" rules only change the accept test; their residual is stock `p`.
 "blend" rules build a full relaxed distribution and resample rejections

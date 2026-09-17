@@ -11,6 +11,8 @@
 #   E5-<dataset>  source-paper baselines diff + chow        campaign_run, 30 cases
 #   E6-<dataset>  opt_head hybrid, beta in 0.15 0.35        fresh/persistent replay, alpha grid, 30 cases
 #   E1F-<dataset> fine low-alpha sweep (0.05..0.25) x 3 seeds, tok_lt + tok + strict, persistent
+#   E1P-<dataset> "proper" protocol: tok_lt + tok at 0.15/0.2/0.25 x 3 seeds + strict x 3, persistent,
+#                 campaign case counts (longbench_v2: 30); reports to campaign/*/<ds>_proper.*
 #   E7            trace analysis on existing runs (no GPU)  cascade/analysis/trace_rank_analysis.py
 #   SAMPLE-<ds>   smallest real run: 1 case strict vs tok_lt(0.55), fresh servers, prints run.json
 #
@@ -61,7 +63,9 @@ run_or_submit() {  # $1: command string, $2: sbatch --time
   local cmd="$1" hours="${2:-12:00:00}"
   if [[ $DRY -eq 1 ]]; then echo "[dry-run] $cmd"; return; fi
   if [[ "$TARGET" == "nibi" ]]; then
-    sbatch --time="$hours" cascade/cluster/nibi_run.sbatch "$cmd"
+    # SBATCH_EXTRA: e.g. "--dependency=afterany:12345" to chain jobs on one GPU
+    # shellcheck disable=SC2086
+    sbatch --time="$hours" ${SBATCH_EXTRA:-} cascade/cluster/nibi_run.sbatch "$cmd"
   else
     echo "+ $cmd"; bash -c "$cmd"
   fi
@@ -154,6 +158,35 @@ print(json.dumps({"dataset": os.environ["DS"], "note": "fine low-alpha sweep, 3 
                   "chosen_alphas": {m: [0.05, 0.1, 0.15, 0.2, 0.25] for m in ("spec_casc_tok_lt", "spec_casc_tok")}}, indent=2))
 EOF
     run_or_submit "$cmd" ;;
+  E1P-*)
+    # "Proper" protocol, the AIME24 one applied to any benchmark: tok_lt and
+    # tok at alpha 0.15/0.20/0.25, seeds 0/1/2, strict x 3 seeds; persistent
+    # servers (21 per dataset). Case counts follow the campaign where the
+    # generation time allows, else 30 problems (aime24's); time limits from
+    # the campaign's measured per-answer times (JOURNAL 2026-09-14).
+    ds=$(dataset_of)
+    case "$ds" in
+      gsm8k)         dn=150; hours="8:00:00" ;;
+      humaneval)     dn=150; hours="12:00:00" ;;
+      mtbench)       dn=80;  hours="10:00:00" ;;
+      livecodebench) dn=90;  hours="20:00:00" ;;
+      longbench_v2)  dn=30;  hours="20:00:00" ;;
+      *)             dn=30;  hours="12:00:00" ;;
+    esac
+    n="${CASES:-$dn}"; cmd=""
+    for m in spec_casc_tok_lt spec_casc_tok; do
+      for a in 0.15 0.2 0.25; do
+        cmd+="$(persistent_cmd "$ds" "$m" "$a" "$n" "--seeds 0 1 2") && "
+      done
+    done
+    cmd+="$(persistent_cmd "$ds" strict '' "$n" "--seeds 0 1 2")"
+    cmd+=" && $REPORT_PY scripts/campaign_report.py --dataset $ds --calibration-json campaign/calibration/${ds}_proper.json --tables-out campaign/tables/${ds}_proper.csv --results-out campaign/results/${ds}_proper.csv --graph-out campaign/graphs/${ds}_proper.png --accuracy-graph-out campaign/graphs/${ds}_proper_accuracy.png && python3 cascade/analysis/speed_ignoring_accuracy.py && cat campaign/results/${ds}_proper.csv"
+    DS="$ds" python3 - > "campaign/calibration/${ds}_proper.json" <<'EOF'
+import json, os
+print(json.dumps({"dataset": os.environ["DS"], "note": "proper protocol: alpha 0.15/0.2/0.25, 3 seeds, persistent servers",
+                  "chosen_alphas": {m: [0.15, 0.2, 0.25] for m in ("spec_casc_tok_lt", "spec_casc_tok")}}, indent=2))
+EOF
+    run_or_submit "$cmd" "$hours" ;;
   E6-*)
     # Head widths 0.15/0.35 (was 0.5/0.8): the E1-aime24 quick look showed
     # any head wider than ~0.2 x top-1 already inflates on long reasoning.

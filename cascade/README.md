@@ -28,7 +28,8 @@ cascade/
     speed_ignoring_accuracy.py   end-to-end speed of every campaign point (rounds, wall, length, garbage)
     trace_rank_analysis.py       out-of-head lossy-only accepts vs inflation, from proposals.jsonl traces
     timing_report.py             tok/s, rounds/s, c_rel estimate across arms / draft lengths
-  results/           outputs of the above (regenerable); trace_rank_analysis.* is E7, done
+    results_pdf.py               builds results/final_results.pdf (summary + one page per benchmark + notes)
+  results/           outputs of the above (regenerable); final_results.pdf is the shareable report
   cluster/           Nibi: env build, sbatch wrappers, rsync, first-login checklist
 patches/vllm-0.26.0-spec-casc-{tok-lt,opt-ent,diff,chow,opt-head}.patch   the 5 new variants (+ test_*.py)
 ```
@@ -126,8 +127,9 @@ restriction, lossless tail), `spec_casc_opt_head` (opt's trigger + tok's
 restriction), `spec_casc_opt_ent` (a different trigger for opt),
 `spec_casc_diff` / `spec_casc_chow` (the source paper's baseline triggers)
 — and `EXPERIMENTS.md` E1–E6 run them with predictions written down in
-advance. All five are V1-only (GPT-OSS-20B; Qwen3 needs E8) and have not
-yet run on a GPU (E0 first).
+advance. All five are V1-only (GPT-OSS-20B; Qwen3 needs E8); all passed E0
+on an H100 (2026-09-11), and `tok_lt` / `opt_head` have since been run at
+scale on every benchmark — see `RESULTS.md` and `results/final_results.pdf`.
 
 ## 4. Data caveats
 

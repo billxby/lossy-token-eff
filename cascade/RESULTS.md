@@ -1,6 +1,6 @@
 # Results: head-restricted relaxed speculative decoding
 
-Bill Xu, 2026-09-13. Everything below is relative to lossless decoding on
+Bill Xu, 2026-09-17. Everything below is relative to lossless decoding on
 the same problems (and, where several seeds exist, the same seed);
 lossless is always 1.00. Setup unless stated: GPT-OSS-20B target with the
 EAGLE3 drafter, vLLM 0.26.0, one H100 (Nibi), temperature 1, 6 drafted
@@ -17,8 +17,11 @@ at the end; provenance, caveats and file paths in the last two sections.
   win.** `tok_lt` (free pass only for tokens within ~15–20% of the
   verifier's top choice; ordinary lossless check otherwise) accepts 11–14%
   more drafted tokens per verifier pass than lossless, at unchanged answer
-  length and accuracy: **~1.05–1.08× fewer verifier passes on AIME24**
-  (990 runs, 3 seeds), ~1.2× on gsm8k.
+  length and accuracy: **~1.06–1.10× fewer verifier passes on five of the
+  six benchmarks** (AIME24 1.08, gsm8k 1.07, humaneval 1.09, livecodebench
+  1.06, mtbench 1.10; 3 seeds, 90–450 runs per point). The exception is
+  long-context QA (LongBench-v2), where no rule speeds anything up and
+  every relaxed arm costs 3–8 accuracy points.
 - **There is no bigger prize in this family.** Adding the same filter to
   the highest-acceptance rule (`opt`) removes its 2.5× rambling and *also*
   its acceptance gain: with the filter on, acceptance equals `tok_lt`'s
@@ -46,10 +49,12 @@ with probability p/q) or skip it and keep the token outright.
 | **`opt_head`** (new) | `opt`'s trigger **and** the token is within β of the verifier's top choice | near-top only |
 
 **The data.** (E7) 1,226 traced runs from the original single-alpha
-campaign, HumanEval and AIME24. (E1 gsm8k) 30 problems, 1 seed. (E1F
-AIME24) 30 problems × 3 seeds = 90 runs per point. (E6 AIME24) 30
-problems, 1 seed. GPU runs used one warm vLLM server per rule setting
-(`scripts/persistent_arm_replay.py`); see caveats.
+campaign, HumanEval and AIME24. (E1 gsm8k) 30 problems, 1 seed — quick
+look. (E1F AIME24) 30 problems × 3 seeds = 90 runs per point. (E1P) the
+same 3-seed protocol on gsm8k (150 problems), HumanEval (150),
+LiveCodeBench (90), MT-Bench (80) and LongBench-v2 (30). (E6 AIME24) 30
+problems, 1 seed. GPU runs used one warm vLLM server per rule setting and
+seed (`scripts/persistent_arm_replay.py`); see caveats.
 
 ## 2. Results
 
@@ -87,17 +92,80 @@ neighbouring settings are sampling noise).
 ### 2.3 AIME24, `tok_lt` vs `tok`, fine sweep (E1F; 90 runs per point)
 
 Lossless: 2.20 tokens accepted per pass; mean 9,703 / median 7,182 tokens
-per answer; 6 of 90 runs ran away to the 32k budget; 73% correct.
+per answer; 6 of 90 runs ran away to the 32k budget; 78% correct (70/90).
 
 | rule | α | accepted per pass | mean answer length | runaways /90 | verifier passes (speedup) | accuracy |
 |---|---:|---:|---:|---:|---:|---:|
-| `tok` | 0.05 / 0.10 / 0.15 / 0.20 / 0.25 | 1.05 / 1.07 / 1.08 / 1.08 / 1.10 | 1.10 / 1.00 / 1.26 / 1.23 / 1.02 | 8 / 9 / 11 / 9 / 10 | 0.96 / 1.05 / 0.84 / 0.87 / 1.05 | 73 / 77 / 77 / 77 / 77 % |
-| **`tok_lt`** | 0.05 / 0.10 / **0.15** / **0.20** / 0.25 | 1.11 / 1.11 / **1.13** / **1.13** / 1.14 | 1.03 / 1.08 / **1.01** / **1.04** / 1.07 | 9 / 8 / **6** / **6** / 11 | 1.06 / 1.01 / **1.08** / **1.06** / 1.01 | 70 / 70 / **73** / 70 / 63 % |
+| `tok` | 0.05 / 0.10 / 0.15 / 0.20 / 0.25 | 1.05 / 1.07 / 1.08 / 1.08 / 1.10 | 1.10 / 1.00 / 1.26 / 1.23 / 1.02 | 8 / 9 / 11 / 9 / 10 | 0.96 / 1.05 / 0.84 / 0.87 / 1.05 | 70 / 72 / 78 / 79 / 78 % |
+| **`tok_lt`** | 0.05 / 0.10 / **0.15** / **0.20** / 0.25 | 1.11 / 1.11 / **1.13** / **1.13** / 1.14 | 1.03 / 1.08 / **1.01** / **1.04** / 1.07 | 9 / 8 / **6** / **6** / 11 | 1.06 / 1.01 / **1.08** / **1.06** / 1.01 | 76 / 76 / **79** / 78 / 66 % |
 
 Typical (non-looping) answers under `tok_lt` are within ±10% of lossless
 at every setting; runaway counts of 6–11 do not separate by α in this
 range (about 1 run in 12 loops under any safe rule). Accuracy is intact
-up to α = 0.20 and drops at 0.25 (57 vs 66 correct of 90).
+up to α = 0.20 and drops at 0.25 (59 vs 70 correct of 90).
+
+### 2.3b The same protocol on the other campaign benchmarks (E1P; 3 seeds each)
+
+All GPT-OSS-20B + EAGLE3 on Nibi, warm servers, `tok` and `tok_lt` at
+α = 0.15 / 0.20 / 0.25, paired with lossless per (problem, seed).
+
+**gsm8k** — 150 problems × 3 seeds = 450 runs per point. Lossless: 2.59
+accepted per pass, 326-token answers, 7 of 450 hit the 2,048 budget, 96%.
+
+| rule | α | accepted per pass | answer length | budget hits /450 | verifier passes (speedup) | accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| `tok` | 0.15 / 0.20 / 0.25 | 1.05 / 1.04 / 1.06 | 0.97 / 0.94 / 0.94 | 7 / 7 / 10 | 1.06 / 1.10 / 1.11 | 96 / 95 / 95 % |
+| `tok_lt` | 0.15 / 0.20 / 0.25 | 1.12 / 1.12 / 1.13 | 1.02 / 1.04 / 1.03 | 8 / 10 / 11 | 1.07 / 1.04 / 1.07 | 95 / 95 / 96 % |
+
+**humaneval** — 150 problems × 3 seeds = 450 runs per point. Lossless:
+2.51 per pass, 889 tokens, 1 of 450 hit the 9,000 budget, 96%.
+
+| rule | α | accepted per pass | answer length | budget hits /450 | verifier passes (speedup) | accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| `tok` | 0.15 / 0.20 / 0.25 | 1.03 / 1.02 / 1.03 | 1.02 / 1.01 / 1.03 | 1 / 0 / 0 | 1.00 / 1.01 / 1.01 | 97 / 98 / 97 % |
+| `tok_lt` | 0.15 / 0.20 / 0.25 | 1.10 / 1.09 / 1.11 | 1.00 / 1.06 / 1.00 | 0 / 2 / 0 | 1.08 / 1.01 / 1.09 | 95 / 96 / 97 % |
+
+**livecodebench** — 90 problems × 3 seeds = 270 runs per point. Lossless:
+2.20 per pass, 3,339 tokens, 9 of 270 hit the 12,000 budget, 88.9%.
+
+| rule | α | accepted per pass | answer length | budget hits /270 | verifier passes (speedup) | accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| `tok` | 0.15 / 0.20 / 0.25 | 1.05 / 1.05 / 1.06 | 1.03 / 1.03 / 1.05 | 12 / 13 / 12 | 1.01 / 1.01 / 1.00 | 93 / 92 / 89 % |
+| `tok_lt` | 0.15 / 0.20 / 0.25 | 1.11 / 1.11 / 1.12 | 1.02 / 1.03 / 1.08 | 10 / 10 / 14 | 1.06 / 1.06 / 1.01 | 89 / 90 / 89 % |
+
+**mtbench** — 80 problems × 3 seeds = 240 runs per point; no accuracy
+grader. Lossless: 2.29 per pass, 1,234 tokens, 4 of 240 hit the 4,096 budget.
+
+| rule | α | accepted per pass | answer length | budget hits /240 | verifier passes (speedup) |
+|---|---:|---:|---:|---:|---:|
+| `tok` | 0.15 / 0.20 / 0.25 | 1.02 / 1.02 / 1.02 | 0.99 / 1.01 / 0.97 | 5 / 4 / 5 | 1.02 / 1.00 / 1.04 |
+| `tok_lt` | 0.15 / 0.20 / 0.25 | 1.11 / 1.11 / 1.11 | 1.00 / 1.00 / 0.99 | 5 / 5 / 2 | 1.08 / 1.09 / 1.10 |
+
+**longbench_v2** — 30 problems × 3 seeds = 90 runs per point (150 would
+have taken ~66 h; inputs up to ~47k tokens). Lossless: 1.97 per pass,
+1,382 tokens, 0 of 90 hit the 8,192 budget, 60% (54/90; per seed 17/18/19
+of 30).
+
+| rule | α | accepted per pass | answer length | budget hits /90 | verifier passes (speedup) | accuracy |
+|---|---:|---:|---:|---:|---:|---:|
+| `tok` | 0.15 / 0.20 / 0.25 | 1.08 / 1.09 / 1.11 | 1.10 / 1.23 / 0.99 | 0 / 3 / 0 | 0.95 / 0.87 / 1.09 | 56 / 57 / 52 % |
+| `tok_lt` | 0.15 / 0.20 / 0.25 | 1.11 / 1.11 / 1.13 | 1.09 / 0.99 / 1.27 | 1 / 0 / 5 | 1.00 / 1.09 / 0.88 | 56 / 53 / 56 % |
+
+Across five of the six benchmarks the pattern is the same: `tok_lt`
+accepts 9–13% more per pass than lossless (`tok` 2–6%), answers stay at
+lossless length (within ±5% except single points at 1.06–1.08), accuracy
+is unchanged, and the end-to-end gain is **~1.06–1.10×** for `tok_lt`
+(best points: gsm8k 1.07, humaneval 1.09, livecodebench 1.06, mtbench
+1.10, AIME24 1.08) versus ~1.00–1.11× for `tok`, which gains less
+acceptance everywhere. **LongBench-v2 is the exception:** speedups scatter
+0.87–1.09 with no consistent gain (per-seed 0.63–1.40 on 30 long-context
+problems), and every arm of both rules is 3–8 points below lossless's
+60% — within seed noise individually (15–19 vs 17–19 correct of 30), but
+uniformly below, and consistent with the campaign's 150-problem result
+(`tok` −3 to −4 points). Long-context QA is the one task where even the
+head-restricted rules are not free. Per-seed speedups swing by ±10%
+elsewhere because the few budget-hit runs carry 10–15% of all tokens;
+quote the 3-seed means, not any single seed.
 
 ### 2.4 AIME24, the loose trigger with the narrow filter (E6; 30 problems, seed 0)
 
@@ -126,9 +194,10 @@ is gone (1–5 runaways instead of 13) and so is the gain.
    drafter. Any rule that wants more must let through tokens further from
    the verifier's choice, and that is where the rambling starts.
 3. **`tok_lt` is the best version of the safe rule**: it removes `tok`'s
-   needless extra strictness on ordinary tokens and gains 11–14% per pass
-   (vs `tok`'s 5–10%) at lossless length and accuracy. The end-to-end
-   benefit is ~1.05–1.08× on long reasoning and ~1.2× on short math.
+   needless extra strictness on ordinary tokens and gains 9–14% per pass
+   (vs `tok`'s 2–10%) at lossless length and accuracy. The end-to-end
+   benefit is ~1.06–1.10× on math, code and chat, and nothing on
+   long-context QA.
 4. **The width knob must stay narrow on reasoning tasks**: within ~15–20%
    of the verifier's top choice. At 25% accuracy starts to slip; at 35%+
    (campaign data) answers grow like the bad rules'.
@@ -143,7 +212,8 @@ is gone (1–5 runaways instead of 13) and so is the gain.
 Training-free relaxation cannot buy a large speedup on reasoning models
 with this drafter: the acceptance gain and the length inflation are
 governed by the same quantity, and the safe range of that quantity is
-worth roughly 1.05–1.1× on hard reasoning and 1.2× on short math. The
+worth roughly 1.06–1.10× on math, code and chat benchmarks and nothing on
+long-context QA (where it also costs a few accuracy points). The
 campaign's "no free lunch" stands, now with the mechanism attached: the
 lunch is paid for in tokens the verifier did not want.
 
@@ -162,13 +232,21 @@ lunch is paid for in tokens the verifier did not want.
   run); "verifier passes" is the cost proxy throughout.
 - Do not quote: the 30-run quick-look points (superseded), the α=0.35
   "cliff" (noise), per-pass gains on their own.
+- Multi-seed accuracies are graded per seed; a report bug that applied
+  one seed's verdict to all three was fixed on 2026-09-16 and every
+  multi-seed report regenerated (it had shifted AIME24 lossless from 78%
+  to 73% and livecodebench from 89% to 85.5%; all numbers here are the
+  corrected ones).
 
 ## 6. Sentences for the paper
 
 - "Relative to lossless decoding on AIME24, `tok_lt` at α = 0.15 accepts
   13% more drafted tokens per verifier pass, produces answers of the same
   length (1.01×, equal runaway rate) and reduces verifier passes by 8% at
-  unchanged accuracy (73% vs 73%; 30 problems × 3 seeds)."
+  unchanged accuracy (79% vs 78%; 30 problems × 3 seeds). The same rule
+  gives 1.06–1.10× at unchanged accuracy on gsm8k, HumanEval,
+  LiveCodeBench and MT-Bench, and no gain on LongBench-v2, where every
+  relaxed rule costs 3–8 accuracy points."
 - "The rules that inflate are exactly those that commit tokens the
   verifier ranks well below its own top choice: 16–155 such commits per
   1,000 tokens for `mentored_dec`/`opt`/`r_fuzzy`/`cactus`, zero for
@@ -193,6 +271,7 @@ lunch is paid for in tokens the verifier did not want.
 | what | where |
 |---|---|
 | this report's numbers, scored against lossless | `cascade/results/speed_ignoring_accuracy.md` (datasets `gsm8k_quick`, `aime24_fine`, `aime24_e6`) |
+| **every benchmark × every rule** (campaign's 6 datasets × 2 models + the new runs): best clean point and loosest point vs lossless | `cascade/results/per_benchmark_summary.md` |
 | trace analysis (E7) | `cascade/results/trace_rank_analysis.md` |
 | per-run tables / per-point results / graphs | `campaign/{tables,results,graphs}/{gsm8k_quick,aime24_quick,aime24_fine,aime24_e6}.*` |
 | run log with dates, job ids, decision rules | `cascade/JOURNAL.md` |

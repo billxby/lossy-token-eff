@@ -184,14 +184,19 @@ def grade_accuracy(runs_root: pathlib.Path, dataset: str) -> dict[tuple[str, str
     prompt_root = REPO_ROOT / "prompts" / dataset
     dataset_root = runs_root / dataset
     kwargs = spec["kwargs"](module) if callable(spec["kwargs"]) else spec["kwargs"]
-    out: dict[tuple[str, str, str], bool] = {}
+    # Keyed by (method, params, case, seed): multi-seed sweeps (cascade/
+    # E1F, E1P) have one verdict per seed, and keying by case alone let the
+    # last-graded seed's verdict stand in for all three (found 2026-09-16:
+    # longbench_v2 strict reported 63% where the true count was 54/90 = 60%).
+    out: dict[tuple[str, str, str, str], bool] = {}
     for run_json in sorted(dataset_root.glob("*/*/*/seed_*/run.json")):
         run_dir = run_json.parent
         row = module.grade(run_dir, prompt_root, **kwargs)
         if row is None:
             continue
         method, params, case = row["method"], row["params"], row["case"]
-        out[(method, params, case)] = row["verdict"] in spec["correct_verdicts"]
+        seed = run_dir.name.replace("seed_", "")
+        out[(method, params, case, seed)] = row["verdict"] in spec["correct_verdicts"]
     return out
 
 
@@ -227,7 +232,8 @@ def main() -> int:
     def accuracy_of(cases: list[dict]) -> float | None:
         if not accuracy_map:
             return None
-        verdicts = [accuracy_map[(c["method"], c["params"], c["case"])] for c in cases if (c["method"], c["params"], c["case"]) in accuracy_map]
+        keys = [(c["method"], c["params"], c["case"], c["seed"]) for c in cases]
+        verdicts = [accuracy_map[k] for k in keys if k in accuracy_map]
         return mean([1.0 if v else 0.0 for v in verdicts]) if verdicts else None
 
     by_method_alpha: dict[tuple[str, float], list[dict]] = {}

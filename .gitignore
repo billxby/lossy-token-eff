@@ -10,3 +10,9 @@ __pycache__/
 # these runs are regeneratable from the campaign scripts + prompts). Old,
 # already-tracked runs under old_runs/ are untouched by this rule.
 runs/**
+
+# macOS / Slurm output noise
+.DS_Store
+casc-*.out
+setup_nibi.log
+after_build.log

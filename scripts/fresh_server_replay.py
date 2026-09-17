@@ -446,6 +446,22 @@ def start_server(args: argparse.Namespace, arm: str, log_path: pathlib.Path):
     if arm != "baseline":
         ensure_patch_applied(arm if arm not in ("strict",) else STRICT_TRACE_CARRIER)
 
+    # remote/stop_server.sh waits for the GPU to be released, not for the
+    # previous API server to close its listening socket; on Nibi (2026-09-15,
+    # longbench_v2 E1P) the next server hit "Address already in use". Wait
+    # for the port to be free before launching.
+    import socket
+
+    deadline = time.time() + 90
+    while time.time() < deadline:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
+            probe.settimeout(1.0)
+            if probe.connect_ex(("127.0.0.1", args.port)) != 0:
+                break
+        time.sleep(2.0)
+    else:
+        raise RuntimeError(f"port {args.port} still in use 90s after stop_server; refusing to start another server on it")
+
     env = dict(os.environ)
     env["PYTHON"] = args.python
     env["PORT"] = str(args.port)

@@ -9,15 +9,20 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | dataset | method | alpha | n | rounds_speedup | wall_speedup | len_ratio | l̄ | budget_hit (strict) | accuracy (strict) |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | aime24 | spec_casc_tok | 0.15 | 30 | 1.09 | 1.05 | 1.00 | 2.38 | 0.03 (0.07) | 0.83 (0.77) |
-| aime24_e6 | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.07 | 1.01 | 2.48 | 0.07 (0.07) | 0.73 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.07 | 1.01 | 2.48 | 0.07 (0.07) | 0.73 (0.73) |
+| aime24_e6 | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.07 | 1.01 | 2.48 | 0.07 (0.07) | 0.79 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.07 | 1.01 | 2.48 | 0.07 (0.07) | 0.79 (0.78) |
 | aime24_quick | spec_casc_tok_lt | 0.15 | 30 | 1.07 | 1.08 | 1.03 | 2.52 | 0.00 (0.07) | 0.83 (0.80) |
 | gsm8k | spec_casc_tok | 0.8 | 150 | 1.21 | 1.10 | 0.96 | 3.04 | 0.01 (0.02) | 0.97 (0.96) |
+| gsm8k_proper | spec_casc_tok | 0.25 | 450 | 1.11 | 1.11 | 0.94 | 2.75 | 0.02 (0.02) | 0.96 (0.96) |
 | gsm8k_quick | spec_casc_tok_lt | 0.8 | 30 | 1.27 | 1.40 | 0.92 | 3.23 | 0.00 (0.00) | 1.00 (1.00) |
 | humaneval | mentored_dec | 0.35 | 150 | 1.11 | 1.04 | 1.03 | 2.98 | 0.00 (0.00) | 0.95 (0.96) |
+| humaneval_proper | spec_casc_tok_lt | 0.25 | 450 | 1.09 | 1.09 | 1.00 | 2.80 | 0.00 (0.00) | 0.97 (0.96) |
 | livecodebench | spec_casc_tok | 0.15 | 90 | 1.04 | 1.03 | 1.00 | 2.32 | 0.06 (0.02) | 0.92 (0.89) |
+| livecodebench_proper | spec_casc_tok_lt | 0.15 | 270 | 1.06 | 1.06 | 1.02 | 2.44 | 0.04 (0.03) | 0.89 (0.89) |
 | longbench_v2 | cactus | 0.35 | 150 | 1.15 | 0.97 | 1.77 | 4.83 | 0.02 (0.01) | 0.36 (0.56) |
+| longbench_v2_proper | spec_casc_tok | 0.25 | 90 | 1.09 | 1.08 | 0.99 | 2.19 | 0.00 (0.00) | 0.52 (0.60) |
 | mtbench | cactus | 0.18 | 80 | 1.68 | 1.29 | 1.07 | 4.44 | 0.04 (0.04) | -- (--) |
+| mtbench_proper | spec_casc_tok_lt | 0.25 | 240 | 1.09 | 1.10 | 0.99 | 2.54 | 0.01 (0.02) | -- (--) |
 | aime24_qwen3 | cactus | 0.03 | 30 | 1.13 | 1.07 | 1.15 | 1.61 | 0.17 (0.17) | 0.60 (0.70) |
 | gsm8k_qwen3 | cactus | 0.35 | 150 | 1.12 | 1.07 | 1.04 | 1.87 | 0.27 (0.25) | 0.77 (0.80) |
 | humaneval_qwen3 | mentored_dec | 0.75 | 150 | 1.01 | 0.98 | 1.08 | 1.59 | 0.13 (0.11) | 0.85 (0.83) |
@@ -30,15 +35,20 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | dataset | method | alpha | n | rounds_speedup | len_ratio | budget_hit (strict) | accuracy (strict) |
 |---|---|---:|---:|---:|---:|---:|---:|
 | aime24 | spec_casc_tok | 0.15 | 30 | 1.09 | 1.00 | 0.03 (0.07) | 0.83 (0.77) |
-| aime24_e6 | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.01 | 0.07 (0.07) | 0.73 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.01 | 0.07 (0.07) | 0.73 (0.73) |
+| aime24_e6 | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.01 | 0.07 (0.07) | 0.79 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.15 | 90 | 1.08 | 1.01 | 0.07 (0.07) | 0.79 (0.78) |
 | aime24_quick | spec_casc_tok_lt | 0.15 | 30 | 1.07 | 1.03 | 0.00 (0.07) | 0.83 (0.80) |
 | gsm8k | spec_casc_tok | 0.8 | 150 | 1.21 | 0.96 | 0.01 (0.02) | 0.97 (0.96) |
+| gsm8k_proper | spec_casc_tok | 0.25 | 450 | 1.11 | 0.94 | 0.02 (0.02) | 0.96 (0.96) |
 | gsm8k_quick | spec_casc_tok_lt | 0.8 | 30 | 1.27 | 0.92 | 0.00 (0.00) | 1.00 (1.00) |
 | humaneval | mentored_dec | 0.35 | 150 | 1.11 | 1.03 | 0.00 (0.00) | 0.95 (0.96) |
+| humaneval_proper | spec_casc_tok_lt | 0.25 | 450 | 1.09 | 1.00 | 0.00 (0.00) | 0.97 (0.96) |
 | livecodebench | mentored_dec | 0.75 | 90 | 1.12 | 1.25 | 0.09 (0.02) | 0.84 (0.89) |
+| livecodebench_proper | spec_casc_tok_lt | 0.15 | 270 | 1.06 | 1.02 | 0.04 (0.03) | 0.89 (0.89) |
 | longbench_v2 | cactus | 0.35 | 150 | 1.15 | 1.77 | 0.02 (0.01) | 0.36 (0.56) |
+| longbench_v2_proper | spec_casc_tok | 0.25 | 90 | 1.09 | 0.99 | 0.00 (0.00) | 0.52 (0.60) |
 | mtbench | cactus | 0.18 | 80 | 1.68 | 1.07 | 0.04 (0.04) | -- (--) |
+| mtbench_proper | spec_casc_tok_lt | 0.25 | 240 | 1.09 | 0.99 | 0.01 (0.02) | -- (--) |
 | aime24_qwen3 | cactus | 0.35 | 30 | 1.83 | 1.26 | 0.57 (0.17) | 0.23 (0.70) |
 | gsm8k_qwen3 | r_fuzzy | 0.25 | 150 | 1.31 | 0.95 | 0.35 (0.25) | 0.55 (0.80) |
 | humaneval_qwen3 | cactus | 0.35 | 150 | 1.04 | 1.15 | 0.20 (0.11) | 0.75 (0.83) |
@@ -54,26 +64,26 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | aime24 | spec_casc_opt | 0.05 | 30 | 3.38 | 0.59 | 0.55 | 0.50 | 2.48 | 0.43 (0.07) | no | 0.37 (0.77) |
 | aime24 | spec_casc_tok | 0.15 | 30 | 2.38 | 1.09 | 1.06 | 1.05 | 1.00 | 0.03 (0.07) | yes | 0.83 (0.77) |
 | aime24 | spec_casc_tok | 0.8 | 30 | 2.70 | 0.82 | 0.78 | 0.75 | 1.48 | 0.20 (0.07) | no | 0.70 (0.77) |
-| aime24_e6 | spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 (0.07) | yes | 0.73 (0.73) |
-| aime24_e6 | spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 (0.07) | yes | 0.77 (0.73) |
-| aime24_e6 | spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 (0.07) | no | 0.77 (0.73) |
-| aime24_e6 | spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 (0.07) | yes | 0.77 (0.73) |
-| aime24_e6 | spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 (0.07) | yes | 0.77 (0.73) |
-| aime24_e6 | spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 (0.07) | yes | 0.70 (0.73) |
-| aime24_e6 | spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 (0.07) | yes | 0.70 (0.73) |
-| aime24_e6 | spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 (0.07) | yes | 0.73 (0.73) |
-| aime24_e6 | spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 (0.07) | yes | 0.70 (0.73) |
-| aime24_e6 | spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 (0.07) | no | 0.63 (0.73) |
-| aime24_fine | spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 (0.07) | yes | 0.73 (0.73) |
-| aime24_fine | spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 (0.07) | yes | 0.77 (0.73) |
-| aime24_fine | spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 (0.07) | no | 0.77 (0.73) |
-| aime24_fine | spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 (0.07) | yes | 0.77 (0.73) |
-| aime24_fine | spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 (0.07) | yes | 0.77 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 (0.07) | yes | 0.70 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 (0.07) | yes | 0.70 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 (0.07) | yes | 0.73 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 (0.07) | yes | 0.70 (0.73) |
-| aime24_fine | spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 (0.07) | no | 0.63 (0.73) |
+| aime24_e6 | spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 (0.07) | yes | 0.70 (0.78) |
+| aime24_e6 | spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 (0.07) | yes | 0.72 (0.78) |
+| aime24_e6 | spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 (0.07) | no | 0.78 (0.78) |
+| aime24_e6 | spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 (0.07) | yes | 0.79 (0.78) |
+| aime24_e6 | spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 (0.07) | yes | 0.78 (0.78) |
+| aime24_e6 | spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 (0.07) | yes | 0.76 (0.78) |
+| aime24_e6 | spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 (0.07) | yes | 0.76 (0.78) |
+| aime24_e6 | spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 (0.07) | yes | 0.79 (0.78) |
+| aime24_e6 | spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 (0.07) | yes | 0.78 (0.78) |
+| aime24_e6 | spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 (0.07) | no | 0.66 (0.78) |
+| aime24_fine | spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 (0.07) | yes | 0.70 (0.78) |
+| aime24_fine | spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 (0.07) | yes | 0.72 (0.78) |
+| aime24_fine | spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 (0.07) | no | 0.78 (0.78) |
+| aime24_fine | spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 (0.07) | yes | 0.79 (0.78) |
+| aime24_fine | spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 (0.07) | yes | 0.78 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 (0.07) | yes | 0.76 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 (0.07) | yes | 0.76 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 (0.07) | yes | 0.79 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 (0.07) | yes | 0.78 (0.78) |
+| aime24_fine | spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 (0.07) | no | 0.66 (0.78) |
 | aime24_quick | spec_casc_tok | 0.15 | 30 | 2.40 | 0.71 | 0.70 | 0.71 | 1.51 | 0.17 (0.07) | no | 0.80 (0.80) |
 | aime24_quick | spec_casc_tok | 0.35 | 30 | 2.41 | 0.84 | 0.82 | 0.82 | 1.29 | 0.10 (0.07) | yes | 0.77 (0.80) |
 | aime24_quick | spec_casc_tok | 0.55 | 30 | 2.49 | 0.73 | 0.72 | 0.73 | 1.51 | 0.13 (0.07) | no | 0.73 (0.80) |
@@ -87,6 +97,12 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | gsm8k | spec_casc_opt | 0.05 | 150 | 3.67 | 0.94 | 0.90 | 0.85 | 1.46 | 0.05 (0.02) | yes | 0.94 (0.96) |
 | gsm8k | spec_casc_tok | 0.15 | 150 | 2.75 | 1.20 | 1.20 | 1.14 | 0.88 | 0.01 (0.02) | yes | 0.98 (0.96) |
 | gsm8k | spec_casc_tok | 0.8 | 150 | 3.04 | 1.21 | 1.18 | 1.10 | 0.96 | 0.01 (0.02) | yes | 0.97 (0.96) |
+| gsm8k_proper | spec_casc_tok | 0.15 | 450 | 2.72 | 1.06 | 1.06 | 1.07 | 0.97 | 0.02 (0.02) | yes | 0.96 (0.96) |
+| gsm8k_proper | spec_casc_tok | 0.2 | 450 | 2.71 | 1.10 | 1.10 | 1.11 | 0.94 | 0.02 (0.02) | yes | 0.96 (0.96) |
+| gsm8k_proper | spec_casc_tok | 0.25 | 450 | 2.75 | 1.11 | 1.11 | 1.11 | 0.94 | 0.02 (0.02) | yes | 0.96 (0.96) |
+| gsm8k_proper | spec_casc_tok_lt | 0.15 | 450 | 2.92 | 1.07 | 1.07 | 1.06 | 1.02 | 0.02 (0.02) | yes | 0.96 (0.96) |
+| gsm8k_proper | spec_casc_tok_lt | 0.2 | 450 | 2.91 | 1.04 | 1.04 | 1.05 | 1.04 | 0.02 (0.02) | yes | 0.96 (0.96) |
+| gsm8k_proper | spec_casc_tok_lt | 0.25 | 450 | 2.92 | 1.07 | 1.06 | 1.08 | 1.03 | 0.02 (0.02) | yes | 0.96 (0.96) |
 | gsm8k_quick | spec_casc_tok | 0.15 | 30 | 2.65 | 1.09 | 1.07 | 1.20 | 0.93 | 0.00 (0.00) | yes | 0.97 (1.00) |
 | gsm8k_quick | spec_casc_tok | 0.35 | 30 | 2.64 | 1.22 | 1.22 | 1.33 | 0.82 | 0.00 (0.00) | yes | 1.00 (1.00) |
 | gsm8k_quick | spec_casc_tok | 0.55 | 30 | 2.92 | 1.24 | 1.25 | 1.35 | 0.86 | 0.00 (0.00) | yes | 0.97 (1.00) |
@@ -99,19 +115,43 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | humaneval | spec_casc_opt | 0.05 | 150 | 3.55 | 0.77 | 0.74 | 0.70 | 1.73 | 0.02 (0.00) | yes | 0.82 (0.96) |
 | humaneval | spec_casc_tok | 0.15 | 150 | 2.56 | 0.97 | 0.96 | 0.96 | 1.05 | 0.00 (0.00) | yes | 0.97 (0.96) |
 | humaneval | spec_casc_tok | 0.8 | 150 | 2.90 | 1.08 | 1.06 | 1.02 | 1.04 | 0.00 (0.00) | yes | 0.94 (0.96) |
+| humaneval_proper | spec_casc_tok | 0.15 | 450 | 2.58 | 1.00 | 1.00 | 1.00 | 1.02 | 0.00 (0.00) | yes | 0.96 (0.96) |
+| humaneval_proper | spec_casc_tok | 0.2 | 450 | 2.56 | 1.01 | 1.00 | 1.02 | 1.01 | 0.00 (0.00) | yes | 0.97 (0.96) |
+| humaneval_proper | spec_casc_tok | 0.25 | 450 | 2.60 | 1.01 | 1.00 | 1.01 | 1.03 | 0.00 (0.00) | yes | 0.96 (0.96) |
+| humaneval_proper | spec_casc_tok_lt | 0.15 | 450 | 2.76 | 1.08 | 1.07 | 1.07 | 1.00 | 0.00 (0.00) | yes | 0.95 (0.96) |
+| humaneval_proper | spec_casc_tok_lt | 0.2 | 450 | 2.74 | 1.01 | 1.01 | 1.02 | 1.06 | 0.00 (0.00) | yes | 0.96 (0.96) |
+| humaneval_proper | spec_casc_tok_lt | 0.25 | 450 | 2.80 | 1.09 | 1.08 | 1.09 | 1.00 | 0.00 (0.00) | yes | 0.97 (0.96) |
 | livecodebench | spec_casc_opt | -0.3 | 90 | 2.69 | 1.07 | 1.06 | 1.00 | 1.10 | 0.08 (0.02) | no | 0.87 (0.89) |
 | livecodebench | spec_casc_opt | 0.05 | 90 | 3.29 | 0.86 | 0.83 | 0.76 | 1.64 | 0.19 (0.02) | no | 0.49 (0.89) |
 | livecodebench | spec_casc_tok | 0.15 | 90 | 2.32 | 1.04 | 1.04 | 1.03 | 1.00 | 0.06 (0.02) | yes | 0.92 (0.89) |
 | livecodebench | spec_casc_tok | 0.8 | 90 | 2.67 | 1.02 | 1.00 | 0.96 | 1.16 | 0.07 (0.02) | yes | 0.88 (0.89) |
+| livecodebench_proper | spec_casc_tok | 0.15 | 270 | 2.31 | 1.01 | 1.00 | 1.02 | 1.03 | 0.04 (0.03) | yes | 0.93 (0.89) |
+| livecodebench_proper | spec_casc_tok | 0.2 | 270 | 2.31 | 1.01 | 1.00 | 1.01 | 1.03 | 0.05 (0.03) | yes | 0.92 (0.89) |
+| livecodebench_proper | spec_casc_tok | 0.25 | 270 | 2.33 | 1.00 | 0.99 | 0.99 | 1.05 | 0.04 (0.03) | yes | 0.89 (0.89) |
+| livecodebench_proper | spec_casc_tok_lt | 0.15 | 270 | 2.44 | 1.06 | 1.05 | 1.06 | 1.02 | 0.04 (0.03) | yes | 0.89 (0.89) |
+| livecodebench_proper | spec_casc_tok_lt | 0.2 | 270 | 2.45 | 1.06 | 1.05 | 1.06 | 1.03 | 0.04 (0.03) | yes | 0.90 (0.89) |
+| livecodebench_proper | spec_casc_tok_lt | 0.25 | 270 | 2.47 | 1.01 | 1.00 | 1.02 | 1.08 | 0.05 (0.03) | yes | 0.89 (0.89) |
 | longbench_v2 | spec_casc_opt | -0.3 | 150 | 2.32 | 0.95 | 0.94 | 0.98 | 1.21 | 0.03 (0.01) | yes | 0.53 (0.56) |
 | longbench_v2 | spec_casc_opt | -0.1 | 150 | 2.59 | 0.93 | 0.94 | 0.98 | 1.30 | 0.04 (0.01) | yes | 0.49 (0.56) |
 | longbench_v2 | spec_casc_opt | 0.05 | 150 | 2.87 | 0.76 | 0.74 | 0.94 | 1.79 | 0.14 (0.01) | no | 0.47 (0.56) |
 | longbench_v2 | spec_casc_tok | 0.15 | 150 | 2.03 | 0.98 | 0.96 | 0.99 | 1.08 | 0.01 (0.01) | yes | 0.52 (0.56) |
 | longbench_v2 | spec_casc_tok | 0.8 | 150 | 2.36 | 1.04 | 1.02 | 1.00 | 1.13 | 0.01 (0.01) | yes | 0.53 (0.56) |
+| longbench_v2_proper | spec_casc_tok | 0.15 | 90 | 2.12 | 0.95 | 0.96 | 0.94 | 1.10 | 0.00 (0.00) | yes | 0.56 (0.60) |
+| longbench_v2_proper | spec_casc_tok | 0.2 | 90 | 2.14 | 0.87 | 0.86 | 0.89 | 1.23 | 0.03 (0.00) | yes | 0.57 (0.60) |
+| longbench_v2_proper | spec_casc_tok | 0.25 | 90 | 2.19 | 1.09 | 1.09 | 1.08 | 0.99 | 0.00 (0.00) | yes | 0.52 (0.60) |
+| longbench_v2_proper | spec_casc_tok_lt | 0.15 | 90 | 2.18 | 1.00 | 0.99 | 0.99 | 1.09 | 0.01 (0.00) | yes | 0.56 (0.60) |
+| longbench_v2_proper | spec_casc_tok_lt | 0.2 | 90 | 2.19 | 1.09 | 1.08 | 1.06 | 0.99 | 0.00 (0.00) | yes | 0.53 (0.60) |
+| longbench_v2_proper | spec_casc_tok_lt | 0.25 | 90 | 2.22 | 0.88 | 0.85 | 0.89 | 1.27 | 0.06 (0.00) | no | 0.56 (0.60) |
 | mtbench | spec_casc_opt | -0.3 | 80 | 2.79 | 1.19 | 1.16 | 1.14 | 0.98 | 0.00 (0.04) | yes | -- (--) |
 | mtbench | spec_casc_opt | 0.05 | 80 | 3.48 | 1.32 | 1.23 | 1.15 | 1.09 | 0.03 (0.04) | yes | -- (--) |
 | mtbench | spec_casc_tok | 0.15 | 80 | 2.31 | 1.02 | 1.02 | 1.03 | 0.97 | 0.04 (0.04) | yes | -- (--) |
 | mtbench | spec_casc_tok | 0.8 | 80 | 2.63 | 1.14 | 1.13 | 1.10 | 0.96 | 0.01 (0.04) | yes | -- (--) |
+| mtbench_proper | spec_casc_tok | 0.15 | 240 | 2.34 | 1.02 | 1.03 | 1.03 | 0.99 | 0.02 (0.02) | yes | -- (--) |
+| mtbench_proper | spec_casc_tok | 0.2 | 240 | 2.34 | 1.00 | 1.00 | 1.01 | 1.01 | 0.02 (0.02) | yes | -- (--) |
+| mtbench_proper | spec_casc_tok | 0.25 | 240 | 2.34 | 1.04 | 1.04 | 1.03 | 0.97 | 0.02 (0.02) | yes | -- (--) |
+| mtbench_proper | spec_casc_tok_lt | 0.15 | 240 | 2.55 | 1.08 | 1.08 | 1.08 | 1.00 | 0.02 (0.02) | yes | -- (--) |
+| mtbench_proper | spec_casc_tok_lt | 0.2 | 240 | 2.54 | 1.09 | 1.08 | 1.09 | 1.00 | 0.02 (0.02) | yes | -- (--) |
+| mtbench_proper | spec_casc_tok_lt | 0.25 | 240 | 2.54 | 1.09 | 1.08 | 1.10 | 0.99 | 0.01 (0.02) | yes | -- (--) |
 | aime24_qwen3 | spec_casc_opt | -0.3 | 30 | 1.24 | 1.03 | 1.04 | 1.03 | 1.03 | 0.23 (0.17) | no | 0.70 (0.70) |
 | aime24_qwen3 | spec_casc_opt | 0.05 | 30 | 1.80 | 0.94 | 0.94 | 0.88 | 1.42 | 0.63 (0.17) | no | 0.30 (0.70) |
 | aime24_qwen3 | spec_casc_tok | 0.15 | 30 | 1.14 | 1.05 | 1.06 | 1.05 | 0.96 | 0.17 (0.17) | yes | 0.73 (0.70) |
@@ -173,27 +213,27 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 
 | method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
-| spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 | 0.06 | yes | 0.73 |
+| spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 | 0.06 | yes | 0.79 |
 | spec_casc_opt_head | -0.3 (beta0.35) | 30 | 2.49 | 1.06 | 1.05 | 1.05 | 1.03 | 0.03 | 0.03 | yes | 0.80 |
-| spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 | 0.10 | yes | 0.70 |
-| spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 | 0.06 | yes | 0.70 |
-| spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 | 0.10 | yes | 0.77 |
-| spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 | 0.09 | yes | 0.77 |
-| spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 | 0.13 | no | 0.63 |
+| spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 | 0.10 | yes | 0.76 |
+| spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 | 0.06 | yes | 0.78 |
+| spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 | 0.10 | yes | 0.78 |
+| spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 | 0.09 | yes | 0.72 |
+| spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 | 0.13 | no | 0.66 |
 | spec_casc_opt_head | -0.3 (beta0.15) | 30 | 2.46 | 1.01 | 0.98 | 1.02 | 1.09 | 0.03 | 0.03 | yes | 0.73 |
-| spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 | 0.09 | yes | 0.70 |
-| strict | strict | 90 | 2.20 | 1.00 | 1.00 | 1.00 | 1.00 | 0.07 | 0.07 | yes | 0.73 |
+| spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 | 0.09 | yes | 0.76 |
+| strict | strict | 90 | 2.20 | 1.00 | 1.00 | 1.00 | 1.00 | 0.07 | 0.07 | yes | 0.78 |
 | spec_casc_opt_head | -0.02 (beta0.35) | 30 | 2.53 | 1.00 | 0.98 | 0.97 | 1.12 | 0.07 | 0.07 | yes | 0.80 |
-| spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 | 0.09 | yes | 0.73 |
+| spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 | 0.09 | yes | 0.70 |
 | spec_casc_opt_head | -0.1 (beta0.15) | 30 | 2.47 | 0.95 | 0.95 | 0.93 | 1.13 | 0.10 | 0.10 | yes | 0.73 |
 | spec_casc_tok_lt | 0.35 | 30 | 2.52 | 0.93 | 0.91 | 0.91 | 1.20 | 0.10 | 0.10 | yes | -- |
 | spec_casc_opt_head | 0.05 (beta0.15) | 30 | 2.46 | 0.91 | 0.90 | 0.89 | 1.19 | 0.03 | 0.03 | yes | 0.80 |
 | spec_casc_opt_head | 0.05 (beta0.35) | 30 | 2.53 | 0.87 | 0.86 | 0.86 | 1.27 | 0.17 | 0.17 | no | 0.67 |
-| spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 | 0.11 | yes | 0.77 |
+| spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 | 0.11 | yes | 0.79 |
 | spec_casc_opt_head | -0.1 (beta0.35) | 30 | 2.47 | 0.86 | 0.85 | 0.84 | 1.26 | 0.17 | 0.17 | no | 0.63 |
 | spec_casc_tok | 0.8 | 30 | 2.69 | 0.85 | 0.82 | 0.83 | 1.39 | 0.13 | 0.13 | no | -- |
 | spec_casc_tok_lt | 0.55 | 30 | 2.55 | 0.84 | 0.83 | 0.83 | 1.33 | 0.13 | 0.13 | no | -- |
-| spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 | 0.12 | no | 0.77 |
+| spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 | 0.12 | no | 0.78 |
 | spec_casc_tok | 0.35 | 30 | 2.41 | 0.84 | 0.82 | 0.82 | 1.29 | 0.10 | 0.13 | yes | -- |
 | spec_casc_opt_head | -0.02 (beta0.15) | 30 | 2.48 | 0.84 | 0.83 | 0.83 | 1.30 | 0.07 | 0.07 | yes | 0.83 |
 | spec_casc_tok_lt | 0.8 | 30 | 2.76 | 0.79 | 0.77 | 0.77 | 1.51 | 0.17 | 0.13 | no | -- |
@@ -203,21 +243,29 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 
 | method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
-| spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 | 0.06 | yes | 0.73 |
-| spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 | 0.10 | yes | 0.70 |
-| spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 | 0.06 | yes | 0.70 |
-| spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 | 0.10 | yes | 0.77 |
-| spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 | 0.09 | yes | 0.77 |
-| spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 | 0.13 | no | 0.63 |
-| spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 | 0.09 | yes | 0.70 |
-| strict | strict | 90 | 2.20 | 1.00 | 1.00 | 1.00 | 1.00 | 0.07 | 0.07 | yes | 0.73 |
-| spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 | 0.09 | yes | 0.73 |
+| spec_casc_tok_lt | 0.15 | 90 | 2.48 | 1.08 | 1.08 | 1.07 | 1.01 | 0.07 | 0.06 | yes | 0.79 |
+| spec_casc_opt_head | -0.3 (beta0.35) | 30 | 2.49 | 1.06 | 1.05 | 1.05 | 1.03 | 0.03 | 0.03 | yes | -- |
+| spec_casc_tok_lt | 0.05 | 90 | 2.45 | 1.06 | 1.04 | 1.06 | 1.03 | 0.10 | 0.10 | yes | 0.76 |
+| spec_casc_tok_lt | 0.2 | 90 | 2.49 | 1.06 | 1.05 | 1.06 | 1.04 | 0.07 | 0.06 | yes | 0.78 |
+| spec_casc_tok | 0.25 | 90 | 2.41 | 1.05 | 1.05 | 1.04 | 1.02 | 0.11 | 0.10 | yes | 0.78 |
+| spec_casc_tok | 0.1 | 90 | 2.35 | 1.05 | 1.04 | 1.04 | 1.00 | 0.10 | 0.09 | yes | 0.72 |
+| spec_casc_tok_lt | 0.25 | 90 | 2.50 | 1.01 | 1.02 | 1.02 | 1.07 | 0.12 | 0.13 | no | 0.66 |
+| spec_casc_opt_head | -0.3 (beta0.15) | 30 | 2.46 | 1.01 | 0.98 | 1.02 | 1.09 | 0.03 | 0.03 | yes | -- |
+| spec_casc_tok_lt | 0.1 | 90 | 2.44 | 1.01 | 0.99 | 1.01 | 1.08 | 0.09 | 0.09 | yes | 0.76 |
+| strict | strict | 90 | 2.20 | 1.00 | 1.00 | 1.00 | 1.00 | 0.07 | 0.07 | yes | 0.78 |
+| spec_casc_opt_head | -0.02 (beta0.35) | 30 | 2.53 | 1.00 | 0.98 | 0.97 | 1.12 | 0.07 | 0.07 | yes | -- |
+| spec_casc_tok | 0.05 | 90 | 2.32 | 0.95 | 0.95 | 0.95 | 1.10 | 0.09 | 0.09 | yes | 0.70 |
+| spec_casc_opt_head | -0.1 (beta0.15) | 30 | 2.47 | 0.95 | 0.95 | 0.93 | 1.13 | 0.10 | 0.10 | yes | -- |
 | spec_casc_tok_lt | 0.35 | 30 | 2.52 | 0.93 | 0.91 | 0.91 | 1.20 | 0.10 | 0.10 | yes | -- |
-| spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 | 0.11 | yes | 0.77 |
+| spec_casc_opt_head | 0.05 (beta0.15) | 30 | 2.46 | 0.91 | 0.90 | 0.89 | 1.19 | 0.03 | 0.03 | yes | -- |
+| spec_casc_opt_head | 0.05 (beta0.35) | 30 | 2.53 | 0.87 | 0.86 | 0.86 | 1.27 | 0.17 | 0.17 | no | -- |
+| spec_casc_tok | 0.2 | 90 | 2.38 | 0.87 | 0.85 | 0.86 | 1.24 | 0.10 | 0.11 | yes | 0.79 |
+| spec_casc_opt_head | -0.1 (beta0.35) | 30 | 2.47 | 0.86 | 0.85 | 0.84 | 1.26 | 0.17 | 0.17 | no | -- |
 | spec_casc_tok | 0.8 | 30 | 2.69 | 0.85 | 0.82 | 0.83 | 1.39 | 0.13 | 0.13 | no | -- |
 | spec_casc_tok_lt | 0.55 | 30 | 2.55 | 0.84 | 0.83 | 0.83 | 1.33 | 0.13 | 0.13 | no | -- |
-| spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 | 0.12 | no | 0.77 |
+| spec_casc_tok | 0.15 | 90 | 2.38 | 0.84 | 0.84 | 0.83 | 1.26 | 0.12 | 0.12 | no | 0.78 |
 | spec_casc_tok | 0.35 | 30 | 2.41 | 0.84 | 0.82 | 0.82 | 1.29 | 0.10 | 0.13 | yes | -- |
+| spec_casc_opt_head | -0.02 (beta0.15) | 30 | 2.48 | 0.84 | 0.83 | 0.83 | 1.30 | 0.07 | 0.07 | yes | -- |
 | spec_casc_tok_lt | 0.8 | 30 | 2.76 | 0.79 | 0.77 | 0.77 | 1.51 | 0.17 | 0.13 | no | -- |
 | spec_casc_tok | 0.55 | 30 | 2.49 | 0.73 | 0.72 | 0.73 | 1.51 | 0.13 | 0.13 | no | -- |
 
@@ -261,6 +309,24 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | spec_casc_opt | -0.02 | 3 | 3.79 | 0.59 | 0.58 | 0.54 | 2.21 | 0.00 | 0.00 | yes | -- |
 | cactus | 0.08 | 3 | 3.92 | 0.56 | 0.50 | 0.48 | 2.64 | 0.00 | 0.00 | yes | -- |
 
+### gsm8k_proper
+
+| method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| spec_casc_tok_lt | 0.8 | 30 | 3.23 | 1.27 | 1.25 | 1.40 | 0.92 | 0.00 | 0.00 | yes | -- |
+| spec_casc_tok | 0.55 | 30 | 2.92 | 1.24 | 1.25 | 1.35 | 0.86 | 0.00 | 0.00 | yes | -- |
+| spec_casc_tok | 0.8 | 30 | 3.19 | 1.22 | 1.23 | 1.35 | 0.93 | 0.00 | 0.00 | yes | -- |
+| spec_casc_tok_lt | 0.55 | 30 | 3.08 | 1.22 | 1.25 | 1.32 | 0.90 | 0.00 | 0.00 | yes | -- |
+| spec_casc_tok | 0.35 | 30 | 2.64 | 1.22 | 1.22 | 1.33 | 0.82 | 0.00 | 0.00 | yes | -- |
+| spec_casc_tok | 0.25 | 450 | 2.75 | 1.11 | 1.11 | 1.11 | 0.94 | 0.02 | 0.02 | yes | 0.96 |
+| spec_casc_tok_lt | 0.35 | 30 | 2.99 | 1.10 | 1.12 | 1.22 | 0.98 | 0.00 | 0.00 | yes | -- |
+| spec_casc_tok | 0.2 | 450 | 2.71 | 1.10 | 1.10 | 1.11 | 0.94 | 0.02 | 0.02 | yes | 0.96 |
+| spec_casc_tok_lt | 0.15 | 450 | 2.92 | 1.07 | 1.07 | 1.06 | 1.02 | 0.02 | 0.02 | yes | 0.96 |
+| spec_casc_tok_lt | 0.25 | 450 | 2.92 | 1.07 | 1.06 | 1.08 | 1.03 | 0.02 | 0.02 | yes | 0.96 |
+| spec_casc_tok | 0.15 | 450 | 2.72 | 1.06 | 1.06 | 1.07 | 0.97 | 0.02 | 0.02 | yes | 0.96 |
+| spec_casc_tok_lt | 0.2 | 450 | 2.91 | 1.04 | 1.04 | 1.05 | 1.04 | 0.02 | 0.02 | yes | 0.96 |
+| strict | strict | 450 | 2.59 | 1.00 | 1.00 | 1.00 | 1.00 | 0.02 | 0.02 | yes | 0.96 |
+
 ### gsm8k_quick
 
 | method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
@@ -301,6 +367,18 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | r_fuzzy | 0.15 | 3 | 2.92 | 0.79 | 0.76 | 0.71 | 1.60 | 0.00 | 0.00 | yes | -- |
 | spec_casc_opt | 0.05 | 150 | 3.55 | 0.77 | 0.74 | 0.70 | 1.73 | 0.02 | 0.02 | yes | 0.82 |
 
+### humaneval_proper
+
+| method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| spec_casc_tok_lt | 0.25 | 450 | 2.80 | 1.09 | 1.08 | 1.09 | 1.00 | 0.00 | 0.00 | yes | 0.97 |
+| spec_casc_tok_lt | 0.15 | 450 | 2.76 | 1.08 | 1.07 | 1.07 | 1.00 | 0.00 | 0.01 | yes | 0.95 |
+| spec_casc_tok | 0.2 | 450 | 2.56 | 1.01 | 1.00 | 1.02 | 1.01 | 0.00 | 0.00 | yes | 0.97 |
+| spec_casc_tok_lt | 0.2 | 450 | 2.74 | 1.01 | 1.01 | 1.02 | 1.06 | 0.00 | 0.00 | yes | 0.96 |
+| spec_casc_tok | 0.25 | 450 | 2.60 | 1.01 | 1.00 | 1.01 | 1.03 | 0.00 | 0.00 | yes | 0.96 |
+| spec_casc_tok | 0.15 | 450 | 2.58 | 1.00 | 1.00 | 1.00 | 1.02 | 0.00 | 0.00 | yes | 0.96 |
+| strict | strict | 450 | 2.51 | 1.00 | 1.00 | 1.00 | 1.00 | 0.00 | 0.00 | yes | 0.96 |
+
 ### livecodebench
 
 | method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
@@ -326,6 +404,18 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | r_fuzzy | 0.08 | 3 | 2.39 | 0.75 | 0.76 | 0.74 | 1.42 | 0.00 | 0.00 | yes | -- |
 | spec_casc_opt | -0.02 | 3 | 3.28 | 0.60 | 0.61 | 0.53 | 2.23 | 0.00 | 0.00 | yes | -- |
 | cactus | 0.35 | 3 | 4.33 | 0.59 | 0.59 | 0.47 | 2.87 | 0.00 | 0.00 | yes | -- |
+
+### livecodebench_proper
+
+| method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| spec_casc_tok_lt | 0.15 | 270 | 2.44 | 1.06 | 1.05 | 1.06 | 1.02 | 0.04 | 0.03 | yes | 0.89 |
+| spec_casc_tok_lt | 0.2 | 270 | 2.45 | 1.06 | 1.05 | 1.06 | 1.03 | 0.04 | 0.03 | yes | 0.90 |
+| spec_casc_tok | 0.15 | 270 | 2.31 | 1.01 | 1.00 | 1.02 | 1.03 | 0.04 | 0.04 | yes | 0.93 |
+| spec_casc_tok | 0.2 | 270 | 2.31 | 1.01 | 1.00 | 1.01 | 1.03 | 0.05 | 0.05 | yes | 0.92 |
+| spec_casc_tok_lt | 0.25 | 270 | 2.47 | 1.01 | 1.00 | 1.02 | 1.08 | 0.05 | 0.04 | yes | 0.89 |
+| strict | strict | 270 | 2.20 | 1.00 | 1.00 | 1.00 | 1.00 | 0.03 | 0.04 | yes | 0.89 |
+| spec_casc_tok | 0.25 | 270 | 2.33 | 1.00 | 0.99 | 0.99 | 1.05 | 0.04 | 0.03 | yes | 0.89 |
 
 ### longbench_v2
 
@@ -353,6 +443,18 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | r_fuzzy | 0.08 | 3 | 1.59 | 0.53 | 0.50 | 0.94 | 1.98 | 0.00 | 0.00 | yes | -- |
 | mentored_dec | 0.35 | 3 | 2.08 | 0.48 | 0.48 | 0.94 | 2.42 | 0.00 | 0.00 | yes | -- |
 
+### longbench_v2_proper
+
+| method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| spec_casc_tok | 0.25 | 90 | 2.19 | 1.09 | 1.09 | 1.08 | 0.99 | 0.00 | 0.00 | yes | 0.52 |
+| spec_casc_tok_lt | 0.2 | 90 | 2.19 | 1.09 | 1.08 | 1.06 | 0.99 | 0.00 | 0.00 | yes | 0.53 |
+| strict | strict | 90 | 1.97 | 1.00 | 1.00 | 1.00 | 1.00 | 0.00 | 0.00 | yes | 0.60 |
+| spec_casc_tok_lt | 0.15 | 90 | 2.18 | 1.00 | 0.99 | 0.99 | 1.09 | 0.01 | 0.01 | yes | 0.56 |
+| spec_casc_tok | 0.15 | 90 | 2.12 | 0.95 | 0.96 | 0.94 | 1.10 | 0.00 | 0.00 | yes | 0.56 |
+| spec_casc_tok_lt | 0.25 | 90 | 2.22 | 0.88 | 0.85 | 0.89 | 1.27 | 0.06 | 0.06 | no | 0.56 |
+| spec_casc_tok | 0.2 | 90 | 2.14 | 0.87 | 0.86 | 0.89 | 1.23 | 0.03 | 0.03 | yes | 0.57 |
+
 ### mtbench
 
 | method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
@@ -378,6 +480,18 @@ Only full-sweep points (paired with at least half of strict's cases) are ranked 
 | r_fuzzy | 0.08 | 80 | 2.60 | 1.05 | 1.03 | 1.02 | 1.04 | 0.04 | 0.03 | yes | -- |
 | spec_casc_tok | 0.15 | 80 | 2.31 | 1.02 | 1.02 | 1.03 | 0.97 | 0.04 | 0.01 | yes | -- |
 | strict | strict | 80 | 2.34 | 1.00 | 1.00 | 1.00 | 1.00 | 0.04 | 0.00 | yes | -- |
+
+### mtbench_proper
+
+| method | alpha | n | l̄ | rounds_speedup | lc_speedup | wall_speedup | len_ratio | budget_hit | no_final | clean | accuracy |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| spec_casc_tok_lt | 0.25 | 240 | 2.54 | 1.09 | 1.08 | 1.10 | 0.99 | 0.01 | 0.00 | yes | -- |
+| spec_casc_tok_lt | 0.2 | 240 | 2.54 | 1.09 | 1.08 | 1.09 | 1.00 | 0.02 | 0.00 | yes | -- |
+| spec_casc_tok_lt | 0.15 | 240 | 2.55 | 1.08 | 1.08 | 1.08 | 1.00 | 0.02 | 0.01 | yes | -- |
+| spec_casc_tok | 0.25 | 240 | 2.34 | 1.04 | 1.04 | 1.03 | 0.97 | 0.02 | 0.00 | yes | -- |
+| spec_casc_tok | 0.15 | 240 | 2.34 | 1.02 | 1.03 | 1.03 | 0.99 | 0.02 | 0.01 | yes | -- |
+| spec_casc_tok | 0.2 | 240 | 2.34 | 1.00 | 1.00 | 1.01 | 1.01 | 0.02 | 0.01 | yes | -- |
+| strict | strict | 240 | 2.29 | 1.00 | 1.00 | 1.00 | 1.00 | 0.02 | 0.00 | yes | -- |
 
 ### aime24_qwen3
 
