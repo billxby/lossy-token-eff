@@ -3,6 +3,8 @@
 #
 #   bash patches/apply.sh <method>
 #   method in: cactus, spec-casc-opt, mentored-dec, r-fuzzy, spec-casc-tok
+#   (plus the guard variants below, and the cascade-workspace variants
+#   spec-casc-opt-ent / spec-casc-tok-lt -- see cascade/README.md)
 #
 # Idempotent: re-running with the same method on an already-patched install
 # verifies and exits 0. Refuses to guess if the target file is in neither the
@@ -24,9 +26,9 @@ HASHES="$here/HASHES.txt"
 
 METHOD="${1:-}"
 case "$METHOD" in
-  cactus|spec-casc-opt|mentored-dec|r-fuzzy|spec-casc-tok|spec-casc-tok-antiloop|spec-casc-tok-force-commit|spec-casc-tok-self-check|spec-casc-tok-free-judgment|spec-casc-tok-rv|spec-casc-tok-judge-nudge|r-fuzzy-semantic-guard|r-fuzzy-semantic-guard-v2|r-fuzzy-window-entropy-guard|spec-casc-tok-semantic-guard|spec-casc-tok-semantic-guard-v2|spec-casc-tok-semantic-guard-and|spec-casc-tok-semantic-guard-future-guard|spec-casc-tok-semantic-guard-future-guard-and|spec-casc-tok-hsr-guard) ;;
+  cactus|spec-casc-opt|mentored-dec|r-fuzzy|spec-casc-tok|spec-casc-tok-antiloop|spec-casc-tok-force-commit|spec-casc-tok-self-check|spec-casc-tok-free-judgment|spec-casc-tok-rv|spec-casc-tok-judge-nudge|r-fuzzy-semantic-guard|r-fuzzy-semantic-guard-v2|r-fuzzy-window-entropy-guard|spec-casc-tok-semantic-guard|spec-casc-tok-semantic-guard-v2|spec-casc-tok-semantic-guard-and|spec-casc-tok-semantic-guard-future-guard|spec-casc-tok-semantic-guard-future-guard-and|spec-casc-tok-hsr-guard|spec-casc-opt-ent|spec-casc-tok-lt|spec-casc-diff|spec-casc-chow|spec-casc-opt-head) ;;
   *)
-    echo "usage: $0 <cactus|spec-casc-opt|mentored-dec|r-fuzzy|spec-casc-tok|spec-casc-tok-antiloop|spec-casc-tok-force-commit|spec-casc-tok-self-check|spec-casc-tok-free-judgment|spec-casc-tok-rv|spec-casc-tok-judge-nudge|r-fuzzy-semantic-guard|r-fuzzy-semantic-guard-v2|r-fuzzy-window-entropy-guard|spec-casc-tok-semantic-guard|spec-casc-tok-semantic-guard-v2|spec-casc-tok-semantic-guard-and|spec-casc-tok-semantic-guard-future-guard|spec-casc-tok-semantic-guard-future-guard-and|spec-casc-tok-hsr-guard>" >&2
+    echo "usage: $0 <cactus|spec-casc-opt|mentored-dec|r-fuzzy|spec-casc-tok|spec-casc-tok-antiloop|spec-casc-tok-force-commit|spec-casc-tok-self-check|spec-casc-tok-free-judgment|spec-casc-tok-rv|spec-casc-tok-judge-nudge|r-fuzzy-semantic-guard|r-fuzzy-semantic-guard-v2|r-fuzzy-window-entropy-guard|spec-casc-tok-semantic-guard|spec-casc-tok-semantic-guard-v2|spec-casc-tok-semantic-guard-and|spec-casc-tok-semantic-guard-future-guard|spec-casc-tok-semantic-guard-future-guard-and|spec-casc-tok-hsr-guard|spec-casc-opt-ent|spec-casc-tok-lt|spec-casc-diff|spec-casc-chow|spec-casc-opt-head>" >&2
     exit 2
     ;;
 esac
@@ -199,6 +201,20 @@ select alpha by writing it to:
   spec-casc-opt:   /tmp/lossy-token-eff-spec-casc-alpha-\$(id -u)      (any real; -inf = strict)
   r-fuzzy:         /tmp/lossy-token-eff-r-fuzzy-alpha-\$(id -u)        (any real; -inf = strict)
   spec-casc-tok:   /tmp/lossy-token-eff-spec-casc-tok-alpha-\$(id -u)  (any real; -inf = strict, NOT 0.0)
+  spec-casc-tok-lt: /tmp/lossy-token-eff-spec-casc-tok-lt-alpha-\$(id -u)  (any real <= 1; -inf = strict, NOT 0.0)
+    (spec-casc-tok's in-set free pass with a LOSSLESS tail outside the set
+    instead of the eta*p penalty -- cascade workspace experiment, see
+    cascade/README.md)
+  spec-casc-opt-ent: /tmp/lossy-token-eff-spec-casc-opt-ent-alpha-\$(id -u) (any real; -inf = strict)
+    (spec-casc-opt's deferral with the entropy/log-loss plug-in of Lemma 4:
+    defer iff H(q) > H(p) + alpha*TV -- cascade workspace experiment, see
+    cascade/README.md)
+  spec-casc-diff:  /tmp/lossy-token-eff-spec-casc-diff-alpha-\$(id -u)  (any real; -inf = strict; defer iff max q < max p - alpha)
+  spec-casc-chow:  /tmp/lossy-token-eff-spec-casc-chow-alpha-\$(id -u)  (any real <= 1; -inf = strict; defer iff max q < 1 - alpha)
+  spec-casc-opt-head: /tmp/lossy-token-eff-spec-casc-opt-head-alpha-\$(id -u) (any real; -inf = strict)
+                      /tmp/lossy-token-eff-spec-casc-opt-head-beta-\$(id -u)  (any real <= 1; 1 = plain spec-casc-opt; default 0.8 in run_server_vllm.sh)
+    (spec-casc-opt's deferral OR the drafted token outside the verifier's
+    head at beta -- cascade workspace experiment, see cascade/METHODS.md)
   spec-casc-tok-antiloop: /tmp/lossy-token-eff-spec-casc-tok-antiloop-alpha-\$(id -u) (any real; -inf = strict, NOT 0.0)
     (spec-casc-tok's own alpha, PLUS a reactive repetition breaker -- zeroes
     a token's probability the moment it would complete a 3rd consecutive
