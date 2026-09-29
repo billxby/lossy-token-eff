@@ -1,22 +1,22 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 16:50 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 17:08 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 21.4; estimated remaining, runnable rows: 5.6; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 22.0; estimated remaining, runnable rows: 4.8; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 0 | 0 | 6 |
 | 2.1 | 48 | 0 | 0 | 0 | 48 |
-| 2.2 | 12 | 0 | 8 | 0 | 6 |
+| 2.2 | 12 | 1 | 7 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
-| 5.1 | 12 | 1 | 5 | 0 | 23 |
-| 6 | 11 | 1 | 0 | 0 | 18 |
+| 5.1 | 14 | 1 | 3 | 0 | 23 |
+| 6 | 12 | 0 | 0 | 0 | 18 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -384,8 +384,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | aime24 | mentored_dec | 0.75 | 1.69 | 1.28 | 1.45 | 1.54 | 2.15 | 0.33 | 1.62 (0.33) | 1.36 | 0.93 | 1.02 | 1.09 | 1.51 | 0.25 | 1.18 (0.25) | 63% | 70% | 67% | 77% | 63% | 6% |
 | gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | 1.54 | 1.62 | 1.86 | 1.85 | 0.15 | 1.73 (0.15) | 1.33 | 0.95 | 0.97 | 1.15 | 1.11 | 0.15 | 1.10 (0.15) | 60% | 50% | 43% | 50% | 53% | 6% |
 | gpt-oss-20b | aime24 | spec_casc_opt | 0.05 | 2.48 | 2.03 | 2.31 | 2.43 | 2.53 | 0.20 | 2.36 (0.20) | 2.01 | 1.44 | 1.61 | 1.71 | 1.68 | 0.21 | 1.69 (0.21) | 37% | 33% | 43% | 43% | 40% | 4% |
-| gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | 1.73 | 2.17 | 2.37 | 2.55 | 0.31 | 2.19 (0.31) | 1.64 | 1.16 | 1.41 | 1.58 | 1.65 | 0.21 | 1.49 (0.21) | 50% | 43% | 53% | 50% | - | 4% |
-| gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | 0.96 | 1.12 | 1.52 | - | 0.27 | 1.27 (0.27) | 1.33 | 0.81 | 0.93 | 1.31 | - | 0.26 | 1.09 (0.26) | 70% | 73% | 67% | 60% | - | 6% |
+| gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | 1.73 | 2.17 | 2.37 | 2.55 | 0.31 | 2.19 (0.31) | 1.64 | 1.16 | 1.41 | 1.58 | 1.65 | 0.21 | 1.49 (0.21) | 50% | 43% | 53% | 50% | 43% | 4% |
+| gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | 0.96 | 1.12 | 1.52 | 1.60 | 0.28 | 1.34 (0.28) | 1.33 | 0.81 | 0.93 | 1.31 | 1.34 | 0.25 | 1.14 (0.25) | 70% | 73% | 67% | 60% | - | 6% |
 | gpt-oss-20b | humaneval | mentored_dec | 0.75 | 1.30 | 1.27 | 1.17 | - | - | 0.07 | 1.24 (0.07) | 1.09 | 0.95 | 0.84 | - | - | 0.12 | 0.96 (0.12) | 96% | 95% | 95% | - | - | 0% |
 | gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | - | - | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | - | - | 0.19 | 1.13 (0.19) | 87% | 93% | 90% | - | - | 3% |
 | gpt-oss-20b | humaneval | spec_casc_opt | 0.05 | 1.73 | 1.91 | 1.58 | - | - | 0.16 | 1.74 (0.16) | 1.43 | 1.43 | 1.16 | - | - | 0.15 | 1.34 (0.15) | 82% | 83% | 78% | - | - | 3% |
@@ -453,6 +453,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | Nibi (H100 SXM), seeds 1-2 | mtbench | 960 | 7.08 | 0.08 | 0.012 | 0.13 |
 | Nibi (H100 SXM), seeds 1-2 | livecodebench | 1080 | 7.37 | 0.02 | 0.002 | 0.01 |
 | Nibi (H100 SXM), seeds 1-2 | aime24 | 360 | 7.19 | 0.05 | 0.007 | 0.04 |
+| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 52 | 16.54 | -2.33 | -0.141 | 0.18 |
 
 ## Step 3: lossless draft-length sweep (strict, seed 0)
 
