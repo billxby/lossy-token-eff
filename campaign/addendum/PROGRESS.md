@@ -196,3 +196,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T11:44:25Z lane B: pulled 32 new run dir(s) into runs/
 - 2026-09-29T11:44:28Z step 2.1 main livecodebench spec_casc_opt alpha=0.05 seed=2: done, 90/90 cases (jobs 22880871, 0.30 GPU-h)
 - 2026-09-29T11:44:28Z step 2.2 main aime24 strict alpha=strict seed=2: done, 30/30 cases (jobs 22881159, 0.28 GPU-h)
+- 2026-09-29T11:45:15Z grading: uploaded 128 run dir(s) to the Nibi mirror, submitted CPU grading job 22908002
+- 2026-09-29T11:45:19Z grading: pulled 25277 verdicts into campaign/addendum/analysis/grades.csv
