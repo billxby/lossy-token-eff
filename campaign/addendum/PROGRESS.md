@@ -132,3 +132,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T08:56:11Z step 4.1 temp1.5 gsm8k strict alpha=strict seed=0: done, 150/150 cases (jobs 22881159, 0.20 GPU-h)
 - 2026-09-29T08:57:04Z grading: uploaded 445 run dir(s) to the Nibi mirror, submitted CPU grading job 22904566
 - 2026-09-29T08:57:06Z grading: pulled 23079 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T09:12:51Z lane A: pulled 251 new run dir(s) into runs/
+- 2026-09-29T09:13:03Z lane B: pulled 48 new run dir(s) into runs/
+- 2026-09-29T09:13:06Z step 2.1 main humaneval spec_casc_tok alpha=0.8 seed=1: done, 150/150 cases (jobs 22880871, 0.17 GPU-h)
