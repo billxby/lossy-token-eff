@@ -621,6 +621,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
             else:
                 work[lane].append(work_item(row, row["_missing"]))
             row["status"] = "running" if active_item.get(lane) == key else ("queued" if lane_jobs else "pending")
+        if sbs["phase"] != "full":  # the short pilot / first-40 items gate the rest of step 7: run them first
+            work[lane].sort(key=lambda item: 0 if item["step"] == "7" else 1)
     for row in rows:
         key = row_key(row)
         lane = lane_of.get(key)

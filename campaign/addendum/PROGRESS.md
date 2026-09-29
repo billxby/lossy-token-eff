@@ -37,8 +37,13 @@ for what is done; this file records every action and failure.
 5. **MT-Bench judge (step 1.9) -- decision.** Batch
    `msgbatch_01MWf6AJLXcXd9ep5uFx5a7v` (2070 requests, claude-fable-5-1,
    ~$89 at batch price) was submitted 13:31Z and still showed 0 processed at
-   18:27Z. Option: cancel it and judge the same requests directly (~$178,
-   about an hour). Not done without your say-so; the collector keeps waiting.
+   18:44Z. Option: `python3 scripts/addendum_mtbench_judge.py direct
+   --cancel-batch` -- the same requests through the Messages API at standard
+   price, resumable, about an hour; it also covers the 230 step-5.1 MT-Bench
+   runs added since (2300 in all). Estimate: $198 if every judgement used the
+   assumed 1500 output tokens; one test request used 107 (404 in, $0.009), so
+   likely well under that. Not done without your say-so; the collector keeps
+   waiting.
 
 ## Log
 
