@@ -27,6 +27,7 @@ import hashlib
 import json
 import os
 import pathlib
+import re
 import shlex
 import shutil
 import subprocess
@@ -634,7 +635,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
         elif lane not in LANES:
             row["status"] = "pending"
         notes = [x for x in row["notes"].split("; ")
-                 if x and x != QWEN3_BLOCK and not any(m in x for m in SB_NOTE_MARKERS)]
+                 if x and x != QWEN3_BLOCK and not any(m in x for m in SB_NOTE_MARKERS)
+                 and not re.fullmatch(r"(reasoning|math) \d+", x)]  # fragments of an older budget note
         if blocked and row["_missing"]:
             notes.append(QWEN3_BLOCK)
         if lane in LANES and not blocked and f"lane={lane}" not in notes:
@@ -648,7 +650,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
                              f"{est['full_split_gpu_h']:.1f} GPU-h vs lane budget {est['lane_budget_gpu_h']:.0f}")
             budgets = ", ".join(f"{c} {b}" for c, b in sbs["budget"].items() if b)
             if budgets:
-                notes.append(f"token budget 8192; {budgets}")
+                notes.append(f"token budget 8192 (pilot: {budgets})")
         row["notes"] = "; ".join(notes)
         if lane in LANES:  # job ids and measured hours from the lane journals
             jobs, secs = [], 0.0
