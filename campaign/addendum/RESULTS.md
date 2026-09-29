@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 14:35 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 15:34 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 16.8; estimated remaining, runnable rows: 10.9; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 18.6; estimated remaining, runnable rows: 8.2; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -15,8 +15,8 @@ Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum 
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
-| 5.1 | 1 | 1 | 16 | 0 | 23 |
-| 6 | 4 | 1 | 7 | 0 | 18 |
+| 5.1 | 7 | 1 | 10 | 0 | 23 |
+| 6 | 7 | 1 | 4 | 0 | 18 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -374,58 +374,58 @@ Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum 
 
 Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendum/seeds/<dataset>__seed<k>.csv`). Seed 0 is the campaign's run (old box, H100 PCIe); seeds 1-2 ran on Nibi (H100 SXM). Ratios pair each seed's relaxed arm with strict of the same seed; '-' = that seed is not complete yet.
 
-| target | dataset | method | alpha | lambda s0 | lambda s1 | lambda s2 | lambda s3 | lambda sd | lambda mean (sd) | time ratio s0 | time ratio s1 | time ratio s2 | time ratio s3 | time ratio sd | time mean (sd) | acc s0 | acc s1 | acc s2 | acc s3 | acc sd |
-|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| gpt-oss-20b | gsm8k | mentored_dec | 0.75 | 1.16 | 1.09 | 1.22 | - | 0.07 | 1.16 (0.07) | 0.96 | 0.78 | 0.88 | - | 0.09 | 0.87 (0.09) | 93% | 95% | 95% | - | 1% |
-| gpt-oss-20b | gsm8k | cactus | 0.35 | 1.61 | 1.51 | 1.70 | - | 0.10 | 1.61 (0.10) | 1.19 | 0.94 | 1.07 | - | 0.12 | 1.06 (0.12) | 91% | 93% | 90% | - | 1% |
-| gpt-oss-20b | gsm8k | spec_casc_opt | 0.05 | 1.46 | 1.26 | 1.44 | - | 0.11 | 1.39 (0.11) | 1.18 | 0.92 | 1.07 | - | 0.13 | 1.06 (0.13) | 94% | 93% | 93% | - | 1% |
-| gpt-oss-20b | gsm8k | r_fuzzy | 0.25 | 1.70 | 1.57 | 1.74 | - | 0.09 | 1.67 (0.09) | 1.29 | 1.02 | 1.17 | - | 0.14 | 1.16 (0.14) | 87% | 89% | 89% | - | 1% |
-| gpt-oss-20b | gsm8k | spec_casc_tok | 0.8 | 0.96 | 0.93 | 1.03 | - | 0.05 | 0.97 (0.05) | 0.91 | 0.81 | 0.91 | - | 0.06 | 0.87 (0.06) | 97% | 98% | 96% | - | 1% |
-| gpt-oss-20b | aime24 | mentored_dec | 0.75 | 1.69 | 1.28 | 1.45 | 1.54 | 0.17 | 1.49 (0.17) | 1.36 | 0.93 | 1.02 | 1.09 | 0.19 | 1.10 (0.19) | 63% | 70% | 67% | - | 3% |
-| gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | 1.54 | 1.62 | 1.86 | 0.15 | 1.70 (0.15) | 1.33 | 0.95 | 0.97 | 1.15 | 0.17 | 1.10 (0.17) | 60% | 50% | 43% | - | 8% |
-| gpt-oss-20b | aime24 | spec_casc_opt | 0.05 | 2.48 | 2.03 | 2.31 | 2.43 | 0.20 | 2.31 (0.20) | 2.01 | 1.44 | 1.61 | 1.71 | 0.24 | 1.69 (0.24) | 37% | 33% | 43% | - | 5% |
-| gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | 1.73 | 2.17 | - | 0.25 | 2.01 (0.25) | 1.64 | 1.16 | 1.41 | - | 0.24 | 1.41 (0.24) | 50% | 43% | 53% | - | 5% |
-| gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | 0.96 | 1.12 | - | 0.27 | 1.19 (0.27) | 1.33 | 0.81 | 0.93 | - | 0.27 | 1.02 (0.27) | 70% | 73% | 67% | - | 3% |
-| gpt-oss-20b | humaneval | mentored_dec | 0.75 | 1.30 | 1.27 | 1.17 | - | 0.07 | 1.24 (0.07) | 1.09 | 0.95 | 0.84 | - | 0.12 | 0.96 (0.12) | 96% | 95% | 95% | - | 0% |
-| gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | - | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | - | 0.19 | 1.13 (0.19) | 87% | 93% | 90% | - | 3% |
-| gpt-oss-20b | humaneval | spec_casc_opt | 0.05 | 1.73 | 1.91 | 1.58 | - | 0.16 | 1.74 (0.16) | 1.43 | 1.43 | 1.16 | - | 0.15 | 1.34 (0.15) | 82% | 83% | 78% | - | 3% |
-| gpt-oss-20b | humaneval | r_fuzzy | 0.25 | 1.64 | 1.79 | 1.63 | - | 0.09 | 1.69 (0.09) | 1.32 | 1.27 | 1.14 | - | 0.09 | 1.24 (0.09) | 63% | 61% | 64% | - | 1% |
-| gpt-oss-20b | humaneval | spec_casc_tok | 0.8 | 1.05 | 1.17 | 0.99 | - | 0.09 | 1.07 (0.09) | 0.98 | 1.06 | 0.88 | - | 0.09 | 0.97 (0.09) | 94% | 96% | 97% | - | 1% |
-| gpt-oss-20b | livecodebench | mentored_dec | 0.75 | 1.25 | 1.33 | 1.37 | - | 0.06 | 1.31 (0.06) | 1.01 | 0.94 | 0.98 | - | 0.03 | 0.98 (0.03) | 84% | 80% | 88% | - | 4% |
-| gpt-oss-20b | livecodebench | cactus | 0.18 | 1.54 | 1.76 | 1.67 | - | 0.11 | 1.66 (0.11) | 1.14 | 1.08 | 1.03 | - | 0.06 | 1.09 (0.06) | 61% | 66% | 63% | - | 2% |
-| gpt-oss-20b | livecodebench | spec_casc_opt | 0.05 | 1.64 | 1.67 | 1.75 | - | 0.06 | 1.69 (0.06) | 1.32 | 1.20 | 1.25 | - | 0.06 | 1.26 (0.06) | 49% | 52% | 48% | - | 2% |
-| gpt-oss-20b | livecodebench | r_fuzzy | 0.25 | 1.65 | 1.69 | 1.71 | - | 0.03 | 1.68 (0.03) | 1.27 | 1.15 | 1.14 | - | 0.08 | 1.19 (0.08) | 34% | 32% | 33% | - | 1% |
-| gpt-oss-20b | livecodebench | spec_casc_tok | 0.8 | 1.16 | 1.20 | 1.19 | - | 0.02 | 1.18 (0.02) | 1.04 | 1.04 | 1.01 | - | 0.02 | 1.03 (0.02) | 88% | 90% | - | - | 2% |
-| gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | 1.14 | 1.19 | - | 0.05 | 1.14 (0.05) | 0.87 | 0.78 | 0.79 | - | 0.05 | 0.82 (0.05) | - | - | - | - | - |
-| gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | 1.31 | 1.31 | - | 0.07 | 1.27 (0.07) | 0.82 | 0.69 | 0.67 | - | 0.08 | 0.73 (0.08) | - | - | - | - | - |
-| gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | - | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | - | 0.01 | 0.86 (0.01) | - | - | - | - | - |
-| gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | 1.28 | 1.26 | - | 0.04 | 1.25 (0.04) | 0.92 | 0.81 | 0.79 | - | 0.07 | 0.84 (0.07) | - | - | - | - | - |
-| gpt-oss-20b | mtbench | spec_casc_tok | 0.8 | 0.96 | 1.02 | 1.06 | - | 0.05 | 1.01 (0.05) | 0.90 | 0.93 | 0.94 | - | 0.02 | 0.92 (0.02) | - | - | - | - | - |
-| gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | - | - | - | - | 1.59 (-) | 1.04 | - | - | - | - | 1.04 (-) | 51% | - | - | - | - |
-| gpt-oss-20b | longbench_v2 | spec_casc_opt | 0.05 | 1.79 | - | - | - | - | 1.79 (-) | 1.07 | - | - | - | - | 1.07 (-) | 47% | - | - | - | - |
-| gpt-oss-20b | longbench_v2 | r_fuzzy | 0.25 | 1.69 | - | - | - | - | 1.69 (-) | 1.05 | - | - | - | - | 1.05 (-) | 40% | - | - | - | - |
-| qwen3-8b | gsm8k | mentored_dec | 0.75 | 1.03 | - | - | - | - | 1.03 (-) | 0.95 | - | - | - | - | 0.95 (-) | 77% | - | - | - | - |
-| qwen3-8b | gsm8k | cactus | 0.35 | 1.04 | - | - | - | - | 1.04 (-) | 0.94 | - | - | - | - | 0.94 (-) | 77% | - | - | - | - |
-| qwen3-8b | gsm8k | spec_casc_opt | 0.05 | 1.33 | - | - | - | - | 1.33 (-) | 1.12 | - | - | - | - | 1.12 (-) | 49% | - | - | - | - |
-| qwen3-8b | gsm8k | r_fuzzy | 0.25 | 0.95 | - | - | - | - | 0.95 (-) | 0.81 | - | - | - | - | 0.81 (-) | 55% | - | - | - | - |
-| qwen3-8b | gsm8k | spec_casc_tok | 0.8 | 0.99 | - | - | - | - | 0.99 (-) | 0.96 | - | - | - | - | 0.96 (-) | 79% | - | - | - | - |
-| qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | - | - | - | - | 1.42 (-) | 1.14 | - | - | - | - | 1.14 (-) | 30% | - | - | - | - |
-| qwen3-8b | aime24 | r_fuzzy | 0.25 | 1.29 | - | - | - | - | 1.29 (-) | 1.18 | - | - | - | - | 1.18 (-) | 40% | - | - | - | - |
-| qwen3-8b | humaneval | mentored_dec | 0.75 | 1.08 | - | - | - | - | 1.08 (-) | 1.02 | - | - | - | - | 1.02 (-) | 85% | - | - | - | - |
-| qwen3-8b | humaneval | cactus | 0.35 | 1.14 | - | - | - | - | 1.14 (-) | 1.01 | - | - | - | - | 1.01 (-) | 75% | - | - | - | - |
-| qwen3-8b | humaneval | spec_casc_opt | 0.05 | 1.72 | - | - | - | - | 1.72 (-) | 1.46 | - | - | - | - | 1.46 (-) | 49% | - | - | - | - |
-| qwen3-8b | humaneval | r_fuzzy | 0.25 | 1.65 | - | - | - | - | 1.65 (-) | 1.41 | - | - | - | - | 1.41 (-) | 16% | - | - | - | - |
-| qwen3-8b | humaneval | spec_casc_tok | 0.8 | 1.08 | - | - | - | - | 1.08 (-) | 1.05 | - | - | - | - | 1.05 (-) | 85% | - | - | - | - |
-| qwen3-8b | livecodebench | mentored_dec | 0.75 | 1.05 | - | - | - | - | 1.05 (-) | 0.95 | - | - | - | - | 0.95 (-) | 63% | - | - | - | - |
-| qwen3-8b | livecodebench | cactus | 0.35 | 1.15 | - | - | - | - | 1.15 (-) | 0.82 | - | - | - | - | 0.82 (-) | 44% | - | - | - | - |
-| qwen3-8b | livecodebench | spec_casc_opt | 0.05 | 1.27 | - | - | - | - | 1.27 (-) | 1.09 | - | - | - | - | 1.09 (-) | 33% | - | - | - | - |
-| qwen3-8b | livecodebench | r_fuzzy | 0.25 | 1.07 | - | - | - | - | 1.07 (-) | 0.92 | - | - | - | - | 0.92 (-) | 2% | - | - | - | - |
-| qwen3-8b | livecodebench | spec_casc_tok | 0.8 | 1.00 | - | - | - | - | 1.00 (-) | 0.96 | - | - | - | - | 0.96 (-) | 71% | - | - | - | - |
-| qwen3-8b | mtbench | mentored_dec | 0.75 | 1.04 | - | - | - | - | 1.04 (-) | 0.93 | - | - | - | - | 0.93 (-) | - | - | - | - | - |
-| qwen3-8b | mtbench | cactus | 0.35 | 1.16 | - | - | - | - | 1.16 (-) | 0.75 | - | - | - | - | 0.75 (-) | - | - | - | - | - |
-| qwen3-8b | mtbench | spec_casc_opt | 0.05 | 1.22 | - | - | - | - | 1.22 (-) | 1.01 | - | - | - | - | 1.01 (-) | - | - | - | - | - |
-| qwen3-8b | mtbench | r_fuzzy | 0.25 | 1.12 | - | - | - | - | 1.12 (-) | 0.92 | - | - | - | - | 0.92 (-) | - | - | - | - | - |
-| qwen3-8b | mtbench | spec_casc_tok | 0.8 | 1.04 | - | - | - | - | 1.04 (-) | 0.99 | - | - | - | - | 0.99 (-) | - | - | - | - | - |
+| target | dataset | method | alpha | lambda s0 | lambda s1 | lambda s2 | lambda s3 | lambda s4 | lambda sd | lambda mean (sd) | time ratio s0 | time ratio s1 | time ratio s2 | time ratio s3 | time ratio s4 | time ratio sd | time mean (sd) | acc s0 | acc s1 | acc s2 | acc s3 | acc s4 | acc sd |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| gpt-oss-20b | gsm8k | mentored_dec | 0.75 | 1.16 | 1.09 | 1.22 | - | - | 0.07 | 1.16 (0.07) | 0.96 | 0.78 | 0.88 | - | - | 0.09 | 0.87 (0.09) | 93% | 95% | 95% | - | - | 1% |
+| gpt-oss-20b | gsm8k | cactus | 0.35 | 1.61 | 1.51 | 1.70 | - | - | 0.10 | 1.61 (0.10) | 1.19 | 0.94 | 1.07 | - | - | 0.12 | 1.06 (0.12) | 91% | 93% | 90% | - | - | 1% |
+| gpt-oss-20b | gsm8k | spec_casc_opt | 0.05 | 1.46 | 1.26 | 1.44 | - | - | 0.11 | 1.39 (0.11) | 1.18 | 0.92 | 1.07 | - | - | 0.13 | 1.06 (0.13) | 94% | 93% | 93% | - | - | 1% |
+| gpt-oss-20b | gsm8k | r_fuzzy | 0.25 | 1.70 | 1.57 | 1.74 | - | - | 0.09 | 1.67 (0.09) | 1.29 | 1.02 | 1.17 | - | - | 0.14 | 1.16 (0.14) | 87% | 89% | 89% | - | - | 1% |
+| gpt-oss-20b | gsm8k | spec_casc_tok | 0.8 | 0.96 | 0.93 | 1.03 | - | - | 0.05 | 0.97 (0.05) | 0.91 | 0.81 | 0.91 | - | - | 0.06 | 0.87 (0.06) | 97% | 98% | 96% | - | - | 1% |
+| gpt-oss-20b | aime24 | mentored_dec | 0.75 | 1.69 | 1.28 | 1.45 | 1.54 | - | 0.17 | 1.49 (0.17) | 1.36 | 0.93 | 1.02 | 1.09 | - | 0.19 | 1.10 (0.19) | 63% | 70% | 67% | 77% | - | 6% |
+| gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | 1.54 | 1.62 | 1.86 | - | 0.15 | 1.70 (0.15) | 1.33 | 0.95 | 0.97 | 1.15 | - | 0.17 | 1.10 (0.17) | 60% | 50% | 43% | 50% | - | 7% |
+| gpt-oss-20b | aime24 | spec_casc_opt | 0.05 | 2.48 | 2.03 | 2.31 | 2.43 | - | 0.20 | 2.31 (0.20) | 2.01 | 1.44 | 1.61 | 1.71 | - | 0.24 | 1.69 (0.24) | 37% | 33% | 43% | 43% | - | 5% |
+| gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | 1.73 | 2.17 | 2.37 | - | 0.27 | 2.10 (0.27) | 1.64 | 1.16 | 1.41 | 1.58 | - | 0.21 | 1.45 (0.21) | 50% | 43% | 53% | - | - | 5% |
+| gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | 0.96 | 1.12 | 1.52 | - | 0.27 | 1.27 (0.27) | 1.33 | 0.81 | 0.93 | 1.31 | - | 0.26 | 1.09 (0.26) | 70% | 73% | 67% | - | - | 3% |
+| gpt-oss-20b | humaneval | mentored_dec | 0.75 | 1.30 | 1.27 | 1.17 | - | - | 0.07 | 1.24 (0.07) | 1.09 | 0.95 | 0.84 | - | - | 0.12 | 0.96 (0.12) | 96% | 95% | 95% | - | - | 0% |
+| gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | - | - | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | - | - | 0.19 | 1.13 (0.19) | 87% | 93% | 90% | - | - | 3% |
+| gpt-oss-20b | humaneval | spec_casc_opt | 0.05 | 1.73 | 1.91 | 1.58 | - | - | 0.16 | 1.74 (0.16) | 1.43 | 1.43 | 1.16 | - | - | 0.15 | 1.34 (0.15) | 82% | 83% | 78% | - | - | 3% |
+| gpt-oss-20b | humaneval | r_fuzzy | 0.25 | 1.64 | 1.79 | 1.63 | - | - | 0.09 | 1.69 (0.09) | 1.32 | 1.27 | 1.14 | - | - | 0.09 | 1.24 (0.09) | 63% | 61% | 64% | - | - | 1% |
+| gpt-oss-20b | humaneval | spec_casc_tok | 0.8 | 1.05 | 1.17 | 0.99 | - | - | 0.09 | 1.07 (0.09) | 0.98 | 1.06 | 0.88 | - | - | 0.09 | 0.97 (0.09) | 94% | 96% | 97% | - | - | 1% |
+| gpt-oss-20b | livecodebench | mentored_dec | 0.75 | 1.25 | 1.33 | 1.37 | - | - | 0.06 | 1.31 (0.06) | 1.01 | 0.94 | 0.98 | - | - | 0.03 | 0.98 (0.03) | 84% | 80% | 88% | - | - | 4% |
+| gpt-oss-20b | livecodebench | cactus | 0.18 | 1.54 | 1.76 | 1.67 | - | - | 0.11 | 1.66 (0.11) | 1.14 | 1.08 | 1.03 | - | - | 0.06 | 1.09 (0.06) | 61% | 66% | 63% | - | - | 2% |
+| gpt-oss-20b | livecodebench | spec_casc_opt | 0.05 | 1.64 | 1.67 | 1.75 | - | - | 0.06 | 1.69 (0.06) | 1.32 | 1.20 | 1.25 | - | - | 0.06 | 1.26 (0.06) | 49% | 52% | 48% | - | - | 2% |
+| gpt-oss-20b | livecodebench | r_fuzzy | 0.25 | 1.65 | 1.69 | 1.71 | - | - | 0.03 | 1.68 (0.03) | 1.27 | 1.15 | 1.14 | - | - | 0.08 | 1.19 (0.08) | 34% | 32% | 33% | - | - | 1% |
+| gpt-oss-20b | livecodebench | spec_casc_tok | 0.8 | 1.16 | 1.20 | 1.19 | - | - | 0.02 | 1.18 (0.02) | 1.04 | 1.04 | 1.01 | - | - | 0.02 | 1.03 (0.02) | 88% | 90% | 89% | - | - | 1% |
+| gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | 1.14 | 1.19 | - | - | 0.05 | 1.14 (0.05) | 0.87 | 0.78 | 0.79 | - | - | 0.05 | 0.82 (0.05) | - | - | - | - | - | - |
+| gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | 1.31 | 1.31 | - | - | 0.07 | 1.27 (0.07) | 0.82 | 0.69 | 0.67 | - | - | 0.08 | 0.73 (0.08) | - | - | - | - | - | - |
+| gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | - | - | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | - | - | 0.01 | 0.86 (0.01) | - | - | - | - | - | - |
+| gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | 1.28 | 1.26 | - | - | 0.04 | 1.25 (0.04) | 0.92 | 0.81 | 0.79 | - | - | 0.07 | 0.84 (0.07) | - | - | - | - | - | - |
+| gpt-oss-20b | mtbench | spec_casc_tok | 0.8 | 0.96 | 1.02 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.90 | 0.93 | 0.94 | - | - | 0.02 | 0.92 (0.02) | - | - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | - | - | - | - | - | 1.59 (-) | 1.04 | - | - | - | - | - | 1.04 (-) | 51% | - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | spec_casc_opt | 0.05 | 1.79 | - | - | - | - | - | 1.79 (-) | 1.07 | - | - | - | - | - | 1.07 (-) | 47% | - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | r_fuzzy | 0.25 | 1.69 | - | - | - | - | - | 1.69 (-) | 1.05 | - | - | - | - | - | 1.05 (-) | 40% | - | - | - | - | - |
+| qwen3-8b | gsm8k | mentored_dec | 0.75 | 1.03 | - | - | - | - | - | 1.03 (-) | 0.95 | - | - | - | - | - | 0.95 (-) | 77% | - | - | - | - | - |
+| qwen3-8b | gsm8k | cactus | 0.35 | 1.04 | - | - | - | - | - | 1.04 (-) | 0.94 | - | - | - | - | - | 0.94 (-) | 77% | - | - | - | - | - |
+| qwen3-8b | gsm8k | spec_casc_opt | 0.05 | 1.33 | - | - | - | - | - | 1.33 (-) | 1.12 | - | - | - | - | - | 1.12 (-) | 49% | - | - | - | - | - |
+| qwen3-8b | gsm8k | r_fuzzy | 0.25 | 0.95 | - | - | - | - | - | 0.95 (-) | 0.81 | - | - | - | - | - | 0.81 (-) | 55% | - | - | - | - | - |
+| qwen3-8b | gsm8k | spec_casc_tok | 0.8 | 0.99 | - | - | - | - | - | 0.99 (-) | 0.96 | - | - | - | - | - | 0.96 (-) | 79% | - | - | - | - | - |
+| qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | - | - | - | - | - | 1.42 (-) | 1.14 | - | - | - | - | - | 1.14 (-) | 30% | - | - | - | - | - |
+| qwen3-8b | aime24 | r_fuzzy | 0.25 | 1.29 | - | - | - | - | - | 1.29 (-) | 1.18 | - | - | - | - | - | 1.18 (-) | 40% | - | - | - | - | - |
+| qwen3-8b | humaneval | mentored_dec | 0.75 | 1.08 | - | - | - | - | - | 1.08 (-) | 1.02 | - | - | - | - | - | 1.02 (-) | 85% | - | - | - | - | - |
+| qwen3-8b | humaneval | cactus | 0.35 | 1.14 | - | - | - | - | - | 1.14 (-) | 1.01 | - | - | - | - | - | 1.01 (-) | 75% | - | - | - | - | - |
+| qwen3-8b | humaneval | spec_casc_opt | 0.05 | 1.72 | - | - | - | - | - | 1.72 (-) | 1.46 | - | - | - | - | - | 1.46 (-) | 49% | - | - | - | - | - |
+| qwen3-8b | humaneval | r_fuzzy | 0.25 | 1.65 | - | - | - | - | - | 1.65 (-) | 1.41 | - | - | - | - | - | 1.41 (-) | 16% | - | - | - | - | - |
+| qwen3-8b | humaneval | spec_casc_tok | 0.8 | 1.08 | - | - | - | - | - | 1.08 (-) | 1.05 | - | - | - | - | - | 1.05 (-) | 85% | - | - | - | - | - |
+| qwen3-8b | livecodebench | mentored_dec | 0.75 | 1.05 | - | - | - | - | - | 1.05 (-) | 0.95 | - | - | - | - | - | 0.95 (-) | 63% | - | - | - | - | - |
+| qwen3-8b | livecodebench | cactus | 0.35 | 1.15 | - | - | - | - | - | 1.15 (-) | 0.82 | - | - | - | - | - | 0.82 (-) | 44% | - | - | - | - | - |
+| qwen3-8b | livecodebench | spec_casc_opt | 0.05 | 1.27 | - | - | - | - | - | 1.27 (-) | 1.09 | - | - | - | - | - | 1.09 (-) | 33% | - | - | - | - | - |
+| qwen3-8b | livecodebench | r_fuzzy | 0.25 | 1.07 | - | - | - | - | - | 1.07 (-) | 0.92 | - | - | - | - | - | 0.92 (-) | 2% | - | - | - | - | - |
+| qwen3-8b | livecodebench | spec_casc_tok | 0.8 | 1.00 | - | - | - | - | - | 1.00 (-) | 0.96 | - | - | - | - | - | 0.96 (-) | 71% | - | - | - | - | - |
+| qwen3-8b | mtbench | mentored_dec | 0.75 | 1.04 | - | - | - | - | - | 1.04 (-) | 0.93 | - | - | - | - | - | 0.93 (-) | - | - | - | - | - | - |
+| qwen3-8b | mtbench | cactus | 0.35 | 1.16 | - | - | - | - | - | 1.16 (-) | 0.75 | - | - | - | - | - | 0.75 (-) | - | - | - | - | - | - |
+| qwen3-8b | mtbench | spec_casc_opt | 0.05 | 1.22 | - | - | - | - | - | 1.22 (-) | 1.01 | - | - | - | - | - | 1.01 (-) | - | - | - | - | - | - |
+| qwen3-8b | mtbench | r_fuzzy | 0.25 | 1.12 | - | - | - | - | - | 1.12 (-) | 0.92 | - | - | - | - | - | 0.92 (-) | - | - | - | - | - | - |
+| qwen3-8b | mtbench | spec_casc_tok | 0.8 | 1.04 | - | - | - | - | - | 1.04 (-) | 0.99 | - | - | - | - | - | 0.99 (-) | - | - | - | - | - | - |
 
 ## Hardware dependence of the time ratios (found in step 2)
 
@@ -650,4 +650,12 @@ Pending.
   not a property of the rules. On the faster machine the time ratio tracks
   the rounds ratio. The tracer is not the cause: the penalty is the same in
   the traced first 12 cases and the untraced cases 13+.
+- **Eq. 4 vs measured on the same 25 GPT-OSS cells, per seed**
+  (`analysis/eq4_vs_measured.csv` restricted to those cells vs
+  `analysis/eq4_vs_measured__seed{1,2}.csv`): old box seed 0 -- Eq. 4 wins
+  10, rounds wins 13, time wins 8, Eq. 4 wins that are time losses 2,
+  rounds wins that are time losses 5; Nibi seed 1 -- 13 / 14 / 14 / 0 / 0;
+  Nibi seed 2 -- 10 / 12 / 12 / 0 / 0. Rounds wins barely move with the
+  machine; only the time verdict does, and on Nibi every rounds win and
+  every Eq. 4 win is a time win.
 
