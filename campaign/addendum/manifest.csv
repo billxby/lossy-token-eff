@@ -247,8 +247,19 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.2,main,gpt-oss-20b,longbench_v2,strict,strict,1,runs,150,150,done,22881159,0.00,0.28,lane=B; lane=A
 2.2,main,gpt-oss-20b,longbench_v2,strict,strict,2,runs,150,150,done,22881159,0.00,0.25,lane=B; lane=A
 2.2,main,gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,1,runs,150,150,done,22881159,0.00,0.32,lane=B; lane=A
-2.2,main,gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,2,runs,150,55,queued,22881159,0.32,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,2,runs,150,125,running,22881159 22881281,0.14,,lane=B; lane=A
 2.2,main,gpt-oss-20b,longbench_v2,mentored_dec,0.75,1,runs,150,0,queued,,0.45,,lane=B; lane=A
 2.2,main,gpt-oss-20b,longbench_v2,mentored_dec,0.75,2,runs,150,0,queued,,0.45,,lane=B; lane=A
 2.2,main,gpt-oss-20b,longbench_v2,r_fuzzy,0.25,1,runs,150,0,queued,,0.45,,lane=B; lane=A
 2.2,main,gpt-oss-20b,longbench_v2,r_fuzzy,0.25,2,runs,150,0,queued,,0.45,,lane=B; lane=A
+5.2,main,gpt-oss-20b,gsm8k,mentored_dec,0.55,1,runs,150,0,pending,,0.08,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,gsm8k,spec_casc_tok,0.55,1,runs,150,0,pending,,0.08,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,aime24,mentored_dec,0.55,1,runs,30,0,pending,,0.15,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,aime24,spec_casc_tok,0.15,1,runs,30,0,pending,,0.24,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,humaneval,mentored_dec,0.55,1,runs,150,0,pending,,0.10,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,humaneval,spec_casc_tok,0.35,1,runs,150,0,pending,,0.10,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,livecodebench,mentored_dec,0.55,1,runs,90,0,pending,,0.15,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,livecodebench,spec_casc_tok,0.35,1,runs,90,0,pending,,0.14,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,mtbench,spec_casc_tok,0.55,1,runs,80,0,pending,,0.10,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,longbench_v2,mentored_dec,0.55,1,runs,150,0,pending,,0.44,,lane=A; best-setting validation
+5.2,main,gpt-oss-20b,longbench_v2,spec_casc_tok,0.55,1,runs,150,0,pending,,0.11,,lane=A; best-setting validation

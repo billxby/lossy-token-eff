@@ -85,7 +85,18 @@
         "main|mtbench|spec_casc_tok|0.55|0",
         "main|aime24|mentored_dec|0.55|0",
         "main|aime24|spec_casc_tok|0.35|0",
-        "main|aime24|spec_casc_tok|0.55|0"
+        "main|aime24|spec_casc_tok|0.55|0",
+        "main|gsm8k|mentored_dec|0.55|1",
+        "main|gsm8k|spec_casc_tok|0.55|1",
+        "main|aime24|mentored_dec|0.55|1",
+        "main|aime24|spec_casc_tok|0.15|1",
+        "main|humaneval|mentored_dec|0.55|1",
+        "main|humaneval|spec_casc_tok|0.35|1",
+        "main|livecodebench|mentored_dec|0.55|1",
+        "main|livecodebench|spec_casc_tok|0.35|1",
+        "main|mtbench|spec_casc_tok|0.55|1",
+        "main|longbench_v2|mentored_dec|0.55|1",
+        "main|longbench_v2|spec_casc_tok|0.55|1"
       ]
     },
     "B": {
@@ -98,7 +109,7 @@
         },
         {
           "id": "22881281",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-09-29T05:56:30Z",
           "dependency": "22881159"
         }
@@ -155,5 +166,117 @@
       ]
     }
   },
-  "blocked_qwen3": true
+  "blocked_qwen3": true,
+  "extra_rows": [
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "gsm8k",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "gsm8k",
+      "method": "spec_casc_tok",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "aime24",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "aime24",
+      "method": "spec_casc_tok",
+      "alpha": "0.15",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "humaneval",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "humaneval",
+      "method": "spec_casc_tok",
+      "alpha": "0.35",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "livecodebench",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "livecodebench",
+      "method": "spec_casc_tok",
+      "alpha": "0.35",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "mtbench",
+      "method": "spec_casc_tok",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "longbench_v2",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "longbench_v2",
+      "method": "spec_casc_tok",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "A",
+      "notes": "best-setting validation"
+    }
+  ]
 }
