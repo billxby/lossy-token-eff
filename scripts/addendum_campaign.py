@@ -777,7 +777,7 @@ def cmd_add52(args: argparse.Namespace) -> int:
                 continue
             have.add(key)
             extra.append({"step": "5.2", "condition": "main", "dataset": p["dataset"], "method": method,
-                          "alpha": alpha, "seed": 1, "lane": "B",
+                          "alpha": alpha, "seed": 1, "lane": getattr(args, "lane", "A"),
                           "notes": "best-setting validation" if method != "strict" else "strict seed 1 for the step-5.2 pair"})
             added.append(f"{p['dataset']}/{method}/{alpha}")
     save_state(state)
@@ -811,7 +811,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("poll").set_defaults(fn=cmd_poll)
-    sub.add_parser("add52").set_defaults(fn=cmd_add52)
+    p = sub.add_parser("add52")
+    p.add_argument("--lane", default="A", choices=sorted(LANES), help="Lane for the new seed-1 rows (default A: it finishes step 5.1 first).")
+    p.set_defaults(fn=cmd_add52)
     p = sub.add_parser("plan"); p.add_argument("--quiet", action="store_true"); p.set_defaults(fn=cmd_plan)
     sub.add_parser("push").set_defaults(fn=cmd_push)
     sub.add_parser("submit").set_defaults(fn=cmd_submit)
