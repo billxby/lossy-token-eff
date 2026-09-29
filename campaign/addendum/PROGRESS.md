@@ -85,3 +85,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T07:09:18Z step 2.1 main gsm8k r_fuzzy alpha=0.25 seed=2: done, 150/150 cases (jobs 22880871, 0.10 GPU-h)
 - 2026-09-29T07:09:19Z step 2.1 main gsm8k spec_casc_tok alpha=0.8 seed=1: done, 150/150 cases (jobs 22880871, 0.09 GPU-h)
 - 2026-09-29T07:09:19Z step 3 nspec3 gsm8k strict alpha=strict seed=0: done, 150/150 cases (jobs 22881159, 0.10 GPU-h)
+- 2026-09-29T07:09:20Z step 3 nspec3 livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.25 GPU-h)
