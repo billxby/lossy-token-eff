@@ -330,3 +330,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T18:36:52Z step 2.2 main longbench_v2 mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22881281, 0.31 GPU-h)
 - 2026-09-29T18:36:52Z step 5.2 main gsm8k mentored_dec alpha=0.55 seed=1: done, 150/150 cases (jobs 22931500, 0.12 GPU-h)
 - 2026-09-29T18:36:53Z step 5.2 main gsm8k spec_casc_tok alpha=0.55 seed=1: done, 150/150 cases (jobs 22931500, 0.12 GPU-h)
+- 2026-09-29T18:37:40Z lane A: synced prompts/speedbench (7.1 MB tar) to the lane repo
+- 2026-09-29T18:38:13Z lane B: synced prompts/speedbench (7.1 MB tar) to the lane repo

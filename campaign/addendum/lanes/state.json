@@ -301,5 +301,9 @@
     "first40": [],
     "subset_relaxed": null,
     "estimate": {}
+  },
+  "prompt_sync": {
+    "A:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",
+    "B:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077"
   }
 }
