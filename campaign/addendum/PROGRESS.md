@@ -166,3 +166,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T10:20:54Z step 2.1 main mtbench r_fuzzy alpha=0.25 seed=2: done, 80/80 cases (jobs 22880871, 0.10 GPU-h)
 - 2026-09-29T10:20:55Z step 2.1 main mtbench spec_casc_tok alpha=0.8 seed=1: done, 80/80 cases (jobs 22880871, 0.11 GPU-h)
 - 2026-09-29T10:20:55Z step 2.2 main aime24 spec_casc_opt alpha=0.05 seed=1: done, 30/30 cases (jobs 22881159, 0.39 GPU-h)
+- 2026-09-29T10:21:26Z grading: uploaded 239 run dir(s) to the Nibi mirror, submitted CPU grading job 22905739
+- 2026-09-29T10:21:29Z grading: pulled 24559 verdicts into campaign/addendum/analysis/grades.csv
