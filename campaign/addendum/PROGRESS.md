@@ -109,3 +109,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T08:03:20Z step 2.1 main humaneval mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22880871, 0.14 GPU-h)
 - 2026-09-29T08:03:20Z step 3 nspec8 livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.29 GPU-h)
 - 2026-09-29T08:03:21Z step 3 nspec10 gsm8k strict alpha=strict seed=0: done, 150/150 cases (jobs 22881159, 0.09 GPU-h)
+- 2026-09-29T08:04:12Z grading: uploaded 512 run dir(s) to the Nibi mirror, submitted CPU grading job 22902756
+- 2026-09-29T08:04:14Z grading: pulled 21662 verdicts into campaign/addendum/analysis/grades.csv
