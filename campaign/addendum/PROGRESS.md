@@ -61,3 +61,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T06:33:24Z step 0.5 nibiref livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.27 GPU-h)
 - 2026-09-29T06:33:24Z step 2.1 main gsm8k spec_casc_opt alpha=0.05 seed=1: done, 150/150 cases (jobs 22880871, 0.10 GPU-h)
 - 2026-09-29T06:33:24Z step 2.1 main gsm8k spec_casc_opt alpha=0.05 seed=2: done, 150/150 cases (jobs 22880871, 0.09 GPU-h)
+- 2026-09-29T06:33:25Z step 2.1 main gsm8k mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22880871, 0.12 GPU-h)
