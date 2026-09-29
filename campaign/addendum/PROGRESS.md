@@ -339,3 +339,8 @@ for what is done; this file records every action and failure.
 - 2026-09-29T18:38:13Z lane B: synced prompts/speedbench (7.1 MB tar) to the lane repo
 - 2026-09-29T18:41:17Z grading: uploaded 548 run dir(s) to the Nibi mirror, submitted CPU grading job 22933338
 - 2026-09-29T18:41:19Z grading: pulled 29356 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T18:59:29Z lane A: pulled 43 new run dir(s) into runs/
+- 2026-09-29T19:00:04Z lane B: pulled 174 new run dir(s) into runs/
+- 2026-09-29T19:00:08Z step 7: budget pilot reasoning: 0/20 strict cap-outs at 8192 tokens -> reasoning runs at 8192
+- 2026-09-29T19:00:08Z step 7: pilot done; time-estimate sample = the first 40 runnable cases (case_001..case_054; Math waits for its budget) on every arm
+- 2026-09-29T19:00:08Z step 2.2 main longbench_v2 mentored_dec alpha=0.75 seed=2: done, 150/150 cases (jobs 22881281, 0.27 GPU-h)
