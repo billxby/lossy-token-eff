@@ -280,3 +280,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T16:49:26Z step 6 main aime24 r_fuzzy alpha=0.25 seed=4: done, 30/30 cases (jobs 22881159, 0.39 GPU-h)
 - 2026-09-29T16:50:09Z grading: uploaded 113 run dir(s) to the Nibi mirror, submitted CPU grading job 22924170
 - 2026-09-29T16:50:10Z grading: pulled 28409 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T17:06:28Z lane A: pulled 179 new run dir(s) into runs/
+- 2026-09-29T17:06:54Z lane B: pulled 69 new run dir(s) into runs/
+- 2026-09-29T17:06:57Z step 5.1 main mtbench mentored_dec alpha=0.35 seed=0: done, 80/80 cases (jobs 22880871, 0.15 GPU-h)
