@@ -1,16 +1,16 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 09:31 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 09:48 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 7.0; estimated remaining, runnable rows: 21.9; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 7.5; estimated remaining, runnable rows: 21.4; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 2 | 0 | 4 | 0 | 6 |
-| 2.1 | 28 | 1 | 19 | 0 | 48 |
-| 2.2 | 0 | 1 | 19 | 0 | 6 |
+| 2.1 | 30 | 1 | 17 | 0 | 48 |
+| 2.2 | 1 | 1 | 18 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
@@ -396,7 +396,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | livecodebench | spec_casc_opt | 0.05 | 1.64 | - | - | - | 1.64 (-) | 1.32 | - | - | - | 1.32 (-) | 49% | - | - | - |
 | gpt-oss-20b | livecodebench | r_fuzzy | 0.25 | 1.65 | - | - | - | 1.65 (-) | 1.27 | - | - | - | 1.27 (-) | 34% | - | - | - |
 | gpt-oss-20b | livecodebench | spec_casc_tok | 0.8 | 1.16 | - | - | - | 1.16 (-) | 1.04 | - | - | - | 1.04 (-) | 88% | - | - | - |
-| gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | - | - | - | 1.10 (-) | 0.87 | - | - | - | 0.87 (-) | - | - | - | - |
+| gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | 1.14 | 1.19 | 0.05 | 1.14 (0.05) | 0.87 | 0.78 | 0.79 | 0.05 | 0.82 (0.05) | - | - | - | - |
 | gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | - | - | - | 1.18 (-) | 0.82 | - | - | - | 0.82 (-) | - | - | - | - |
 | gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | 0.01 | 0.86 (0.01) | - | - | - | - |
 | gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | - | - | - | 1.20 (-) | 0.92 | - | - | - | 0.92 (-) | - | - | - | - |
@@ -486,16 +486,16 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.223 | 3456.240 | 2924.730 | 4043.920 | 1150.830 | 953.087 | 1373.580 | 25.190 | 21.146 | 29.582 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.152 | 2.275 | 3394.530 | 2863.670 | 3960.020 | 1120.230 | 924.710 | 1336.490 | 8.333 | 6.880 | 9.948 | 0.911 | 0.856 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.225 | 3456.240 | 2920.010 | 4045.980 | 1150.830 | 949.597 | 1369.160 | 25.190 | 21.249 | 29.584 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.153 | 2.274 | 3394.530 | 2871.870 | 3975.880 | 1120.230 | 923.710 | 1338.350 | 8.333 | 6.889 | 9.922 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
 | 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.945 | 2.065 | 3646.640 | 3096.530 | 4255.330 | 1296.980 | 1071.020 | 1547.700 | 9.625 | 7.946 | 11.476 | 0.867 | 0.789 | 0.933 | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.986 | 1.174 | 1.047 | 1.280 | 1.048 | 1.277 |
-| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.194 | 1.315 | 6193.010 | 5409.290 | 6961.310 | 2932.840 | 2543.210 | 3320.470 | 20.889 | 18.162 | 23.727 | - | - | - | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.440 | 2.271 | 2.056 | 3.361 | 1.956 | 3.192 |
+| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.194 | 1.315 | 6193.010 | 5409.290 | 6961.310 | 2932.840 | 2543.210 | 3320.470 | 20.889 | 18.162 | 23.727 | 0.078 | 0.033 | 0.133 | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.466 | 2.288 | 2.038 | 3.341 | 1.945 | 3.220 |
 
 `campaign/addendum/tables/temp__livecodebench_qwen3.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7254.210 | 8791.720 | 3703.370 | 3333.440 | 4072.560 | 71.423 | 64.063 | 78.730 | 0.700 | 0.600 | 0.789 | 0.322 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7266.830 | 8783.630 | 3703.370 | 3332.720 | 4077.010 | 71.423 | 63.994 | 78.646 | 0.700 | 0.600 | 0.789 | 0.322 |
 
 ## Step 4.2: Qwen3 at its recommended sampler
 
@@ -586,4 +586,17 @@ Pending.
   baseline is therefore within ~9% of the fastest lossless draft length in
   this regime (EAGLE-3 drafter, H100 SXM, batch 1); lambda stays 0.96-1.06
   (lossless decoding does not change the length distribution).
+
+### Step 4.1 (GPT-OSS half): temperature alone, lossless
+
+- Strict decoding at T 1.2 vs the Nibi T 1.0 reference (same cases,
+  `tables/temp__{gsm8k,livecodebench}.csv`, `*_vs_nibiref`): gsm8k lambda
+  1.27 [1.10, 1.47], rounds 1.37x, time 1.35x, accuracy unchanged (0.96 vs
+  0.97); livecodebench lambda 1.07 [0.99, 1.17], time 1.16x. A +0.2
+  temperature change inflates gsm8k about as much as mentored_dec at its
+  loosest alpha does at T 1.0 (lambda 1.16), without any relaxation.
+- T 1.5 breaks gsm8k (lambda 3.94, 48% of runs hit the 2,048-token cap,
+  accuracy 0.31); livecodebench lambda 1.82 [1.44, 2.27], time 2.51x. l_bar
+  falls as T rises (gsm8k 2.58 -> 2.36 -> 1.79): the EAGLE-3 drafter is
+  trained at the target's T 1.0 distribution, so lossless acceptance drops.
 
