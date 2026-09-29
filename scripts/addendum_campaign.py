@@ -639,6 +639,75 @@ def cmd_collect(args: argparse.Namespace) -> int:
     return 0
 
 
+# ------------------------------------------------------------------ grading
+
+MIRROR = "/scratch/billxby/lossy-addendum/mirror"
+GRADES_LOCAL = ADD / "analysis" / "grades.csv"
+UPLOADED = JOB_TMP / "mirror_uploaded.txt"
+
+
+def local_run_rels() -> list[str]:
+    """Every run dir under runs/ (campaign datasets + runs/addendum/<condition>/), relative to runs/."""
+    rels = []
+    for base in BASE:
+        for ds in (base, f"{base}_qwen3"):
+            rels += [str(p.parent.relative_to(RUNS)) for p in (RUNS / ds).glob("*/*/case_*/seed_*/run.json")]
+    addendum = RUNS / "addendum"
+    if addendum.is_dir():
+        rels += [str(p.parent.relative_to(RUNS)) for p in addendum.glob("*/*/*/*/case_*/seed_*/run.json")]
+    return sorted(rels)
+
+
+def cmd_grade(args: argparse.Namespace) -> int:
+    """Upload not-yet-graded runs to the Nibi mirror and submit one CPU grading job."""
+    import io
+    import tarfile
+
+    graded = set()
+    if GRADES_LOCAL.is_file():
+        with GRADES_LOCAL.open(newline="", encoding="utf-8") as handle:
+            graded = {r["relpath"] for r in csv.DictReader(handle) if r.get("verdict")}
+    uploaded = set(UPLOADED.read_text().split()) if UPLOADED.is_file() else set()
+    new = [r for r in local_run_rels() if r not in graded and r not in uploaded]
+    if new:
+        buf = io.BytesIO()
+        with tarfile.open(fileobj=buf, mode="w") as tar:
+            for rel in new:
+                for name in ("run.json", "config.json", "output.txt"):
+                    path = RUNS / rel / name
+                    if path.is_file():
+                        tar.add(path, arcname=f"{rel}/{name}")
+        ssh(f"mkdir -p {MIRROR}/runs && cd {MIRROR}/runs && tar -xf -", input_bytes=buf.getvalue(), timeout=1800)
+        UPLOADED.parent.mkdir(parents=True, exist_ok=True)
+        with UPLOADED.open("a") as handle:
+            handle.write("\n".join(new) + "\n")
+        print(f"uploaded {len(new)} run dir(s) ({len(buf.getvalue()) / 1e6:.0f} MB) to {MIRROR}/runs")
+    live = squeue_states()
+    queued = ssh("squeue -u billxby -h -n add-grade -o %i", check=False).stdout.decode().split()
+    if queued:
+        print(f"grading job already queued/running: {' '.join(queued)}")
+        return 0
+    repo = LANES["A"]["repo"]
+    out = ssh(f"cd {repo} && mkdir -p {MIRROR}/slurm && MIRROR={MIRROR} REPO_DIR={repo} "
+              f"sbatch --parsable --output={MIRROR}/slurm/%x-%j.out cascade/cluster/addendum_grade.sbatch").stdout.decode().strip()
+    progress(f"grading: uploaded {len(new)} run dir(s) to the Nibi mirror, submitted CPU grading job {out}")
+    print(f"submitted grading job {out}")
+    return 0
+
+
+def cmd_grade_pull(args: argparse.Namespace) -> int:
+    data = ssh(f"cat {MIRROR}/grades.csv", check=False).stdout
+    if not data:
+        print("no grades.csv on the mirror yet")
+        return 1
+    GRADES_LOCAL.parent.mkdir(parents=True, exist_ok=True)
+    GRADES_LOCAL.write_bytes(data)
+    n = data.count(b"\n") - 1
+    progress(f"grading: pulled {n} verdicts into campaign/addendum/analysis/grades.csv")
+    print(f"pulled {n} verdicts -> {GRADES_LOCAL}")
+    return 0
+
+
 def cmd_cycle(args: argparse.Namespace) -> int:
     cmd_collect(argparse.Namespace(no_push=True))
     cmd_plan(argparse.Namespace(quiet=True))
@@ -661,6 +730,8 @@ def main() -> int:
     p = sub.add_parser("collect"); p.add_argument("--no-push", action="store_true"); p.set_defaults(fn=cmd_collect)
     sub.add_parser("cycle").set_defaults(fn=cmd_cycle)
     sub.add_parser("summary").set_defaults(fn=cmd_summary)
+    sub.add_parser("grade").set_defaults(fn=cmd_grade)
+    sub.add_parser("grade-pull").set_defaults(fn=cmd_grade_pull)
     args = parser.parse_args()
     return args.fn(args)
 
