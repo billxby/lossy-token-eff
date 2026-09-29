@@ -293,7 +293,7 @@
     }
   ],
   "speedbench": {
-    "phase": "first40",
+    "phase": "full",
     "budget": {
       "reasoning": 8192,
       "math": null
@@ -340,8 +340,19 @@
       "case_053",
       "case_054"
     ],
-    "subset_relaxed": null,
-    "estimate": {}
+    "subset_relaxed": false,
+    "estimate": {
+      "s_per_case": {
+        "strict": 2.62,
+        "spec_casc_opt": 2.05,
+        "mentored_dec": 1.94,
+        "cactus": 1.85,
+        "r_fuzzy": 2.13,
+        "spec_casc_tok": 2.54
+      },
+      "full_split_gpu_h": 3.66,
+      "lane_budget_gpu_h": 24.0
+    }
   },
   "prompt_sync": {
     "A:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",

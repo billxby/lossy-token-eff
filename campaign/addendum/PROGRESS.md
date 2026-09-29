@@ -357,3 +357,7 @@ for what is done; this file records every action and failure.
 - 2026-09-29T19:27:11Z lane B: pulled 63 new run dir(s) into runs/
 - 2026-09-29T19:28:15Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 22936249
 - 2026-09-29T19:28:17Z grading: pulled 30261 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T19:35:36Z lane A: pulled 150 new run dir(s) into runs/
+- 2026-09-29T19:35:51Z lane B: pulled 43 new run dir(s) into runs/
+- 2026-09-29T19:35:55Z step 7: first-40 estimate of the full split (6 arms x 880): 3.7 GPU-h vs lane budget 24 GPU-h -> all arms run the full 880; s/case strict 2.6, spec_casc_opt 2.1, mentored_dec 1.9, cactus 1.9, r_fuzzy 2.1, spec_casc_tok 2.5
+- 2026-09-29T19:35:56Z step 5.2 main humaneval mentored_dec alpha=0.55 seed=1: done, 150/150 cases (jobs 22931500, 0.16 GPU-h)
