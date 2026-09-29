@@ -344,3 +344,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T19:00:08Z step 7: budget pilot reasoning: 0/20 strict cap-outs at 8192 tokens -> reasoning runs at 8192
 - 2026-09-29T19:00:08Z step 7: pilot done; time-estimate sample = the first 40 runnable cases (case_001..case_054; Math waits for its budget) on every arm
 - 2026-09-29T19:00:08Z step 2.2 main longbench_v2 mentored_dec alpha=0.75 seed=2: done, 150/150 cases (jobs 22881281, 0.27 GPU-h)
+- 2026-09-29T19:00:09Z step 5.2 main aime24 mentored_dec alpha=0.55 seed=1: done, 30/30 cases (jobs 22931500, 0.27 GPU-h)
