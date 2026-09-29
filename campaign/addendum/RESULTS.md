@@ -1,24 +1,24 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 19:02 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 19:18 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 25.0; estimated remaining, runnable rows: 17.3; blocked rows: 73.3.
+Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 25.9; estimated remaining, runnable rows: 14.6; blocked rows: 73.3.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 0 | 0 | 6 |
 | 2.1 | 48 | 0 | 0 | 0 | 48 |
-| 2.2 | 18 | 1 | 1 | 0 | 6 |
+| 2.2 | 19 | 0 | 1 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
 | 5.1 | 18 | 0 | 0 | 0 | 23 |
-| 5.2 | 3 | 1 | 7 | 0 | 0 |
+| 5.2 | 4 | 0 | 7 | 0 | 0 |
 | 6 | 12 | 0 | 0 | 0 | 18 |
-| 7 | 0 | 0 | 6 | 0 | 7 |
+| 7 | 0 | 2 | 3 | 1 | 7 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -403,9 +403,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | - | - | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | - | - | 0.01 | 0.86 (0.01) | - | - | - | - | - | - |
 | gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | 1.28 | 1.26 | - | - | 0.04 | 1.25 (0.04) | 0.92 | 0.81 | 0.79 | - | - | 0.07 | 0.84 (0.07) | - | - | - | - | - | - |
 | gpt-oss-20b | mtbench | spec_casc_tok | 0.8 | 0.96 | 1.02 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.90 | 0.93 | 0.94 | - | - | 0.02 | 0.92 (0.02) | - | - | - | - | - | - |
-| gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | 1.55 | 1.45 | - | - | 0.07 | 1.53 (0.07) | 1.04 | 1.05 | 1.02 | - | - | 0.02 | 1.04 (0.02) | 51% | 52% | - | - | - | 1% |
+| gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | 1.55 | 1.45 | - | - | 0.07 | 1.53 (0.07) | 1.04 | 1.05 | 1.02 | - | - | 0.02 | 1.04 (0.02) | 51% | 52% | 53% | - | - | 1% |
 | gpt-oss-20b | longbench_v2 | spec_casc_opt | 0.05 | 1.79 | 1.85 | 1.72 | - | - | 0.06 | 1.79 (0.06) | 1.07 | 1.29 | 1.24 | - | - | 0.12 | 1.20 (0.12) | 47% | 45% | 51% | - | - | 3% |
-| gpt-oss-20b | longbench_v2 | r_fuzzy | 0.25 | 1.69 | - | - | - | - | - | 1.69 (-) | 1.05 | - | - | - | - | - | 1.05 (-) | 40% | - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | r_fuzzy | 0.25 | 1.69 | 1.62 | - | - | - | 0.05 | 1.66 (0.05) | 1.05 | 1.03 | - | - | - | 0.01 | 1.04 (0.01) | 40% | - | - | - | - | - |
 | qwen3-8b | gsm8k | mentored_dec | 0.75 | 1.03 | - | - | - | - | - | 1.03 (-) | 0.95 | - | - | - | - | - | 0.95 (-) | 77% | - | - | - | - | - |
 | qwen3-8b | gsm8k | cactus | 0.35 | 1.04 | - | - | - | - | - | 1.04 (-) | 0.94 | - | - | - | - | - | 0.94 (-) | 77% | - | - | - | - | - |
 | qwen3-8b | gsm8k | spec_casc_opt | 0.05 | 1.33 | - | - | - | - | - | 1.33 (-) | 1.12 | - | - | - | - | - | 1.12 (-) | 49% | - | - | - | - | - |
@@ -455,7 +455,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | Nibi (H100 SXM), seeds 1-2 | mtbench | 960 | 7.08 | 0.08 | 0.012 | 0.13 |
 | Nibi (H100 SXM), seeds 1-2 | livecodebench | 1080 | 7.37 | 0.02 | 0.002 | 0.01 |
 | Nibi (H100 SXM), seeds 1-2 | aime24 | 360 | 7.19 | 0.05 | 0.007 | 0.04 |
-| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 900 | 11.43 | -0.57 | -0.050 | 0.05 |
+| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 1050 | 11.45 | -0.55 | -0.048 | 0.05 |
 
 ## Step 3: lossless draft-length sweep (strict, seed 0)
 
@@ -543,8 +543,8 @@ Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, meth
 |---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|
 | gpt-oss-20b | gsm8k | mentored_dec | True | 0.55 (0.55) | 1.10 | 0.86 | 0.84 | 95% / 96% | 0.98 | 0.76 | 0.75 | 97% / 96% |
 | gpt-oss-20b | gsm8k | spec_casc_tok | True | 0.55 (0.8) | 0.92 | 0.83 | 0.85 | 98% / 96% | 0.92 | 0.85 | 0.85 | 97% / 96% |
-| gpt-oss-20b | aime24 | mentored_dec | True | 0.55 (0.55) | 1.18 | 0.92 | 0.94 | 80% / 77% | 1.07 | 0.87 | 0.87 | - / 80% |
-| gpt-oss-20b | aime24 | spec_casc_tok | True | 0.15 (0.15) | 1.00 | 0.91 | 0.95 | 83% / 77% | - | - | - | - |
+| gpt-oss-20b | aime24 | mentored_dec | True | 0.55 (0.55) | 1.18 | 0.92 | 0.94 | 80% / 77% | 1.07 | 0.87 | 0.87 | 70% / 80% |
+| gpt-oss-20b | aime24 | spec_casc_tok | True | 0.15 (0.15) | 1.00 | 0.91 | 0.95 | 83% / 77% | 1.15 | 1.12 | 1.12 | - / 80% |
 | gpt-oss-20b | humaneval | mentored_dec | True | 0.55 (0.55) | 1.09 | 0.89 | 0.94 | 95% / 96% | - | - | - | - |
 | gpt-oss-20b | humaneval | spec_casc_tok | True | 0.35 (0.35) | 0.95 | 0.90 | 0.95 | 96% / 96% | - | - | - | - |
 | gpt-oss-20b | livecodebench | mentored_dec | True | 0.55 (0.55) | 1.20 | 0.96 | 0.95 | 88% / 89% | - | - | - | - |
@@ -588,6 +588,26 @@ Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); se
 ## Step 7: SPEED-Bench qualitative split (seed 0, Nibi)
 
 **Token-budget pilot, gpt-oss-20b** (`campaign/addendum/tables/speedbench_pilot__gpt-oss-20b.csv`; strict at 8192 on each category's first 20 cases, >10% cap-outs would raise the category to 16384): reasoning 0/20 cap-outs of 20 (mean 820, max 3269 tokens) -> budget 8192; math 0/4 cap-outs of 20 (mean 357, max 636 tokens) -> budget pending.
+
+### gpt-oss-20b
+
+Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (method, category); Eq. 4 per (method, category): `campaign/addendum/tables/speedbench_eq4__gpt-oss-20b.csv`; per-method counts: `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv`. Cell = lambda (completion tokens relaxed / strict) · R = verifier rounds ratio · T = wall-time ratio, all vs strict on the same cases; ↓/↑ = the 95% paired bootstrap interval lies entirely below/above 1. Strict column: mean completion tokens and cap-out rate.
+
+| category | strict tokens (cap-out) | cactus (0.35) | r_fuzzy (0.25) |
+|---|---:|---|---|
+| all | 931 (0%) | λ 1.57↑ · R 0.83 · T 0.87 (n=17) | λ 1.34 · R 0.91 · T 0.92 (n=17) |
+| coding | 802 (0%) | λ 1.68↑ · R 1.12 · T 1.10 (n=2) | λ 1.09 · R 0.80↓ · T 0.84↓ (n=2) |
+| humanities | 3164 (0%) | λ 0.80↓ · R 0.35↓ · T 0.35↓ (n=1) | λ 0.78↓ · R 0.48↓ · T 0.48↓ (n=1) |
+| writing | 1886 (0%) | λ 1.31↑ · R 0.79↓ · T 0.95 (n=2) | λ 0.95 · R 0.80↓ · T 0.80↓ (n=2) |
+| summarization | 298 (0%) | λ 0.77↓ · R 0.51↓ · T 0.53↓ (n=2) | λ 1.12 · R 0.93 · T 0.94 (n=2) |
+| roleplay | 828 (0%) | λ 3.14 · R 1.63 · T 1.64 (n=2) | λ 3.07 · R 1.99 · T 2.01 (n=2) |
+| rag | 486 (0%) | λ 1.12 · R 0.54 · T 0.55 (n=2) | λ 1.41↑ · R 0.84 · T 0.85 (n=2) |
+| multilingual | 494 (0%) | λ 1.18 · R 0.63↓ · T 0.64↓ (n=2) | λ 1.36↑ · R 1.07↑ · T 1.07↑ (n=2) |
+| reasoning | 876 (0%) | λ 1.32↑ · R 0.69↓ · T 0.70↓ (n=2) | λ 0.92 · R 0.60↓ · T 0.61↓ (n=2) |
+| qa | 660 (0%) | λ 3.33 · R 1.71 · T 1.71 (n=2) | λ 2.60 · R 1.36 · T 1.37 (n=2) |
+
+- **cactus** (alpha 0.35, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `cactus`): fewer verifier rounds in 6/9 categories (humanities, writing, summarization, rag, multilingual, reasoning); less wall time in 6/9 (humanities, writing, summarization, rag, multilingual, reasoning); Eq. 4 predicts a win in 6/9; completions longer by lambda 0.77 (summarization) to 3.33 (qa); rounds and time disagree in: none.
+- **r_fuzzy** (alpha 0.25, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `r_fuzzy`): fewer verifier rounds in 6/9 categories (coding, humanities, writing, summarization, rag, reasoning); less wall time in 6/9 (coding, humanities, writing, summarization, rag, reasoning); Eq. 4 predicts a win in 6/9; completions longer by lambda 0.78 (humanities) to 3.07 (roleplay); rounds and time disagree in: none.
 
 ## Observations, failures and anything that looked wrong
 
