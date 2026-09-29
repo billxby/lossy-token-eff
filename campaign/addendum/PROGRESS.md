@@ -144,3 +144,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T09:30:44Z step 2.1 main mtbench strict alpha=strict seed=2: done, 80/80 cases (jobs 22880871, 0.10 GPU-h)
 - 2026-09-29T09:30:45Z step 2.1 main mtbench spec_casc_opt alpha=0.05 seed=1: done, 80/80 cases (jobs 22880871, 0.10 GPU-h)
 - 2026-09-29T09:30:45Z step 2.1 main mtbench spec_casc_opt alpha=0.05 seed=2: done, 80/80 cases (jobs 22880871, 0.10 GPU-h)
+- 2026-09-29T09:30:46Z step 4.1 temp1.5 livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.58 GPU-h)
