@@ -227,6 +227,15 @@ def section_speedbench() -> list[str]:
         path = ADD / "tables" / f"speedbench__{family}.csv"
         eq4_path = ADD / "tables" / f"speedbench_eq4__{family}.csv"
         sum_path = ADD / "tables" / f"speedbench_eq4_summary__{family}.csv"
+        pilot_path = ADD / "tables" / f"speedbench_pilot__{family}.csv"
+        pilot = rows(pilot_path)
+        if pilot:
+            found = True
+            out += [f"**Token-budget pilot, {family}** (`{rel(pilot_path)}`; strict at 8192 on each category's first 20 "
+                    "cases, >10% cap-outs would raise the category to 16384): "
+                    + "; ".join(f"{p['category']} {p['capouts']}/{p['n_done']} cap-outs of {p['n_target']} "
+                                f"(mean {f(p['mean_completion_tokens'], 0)}, max {p['max_completion_tokens']} tokens) -> "
+                                f"budget {p['budget']}" for p in pilot) + ".", ""]
         t = rows(path)
         if not t:
             continue

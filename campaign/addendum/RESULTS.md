@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 19:01 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 19:02 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -587,7 +587,7 @@ Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); se
 
 ## Step 7: SPEED-Bench qualitative split (seed 0, Nibi)
 
-Pending.
+**Token-budget pilot, gpt-oss-20b** (`campaign/addendum/tables/speedbench_pilot__gpt-oss-20b.csv`; strict at 8192 on each category's first 20 cases, >10% cap-outs would raise the category to 16384): reasoning 0/20 cap-outs of 20 (mean 820, max 3269 tokens) -> budget 8192; math 0/4 cap-outs of 20 (mean 357, max 636 tokens) -> budget pending.
 
 ## Observations, failures and anything that looked wrong
 

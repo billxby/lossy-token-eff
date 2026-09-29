@@ -450,6 +450,20 @@ def cmd_speedbench(args) -> int:
     plus category) and tables/speedbench_eq4_summary__<family>.csv (per arm: win counts, disagreements)."""
     cats = sb_categories()
     for family, ds in (("gpt-oss-20b", "speedbench"), ("qwen3-8b", "speedbench_qwen3")):
+        pilot = load_cell(ds, "strict", "strict", 0, run_root=f"runs/addendum/speedbench_pilot/{family}")
+        if pilot:  # the token-budget pilot: first 20 cases of Reasoning and Math, strict at 8192
+            prow = []
+            for cat in ("reasoning", "math"):
+                first = [c for c in sorted(cats) if cats[c] == cat][:20]
+                done = [pilot[c] for c in first if c in pilot]
+                capped = sum(r.get("finish_reason") == "length" for r in done)
+                prow.append({"target": family, "category": cat, "first_cases": f"{first[0]}..{first[-1]}",
+                             "n_done": len(done), "n_target": len(first), "capouts": capped,
+                             "capout_rate": capped / len(done) if done else None,
+                             "mean_completion_tokens": float(np.mean([r["output_tokens"] for r in done])) if done else None,
+                             "max_completion_tokens": max((r["output_tokens"] for r in done), default=None),
+                             "budget": (16384 if capped / len(done) > 0.10 else 8192) if len(done) == len(first) else "pending"})
+            write_csv(ADD / "tables" / f"speedbench_pilot__{family}.csv", prow)
         root = f"runs/addendum/speedbench/{family}"
         strict = load_cell(ds, "strict", "strict", 0, run_root=root)
         if not strict:
@@ -519,6 +533,9 @@ def cmd_speedbench(args) -> int:
     readme = ADD / "tables" / "README.md"
     text = readme.read_text(encoding="utf-8") if readme.is_file() else "# campaign/addendum/tables\n"
     lines = {
+        "speedbench_pilot__<family>.csv": "step 7 token-budget pilot (runs/addendum/speedbench_pilot/<family>/): strict "
+        "at 8192 on the first 20 cases of Reasoning and Math; budget = 16384 if more than 10% cap out, else 8192 "
+        "('pending' until all 20 have run; 16 of Math's first 20 are cais/hle prompts). (scripts/addendum_tables.py speedbench)",
         "speedbench__<family>.csv": "step 7, SPEED-Bench qualitative (seed 0, Nibi): per arm and category (plus "
         "'all'), mean completion tokens / verifier rounds / wall time / l_bar and cap-out rate; for the relaxed "
         "arms also the strict means on the same cases and lambda, rounds ratio, time ratio vs strict with 95% "
