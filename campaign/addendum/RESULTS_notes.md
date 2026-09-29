@@ -36,3 +36,22 @@
   answered the typo'd text.
 - **Qwen3 proposal traces are empty files**: the tracer hooks the V1 sampler
   and Qwen3-8B runs on V2, so every Qwen3 trace-based statistic is GPT-OSS only.
+
+### Determinism and the ordinal effect, measured on Nibi (2026-09-29)
+
+- **Identical request history -> bit-identical output, across days and
+  nodes.** The addendum's GPT-OSS gsm8k strict seeds 1 and 2 (lane A, node
+  g3, 2026-09-29) reproduce the September E1P runs of the same seeds
+  (2026-09-15) in 300/300 cases (same text, same token counts; both runs
+  served cases 001-150 in order from a fresh server). livecodebench strict
+  seed 0: step-0.5 `nibiref` (lane B, g18) = E1P seed 0 in 90/90 cases.
+- **Different request history -> a different realization of the same
+  case and seed.** E1P's gsm8k strict seed 0 was collected in three server
+  sessions (case_001 alone on 09-11; cases 002-030 at ordinals 1-29 on
+  09-11; cases 031-150 at ordinals 1-120 on 09-15). Against `nibiref` (one
+  session, ordinals 1-150) only case_001 -- ordinal 1 in both -- matches;
+  the other 149 differ (case_002: 88 tokens at ordinal 1 vs 151 at ordinal
+  2). This is the request-history confound of `remote/ENVIRONMENT.md`,
+  reproduced directly: per-case outputs depend on the engine's history, so
+  per-case comparisons are only clean between runs that share it, which
+  every addendum arm does (one fresh server per arm+seed, cases in order).
