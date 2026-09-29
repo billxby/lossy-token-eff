@@ -1,18 +1,18 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 09:14 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 09:31 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 6.1; estimated remaining, runnable rows: 22.5; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 7.0; estimated remaining, runnable rows: 21.9; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 2 | 0 | 4 | 0 | 6 |
-| 2.1 | 25 | 1 | 22 | 0 | 48 |
-| 2.2 | 0 | 0 | 20 | 0 | 6 |
+| 2.1 | 28 | 1 | 19 | 0 | 48 |
+| 2.2 | 0 | 1 | 19 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
-| 4.1 | 3 | 1 | 0 | 0 | 4 |
+| 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
 | 5.1 | 0 | 0 | 18 | 0 | 23 |
@@ -390,7 +390,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | 0.19 | 1.13 (0.19) | 87% | 93% | 90% | 3% |
 | gpt-oss-20b | humaneval | spec_casc_opt | 0.05 | 1.73 | 1.91 | 1.58 | 0.16 | 1.74 (0.16) | 1.43 | 1.43 | 1.16 | 0.15 | 1.34 (0.15) | 82% | 83% | 78% | 3% |
 | gpt-oss-20b | humaneval | r_fuzzy | 0.25 | 1.64 | 1.79 | 1.63 | 0.09 | 1.69 (0.09) | 1.32 | 1.27 | 1.14 | 0.09 | 1.24 (0.09) | 63% | 61% | 64% | 1% |
-| gpt-oss-20b | humaneval | spec_casc_tok | 0.8 | 1.05 | 1.17 | 0.99 | 0.09 | 1.07 (0.09) | 0.98 | 1.06 | 0.88 | 0.09 | 0.97 (0.09) | 94% | - | - | - |
+| gpt-oss-20b | humaneval | spec_casc_tok | 0.8 | 1.05 | 1.17 | 0.99 | 0.09 | 1.07 (0.09) | 0.98 | 1.06 | 0.88 | 0.09 | 0.97 (0.09) | 94% | 96% | 97% | 1% |
 | gpt-oss-20b | livecodebench | mentored_dec | 0.75 | 1.25 | - | - | - | 1.25 (-) | 1.01 | - | - | - | 1.01 (-) | 84% | - | - | - |
 | gpt-oss-20b | livecodebench | cactus | 0.18 | 1.54 | - | - | - | 1.54 (-) | 1.14 | - | - | - | 1.14 (-) | 61% | - | - | - |
 | gpt-oss-20b | livecodebench | spec_casc_opt | 0.05 | 1.64 | - | - | - | 1.64 (-) | 1.32 | - | - | - | 1.32 (-) | 49% | - | - | - |
@@ -398,7 +398,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | livecodebench | spec_casc_tok | 0.8 | 1.16 | - | - | - | 1.16 (-) | 1.04 | - | - | - | 1.04 (-) | 88% | - | - | - |
 | gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | - | - | - | 1.10 (-) | 0.87 | - | - | - | 0.87 (-) | - | - | - | - |
 | gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | - | - | - | 1.18 (-) | 0.82 | - | - | - | 0.82 (-) | - | - | - | - |
-| gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | - | - | - | 1.09 (-) | 0.87 | - | - | - | 0.87 (-) | - | - | - | - |
+| gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | 0.01 | 0.86 (0.01) | - | - | - | - |
 | gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | - | - | - | 1.20 (-) | 0.92 | - | - | - | 0.92 (-) | - | - | - | - |
 | gpt-oss-20b | mtbench | spec_casc_tok | 0.8 | 0.96 | - | - | - | 0.96 (-) | 0.90 | - | - | - | 0.90 (-) | - | - | - | - |
 | gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | - | - | - | 1.59 (-) | 1.04 | - | - | - | 1.04 (-) | 51% | - | - | - |
@@ -486,16 +486,16 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.105 | 2.223 | 3456.240 | 2921.840 | 4032.690 | 1150.830 | 957.740 | 1366.760 | 25.190 | 21.255 | 29.646 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.152 | 2.275 | 3394.530 | 2880.170 | 3961.340 | 1120.230 | 931.181 | 1336.920 | 8.333 | 6.897 | 9.949 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.223 | 3456.240 | 2924.730 | 4043.920 | 1150.830 | 953.087 | 1373.580 | 25.190 | 21.146 | 29.582 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.152 | 2.275 | 3394.530 | 2863.670 | 3960.020 | 1120.230 | 924.710 | 1336.490 | 8.333 | 6.880 | 9.948 | 0.911 | 0.856 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
 | 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.945 | 2.065 | 3646.640 | 3096.530 | 4255.330 | 1296.980 | 1071.020 | 1547.700 | 9.625 | 7.946 | 11.476 | 0.867 | 0.789 | 0.933 | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.986 | 1.174 | 1.047 | 1.280 | 1.048 | 1.277 |
-| 1.500 | temp1.5 (Nibi) | 48.000 | 1.298 | 1.209 | 1.390 | 6076.980 | 4981.370 | 7167.120 | 2821.020 | 2280.180 | 3367.550 | 20.255 | 16.457 | 24.197 | - | - | - | 0.021 | 48.000 | 1.652 | 2.290 | 2.210 | 1.204 | 2.271 | 1.619 | 3.239 | 1.563 | 3.139 |
+| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.194 | 1.315 | 6193.010 | 5409.290 | 6961.310 | 2932.840 | 2543.210 | 3320.470 | 20.889 | 18.162 | 23.727 | - | - | - | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.440 | 2.271 | 2.056 | 3.361 | 1.956 | 3.192 |
 
 `campaign/addendum/tables/temp__livecodebench_qwen3.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7256.170 | 8781.310 | 3703.370 | 3324.200 | 4076.680 | 71.423 | 64.223 | 78.641 | 0.700 | 0.600 | 0.789 | 0.322 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7254.210 | 8791.720 | 3703.370 | 3333.440 | 4072.560 | 71.423 | 64.063 | 78.730 | 0.700 | 0.600 | 0.789 | 0.322 |
 
 ## Step 4.2: Qwen3 at its recommended sampler
 
