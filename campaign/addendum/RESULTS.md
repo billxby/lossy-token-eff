@@ -1,21 +1,21 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 17:27 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 17:47 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 22.6; estimated remaining, runnable rows: 3.7; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 23.1; estimated remaining, runnable rows: 2.7; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 0 | 0 | 6 |
 | 2.1 | 48 | 0 | 0 | 0 | 48 |
-| 2.2 | 13 | 1 | 6 | 0 | 6 |
+| 2.2 | 14 | 1 | 5 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
-| 5.1 | 16 | 1 | 1 | 0 | 23 |
+| 5.1 | 17 | 1 | 0 | 0 | 23 |
 | 6 | 12 | 0 | 0 | 0 | 18 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
@@ -453,7 +453,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | Nibi (H100 SXM), seeds 1-2 | mtbench | 960 | 7.08 | 0.08 | 0.012 | 0.13 |
 | Nibi (H100 SXM), seeds 1-2 | livecodebench | 1080 | 7.37 | 0.02 | 0.002 | 0.01 |
 | Nibi (H100 SXM), seeds 1-2 | aime24 | 360 | 7.19 | 0.05 | 0.007 | 0.04 |
-| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 249 | 12.33 | -0.99 | -0.080 | 0.05 |
+| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 407 | 11.29 | -0.60 | -0.053 | 0.04 |
 
 ## Step 3: lossless draft-length sweep (strict, seed 0)
 
