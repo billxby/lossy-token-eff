@@ -210,14 +210,32 @@ def cmd_collect(args) -> int:
     state = json.loads(STATE.read_text())
     runs = {r["relpath"]: r for r in collect_runs(args.seeds)}
     scored = {}
+    def retrying(fn, what: str):
+        """Transient API trouble (5xx, e.g. a 503 'credential validation failed', or a dropped network) must
+        not lose a submitted batch: keep retrying for up to 6 hours; 4xx errors still raise."""
+        deadline = time.time() + 6 * 3600
+        while True:
+            try:
+                return fn()
+            except (anthropic.APIConnectionError, anthropic.InternalServerError) as exc:
+                if time.time() > deadline:
+                    raise
+                print(f"{what}: transient {type(exc).__name__}: {str(exc)[:120]} -- retrying in 60 s", flush=True)
+                time.sleep(60)
+            except anthropic.APIStatusError as exc:
+                if exc.status_code < 500 or time.time() > deadline:
+                    raise
+                print(f"{what}: HTTP {exc.status_code} {str(exc)[:120]} -- retrying in 60 s", flush=True)
+                time.sleep(60)
+
     for b in state["batches"]:
         while True:
-            batch = client.messages.batches.retrieve(b["id"])
+            batch = retrying(lambda: client.messages.batches.retrieve(b["id"]), "retrieve")
             if batch.processing_status == "ended":
                 break
-            print(f"batch {b['id']}: {batch.processing_status}, {batch.request_counts.processing} processing")
+            print(f"batch {b['id']}: {batch.processing_status}, {batch.request_counts.processing} processing", flush=True)
             time.sleep(60)
-        for result in client.messages.batches.results(b["id"]):
+        for result in retrying(lambda: list(client.messages.batches.results(b["id"])), "results"):
             rel = b["ids"][result.custom_id]
             row = {"judge_model": b["model"], "judge_effort": b["effort"], "judge_model_served": "", "stop_reason": ""}
             if result.result.type != "succeeded":
