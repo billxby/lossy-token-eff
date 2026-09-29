@@ -41,3 +41,7 @@ for what is done; this file records every action and failure.
 - 2026-09-29T05:52Z Measured speed: strict seed-0 request time per output token, old box 7.06-7.51 ms vs Nibi (E1P runs) 2.20-2.45 ms (gsm8k, humaneval, livecodebench, aime24, mtbench); longbench_v2 72.6 s/case vs 4.7 s/case (prefill-bound on the old box). Added step 0.5 `nibiref` (README deviation 1).
 - 2026-09-29T05:52Z Per-arm overhead: Sept-16 Nibi server log shows ~3 min of `apply.sh` (two `import vllm` + the method self-test) before the server even starts, then ~2.7 min to healthy. Added opt-in `APPLY_SKIP_TEST_IF_APPLIED` (README deviation 2).
 - 2026-09-29T05:53Z Plan: 253 manifest rows (118 GPT-OSS pending, 135 Qwen3 blocked); step 5.1 missing cells = 41 (18 GPT-OSS + 23 Qwen3) as expected. Estimated GPU time: lane A 14.7 h, lane B 14.4 h (step 2.2 longbench_v2 moved from lane A to lane B to balance).
+- 2026-09-29T05:56:07Z lane A: submitted job 22880871; lane has 70 work items, est. 14.7 GPU-h
+- 2026-09-29T05:56:15Z lane A: submitted job 22880999 (afterany:22880871); lane has 70 work items, est. 14.7 GPU-h
+- 2026-09-29T05:56:23Z lane B: submitted job 22881159; lane has 48 work items, est. 14.4 GPU-h
+- 2026-09-29T05:56:30Z lane B: submitted job 22881281 (afterany:22881159); lane has 48 work items, est. 14.4 GPU-h
