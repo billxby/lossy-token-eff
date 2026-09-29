@@ -237,3 +237,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T14:30:58Z step 6 main aime24 spec_casc_opt alpha=0.05 seed=3: done, 30/30 cases (jobs 22881159, 0.35 GPU-h)
 - 2026-09-29T14:30:59Z step 6 main aime24 mentored_dec alpha=0.75 seed=3: done, 30/30 cases (jobs 22881159, 0.29 GPU-h)
 - 2026-09-29T14:30:59Z step 6 main aime24 cactus alpha=0.18 seed=3: done, 30/30 cases (jobs 22881159, 0.26 GPU-h)
+- 2026-09-29T14:32:04Z grading: uploaded 742 run dir(s) to the Nibi mirror, submitted CPU grading job 22918280
+- 2026-09-29T14:32:07Z grading: pulled 26125 verdicts into campaign/addendum/analysis/grades.csv
