@@ -48,3 +48,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T06:14:41Z lane A: pulled 300 new run dir(s) into runs/
 - 2026-09-29T06:14:50Z lane B: pulled 173 new run dir(s) into runs/
 - 2026-09-29T06:14:52Z step 0.5 nibiref gsm8k strict alpha=strict seed=0: done, 150/150 cases (jobs 22881159, 0.14 GPU-h)
+- 2026-09-29T06:14:53Z step 2.1 main gsm8k strict alpha=strict seed=1: done, 150/150 cases (jobs 22880871, 0.11 GPU-h)
