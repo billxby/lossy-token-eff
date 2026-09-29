@@ -107,3 +107,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T08:03:17Z lane B: pulled 213 new run dir(s) into runs/
 - 2026-09-29T08:03:20Z step 2.1 main humaneval spec_casc_opt alpha=0.05 seed=2: done, 150/150 cases (jobs 22880871, 0.16 GPU-h)
 - 2026-09-29T08:03:20Z step 2.1 main humaneval mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22880871, 0.14 GPU-h)
+- 2026-09-29T08:03:20Z step 3 nspec8 livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.29 GPU-h)
