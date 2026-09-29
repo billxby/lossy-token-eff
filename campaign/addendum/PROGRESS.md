@@ -25,6 +25,20 @@ for what is done; this file records every action and failure.
    05:25Z with a keepalive channel. If it drops, queued jobs keep running on
    Nibi (lanes are chained up to ~48 h ahead) but nothing is pulled back or
    resubmitted until one more Duo push is approved.
+4. **SPEED-Bench HLE prompts (step 7) -- 208 of 880 cases.** Humanities
+   (72/80), Math (62/80) and STEM (74/80) come from `cais/hle`, a gated
+   Hugging Face dataset (auto-approved on request). Ask: accept the terms at
+   https://huggingface.co/datasets/cais/hle with your HF account, create a
+   read token at https://huggingface.co/settings/tokens, and save it on the
+   Mac as `~/.cache/huggingface/token` (mode 600; do not paste it in chat).
+   Then `scripts/build_speedbench_prompts.py` adds the 208 prompts, the Math
+   budget pilot runs, and those cases join every arm. Everything else in
+   step 7 runs without it.
+5. **MT-Bench judge (step 1.9) -- decision.** Batch
+   `msgbatch_01MWf6AJLXcXd9ep5uFx5a7v` (2070 requests, claude-fable-5-1,
+   ~$89 at batch price) was submitted 13:31Z and still showed 0 processed at
+   18:27Z. Option: cancel it and judge the same requests directly (~$178,
+   about an hour). Not done without your say-so; the collector keeps waiting.
 
 ## Log
 

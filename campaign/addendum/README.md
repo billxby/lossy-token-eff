@@ -99,3 +99,41 @@ alpha grows).
    `seed_N/`), which a staged tar extract + `os.rename` into a
    not-yet-existing target gives directly. Only run dirs whose run.json says
    `ok` are pulled; the lane's `status.jsonl` journal comes back every cycle.
+8. **Step 7 (SPEED-Bench, added 2026-09-29 from Prof. Zhang) runs on both
+   GPT-OSS lanes, not lane B alone.** Lane B takes the budget pilot first,
+   then `strict`, `spec_casc_opt`, `mentored_dec`; lane A takes `cactus`,
+   `r_fuzzy`, `spec_casc_tok` (Bill: "like 2 GPUs"). The step text does not
+   define "the lane budget"; it is taken as one 12 h job on each of the two
+   lanes, 24 GPU-h (`SB_BUDGET_H` in `scripts/addendum_campaign.py`).
+9. **SPEED-Bench prompts** (`scripts/build_speedbench_prompts.py`): the
+   qualitative parquet at revision `454f8845...` (sha256 `4f76bc45...`);
+   the 494 placeholder rows are resolved with NVIDIA's own code
+   (Model-Optimizer `examples/specdec_bench`, commit `834c90d7...`,
+   `SPEEDBench._fetch_all_turns_data`). Case order is SPEED-Bench's own
+   stratified interleaving (round-robin over categories), so case_001..case_040
+   is the time-estimate sample and case_001..case_440 is exactly 40 per
+   category. Turn 1 only, as for the repo's MT-Bench (167 rows are
+   multi-turn; the later turns stay in `metadata.json`), rendered as the same
+   Harmony conversation as MT-Bench (the renderer reproduces
+   `prompts/mtbench/case_001` byte for byte). **Not committed:** the repo is
+   public, the data is under the NVIDIA Evaluation Dataset License and its
+   rows come from third-party sources (HLE asks that its questions stay off
+   the open web), so `prompts/speedbench*/` is gitignored and
+   `campaign/addendum/speedbench/cases.csv` records case -> question_id,
+   category, source, src_id, token count and the sha256 of every rendered
+   prompt. The 208 rows from `cais/hle` (gated) wait for a Hugging Face token
+   (PROGRESS.md Needs Bill 4); every other category is complete.
+10. **Step 7 mechanics.** The token-budget pilot (strict at 8192 on the first
+   20 Reasoning and first 20 Math cases) writes to its own run root,
+   `runs/addendum/speedbench_pilot/gpt-oss-20b/`, because a category whose
+   budget is raised to 16384 is run again at the new budget and run
+   directories are never overwritten. An arm whose cases need two budgets
+   runs as two work items (one server session each). "The first 40 prompts
+   of each arm" = the first 40 cases in case order that are runnable when the
+   pilot finishes (prompt built, category budget decided); Math joins once
+   its pilot cases (16 of the first 20 are HLE) have run. The per-arm
+   estimate and the full-vs-440 decision are written to the manifest notes
+   and PROGRESS.md before the rest is queued. While step 7 waits between
+   these phases, a lane that runs out of work keeps its GPU for up to 40 min
+   (`hold_minutes` in the work list, `scripts/addendum_lane.py`) instead of
+   exiting, so the next phase does not wait in the Slurm queue.

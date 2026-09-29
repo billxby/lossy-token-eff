@@ -1,21 +1,22 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 18:00 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 18:28 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 23.6; estimated remaining, runnable rows: 2.1; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (264 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 23.6; estimated remaining, runnable rows: 3.6; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 0 | 0 | 6 |
 | 2.1 | 48 | 0 | 0 | 0 | 48 |
-| 2.2 | 15 | 0 | 5 | 0 | 6 |
+| 2.2 | 15 | 1 | 4 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
 | 5.1 | 18 | 0 | 0 | 0 | 23 |
+| 5.2 | 0 | 0 | 11 | 0 | 0 |
 | 6 | 12 | 0 | 0 | 0 | 18 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
@@ -368,7 +369,7 @@ Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum 
 | spec_casc_tok | both | 160313 | 0.987 | 0.806 | 2.1 | 1 | 0.53 |
 | spec_casc_tok | lossy_only | 13089 | 0.287 | 0.349 | 0.9 | 2 | 1.54 |
 
-**MT-Bench judge (step 1.9)**: not run -- no Anthropic API key available (PROGRESS.md, Needs Bill 2); the judge is ready (`scripts/addendum_mtbench_judge.py`).
+**MT-Bench judge (step 1.9)**: pending -- 2070 turn-1 judgements submitted as one Message Batch (`campaign/addendum/analysis/mtbench_judge_batches.json`), not processed yet (PROGRESS.md, Needs Bill 5); `scripts/addendum_mtbench_judge.py collect` writes the CSVs when it ends.
 
 ## Step 2: seeds on the relaxed arms
 
@@ -535,11 +536,15 @@ Pending.
 
 ## Step 5: alpha grid completion and best-setting validation
 
-Pending.
+`campaign/addendum/best_setting.csv` (24 rows).
 
 ## Step 6: AIME24 accuracy repeats
 
 `campaign/addendum/aime24_repeats.csv` (12 rows).
+
+## Step 7: SPEED-Bench qualitative split (seed 0, Nibi)
+
+Pending.
 
 ## Observations, failures and anything that looked wrong
 

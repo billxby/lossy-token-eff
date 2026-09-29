@@ -100,6 +100,13 @@ class Lane:
         self.journal(event="work_unreadable", error=f"{type(last).__name__}: {last}")
         return []
 
+    def hold_minutes(self) -> float:
+        """work.json's hold_minutes: how long to wait for new items once the list is exhausted."""
+        try:
+            return float(json.loads(self.args.work.read_text(encoding="utf-8")).get("hold_minutes") or 0)
+        except (OSError, json.JSONDecodeError, TypeError, ValueError):
+            return 0.0
+
     def missing_cases(self, item: dict, quarantine: bool) -> list[str]:
         missing = []
         for case in item["cases"]:
@@ -153,6 +160,7 @@ class Lane:
         self.journal(event="job_start", work=str(self.args.work))
         attempts: dict[str, int] = {}
         failures = 0
+        idle_since = None
         while True:
             if (self.root / "STOP").exists():
                 self.journal(event="stop_file")
@@ -165,7 +173,18 @@ class Lane:
                     target = item
                     break
             if target is None:
+                # the orchestrator may be about to queue the next phase (step 7): keep the GPU a while
+                hold = self.hold_minutes()
+                if hold > 0 and (idle_since is None or time.time() - idle_since < hold * 60):
+                    if idle_since is None:
+                        idle_since = time.time()
+                        self.journal(event="idle_hold", minutes=hold)
+                    time.sleep(60)
+                    continue
                 break
+            if idle_since is not None:
+                self.journal(event="idle_end", waited_s=round(time.time() - idle_since, 1))
+                idle_since = None
             missing = self.missing_cases(target, quarantine=True)
             if not self.disk_ok(target):
                 failures += 1

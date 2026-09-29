@@ -159,9 +159,75 @@ def section_step1() -> list[str]:
         out.append("")
     mj = rows(AN / "mtbench_judge_summary.csv")
     out += ["**MT-Bench judge (step 1.9)**: " + (f"`{rel(AN / 'mtbench_judge_summary.csv')}`." if mj else
-            "not run -- no Anthropic API key available (PROGRESS.md, Needs Bill 2); the judge is ready "
-            "(`scripts/addendum_mtbench_judge.py`)."), ""]
+            "pending -- 2070 turn-1 judgements submitted as one Message Batch "
+            f"(`{rel(AN / 'mtbench_judge_batches.json')}`), not processed yet (PROGRESS.md, Needs Bill 5); "
+            "`scripts/addendum_mtbench_judge.py collect` writes the CSVs when it ends."), ""]
     return out
+
+
+SB_CAT_ORDER = ["all", "coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag",
+                "multilingual", "reasoning", "qa"]
+
+
+def arrow(lo, hi) -> str:
+    """Marks a ratio whose 95% interval excludes 1."""
+    if lo in (None, "") or hi in (None, ""):
+        return ""
+    return "↓" if float(hi) < 1 else ("↑" if float(lo) > 1 else "")
+
+
+def section_speedbench() -> list[str]:
+    out = ["## Step 7: SPEED-Bench qualitative split (seed 0, Nibi)", ""]
+    found = False
+    for family in ("gpt-oss-20b", "qwen3-8b"):
+        path = ADD / "tables" / f"speedbench__{family}.csv"
+        eq4_path = ADD / "tables" / f"speedbench_eq4__{family}.csv"
+        sum_path = ADD / "tables" / f"speedbench_eq4_summary__{family}.csv"
+        t = rows(path)
+        if not t:
+            continue
+        found = True
+        by = {(r["method"], r["category"]): r for r in t}
+        methods = [m for m in METHOD_ORDER if any(k[0] == m for k in by)]
+        out += [f"### {family}", "",
+                f"Source: `{rel(path)}`, one row per (method, category); Eq. 4 per (method, category): `{rel(eq4_path)}`; "
+                f"per-method counts: `{rel(sum_path)}`. Cell = lambda (completion tokens relaxed / strict) · R = verifier "
+                "rounds ratio · T = wall-time ratio, all vs strict on the same cases; ↓/↑ = the 95% paired bootstrap "
+                "interval lies entirely below/above 1. Strict column: mean completion tokens and cap-out rate.", "",
+                "| category | strict tokens (cap-out) | " + " | ".join(f"{m} ({next(r['alpha'] for (mm, _), r in by.items() if mm == m)})"
+                                                           for m in methods) + " |",
+                "|---|---:|" + "---|" * len(methods)]
+        for cat in SB_CAT_ORDER:
+            s = by.get(("strict", cat))
+            if not s:
+                continue
+            cells = []
+            for m in methods:
+                r = by.get((m, cat))
+                if not r:
+                    cells.append("-")
+                    continue
+                cells.append(f"λ {f(r['lambda'])}{arrow(r['lambda_ci_lo'], r['lambda_ci_hi'])} · "
+                             f"R {f(r['rounds_ratio'])}{arrow(r['rounds_ratio_ci_lo'], r['rounds_ratio_ci_hi'])} · "
+                             f"T {f(r['time_ratio'])}{arrow(r['time_ratio_ci_lo'], r['time_ratio_ci_hi'])} "
+                             f"(n={r['n_pairs']})")
+            out.append(f"| {cat} | {f(s['mean_completion_tokens'], 0)} ({pct(s['capout_rate'])}) | " + " | ".join(cells) + " |")
+        out.append("")
+        e = rows(eq4_path)
+        for r in rows(sum_path):
+            m = r["method"]
+            cats = [x for x in e if x["method"] == m and x["category"] != "all"]
+            saves_r = [x["category"] for x in cats if x["rounds_win"] == "1"]
+            saves_t = [x["category"] for x in cats if x["time_win"] == "1"]
+            lam = sorted(cats, key=lambda x: float(x["lambda"]))
+            out.append(f"- **{m}** (alpha {r['alpha']}, `{rel(sum_path)}` row `{m}`): fewer verifier rounds in "
+                       f"{r['rounds_wins']}/{r['categories']} categories ({', '.join(saves_r) or 'none'}); less wall time in "
+                       f"{r['time_wins']}/{r['categories']} ({', '.join(saves_t) or 'none'}); Eq. 4 predicts a win in "
+                       f"{r['eq4_wins']}/{r['categories']}; completions longer by lambda {f(lam[0]['lambda'])} "
+                       f"({lam[0]['category']}) to {f(lam[-1]['lambda'])} ({lam[-1]['category']}); rounds and time "
+                       f"disagree in: {r['rounds_time_disagree'] or 'none'}.")
+        out.append("")
+    return out + ([] if found else ["Pending.", ""])
 
 
 def section_seeds() -> list[str]:
@@ -244,6 +310,7 @@ def main() -> int:
               (f"`{rel(ADD / 'best_setting.csv')}` ({len(best)} rows)." if best else "Pending."), ""]
     aime = rows(ADD / "aime24_repeats.csv")
     lines += ["## Step 6: AIME24 accuracy repeats", "", (f"`{rel(ADD / 'aime24_repeats.csv')}` ({len(aime)} rows)." if aime else "Pending."), ""]
+    lines += section_speedbench()
     notes = ADD / "RESULTS_notes.md"
     lines += ["## Observations, failures and anything that looked wrong", ""]
     lines += [notes.read_text(encoding="utf-8").strip() if notes.is_file() else "(none yet)", ""]

@@ -10,6 +10,7 @@ built from the local runs/ tree and campaign/addendum/analysis/grades.csv
   python3 scripts/addendum_tables.py lmdraft  # step 4.3: tables/lmdraft__<ds>.csv
   python3 scripts/addendum_tables.py best     # step 5.2: best_setting.csv (+ --plan: the seed-1 arms to run)
   python3 scripts/addendum_tables.py aime     # step 6.2: aime24_repeats.csv
+  python3 scripts/addendum_tables.py speedbench  # step 7: tables/speedbench{,_eq4,_eq4_summary}__<family>.csv
 
 Ratios compare an arm with `strict` of the same dataset and seed on the cases
 both have (paired): lambda = mean completion tokens ratio, rounds ratio = mean
@@ -429,11 +430,118 @@ def cmd_aime(args) -> int:
     return 0
 
 
+# ------------------------------------------------------------------ step 7
+
+SB_ARMS = [("spec_casc_opt", "0.05"), ("mentored_dec", "0.75"), ("cactus", "0.35"), ("r_fuzzy", "0.25"),
+           ("spec_casc_tok", "0.8")]
+SB_CATS = ["coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag", "multilingual",
+           "reasoning", "qa"]  # step 7's order
+
+
+def sb_categories() -> dict[str, str]:
+    """case -> SPEED-Bench category (campaign/addendum/speedbench/cases.csv)."""
+    with (ADD / "speedbench" / "cases.csv").open(newline="", encoding="utf-8") as handle:
+        return {r["case"]: r["category"] for r in csv.DictReader(handle)}
+
+
+def cmd_speedbench(args) -> int:
+    """Step 7: tables/speedbench__<family>.csv (per arm x category: means, ratios to strict with paired
+    bootstrap intervals, cap-out rates), tables/speedbench_eq4__<family>.csv (eq4_vs_measured.csv's columns
+    plus category) and tables/speedbench_eq4_summary__<family>.csv (per arm: win counts, disagreements)."""
+    cats = sb_categories()
+    for family, ds in (("gpt-oss-20b", "speedbench"), ("qwen3-8b", "speedbench_qwen3")):
+        root = f"runs/addendum/speedbench/{family}"
+        strict = load_cell(ds, "strict", "strict", 0, run_root=root)
+        if not strict:
+            continue
+        rng = np.random.default_rng(RNG_SEED)
+        rows, eq4 = [], []
+
+        def in_cat(cell: dict[str, dict], cat: str) -> dict[str, dict]:
+            return {c: r for c, r in cell.items() if cat == "all" or cats.get(c) == cat}
+
+        for cat in ["all", *SB_CATS]:
+            S = in_cat(strict, cat)
+            if S:
+                row = {"target": family, "category": cat, "method": "strict", "alpha": "strict", "n_cases": len(S)}
+                for name, key in (("completion_tokens", "output_tokens"), ("verifier_rounds", "draft_rounds"),
+                                  ("wall_time_s", "wall_time_seconds"), ("l_bar", "l_bar")):
+                    row[f"mean_{name}"] = float(np.mean([float(r[key]) for r in S.values()]))
+                row["capout_rate"] = float(np.mean([r.get("finish_reason") == "length" for r in S.values()]))
+                rows.append(row)
+        for method, alpha in SB_ARMS:
+            relaxed = load_cell(ds, method, alpha, 0, run_root=root)
+            for cat in ["all", *SB_CATS]:
+                R, S = in_cat(relaxed, cat), in_cat(strict, cat)
+                c = compare(R, S, rng)
+                if not c["n_pairs"]:
+                    continue
+                cases = sorted(set(R) & set(S))
+                mean_of = lambda cell, key: float(np.mean([float(cell[x][key]) for x in cases]))
+                rows.append({
+                    "target": family, "category": cat, "method": method, "alpha": alpha, "n_cases": len(R),
+                    "n_pairs": c["n_pairs"],
+                    "mean_completion_tokens": c["mean_tokens"], "mean_completion_tokens_strict": c["mean_tokens_strict"],
+                    "mean_verifier_rounds": mean_of(R, "draft_rounds"), "mean_verifier_rounds_strict": mean_of(S, "draft_rounds"),
+                    "mean_wall_time_s": mean_of(R, "wall_time_seconds"), "mean_wall_time_s_strict": mean_of(S, "wall_time_seconds"),
+                    "mean_l_bar": c["l_bar"], "mean_l_bar_strict": c["l_bar_strict"],
+                    **{k: c[k] for k in ("lambda", "lambda_ci_lo", "lambda_ci_hi", "rounds_ratio", "rounds_ratio_ci_lo",
+                                         "rounds_ratio_ci_hi", "time_ratio", "time_ratio_ci_lo", "time_ratio_ci_hi")},
+                    "capout_rate": c["capout_rate"], "capout_rate_strict": c["capout_rate_strict"],
+                })
+                gain = (c["l_bar"] + 1) / (c["l_bar_strict"] + 1)
+                eq4.append({
+                    "target": family, "dataset": "speedbench", "category": cat, "method": method, "alpha": alpha,
+                    "n_pairs": c["n_pairs"], "l_bar_relaxed": c["l_bar"], "l_bar_strict": c["l_bar_strict"],
+                    "gain": gain, "lambda": c["lambda"], "gain_over_lambda": gain / c["lambda"],
+                    **{k: c[k] for k in ("rounds_ratio", "rounds_ratio_ci_lo", "rounds_ratio_ci_hi",
+                                         "time_ratio", "time_ratio_ci_lo", "time_ratio_ci_hi")},
+                    "eq4_predicts_win": int(gain / c["lambda"] > 1), "rounds_win": int(c["rounds_ratio"] < 1),
+                    "time_win": int(c["time_ratio"] < 1), "time_loss_beyond_ci": int(c["time_ratio_ci_lo"] > 1),
+                })
+        write_csv(ADD / "tables" / f"speedbench__{family}.csv", rows)
+        write_csv(ADD / "tables" / f"speedbench_eq4__{family}.csv", eq4)
+        summary = []
+        for method, alpha in SB_ARMS:
+            cells = [r for r in eq4 if r["method"] == method and r["category"] != "all"]
+            if not cells:
+                continue
+            summary.append({
+                "target": family, "method": method, "alpha": alpha, "categories": len(cells),
+                "eq4_wins": sum(r["eq4_predicts_win"] for r in cells), "rounds_wins": sum(r["rounds_win"] for r in cells),
+                "time_wins": sum(r["time_win"] for r in cells),
+                "time_losses_beyond_ci": sum(r["time_loss_beyond_ci"] for r in cells),
+                "eq4_wins_that_are_time_losses": sum(r["eq4_predicts_win"] and r["time_ratio"] > 1 for r in cells),
+                "rounds_wins_that_are_time_losses": sum(r["rounds_win"] and r["time_ratio"] > 1 for r in cells),
+                "rounds_time_disagree": " ".join(r["category"] for r in cells if r["rounds_win"] != r["time_win"]),
+            })
+        write_csv(ADD / "tables" / f"speedbench_eq4_summary__{family}.csv", summary)
+    readme = ADD / "tables" / "README.md"
+    text = readme.read_text(encoding="utf-8") if readme.is_file() else "# campaign/addendum/tables\n"
+    lines = {
+        "speedbench__<family>.csv": "step 7, SPEED-Bench qualitative (seed 0, Nibi): per arm and category (plus "
+        "'all'), mean completion tokens / verifier rounds / wall time / l_bar and cap-out rate; for the relaxed "
+        "arms also the strict means on the same cases and lambda, rounds ratio, time ratio vs strict with 95% "
+        "paired bootstrap intervals (10,000 resamples, numpy seed 20261001). (scripts/addendum_tables.py speedbench)",
+        "speedbench_eq4__<family>.csv": "step 7: the columns of analysis/eq4_vs_measured.csv plus `category`, per "
+        "relaxed arm and category: gain = (l_bar + 1)/(l_bar* + 1), gain/lambda, measured rounds and time ratios, "
+        "and the four flags. (scripts/addendum_tables.py speedbench)",
+        "speedbench_eq4_summary__<family>.csv": "step 7: per relaxed arm, counts over the 11 categories (Eq. 4 / "
+        "rounds / time wins, wins that are time losses) and the categories where the rounds and time verdicts "
+        "disagree. (scripts/addendum_tables.py speedbench)",
+    }
+    for name, desc in lines.items():
+        if f"- `{name}`:" not in text:
+            text = text.rstrip("\n") + f"\n- `{name}`: {desc}\n"
+    readme.write_text(text, encoding="utf-8")
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name, fn in (("seeds", cmd_seeds), ("nspec", cmd_nspec), ("temp", cmd_temp), ("qwenT", cmd_qwenT),
-                     ("lmdraft", cmd_lmdraft), ("aime", cmd_aime)):
+                     ("lmdraft", cmd_lmdraft), ("aime", cmd_aime), ("speedbench", cmd_speedbench)):
         sub.add_parser(name).set_defaults(fn=fn)
     p = sub.add_parser("best")
     p.add_argument("--plan", action="store_true")
