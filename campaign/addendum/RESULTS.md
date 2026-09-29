@@ -1,15 +1,15 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 09:48 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 10:05 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 7.5; estimated remaining, runnable rows: 21.4; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 7.8; estimated remaining, runnable rows: 20.8; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 2 | 0 | 4 | 0 | 6 |
-| 2.1 | 30 | 1 | 17 | 0 | 48 |
+| 2.1 | 33 | 1 | 14 | 0 | 48 |
 | 2.2 | 1 | 1 | 18 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
@@ -397,9 +397,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | livecodebench | r_fuzzy | 0.25 | 1.65 | - | - | - | 1.65 (-) | 1.27 | - | - | - | 1.27 (-) | 34% | - | - | - |
 | gpt-oss-20b | livecodebench | spec_casc_tok | 0.8 | 1.16 | - | - | - | 1.16 (-) | 1.04 | - | - | - | 1.04 (-) | 88% | - | - | - |
 | gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | 1.14 | 1.19 | 0.05 | 1.14 (0.05) | 0.87 | 0.78 | 0.79 | 0.05 | 0.82 (0.05) | - | - | - | - |
-| gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | - | - | - | 1.18 (-) | 0.82 | - | - | - | 0.82 (-) | - | - | - | - |
+| gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | 1.31 | 1.31 | 0.07 | 1.27 (0.07) | 0.82 | 0.69 | 0.67 | 0.08 | 0.73 (0.08) | - | - | - | - |
 | gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | 0.01 | 0.86 (0.01) | - | - | - | - |
-| gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | - | - | - | 1.20 (-) | 0.92 | - | - | - | 0.92 (-) | - | - | - | - |
+| gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | 1.28 | - | 0.06 | 1.24 (0.06) | 0.92 | 0.81 | - | 0.08 | 0.86 (0.08) | - | - | - | - |
 | gpt-oss-20b | mtbench | spec_casc_tok | 0.8 | 0.96 | - | - | - | 0.96 (-) | 0.90 | - | - | - | 0.90 (-) | - | - | - | - |
 | gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | - | - | - | 1.59 (-) | 1.04 | - | - | - | 1.04 (-) | 51% | - | - | - |
 | gpt-oss-20b | longbench_v2 | spec_casc_opt | 0.05 | 1.79 | - | - | - | 1.79 (-) | 1.07 | - | - | - | 1.07 (-) | 47% | - | - | - |
