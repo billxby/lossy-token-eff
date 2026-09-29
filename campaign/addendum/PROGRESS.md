@@ -235,3 +235,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T14:30:57Z step 0.5 nibiref aime24 strict alpha=strict seed=0: done, 30/30 cases (jobs 22880871, 0.22 GPU-h)
 - 2026-09-29T14:30:58Z step 5.1 main gsm8k mentored_dec alpha=0.55 seed=0: done, 150/150 cases (jobs 22880871, 0.12 GPU-h)
 - 2026-09-29T14:30:58Z step 6 main aime24 spec_casc_opt alpha=0.05 seed=3: done, 30/30 cases (jobs 22881159, 0.35 GPU-h)
+- 2026-09-29T14:30:59Z step 6 main aime24 mentored_dec alpha=0.75 seed=3: done, 30/30 cases (jobs 22881159, 0.29 GPU-h)
