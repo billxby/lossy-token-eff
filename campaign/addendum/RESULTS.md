@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 18:41 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 18:43 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -537,11 +537,53 @@ Pending.
 
 ## Step 5: alpha grid completion and best-setting validation
 
-`campaign/addendum/best_setting.csv` (24 rows).
+Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, method). Chosen alpha = the grid alpha with the lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time ratios of Nibi-run cells (the step-5.1 additions) are taken against the Nibi strict reference (`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi ('-' = not complete yet).
+
+| target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict |
+|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|
+| gpt-oss-20b | gsm8k | mentored_dec | True | 0.55 (0.55) | 1.10 | 0.86 | 0.84 | 95% / 96% | 0.98 | 0.76 | 0.75 | - / 96% |
+| gpt-oss-20b | gsm8k | spec_casc_tok | True | 0.55 (0.8) | 0.92 | 0.83 | 0.85 | 98% / 96% | 0.92 | 0.85 | 0.85 | - / 96% |
+| gpt-oss-20b | aime24 | mentored_dec | True | 0.55 (0.55) | 1.18 | 0.92 | 0.94 | 80% / 77% | - | - | - | - |
+| gpt-oss-20b | aime24 | spec_casc_tok | True | 0.15 (0.15) | 1.00 | 0.91 | 0.95 | 83% / 77% | - | - | - | - |
+| gpt-oss-20b | humaneval | mentored_dec | True | 0.55 (0.55) | 1.09 | 0.89 | 0.94 | 95% / 96% | - | - | - | - |
+| gpt-oss-20b | humaneval | spec_casc_tok | True | 0.35 (0.35) | 0.95 | 0.90 | 0.95 | 96% / 96% | - | - | - | - |
+| gpt-oss-20b | livecodebench | mentored_dec | True | 0.55 (0.55) | 1.20 | 0.96 | 0.95 | 88% / 89% | - | - | - | - |
+| gpt-oss-20b | livecodebench | spec_casc_tok | True | 0.35 (0.35) | 1.01 | 0.94 | 0.96 | 91% / 89% | - | - | - | - |
+| gpt-oss-20b | mtbench | mentored_dec | True | 0.75 (0.75) | 1.10 | 0.75 | 0.87 | - / - | 1.14 | 0.76 | 0.78 | - / - |
+| gpt-oss-20b | mtbench | spec_casc_tok | True | 0.55 (0.8) | 0.97 | 0.93 | 0.89 | - / - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | mentored_dec | True | 0.55 (0.55) | 1.11 | 0.89 | 1.00 | 57% / 56% | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | spec_casc_tok | True | 0.55 (0.55) | 1.06 | 0.97 | 0.94 | 57% / 56% | - | - | - | - |
+| qwen3-8b | gsm8k | mentored_dec | False | - (-) | - | - | - | - / - | - | - | - | - |
+| qwen3-8b | gsm8k | spec_casc_tok | False | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | - | - | - | - |
+| qwen3-8b | aime24 | mentored_dec | False | 0.15 (0.15) | 0.91 | 0.88 | 0.89 | 73% / 70% | - | - | - | - |
+| qwen3-8b | aime24 | spec_casc_tok | False | 0.8 (0.8) | 0.98 | 0.93 | 0.93 | 70% / 70% | - | - | - | - |
+| qwen3-8b | humaneval | mentored_dec | False | 0.75 (0.75) | 1.08 | 0.99 | 1.02 | 85% / 83% | - | - | - | - |
+| qwen3-8b | humaneval | spec_casc_tok | False | 0.8 (0.8) | 1.08 | 1.04 | 1.05 | 85% / 83% | - | - | - | - |
+| qwen3-8b | livecodebench | mentored_dec | False | 0.15 (0.15) | 1.02 | 0.99 | 0.99 | 73% / 70% | - | - | - | - |
+| qwen3-8b | livecodebench | spec_casc_tok | False | 0.8 (0.8) | 1.00 | 0.94 | 0.96 | 71% / 70% | - | - | - | - |
+| qwen3-8b | mtbench | mentored_dec | False | 0.75 (0.75) | 1.04 | 0.89 | 0.93 | - / - | - | - | - | - |
+| qwen3-8b | mtbench | spec_casc_tok | False | 0.8 (0.8) | 1.04 | 0.96 | 0.99 | - / - | - | - | - | - |
+| qwen3-8b | longbench_v2 | mentored_dec | False | 0.75 (0.75) | 1.06 | 0.98 | 0.99 | 51% / 53% | - | - | - | - |
+| qwen3-8b | longbench_v2 | spec_casc_tok | False | 0.15 (0.15) | 1.05 | 1.03 | 1.03 | 51% / 53% | - | - | - | - |
 
 ## Step 6: AIME24 accuracy repeats
 
-`campaign/addendum/aime24_repeats.csv` (12 rows).
+Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); seed 0 = the campaign (old box), seeds 1-4 = Nibi. Interval: two-level bootstrap (problems, then seeds within a problem), 10,000 resamples.
+
+| target | method | alpha | acc s0 | acc s1 | acc s2 | acc s3 | acc s4 | mean over seeds [95% CI] | sd across seeds | seeds |
+|---|---|---:|---:|---:|---:|---:|---:|---|---:|---|
+| gpt-oss-20b | strict | strict | 77% | 80% | 73% | 80% | 83% | 78.7% [65.3%, 90.7%] | 0.038 | 0 1 2 3 4 |
+| gpt-oss-20b | mentored_dec | 0.75 | 63% | 70% | 67% | 77% | 63% | 68.0% [52.7%, 82.0%] | 0.056 | 0 1 2 3 4 |
+| gpt-oss-20b | cactus | 0.18 | 60% | 50% | 43% | 50% | 53% | 51.3% [36.0%, 66.7%] | 0.061 | 0 1 2 3 4 |
+| gpt-oss-20b | spec_casc_opt | 0.05 | 37% | 33% | 43% | 43% | 40% | 39.3% [25.3%, 53.3%] | 0.043 | 0 1 2 3 4 |
+| gpt-oss-20b | r_fuzzy | 0.25 | 50% | 43% | 53% | 50% | 43% | 48.0% [33.3%, 62.7%] | 0.045 | 0 1 2 3 4 |
+| gpt-oss-20b | spec_casc_tok | 0.8 | 70% | 73% | 67% | 60% | 73% | 68.7% [54.0%, 82.0%] | 0.056 | 0 1 2 3 4 |
+| qwen3-8b | strict | strict | 70% | - | - | - | - | 70.0% [53.3%, 86.7%] | - | 0 |
+| qwen3-8b | mentored_dec | 0.75 | 73% | - | - | - | - | 73.3% [56.7%, 86.7%] | - | 0 |
+| qwen3-8b | cactus | 0.35 | 23% | - | - | - | - | 23.3% [10.0%, 40.0%] | - | 0 |
+| qwen3-8b | spec_casc_opt | 0.05 | 30% | - | - | - | - | 30.0% [13.3%, 46.7%] | - | 0 |
+| qwen3-8b | r_fuzzy | 0.25 | 40% | - | - | - | - | 40.0% [23.3%, 56.7%] | - | 0 |
+| qwen3-8b | spec_casc_tok | 0.8 | 70% | - | - | - | - | 70.0% [53.3%, 86.7%] | - | 0 |
 
 ## Step 7: SPEED-Bench qualitative split (seed 0, Nibi)
 

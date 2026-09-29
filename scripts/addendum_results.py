@@ -18,6 +18,7 @@ ADD = REPO / "campaign" / "addendum"
 AN = ADD / "analysis"
 DS_ORDER = ["gsm8k", "aime24", "humaneval", "livecodebench", "mtbench", "longbench_v2"]
 METHOD_ORDER = ["mentored_dec", "cactus", "spec_casc_opt", "r_fuzzy", "spec_casc_tok"]
+N_CASES = {"gsm8k": 150, "humaneval": 150, "longbench_v2": 150, "livecodebench": 90, "mtbench": 80, "aime24": 30}
 
 
 def rows(path: pathlib.Path) -> list[dict]:
@@ -165,6 +166,49 @@ def section_step1() -> list[str]:
     return out
 
 
+def section_best() -> list[str]:
+    path = ADD / "best_setting.csv"
+    b = sorted(rows(path), key=cell_sort)
+    out = ["## Step 5: alpha grid completion and best-setting validation", ""]
+    if not b:
+        return out + ["Pending.", ""]
+    out += [f"Source: `{rel(path)}`, one row per (target, dataset, method). Chosen alpha = the grid alpha with the "
+            "lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: "
+            "rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time "
+            "ratios of Nibi-run cells (the step-5.1 additions) are taken against the Nibi strict reference "
+            "(`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi ('-' = not complete yet).", "",
+            "| target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | "
+            "s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict |",
+            "|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|"]
+    for r in b:
+        s1_full = int(float(r.get("s1_n_pairs") or 0)) == N_CASES.get(r["dataset"], -1)  # all cases paired
+        s1 = (lambda k: f(r.get(k)) if s1_full else "-")
+        out.append(f"| {r['target']} | {r['dataset']} | {r['method']} | {r['grid_complete']} | "
+                   f"{r['chosen_alpha'] or '-'} ({r['chosen_alpha_by_rounds_ratio'] or '-'}) | {f(r.get('s0_lambda'))} | "
+                   f"{f(r.get('s0_rounds_ratio'))} | {f(r.get('s0_time_ratio'))} | {pct(r.get('s0_accuracy'))} / "
+                   f"{pct(r.get('s0_accuracy_strict'))} | {s1('s1_lambda')} | {s1('s1_rounds_ratio')} | {s1('s1_time_ratio')} | "
+                   + (f"{pct(r.get('s1_accuracy'))} / {pct(r.get('s1_accuracy_strict'))}" if s1_full else "-") + " |")
+    return out + [""]
+
+
+def section_aime() -> list[str]:
+    path = ADD / "aime24_repeats.csv"
+    a = rows(path)
+    out = ["## Step 6: AIME24 accuracy repeats", ""]
+    if not a:
+        return out + ["Pending.", ""]
+    seeds = sorted({k.removeprefix("acc_s") for k in a[0] if k.startswith("acc_s") and k[5:].isdigit()})
+    out += [f"Source: `{rel(path)}`, one row per (target, method); seed 0 = the campaign (old box), seeds 1-4 = Nibi. "
+            "Interval: two-level bootstrap (problems, then seeds within a problem), 10,000 resamples.", "",
+            "| target | method | alpha | " + " | ".join(f"acc s{s}" for s in seeds) + " | mean over seeds [95% CI] | sd across seeds | seeds |",
+            "|---|---|---:|" + "---:|" * len(seeds) + "---|---:|---|"]
+    for r in a:
+        out.append(f"| {r['target']} | {r['method']} | {r['alpha']} | " + " | ".join(pct(r.get(f"acc_s{s}")) for s in seeds)
+                   + f" | {pct(r.get('acc_mean_over_seeds'), 1)} [{pct(r.get('acc_ci_lo'), 1)}, {pct(r.get('acc_ci_hi'), 1)}] | "
+                   f"{f(r.get('acc_sd_across_seeds'), 3)} | {r.get('seeds_complete') or '-'} |")
+    return out + [""]
+
+
 SB_CAT_ORDER = ["all", "coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag",
                 "multilingual", "reasoning", "qa"]
 
@@ -305,11 +349,8 @@ def main() -> int:
     lines += section_tables("## Step 4.1: temperature (strict, seed 0)", "temp__*.csv")
     lines += section_tables("## Step 4.2: Qwen3 at its recommended sampler", "qwenT0.6__*.csv")
     lines += section_tables("## Step 4.3: standalone LM drafter (Qwen3-0.6B)", "lmdraft__*.csv")
-    best = rows(ADD / "best_setting.csv")
-    lines += ["## Step 5: alpha grid completion and best-setting validation", "",
-              (f"`{rel(ADD / 'best_setting.csv')}` ({len(best)} rows)." if best else "Pending."), ""]
-    aime = rows(ADD / "aime24_repeats.csv")
-    lines += ["## Step 6: AIME24 accuracy repeats", "", (f"`{rel(ADD / 'aime24_repeats.csv')}` ({len(aime)} rows)." if aime else "Pending."), ""]
+    lines += section_best()
+    lines += section_aime()
     lines += section_speedbench()
     notes = ADD / "RESULTS_notes.md"
     lines += ["## Observations, failures and anything that looked wrong", ""]
