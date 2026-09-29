@@ -252,3 +252,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T15:31:51Z step 6 main aime24 strict alpha=strict seed=4: done, 30/30 cases (jobs 22881159, 0.26 GPU-h)
 - 2026-09-29T15:34:07Z grading: uploaded 1044 run dir(s) to the Nibi mirror, submitted CPU grading job 22921601
 - 2026-09-29T15:34:10Z grading: pulled 26867 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T13:37Z-14:28Z Nibi link down (this Mac's connection dropped; last keepalive 13:37:46Z). Lanes kept running; one Duo push reconnected at 14:28Z and the next poll collected 742 runs / 9 arms.
+- 2026-09-29T14:20Z Step 0.2 re-check (Bill asked "is that sampler nowhere in the box"): not in any readable path on Nibi (/project/6071935 other members' dirs are not readable; only the two pristine lane copies), not in git on any branch incl. upstream (chiatzenw-cur) and the 2026-09-24 stash (only HASHES.txt/JOURNAL.md mention its code), not found on this Mac after a 2-hour full-home scan (cascade/SETUP.md: vLLM was never installed on this Mac). Only the old box has it.
+- 2026-09-29T14:30Z Judge collector crashed on a transient API 503 ("credential validation failed") while polling; now retries 5xx/connection errors for up to 6 h. Batch msgbatch_01MWf6AJLXcXd9ep5uFx5a7v still in_progress at 15:35Z (0/2,070 done).
