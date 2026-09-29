@@ -233,3 +233,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T14:30:57Z step 0.5 nibiref mtbench strict alpha=strict seed=0: done, 80/80 cases (jobs 22880871, 0.11 GPU-h)
 - 2026-09-29T14:30:57Z step 0.5 nibiref longbench_v2 strict alpha=strict seed=0: done, 150/150 cases (jobs 22880871, 0.24 GPU-h)
 - 2026-09-29T14:30:57Z step 0.5 nibiref aime24 strict alpha=strict seed=0: done, 30/30 cases (jobs 22880871, 0.22 GPU-h)
+- 2026-09-29T14:30:58Z step 5.1 main gsm8k mentored_dec alpha=0.55 seed=0: done, 150/150 cases (jobs 22880871, 0.12 GPU-h)
