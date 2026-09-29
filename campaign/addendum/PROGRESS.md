@@ -51,3 +51,11 @@ for what is done; this file records every action and failure.
 - 2026-09-29T06:14:53Z step 2.1 main gsm8k strict alpha=strict seed=1: done, 150/150 cases (jobs 22880871, 0.11 GPU-h)
 - 2026-09-29T06:14:53Z step 2.1 main gsm8k strict alpha=strict seed=2: done, 150/150 cases (jobs 22880871, 0.09 GPU-h)
 - 2026-09-29T06:19:30Z grading: uploaded 18265 run dir(s) to the Nibi mirror, submitted CPU grading job 22892393
+- 2026-09-29T05:56Z Launched: lane A jobs 22880871 -> 22880999 (afterany), lane B jobs 22881159 -> 22881281 (afterany); 70 + 48 work items. Both started ~06:00Z (g3, g18).
+- 2026-09-29T06:19Z Grading mirror: 18,265 campaign run dirs (run.json + config.json + output.txt, 483 MB) uploaded to /scratch/billxby/lossy-addendum/mirror; CPU job 22892393 graded all of them in 5 min (06:19-06:24Z).
+- 2026-09-29T06:23Z FAILURE lane A, job 22880871: `main|gsm8k|mentored_dec|0.75|1` attempt 1 exited 1 after 96 s -- patches/test_mentored_dec.py's V2 plumbing check fails on Nibi (V2 file pristine); V1 patch installed and V1 kernel checks passed. Attempt 2 ran (patch already installed -> self-test skipped). Fix: MENTORED_DEC_TEST_V1_ONLY for GPT-OSS items (README deviation 5), verified on the login node (plumbing checks pass, V1 only).
+- 2026-09-29T06:25Z Step 1 first pass: 60-cell Eq. 4 / rounds / time counts reproduce the paper exactly (33/38/27; 6 and 11 time losses); 20 cells are time losses beyond the 95% paired bootstrap interval.
+- 2026-09-29T06:32:22Z grading: pulled 18265 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T06:33:05Z lane A: pulled 450 new run dir(s) into runs/
+- 2026-09-29T06:33:22Z lane B: pulled 217 new run dir(s) into runs/
+- 2026-09-29T06:33:24Z step 0.5 nibiref livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.27 GPU-h)

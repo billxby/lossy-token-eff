@@ -1,12 +1,12 @@
 step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,status,slurm_job_ids,gpu_hours_est,gpu_hours_actual,notes
 0.5,nibiref,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nibiref,150,150,done,22881159,0.00,0.14,lane=B
-0.5,nibiref,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nibiref,90,23,running,22881159,0.23,,lane=B
+0.5,nibiref,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nibiref,90,90,done,22881159,0.00,0.27,lane=B
 2.1,main,gpt-oss-20b,gsm8k,strict,strict,1,runs,150,150,done,22880871,0.00,0.11,lane=A
 2.1,main,gpt-oss-20b,gsm8k,strict,strict,2,runs,150,150,done,22880871,0.00,0.09,lane=A
-2.1,main,gpt-oss-20b,gsm8k,spec_casc_opt,0.05,1,runs,150,0,running,22880871,0.11,,lane=A
-2.1,main,gpt-oss-20b,gsm8k,spec_casc_opt,0.05,2,runs,150,0,queued,,0.11,,lane=A
-2.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.75,1,runs,150,0,queued,,0.11,,lane=A
-2.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.75,2,runs,150,0,queued,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,spec_casc_opt,0.05,1,runs,150,150,done,22880871,0.00,0.10,lane=A
+2.1,main,gpt-oss-20b,gsm8k,spec_casc_opt,0.05,2,runs,150,150,done,22880871,0.00,0.09,lane=A
+2.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.75,1,runs,150,150,done,22880871,0.00,0.12,lane=A
+2.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.75,2,runs,150,0,running,22880871,0.11,,lane=A
 2.1,main,gpt-oss-20b,gsm8k,cactus,0.35,1,runs,150,0,queued,,0.11,,lane=A
 2.1,main,gpt-oss-20b,gsm8k,cactus,0.35,2,runs,150,0,queued,,0.11,,lane=A
 2.1,main,gpt-oss-20b,gsm8k,r_fuzzy,0.25,1,runs,150,0,queued,,0.12,,lane=A
@@ -107,8 +107,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 0.5,nibiref,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nibiref,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
 0.5,nibiref,qwen3-8b,mtbench_qwen3,strict,strict,0,runs/addendum/nibiref,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
 0.5,nibiref,qwen3-8b,aime24_qwen3,strict,strict,0,runs/addendum/nibiref,30,0,blocked,,0.55,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
-3,nspec2,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec2,150,0,queued,,0.11,,lane=B
-3,nspec2,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec2,90,0,queued,,0.28,,lane=B
+3,nspec2,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec2,150,150,done,22881159,0.00,0.12,lane=B
+3,nspec2,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec2,90,0,running,22881159,0.28,,lane=B
 3,nspec3,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec3,150,0,queued,,0.11,,lane=B
 3,nspec3,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec3,90,0,queued,,0.28,,lane=B
 3,nspec4,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec4,150,0,queued,,0.11,,lane=B
