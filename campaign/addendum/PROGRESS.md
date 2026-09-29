@@ -309,3 +309,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T18:06:50Z grading: pulled 29356 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-09-29T18:06:54Z step 5.2: 12 cells have an eligible best setting; added 11 seed-1 row(s): gsm8k/mentored_dec/0.55, gsm8k/spec_casc_tok/0.55, aime24/mentored_dec/0.55, aime24/spec_casc_tok/0.15, humaneval/mentored_dec/0.55, humaneval/spec_casc_tok/0.35, livecodebench/mentored_dec/0.55, livecodebench/spec_casc_tok/0.35, mtbench/spec_casc_tok/0.55, longbench_v2/mentored_dec/0.55, longbench_v2/spec_casc_tok/0.55
 - 2026-09-29T18:11:27Z lane B: pulled 70 new run dir(s) into runs/
+- 2026-09-29T18:11:49Z lane A: submitted job 22931500; lane has 11 work items, est. 1.7 GPU-h
