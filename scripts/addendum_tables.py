@@ -240,11 +240,19 @@ def sweep_table(kind: str, values: list, condition: callable, extra_label: str) 
     for base in ("gsm8k", "livecodebench"):
         for ds in (base, f"{base}_qwen3"):
             rows = []
+            ref = load_cell(ds, "strict", "strict", 0, run_root="runs/addendum/nibiref")
             for v in values:
                 runs = load_cell(ds, "strict", "strict", 0, run_root=f"runs/addendum/{condition(v)}")
                 if runs:
-                    rows.append(point_row({extra_label: v, "source": condition(v) + " (Nibi)"}, runs, rng))
-            ref = load_cell(ds, "strict", "strict", 0, run_root="runs/addendum/nibiref")
+                    row = point_row({extra_label: v, "source": condition(v) + " (Nibi)"}, runs, rng)
+                    if ref:  # paired against the Nibi reference at the campaign setting, same cases
+                        c = compare(runs, ref, rng)
+                        for k in ("n_pairs", "lambda", "rounds_ratio", "time_ratio"):
+                            row[f"{k}_vs_nibiref"] = c.get(k)
+                        for k in ("lambda", "rounds_ratio", "time_ratio"):
+                            row[f"{k}_vs_nibiref_ci_lo"] = c.get(f"{k}_ci_lo")
+                            row[f"{k}_vs_nibiref_ci_hi"] = c.get(f"{k}_ci_hi")
+                    rows.append(row)
             default = {"nspec": 6, "temp": 1.0}[kind]
             if ref:
                 rows.append(point_row({extra_label: default, "source": "nibiref (Nibi, campaign settings)"}, ref, rng))

@@ -55,3 +55,17 @@
   reproduced directly: per-case outputs depend on the engine's history, so
   per-case comparisons are only clean between runs that share it, which
   every addendum arm does (one fresh server per arm+seed, cases in order).
+
+### Step 3 (GPT-OSS half): the lossless draft-length sweep
+
+- Paired against the Nibi strict reference at N_draft 6 on the same cases
+  (`tables/nspec__{gsm8k,livecodebench}.csv`, columns `*_vs_nibiref`): N 2-4
+  are 5-9% faster (gsm8k 0.91-0.93, livecodebench 0.91-0.95; every 95%
+  interval touches 1.0), N 8 is slower (gsm8k 1.06 n.s., livecodebench 1.13
+  [1.01, 1.25]) and N 10 clearly slower (1.22 [1.10, 1.36] and 1.24 [1.10,
+  1.38]). Rounds fall with N (N 2: 1.39x / 1.36x the N=6 rounds) and l_bar
+  rises (gsm8k 1.43 -> 2.88), but the extra draft positions cost more than
+  the rounds they save beyond N ~ 4-6. The paper's N_draft 6 lossless
+  baseline is therefore within ~9% of the fastest lossless draft length in
+  this regime (EAGLE-3 drafter, H100 SXM, batch 1); lambda stays 0.96-1.06
+  (lossless decoding does not change the length distribution).

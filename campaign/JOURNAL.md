@@ -2565,3 +2565,11 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   characters; AIME24 answers get shorter); Spearman(lambda, time-per-round
   ratio) = 0.58 over the 60 cells. Step 1.9 (MT-Bench judge) is written and
   dry-run, blocked on an Anthropic API key.
+
+- **2026-09-29, addendum step 3 (GPT-OSS half) done** (lane B, jobs
+  22881159): strict at N_draft 2/3/4/8/10, gsm8k + livecodebench, seed 0,
+  all cases, plus the Nibi N=6 reference (`nibiref`). Shorter drafts are a
+  little faster (N 2-4: 0.91-0.95x the N=6 time, not significant at 95%),
+  longer ones significantly slower (N 10: 1.22-1.24x); l_bar 1.43 -> 2.88 on
+  gsm8k. Tables: `campaign/addendum/tables/nspec__*.csv`. The Qwen3 half is
+  blocked on the V2 sampler.
