@@ -10,4 +10,4 @@ machine,dataset,n_runs,c0_ms,c1_ms_per_token,c1_over_c0,r2,mean_time_per_round_m
 "Nibi (H100 SXM), seeds 1-2",mtbench,960,7.07653,0.0847633,0.0119781,0.13486,7.45481
 "Nibi (H100 SXM), seeds 1-2",livecodebench,1080,7.37086,0.0159456,0.00216333,0.00877427,7.43677
 "Nibi (H100 SXM), seeds 1-2",aime24,360,7.18945,0.0501914,0.00698125,0.0377804,7.39989
-"Nibi (H100 SXM), seeds 1-2",longbench_v2,407,11.286,-0.597324,-0.052926,0.0367757,9.39688
+"Nibi (H100 SXM), seeds 1-2",longbench_v2,505,11.3468,-0.608488,-0.0536265,0.0495878,9.33433
