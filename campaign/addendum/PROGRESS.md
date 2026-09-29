@@ -83,3 +83,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T07:09:15Z lane B: pulled 240 new run dir(s) into runs/
 - 2026-09-29T07:09:17Z step 2.1 main gsm8k r_fuzzy alpha=0.25 seed=1: done, 150/150 cases (jobs 22880871, 0.12 GPU-h)
 - 2026-09-29T07:09:18Z step 2.1 main gsm8k r_fuzzy alpha=0.25 seed=2: done, 150/150 cases (jobs 22880871, 0.10 GPU-h)
+- 2026-09-29T07:09:19Z step 2.1 main gsm8k spec_casc_tok alpha=0.8 seed=1: done, 150/150 cases (jobs 22880871, 0.09 GPU-h)
