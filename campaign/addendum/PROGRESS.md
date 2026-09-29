@@ -114,3 +114,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T08:21:15Z lane A: pulled 300 new run dir(s) into runs/
 - 2026-09-29T08:21:31Z lane B: pulled 122 new run dir(s) into runs/
 - 2026-09-29T08:21:34Z step 2.1 main humaneval mentored_dec alpha=0.75 seed=2: done, 150/150 cases (jobs 22880871, 0.14 GPU-h)
+- 2026-09-29T08:21:34Z step 2.1 main humaneval cactus alpha=0.35 seed=1: done, 150/150 cases (jobs 22880871, 0.15 GPU-h)
