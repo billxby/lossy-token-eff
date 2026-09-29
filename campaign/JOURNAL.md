@@ -2612,3 +2612,19 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   was collected in two sessions (job 22881159 hit its 12 h limit after 59
   cases; 22881281 quarantined the one partial run dir, case_060, and ran
   the other 91).
+
+- **2026-09-29, addendum step 5 (GPT-OSS half) done** (lane A; 5.1 in job
+  22880871, 3.5 GPU-h; 5.2 in job 22931500, 2.4 GPU-h). 5.1 filled the 18
+  missing seed-0 cells, so every GPT-OSS dataset now has mentored_dec at
+  0.15/0.35/0.55/0.75 and spec_casc_tok at 0.15/0.35/0.55/0.8; the fills ran
+  on Nibi, so their time ratios are taken against the Nibi strict reference.
+  5.2 picked, per dataset and rule, the alpha with the lowest seed-0 time
+  ratio among those within 2 accuracy points of strict (mtbench: rounds
+  ratio < 1) -- mentored_dec 0.55 everywhere but mtbench (0.75),
+  spec_casc_tok 0.55 / 0.35 / 0.15 -- and re-ran it at seed 1 on Nibi against
+  Nibi strict seed 1. 7 of 12 hold (gsm8k both, mentored_dec time ratio 0.75;
+  humaneval both; livecodebench spec_casc_tok; mtbench both). 5 do not:
+  aime24 mentored_dec (accuracy 0.70 vs 0.80), aime24 spec_casc_tok (time
+  1.12), livecodebench mentored_dec (0.87 vs 0.90), longbench_v2 both (time
+  1.03 / 1.04, rounds 1.09). `campaign/addendum/best_setting.csv`. Qwen3 half
+  blocked on the V2 sampler.
