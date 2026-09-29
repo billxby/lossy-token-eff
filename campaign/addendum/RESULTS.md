@@ -1,23 +1,24 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 18:28 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 18:41 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (264 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 23.6; estimated remaining, runnable rows: 3.6; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 24.4; estimated remaining, runnable rows: 18.2; blocked rows: 73.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 0 | 0 | 6 |
 | 2.1 | 48 | 0 | 0 | 0 | 48 |
-| 2.2 | 15 | 1 | 4 | 0 | 6 |
+| 2.2 | 17 | 1 | 2 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
 | 5.1 | 18 | 0 | 0 | 0 | 23 |
-| 5.2 | 0 | 0 | 11 | 0 | 0 |
+| 5.2 | 2 | 1 | 8 | 0 | 0 |
 | 6 | 12 | 0 | 0 | 0 | 18 |
+| 7 | 0 | 0 | 1 | 6 | 6 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -402,8 +403,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | mtbench | spec_casc_opt | 0.05 | 1.09 | 1.21 | 1.25 | - | - | 0.08 | 1.18 (0.08) | 0.87 | 0.85 | 0.87 | - | - | 0.01 | 0.86 (0.01) | - | - | - | - | - | - |
 | gpt-oss-20b | mtbench | r_fuzzy | 0.25 | 1.20 | 1.28 | 1.26 | - | - | 0.04 | 1.25 (0.04) | 0.92 | 0.81 | 0.79 | - | - | 0.07 | 0.84 (0.07) | - | - | - | - | - | - |
 | gpt-oss-20b | mtbench | spec_casc_tok | 0.8 | 0.96 | 1.02 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.90 | 0.93 | 0.94 | - | - | 0.02 | 0.92 (0.02) | - | - | - | - | - | - |
-| gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | - | - | - | - | - | 1.59 (-) | 1.04 | - | - | - | - | - | 1.04 (-) | 51% | - | - | - | - | - |
-| gpt-oss-20b | longbench_v2 | spec_casc_opt | 0.05 | 1.79 | 1.85 | - | - | - | 0.04 | 1.82 (0.04) | 1.07 | 1.29 | - | - | - | 0.16 | 1.18 (0.16) | 47% | - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | mentored_dec | 0.75 | 1.59 | 1.55 | - | - | - | 0.03 | 1.57 (0.03) | 1.04 | 1.05 | - | - | - | 0.00 | 1.05 (0.00) | 51% | - | - | - | - | - |
+| gpt-oss-20b | longbench_v2 | spec_casc_opt | 0.05 | 1.79 | 1.85 | 1.72 | - | - | 0.06 | 1.79 (0.06) | 1.07 | 1.29 | 1.24 | - | - | 0.12 | 1.20 (0.12) | 47% | 45% | - | - | - | 1% |
 | gpt-oss-20b | longbench_v2 | r_fuzzy | 0.25 | 1.69 | - | - | - | - | - | 1.69 (-) | 1.05 | - | - | - | - | - | 1.05 (-) | 40% | - | - | - | - | - |
 | qwen3-8b | gsm8k | mentored_dec | 0.75 | 1.03 | - | - | - | - | - | 1.03 (-) | 0.95 | - | - | - | - | - | 0.95 (-) | 77% | - | - | - | - | - |
 | qwen3-8b | gsm8k | cactus | 0.35 | 1.04 | - | - | - | - | - | 1.04 (-) | 0.94 | - | - | - | - | - | 0.94 (-) | 77% | - | - | - | - | - |
@@ -434,10 +435,10 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | metric | cells | mean seed 0 | mean seed 1 | mean seed 2 | mean s1-s0 | mean s2-s1 | cells s1 < s0 | win/loss flips |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| lambda | 25 | 1.469 | 1.410 | 1.462 | -0.060 | 0.052 | 12 | - |
-| rounds_ratio | 25 | 1.028 | 0.991 | 1.023 | -0.038 | 0.032 | 12 | 8 |
-| time_ratio | 25 | 1.182 | 0.999 | 1.022 | -0.183 | 0.023 | 22 | 8 |
-| tpr_ratio | 25 | 1.133 | 1.008 | 1.002 | -0.125 | -0.007 | 25 | - |
+| lambda | 26 | 1.482 | 1.426 | 1.472 | -0.055 | 0.046 | 12 | - |
+| rounds_ratio | 26 | 1.039 | 1.004 | 1.032 | -0.035 | 0.028 | 12 | 8 |
+| time_ratio | 26 | 1.177 | 1.010 | 1.030 | -0.167 | 0.020 | 22 | 8 |
+| tpr_ratio | 26 | 1.126 | 1.006 | 1.001 | -0.120 | -0.005 | 25 | - |
 
 `campaign/addendum/analysis/hardware_tpr_model.csv`: time per round = c0 + c1 x tokens per round (per-run OLS, strict + loosest arms):
 
@@ -454,7 +455,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | Nibi (H100 SXM), seeds 1-2 | mtbench | 960 | 7.08 | 0.08 | 0.012 | 0.13 |
 | Nibi (H100 SXM), seeds 1-2 | livecodebench | 1080 | 7.37 | 0.02 | 0.002 | 0.01 |
 | Nibi (H100 SXM), seeds 1-2 | aime24 | 360 | 7.19 | 0.05 | 0.007 | 0.04 |
-| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 505 | 11.35 | -0.61 | -0.054 | 0.05 |
+| Nibi (H100 SXM), seeds 1-2 | longbench_v2 | 750 | 11.30 | -0.55 | -0.049 | 0.05 |
 
 ## Step 3: lossless draft-length sweep (strict, seed 0)
 
