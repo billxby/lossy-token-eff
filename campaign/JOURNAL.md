@@ -2573,3 +2573,9 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   longer ones significantly slower (N 10: 1.22-1.24x); l_bar 1.43 -> 2.88 on
   gsm8k. Tables: `campaign/addendum/tables/nspec__*.csv`. The Qwen3 half is
   blocked on the V2 sampler.
+
+- **2026-09-29, addendum step 4.1 (GPT-OSS half) done** (lane B): strict at
+  T 1.2 and 1.5, gsm8k + livecodebench, seed 0, all cases. Lossless T 1.2
+  inflates gsm8k by 1.27x (accuracy unchanged) and livecodebench by 1.07x;
+  T 1.5 inflates 3.9x / 1.8x with gsm8k accuracy 0.31 (48% cap-outs).
+  Tables: `campaign/addendum/tables/temp__*.csv`. Qwen3 half blocked.

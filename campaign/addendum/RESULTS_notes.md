@@ -69,3 +69,16 @@
   baseline is therefore within ~9% of the fastest lossless draft length in
   this regime (EAGLE-3 drafter, H100 SXM, batch 1); lambda stays 0.96-1.06
   (lossless decoding does not change the length distribution).
+
+### Step 4.1 (GPT-OSS half): temperature alone, lossless
+
+- Strict decoding at T 1.2 vs the Nibi T 1.0 reference (same cases,
+  `tables/temp__{gsm8k,livecodebench}.csv`, `*_vs_nibiref`): gsm8k lambda
+  1.27 [1.10, 1.47], rounds 1.37x, time 1.35x, accuracy unchanged (0.96 vs
+  0.97); livecodebench lambda 1.07 [0.99, 1.17], time 1.16x. A +0.2
+  temperature change inflates gsm8k about as much as mentored_dec at its
+  loosest alpha does at T 1.0 (lambda 1.16), without any relaxation.
+- T 1.5 breaks gsm8k (lambda 3.94, 48% of runs hit the 2,048-token cap,
+  accuracy 0.31); livecodebench lambda 1.82 [1.44, 2.27], time 2.51x. l_bar
+  falls as T rises (gsm8k 2.58 -> 2.36 -> 1.79): the EAGLE-3 drafter is
+  trained at the target's T 1.0 distribution, so lossless acceptance drops.
