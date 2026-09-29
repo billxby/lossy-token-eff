@@ -81,7 +81,7 @@ def load_judge_data():
     return prompts, by_text, refs
 
 
-def collect_runs() -> list[dict]:
+def collect_runs(seeds: list[str] | None = None) -> list[dict]:
     prompts, by_text, refs = load_judge_data()
     runs = []
     for ds, target in (("mtbench", "gpt-oss-20b"), ("mtbench_qwen3", "qwen3-8b")):
@@ -92,6 +92,8 @@ def collect_runs() -> list[dict]:
                 continue
             run = json.loads(run_json.read_text(encoding="utf-8"))
             if run.get("status") != "ok":
+                continue
+            if seeds is not None and run_dir.name.removeprefix("seed_") not in seeds:
                 continue
             case_dir = REPO / "prompts" / ds / case
             question = json.loads((case_dir / "source.json").read_text(encoding="utf-8"))["problem"]
@@ -146,7 +148,7 @@ def load_key_file() -> None:
 
 
 def cmd_plan(args) -> int:
-    runs = collect_runs()
+    runs = collect_runs(args.seeds)
     to_judge = [r for r in runs if r["answer_chars"] > 0]
     chars_in = sum(len(r["system"]) + len(r["user"]) for r in to_judge)
     tok_in = chars_in / 3.5
@@ -169,7 +171,7 @@ def cmd_submit(args) -> int:
     from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
     from anthropic.types.messages.batch_create_params import Request
 
-    runs = [r for r in collect_runs() if r["answer_chars"] > 0]
+    runs = [r for r in collect_runs(args.seeds) if r["answer_chars"] > 0]
     state = json.loads(STATE.read_text()) if STATE.is_file() else {"batches": []}
     done = {rel for b in state["batches"] for rel in b["ids"].values()}
     runs = [r for r in runs if r["relpath"] not in done]
@@ -206,7 +208,7 @@ def cmd_collect(args) -> int:
 
     client = anthropic.Anthropic()
     state = json.loads(STATE.read_text())
-    runs = {r["relpath"]: r for r in collect_runs()}
+    runs = {r["relpath"]: r for r in collect_runs(args.seeds)}
     scored = {}
     for b in state["batches"]:
         while True:
@@ -278,6 +280,7 @@ def main() -> int:
     parser.add_argument("--model", default="claude-fable-5-1")
     parser.add_argument("--effort", default="medium", choices=["low", "medium", "high", "xhigh", "max"])
     parser.add_argument("--est-output-tokens", type=int, default=1500)
+    parser.add_argument("--seeds", nargs="+", default=["0"], help="Request seeds to judge (default: 0, the campaign's runs).")
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name, fn in (("plan", cmd_plan), ("submit", cmd_submit), ("collect", cmd_collect)):
         sub.add_parser(name).set_defaults(fn=fn)

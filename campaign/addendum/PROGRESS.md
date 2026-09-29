@@ -20,17 +20,7 @@ for what is done; this file records every action and failure.
    but the existing Qwen3 strict data ran on the consolidated file at neutral
    alphas, so comparability would rest on that file being a no-op at neutral
    alphas. Not done without your say-so.
-2. **MT-Bench judge API key (step 1.9).** No Anthropic credentials here (no
-   `ANTHROPIC_API_KEY`, no `ant` CLI profile). The judge is written and
-   dry-run (`scripts/addendum_mtbench_judge.py`: FastChat single-v1 /
-   single-math-v1 prompts, turn 1, `[[rating]]`; claude-fable-5-1 on the
-   Message Batches API). Ask: put `ANTHROPIC_API_KEY=...` in
-   `~/.config/lossy-token-eff/judge.env` (`chmod 600`). Cost estimate from the
-   dry run: 2,070 requests for the existing seed-0 runs (224 more runs never
-   reached an answer and score 1 without a call), ~2.3M input + ~3.1M output
-   tokens -> ~$89 at batch prices; roughly double once the seed-1/2 MT-Bench
-   runs are in. Run: `python3 scripts/addendum_mtbench_judge.py submit` then
-   `... collect`.
+2. ~~MT-Bench judge API key (step 1.9)~~ -- resolved 2026-09-29 13:29Z (`~/.config/lossy-token-eff/judge.env`, now mode 600).
 3. **Duo.** The Nibi link is one ControlMaster session opened 2026-09-29
    05:25Z with a keepalive channel. If it drops, queued jobs keep running on
    Nibi (lanes are chained up to ~48 h ahead) but nothing is pulled back or
@@ -235,3 +225,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T13:26:38Z step 6 main aime24 strict alpha=strict seed=3: done, 30/30 cases (jobs 22881159, 0.23 GPU-h)
 - 2026-09-29T13:27:15Z grading: uploaded 132 run dir(s) to the Nibi mirror, submitted CPU grading job 22913325
 - 2026-09-29T13:27:17Z grading: pulled 25993 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T13:31Z Step 1.9: key file present; one validation request ok (claude-fable-5-1, end_turn, req_011CfXp6D2QSEa5qi65k1saW, 6,569 in / 886 out tokens, rating parsed). Submitted Message Batch msgbatch_01MWf6AJLXcXd9ep5uFx5a7v: 2,070 judge requests = every seed-0 MT-Bench run of both targets with an answer (224 runs without one score 1, no call), effort medium, est. ~$89. Seeds 1-2 are not in this batch (`--seeds 1 2` later, roughly +$40 for GPT-OSS).
