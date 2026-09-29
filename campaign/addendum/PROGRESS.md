@@ -158,3 +158,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T10:04:23Z lane B: pulled 24 new run dir(s) into runs/
 - 2026-09-29T10:04:25Z step 2.1 main mtbench cactus alpha=0.35 seed=1: done, 80/80 cases (jobs 22880871, 0.10 GPU-h)
 - 2026-09-29T10:04:26Z step 2.1 main mtbench cactus alpha=0.35 seed=2: done, 80/80 cases (jobs 22880871, 0.10 GPU-h)
+- 2026-09-29T10:04:26Z step 2.1 main mtbench r_fuzzy alpha=0.25 seed=1: done, 80/80 cases (jobs 22880871, 0.11 GPU-h)
