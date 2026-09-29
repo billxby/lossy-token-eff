@@ -171,3 +171,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T10:37:34Z lane A: pulled 115 new run dir(s) into runs/
 - 2026-09-29T10:37:46Z lane B: pulled 28 new run dir(s) into runs/
 - 2026-09-29T10:37:49Z step 2.1 main mtbench spec_casc_tok alpha=0.8 seed=2: done, 80/80 cases (jobs 22880871, 0.12 GPU-h)
+- 2026-09-29T10:37:49Z step 2.1 main livecodebench strict alpha=strict seed=1: done, 90/90 cases (jobs 22880871, 0.26 GPU-h)
