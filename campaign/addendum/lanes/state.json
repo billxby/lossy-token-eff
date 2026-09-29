@@ -4,7 +4,7 @@
       "jobs": [
         {
           "id": "22880871",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-09-29T05:56:07Z",
           "dependency": ""
         },

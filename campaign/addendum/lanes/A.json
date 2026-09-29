@@ -1,56 +1,5 @@
 {
  "lane": "A",
- "written": "2026-09-29T17:46:43Z",
- "items": [
-  {
-   "id": "main|aime24|spec_casc_tok|0.55|0",
-   "step": "5.1",
-   "condition": "main",
-   "dataset": "aime24",
-   "method": "spec_casc_tok",
-   "alpha": "0.55",
-   "seed": 0,
-   "cases": [
-    "case_009",
-    "case_010",
-    "case_011",
-    "case_012",
-    "case_013",
-    "case_014",
-    "case_015",
-    "case_016",
-    "case_017",
-    "case_018",
-    "case_019",
-    "case_020",
-    "case_021",
-    "case_022",
-    "case_023",
-    "case_024",
-    "case_025",
-    "case_026",
-    "case_027",
-    "case_028",
-    "case_029",
-    "case_030"
-   ],
-   "prompt_root": "prompts/aime24",
-   "runs_subroot": "runs",
-   "max_new_tokens": 32768,
-   "model_flags": [
-    "--model-path",
-    "openai/gpt-oss-20b",
-    "--draft-model-path",
-    "nebius/EAGLE3-gpt-oss-20b",
-    "--served-model-name",
-    "gpt-oss-20b"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "MENTORED_DEC_TEST_V1_ONLY": "1"
-   }
-  }
- ]
+ "written": "2026-09-29T17:59:13Z",
+ "items": []
 }
