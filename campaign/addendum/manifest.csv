@@ -1,0 +1,254 @@
+step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,status,slurm_job_ids,gpu_hours_est,gpu_hours_actual,notes
+0.5,nibiref,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nibiref,150,0,pending,,0.11,,lane=B
+0.5,nibiref,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nibiref,90,0,pending,,0.28,,lane=B
+2.1,main,gpt-oss-20b,gsm8k,strict,strict,1,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,strict,strict,2,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,spec_casc_opt,0.05,1,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,spec_casc_opt,0.05,2,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.75,1,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.75,2,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,cactus,0.35,1,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,cactus,0.35,2,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,r_fuzzy,0.25,1,runs,150,0,pending,,0.12,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,r_fuzzy,0.25,2,runs,150,0,pending,,0.12,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,spec_casc_tok,0.8,1,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,gsm8k,spec_casc_tok,0.8,2,runs,150,0,pending,,0.11,,lane=A
+2.1,main,gpt-oss-20b,humaneval,strict,strict,1,runs,150,0,pending,,0.16,,lane=A
+2.1,main,gpt-oss-20b,humaneval,strict,strict,2,runs,150,0,pending,,0.16,,lane=A
+2.1,main,gpt-oss-20b,humaneval,spec_casc_opt,0.05,1,runs,150,0,pending,,0.20,,lane=A
+2.1,main,gpt-oss-20b,humaneval,spec_casc_opt,0.05,2,runs,150,0,pending,,0.20,,lane=A
+2.1,main,gpt-oss-20b,humaneval,mentored_dec,0.75,1,runs,150,0,pending,,0.17,,lane=A
+2.1,main,gpt-oss-20b,humaneval,mentored_dec,0.75,2,runs,150,0,pending,,0.17,,lane=A
+2.1,main,gpt-oss-20b,humaneval,cactus,0.35,1,runs,150,0,pending,,0.19,,lane=A
+2.1,main,gpt-oss-20b,humaneval,cactus,0.35,2,runs,150,0,pending,,0.19,,lane=A
+2.1,main,gpt-oss-20b,humaneval,r_fuzzy,0.25,1,runs,150,0,pending,,0.19,,lane=A
+2.1,main,gpt-oss-20b,humaneval,r_fuzzy,0.25,2,runs,150,0,pending,,0.19,,lane=A
+2.1,main,gpt-oss-20b,humaneval,spec_casc_tok,0.8,1,runs,150,0,pending,,0.16,,lane=A
+2.1,main,gpt-oss-20b,humaneval,spec_casc_tok,0.8,2,runs,150,0,pending,,0.16,,lane=A
+2.1,main,gpt-oss-20b,mtbench,strict,strict,1,runs,80,0,pending,,0.14,,lane=A
+2.1,main,gpt-oss-20b,mtbench,strict,strict,2,runs,80,0,pending,,0.14,,lane=A
+2.1,main,gpt-oss-20b,mtbench,spec_casc_opt,0.05,1,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,spec_casc_opt,0.05,2,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,mentored_dec,0.75,1,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,mentored_dec,0.75,2,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,cactus,0.35,1,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,cactus,0.35,2,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,r_fuzzy,0.25,1,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,r_fuzzy,0.25,2,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,spec_casc_tok,0.8,1,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,mtbench,spec_casc_tok,0.8,2,runs,80,0,pending,,0.13,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,strict,strict,1,runs,90,0,pending,,0.28,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,strict,strict,2,runs,90,0,pending,,0.28,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,spec_casc_opt,0.05,1,runs,90,0,pending,,0.35,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,spec_casc_opt,0.05,2,runs,90,0,pending,,0.35,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,mentored_dec,0.75,1,runs,90,0,pending,,0.29,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,mentored_dec,0.75,2,runs,90,0,pending,,0.29,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,cactus,0.18,1,runs,90,0,pending,,0.31,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,cactus,0.18,2,runs,90,0,pending,,0.31,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,r_fuzzy,0.25,1,runs,90,0,pending,,0.34,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,r_fuzzy,0.25,2,runs,90,0,pending,,0.34,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,spec_casc_tok,0.8,1,runs,90,0,pending,,0.29,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,spec_casc_tok,0.8,2,runs,90,0,pending,,0.29,,lane=A
+2.1,main,qwen3-8b,gsm8k_qwen3,strict,strict,1,runs,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,strict,strict,2,runs,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_opt,0.05,1,runs,150,0,blocked,,0.23,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_opt,0.05,2,runs,150,0,blocked,,0.23,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,1,runs,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,2,runs,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,cactus,0.35,1,runs,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,cactus,0.35,2,runs,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,1,runs,150,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,2,runs,150,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,1,runs,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,2,runs,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,strict,strict,1,runs,150,0,blocked,,0.50,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,strict,strict,2,runs,150,0,blocked,,0.50,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,spec_casc_opt,0.05,1,runs,150,0,blocked,,0.70,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,spec_casc_opt,0.05,2,runs,150,0,blocked,,0.70,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.75,1,runs,150,0,blocked,,0.51,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.75,2,runs,150,0,blocked,,0.51,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,cactus,0.35,1,runs,150,0,blocked,,0.50,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,cactus,0.35,2,runs,150,0,blocked,,0.50,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,r_fuzzy,0.25,1,runs,150,0,blocked,,0.67,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,r_fuzzy,0.25,2,runs,150,0,blocked,,0.67,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.8,1,runs,150,0,blocked,,0.52,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.8,2,runs,150,0,blocked,,0.52,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,strict,strict,1,runs,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,strict,strict,2,runs,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,spec_casc_opt,0.05,1,runs,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,spec_casc_opt,0.05,2,runs,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,mentored_dec,0.75,1,runs,80,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,mentored_dec,0.75,2,runs,80,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,cactus,0.35,1,runs,80,0,blocked,,0.17,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,cactus,0.35,2,runs,80,0,blocked,,0.17,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,r_fuzzy,0.25,1,runs,80,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,r_fuzzy,0.25,2,runs,80,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,spec_casc_tok,0.8,1,runs,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,mtbench_qwen3,spec_casc_tok,0.8,2,runs,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,strict,strict,1,runs,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,strict,strict,2,runs,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_opt,0.05,1,runs,90,0,blocked,,0.72,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_opt,0.05,2,runs,90,0,blocked,,0.72,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.75,1,runs,90,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.75,2,runs,90,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,cactus,0.35,1,runs,90,0,blocked,,0.56,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,cactus,0.35,2,runs,90,0,blocked,,0.56,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,1,runs,90,0,blocked,,0.62,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,2,runs,90,0,blocked,,0.62,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,1,runs,90,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,2,runs,90,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+0.5,nibiref,gpt-oss-20b,humaneval,strict,strict,0,runs/addendum/nibiref,150,0,pending,,0.16,,lane=A
+0.5,nibiref,gpt-oss-20b,mtbench,strict,strict,0,runs/addendum/nibiref,80,0,pending,,0.14,,lane=A
+0.5,nibiref,gpt-oss-20b,longbench_v2,strict,strict,0,runs/addendum/nibiref,150,0,pending,,0.44,,lane=A
+0.5,nibiref,gpt-oss-20b,aime24,strict,strict,0,runs/addendum/nibiref,30,0,pending,,0.24,,lane=A
+0.5,nibiref,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nibiref,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+0.5,nibiref,qwen3-8b,humaneval_qwen3,strict,strict,0,runs/addendum/nibiref,150,0,blocked,,0.50,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+0.5,nibiref,qwen3-8b,longbench_v2_qwen3,strict,strict,0,runs/addendum/nibiref,150,0,blocked,,0.26,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+0.5,nibiref,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nibiref,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+0.5,nibiref,qwen3-8b,mtbench_qwen3,strict,strict,0,runs/addendum/nibiref,80,0,blocked,,0.20,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+0.5,nibiref,qwen3-8b,aime24_qwen3,strict,strict,0,runs/addendum/nibiref,30,0,blocked,,0.55,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec2,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec2,150,0,pending,,0.11,,lane=B
+3,nspec2,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec2,90,0,pending,,0.28,,lane=B
+3,nspec3,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec3,150,0,pending,,0.11,,lane=B
+3,nspec3,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec3,90,0,pending,,0.28,,lane=B
+3,nspec4,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec4,150,0,pending,,0.11,,lane=B
+3,nspec4,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec4,90,0,pending,,0.28,,lane=B
+3,nspec8,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec8,150,0,pending,,0.11,,lane=B
+3,nspec8,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec8,90,0,pending,,0.28,,lane=B
+3,nspec10,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec10,150,0,pending,,0.11,,lane=B
+3,nspec10,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec10,90,0,pending,,0.28,,lane=B
+3,nspec2,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec2,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec2,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec2,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec3,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec3,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec3,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec3,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec4,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec4,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec4,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec4,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec8,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec8,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec8,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec8,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec10,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec10,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+3,nspec10,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec10,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.1,temp1.2,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/temp1.2,150,0,pending,,0.11,,lane=B
+4.1,temp1.2,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/temp1.2,90,0,pending,,0.28,,lane=B
+4.1,temp1.5,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/temp1.5,150,0,pending,,0.11,,lane=B
+4.1,temp1.5,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/temp1.5,90,0,pending,,0.28,,lane=B
+4.1,temp1.2,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/temp1.2,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.1,temp1.2,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/temp1.2,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.1,temp1.5,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/temp1.5,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.1,temp1.5,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/temp1.5,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/qwenT0.6,150,0,blocked,,0.22,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,gsm8k_qwen3,spec_casc_opt,0.05,0,runs/addendum/qwenT0.6,150,0,blocked,,0.23,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,0,runs/addendum/qwenT0.6,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,gsm8k_qwen3,cactus,0.35,0,runs/addendum/qwenT0.6,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,0,runs/addendum/qwenT0.6,150,0,blocked,,0.19,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,0,runs/addendum/qwenT0.6,150,0,blocked,,0.21,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/qwenT0.6,90,0,blocked,,0.66,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,livecodebench_qwen3,spec_casc_opt,0.05,0,runs/addendum/qwenT0.6,90,0,blocked,,0.72,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,livecodebench_qwen3,mentored_dec,0.75,0,runs/addendum/qwenT0.6,90,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,livecodebench_qwen3,cactus,0.35,0,runs/addendum/qwenT0.6,90,0,blocked,,0.56,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,0,runs/addendum/qwenT0.6,90,0,blocked,,0.62,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.2,qwenT0.6,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,0,runs/addendum/qwenT0.6,90,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/lmdraft,150,0,blocked,,0.26,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,0,runs/addendum/lmdraft,150,0,blocked,,0.26,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,gsm8k_qwen3,cactus,0.35,0,runs/addendum/lmdraft,150,0,blocked,,0.26,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,0,runs/addendum/lmdraft,150,0,blocked,,0.26,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/lmdraft,90,0,blocked,,0.84,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,mentored_dec,0.75,0,runs/addendum/lmdraft,90,0,blocked,,0.84,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,cactus,0.35,0,runs/addendum/lmdraft,90,0,blocked,,0.84,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,0,runs/addendum/lmdraft,90,0,blocked,,0.84,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.55,0,runs,150,3,pending,,0.11,,lane=A
+5.1,main,gpt-oss-20b,gsm8k,spec_casc_tok,0.35,0,runs,150,3,pending,,0.10,,lane=A
+5.1,main,gpt-oss-20b,gsm8k,spec_casc_tok,0.55,0,runs,150,3,pending,,0.09,,lane=A
+5.1,main,gpt-oss-20b,humaneval,mentored_dec,0.55,0,runs,150,3,pending,,0.13,,lane=A
+5.1,main,gpt-oss-20b,humaneval,spec_casc_tok,0.35,0,runs,150,3,pending,,0.14,,lane=A
+5.1,main,gpt-oss-20b,humaneval,spec_casc_tok,0.55,0,runs,150,3,pending,,0.13,,lane=A
+5.1,main,gpt-oss-20b,longbench_v2,mentored_dec,0.35,0,runs,150,3,pending,,0.59,,lane=A
+5.1,main,gpt-oss-20b,longbench_v2,spec_casc_tok,0.35,0,runs,150,3,pending,,0.57,,lane=A
+5.1,main,gpt-oss-20b,longbench_v2,spec_casc_tok,0.55,0,runs,150,3,pending,,0.56,,lane=A
+5.1,main,gpt-oss-20b,livecodebench,mentored_dec,0.55,0,runs,90,3,pending,,0.28,,lane=A
+5.1,main,gpt-oss-20b,livecodebench,spec_casc_tok,0.35,0,runs,90,3,pending,,0.23,,lane=A
+5.1,main,gpt-oss-20b,livecodebench,spec_casc_tok,0.55,0,runs,90,3,pending,,0.24,,lane=A
+5.1,main,gpt-oss-20b,mtbench,mentored_dec,0.35,0,runs,80,3,pending,,0.16,,lane=A
+5.1,main,gpt-oss-20b,mtbench,spec_casc_tok,0.35,0,runs,80,3,pending,,0.21,,lane=A
+5.1,main,gpt-oss-20b,mtbench,spec_casc_tok,0.55,0,runs,80,3,pending,,0.20,,lane=A
+5.1,main,gpt-oss-20b,aime24,mentored_dec,0.55,0,runs,30,3,pending,,0.38,,lane=A
+5.1,main,gpt-oss-20b,aime24,spec_casc_tok,0.35,0,runs,30,3,pending,,0.36,,lane=A
+5.1,main,gpt-oss-20b,aime24,spec_casc_tok,0.55,0,runs,30,3,pending,,0.46,,lane=A
+5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.35,0,runs,150,3,blocked,,0.16,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.55,0,runs,150,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.35,0,runs,150,3,blocked,,0.16,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.35,0,runs,150,3,blocked,,0.46,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.55,0,runs,150,3,blocked,,0.53,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.35,0,runs,150,3,blocked,,0.43,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.55,0,runs,150,3,blocked,,0.35,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.35,0,runs,150,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.55,0,runs,150,3,blocked,,0.16,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.35,0,runs,150,3,blocked,,0.16,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.55,0,runs,150,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.35,0,runs,90,3,blocked,,0.56,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.55,0,runs,90,3,blocked,,0.55,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.35,0,runs,90,3,blocked,,0.58,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.55,0,runs,90,3,blocked,,0.59,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,mtbench_qwen3,mentored_dec,0.35,0,runs,80,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,mtbench_qwen3,mentored_dec,0.55,0,runs,80,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,mtbench_qwen3,spec_casc_tok,0.35,0,runs,80,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,mtbench_qwen3,spec_casc_tok,0.55,0,runs,80,3,blocked,,0.15,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,aime24_qwen3,mentored_dec,0.35,0,runs,30,3,blocked,,0.49,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,aime24_qwen3,mentored_dec,0.55,0,runs,30,3,blocked,,0.47,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.35,0,runs,30,3,blocked,,0.55,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+5.1,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.55,0,runs,30,3,blocked,,0.47,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,gpt-oss-20b,aime24,strict,strict,1,runs,30,0,pending,,0.24,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,spec_casc_opt,0.05,1,runs,30,0,pending,,0.41,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,mentored_dec,0.75,1,runs,30,0,pending,,0.31,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,cactus,0.18,1,runs,30,0,pending,,0.30,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,r_fuzzy,0.25,1,runs,30,0,pending,,0.35,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,spec_casc_tok,0.8,1,runs,30,0,pending,,0.30,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,strict,strict,2,runs,30,0,pending,,0.24,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,spec_casc_opt,0.05,2,runs,30,0,pending,,0.41,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,mentored_dec,0.75,2,runs,30,0,pending,,0.31,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,cactus,0.18,2,runs,30,0,pending,,0.30,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,r_fuzzy,0.25,2,runs,30,0,pending,,0.35,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,spec_casc_tok,0.8,2,runs,30,0,pending,,0.30,,lane=B; seeds 1-2 shared by step 6
+6,main,gpt-oss-20b,aime24,strict,strict,3,runs,30,0,pending,,0.24,,lane=B
+6,main,gpt-oss-20b,aime24,spec_casc_opt,0.05,3,runs,30,0,pending,,0.41,,lane=B
+6,main,gpt-oss-20b,aime24,mentored_dec,0.75,3,runs,30,0,pending,,0.31,,lane=B
+6,main,gpt-oss-20b,aime24,cactus,0.18,3,runs,30,0,pending,,0.30,,lane=B
+6,main,gpt-oss-20b,aime24,r_fuzzy,0.25,3,runs,30,0,pending,,0.35,,lane=B
+6,main,gpt-oss-20b,aime24,spec_casc_tok,0.8,3,runs,30,0,pending,,0.30,,lane=B
+6,main,gpt-oss-20b,aime24,strict,strict,4,runs,30,0,pending,,0.24,,lane=B
+6,main,gpt-oss-20b,aime24,spec_casc_opt,0.05,4,runs,30,0,pending,,0.41,,lane=B
+6,main,gpt-oss-20b,aime24,mentored_dec,0.75,4,runs,30,0,pending,,0.31,,lane=B
+6,main,gpt-oss-20b,aime24,cactus,0.18,4,runs,30,0,pending,,0.30,,lane=B
+6,main,gpt-oss-20b,aime24,r_fuzzy,0.25,4,runs,30,0,pending,,0.35,,lane=B
+6,main,gpt-oss-20b,aime24,spec_casc_tok,0.8,4,runs,30,0,pending,,0.30,,lane=B
+2.2,main,qwen3-8b,aime24_qwen3,strict,strict,1,runs,30,0,blocked,,0.55,,"seeds 1-2 shared by step 6; blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,1,runs,30,0,blocked,,0.62,,"seeds 1-2 shared by step 6; blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,1,runs,30,0,blocked,,0.53,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,cactus,0.35,1,runs,30,0,blocked,,0.39,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,1,runs,30,0,blocked,,0.64,,"seeds 1-2 shared by step 6; blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,1,runs,30,0,blocked,,0.52,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,qwen3-8b,aime24_qwen3,strict,strict,2,runs,30,0,blocked,,0.55,,"seeds 1-2 shared by step 6; blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,2,runs,30,0,blocked,,0.62,,"seeds 1-2 shared by step 6; blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,2,runs,30,0,blocked,,0.53,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,cactus,0.35,2,runs,30,0,blocked,,0.39,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,2,runs,30,0,blocked,,0.64,,"seeds 1-2 shared by step 6; blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,2,runs,30,0,blocked,,0.52,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,strict,strict,3,runs,30,0,blocked,,0.55,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,3,runs,30,0,blocked,,0.62,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,3,runs,30,0,blocked,,0.53,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,cactus,0.35,3,runs,30,0,blocked,,0.39,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,3,runs,30,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,3,runs,30,0,blocked,,0.52,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,strict,strict,4,runs,30,0,blocked,,0.55,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,4,runs,30,0,blocked,,0.62,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,4,runs,30,0,blocked,,0.53,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,cactus,0.35,4,runs,30,0,blocked,,0.39,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,4,runs,30,0,blocked,,0.64,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,4,runs,30,0,blocked,,0.52,,"blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
+2.2,main,gpt-oss-20b,longbench_v2,strict,strict,1,runs,150,0,pending,,0.44,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,strict,strict,2,runs,150,0,pending,,0.44,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,1,runs,150,0,pending,,0.46,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,2,runs,150,0,pending,,0.46,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,mentored_dec,0.75,1,runs,150,0,pending,,0.45,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,mentored_dec,0.75,2,runs,150,0,pending,,0.45,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,r_fuzzy,0.25,1,runs,150,0,pending,,0.45,,lane=B; lane=A
+2.2,main,gpt-oss-20b,longbench_v2,r_fuzzy,0.25,2,runs,150,0,pending,,0.45,,lane=B; lane=A

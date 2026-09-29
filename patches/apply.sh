@@ -58,8 +58,10 @@ TRACE_DST="$pkg/$TRACE_REL"
 v1_hash="$(hash_of "$V1")"
 v1_label="$(label_for_hash x "$v1_hash")"
 
+already_applied=0
 if [[ "$v1_label" == "$METHOD" ]]; then
   echo "$METHOD already applied to $V1 (sha256 matches)"
+  already_applied=1
 elif [[ "$v1_label" == "upstream" ]]; then
   echo "applying $METHOD to pristine $V1_REL"
   work="$(mktemp -d)"
@@ -187,7 +189,14 @@ if [[ ! -f "$TRACE_DST" ]] || ! cmp -s "$here/relaxation_trace.py" "$TRACE_DST";
 fi
 
 test_file="$here/test_$(echo "$METHOD" | tr '-' '_').py"
-if [[ -f "$test_file" ]]; then
+# APPLY_SKIP_TEST_IF_APPLIED=1 (set by cascade/cluster/addendum_lane.sbatch): when
+# the installed file already hash-matched $METHOD before this call, its self-test
+# has nothing new to check -- the sha256 is the integrity guarantee -- and on
+# Nibi the test costs ~2.5 min of GPU time per arm. A fresh apply or a switch
+# always runs the test.
+if [[ -n "${APPLY_SKIP_TEST_IF_APPLIED:-}" && "$already_applied" == 1 ]]; then
+  echo "skipping $test_file: $METHOD was already installed (sha256 verified), APPLY_SKIP_TEST_IF_APPLIED is set"
+elif [[ -f "$test_file" ]]; then
   "$PYTHON" "$test_file"
 else
   echo "no test file for $METHOD ($test_file not found) -- skipping verification" >&2
