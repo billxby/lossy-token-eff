@@ -303,3 +303,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T17:58:00Z lane A: pulled 22 new run dir(s) into runs/
 - 2026-09-29T17:59:10Z lane B: pulled 98 new run dir(s) into runs/
 - 2026-09-29T17:59:13Z step 5.1 main aime24 spec_casc_tok alpha=0.55 seed=0: done, 30/30 cases (jobs 22880871, 0.23 GPU-h)
+- 2026-09-29T17:59:14Z step 2.2 main longbench_v2 spec_casc_opt alpha=0.05 seed=1: done, 150/150 cases (jobs 22881159, 0.32 GPU-h)
