@@ -343,6 +343,11 @@ def select_best(ds: str, method: str) -> tuple[str | None, list[dict]]:
         cands.append(c)
     eligible = [c for c in cands if c.get("eligible") and c.get("time_ratio") is not None]
     best = min(eligible, key=lambda c: c["time_ratio"])["alpha"] if eligible else None
+    # Robustness check, not the plan's rule: time ratios of the campaign alphas come from the old box and
+    # those of the step-5.1 fills from Nibi, so also report the pick by the hardware-independent rounds ratio.
+    by_rounds = min(eligible, key=lambda c: c["rounds_ratio"])["alpha"] if eligible else None
+    for c in cands:
+        c["best_by_rounds"] = by_rounds
     return best, cands
 
 
@@ -355,11 +360,14 @@ def cmd_best(args) -> int:
                 complete = all(c["complete"] for c in cands)
                 row = {"target": "qwen3-8b" if ds.endswith("_qwen3") else "gpt-oss-20b", "dataset": base,
                        "method": method, "grid_complete": complete, "chosen_alpha": best or "",
-                       "rule": next((c["rule"] for c in cands if c.get("rule")), "")}
+                       "rule": next((c["rule"] for c in cands if c.get("rule")), ""),
+                       "chosen_alpha_by_rounds_ratio": next((c["best_by_rounds"] for c in cands if c.get("best_by_rounds")), "")}
                 for c in cands:
                     a = c["alpha"]
                     row[f"eligible_{a}"] = c.get("eligible", "")
                     row[f"time_ratio_s0_{a}"] = c.get("time_ratio")
+                    row[f"rounds_ratio_s0_{a}"] = c.get("rounds_ratio")
+                    row[f"hardware_s0_{a}"] = c.get("hardware", "")
                 if best:
                     s0 = next(c for c in cands if c["alpha"] == best)
                     for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict", "n_pairs"):
