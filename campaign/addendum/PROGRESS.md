@@ -228,3 +228,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T13:08:11Z step 2.2 main aime24 r_fuzzy alpha=0.25 seed=2: done, 30/30 cases (jobs 22881159, 0.35 GPU-h)
 - 2026-09-29T13:09:55Z grading: uploaded 118 run dir(s) to the Nibi mirror, submitted CPU grading job 22912733
 - 2026-09-29T13:10:00Z grading: pulled 25875 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T13:26:18Z lane A: pulled 90 new run dir(s) into runs/
+- 2026-09-29T13:26:33Z lane B: pulled 42 new run dir(s) into runs/
+- 2026-09-29T13:26:36Z step 2.1 main livecodebench spec_casc_tok alpha=0.8 seed=1: done, 90/90 cases (jobs 22880871, 0.28 GPU-h)
