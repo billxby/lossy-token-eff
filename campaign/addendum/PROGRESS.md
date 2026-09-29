@@ -20,10 +20,17 @@ for what is done; this file records every action and failure.
    but the existing Qwen3 strict data ran on the consolidated file at neutral
    alphas, so comparability would rest on that file being a no-op at neutral
    alphas. Not done without your say-so.
-2. **MT-Bench judge API key (step 1.9).** No `ANTHROPIC_API_KEY` /
-   `OPENAI_API_KEY` in this environment. Ask: put one in
-   `~/.config/lossy-token-eff/judge.env` (`ANTHROPIC_API_KEY=...` or
-   `OPENAI_API_KEY=...`, `chmod 600`). Step 1.9 is skipped until then.
+2. **MT-Bench judge API key (step 1.9).** No Anthropic credentials here (no
+   `ANTHROPIC_API_KEY`, no `ant` CLI profile). The judge is written and
+   dry-run (`scripts/addendum_mtbench_judge.py`: FastChat single-v1 /
+   single-math-v1 prompts, turn 1, `[[rating]]`; claude-fable-5-1 on the
+   Message Batches API). Ask: put `ANTHROPIC_API_KEY=...` in
+   `~/.config/lossy-token-eff/judge.env` (`chmod 600`). Cost estimate from the
+   dry run: 2,070 requests for the existing seed-0 runs (224 more runs never
+   reached an answer and score 1 without a call), ~2.3M input + ~3.1M output
+   tokens -> ~$89 at batch prices; roughly double once the seed-1/2 MT-Bench
+   runs are in. Run: `python3 scripts/addendum_mtbench_judge.py submit` then
+   `... collect`.
 3. **Duo.** The Nibi link is one ControlMaster session opened 2026-09-29
    05:25Z with a keepalive channel. If it drops, queued jobs keep running on
    Nibi (lanes are chained up to ~48 h ahead) but nothing is pulled back or
@@ -63,3 +70,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T06:33:24Z step 2.1 main gsm8k spec_casc_opt alpha=0.05 seed=2: done, 150/150 cases (jobs 22880871, 0.09 GPU-h)
 - 2026-09-29T06:33:25Z step 2.1 main gsm8k mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22880871, 0.12 GPU-h)
 - 2026-09-29T06:33:25Z step 3 nspec2 gsm8k strict alpha=strict seed=0: done, 150/150 cases (jobs 22881159, 0.12 GPU-h)
+- 2026-09-29T06:52Z Step 1.9 prepared, not run: FastChat judge data in prompts/mtbench_judge/ (judge_prompts.jsonl sha256 fd283293..., question.jsonl 119565ad..., reference_answer_gpt-4.jsonl f957a5bc...); every campaign MT-Bench case maps to a FastChat question (case_007's HF copy says 'reprompt top-5 words' for q121's 'returns' -- matched by similarity, judged on the text the model saw). Blocked on credentials (Needs Bill 2).
