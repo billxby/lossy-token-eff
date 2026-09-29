@@ -75,3 +75,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T06:50:00Z lane B: pulled 90 new run dir(s) into runs/
 - 2026-09-29T06:50:02Z step 2.1 main gsm8k mentored_dec alpha=0.75 seed=2: done, 150/150 cases (jobs 22880871, 0.11 GPU-h)
 - 2026-09-29T06:50:03Z step 2.1 main gsm8k cactus alpha=0.35 seed=1: done, 150/150 cases (jobs 22880871, 0.13 GPU-h)
+- 2026-09-29T06:50:03Z step 2.1 main gsm8k cactus alpha=0.35 seed=2: done, 150/150 cases (jobs 22880871, 0.09 GPU-h)
