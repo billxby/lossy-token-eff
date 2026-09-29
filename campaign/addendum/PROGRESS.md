@@ -150,3 +150,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T09:47:34Z lane A: pulled 182 new run dir(s) into runs/
 - 2026-09-29T09:47:44Z lane B: pulled 30 new run dir(s) into runs/
 - 2026-09-29T09:47:47Z step 2.1 main mtbench mentored_dec alpha=0.75 seed=1: done, 80/80 cases (jobs 22880871, 0.13 GPU-h)
+- 2026-09-29T09:47:48Z step 2.1 main mtbench mentored_dec alpha=0.75 seed=2: done, 80/80 cases (jobs 22880871, 0.09 GPU-h)
