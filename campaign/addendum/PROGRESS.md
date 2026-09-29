@@ -324,3 +324,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T18:06:54Z step 5.2: 12 cells have an eligible best setting; added 11 seed-1 row(s): gsm8k/mentored_dec/0.55, gsm8k/spec_casc_tok/0.55, aime24/mentored_dec/0.55, aime24/spec_casc_tok/0.15, humaneval/mentored_dec/0.55, humaneval/spec_casc_tok/0.35, livecodebench/mentored_dec/0.55, livecodebench/spec_casc_tok/0.35, mtbench/spec_casc_tok/0.55, longbench_v2/mentored_dec/0.55, longbench_v2/spec_casc_tok/0.55
 - 2026-09-29T18:11:27Z lane B: pulled 70 new run dir(s) into runs/
 - 2026-09-29T18:11:49Z lane A: submitted job 22931500; lane has 11 work items, est. 1.7 GPU-h
+- 2026-09-29T18:36:17Z lane A: pulled 303 new run dir(s) into runs/
+- 2026-09-29T18:36:47Z lane B: pulled 175 new run dir(s) into runs/
+- 2026-09-29T18:36:51Z step 2.2 main longbench_v2 spec_casc_opt alpha=0.05 seed=2: done, 150/150 cases (jobs 22881159 22881281, 0.19 GPU-h)

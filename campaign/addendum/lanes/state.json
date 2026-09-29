@@ -16,7 +16,7 @@
         },
         {
           "id": "22931500",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-09-29T18:11:49Z",
           "dependency": ""
         }
@@ -102,7 +102,10 @@
         "main|livecodebench|spec_casc_tok|0.35|1",
         "main|mtbench|spec_casc_tok|0.55|1",
         "main|longbench_v2|mentored_dec|0.55|1",
-        "main|longbench_v2|spec_casc_tok|0.55|1"
+        "main|longbench_v2|spec_casc_tok|0.55|1",
+        "speedbench|speedbench|cactus|0.35|0",
+        "speedbench|speedbench|r_fuzzy|0.25|0",
+        "speedbench|speedbench|spec_casc_tok|0.8|0"
       ]
     },
     "B": {
@@ -168,7 +171,11 @@
         "main|longbench_v2|mentored_dec|0.75|1",
         "main|longbench_v2|mentored_dec|0.75|2",
         "main|longbench_v2|r_fuzzy|0.25|1",
-        "main|longbench_v2|r_fuzzy|0.25|2"
+        "main|longbench_v2|r_fuzzy|0.25|2",
+        "speedbench_pilot|speedbench|strict|strict|0",
+        "speedbench|speedbench|strict|strict|0",
+        "speedbench|speedbench|spec_casc_opt|0.05|0",
+        "speedbench|speedbench|mentored_dec|0.75|0"
       ]
     }
   },
@@ -284,5 +291,15 @@
       "lane": "A",
       "notes": "best-setting validation"
     }
-  ]
+  ],
+  "speedbench": {
+    "phase": "pilot",
+    "budget": {
+      "reasoning": null,
+      "math": null
+    },
+    "first40": [],
+    "subset_relaxed": null,
+    "estimate": {}
+  }
 }
