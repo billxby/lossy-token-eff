@@ -350,3 +350,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T19:17:19Z lane A: pulled 91 new run dir(s) into runs/
 - 2026-09-29T19:17:52Z lane B: pulled 167 new run dir(s) into runs/
 - 2026-09-29T19:17:56Z step 2.2 main longbench_v2 r_fuzzy alpha=0.25 seed=1: done, 150/150 cases (jobs 22881281, 0.28 GPU-h)
+- 2026-09-29T19:17:58Z step 5.2 main aime24 spec_casc_tok alpha=0.15 seed=1: done, 30/30 cases (jobs 22931500, 0.34 GPU-h)
