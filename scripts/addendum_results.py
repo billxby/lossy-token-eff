@@ -186,6 +186,30 @@ def section_seeds() -> list[str]:
     return out + [""]
 
 
+def section_hardware() -> list[str]:
+    ss = rows(AN / "seed_shift.csv")
+    hm = rows(AN / "hardware_tpr_model.csv")
+    out = ["## Hardware dependence of the time ratios (found in step 2)", ""]
+    if not ss:
+        return out + ["Pending.", ""]
+    out += [f"`{rel(AN / 'seed_shift.csv')}`: GPT-OSS cells with seeds 0-2 complete. Seed 0 = the campaign's run on the "
+            "old box (H100 PCIe); seeds 1-2 = Nibi (H100 SXM).", "",
+            "| metric | cells | mean seed 0 | mean seed 1 | mean seed 2 | mean s1-s0 | mean s2-s1 | cells s1 < s0 | win/loss flips |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|---:|"]
+    for r in ss:
+        out.append(f"| {r['metric']} | {r['n_cells']} | {f(r['mean_s0'], 3)} | {f(r['mean_s1'], 3)} | {f(r['mean_s2'], 3)} | "
+                   f"{f(r['mean_s1_minus_s0'], 3)} | {f(r['mean_s2_minus_s1'], 3)} | {r['cells_s1_below_s0']} | "
+                   f"{r.get('cells_win_loss_flip_across_seeds') or '-'} |")
+    if hm:
+        out += ["", f"`{rel(AN / 'hardware_tpr_model.csv')}`: time per round = c0 + c1 x tokens per round (per-run OLS, "
+                "strict + loosest arms):", "",
+                "| machine | dataset | runs | c0 (ms) | c1 (ms/token) | c1/c0 | R^2 |", "|---|---|---:|---:|---:|---:|---:|"]
+        for r in hm:
+            out.append(f"| {r['machine']} | {r['dataset']} | {r['n_runs']} | {f(r['c0_ms'])} | {f(r['c1_ms_per_token'])} | "
+                       f"{f(r['c1_over_c0'], 3)} | {f(r['r2'])} |")
+    return out + [""]
+
+
 def section_tables(title: str, pattern: str) -> list[str]:
     files = sorted((ADD / "tables").glob(pattern))
     out = [title, ""]
@@ -210,6 +234,7 @@ def main() -> int:
     lines += section_status()
     lines += section_step1()
     lines += section_seeds()
+    lines += section_hardware()
     lines += section_tables("## Step 3: lossless draft-length sweep (strict, seed 0)", "nspec__*.csv")
     lines += section_tables("## Step 4.1: temperature (strict, seed 0)", "temp__*.csv")
     lines += section_tables("## Step 4.2: Qwen3 at its recommended sampler", "qwenT0.6__*.csv")

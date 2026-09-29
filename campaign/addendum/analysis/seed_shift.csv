@@ -1,0 +1,5 @@
+metric,n_cells,mean_s1_minus_s0,mean_s2_minus_s0,mean_s2_minus_s1,cells_s1_below_s0,cells_s2_below_s0,mean_s0,mean_s1,mean_s2,cells_win_loss_flip_across_seeds
+lambda,25,-0.0596938,-0.00725362,0.0524402,12,10,1.46938,1.40969,1.46213,
+rounds_ratio,25,-0.037824,-0.00554216,0.0322818,12,9,1.02839,0.990564,1.02285,8
+time_ratio,25,-0.182957,-0.159831,0.0231266,22,23,1.18169,0.998737,1.02186,8
+tpr_ratio,25,-0.124544,-0.131083,-0.00653858,25,25,1.13261,1.00807,1.00153,

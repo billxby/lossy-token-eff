@@ -800,6 +800,7 @@ def cmd_poll(args: argparse.Namespace) -> int:
                                   capture_output=True, text=True)
             if done.returncode != 0:
                 print(f"tables {sub} failed: {done.stderr[-400:]}", file=sys.stderr)
+        subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_hardware.py")], cwd=REPO, capture_output=True)
         subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_results.py")], cwd=REPO, capture_output=True)
     commit(f"addendum: tables and RESULTS.md refresh {utc_now()}", ["campaign/addendum"])
     git("push", "-q", "origin", "addendum-oct2026", check=False)

@@ -2579,3 +2579,14 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   inflates gsm8k by 1.27x (accuracy unchanged) and livecodebench by 1.07x;
   T 1.5 inflates 3.9x / 1.8x with gsm8k accuracy 0.31 (48% cap-outs).
   Tables: `campaign/addendum/tables/temp__*.csv`. Qwen3 half blocked.
+
+- **2026-09-29, addendum step 2.1 (GPT-OSS half) done** (lane A, job
+  22880871): seeds 1 and 2 of strict + the five rules at their loosest alpha
+  on gsm8k, humaneval, mtbench, livecodebench, all cases (48 arms); AIME24
+  seeds 1-2 (step 2.2) also done on lane B. lambda, rounds ratio and
+  accuracy replicate (median seed sd 0.09, 0.06, 2.2 points); the time
+  ratio does not: 1.18 on the old-box seed 0 vs 1.00 / 1.02 on the Nibi
+  seeds. Traced to a ~3 ms-per-emitted-token cost on the old box (absent on
+  Nibi's H100 SXM), which made relaxed rules' rounds 13% slower there
+  (`campaign/addendum/analysis/{seed_shift,hardware_tpr_model,
+  hardware_tpr_ratio}.csv`, `scripts/addendum_hardware.py`).

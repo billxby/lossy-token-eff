@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 14:32 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 14:35 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -427,6 +427,33 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | qwen3-8b | mtbench | r_fuzzy | 0.25 | 1.12 | - | - | - | - | 1.12 (-) | 0.92 | - | - | - | - | 0.92 (-) | - | - | - | - | - |
 | qwen3-8b | mtbench | spec_casc_tok | 0.8 | 1.04 | - | - | - | - | 1.04 (-) | 0.99 | - | - | - | - | 0.99 (-) | - | - | - | - | - |
 
+## Hardware dependence of the time ratios (found in step 2)
+
+`campaign/addendum/analysis/seed_shift.csv`: GPT-OSS cells with seeds 0-2 complete. Seed 0 = the campaign's run on the old box (H100 PCIe); seeds 1-2 = Nibi (H100 SXM).
+
+| metric | cells | mean seed 0 | mean seed 1 | mean seed 2 | mean s1-s0 | mean s2-s1 | cells s1 < s0 | win/loss flips |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| lambda | 25 | 1.469 | 1.410 | 1.462 | -0.060 | 0.052 | 12 | - |
+| rounds_ratio | 25 | 1.028 | 0.991 | 1.023 | -0.038 | 0.032 | 12 | 8 |
+| time_ratio | 25 | 1.182 | 0.999 | 1.022 | -0.183 | 0.023 | 22 | 8 |
+| tpr_ratio | 25 | 1.133 | 1.008 | 1.002 | -0.125 | -0.007 | 25 | - |
+
+`campaign/addendum/analysis/hardware_tpr_model.csv`: time per round = c0 + c1 x tokens per round (per-run OLS, strict + loosest arms):
+
+| machine | dataset | runs | c0 (ms) | c1 (ms/token) | c1/c0 | R^2 |
+|---|---|---:|---:|---:|---:|---:|
+| old box (H100 PCIe), seed 0 | gsm8k | 900 | 24.45 | 1.74 | 0.071 | 0.04 |
+| old box (H100 PCIe), seed 0 | humaneval | 900 | 14.11 | 3.04 | 0.215 | 0.45 |
+| old box (H100 PCIe), seed 0 | mtbench | 480 | 11.87 | 3.24 | 0.273 | 0.39 |
+| old box (H100 PCIe), seed 0 | livecodebench | 540 | 13.55 | 2.89 | 0.213 | 0.42 |
+| old box (H100 PCIe), seed 0 | aime24 | 180 | 13.32 | 2.54 | 0.190 | 0.87 |
+| old box (H100 PCIe), seed 0 | longbench_v2 | 900 | 276.52 | -12.49 | -0.045 | 0.00 |
+| Nibi (H100 SXM), seeds 1-2 | gsm8k | 1800 | 7.57 | 0.07 | 0.009 | 0.00 |
+| Nibi (H100 SXM), seeds 1-2 | humaneval | 1800 | 7.44 | 0.02 | 0.003 | 0.00 |
+| Nibi (H100 SXM), seeds 1-2 | mtbench | 960 | 7.08 | 0.08 | 0.012 | 0.13 |
+| Nibi (H100 SXM), seeds 1-2 | livecodebench | 1080 | 7.37 | 0.02 | 0.002 | 0.01 |
+| Nibi (H100 SXM), seeds 1-2 | aime24 | 360 | 7.19 | 0.05 | 0.007 | 0.04 |
+
 ## Step 3: lossless draft-length sweep (strict, seed 0)
 
 `campaign/addendum/tables/nspec__gsm8k.csv`:
@@ -599,4 +626,28 @@ Pending.
   accuracy 0.31); livecodebench lambda 1.82 [1.44, 2.27], time 2.51x. l_bar
   falls as T rises (gsm8k 2.58 -> 2.36 -> 1.79): the EAGLE-3 drafter is
   trained at the target's T 1.0 distribution, so lossless acceptance drops.
+
+### The paper's time ratios are hardware-dependent (found in step 2)
+
+- **lambda and the rounds ratio replicate across machines; the time ratio
+  does not** (`analysis/seed_shift.csv`, 25 GPT-OSS cells with seeds 0-2):
+  mean lambda 1.47 (seed 0, old box) vs 1.41 / 1.46 (seeds 1 / 2, Nibi);
+  rounds ratio 1.03 vs 0.99 / 1.02; time ratio 1.18 vs 1.00 / 1.02, lower
+  on Nibi in 22 and 23 of 25 cells while the two Nibi seeds agree to 0.02
+  on average. 8 of 25 cells change time win/loss across the three seeds.
+- **Cause: a cost per emitted token on the old box** (`analysis/
+  hardware_tpr_model.csv`). There, time per round = 12-14 ms + 2.5-3.2 ms
+  per emitted token (R^2 0.39-0.87 outside gsm8k), so a rule that accepts
+  more tokens per round also gets slower rounds: time-per-round ratio
+  relaxed / strict 1.13 on average, above 1.05 in 24/25 cells (`analysis/
+  hardware_tpr_ratio.csv`), even for mentored_dec, which ran on the same
+  V1 patch file as the old box's strict arm. On Nibi a round costs 7.1-7.6
+  ms whatever it emits (0.02-0.08 ms per token, R^2 ~ 0) and the
+  time-per-round ratio is 1.01 / 1.00: time ratio = rounds ratio.
+- **Consequence for the paper**: Eq. 4 is a round-count model, so the six
+  "Eq. 4 wins that are time losses" and eleven "rounds wins that are time
+  losses" in the paper's tables are (mostly) the old box's per-token cost,
+  not a property of the rules. On the faster machine the time ratio tracks
+  the rounds ratio. The tracer is not the cause: the penalty is the same in
+  the traced first 12 cases and the untraced cases 13+.
 

@@ -82,3 +82,27 @@
   accuracy 0.31); livecodebench lambda 1.82 [1.44, 2.27], time 2.51x. l_bar
   falls as T rises (gsm8k 2.58 -> 2.36 -> 1.79): the EAGLE-3 drafter is
   trained at the target's T 1.0 distribution, so lossless acceptance drops.
+
+### The paper's time ratios are hardware-dependent (found in step 2)
+
+- **lambda and the rounds ratio replicate across machines; the time ratio
+  does not** (`analysis/seed_shift.csv`, 25 GPT-OSS cells with seeds 0-2):
+  mean lambda 1.47 (seed 0, old box) vs 1.41 / 1.46 (seeds 1 / 2, Nibi);
+  rounds ratio 1.03 vs 0.99 / 1.02; time ratio 1.18 vs 1.00 / 1.02, lower
+  on Nibi in 22 and 23 of 25 cells while the two Nibi seeds agree to 0.02
+  on average. 8 of 25 cells change time win/loss across the three seeds.
+- **Cause: a cost per emitted token on the old box** (`analysis/
+  hardware_tpr_model.csv`). There, time per round = 12-14 ms + 2.5-3.2 ms
+  per emitted token (R^2 0.39-0.87 outside gsm8k), so a rule that accepts
+  more tokens per round also gets slower rounds: time-per-round ratio
+  relaxed / strict 1.13 on average, above 1.05 in 24/25 cells (`analysis/
+  hardware_tpr_ratio.csv`), even for mentored_dec, which ran on the same
+  V1 patch file as the old box's strict arm. On Nibi a round costs 7.1-7.6
+  ms whatever it emits (0.02-0.08 ms per token, R^2 ~ 0) and the
+  time-per-round ratio is 1.01 / 1.00: time ratio = rounds ratio.
+- **Consequence for the paper**: Eq. 4 is a round-count model, so the six
+  "Eq. 4 wins that are time losses" and eleven "rounds wins that are time
+  losses" in the paper's tables are (mostly) the old box's per-token cost,
+  not a property of the rules. On the faster machine the time ratio tracks
+  the rounds ratio. The tracer is not the cause: the penalty is the same in
+  the traced first 12 cases and the untraced cases 13+.
