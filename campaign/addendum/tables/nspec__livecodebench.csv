@@ -1,0 +1,3 @@
+n_draft,source,n_cases,mean_l_bar,mean_l_bar_ci_lo,mean_l_bar_ci_hi,mean_completion_tokens,mean_completion_tokens_ci_lo,mean_completion_tokens_ci_hi,mean_verifier_rounds,mean_verifier_rounds_ci_lo,mean_verifier_rounds_ci_hi,mean_wall_time_s,mean_wall_time_s_ci_lo,mean_wall_time_s_ci_hi,capout_rate
+6,"campaign seed 0 (old box, H100 PCIe)",90,2.16445,2.10627,2.22379,3456.24,2932.71,4038.13,1150.83,954.692,1368.44,25.19,21.265,29.6672,0.0222222
+6,"nibiref (Nibi, campaign settings)",23,2.18666,2.09799,2.27132,3175.65,2341.64,4268.1,1039.52,731.301,1471.69,7.74632,5.45384,10.849,0.0434783

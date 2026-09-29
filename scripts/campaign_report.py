@@ -95,6 +95,12 @@ STRICT_STYLE: dict = {"color": "#3a3a37", "marker": "X", "label": "lossless (str
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--dataset", required=True)
+    parser.add_argument(
+        "--seed", default=None,
+        help="Only runs at this request seed (seed_<N> directories); default: every seed found. The addendum "
+        "(campaign/addendum/README.md) writes per-seed tables with it -- pass --tables-out and friends so the "
+        "campaign's own tables/results/graphs are not overwritten.",
+    )
     parser.add_argument("--runs-root", type=pathlib.Path, default=REPO_ROOT / "runs")
     parser.add_argument("--calibration-json", type=pathlib.Path, default=None)
     parser.add_argument("--tables-out", type=pathlib.Path, default=None)
@@ -210,6 +216,8 @@ def main() -> int:
 
     # --- 1. per-case table: every run found, calibration + full sweep alike ---
     all_rows = load_all_runs(args.runs_root, args.dataset)
+    if args.seed is not None:
+        all_rows = [row for row in all_rows if row["seed"] == str(args.seed)]
     if not all_rows:
         print(f"no runs found yet under {args.runs_root / args.dataset}")
         return 0
