@@ -388,3 +388,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T21:08:09Z lane A: pulled 326 new run dir(s) into runs/
 - 2026-09-29T21:08:43Z lane B: pulled 340 new run dir(s) into runs/
 - 2026-09-29T21:08:47Z step 5.2 main longbench_v2 spec_casc_tok alpha=0.55 seed=1: done, 150/150 cases (jobs 22931500, 0.29 GPU-h)
+- 2026-09-29T21:09:15Z grading: uploaded 64 run dir(s) to the Nibi mirror, submitted CPU grading job 22941156
+- 2026-09-29T21:09:17Z grading: pulled 31207 verdicts into campaign/addendum/analysis/grades.csv
