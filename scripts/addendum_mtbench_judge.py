@@ -127,6 +127,24 @@ def custom_id(i: int) -> str:
     return f"r{i:06d}"
 
 
+KEY_FILE = pathlib.Path.home() / ".config" / "lossy-token-eff" / "judge.env"
+
+
+def load_key_file() -> None:
+    """KEY=VALUE lines from ~/.config/lossy-token-eff/judge.env into the environment (values never printed;
+    a variable already set in the environment wins)."""
+    import os
+    if not KEY_FILE.is_file():
+        return
+    for line in KEY_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        name, value = line.split("=", 1)
+        name = name.strip().removeprefix("export ").strip()
+        os.environ.setdefault(name, value.strip().strip('"').strip("'"))
+
+
 def cmd_plan(args) -> int:
     runs = collect_runs()
     to_judge = [r for r in runs if r["answer_chars"] > 0]
@@ -146,6 +164,7 @@ def cmd_plan(args) -> int:
 
 
 def cmd_submit(args) -> int:
+    load_key_file()
     import anthropic
     from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
     from anthropic.types.messages.batch_create_params import Request
@@ -181,6 +200,7 @@ RATING_LOOSE = re.compile(r"\[(\d+\.?\d*)\]")
 
 
 def cmd_collect(args) -> int:
+    load_key_file()
     import anthropic
     import numpy as np
 
