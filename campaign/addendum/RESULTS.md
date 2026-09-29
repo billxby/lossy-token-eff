@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 19:36 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 19:37 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -597,10 +597,10 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 |---|---:|---|---|---|---|---|
 | all | 974 (0%) | λ 1.19 · R 0.74↓ · T 0.74↓ (n=40) | λ 1.42↑ · R 0.69↓ · T 0.71↓ (n=40) | λ 1.20 · R 0.78 · T 0.78 (n=40) | λ 1.33↑ · R 0.80 · T 0.81 (n=40) | λ 1.21 · R 0.96 · T 0.97 (n=40) |
 | coding | 903 (0%) | λ 1.05 · R 0.81↓ · T 0.81↓ (n=5) | λ 1.46↑ · R 0.99 · T 0.99 (n=5) | λ 1.14 · R 0.90 · T 0.89 (n=5) | λ 1.72 · R 1.25 · T 1.25 (n=5) | λ 1.22 · R 1.10 · T 1.09 (n=5) |
-| humanities | 3164 (0%) | λ 0.77↓ · R 0.51↓ · T 0.51↓ (n=1) | λ 0.80↓ · R 0.35↓ · T 0.35↓ (n=1) | λ 0.94↓ · R 0.67↓ · T 0.67↓ (n=1) | λ 0.78↓ · R 0.48↓ · T 0.48↓ (n=1) | λ 1.25↑ · R 1.11↑ · T 1.11↑ (n=1) |
+| humanities | 3164 (0%) | λ 0.77 · R 0.51 · T 0.51 (n=1) | λ 0.80 · R 0.35 · T 0.35 (n=1) | λ 0.94 · R 0.67 · T 0.67 (n=1) | λ 0.78 · R 0.48 · T 0.48 (n=1) | λ 1.25 · R 1.11 · T 1.11 (n=1) |
 | writing | 2241 (0%) | λ 1.10 · R 0.57↓ · T 0.57↓ (n=5) | λ 1.02 · R 0.38↓ · T 0.42↓ (n=5) | λ 0.94 · R 0.49 · T 0.50 (n=5) | λ 0.87 · R 0.43↓ · T 0.43↓ (n=5) | λ 0.90 · R 0.63 · T 0.63 (n=5) |
 | summarization | 349 (0%) | λ 1.18 · R 0.95 · T 0.95 (n=5) | λ 1.14 · R 0.67↓ · T 0.68↓ (n=5) | λ 1.06 · R 0.89 · T 0.89 (n=5) | λ 1.41 · R 1.14 · T 1.13 (n=5) | λ 1.14 · R 1.10 · T 1.10 (n=5) |
-| roleplay | 708 (0%) | λ 1.69 · R 1.12 · T 1.12 (n=4) | λ 2.41 · R 1.25 · T 1.26 (n=4) | λ 1.90↑ · R 1.26 · T 1.25 (n=4) | λ 2.49 · R 1.58 · T 1.59 (n=4) | λ 2.52 · R 2.06 · T 2.08 (n=4) |
+| roleplay | 708 (0%) | λ 1.69 · R 1.12 · T 1.12 (n=4) | λ 2.41 · R 1.25 · T 1.26 (n=4) | λ 1.90 · R 1.26 · T 1.25 (n=4) | λ 2.49 · R 1.58 · T 1.59 (n=4) | λ 2.52 · R 2.06 · T 2.08 (n=4) |
 | rag | 418 (0%) | λ 0.97 · R 0.63 · T 0.64 (n=5) | λ 1.41 · R 0.71 · T 0.72 (n=5) | λ 0.99 · R 0.65 · T 0.66 (n=5) | λ 1.37↑ · R 0.81 · T 0.82 (n=5) | λ 0.72 · R 0.67↓ · T 0.68↓ (n=5) |
 | multilingual | 921 (0%) | λ 0.87 · R 0.69↓ · T 0.69↓ (n=5) | λ 1.82↑ · R 0.96 · T 0.97 (n=5) | λ 1.62 · R 1.17 · T 1.17 (n=5) | λ 1.44 · R 1.05 · T 1.05 (n=5) | λ 1.06 · R 0.90 · T 0.90 (n=5) |
 | reasoning | 814 (0%) | λ 0.93 · R 0.60 · T 0.60 (n=5) | λ 1.21 · R 0.64 · T 0.65 (n=5) | λ 1.06 · R 0.77 · T 0.77 (n=5) | λ 1.10 · R 0.72 · T 0.73 (n=5) | λ 0.68 · R 0.56↓ · T 0.57↓ (n=5) |

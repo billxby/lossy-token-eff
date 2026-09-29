@@ -436,6 +436,7 @@ SB_ARMS = [("spec_casc_opt", "0.05"), ("mentored_dec", "0.75"), ("cactus", "0.35
            ("spec_casc_tok", "0.8")]
 SB_CATS = ["coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag", "multilingual",
            "reasoning", "qa"]  # step 7's order
+SB_MIN_CI = 5  # fewer pairs than this: no bootstrap interval (it would be degenerate)
 
 
 def sb_categories() -> dict[str, str]:
@@ -487,7 +488,8 @@ def cmd_speedbench(args) -> int:
             relaxed = load_cell(ds, method, alpha, 0, run_root=root)
             for cat in ["all", *SB_CATS]:
                 R, S = in_cat(relaxed, cat), in_cat(strict, cat)
-                c = compare(R, S, rng)
+                n = len(set(R) & set(S))
+                c = compare(R, S, rng if n >= SB_MIN_CI else None)  # no interval from a handful of pairs
                 if not c["n_pairs"]:
                     continue
                 cases = sorted(set(R) & set(S))
@@ -499,8 +501,8 @@ def cmd_speedbench(args) -> int:
                     "mean_verifier_rounds": mean_of(R, "draft_rounds"), "mean_verifier_rounds_strict": mean_of(S, "draft_rounds"),
                     "mean_wall_time_s": mean_of(R, "wall_time_seconds"), "mean_wall_time_s_strict": mean_of(S, "wall_time_seconds"),
                     "mean_l_bar": c["l_bar"], "mean_l_bar_strict": c["l_bar_strict"],
-                    **{k: c[k] for k in ("lambda", "lambda_ci_lo", "lambda_ci_hi", "rounds_ratio", "rounds_ratio_ci_lo",
-                                         "rounds_ratio_ci_hi", "time_ratio", "time_ratio_ci_lo", "time_ratio_ci_hi")},
+                    **{k: c.get(k) for k in ("lambda", "lambda_ci_lo", "lambda_ci_hi", "rounds_ratio", "rounds_ratio_ci_lo",
+                                             "rounds_ratio_ci_hi", "time_ratio", "time_ratio_ci_lo", "time_ratio_ci_hi")},
                     "capout_rate": c["capout_rate"], "capout_rate_strict": c["capout_rate_strict"],
                 })
                 gain = (c["l_bar"] + 1) / (c["l_bar_strict"] + 1)
@@ -508,10 +510,11 @@ def cmd_speedbench(args) -> int:
                     "target": family, "dataset": "speedbench", "category": cat, "method": method, "alpha": alpha,
                     "n_pairs": c["n_pairs"], "l_bar_relaxed": c["l_bar"], "l_bar_strict": c["l_bar_strict"],
                     "gain": gain, "lambda": c["lambda"], "gain_over_lambda": gain / c["lambda"],
-                    **{k: c[k] for k in ("rounds_ratio", "rounds_ratio_ci_lo", "rounds_ratio_ci_hi",
-                                         "time_ratio", "time_ratio_ci_lo", "time_ratio_ci_hi")},
+                    **{k: c.get(k) for k in ("rounds_ratio", "rounds_ratio_ci_lo", "rounds_ratio_ci_hi",
+                                             "time_ratio", "time_ratio_ci_lo", "time_ratio_ci_hi")},
                     "eq4_predicts_win": int(gain / c["lambda"] > 1), "rounds_win": int(c["rounds_ratio"] < 1),
-                    "time_win": int(c["time_ratio"] < 1), "time_loss_beyond_ci": int(c["time_ratio_ci_lo"] > 1),
+                    "time_win": int(c["time_ratio"] < 1),
+                    "time_loss_beyond_ci": int(c.get("time_ratio_ci_lo") is not None and c["time_ratio_ci_lo"] > 1),
                 })
         write_csv(ADD / "tables" / f"speedbench__{family}.csv", rows)
         write_csv(ADD / "tables" / f"speedbench_eq4__{family}.csv", eq4)
@@ -539,7 +542,8 @@ def cmd_speedbench(args) -> int:
         "speedbench__<family>.csv": "step 7, SPEED-Bench qualitative (seed 0, Nibi): per arm and category (plus "
         "'all'), mean completion tokens / verifier rounds / wall time / l_bar and cap-out rate; for the relaxed "
         "arms also the strict means on the same cases and lambda, rounds ratio, time ratio vs strict with 95% "
-        "paired bootstrap intervals (10,000 resamples, numpy seed 20261001). (scripts/addendum_tables.py speedbench)",
+        "paired bootstrap intervals (10,000 resamples, numpy seed 20261001; none for cells with fewer than 5 pairs). "
+        "(scripts/addendum_tables.py speedbench)",
         "speedbench_eq4__<family>.csv": "step 7: the columns of analysis/eq4_vs_measured.csv plus `category`, per "
         "relaxed arm and category: gain = (l_bar + 1)/(l_bar* + 1), gain/lambda, measured rounds and time ratios, "
         "and the four flags. (scripts/addendum_tables.py speedbench)",
