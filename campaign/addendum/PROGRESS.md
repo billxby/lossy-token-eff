@@ -88,3 +88,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T07:09:20Z step 3 nspec3 livecodebench strict alpha=strict seed=0: done, 90/90 cases (jobs 22881159, 0.25 GPU-h)
 - 2026-09-29T07:10:05Z grading: uploaded 690 run dir(s) to the Nibi mirror, submitted CPU grading job 22899474
 - 2026-09-29T07:10:07Z grading: pulled 19945 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T07:27:14Z lane A: pulled 376 new run dir(s) into runs/
+- 2026-09-29T07:27:28Z lane B: pulled 217 new run dir(s) into runs/
+- 2026-09-29T07:27:31Z step 2.1 main gsm8k spec_casc_tok alpha=0.8 seed=2: done, 150/150 cases (jobs 22880871, 0.08 GPU-h)
