@@ -248,3 +248,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T15:31:50Z step 5.1 main humaneval spec_casc_tok alpha=0.55 seed=0: done, 150/150 cases (jobs 22880871, 0.13 GPU-h)
 - 2026-09-29T15:31:50Z step 5.1 main longbench_v2 mentored_dec alpha=0.35 seed=0: done, 150/150 cases (jobs 22880871, 0.28 GPU-h)
 - 2026-09-29T15:31:50Z step 6 main aime24 r_fuzzy alpha=0.25 seed=3: done, 30/30 cases (jobs 22881159, 0.38 GPU-h)
+- 2026-09-29T15:31:51Z step 6 main aime24 spec_casc_tok alpha=0.8 seed=3: done, 30/30 cases (jobs 22881159, 0.30 GPU-h)
