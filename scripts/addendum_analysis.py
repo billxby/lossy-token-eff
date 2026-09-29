@@ -203,6 +203,10 @@ def load_runs(runs_root: pathlib.Path) -> list[dict]:
                 verdict, correct = grades.get(rel, ("", ""))
                 rounds = run.get("draft_rounds")
                 wall = run.get("wall_time_seconds")
+                try:
+                    stamp = json.loads((run_dir / "config.json").read_text(encoding="utf-8")).get("timestamp_utc") or ""
+                except (OSError, json.JSONDecodeError):
+                    stamp = ""
                 rows.append({
                     "target": target, "dataset": base, "method": method, "alpha": alpha_of(params), "params": params,
                     "case": case, "seed": int(run_dir.name.removeprefix("seed_")),
@@ -216,9 +220,20 @@ def load_runs(runs_root: pathlib.Path) -> list[dict]:
                     "verdict": verdict, "status": run.get("status"), "input_tokens": run.get("input_tokens"),
                     "draft_tokens": run.get("draft_tokens"),
                     "time_per_round": (wall / rounds) if (wall and rounds) else None,
+                    "timestamp_utc": stamp, "machine": machine_of(stamp),
                     "relpath": rel, "_text": text,
                 })
     return rows
+
+
+ADDENDUM_START = "2026-09-29"  # the campaign ran on the old box through 2026-09-16; addendum runs are on Nibi
+
+
+def machine_of(stamp: str) -> str:
+    """oldbox = the campaign's H100 PCIe box (the paper's data); nibi = Nibi H100 SXM (addendum runs)."""
+    if not stamp:
+        return ""
+    return "nibi" if stamp[:10] >= ADDENDUM_START else "oldbox"
 
 
 def index(rows: list[dict], seed: int) -> dict[tuple, dict[str, dict]]:
@@ -254,6 +269,7 @@ PER_REQUEST_FIELDS = [
     "analysis_chars", "final_chars", "reached_final_channel", "finish_reason", "reached_max_new_tokens",
     "draft_rounds", "accepted_tokens", "l_bar", "wall_time_seconds", "think_chars", "answer_chars", "correct",
     "verdict", "answer_started", "time_per_round", "input_tokens", "draft_tokens", "status",
+    "timestamp_utc", "machine",
 ]
 
 
@@ -268,7 +284,9 @@ def a_per_request(rows, cells, args):
          "vs everything outside them; no answer marker -> all thinking "
          "(answer_started=False). correct/verdict: campaign graders (grade_*.py) via scripts/addendum_grade.py "
          "(analysis/grades.csv); blank for mtbench (no grader) and for runs not graded yet. "
-         "time_per_round = wall_time_seconds / draft_rounds.")
+         "time_per_round = wall_time_seconds / draft_rounds. timestamp_utc: config.json; machine: oldbox = the "
+         "campaign's H100 PCIe box (runs before 2026-09-29, the paper's data), nibi = Nibi H100 SXM (the "
+         "addendum's runs: seeds 1+, and the step-5.1 grid cells at seed 0).")
 
 
 def a_split_inflation(rows, cells, args):
@@ -492,9 +510,11 @@ def a_time_per_round(rows, cells, args):
         tpr_ratio.append(ratio(tr, ts))
     write_csv("time_per_round.csv", out, list(out[0].keys()))
     reg = []
+    machine = "oldbox" if args.seed == 0 else "nibi"  # one machine per fit: time per round is hardware-specific
     for target in TARGETS.values():
         fam = [r for r in rows if r["target"] == target and r["seed"] == args.seed and r["status"] == "ok" and r["time_per_round"]
-               and r["method"] in ("strict", *FIVE) and r["params"] == params_dir(r["method"], r["alpha"])]
+               and r["method"] in ("strict", *FIVE) and r["params"] == params_dir(r["method"], r["alpha"])
+               and r["machine"] == machine]
         for scope, subset in (("strict", [r for r in fam if r["method"] == "strict"]), ("all", fam)):
             slope, intercept, r2 = ols([r["output_tokens"] for r in subset], [r["time_per_round"] for r in subset])
             reg.append({"target": target, "scope": scope, "dataset": "all", "n_runs": len(subset),
@@ -516,7 +536,8 @@ def a_time_per_round(rows, cells, args):
     note("time_per_round_regression.csv",
          "OLS of per-run time per round (s) on output_tokens, per target, seed 0: scope=strict (strict runs only) "
          "and scope=all (strict + the five rules at every alpha run; guard/cascade variants excluded), dataset=all; "
-         "plus per-dataset strict-only fits (extra).")
+         "plus per-dataset strict-only fits (extra). Old-box runs only (machine=oldbox in per_request.csv): the "
+         "addendum's step-5.1 grid cells are seed 0 too but ran on Nibi, whose time per round differs.")
     note("time_per_round_spearman.csv",
          "Spearman rho between lambda and the time-per-round ratio over the 60 loosest cells (average ranks), "
          "two-sided permutation p-value from 20,000 shuffles (numpy seed 20261001).")
