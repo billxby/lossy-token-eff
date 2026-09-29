@@ -2596,3 +2596,18 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   came from step 2.2). Accuracy over seeds 0-4: strict 0.79, mentored_dec
   0.68, spec_casc_tok 0.68, cactus 0.51, r_fuzzy 0.48, spec_casc_opt 0.39
   (`campaign/addendum/aime24_repeats.csv`). Qwen3 half blocked.
+
+- **2026-09-29, addendum step 2.2 (GPT-OSS half) done** (lane B, jobs
+  22881159, 22881281; 2.2 GPU-h): longbench_v2 seeds 1-2 for strict,
+  mentored_dec, spec_casc_opt and r_fuzzy at their loosest alpha, all 150
+  cases (AIME24 seeds 1-2 are in the step 6 entry). lambda replicates
+  (mean over seeds 0-2: mentored_dec 1.53, spec_casc_opt 1.79, r_fuzzy
+  1.65; sd 0.04-0.07) and so does the accuracy cost (strict 0.56 / 0.57 /
+  0.55 vs mentored_dec 0.51 / 0.52 / 0.53, spec_casc_opt 0.47 / 0.45 /
+  0.51, r_fuzzy 0.40 / 0.42 / 0.51). The time ratio moves the other way
+  from the step 2.1 datasets: spec_casc_opt 1.07 on the old box vs 1.29 /
+  1.24 on Nibi -- longbench_v2 was prefill-bound on the old box (72.6 vs
+  4.7 s per strict case), which diluted the relaxed rules' extra decode
+  time there. `campaign/addendum/seeds/summary.csv`. spec_casc_opt seed 2
+  was collected in two sessions (job 22881159 hit its 12 h limit mid-arm;
+  the partial run dirs were quarantined and the rest re-run in 22881281).
