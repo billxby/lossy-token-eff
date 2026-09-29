@@ -130,8 +130,13 @@ alpha grows).
    directories are never overwritten. An arm whose cases need two budgets
    runs as two work items (one server session each). "The first 40 prompts
    of each arm" = the first 40 cases in case order that are runnable when the
-   pilot finishes (prompt built, category budget decided); Math joins once
-   its pilot cases (16 of the first 20 are HLE) have run. The per-arm
+   pilot finishes (prompt built, category budget decided), which leaves Math
+   out: 16 of its first 20 cases are HLE, so its budget waits for the token.
+   In the full phase Math's 18 non-HLE rows (Spec-Bench's GSM8K-style
+   problems; at most 636 completion tokens in the pilot, so neither cap can
+   bind) run at 8192 anyway; the 62 HLE Math rows wait for the Math pilot's
+   decision. The reasoning pilot found 0/20 cap-outs, so every non-Math
+   category runs at 8192 (`tables/speedbench_pilot__gpt-oss-20b.csv`). The per-arm
    estimate and the full-vs-440 decision are written to the manifest notes
    and PROGRESS.md before the rest is queued. While step 7 waits between
    these phases, a lane that runs out of work keeps its GPU for up to 40 min

@@ -470,7 +470,18 @@ def sb_state(state: dict) -> dict:
 
 def sb_case_budget(sbs: dict, case: str) -> int | None:
     cat = sb_category(case)
-    return sbs["budget"].get(cat) if cat in SB_PILOT_CATS else SB_BUDGET
+    if cat not in SB_PILOT_CATS:
+        return SB_BUDGET
+    budget = sbs["budget"].get(cat)
+    if budget is None and cat == "math" and sbs["phase"] == "full" and not sb_is_hle(case):
+        # Math's budget waits for its 16 cais/hle pilot cases; its 18 other rows (Spec-Bench's GSM8K-style
+        # problems, <= 636 completion tokens in the pilot) cannot come near either cap, so they run now
+        return SB_BUDGET
+    return budget
+
+
+def sb_is_hle(case: str) -> bool:
+    return any(r["case"] == case and "cais/hle" in r["source"] for r in sb_cases_table())
 
 
 def sb_advance(sbs: dict, by_key: dict) -> bool:
