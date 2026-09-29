@@ -17,6 +17,8 @@ is recorded as verdict=refusal, not re-routed to another model.
   python3 scripts/addendum_mtbench_judge.py plan      # runs to judge, question mapping check, cost estimate; no API call
   python3 scripts/addendum_mtbench_judge.py submit    # create the batch (needs ANTHROPIC_API_KEY)
   python3 scripts/addendum_mtbench_judge.py collect   # wait for it, parse ratings, write the CSVs
+  python3 scripts/addendum_mtbench_judge.py direct [--cancel-batch]  # same requests through the Messages API
+                                                      # (standard price), then the CSVs; resumable
 
 "Every arm" = strict and the five campaign rules at every alpha that has
 runs (single-knob parameter directories), both targets, every seed present.
@@ -199,6 +201,85 @@ def cmd_submit(args) -> int:
 
 RATING = re.compile(r"\[\[(\d+\.?\d*)\]\]")
 RATING_LOOSE = re.compile(r"\[(\d+\.?\d*)\]")
+DIRECT_CACHE = OUT / "mtbench_judge_direct.jsonl"  # one line per run judged by `direct`
+
+
+def verdict_of(msg, model: str, effort: str, api: str) -> dict:
+    row = {"judge_model": model, "judge_effort": effort, "judge_api": api,
+           "judge_model_served": msg.model, "stop_reason": msg.stop_reason}
+    if msg.stop_reason == "refusal":
+        row.update(verdict="refusal", score=None)
+    else:
+        text = "".join(block.text for block in msg.content if block.type == "text")
+        m = RATING.search(text) or RATING_LOOSE.search(text)
+        row.update(verdict="ok" if m else "parse_error", score=float(m.group(1)) if m else None, judge_text=text[-600:])
+    return row
+
+
+def direct_results() -> dict[str, dict]:
+    out = {}
+    if DIRECT_CACHE.is_file():
+        for line in DIRECT_CACHE.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                row = json.loads(line)
+                out[row["relpath"]] = row
+    return out
+
+
+def cmd_direct(args) -> int:
+    """Judge through the Messages API (streamed, --workers at a time) every run not scored yet by a batch
+    or an earlier direct call; --cancel-batch first cancels unfinished batches in the state file. Same
+    prompts, model and effort as `submit`; standard (not batch) price. Resumable."""
+    load_key_file()
+    import anthropic
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    client = anthropic.Anthropic(max_retries=8)
+    state = json.loads(STATE.read_text()) if STATE.is_file() else {"batches": []}
+    if args.cancel_batch:
+        for b in state["batches"]:
+            if b.get("canceled"):
+                continue
+            if client.messages.batches.retrieve(b["id"]).processing_status != "ended":
+                client.messages.batches.cancel(b["id"])
+                b["canceled"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+                print(f"canceled batch {b['id']}", flush=True)
+        STATE.write_text(json.dumps(state, indent=1) + "\n")
+    done = direct_results()
+    runs = [r for r in collect_runs(args.seeds) if r["answer_chars"] > 0 and r["relpath"] not in done]
+    print(f"{len(runs)} run(s) to judge directly ({len(done)} already in {DIRECT_CACHE.name})", flush=True)
+
+    def judge(r: dict) -> dict:
+        with client.messages.stream(model=args.model, max_tokens=16000, system=r["system"],
+                                    output_config={"effort": args.effort},
+                                    messages=[{"role": "user", "content": r["user"]}]) as stream:
+            msg = stream.get_final_message()
+        return {"relpath": r["relpath"], **verdict_of(msg, args.model, args.effort, "messages"),
+                "input_tokens": msg.usage.input_tokens, "output_tokens": msg.usage.output_tokens,
+                "t": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+
+    tok_in = tok_out = failed = 0
+    with ThreadPoolExecutor(args.workers) as pool, DIRECT_CACHE.open("a", encoding="utf-8") as out:
+        futures = {pool.submit(judge, r): r for r in runs}
+        for i, fut in enumerate(as_completed(futures), start=1):
+            try:
+                row = fut.result()
+            except anthropic.APIError as exc:  # after the SDK's own retries; rerun `direct` to retry
+                failed += 1
+                print(f"{futures[fut]['relpath']}: {type(exc).__name__}: {str(exc)[:160]}", flush=True)
+                continue
+            out.write(json.dumps(row) + "\n")
+            out.flush()
+            tok_in += row["input_tokens"]
+            tok_out += row["output_tokens"]
+            if i % 50 == 0 or i == len(runs):
+                cost = tok_in / 1e6 * 2 * PRICE_IN + tok_out / 1e6 * 2 * PRICE_OUT
+                print(f"{i}/{len(runs)} judged, {failed} failed, ~${cost:.2f} so far", flush=True)
+    if failed:
+        print(f"{failed} request(s) failed; run `direct` again to retry them")
+        return 1
+    args.no_wait = True
+    return cmd_collect(args)
 
 
 def cmd_collect(args) -> int:
@@ -233,36 +314,37 @@ def cmd_collect(args) -> int:
             batch = retrying(lambda: client.messages.batches.retrieve(b["id"]), "retrieve")
             if batch.processing_status == "ended":
                 break
+            if getattr(args, "no_wait", False) and not b.get("canceled"):
+                batch = None  # still running: use what `direct` judged instead
+                break
             print(f"batch {b['id']}: {batch.processing_status}, {batch.request_counts.processing} processing", flush=True)
             time.sleep(60)
+        if batch is None:
+            continue
         for result in retrying(lambda: list(client.messages.batches.results(b["id"])), "results"):
             rel = b["ids"][result.custom_id]
-            row = {"judge_model": b["model"], "judge_effort": b["effort"], "judge_model_served": "", "stop_reason": ""}
             if result.result.type != "succeeded":
-                row.update(verdict=f"batch_{result.result.type}", score=None)
+                row = {"judge_model": b["model"], "judge_effort": b["effort"], "judge_api": "batch",
+                       "judge_model_served": "", "stop_reason": "", "verdict": f"batch_{result.result.type}", "score": None}
             else:
-                msg = result.result.message
-                row["judge_model_served"], row["stop_reason"] = msg.model, msg.stop_reason
-                if msg.stop_reason == "refusal":
-                    row.update(verdict="refusal", score=None)
-                else:
-                    text = "".join(block.text for block in msg.content if block.type == "text")
-                    m = RATING.search(text) or RATING_LOOSE.search(text)
-                    row.update(verdict="ok" if m else "parse_error", score=float(m.group(1)) if m else None,
-                               judge_text=text[-600:])
+                row = verdict_of(result.result.message, b["model"], b["effort"], "batch")
+            scored[rel] = row
+    for rel, row in direct_results().items():  # direct calls fill whatever the batches did not score
+        if rel not in scored or scored[rel].get("score") is None:
             scored[rel] = row
     rows = []
     for rel, r in sorted(runs.items()):
         s = scored.get(rel)
         if r["answer_chars"] == 0:
-            s = {"verdict": "no_answer", "score": 1.0, "judge_model": "", "judge_effort": "", "judge_model_served": "", "stop_reason": ""}
+            s = {"verdict": "no_answer", "score": 1.0, "judge_model": "", "judge_effort": "", "judge_api": "",
+                 "judge_model_served": "", "stop_reason": ""}
         if s is None:
             continue
         rows.append({k: r[k] for k in ("relpath", "target", "method", "alpha", "case", "seed", "category",
                                         "question_id", "prompt_version", "answer_chars", "finish_reason")} | s)
     fields = ["relpath", "target", "method", "alpha", "case", "seed", "category", "question_id", "prompt_version",
-              "answer_chars", "finish_reason", "judge_model", "judge_effort", "judge_model_served", "stop_reason",
-              "verdict", "score"]
+              "answer_chars", "finish_reason", "judge_model", "judge_effort", "judge_api", "judge_model_served",
+              "stop_reason", "verdict", "score"]
     with (OUT / "mtbench_judge.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
@@ -302,6 +384,10 @@ def main() -> int:
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name, fn in (("plan", cmd_plan), ("submit", cmd_submit), ("collect", cmd_collect)):
         sub.add_parser(name).set_defaults(fn=fn)
+    p = sub.add_parser("direct")
+    p.add_argument("--cancel-batch", action="store_true", help="Cancel unfinished batches in the state file first.")
+    p.add_argument("--workers", type=int, default=16)
+    p.set_defaults(fn=cmd_direct)
     args = parser.parse_args()
     return args.fn(args)
 
