@@ -1,3 +1,4 @@
-n_draft,source,n_cases,mean_l_bar,mean_l_bar_ci_lo,mean_l_bar_ci_hi,mean_completion_tokens,mean_completion_tokens_ci_lo,mean_completion_tokens_ci_hi,mean_verifier_rounds,mean_verifier_rounds_ci_lo,mean_verifier_rounds_ci_hi,mean_wall_time_s,mean_wall_time_s_ci_lo,mean_wall_time_s_ci_hi,capout_rate
-6,"campaign seed 0 (old box, H100 PCIe)",150,2.56665,2.5034,2.63113,322.187,269.76,381.86,94.02,77.5998,112.907,2.41815,2.07238,2.81592,0.02
-6,"nibiref (Nibi, campaign settings)",150,2.58156,2.51811,2.64619,321.627,268.513,382.747,93.0867,77.1198,111.147,0.717504,0.598612,0.851384,0.0133333
+n_draft,source,n_cases,mean_l_bar,mean_l_bar_ci_lo,mean_l_bar_ci_hi,mean_completion_tokens,mean_completion_tokens_ci_lo,mean_completion_tokens_ci_hi,mean_verifier_rounds,mean_verifier_rounds_ci_lo,mean_verifier_rounds_ci_hi,mean_wall_time_s,mean_wall_time_s_ci_lo,mean_wall_time_s_ci_hi,capout_rate,accuracy,accuracy_ci_lo,accuracy_ci_hi
+2,nspec2 (Nibi),150,1.42675,1.40973,1.44379,308.413,264.26,357.495,129.1,110.1,150.088,0.665784,0.570584,0.774118,0.0133333,,,
+6,"campaign seed 0 (old box, H100 PCIe)",150,2.56665,2.50382,2.63254,322.187,270.705,381.394,94.02,78.0133,112,2.41815,2.06518,2.80586,0.02,0.96,0.926667,0.986667
+6,"nibiref (Nibi, campaign settings)",150,2.58156,2.51603,2.64724,321.627,267.426,384.941,93.0867,77.2662,111.92,0.717504,0.597343,0.852424,0.0133333,,,
