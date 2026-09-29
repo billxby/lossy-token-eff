@@ -2590,3 +2590,9 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   Nibi's H100 SXM), which made relaxed rules' rounds 13% slower there
   (`campaign/addendum/analysis/{seed_shift,hardware_tpr_model,
   hardware_tpr_ratio}.csv`, `scripts/addendum_hardware.py`).
+
+- **2026-09-29, addendum step 6 (GPT-OSS half) done** (lane B): AIME24
+  seeds 3-4 for strict + the five rules at their loosest alpha (seeds 1-2
+  came from step 2.2). Accuracy over seeds 0-4: strict 0.79, mentored_dec
+  0.68, spec_casc_tok 0.68, cactus 0.51, r_fuzzy 0.48, spec_casc_opt 0.39
+  (`campaign/addendum/aime24_repeats.csv`). Qwen3 half blocked.

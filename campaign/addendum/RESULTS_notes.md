@@ -114,3 +114,16 @@
   Nibi seed 2 -- 10 / 12 / 12 / 0 / 0. Rounds wins barely move with the
   machine; only the time verdict does, and on Nibi every rounds win and
   every Eq. 4 win is a time win.
+
+### Step 6 (GPT-OSS half): AIME24 accuracy over five seeds
+
+- `aime24_repeats.csv` (seeds 0-4, 30 problems; interval = two-level
+  bootstrap over problems and seeds): strict 0.79 [0.65, 0.91];
+  mentored_dec 0.68 [0.53, 0.82]; spec_casc_tok 0.68 [0.53, 0.82] (4 seeds
+  graded at this writing); cactus 0.51 [0.36, 0.67]; r_fuzzy 0.48 [0.33,
+  0.63]; spec_casc_opt 0.39 [0.25, 0.53]. Seed-to-seed sd of accuracy is
+  0.04-0.06 (1-2 problems). The cactus / r_fuzzy / spec_casc_opt losses hold
+  on every seed; mentored_dec and spec_casc_tok sit ~10 points below strict
+  with overlapping intervals. lambda varies widely across seeds on 30
+  problems (spec_casc_tok 0.96-1.52; mentored_dec 1.28-2.15): single-seed
+  AIME24 lambdas should be quoted with that spread.
