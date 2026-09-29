@@ -2513,3 +2513,55 @@ Append-only. One entry per work session. See `campaign/PLAN.md` for the design.
   everywhere except this explicitly-authorized reuse mode, whose data
   carries its own `server_request_ordinal` marker per run for anyone
   who wants to check position-dependence later).
+
+## 2026-09-29 (NAACL-2027 addendum campaign, steps 0-1)
+
+Addendum plan, manifest and all new outputs live in `campaign/addendum/`
+(README, `manifest.csv`, `PROGRESS.md`); branch `addendum-oct2026`. The
+paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
+
+- **Step 0.1, Nibi smoke test passed** (job 22873241, g1, H100 80GB HBM3):
+  GPT-OSS gsm8k case_001 through `persistent_arm_replay.py` at `strict`,
+  request seed 7, into a scratch run root deleted afterwards. 522.9 s from
+  launch to a healthy server (patch switch to the spec-casc-opt carrier +
+  its self-test + server start), 1.04 s of generation (68 tokens, l_bar
+  2.24, final channel reached, ordinal 1).
+- **Step 0.2 blocked**: the consolidated V2 sampler is not on Nibi (both
+  venvs pristine `bfaec14e...`) nor on this Mac; only the old box has it.
+  Every Qwen3 row of the manifest is `blocked` (135 of 253); the install +
+  smoke path is scripted (`scripts/addendum_v2_install.py`) for when the
+  file arrives.
+- **Step 0.3**: Qwen/Qwen3-8B, RedHatAI/Qwen3-8B-speculator.eagle3,
+  Qwen/Qwen3-0.6B pre-downloaded into the Nibi HF cache; the GPT-OSS pair
+  was already there.
+- **Step 0.4**: two lanes, not three (user: "like 2 GPUs"; a third repo +
+  venv copy would cost ~100K of the 500K /project file quota for a lane
+  that has nothing to run while Qwen3 is blocked). Lane A = the
+  `lossy-token-eff` copy on g1-g14, lane B = `lossy-token-eff-lane2` on
+  g15-g28. Each lane writes to its own clean run root on scratch because
+  the Nibi copies' own `runs/` already hold the September E1/E1F/E1P runs
+  at campaign paths (e.g. gsm8k strict seeds 0-2) -- different runs from
+  the Mac's seed-0 data that skip-if-done would otherwise have reused.
+- **Found and avoided**: `cascade/cluster/sync_to_nibi.sh` passes
+  `--delete-excluded` with `/runs/`, `/logs/`, `.venv*` excluded, which
+  deletes exactly those on the receiving side. Code now goes over with tar.
+- **Speed**: Nibi (H100 SXM) is ~3x faster per token than the old box
+  (strict seed 0: 2.2-2.4 vs 7.1 ms/token); longbench_v2 ~15x (prefill).
+  Added step 0.5 `nibiref` (strict seed 0 on Nibi) as the hardware-matched
+  time denominator for Nibi-produced cells. Per-arm overhead is ~5 min, of
+  which ~3 min was `apply.sh` re-running a method's self-test on an
+  already-installed patch -- now skippable (hash-verified) in the lanes.
+- **mentored-dec on Nibi**: its self-test also checks the V2 module, so the
+  first switch to it failed (job 22880871, 06:23Z). V1 kernel checks all
+  passed; the V2 plumbing check is now scoped to V1 for GPT-OSS items only.
+- **Step 1 (zero-GPU analyses)** in `campaign/addendum/analysis/`. The
+  regrade of all 18,265 campaign runs on Nibi (CPU job 22892393, 5 min)
+  matches the paper's accuracy in all 135 graded cells. Eq. 4 vs measured
+  over the 60 loosest cells reproduces the paper's counts exactly (33 Eq. 4
+  wins, 38 rounds wins, 27 time wins; 6 and 11 time losses); new: 20 cells
+  are time losses beyond the 95% paired bootstrap interval, but only 1 of
+  the 6 Eq. 4-win/time-loss cells and 2 of the 11 rounds-win/time-loss
+  cells are. GPT-OSS inflation is almost all thinking (93-103% of the extra
+  characters; AIME24 answers get shorter); Spearman(lambda, time-per-round
+  ratio) = 0.58 over the 60 cells. Step 1.9 (MT-Bench judge) is written and
+  dry-run, blocked on an Anthropic API key.
