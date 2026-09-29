@@ -106,3 +106,11 @@
   not a property of the rules. On the faster machine the time ratio tracks
   the rounds ratio. The tracer is not the cause: the penalty is the same in
   the traced first 12 cases and the untraced cases 13+.
+- **Eq. 4 vs measured on the same 25 GPT-OSS cells, per seed**
+  (`analysis/eq4_vs_measured.csv` restricted to those cells vs
+  `analysis/eq4_vs_measured__seed{1,2}.csv`): old box seed 0 -- Eq. 4 wins
+  10, rounds wins 13, time wins 8, Eq. 4 wins that are time losses 2,
+  rounds wins that are time losses 5; Nibi seed 1 -- 13 / 14 / 14 / 0 / 0;
+  Nibi seed 2 -- 10 / 12 / 12 / 0 / 0. Rounds wins barely move with the
+  machine; only the time verdict does, and on Nibi every rounds win and
+  every Eq. 4 win is a time win.

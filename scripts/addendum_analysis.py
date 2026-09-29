@@ -138,7 +138,11 @@ def fmt(x, nd=6):
     return x
 
 
+OUT_SUFFIX = ""  # "__seed<k>" when run with --seed k != 0, so the seed-0 (paper) files are never overwritten
+
+
 def write_csv(name: str, rows: list[dict], fields: list[str]) -> None:
+    name = name.replace(".csv", f"{OUT_SUFFIX}.csv")
     OUT.mkdir(parents=True, exist_ok=True)
     with (OUT / name).open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
@@ -656,6 +660,8 @@ def main() -> int:
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--only", nargs="*", choices=sorted(ANALYSES), default=None)
     args = parser.parse_args()
+    global OUT_SUFFIX
+    OUT_SUFFIX = f"__seed{args.seed}" if args.seed != 0 else ""
     rows = load_runs(args.runs_root)
     print(f"loaded {len(rows)} runs")
     cells = loosest_cells(rows, args.seed)
@@ -663,6 +669,11 @@ def main() -> int:
         if args.only and name not in args.only:
             continue
         fn(rows, cells, args)
+    if OUT_SUFFIX:  # describe the per-seed variants without touching the seed-0 descriptions
+        for name in list(README):
+            README[name.replace(".csv", f"{OUT_SUFFIX}.csv")] = (f"as `{name}`, but seed {args.seed} (Nibi, H100 SXM) "
+                                                                 "instead of the paper's seed 0; cells without that seed are absent.")
+            del README[name]
     write_readme()
     return 0
 
