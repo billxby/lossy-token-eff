@@ -242,3 +242,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T15:31:14Z lane A: pulled 941 new run dir(s) into runs/
 - 2026-09-29T15:31:44Z lane B: pulled 103 new run dir(s) into runs/
 - 2026-09-29T15:31:47Z step 5.1 main gsm8k spec_casc_tok alpha=0.35 seed=0: done, 150/150 cases (jobs 22880871, 0.08 GPU-h)
+- 2026-09-29T15:31:48Z step 5.1 main gsm8k spec_casc_tok alpha=0.55 seed=0: done, 150/150 cases (jobs 22880871, 0.06 GPU-h)
