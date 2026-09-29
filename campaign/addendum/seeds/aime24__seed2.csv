@@ -1,0 +1,2 @@
+dataset,method,params,case,seed,status,l_bar,mean_accept_length,output_tokens,draft_rounds,draft_acceptance_rate,finish_reason,reached_final_channel,wall_time_seconds
+aime24,strict,strict,case_001,2,ok,2.8650602409638553,3.8650602409638553,1604,415.0,0.4775100401606426,stop,True,3.409714813809842
