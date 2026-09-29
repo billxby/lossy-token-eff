@@ -380,3 +380,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T20:31:20Z step 5.2 main mtbench spec_casc_tok alpha=0.55 seed=1: done, 80/80 cases (jobs 22931500, 0.10 GPU-h)
 - 2026-09-29T20:31:49Z grading: uploaded 160 run dir(s) to the Nibi mirror, submitted CPU grading job 22939015
 - 2026-09-29T20:31:51Z grading: pulled 30871 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T20:49:04Z lane A: pulled 176 new run dir(s) into runs/
+- 2026-09-29T20:50:07Z lane B: pulled 292 new run dir(s) into runs/
+- 2026-09-29T20:50:12Z step 5.2 main longbench_v2 mentored_dec alpha=0.55 seed=1: done, 150/150 cases (jobs 22931500, 0.28 GPU-h)
