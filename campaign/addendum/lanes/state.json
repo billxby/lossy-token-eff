@@ -10,7 +10,7 @@
         },
         {
           "id": "22880999",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-09-29T05:56:15Z",
           "dependency": "22880871"
         }
@@ -92,7 +92,7 @@
       "jobs": [
         {
           "id": "22881159",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-09-29T05:56:23Z",
           "dependency": ""
         },
