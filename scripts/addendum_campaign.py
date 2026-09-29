@@ -759,6 +759,33 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 ANALYSIS_PY = os.environ.get("ADDENDUM_ANALYSIS_PY", str(JOB_TMP / "venv" / "bin" / "python"))
 
 
+def cmd_add52(args: argparse.Namespace) -> int:
+    """Step 5.2: once the step-5.1 grid is complete, add seed-1 rows at each cell's chosen alpha
+    (scripts/addendum_tables.py best --plan), plus strict seed 1 where that dataset lacks it."""
+    done = subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_tables.py"), "best", "--plan"],
+                          cwd=REPO, capture_output=True, text=True, check=True)
+    plan = json.loads(done.stdout.strip().splitlines()[-1])
+    state = load_state()
+    extra = state.setdefault("extra_rows", [])
+    have = {(e["dataset"], e["method"], e["alpha"], int(e["seed"])) for e in extra}
+    added = []
+    for p in plan:
+        for method, alpha in ((p["method"], p["alpha"]), ("strict", "strict")):
+            row = make_row("5.2", "main", p["dataset"], method, alpha, 1)
+            key = (p["dataset"], method, alpha, 1)
+            if key in have or not missing_local(row):
+                continue
+            have.add(key)
+            extra.append({"step": "5.2", "condition": "main", "dataset": p["dataset"], "method": method,
+                          "alpha": alpha, "seed": 1, "lane": "B",
+                          "notes": "best-setting validation" if method != "strict" else "strict seed 1 for the step-5.2 pair"})
+            added.append(f"{p['dataset']}/{method}/{alpha}")
+    save_state(state)
+    progress(f"step 5.2: {len(plan)} cells have an eligible best setting; added {len(added)} seed-1 row(s): {', '.join(added) or '-'}")
+    print(f"added {len(added)} row(s)")
+    return 0
+
+
 def cmd_poll(args: argparse.Namespace) -> int:
     """One iteration of the campaign loop: cycle, incremental grading, tables, RESULTS.md, commit, push."""
     cmd_cycle(args)
@@ -783,6 +810,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("poll").set_defaults(fn=cmd_poll)
+    sub.add_parser("add52").set_defaults(fn=cmd_add52)
     p = sub.add_parser("plan"); p.add_argument("--quiet", action="store_true"); p.set_defaults(fn=cmd_plan)
     sub.add_parser("push").set_defaults(fn=cmd_push)
     sub.add_parser("submit").set_defaults(fn=cmd_submit)
