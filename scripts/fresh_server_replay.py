@@ -182,6 +182,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--tag-suffix", default="", help="Appended to the default per-arm tag.")
     parser.add_argument("--temperature", type=float, default=1.0, help="Fixed, not 0: draft_sample_method=probabilistic needs a real distribution to sample from.")
     parser.add_argument("--top-p", type=float, default=1.0)
+    parser.add_argument("--top-k", type=int, default=None, help="Optional; not sent unless given.")
     parser.add_argument("--max-new-tokens", type=int, default=9000)
     parser.add_argument("--server-seed", type=int, default=0, help="vLLM's own --seed. Fixed for replicability.")
     parser.add_argument("--num-spec", type=int, default=6, help="EAGLE3 draft length (NUM_SPEC).")
@@ -554,6 +555,8 @@ def request_once(
     ]
     if arm not in ("baseline", "strict"):
         command += ["--lossy-method", arm, "--alpha", f"{alpha_for(args, arm):g}"]
+    if args.top_k is not None:
+        command += ["--top-k", str(args.top_k)]
     if args.overwrite:
         command.append("--overwrite")
     return subprocess.run(command, cwd=REPO_ROOT, check=False)

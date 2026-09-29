@@ -347,6 +347,8 @@ def work_item(row: dict, cases: list[str]) -> dict:
     }
     if row["condition"] == "lmdraft":
         item["env"] = {"SPEC_METHOD": "draft_model"}
+    if row["condition"] == "qwenT0.6":
+        item["extra_flags"] = ["--top-k", "20"]  # Qwen3's recommended sampler: T 0.6, top-p 0.95, top-k 20
     return item
 
 

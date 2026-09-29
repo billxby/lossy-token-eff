@@ -351,11 +351,16 @@ DRAFT_SAMPLE_METHOD="${DRAFT_SAMPLE_METHOD:-probabilistic}"
 # autoregressive (one token per forward pass) and does not set this field.
 PARALLEL_DRAFTING="${PARALLEL_DRAFTING:-false}"
 
+# Speculative method. eagle3 for both campaign drafters; the addendum's step
+# 4.3 (campaign/addendum/README.md) sets SPEC_METHOD=draft_model to run a
+# standalone LM drafter (Qwen/Qwen3-0.6B for Qwen3-8B) through the same sampler.
+SPEC_METHOD="${SPEC_METHOD:-eagle3}"
+
 spec_json() {
   local method="$1"
   local extra="$2"
-  printf '{"method":"eagle3","model":"%s","num_speculative_tokens":%s,"rejection_sample_method":"%s","draft_sample_method":"%s","parallel_drafting":%s%s}' \
-    "$DRAFT_MODEL_PATH" "$NUM_SPEC" "$method" "$DRAFT_SAMPLE_METHOD" "$PARALLEL_DRAFTING" "$extra"
+  printf '{"method":"%s","model":"%s","num_speculative_tokens":%s,"rejection_sample_method":"%s","draft_sample_method":"%s","parallel_drafting":%s%s}' \
+    "$SPEC_METHOD" "$DRAFT_MODEL_PATH" "$NUM_SPEC" "$method" "$DRAFT_SAMPLE_METHOD" "$PARALLEL_DRAFTING" "$extra"
 }
 
 probe_patched() {
