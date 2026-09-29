@@ -210,16 +210,24 @@ def make_row(step: str, condition: str, ds: str, method: str, alpha: str, seed: 
     }
 
 
-def all_rows() -> tuple[list[dict], dict[str, list[str]]]:
-    """Every addendum row in lane order, plus lane -> [row keys] (Qwen3 rows get no lane while blocked)."""
+# Lane C = the plan's Qwen3 lane (step 2.1 -> 3 -> 4.2 -> 5.1 -> 4.3 -> 6 -> 2.2 -> 5.2, with the
+# Qwen3 nibiref before step 3 and step 4.1 after it). There is no third GPU lane (user: "like 2
+# GPUs"); once Qwen3 is unblocked its rows are spread over lanes A and B after their GPT-OSS work.
+LANE_C_PRIORITY = {"2.1": 0, "0.5": 1, "3": 2, "4.1": 3, "4.2": 4, "5.1": 5, "4.3": 6, "6": 7, "2.2": 7, "5.2": 9}
+
+
+def all_rows(keep: set[str] | None = None) -> tuple[list[dict], dict[str, list[str]]]:
+    """Every addendum row, plus lane -> [row keys] in run order. GPT-OSS rows go to lanes A/B;
+    every Qwen3 row goes to the virtual lane C. `keep` = keys already in the manifest (a step-5.1
+    cell stays a row after it completes)."""
     loose = loosest_alphas()
+    keep = keep or set()
     rows: list[dict] = []
-    lanes: dict[str, list[str]] = {"A": [], "B": []}
+    lanes: dict[str, list[str]] = {"A": [], "B": [], "C": []}
 
     def add(row: dict, lane: str | None) -> None:
         rows.append(row)
-        if lane and not is_qwen(row["dataset"]):
-            lanes[lane].append(row_key(row))
+        lanes["C" if is_qwen(row["dataset"]) else lane].append(row_key(row))
 
     def arm_alpha(ds: str, arm: str) -> str:
         return "strict" if arm == "strict" else loose[ds][arm]
@@ -266,7 +274,7 @@ def all_rows() -> tuple[list[dict], dict[str, list[str]]]:
             for method, grid in GRID_51.items():
                 for a in grid:
                     row = make_row("5.1", "main", ds, method, fmt_alpha(a), 0)
-                    if missing_local(row):
+                    if row_key(row) in keep or missing_local(row):
                         add(row, "A")
     # step 6 (+ step 2.2 for aime24 seeds 1-2) -- lane B, seed-major
     for fam in ("", "_qwen3"):
@@ -282,6 +290,14 @@ def all_rows() -> tuple[list[dict], dict[str, list[str]]]:
     for arm in ("strict", "spec_casc_opt", "mentored_dec", "r_fuzzy"):
         for seed in (1, 2):
             add(make_row("2.2", "main", "longbench_v2", arm, arm_alpha("longbench_v2", arm), seed), "B")
+    # rows added later by other steps (step 5.2's seed-1 arms): stored in lanes/state.json
+    for extra in load_state().get("extra_rows", []):
+        row = make_row(extra["step"], extra["condition"], extra["dataset"], extra["method"], extra["alpha"],
+                       int(extra["seed"]), extra.get("notes", ""))
+        if row_key(row) not in {row_key(r) for r in rows}:
+            add(row, extra.get("lane", "B"))
+    by_key = {row_key(r): r for r in rows}
+    lanes["C"].sort(key=lambda k: LANE_C_PRIORITY.get(by_key[k]["step"], 8))  # stable within a step
     return rows, lanes
 
 
@@ -357,18 +373,41 @@ def work_item(row: dict, cases: list[str]) -> dict:
 
 def cmd_plan(args: argparse.Namespace) -> int:
     old = {row_key(r): r for r in load_manifest()}
-    rows, lanes = all_rows()
+    rows, lanes = all_rows(keep=set(old))
+    by_key = {row_key(r): r for r in rows}
     state = load_state()
     blocked_qwen = state.get("blocked_qwen3", True)
+
+    # counts and estimates first (lane balancing needs them)
+    for row in rows:
+        prev = old.get(row_key(row), {})
+        for keep in ("slurm_job_ids", "gpu_hours_actual", "notes"):
+            if prev.get(keep):
+                row[keep] = prev[keep]
+        row["_missing"] = missing_local(row)
+        row["n_done"] = str(int(row["n_cases_target"]) - len(row["_missing"]))
+        row["gpu_hours_est"] = f"{estimate_hours(row, len(row['_missing'])):.2f}"
+
     # A row keeps the lane it first got (a row with progress in one lane's run root must never
     # move to another lane: skip-if-done only sees the lane's own root).
-    lane_of = {}
-    for lane, keys in lanes.items():
-        for key in keys:
-            lane_of[key] = lane
+    lane_of: dict[str, str] = {}
     for lane, info in state["lanes"].items():
         for key in info.get("rows", []):
             lane_of[key] = lane
+    for lane in LANES:
+        for key in lanes[lane]:
+            lane_of.setdefault(key, lane)
+    if not blocked_qwen:  # spread lane C (Qwen3) over A/B by remaining estimated hours, greedily
+        load = {lane: sum(float(by_key[k]["gpu_hours_est"]) for k in by_key if lane_of.get(k) == lane) for lane in LANES}
+        for key in lanes["C"]:
+            if key not in lane_of:
+                lane = min(load, key=load.get)
+                lane_of[key] = lane
+                load[lane] += float(by_key[key]["gpu_hours_est"])
+    # run order per lane: its GPT-OSS rows in plan order, then its Qwen3 rows in lane-C order
+    order = {lane: [k for k in lanes[lane] if lane_of.get(k) == lane] + [k for k in lanes["C"] if lane_of.get(k) == lane]
+             for lane in LANES}
+
     job_state = {j["id"]: j.get("state", "") for info in state["lanes"].values() for j in info.get("jobs", [])}
     active_item = {}
     for lane in LANES:
@@ -382,42 +421,32 @@ def cmd_plan(args: argparse.Namespace) -> int:
             if job_state.get(job) == "RUNNING":
                 active_item[lane] = item
 
-    out_rows = []
-    work: dict[str, list[dict]] = {lane: [] for lane in LANES}
-    order = {lane: [] for lane in LANES}
+    work: dict[str, list[dict]] = {lane: list(state.get("extra_items", {}).get(lane, [])) for lane in LANES}
+    for lane in LANES:
+        lane_jobs = [j for j in state["lanes"][lane]["jobs"] if j.get("state") in ("RUNNING", "PENDING")]
+        for key in order[lane]:
+            row = by_key[key]
+            if not row["_missing"] or (is_qwen(row["dataset"]) and blocked_qwen):
+                continue
+            work[lane].append(work_item(row, row["_missing"]))
+            row["status"] = "running" if active_item.get(lane) == key else ("queued" if lane_jobs else "pending")
     for row in rows:
         key = row_key(row)
-        prev = old.get(key, {})
-        for keep in ("slurm_job_ids", "gpu_hours_actual", "notes"):
-            if prev.get(keep):
-                row[keep] = prev[keep]
-        missing = missing_local(row)
-        row["n_done"] = str(int(row["n_cases_target"]) - len(missing))
-        row["gpu_hours_est"] = f"{estimate_hours(row, len(missing)):.2f}"
         lane = lane_of.get(key)
-        if not missing:
+        blocked = is_qwen(row["dataset"]) and blocked_qwen
+        if not row["_missing"]:
             row["status"] = "done"
-        elif is_qwen(row["dataset"]) and blocked_qwen:
+        elif blocked:
             row["status"] = "blocked"
-            if QWEN3_BLOCK not in row["notes"]:
-                row["notes"] = "; ".join(x for x in (row["notes"], QWEN3_BLOCK) if x)
-        elif lane is None:
+        elif lane not in LANES:
             row["status"] = "pending"
-        else:
-            lane_jobs = [j for j in state["lanes"][lane]["jobs"] if j.get("state") in ("RUNNING", "PENDING")]
-            if active_item.get(lane) == key:
-                row["status"] = "running"
-            elif lane_jobs:
-                row["status"] = "queued"
-            else:
-                row["status"] = "pending"
-            work[lane].append(work_item(row, missing))
-            order[lane].append(key)
-            tag = f"lane={lane}"
-            if tag not in row["notes"]:
-                row["notes"] = "; ".join(x for x in (tag, row["notes"]) if x)
-        # job ids and measured hours from the lane journals
-        if lane:
+        notes = [x for x in row["notes"].split("; ") if x and x != QWEN3_BLOCK]
+        if blocked and row["_missing"]:
+            notes.append(QWEN3_BLOCK)
+        if lane in LANES and not blocked and f"lane={lane}" not in notes:
+            notes.insert(0, f"lane={lane}")
+        row["notes"] = "; ".join(notes)
+        if lane in LANES:  # job ids and measured hours from the lane journals
             jobs, secs = [], 0.0
             for ev in lane_status_events(lane):
                 if ev.get("item") != key:
@@ -430,18 +459,18 @@ def cmd_plan(args: argparse.Namespace) -> int:
                 row["slurm_job_ids"] = " ".join(jobs)
             if secs:
                 row["gpu_hours_actual"] = f"{secs / 3600:.2f}"
-        out_rows.append(row)
 
-    write_manifest(out_rows)
+    write_manifest(rows)
     for lane in LANES:
-        state["lanes"][lane]["rows"] = list(dict.fromkeys(state["lanes"][lane].get("rows", []) + order[lane]))
+        assigned = [k for k in order[lane] if not (is_qwen(by_key[k]["dataset"]) and blocked_qwen)]
+        state["lanes"][lane]["rows"] = list(dict.fromkeys(state["lanes"][lane].get("rows", []) + assigned))
         path = LANES_DIR / f"{lane}.json"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({"lane": lane, "written": utc_now(), "items": work[lane]}, indent=1) + "\n",
                         encoding="utf-8")
     save_state(state)
     if not args.quiet:
-        print_summary(out_rows)
+        print_summary(rows)
     return 0
 
 
@@ -561,6 +590,7 @@ def pull_lane_runs(lane: str, info: dict) -> list[str]:
     out = ssh(script, timeout=900).stdout.decode().splitlines()
     stamp = next((l.split("=", 1)[1] for l in out if l.startswith("__T=")), None)
     rels = [l.strip()[: -len("/run.json")] for l in out if l.strip().endswith("/run.json")]
+    rels = [r for r in rels if not r.startswith("runs/addendum/smoke")]  # step-0.2 smoke runs are deleted, not kept
     new = [r for r in rels if not (REPO / r).exists()]
     pulled = []
     if new:
