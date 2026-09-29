@@ -756,9 +756,33 @@ def cmd_cycle(args: argparse.Namespace) -> int:
     return 0
 
 
+ANALYSIS_PY = os.environ.get("ADDENDUM_ANALYSIS_PY", str(JOB_TMP / "venv" / "bin" / "python"))
+
+
+def cmd_poll(args: argparse.Namespace) -> int:
+    """One iteration of the campaign loop: cycle, incremental grading, tables, RESULTS.md, commit, push."""
+    cmd_cycle(args)
+    try:
+        cmd_grade(args)
+        cmd_grade_pull(args)
+    except (RuntimeError, subprocess.SubprocessError, OSError) as exc:
+        progress(f"grading step failed ({exc}); retried next poll")
+    if pathlib.Path(ANALYSIS_PY).exists():  # needs numpy + matplotlib (campaign_report.py)
+        for sub in ("seeds", "nspec", "temp", "aime"):
+            done = subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_tables.py"), sub], cwd=REPO,
+                                  capture_output=True, text=True)
+            if done.returncode != 0:
+                print(f"tables {sub} failed: {done.stderr[-400:]}", file=sys.stderr)
+        subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_results.py")], cwd=REPO, capture_output=True)
+    commit(f"addendum: tables and RESULTS.md refresh {utc_now()}", ["campaign/addendum"])
+    git("push", "-q", "origin", "addendum-oct2026", check=False)
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("poll").set_defaults(fn=cmd_poll)
     p = sub.add_parser("plan"); p.add_argument("--quiet", action="store_true"); p.set_defaults(fn=cmd_plan)
     sub.add_parser("push").set_defaults(fn=cmd_push)
     sub.add_parser("submit").set_defaults(fn=cmd_submit)

@@ -93,3 +93,9 @@ alpha grows).
    JSON byte-identical otherwise) for step 4.3, and an optional `--top-k`
    in the client/replay scripts (sent and recorded only when given) for
    step 4.2.
+7. **Runs come back with tar over ssh, not rsync** (`addendum_campaign.py
+   collect`): macOS ships openrsync, and the guarantee needed here is
+   directory-level no-clobber (never merge two runs' files into one
+   `seed_N/`), which a staged tar extract + `os.rename` into a
+   not-yet-existing target gives directly. Only run dirs whose run.json says
+   `ok` are pulled; the lane's `status.jsonl` journal comes back every cycle.
