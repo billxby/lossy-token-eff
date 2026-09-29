@@ -1,16 +1,16 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 10:38 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 10:54 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 9.1; estimated remaining, runnable rows: 19.5; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 9.6; estimated remaining, runnable rows: 19.0; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 2 | 0 | 4 | 0 | 6 |
-| 2.1 | 37 | 1 | 10 | 0 | 48 |
-| 2.2 | 3 | 1 | 16 | 0 | 6 |
+| 2.1 | 38 | 1 | 9 | 0 | 48 |
+| 2.2 | 4 | 1 | 15 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
@@ -381,8 +381,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | gsm8k | spec_casc_opt | 0.05 | 1.46 | 1.26 | 1.44 | 0.11 | 1.39 (0.11) | 1.18 | 0.92 | 1.07 | 0.13 | 1.06 (0.13) | 94% | 93% | 93% | 1% |
 | gpt-oss-20b | gsm8k | r_fuzzy | 0.25 | 1.70 | 1.57 | 1.74 | 0.09 | 1.67 (0.09) | 1.29 | 1.02 | 1.17 | 0.14 | 1.16 (0.14) | 87% | 89% | 89% | 1% |
 | gpt-oss-20b | gsm8k | spec_casc_tok | 0.8 | 0.96 | 0.93 | 1.03 | 0.05 | 0.97 (0.05) | 0.91 | 0.81 | 0.91 | 0.06 | 0.87 (0.06) | 97% | 98% | 96% | 1% |
-| gpt-oss-20b | aime24 | mentored_dec | 0.75 | 1.69 | 1.28 | - | 0.29 | 1.49 (0.29) | 1.36 | 0.93 | - | 0.31 | 1.15 (0.31) | 63% | - | - | - |
-| gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | - | - | - | 1.78 (-) | 1.33 | - | - | - | 1.33 (-) | 60% | - | - | - |
+| gpt-oss-20b | aime24 | mentored_dec | 0.75 | 1.69 | 1.28 | - | 0.29 | 1.49 (0.29) | 1.36 | 0.93 | - | 0.31 | 1.15 (0.31) | 63% | 70% | - | 5% |
+| gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | 1.54 | - | 0.17 | 1.66 (0.17) | 1.33 | 0.95 | - | 0.26 | 1.14 (0.26) | 60% | - | - | - |
 | gpt-oss-20b | aime24 | spec_casc_opt | 0.05 | 2.48 | 2.03 | - | 0.32 | 2.26 (0.32) | 2.01 | 1.44 | - | 0.40 | 1.72 (0.40) | 37% | 33% | - | 2% |
 | gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | - | - | - | 2.13 (-) | 1.64 | - | - | - | 1.64 (-) | 50% | - | - | - |
 | gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | - | - | - | 1.48 (-) | 1.33 | - | - | - | 1.33 (-) | 70% | - | - | - |
