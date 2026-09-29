@@ -345,6 +345,9 @@ def work_item(row: dict, cases: list[str]) -> dict:
         "prompt_root": f"prompts/{ds}", "runs_subroot": row["run_root"],
         "max_new_tokens": TOKEN_BUDGETS[ds], "model_flags": flags, **server_settings(row["condition"]),
     }
+    if not is_qwen(ds):
+        # GPT-OSS-20B runs the V1 sampler only; the V2 file on Nibi is pristine (README deviation 5)
+        item["env"] = {"MENTORED_DEC_TEST_V1_ONLY": "1"}
     if row["condition"] == "lmdraft":
         item["env"] = {"SPEC_METHOD": "draft_model"}
     if row["condition"] == "qwenT0.6":
@@ -474,7 +477,7 @@ PUSH_FILES = [
     "cascade/cluster/addendum_grade.sbatch", "scripts/addendum_grade.py",
     "scripts/persistent_arm_replay.py", "scripts/fresh_server_replay.py", "scripts/run_experiment_vllm.py",
     "scripts/lossy_methods.py", "scripts/campaign_run.py", "remote/run_server_vllm.sh", "remote/stop_server.sh",
-    "patches/apply.sh", "patches/HASHES.txt",
+    "patches/apply.sh", "patches/HASHES.txt", "patches/test_mentored_dec.py",
 ]
 
 

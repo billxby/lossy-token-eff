@@ -82,3 +82,14 @@ alpha grows).
    work goes to lanes A/B once the V2 sampler is available.
 4. **Step 2.2 aime24 seeds 1-2 are the same runs as step 6 seeds 1-2** (one
    manifest row each, step `2.2`, noted "shared by step 6").
+5. **`patches/test_mentored_dec.py`: `MENTORED_DEC_TEST_V1_ONLY`.** The
+   mentored-dec self-test also checks the V2 module, whose consolidated state
+   is not on Nibi (D8), so every switch *to* mentored-dec failed there (job
+   22880871, 06:23Z: V1 patch installed, V1 kernel checks all ok, only the V2
+   plumbing check failed). GPT-OSS-20B runs V1 only, so the lanes set this
+   variable for GPT-OSS items: with it set *and* the V2 module pristine the
+   plumbing check covers V1 only. Qwen3 items never set it.
+6. **`remote/run_server_vllm.sh` `SPEC_METHOD`** (default `eagle3`, spec
+   JSON byte-identical otherwise) for step 4.3, and an optional `--top-k`
+   in the client/replay scripts (sent and recorded only when given) for
+   step 4.2.
