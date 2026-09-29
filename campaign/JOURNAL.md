@@ -2609,5 +2609,6 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   1.24 on Nibi -- longbench_v2 was prefill-bound on the old box (72.6 vs
   4.7 s per strict case), which diluted the relaxed rules' extra decode
   time there. `campaign/addendum/seeds/summary.csv`. spec_casc_opt seed 2
-  was collected in two sessions (job 22881159 hit its 12 h limit mid-arm;
-  the partial run dirs were quarantined and the rest re-run in 22881281).
+  was collected in two sessions (job 22881159 hit its 12 h limit after 59
+  cases; 22881281 quarantined the one partial run dir, case_060, and ran
+  the other 91).
