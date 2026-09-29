@@ -239,3 +239,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T14:30:59Z step 6 main aime24 cactus alpha=0.18 seed=3: done, 30/30 cases (jobs 22881159, 0.26 GPU-h)
 - 2026-09-29T14:32:04Z grading: uploaded 742 run dir(s) to the Nibi mirror, submitted CPU grading job 22918280
 - 2026-09-29T14:32:07Z grading: pulled 26125 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-29T15:31:14Z lane A: pulled 941 new run dir(s) into runs/
+- 2026-09-29T15:31:44Z lane B: pulled 103 new run dir(s) into runs/
+- 2026-09-29T15:31:47Z step 5.1 main gsm8k spec_casc_tok alpha=0.35 seed=0: done, 150/150 cases (jobs 22880871, 0.08 GPU-h)
