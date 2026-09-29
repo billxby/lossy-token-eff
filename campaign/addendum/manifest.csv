@@ -40,8 +40,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.1,main,gpt-oss-20b,livecodebench,strict,strict,1,runs,90,90,done,22880871,0.00,0.26,lane=A
 2.1,main,gpt-oss-20b,livecodebench,strict,strict,2,runs,90,90,done,22880871,0.00,0.25,lane=A
 2.1,main,gpt-oss-20b,livecodebench,spec_casc_opt,0.05,1,runs,90,90,done,22880871,0.00,0.30,lane=A
-2.1,main,gpt-oss-20b,livecodebench,spec_casc_opt,0.05,2,runs,90,81,running,22880871,0.10,,lane=A
-2.1,main,gpt-oss-20b,livecodebench,mentored_dec,0.75,1,runs,90,0,queued,,0.29,,lane=A
+2.1,main,gpt-oss-20b,livecodebench,spec_casc_opt,0.05,2,runs,90,90,done,22880871,0.00,0.30,lane=A
+2.1,main,gpt-oss-20b,livecodebench,mentored_dec,0.75,1,runs,90,87,running,22880871,0.08,,lane=A
 2.1,main,gpt-oss-20b,livecodebench,mentored_dec,0.75,2,runs,90,0,queued,,0.29,,lane=A
 2.1,main,gpt-oss-20b,livecodebench,cactus,0.18,1,runs,90,0,queued,,0.31,,lane=A
 2.1,main,gpt-oss-20b,livecodebench,cactus,0.18,2,runs,90,0,queued,,0.31,,lane=A
@@ -202,8 +202,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.2,main,gpt-oss-20b,aime24,cactus,0.18,1,runs,30,30,done,22881159,0.00,0.30,lane=B; seeds 1-2 shared by step 6
 2.2,main,gpt-oss-20b,aime24,r_fuzzy,0.25,1,runs,30,30,done,22881159,0.00,0.35,lane=B; seeds 1-2 shared by step 6
 2.2,main,gpt-oss-20b,aime24,spec_casc_tok,0.8,1,runs,30,30,done,22881159,0.00,0.27,lane=B; seeds 1-2 shared by step 6
-2.2,main,gpt-oss-20b,aime24,strict,strict,2,runs,30,1,running,22881159,0.24,,lane=B; seeds 1-2 shared by step 6
-2.2,main,gpt-oss-20b,aime24,spec_casc_opt,0.05,2,runs,30,0,queued,,0.41,,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,strict,strict,2,runs,30,30,done,22881159,0.00,0.28,lane=B; seeds 1-2 shared by step 6
+2.2,main,gpt-oss-20b,aime24,spec_casc_opt,0.05,2,runs,30,3,running,22881159,0.38,,lane=B; seeds 1-2 shared by step 6
 2.2,main,gpt-oss-20b,aime24,mentored_dec,0.75,2,runs,30,0,queued,,0.31,,lane=B; seeds 1-2 shared by step 6
 2.2,main,gpt-oss-20b,aime24,cactus,0.18,2,runs,30,0,queued,,0.30,,lane=B; seeds 1-2 shared by step 6
 2.2,main,gpt-oss-20b,aime24,r_fuzzy,0.25,2,runs,30,0,queued,,0.35,,lane=B; seeds 1-2 shared by step 6
