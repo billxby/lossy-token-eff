@@ -1,3 +1,4 @@
 temperature,source,n_cases,mean_l_bar,mean_l_bar_ci_lo,mean_l_bar_ci_hi,mean_completion_tokens,mean_completion_tokens_ci_lo,mean_completion_tokens_ci_hi,mean_verifier_rounds,mean_verifier_rounds_ci_lo,mean_verifier_rounds_ci_hi,mean_wall_time_s,mean_wall_time_s_ci_lo,mean_wall_time_s_ci_hi,accuracy,accuracy_ci_lo,accuracy_ci_hi,capout_rate
-1,"campaign seed 0 (old box, H100 PCIe)",150,2.56665,2.50311,2.63082,322.187,269.486,382.615,94.02,77.8865,112.634,2.41815,2.07849,2.79991,0.96,0.926667,0.986667,0.02
-1,"nibiref (Nibi, campaign settings)",150,2.58156,2.51811,2.64619,321.627,268.513,382.747,93.0867,77.1198,111.147,0.717504,0.598612,0.851384,0.966667,0.933333,0.993333,0.0133333
+1,"campaign seed 0 (old box, H100 PCIe)",150,2.56665,2.50395,2.63118,322.187,270.451,381.74,94.02,77.9065,112.207,2.41815,2.07697,2.80874,0.96,0.926667,0.986667,0.02
+1,"nibiref (Nibi, campaign settings)",150,2.58156,2.51795,2.65,321.627,267.833,381.962,93.0867,76.8463,111.287,0.717504,0.595709,0.852984,0.966667,0.933333,0.993333,0.0133333
+1.2,temp1.2 (Nibi),41,2.35685,2.23481,2.48383,318.171,260.121,381.61,98.9268,78.878,121.098,0.760909,0.612557,0.92022,,,,0
