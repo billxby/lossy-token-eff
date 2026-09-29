@@ -178,3 +178,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T10:54:09Z lane A: pulled 90 new run dir(s) into runs/
 - 2026-09-29T10:54:17Z lane B: pulled 19 new run dir(s) into runs/
 - 2026-09-29T10:54:20Z step 2.1 main livecodebench strict alpha=strict seed=2: done, 90/90 cases (jobs 22880871, 0.25 GPU-h)
+- 2026-09-29T10:54:21Z step 2.2 main aime24 cactus alpha=0.18 seed=1: done, 30/30 cases (jobs 22881159, 0.30 GPU-h)
