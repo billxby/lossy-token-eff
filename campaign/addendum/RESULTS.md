@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 20:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 20:32 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 27.1; estimated remaining, runnable rows: 4.1; blocked rows: 73.3.
+Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 28.2; estimated remaining, runnable rows: 3.2; blocked rows: 73.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -16,9 +16,9 @@ Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum 
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
 | 5.1 | 18 | 0 | 0 | 0 | 23 |
-| 5.2 | 7 | 1 | 3 | 0 | 0 |
+| 5.2 | 9 | 1 | 1 | 0 | 0 |
 | 6 | 12 | 0 | 0 | 0 | 18 |
-| 7 | 0 | 1 | 5 | 0 | 7 |
+| 7 | 0 | 1 | 4 | 0 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -547,10 +547,10 @@ Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, meth
 | gpt-oss-20b | aime24 | spec_casc_tok | True | 0.15 (0.15) | 1.00 | 0.91 | 0.95 | 83% / 77% | 1.15 | 1.12 | 1.12 | 77% / 80% |
 | gpt-oss-20b | humaneval | mentored_dec | True | 0.55 (0.55) | 1.09 | 0.89 | 0.94 | 95% / 96% | 1.18 | 0.96 | 0.96 | 95% / 95% |
 | gpt-oss-20b | humaneval | spec_casc_tok | True | 0.35 (0.35) | 0.95 | 0.90 | 0.95 | 96% / 96% | 1.01 | 0.98 | 0.99 | 97% / 95% |
-| gpt-oss-20b | livecodebench | mentored_dec | True | 0.55 (0.55) | 1.20 | 0.96 | 0.95 | 88% / 89% | 1.15 | 0.93 | 0.92 | - / 90% |
-| gpt-oss-20b | livecodebench | spec_casc_tok | True | 0.35 (0.35) | 1.01 | 0.94 | 0.96 | 91% / 89% | - | - | - | - |
+| gpt-oss-20b | livecodebench | mentored_dec | True | 0.55 (0.55) | 1.20 | 0.96 | 0.95 | 88% / 89% | 1.15 | 0.93 | 0.92 | 87% / 90% |
+| gpt-oss-20b | livecodebench | spec_casc_tok | True | 0.35 (0.35) | 1.01 | 0.94 | 0.96 | 91% / 89% | 1.02 | 0.96 | 0.94 | - / 90% |
 | gpt-oss-20b | mtbench | mentored_dec | True | 0.75 (0.75) | 1.10 | 0.75 | 0.87 | - / - | 1.14 | 0.76 | 0.78 | - / - |
-| gpt-oss-20b | mtbench | spec_casc_tok | True | 0.55 (0.8) | 0.97 | 0.93 | 0.89 | - / - | - | - | - | - |
+| gpt-oss-20b | mtbench | spec_casc_tok | True | 0.55 (0.8) | 0.97 | 0.93 | 0.89 | - / - | 1.00 | 0.95 | 0.95 | - / - |
 | gpt-oss-20b | longbench_v2 | mentored_dec | True | 0.55 (0.55) | 1.11 | 0.89 | 1.00 | 57% / 56% | - | - | - | - |
 | gpt-oss-20b | longbench_v2 | spec_casc_tok | True | 0.55 (0.55) | 1.06 | 0.97 | 0.94 | 57% / 56% | - | - | - | - |
 | qwen3-8b | gsm8k | mentored_dec | False | - (-) | - | - | - | - / - | - | - | - | - |
@@ -595,18 +595,18 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 
 | category | strict tokens (cap-out) | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) | spec_casc_tok (0.8) |
 |---|---:|---|---|---|---|---|
-| all | 1259 (1%) | λ 1.19 · R 0.74↓ · T 0.74↓ (n=40) | λ 1.42↑ · R 0.69↓ · T 0.71↓ (n=40) | λ 1.20 · R 0.78 · T 0.78 (n=40) | λ 1.33↑ · R 0.80 · T 0.81 (n=40) | λ 1.21 · R 0.96 · T 0.97 (n=40) |
-| coding | 1743 (5%) | λ 1.05 · R 0.81↓ · T 0.81↓ (n=5) | λ 1.46↑ · R 0.99 · T 0.99 (n=5) | λ 1.14 · R 0.90 · T 0.89 (n=5) | λ 1.72 · R 1.25 · T 1.25 (n=5) | λ 1.22 · R 1.10 · T 1.09 (n=5) |
-| math | 399 (0%) | - | - | - | - | - |
-| humanities | 2684 (0%) | λ 0.77 · R 0.51 · T 0.51 (n=1) | λ 0.80 · R 0.35 · T 0.35 (n=1) | λ 0.94 · R 0.67 · T 0.67 (n=1) | λ 0.78 · R 0.48 · T 0.48 (n=1) | λ 1.25 · R 1.11 · T 1.11 (n=1) |
-| stem | 1776 (0%) | - | - | - | - | - |
-| writing | 2932 (0%) | λ 1.10 · R 0.57↓ · T 0.57↓ (n=5) | λ 1.02 · R 0.38↓ · T 0.42↓ (n=5) | λ 0.94 · R 0.49 · T 0.50 (n=5) | λ 0.87 · R 0.43↓ · T 0.43↓ (n=5) | λ 0.90 · R 0.63 · T 0.63 (n=5) |
-| summarization | 324 (0%) | λ 1.18 · R 0.95 · T 0.95 (n=5) | λ 1.14 · R 0.67↓ · T 0.68↓ (n=5) | λ 1.06 · R 0.89 · T 0.89 (n=5) | λ 1.41 · R 1.14 · T 1.13 (n=5) | λ 1.14 · R 1.10 · T 1.10 (n=5) |
-| roleplay | 691 (0%) | λ 1.69 · R 1.12 · T 1.12 (n=4) | λ 2.41 · R 1.25 · T 1.26 (n=4) | λ 1.90 · R 1.26 · T 1.25 (n=4) | λ 2.49 · R 1.58 · T 1.59 (n=4) | λ 2.52 · R 2.06 · T 2.08 (n=4) |
-| rag | 802 (0%) | λ 0.97 · R 0.63 · T 0.64 (n=5) | λ 1.41 · R 0.71 · T 0.72 (n=5) | λ 0.99 · R 0.65 · T 0.66 (n=5) | λ 1.37↑ · R 0.81 · T 0.82 (n=5) | λ 0.72 · R 0.67↓ · T 0.68↓ (n=5) |
-| multilingual | 945 (0%) | λ 0.87 · R 0.69↓ · T 0.69↓ (n=5) | λ 1.82↑ · R 0.96 · T 0.97 (n=5) | λ 1.62 · R 1.17 · T 1.17 (n=5) | λ 1.44 · R 1.05 · T 1.05 (n=5) | λ 1.06 · R 0.90 · T 0.90 (n=5) |
-| reasoning | 1013 (0%) | λ 0.93 · R 0.60 · T 0.60 (n=5) | λ 1.21 · R 0.64 · T 0.65 (n=5) | λ 1.06 · R 0.77 · T 0.77 (n=5) | λ 1.10 · R 0.72 · T 0.73 (n=5) | λ 0.68 · R 0.56↓ · T 0.57↓ (n=5) |
-| qa | 1630 (0%) | λ 2.19↑ · R 1.25 · T 1.24 (n=5) | λ 2.08 · R 0.97 · T 0.97 (n=5) | λ 1.46 · R 0.92 · T 0.92 (n=5) | λ 1.79↑ · R 0.95 · T 0.95 (n=5) | λ 1.98↑ · R 1.52 · T 1.52 (n=5) |
+| all | 1266 (1%) | λ 1.19 · R 0.74↓ · T 0.74↓ (n=40) | λ 1.42↑ · R 0.69↓ · T 0.71↓ (n=40) | λ 1.20 · R 0.78 · T 0.78 (n=40) | λ 1.33↑ · R 0.80 · T 0.81 (n=40) | λ 1.21 · R 0.96 · T 0.97 (n=40) |
+| coding | 1686 (5%) | λ 1.05 · R 0.81↓ · T 0.81↓ (n=5) | λ 1.46↑ · R 0.99 · T 0.99 (n=5) | λ 1.14 · R 0.90 · T 0.89 (n=5) | λ 1.72 · R 1.25 · T 1.25 (n=5) | λ 1.22 · R 1.10 · T 1.09 (n=5) |
+| math | 370 (0%) | - | - | - | - | - |
+| humanities | 2324 (0%) | λ 0.77 · R 0.51 · T 0.51 (n=1) | λ 0.80 · R 0.35 · T 0.35 (n=1) | λ 0.94 · R 0.67 · T 0.67 (n=1) | λ 0.78 · R 0.48 · T 0.48 (n=1) | λ 1.25 · R 1.11 · T 1.11 (n=1) |
+| stem | 1596 (0%) | - | - | - | - | - |
+| writing | 3042 (0%) | λ 1.10 · R 0.57↓ · T 0.57↓ (n=5) | λ 1.02 · R 0.38↓ · T 0.42↓ (n=5) | λ 0.94 · R 0.49 · T 0.50 (n=5) | λ 0.87 · R 0.43↓ · T 0.43↓ (n=5) | λ 0.90 · R 0.63 · T 0.63 (n=5) |
+| summarization | 334 (0%) | λ 1.18 · R 0.95 · T 0.95 (n=5) | λ 1.14 · R 0.67↓ · T 0.68↓ (n=5) | λ 1.06 · R 0.89 · T 0.89 (n=5) | λ 1.41 · R 1.14 · T 1.13 (n=5) | λ 1.14 · R 1.10 · T 1.10 (n=5) |
+| roleplay | 656 (0%) | λ 1.69 · R 1.12 · T 1.12 (n=4) | λ 2.41 · R 1.25 · T 1.26 (n=4) | λ 1.90 · R 1.26 · T 1.25 (n=4) | λ 2.49 · R 1.58 · T 1.59 (n=4) | λ 2.52 · R 2.06 · T 2.08 (n=4) |
+| rag | 837 (0%) | λ 0.97 · R 0.63 · T 0.64 (n=5) | λ 1.41 · R 0.71 · T 0.72 (n=5) | λ 0.99 · R 0.65 · T 0.66 (n=5) | λ 1.37↑ · R 0.81 · T 0.82 (n=5) | λ 0.72 · R 0.67↓ · T 0.68↓ (n=5) |
+| multilingual | 968 (1%) | λ 0.87 · R 0.69↓ · T 0.69↓ (n=5) | λ 1.82↑ · R 0.96 · T 0.97 (n=5) | λ 1.62 · R 1.17 · T 1.17 (n=5) | λ 1.44 · R 1.05 · T 1.05 (n=5) | λ 1.06 · R 0.90 · T 0.90 (n=5) |
+| reasoning | 1104 (0%) | λ 0.93 · R 0.60 · T 0.60 (n=5) | λ 1.21 · R 0.64 · T 0.65 (n=5) | λ 1.06 · R 0.77 · T 0.77 (n=5) | λ 1.10 · R 0.72 · T 0.73 (n=5) | λ 0.68 · R 0.56↓ · T 0.57↓ (n=5) |
+| qa | 1575 (0%) | λ 2.19↑ · R 1.25 · T 1.24 (n=5) | λ 2.08 · R 0.97 · T 0.97 (n=5) | λ 1.46 · R 0.92 · T 0.92 (n=5) | λ 1.79↑ · R 0.95 · T 0.95 (n=5) | λ 1.98↑ · R 1.52 · T 1.52 (n=5) |
 
 - **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `spec_casc_opt`): fewer verifier rounds in 7/9 categories (coding, humanities, writing, summarization, rag, reasoning, qa); less wall time in 7/9 (coding, humanities, writing, summarization, rag, reasoning, qa); Eq. 4 predicts a win in 7/9; completions longer by lambda 0.94 (humanities) to 1.90 (roleplay); rounds and time disagree in: none.
 - **mentored_dec** (alpha 0.75, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `mentored_dec`): fewer verifier rounds in 7/9 categories (coding, humanities, writing, summarization, rag, multilingual, reasoning); less wall time in 7/9 (coding, humanities, writing, summarization, rag, multilingual, reasoning); Eq. 4 predicts a win in 7/9; completions longer by lambda 0.77 (humanities) to 2.19 (qa); rounds and time disagree in: none.
