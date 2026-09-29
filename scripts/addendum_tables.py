@@ -385,6 +385,15 @@ def cmd_best(args) -> int:
                     s1 = compare(load_cell(ds, method, best, 1), load_cell(ds, "strict", "strict", 1))
                     for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict", "n_pairs"):
                         row[f"s1_{k}"] = s1.get(k)
+                    # step 5.2 verdict: does the seed-0 choice hold on seed 1 (Nibi, paired with Nibi strict)?
+                    if s1.get("n_pairs") == N_CASES[base]:
+                        row["s1_time_win"] = s1["time_ratio"] < 1
+                        if base in GRADED:
+                            row["s1_accuracy_ok"] = (None if s1["accuracy"] is None or s1["accuracy_strict"] is None
+                                                     else s1["accuracy"] >= s1["accuracy_strict"] - 0.02)
+                        else:
+                            row["s1_accuracy_ok"] = s1["rounds_ratio"] < 1  # same stand-in as the seed-0 rule
+                        row["validated"] = (False if not row["s1_time_win"] else row["s1_accuracy_ok"])
                     if complete:
                         plan.append({"dataset": ds, "method": method, "alpha": best})
                 rows.append(row)

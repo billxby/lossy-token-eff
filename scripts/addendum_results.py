@@ -176,10 +176,11 @@ def section_best() -> list[str]:
             "lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: "
             "rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time "
             "ratios of Nibi-run cells (the step-5.1 additions) are taken against the Nibi strict reference "
-            "(`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi ('-' = not complete yet).", "",
+            "(`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi, paired with Nibi strict seed 1 "
+            "('-' = not complete yet); validated = seed-1 time ratio < 1 and the same accuracy rule holds on seed 1.", "",
             "| target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | "
-            "s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict |",
-            "|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|"]
+            "s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict | validated |",
+            "|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|---|"]
     for r in b:
         s1_full = int(float(r.get("s1_n_pairs") or 0)) == N_CASES.get(r["dataset"], -1)  # all cases paired
         s1 = (lambda k: f(r.get(k)) if s1_full else "-")
@@ -187,7 +188,8 @@ def section_best() -> list[str]:
                    f"{r['chosen_alpha'] or '-'} ({r['chosen_alpha_by_rounds_ratio'] or '-'}) | {f(r.get('s0_lambda'))} | "
                    f"{f(r.get('s0_rounds_ratio'))} | {f(r.get('s0_time_ratio'))} | {pct(r.get('s0_accuracy'))} / "
                    f"{pct(r.get('s0_accuracy_strict'))} | {s1('s1_lambda')} | {s1('s1_rounds_ratio')} | {s1('s1_time_ratio')} | "
-                   + (f"{pct(r.get('s1_accuracy'))} / {pct(r.get('s1_accuracy_strict'))}" if s1_full else "-") + " |")
+                   + (f"{pct(r.get('s1_accuracy'))} / {pct(r.get('s1_accuracy_strict'))}" if s1_full else "-")
+                   + f" | {({'True': 'yes', 'False': 'no'}).get(r.get('validated') or '', '-')} |")
     return out + [""]
 
 

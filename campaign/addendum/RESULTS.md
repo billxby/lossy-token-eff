@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 21:09 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 21:10 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -537,34 +537,34 @@ Pending.
 
 ## Step 5: alpha grid completion and best-setting validation
 
-Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, method). Chosen alpha = the grid alpha with the lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time ratios of Nibi-run cells (the step-5.1 additions) are taken against the Nibi strict reference (`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi ('-' = not complete yet).
+Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, method). Chosen alpha = the grid alpha with the lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time ratios of Nibi-run cells (the step-5.1 additions) are taken against the Nibi strict reference (`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi, paired with Nibi strict seed 1 ('-' = not complete yet); validated = seed-1 time ratio < 1 and the same accuracy rule holds on seed 1.
 
-| target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict |
-|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|
-| gpt-oss-20b | gsm8k | mentored_dec | True | 0.55 (0.55) | 1.10 | 0.86 | 0.84 | 95% / 96% | 0.98 | 0.76 | 0.75 | 97% / 96% |
-| gpt-oss-20b | gsm8k | spec_casc_tok | True | 0.55 (0.8) | 0.92 | 0.83 | 0.85 | 98% / 96% | 0.92 | 0.85 | 0.85 | 97% / 96% |
-| gpt-oss-20b | aime24 | mentored_dec | True | 0.55 (0.55) | 1.18 | 0.92 | 0.94 | 80% / 77% | 1.07 | 0.87 | 0.87 | 70% / 80% |
-| gpt-oss-20b | aime24 | spec_casc_tok | True | 0.15 (0.15) | 1.00 | 0.91 | 0.95 | 83% / 77% | 1.15 | 1.12 | 1.12 | 77% / 80% |
-| gpt-oss-20b | humaneval | mentored_dec | True | 0.55 (0.55) | 1.09 | 0.89 | 0.94 | 95% / 96% | 1.18 | 0.96 | 0.96 | 95% / 95% |
-| gpt-oss-20b | humaneval | spec_casc_tok | True | 0.35 (0.35) | 0.95 | 0.90 | 0.95 | 96% / 96% | 1.01 | 0.98 | 0.99 | 97% / 95% |
-| gpt-oss-20b | livecodebench | mentored_dec | True | 0.55 (0.55) | 1.20 | 0.96 | 0.95 | 88% / 89% | 1.15 | 0.93 | 0.92 | 87% / 90% |
-| gpt-oss-20b | livecodebench | spec_casc_tok | True | 0.35 (0.35) | 1.01 | 0.94 | 0.96 | 91% / 89% | 1.02 | 0.96 | 0.94 | 93% / 90% |
-| gpt-oss-20b | mtbench | mentored_dec | True | 0.75 (0.75) | 1.10 | 0.75 | 0.87 | - / - | 1.14 | 0.76 | 0.78 | - / - |
-| gpt-oss-20b | mtbench | spec_casc_tok | True | 0.55 (0.8) | 0.97 | 0.93 | 0.89 | - / - | 1.00 | 0.95 | 0.95 | - / - |
-| gpt-oss-20b | longbench_v2 | mentored_dec | True | 0.55 (0.55) | 1.11 | 0.89 | 1.00 | 57% / 56% | 1.38 | 1.09 | 1.03 | 55% / 57% |
-| gpt-oss-20b | longbench_v2 | spec_casc_tok | True | 0.55 (0.55) | 1.06 | 0.97 | 0.94 | 57% / 56% | 1.20 | 1.09 | 1.04 | - / 57% |
-| qwen3-8b | gsm8k | mentored_dec | False | - (-) | - | - | - | - / - | - | - | - | - |
-| qwen3-8b | gsm8k | spec_casc_tok | False | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | - | - | - | - |
-| qwen3-8b | aime24 | mentored_dec | False | 0.15 (0.15) | 0.91 | 0.88 | 0.89 | 73% / 70% | - | - | - | - |
-| qwen3-8b | aime24 | spec_casc_tok | False | 0.8 (0.8) | 0.98 | 0.93 | 0.93 | 70% / 70% | - | - | - | - |
-| qwen3-8b | humaneval | mentored_dec | False | 0.75 (0.75) | 1.08 | 0.99 | 1.02 | 85% / 83% | - | - | - | - |
-| qwen3-8b | humaneval | spec_casc_tok | False | 0.8 (0.8) | 1.08 | 1.04 | 1.05 | 85% / 83% | - | - | - | - |
-| qwen3-8b | livecodebench | mentored_dec | False | 0.15 (0.15) | 1.02 | 0.99 | 0.99 | 73% / 70% | - | - | - | - |
-| qwen3-8b | livecodebench | spec_casc_tok | False | 0.8 (0.8) | 1.00 | 0.94 | 0.96 | 71% / 70% | - | - | - | - |
-| qwen3-8b | mtbench | mentored_dec | False | 0.75 (0.75) | 1.04 | 0.89 | 0.93 | - / - | - | - | - | - |
-| qwen3-8b | mtbench | spec_casc_tok | False | 0.8 (0.8) | 1.04 | 0.96 | 0.99 | - / - | - | - | - | - |
-| qwen3-8b | longbench_v2 | mentored_dec | False | 0.75 (0.75) | 1.06 | 0.98 | 0.99 | 51% / 53% | - | - | - | - |
-| qwen3-8b | longbench_v2 | spec_casc_tok | False | 0.15 (0.15) | 1.05 | 1.03 | 1.03 | 51% / 53% | - | - | - | - |
+| target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict | validated |
+|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|---|
+| gpt-oss-20b | gsm8k | mentored_dec | True | 0.55 (0.55) | 1.10 | 0.86 | 0.84 | 95% / 96% | 0.98 | 0.76 | 0.75 | 97% / 96% | yes |
+| gpt-oss-20b | gsm8k | spec_casc_tok | True | 0.55 (0.8) | 0.92 | 0.83 | 0.85 | 98% / 96% | 0.92 | 0.85 | 0.85 | 97% / 96% | yes |
+| gpt-oss-20b | aime24 | mentored_dec | True | 0.55 (0.55) | 1.18 | 0.92 | 0.94 | 80% / 77% | 1.07 | 0.87 | 0.87 | 70% / 80% | no |
+| gpt-oss-20b | aime24 | spec_casc_tok | True | 0.15 (0.15) | 1.00 | 0.91 | 0.95 | 83% / 77% | 1.15 | 1.12 | 1.12 | 77% / 80% | no |
+| gpt-oss-20b | humaneval | mentored_dec | True | 0.55 (0.55) | 1.09 | 0.89 | 0.94 | 95% / 96% | 1.18 | 0.96 | 0.96 | 95% / 95% | yes |
+| gpt-oss-20b | humaneval | spec_casc_tok | True | 0.35 (0.35) | 0.95 | 0.90 | 0.95 | 96% / 96% | 1.01 | 0.98 | 0.99 | 97% / 95% | yes |
+| gpt-oss-20b | livecodebench | mentored_dec | True | 0.55 (0.55) | 1.20 | 0.96 | 0.95 | 88% / 89% | 1.15 | 0.93 | 0.92 | 87% / 90% | no |
+| gpt-oss-20b | livecodebench | spec_casc_tok | True | 0.35 (0.35) | 1.01 | 0.94 | 0.96 | 91% / 89% | 1.02 | 0.96 | 0.94 | 93% / 90% | yes |
+| gpt-oss-20b | mtbench | mentored_dec | True | 0.75 (0.75) | 1.10 | 0.75 | 0.87 | - / - | 1.14 | 0.76 | 0.78 | - / - | yes |
+| gpt-oss-20b | mtbench | spec_casc_tok | True | 0.55 (0.8) | 0.97 | 0.93 | 0.89 | - / - | 1.00 | 0.95 | 0.95 | - / - | yes |
+| gpt-oss-20b | longbench_v2 | mentored_dec | True | 0.55 (0.55) | 1.11 | 0.89 | 1.00 | 57% / 56% | 1.38 | 1.09 | 1.03 | 55% / 57% | no |
+| gpt-oss-20b | longbench_v2 | spec_casc_tok | True | 0.55 (0.55) | 1.06 | 0.97 | 0.94 | 57% / 56% | 1.20 | 1.09 | 1.04 | - / 57% | no |
+| qwen3-8b | gsm8k | mentored_dec | False | - (-) | - | - | - | - / - | - | - | - | - | - |
+| qwen3-8b | gsm8k | spec_casc_tok | False | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | - | - | - | - | - |
+| qwen3-8b | aime24 | mentored_dec | False | 0.15 (0.15) | 0.91 | 0.88 | 0.89 | 73% / 70% | - | - | - | - | - |
+| qwen3-8b | aime24 | spec_casc_tok | False | 0.8 (0.8) | 0.98 | 0.93 | 0.93 | 70% / 70% | - | - | - | - | - |
+| qwen3-8b | humaneval | mentored_dec | False | 0.75 (0.75) | 1.08 | 0.99 | 1.02 | 85% / 83% | - | - | - | - | - |
+| qwen3-8b | humaneval | spec_casc_tok | False | 0.8 (0.8) | 1.08 | 1.04 | 1.05 | 85% / 83% | - | - | - | - | - |
+| qwen3-8b | livecodebench | mentored_dec | False | 0.15 (0.15) | 1.02 | 0.99 | 0.99 | 73% / 70% | - | - | - | - | - |
+| qwen3-8b | livecodebench | spec_casc_tok | False | 0.8 (0.8) | 1.00 | 0.94 | 0.96 | 71% / 70% | - | - | - | - | - |
+| qwen3-8b | mtbench | mentored_dec | False | 0.75 (0.75) | 1.04 | 0.89 | 0.93 | - / - | - | - | - | - | - |
+| qwen3-8b | mtbench | spec_casc_tok | False | 0.8 (0.8) | 1.04 | 0.96 | 0.99 | - / - | - | - | - | - | - |
+| qwen3-8b | longbench_v2 | mentored_dec | False | 0.75 (0.75) | 1.06 | 0.98 | 0.99 | 51% / 53% | - | - | - | - | - |
+| qwen3-8b | longbench_v2 | spec_casc_tok | False | 0.15 (0.15) | 1.05 | 1.03 | 1.03 | 51% / 53% | - | - | - | - | - |
 
 ## Step 6: AIME24 accuracy repeats
 
