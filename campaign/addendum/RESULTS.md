@@ -1,18 +1,18 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 08:39 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 08:57 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 5.0; estimated remaining, runnable rows: 23.5; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 5.7; estimated remaining, runnable rows: 23.0; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 2 | 0 | 4 | 0 | 6 |
-| 2.1 | 21 | 1 | 26 | 0 | 48 |
+| 2.1 | 22 | 1 | 25 | 0 | 48 |
 | 2.2 | 0 | 0 | 20 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
-| 4.1 | 1 | 1 | 2 | 0 | 4 |
+| 4.1 | 3 | 1 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
 | 4.3 | 0 | 0 | 0 | 0 | 8 |
 | 5.1 | 0 | 0 | 18 | 0 | 23 |
@@ -387,9 +387,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | - | - | - | 2.13 (-) | 1.64 | - | - | - | 1.64 (-) | 50% | - | - | - |
 | gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | - | - | - | 1.48 (-) | 1.33 | - | - | - | 1.33 (-) | 70% | - | - | - |
 | gpt-oss-20b | humaneval | mentored_dec | 0.75 | 1.30 | 1.27 | 1.17 | 0.07 | 1.24 (0.07) | 1.09 | 0.95 | 0.84 | 0.12 | 0.96 (0.12) | 96% | 95% | 95% | 0% |
-| gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | 0.19 | 1.13 (0.19) | 87% | 93% | - | 4% |
+| gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | 0.19 | 1.13 (0.19) | 87% | 93% | 90% | 3% |
 | gpt-oss-20b | humaneval | spec_casc_opt | 0.05 | 1.73 | 1.91 | 1.58 | 0.16 | 1.74 (0.16) | 1.43 | 1.43 | 1.16 | 0.15 | 1.34 (0.15) | 82% | 83% | 78% | 3% |
-| gpt-oss-20b | humaneval | r_fuzzy | 0.25 | 1.64 | 1.79 | - | 0.11 | 1.71 (0.11) | 1.32 | 1.27 | - | 0.04 | 1.29 (0.04) | 63% | - | - | - |
+| gpt-oss-20b | humaneval | r_fuzzy | 0.25 | 1.64 | 1.79 | 1.63 | 0.09 | 1.69 (0.09) | 1.32 | 1.27 | 1.14 | 0.09 | 1.24 (0.09) | 63% | 61% | - | 1% |
 | gpt-oss-20b | humaneval | spec_casc_tok | 0.8 | 1.05 | - | - | - | 1.05 (-) | 0.98 | - | - | - | 0.98 (-) | 94% | - | - | - |
 | gpt-oss-20b | livecodebench | mentored_dec | 0.75 | 1.25 | - | - | - | 1.25 (-) | 1.01 | - | - | - | 1.01 (-) | 84% | - | - | - |
 | gpt-oss-20b | livecodebench | cactus | 0.18 | 1.54 | - | - | - | 1.54 (-) | 1.14 | - | - | - | 1.14 (-) | 61% | - | - | - |
@@ -471,29 +471,30 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 2.567 | 2.504 | 2.631 | 322.187 | 270.512 | 381.728 | 94.020 | 77.946 | 112.534 | 2.418 | 2.077 | 2.816 | 0.960 | 0.927 | 0.987 | 0.020 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 150.000 | 2.582 | 2.516 | 2.647 | 321.627 | 267.545 | 383.509 | 93.087 | 77.347 | 111.140 | 0.718 | 0.597 | 0.853 | 0.967 | 0.933 | 0.993 | 0.013 | - | - | - | - | - | - | - | - | - | - |
-| 1.200 | temp1.2 (Nibi) | 150.000 | 2.359 | 2.299 | 2.421 | 408.113 | 342.573 | 480.314 | 127.633 | 106.047 | 152.460 | 0.966 | 0.803 | 1.140 | - | - | - | 0.033 | 150.000 | 1.269 | 1.371 | 1.347 | 1.098 | 1.476 | 1.181 | 1.590 | 1.159 | 1.550 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 2.567 | 2.504 | 2.631 | 322.187 | 269.266 | 380.208 | 94.020 | 78.080 | 112.074 | 2.418 | 2.075 | 2.807 | 0.960 | 0.927 | 0.987 | 0.020 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 150.000 | 2.582 | 2.516 | 2.647 | 321.627 | 269.466 | 383.681 | 93.087 | 76.833 | 111.087 | 0.718 | 0.596 | 0.852 | 0.967 | 0.933 | 0.993 | 0.013 | - | - | - | - | - | - | - | - | - | - |
+| 1.200 | temp1.2 (Nibi) | 150.000 | 2.359 | 2.299 | 2.421 | 408.113 | 342.573 | 480.314 | 127.633 | 106.047 | 152.460 | 0.966 | 0.803 | 1.140 | 0.960 | 0.927 | 0.987 | 0.033 | 150.000 | 1.269 | 1.371 | 1.347 | 1.097 | 1.468 | 1.176 | 1.583 | 1.159 | 1.556 |
+| 1.500 | temp1.5 (Nibi) | 150.000 | 1.791 | 1.751 | 1.833 | 1266.230 | 1139.000 | 1392.990 | 459.013 | 412.151 | 504.961 | 3.365 | 3.027 | 3.696 | - | - | - | 0.480 | 150.000 | 3.937 | 4.931 | 4.690 | 3.298 | 4.717 | 4.110 | 5.941 | 3.920 | 5.603 |
 
 `campaign/addendum/tables/temp__gsm8k_qwen3.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.487 | 1.542 | 1291.930 | 1200.810 | 1381.550 | 510.080 | 475.846 | 545.240 | 10.299 | 9.574 | 11.040 | 0.800 | 0.733 | 0.860 | 0.247 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.488 | 1.541 | 1291.930 | 1202.330 | 1381.430 | 510.080 | 475.207 | 544.882 | 10.299 | 9.564 | 11.035 | 0.800 | 0.733 | 0.860 | 0.247 |
 
 `campaign/addendum/tables/temp__livecodebench.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.223 | 3456.240 | 2910.850 | 4037.960 | 1150.830 | 951.832 | 1366.230 | 25.190 | 21.226 | 29.611 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.155 | 2.273 | 3394.530 | 2862.280 | 3975.490 | 1120.230 | 922.476 | 1331.640 | 8.333 | 6.869 | 9.961 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
-| 1.200 | temp1.2 (Nibi) | 74.000 | 1.998 | 1.933 | 2.063 | 3672.140 | 3040.050 | 4353.930 | 1310.620 | 1057.250 | 1591.950 | 9.723 | 7.862 | 11.799 | - | - | - | 0.068 | 74.000 | 1.041 | 1.117 | 1.114 | 0.955 | 1.130 | 1.013 | 1.223 | 1.010 | 1.221 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.223 | 3456.240 | 2919.290 | 4040.310 | 1150.830 | 956.980 | 1367.030 | 25.190 | 21.298 | 29.598 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.152 | 2.274 | 3394.530 | 2866.980 | 3968.700 | 1120.230 | 927.086 | 1336.620 | 8.333 | 6.912 | 9.924 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
+| 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.946 | 2.063 | 3646.640 | 3092.980 | 4241.620 | 1296.980 | 1071.750 | 1549.170 | 9.625 | 7.952 | 11.435 | - | - | - | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.985 | 1.173 | 1.048 | 1.279 | 1.046 | 1.277 |
 
 `campaign/addendum/tables/temp__livecodebench_qwen3.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7260.820 | 8776.490 | 3703.370 | 3339.970 | 4069.770 | 71.423 | 64.223 | 78.695 | 0.700 | 0.600 | 0.789 | 0.322 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7257.020 | 8767.870 | 3703.370 | 3328.250 | 4076.150 | 71.423 | 64.188 | 78.642 | 0.700 | 0.600 | 0.789 | 0.322 |
 
 ## Step 4.2: Qwen3 at its recommended sampler
 
