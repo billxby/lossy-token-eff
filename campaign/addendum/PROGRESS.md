@@ -226,3 +226,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T13:27:15Z grading: uploaded 132 run dir(s) to the Nibi mirror, submitted CPU grading job 22913325
 - 2026-09-29T13:27:17Z grading: pulled 25993 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-09-29T13:31Z Step 1.9: key file present; one validation request ok (claude-fable-5-1, end_turn, req_011CfXp6D2QSEa5qi65k1saW, 6,569 in / 886 out tokens, rating parsed). Submitted Message Batch msgbatch_01MWf6AJLXcXd9ep5uFx5a7v: 2,070 judge requests = every seed-0 MT-Bench run of both targets with an answer (224 runs without one score 1, no call), effort medium, est. ~$89. Seeds 1-2 are not in this batch (`--seeds 1 2` later, roughly +$40 for GPT-OSS).
+- 2026-09-29T14:30:28Z lane A: pulled 647 new run dir(s) into runs/
+- 2026-09-29T14:30:52Z lane B: pulled 95 new run dir(s) into runs/
+- 2026-09-29T14:30:56Z step 2.1 main livecodebench spec_casc_tok alpha=0.8 seed=2: done, 90/90 cases (jobs 22880871, 0.26 GPU-h)
