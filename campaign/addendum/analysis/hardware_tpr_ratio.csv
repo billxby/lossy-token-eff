@@ -83,4 +83,5 @@ gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,1,Nibi (H100 SXM),150,0.963288,1.846
 gpt-oss-20b,longbench_v2,spec_casc_opt,0.05,2,Nibi (H100 SXM),150,0.98794,1.72248,1.26733,1.23654
 gpt-oss-20b,longbench_v2,r_fuzzy,0.25,0,old box (H100 PCIe),150,1.04457,1.69268,1.09626,1.04556
 gpt-oss-20b,longbench_v2,r_fuzzy,0.25,1,Nibi (H100 SXM),150,0.982863,1.62245,1.03903,1.03233
+gpt-oss-20b,longbench_v2,r_fuzzy,0.25,2,Nibi (H100 SXM),150,1.00418,1.62407,1.05615,1.0529
 gpt-oss-20b,longbench_v2,spec_casc_tok,0.8,0,old box (H100 PCIe),150,1.08075,1.12553,0.9656,1.00368
