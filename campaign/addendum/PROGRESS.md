@@ -345,3 +345,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T19:00:08Z step 7: pilot done; time-estimate sample = the first 40 runnable cases (case_001..case_054; Math waits for its budget) on every arm
 - 2026-09-29T19:00:08Z step 2.2 main longbench_v2 mentored_dec alpha=0.75 seed=2: done, 150/150 cases (jobs 22881281, 0.27 GPU-h)
 - 2026-09-29T19:00:09Z step 5.2 main aime24 mentored_dec alpha=0.55 seed=1: done, 30/30 cases (jobs 22931500, 0.27 GPU-h)
+- 2026-09-29T19:00:44Z grading: uploaded 193 run dir(s) to the Nibi mirror, submitted CPU grading job 22934305
+- 2026-09-29T19:00:45Z grading: pulled 29904 verdicts into campaign/addendum/analysis/grades.csv
