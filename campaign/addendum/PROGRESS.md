@@ -45,3 +45,6 @@ for what is done; this file records every action and failure.
 - 2026-09-29T05:56:15Z lane A: submitted job 22880999 (afterany:22880871); lane has 70 work items, est. 14.7 GPU-h
 - 2026-09-29T05:56:23Z lane B: submitted job 22881159; lane has 48 work items, est. 14.4 GPU-h
 - 2026-09-29T05:56:30Z lane B: submitted job 22881281 (afterany:22881159); lane has 48 work items, est. 14.4 GPU-h
+- 2026-09-29T06:14:41Z lane A: pulled 300 new run dir(s) into runs/
+- 2026-09-29T06:14:50Z lane B: pulled 173 new run dir(s) into runs/
+- 2026-09-29T06:14:52Z step 0.5 nibiref gsm8k strict alpha=strict seed=0: done, 150/150 cases (jobs 22881159, 0.14 GPU-h)
