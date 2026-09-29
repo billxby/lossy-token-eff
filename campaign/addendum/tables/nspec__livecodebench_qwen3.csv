@@ -1,2 +1,2 @@
 n_draft,source,n_cases,mean_l_bar,mean_l_bar_ci_lo,mean_l_bar_ci_hi,mean_completion_tokens,mean_completion_tokens_ci_lo,mean_completion_tokens_ci_hi,mean_verifier_rounds,mean_verifier_rounds_ci_lo,mean_verifier_rounds_ci_hi,mean_wall_time_s,mean_wall_time_s_ci_lo,mean_wall_time_s_ci_hi,accuracy,accuracy_ci_lo,accuracy_ci_hi,capout_rate
-6,"campaign seed 0 (old box, H100 PCIe)",90,1.20514,1.18067,1.23037,8028.54,7263.8,8766.99,3703.37,3335.01,4082.67,71.423,64.1481,78.5176,0.7,0.6,0.788889,0.322222
+6,"campaign seed 0 (old box, H100 PCIe)",90,1.20514,1.18059,1.23039,8028.54,7258.04,8786.53,3703.37,3325.7,4075.51,71.423,64.1807,78.8514,0.7,0.6,0.788889,0.322222
