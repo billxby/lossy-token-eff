@@ -231,3 +231,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T14:30:56Z step 2.1 main livecodebench spec_casc_tok alpha=0.8 seed=2: done, 90/90 cases (jobs 22880871, 0.26 GPU-h)
 - 2026-09-29T14:30:56Z step 0.5 nibiref humaneval strict alpha=strict seed=0: done, 150/150 cases (jobs 22880871, 0.14 GPU-h)
 - 2026-09-29T14:30:57Z step 0.5 nibiref mtbench strict alpha=strict seed=0: done, 80/80 cases (jobs 22880871, 0.11 GPU-h)
+- 2026-09-29T14:30:57Z step 0.5 nibiref longbench_v2 strict alpha=strict seed=0: done, 150/150 cases (jobs 22880871, 0.24 GPU-h)
