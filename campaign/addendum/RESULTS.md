@@ -1,16 +1,16 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 12:52 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-29 13:10 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 13.4; estimated remaining, runnable rows: 14.7; blocked rows: 58.1.
+Source: `campaign/addendum/manifest.csv` (253 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 14.1; estimated remaining, runnable rows: 14.1; blocked rows: 58.1.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 2 | 0 | 4 | 0 | 6 |
-| 2.1 | 45 | 1 | 2 | 0 | 48 |
-| 2.2 | 10 | 1 | 9 | 0 | 6 |
+| 2.1 | 46 | 1 | 1 | 0 | 48 |
+| 2.2 | 11 | 1 | 8 | 0 | 6 |
 | 3 | 10 | 0 | 0 | 0 | 10 |
 | 4.1 | 4 | 0 | 0 | 0 | 4 |
 | 4.2 | 0 | 0 | 0 | 0 | 12 |
@@ -382,9 +382,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | gsm8k | r_fuzzy | 0.25 | 1.70 | 1.57 | 1.74 | 0.09 | 1.67 (0.09) | 1.29 | 1.02 | 1.17 | 0.14 | 1.16 (0.14) | 87% | 89% | 89% | 1% |
 | gpt-oss-20b | gsm8k | spec_casc_tok | 0.8 | 0.96 | 0.93 | 1.03 | 0.05 | 0.97 (0.05) | 0.91 | 0.81 | 0.91 | 0.06 | 0.87 (0.06) | 97% | 98% | 96% | 1% |
 | gpt-oss-20b | aime24 | mentored_dec | 0.75 | 1.69 | 1.28 | 1.45 | 0.21 | 1.48 (0.21) | 1.36 | 0.93 | 1.02 | 0.23 | 1.10 (0.23) | 63% | 70% | 67% | 3% |
-| gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | 1.54 | 1.62 | 0.12 | 1.64 (0.12) | 1.33 | 0.95 | 0.97 | 0.21 | 1.09 (0.21) | 60% | 50% | - | 7% |
+| gpt-oss-20b | aime24 | cactus | 0.18 | 1.78 | 1.54 | 1.62 | 0.12 | 1.64 (0.12) | 1.33 | 0.95 | 0.97 | 0.21 | 1.09 (0.21) | 60% | 50% | 43% | 8% |
 | gpt-oss-20b | aime24 | spec_casc_opt | 0.05 | 2.48 | 2.03 | 2.31 | 0.23 | 2.28 (0.23) | 2.01 | 1.44 | 1.61 | 0.29 | 1.69 (0.29) | 37% | 33% | 43% | 5% |
-| gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | 1.73 | - | 0.29 | 1.93 (0.29) | 1.64 | 1.16 | - | 0.34 | 1.40 (0.34) | 50% | 43% | - | 5% |
+| gpt-oss-20b | aime24 | r_fuzzy | 0.25 | 2.13 | 1.73 | 2.17 | 0.25 | 2.01 (0.25) | 1.64 | 1.16 | 1.41 | 0.24 | 1.41 (0.24) | 50% | 43% | - | 5% |
 | gpt-oss-20b | aime24 | spec_casc_tok | 0.8 | 1.48 | 0.96 | - | 0.37 | 1.22 (0.37) | 1.33 | 0.81 | - | 0.36 | 1.07 (0.36) | 70% | 73% | - | 2% |
 | gpt-oss-20b | humaneval | mentored_dec | 0.75 | 1.30 | 1.27 | 1.17 | 0.07 | 1.24 (0.07) | 1.09 | 0.95 | 0.84 | 0.12 | 0.96 (0.12) | 96% | 95% | 95% | 0% |
 | gpt-oss-20b | humaneval | cactus | 0.35 | 1.79 | 1.62 | 1.62 | 0.10 | 1.68 (0.10) | 1.35 | 1.03 | 1.00 | 0.19 | 1.13 (0.19) | 87% | 93% | 90% | 3% |
@@ -394,7 +394,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | gpt-oss-20b | livecodebench | mentored_dec | 0.75 | 1.25 | 1.33 | 1.37 | 0.06 | 1.31 (0.06) | 1.01 | 0.94 | 0.98 | 0.03 | 0.98 (0.03) | 84% | 80% | 88% | 4% |
 | gpt-oss-20b | livecodebench | cactus | 0.18 | 1.54 | 1.76 | 1.67 | 0.11 | 1.66 (0.11) | 1.14 | 1.08 | 1.03 | 0.06 | 1.09 (0.06) | 61% | 66% | 63% | 2% |
 | gpt-oss-20b | livecodebench | spec_casc_opt | 0.05 | 1.64 | 1.67 | 1.75 | 0.06 | 1.69 (0.06) | 1.32 | 1.20 | 1.25 | 0.06 | 1.26 (0.06) | 49% | 52% | 48% | 2% |
-| gpt-oss-20b | livecodebench | r_fuzzy | 0.25 | 1.65 | 1.69 | - | 0.02 | 1.67 (0.02) | 1.27 | 1.15 | - | 0.09 | 1.21 (0.09) | 34% | - | - | - |
+| gpt-oss-20b | livecodebench | r_fuzzy | 0.25 | 1.65 | 1.69 | 1.71 | 0.03 | 1.68 (0.03) | 1.27 | 1.15 | 1.14 | 0.08 | 1.19 (0.08) | 34% | 32% | - | 2% |
 | gpt-oss-20b | livecodebench | spec_casc_tok | 0.8 | 1.16 | - | - | - | 1.16 (-) | 1.04 | - | - | - | 1.04 (-) | 88% | - | - | - |
 | gpt-oss-20b | mtbench | mentored_dec | 0.75 | 1.10 | 1.14 | 1.19 | 0.05 | 1.14 (0.05) | 0.87 | 0.78 | 0.79 | 0.05 | 0.82 (0.05) | - | - | - | - |
 | gpt-oss-20b | mtbench | cactus | 0.35 | 1.18 | 1.31 | 1.31 | 0.07 | 1.27 (0.07) | 0.82 | 0.69 | 0.67 | 0.08 | 0.73 (0.08) | - | - | - | - |
