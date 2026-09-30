@@ -60,9 +60,9 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,1,runs,150,150,done,22948693,0.00,0.22,lane=A
 2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,2,runs,150,150,done,22948719,0.00,0.26,lane=B
 2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,1,runs,150,150,done,22948693,0.00,0.25,lane=A
-2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,2,runs,150,105,running,22948719,0.12,,lane=B
-2.1,main,qwen3-8b,humaneval_qwen3,strict,strict,1,runs,150,43,running,22948693,0.38,,lane=A
-2.1,main,qwen3-8b,humaneval_qwen3,strict,strict,2,runs,150,0,queued,,0.50,,lane=B
+2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,2,runs,150,150,done,22948719,0.00,0.26,lane=B
+2.1,main,qwen3-8b,humaneval_qwen3,strict,strict,1,runs,150,114,running,22948693,0.18,,lane=A
+2.1,main,qwen3-8b,humaneval_qwen3,strict,strict,2,runs,150,46,running,22948719,0.37,,lane=B
 2.1,main,qwen3-8b,humaneval_qwen3,spec_casc_opt,0.05,1,runs,150,0,queued,,0.70,,lane=A
 2.1,main,qwen3-8b,humaneval_qwen3,spec_casc_opt,0.05,2,runs,150,0,queued,,0.70,,lane=B
 2.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.75,1,runs,150,0,queued,,0.51,,lane=A
