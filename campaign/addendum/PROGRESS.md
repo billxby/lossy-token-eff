@@ -504,3 +504,4 @@ for what is done; this file records every action and failure.
 - 2026-09-30T13:42:45Z step 2.1 main mtbench_qwen3 spec_casc_tok alpha=0.8 seed=2: done, 80/80 cases (jobs 22948693, 0.24 GPU-h)
 - 2026-09-30T13:42:45Z step 2.1 main livecodebench_qwen3 strict alpha=strict seed=1: done, 90/90 cases (jobs 22948719, 0.94 GPU-h)
 - 2026-09-30T13:42:46Z step 2.1 main livecodebench_qwen3 strict alpha=strict seed=2: done, 90/90 cases (jobs 22948693, 0.93 GPU-h)
+- 2026-09-30T13:42:46Z step 2.1 main livecodebench_qwen3 spec_casc_opt alpha=0.05 seed=1: done, 90/90 cases (jobs 22948719, 0.94 GPU-h)
