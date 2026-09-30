@@ -46,15 +46,30 @@ LANES_DIR = ADD / "lanes"
 STATE = LANES_DIR / "state.json"
 JOB_TMP = pathlib.Path(os.environ.get("CLAUDE_JOB_DIR", tempfile.gettempdir())) / "tmp"
 
-HOST = "nibi"
-SSH = ["ssh", "-o", "BatchMode=yes", "-o", "ControlMaster=no", HOST]
+HOST = "nibi"  # the grading mirror and lanes A/B
+
+
+def ssh_cmd(host: str = HOST) -> list[str]:
+    return ["ssh", "-o", "BatchMode=yes", "-o", "ControlMaster=no", host]
+
+
+SSH = ssh_cmd()
 REMOTE_HOME = "/home/billxby"
+NIBI_PROJECT, KILLARNEY_PROJECT = f"{REMOTE_HOME}/projects/def-hongyanz/billxby", f"{REMOTE_HOME}/projects/aip-hongyanz/billxby"
 LANES = {
-    "A": {"repo": f"{REMOTE_HOME}/projects/def-hongyanz/billxby/lossy-token-eff",
-          "root": "/scratch/billxby/lossy-addendum/laneA", "exclude": "g[15-28]"},
-    "B": {"repo": f"{REMOTE_HOME}/projects/def-hongyanz/billxby/lossy-token-eff-lane2",
-          "root": "/scratch/billxby/lossy-addendum/laneB", "exclude": "g[1-14]"},
+    "A": {"host": "nibi", "account": "def-hongyanz_gpu", "project": NIBI_PROJECT,
+          "repo": f"{NIBI_PROJECT}/lossy-token-eff", "root": "/scratch/billxby/lossy-addendum/laneA", "exclude": "g[15-28]"},
+    "B": {"host": "nibi", "account": "def-hongyanz_gpu", "project": NIBI_PROJECT,
+          "repo": f"{NIBI_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneB", "exclude": "g[1-14]"},
+    # Killarney (PAICE allocation aip-hongyanz) from 2026-09-30: the Qwen3 rows move here (README deviation 12)
+    "K1": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff", "root": "/scratch/billxby/lossy-addendum/laneK1",
+           "exclude": "kn[174-178]"},
+    "K2": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneK2",
+           "exclude": "kn[169-173]"},
 }
+QWEN3_LANES = ["K1", "K2"]  # where Qwen3 rows without a lane go
 MAX_CHAIN = 4          # jobs per lane queued at once (running + pending)
 # 3 h jobs since 2026-09-30 19:20Z: with ~850 H100 jobs pending, 12 h jobs stopped fitting any backfill
 # window (a lane waited 6 h); a 3 h job loses at most the case in progress when it ends (skip-if-done)
@@ -421,8 +436,12 @@ def write_manifest(rows: list[dict]) -> None:
 
 def load_state() -> dict:
     if STATE.is_file():
-        return json.loads(STATE.read_text(encoding="utf-8"))
-    return {"lanes": {name: {"jobs": [], "rows": []} for name in LANES}, "blocked_qwen3": True}
+        state = json.loads(STATE.read_text(encoding="utf-8"))
+    else:
+        state = {"lanes": {}, "blocked_qwen3": True}
+    for name in LANES:  # lanes added later (K1/K2) start empty
+        state["lanes"].setdefault(name, {"jobs": [], "rows": []})
+    return state
 
 
 def save_state(state: dict) -> None:
@@ -612,17 +631,18 @@ def cmd_plan(args: argparse.Namespace) -> int:
         for key in info.get("rows", []):
             lane_of[key] = lane
     for lane in LANES:
-        for key in lanes[lane]:
+        for key in lanes.get(lane, []):
             lane_of.setdefault(key, lane)
-    if not blocked_qwen:  # spread lane C (Qwen3) over A/B by remaining estimated hours, greedily
-        load = {lane: sum(float(by_key[k]["gpu_hours_est"]) for k in by_key if lane_of.get(k) == lane) for lane in LANES}
+    if not blocked_qwen:  # spread new lane-C (Qwen3) rows over the Qwen3 lanes by remaining estimated hours
+        targets = [lane for lane in QWEN3_LANES if lane in LANES] or list(LANES)
+        load = {lane: sum(float(by_key[k]["gpu_hours_est"]) for k in by_key if lane_of.get(k) == lane) for lane in targets}
         for key in lanes["C"]:
             if key not in lane_of:
                 lane = min(load, key=load.get)
                 lane_of[key] = lane
                 load[lane] += float(by_key[key]["gpu_hours_est"])
     # run order per lane: its GPT-OSS rows in plan order, then its Qwen3 rows in lane-C order
-    order = {lane: [k for k in lanes[lane] if lane_of.get(k) == lane] + [k for k in lanes["C"] if lane_of.get(k) == lane]
+    order = {lane: [k for k in lanes.get(lane, []) if lane_of.get(k) == lane] + [k for k in lanes["C"] if lane_of.get(k) == lane]
              for lane in LANES}
 
     job_state = {j["id"]: j.get("state", "") for info in state["lanes"].values() for j in info.get("jobs", [])}
@@ -744,8 +764,9 @@ def cmd_summary(args: argparse.Namespace) -> int:
 
 # ------------------------------------------------------------------- remote
 
-def ssh(command: str, *, input_bytes: bytes | None = None, check: bool = True, timeout: float = 600) -> subprocess.CompletedProcess:
-    return subprocess.run([*SSH, command], input=input_bytes, capture_output=True, check=check, timeout=timeout)
+def ssh(command: str, *, input_bytes: bytes | None = None, check: bool = True, timeout: float = 600,
+        host: str = HOST) -> subprocess.CompletedProcess:
+    return subprocess.run([*ssh_cmd(host), command], input=input_bytes, capture_output=True, check=check, timeout=timeout)
 
 
 PUSH_FILES = [
@@ -773,18 +794,20 @@ def prompt_digest(rel: str) -> str | None:
     return digest.hexdigest()
 
 
-def sync_prompts() -> None:
+def sync_prompts(up: dict[str, bool] | None = None) -> None:
     state = load_state()
     synced = state.setdefault("prompt_sync", {})
     for rel in PROMPT_SYNC:
         digest = prompt_digest(rel)
-        stale = [lane for lane in LANES if digest and synced.get(f"{lane}:{rel}") != digest]
+        stale = [lane for lane in LANES if digest and synced.get(f"{lane}:{rel}") != digest
+                 and (up is None or up.get(LANES[lane]["host"], True))]
         if not stale:
             continue
         tar = subprocess.run(["tar", "-cf", "-", rel], cwd=REPO, capture_output=True, check=True,
                              env={**os.environ, "COPYFILE_DISABLE": "1"}).stdout
         for lane in stale:
-            ssh(f"cd {shlex.quote(LANES[lane]['repo'])} && tar -xf -", input_bytes=tar, timeout=1800)
+            ssh(f"cd {shlex.quote(LANES[lane]['repo'])} && tar -xf -", input_bytes=tar, timeout=1800,
+                host=LANES[lane]["host"])
             synced[f"{lane}:{rel}"] = digest
             progress(f"lane {lane}: synced {rel} ({len(tar) / 1e6:.1f} MB tar) to the lane repo")
             print(f"synced {rel} to lane {lane}")
@@ -794,46 +817,66 @@ def sync_prompts() -> None:
 def cmd_push(args: argparse.Namespace) -> int:
     files = [f for f in PUSH_FILES if (REPO / f).is_file()]
     tar = subprocess.run(["tar", "-cf", "-", *files], cwd=REPO, capture_output=True, check=True).stdout
-    sync_prompts()  # before the work lists that reference them
+    up = {host: reachable(host) for host in dict.fromkeys(info["host"] for info in LANES.values())}
+    sync_prompts(up)  # before the work lists that reference them
     for lane, info in LANES.items():
-        ssh(f"cd {shlex.quote(info['repo'])} && tar -xf -", input_bytes=tar)
+        if not up[info["host"]]:
+            print(f"lane {lane}: {info['host']} unreachable, not pushed")
+            continue
+        ssh(f"cd {shlex.quote(info['repo'])} && tar -xf -", input_bytes=tar, host=info["host"])
         work = (LANES_DIR / f"{lane}.json").read_bytes()
         root = shlex.quote(info["root"])
         ssh(f"mkdir -p {root}/slurm && cat > {root}/work.json.tmp && mv {root}/work.json.tmp {root}/work.json",
-            input_bytes=work)
+            input_bytes=work, host=info["host"])
         n = len(json.loads(work)["items"])
         print(f"pushed {len(files)} code files + work list ({n} items) to lane {lane}")
     return 0
 
 
-def squeue_states() -> dict[str, str]:
-    out = ssh("squeue -u billxby -h -o '%i|%T'", check=False).stdout.decode()
+def squeue_states(host: str = HOST) -> dict[str, str] | None:
+    """job id -> state for this user on `host`; None when the host cannot be reached (ssh exit 255,
+    e.g. its ControlMaster dropped) -- never an empty map that would mark every job ENDED."""
+    # squeue is not on the PATH of a non-login shell on Killarney
+    proc = ssh("bash -lc \"squeue -u billxby -h -o '%i|%T'\"", check=False, host=host)
+    if proc.returncode == 255:
+        return None
     states = {}
-    for line in out.splitlines():
+    for line in proc.stdout.decode().splitlines():
         if "|" in line:
             job, st = line.strip().split("|", 1)
             states[job] = st
     return states
 
 
-def refresh_job_states(state: dict) -> dict[str, str]:
-    live = squeue_states()
-    for info in state["lanes"].values():
+def reachable(host: str) -> bool:
+    return ssh("true", check=False, host=host, timeout=60).returncode == 0
+
+
+def refresh_job_states(state: dict) -> dict[str, dict[str, str] | None]:
+    """Update every lane job's state; lanes on an unreachable host keep their last known states."""
+    live_by_host = {host: squeue_states(host) for host in dict.fromkeys(info["host"] for info in LANES.values())}
+    for lane, info in state["lanes"].items():
+        live = live_by_host.get(LANES.get(lane, {}).get("host", HOST))
+        if live is None:
+            continue
         for job in info.get("jobs", []):
             if job["id"] in live:
                 job["state"] = live[job["id"]]
             elif job.get("state") in ("PENDING", "RUNNING", "CONFIGURING", "COMPLETING", "", None):
                 job["state"] = "ENDED"
-    return live
+    return live_by_host
 
 
 def cmd_submit(args: argparse.Namespace) -> int:
     state = load_state()
-    refresh_job_states(state)
+    live_by_host = refresh_job_states(state)
     manifest = {row_key(r): r for r in load_manifest()}
     for lane, info in LANES.items():
         items = json.loads((LANES_DIR / f"{lane}.json").read_text(encoding="utf-8"))["items"]
         if not items:
+            continue
+        if live_by_host.get(info["host"]) is None:  # job states unknown: submitting could double the chain
+            print(f"lane {lane}: {info['host']} unreachable, nothing submitted")
             continue
         # step-7 items are <row key>@<budget>; a row split into two budget items counts once
         remaining_h = sum(float(manifest.get(key, {}).get("gpu_hours_est") or 0)
@@ -845,11 +888,11 @@ def cmd_submit(args: argparse.Namespace) -> int:
             dep = f"--dependency=afterany:{active[-1]['id']} " if active else ""
             cmd = (
                 f"cd {shlex.quote(info['repo'])} && mkdir -p {info['root']}/slurm && "
-                f"LANE={lane} REPO_DIR={shlex.quote(info['repo'])} LANE_ROOT={info['root']} "
-                f"sbatch --parsable --job-name=add-{lane} --exclude={info['exclude']} --time={JOB_TIME} "
-                f"--output={info['root']}/slurm/%x-%j.out {dep}cascade/cluster/addendum_lane.sbatch"
+                f"LANE={lane} REPO_DIR={shlex.quote(info['repo'])} LANE_ROOT={info['root']} PROJECT_DIR={info['project']} "
+                f"sbatch --parsable --job-name=add-{lane} --account={info['account']} --exclude={info['exclude']} "
+                f"--time={JOB_TIME} --output={info['root']}/slurm/%x-%j.out {dep}cascade/cluster/addendum_lane.sbatch"
             )
-            out = ssh(cmd).stdout.decode().strip().splitlines()[-1]
+            out = ssh(f"bash -lc {shlex.quote(cmd)}", host=info["host"]).stdout.decode().strip().splitlines()[-1]
             job_id = out.split(";")[0].strip()
             job = {"id": job_id, "state": "PENDING", "submitted": utc_now(), "dependency": active[-1]["id"] if active else ""}
             jobs.append(job)
@@ -871,7 +914,8 @@ def pull_lane_runs(lane: str, info: dict) -> list[str]:
         f"if [ -f .collect_marker ]; then F='-newer .collect_marker'; else F=''; fi; "
         f"find runs -name run.json $F 2>/dev/null | xargs -r grep -l '\"status\": \"ok\"' ; echo \"__T=$T\""
     )
-    out = ssh(script, timeout=900).stdout.decode().splitlines()
+    host = info["host"]
+    out = ssh(script, timeout=900, host=host).stdout.decode().splitlines()
     stamp = next((l.split("=", 1)[1] for l in out if l.startswith("__T=")), None)
     rels = [l.strip()[: -len("/run.json")] for l in out if l.strip().endswith("/run.json")]
     rels = [r for r in rels if not r.startswith("runs/addendum/smoke")]  # step-0.2 smoke runs are deleted, not kept
@@ -881,7 +925,8 @@ def pull_lane_runs(lane: str, info: dict) -> list[str]:
         JOB_TMP.mkdir(parents=True, exist_ok=True)
         stage = pathlib.Path(tempfile.mkdtemp(prefix=f"pull_{lane}_", dir=JOB_TMP))
         listing = ("\n".join(new) + "\n").encode()
-        proc = subprocess.run([*SSH, f"cd {root} && tar -cf - -T -"], input=listing, capture_output=True, timeout=1800)
+        proc = subprocess.run([*ssh_cmd(host), f"cd {root} && tar -cf - -T -"], input=listing, capture_output=True,
+                              timeout=1800)
         if proc.returncode != 0:
             raise RuntimeError(f"remote tar failed for lane {lane}: {proc.stderr.decode()[-500:]}")
         subprocess.run(["tar", "-xf", "-", "-C", str(stage)], input=proc.stdout, check=True)
@@ -896,9 +941,9 @@ def pull_lane_runs(lane: str, info: dict) -> list[str]:
             pulled.append(rel)
         shutil.rmtree(stage, ignore_errors=True)
     if stamp:
-        ssh(f"cd {root} && touch -d @{stamp} .collect_marker", check=False)
+        ssh(f"cd {root} && touch -d @{stamp} .collect_marker", check=False, host=host)
     # journals and batch manifests (small; our own copies, refreshed every collect)
-    status = ssh(f"cat {root}/status.jsonl 2>/dev/null", check=False).stdout
+    status = ssh(f"cat {root}/status.jsonl 2>/dev/null", check=False, host=host).stdout
     if status:
         (LANES_DIR / f"{lane}_status.jsonl").write_bytes(status)
     return pulled
@@ -1070,6 +1115,32 @@ def cmd_add52(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_move_qwen3(args: argparse.Namespace) -> int:
+    """Move the not-done Qwen3 rows from the Nibi lanes to the Killarney lanes (README deviation 12),
+    balanced by estimated hours in lane-C order. Steps in --keep stay on Nibi (2.1: its remaining arms keep
+    the step on one machine). Run right after a collect, so every finished case of a moved row is local."""
+    state = load_state()
+    rows = [r for r in load_manifest() if r["target"] == "qwen3-8b" and r["status"] != "done" and r["step"] not in args.keep]
+    keys = {row_key(r) for r in rows}
+    for lane in ("A", "B"):
+        state["lanes"][lane]["rows"] = [k for k in state["lanes"][lane]["rows"] if k not in keys]
+    load = {lane: sum(float(r["gpu_hours_est"] or 0) for r in load_manifest() if row_key(r) in state["lanes"][lane]["rows"])
+            for lane in QWEN3_LANES}
+    moved = {lane: 0 for lane in QWEN3_LANES}
+    for r in sorted(rows, key=lambda r: LANE_C_PRIORITY.get(r["step"], 8)):
+        if any(row_key(r) in state["lanes"][lane]["rows"] for lane in QWEN3_LANES):
+            continue
+        lane = min(load, key=load.get)
+        state["lanes"][lane]["rows"].append(row_key(r))
+        load[lane] += float(r["gpu_hours_est"] or 0)
+        moved[lane] += 1
+    save_state(state)
+    progress(f"moved {sum(moved.values())} Qwen3 row(s) to Killarney ({', '.join(f'{l}: {n}' for l, n in moved.items())}; "
+             f"est. {', '.join(f'{l} {h:.1f} GPU-h' for l, h in load.items())}); kept on Nibi: steps {', '.join(args.keep)}")
+    print(f"moved {moved}; est load {load}")
+    return 0
+
+
 def cmd_poll(args: argparse.Namespace) -> int:
     """One iteration of the campaign loop: cycle, incremental grading, tables, RESULTS.md, commit, push."""
     cmd_cycle(args)
@@ -1105,6 +1176,9 @@ def main() -> int:
     sub.add_parser("cycle").set_defaults(fn=cmd_cycle)
     sub.add_parser("summary").set_defaults(fn=cmd_summary)
     sub.add_parser("grade").set_defaults(fn=cmd_grade)
+    p = sub.add_parser("move-qwen3")
+    p.add_argument("--keep", nargs="*", default=["2.1"], help="Steps whose Qwen3 rows stay on the Nibi lanes.")
+    p.set_defaults(fn=cmd_move_qwen3)
     sub.add_parser("grade-pull").set_defaults(fn=cmd_grade_pull)
     args = parser.parse_args()
     return args.fn(args)
