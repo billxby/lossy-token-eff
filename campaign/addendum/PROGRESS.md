@@ -5,7 +5,10 @@ for what is done; this file records every action and failure.
 
 ## Needs Bill
 
-1. **Qwen3 V2 sampler (step 0.2) -- blocks every Qwen3 row (135 of 253).**
+1. ~~Qwen3 V2 sampler (step 0.2)~~ -- resolved 2026-09-30 00:36Z: Bill copied the file (it arrived with CRLF line
+   endings and no final newline; normalized it is byte-identical to 68d0a904...). Patch committed, installed in
+   both lane venvs, Qwen3 smoke test passed 01:17Z, Qwen3 rows queued. Original ask, for the record:
+   **Qwen3 V2 sampler (step 0.2) -- blocks every Qwen3 row (135 of 253).**
    The consolidated `rejection_sampler_utils.py` exists only on Chiatzen's
    old H100 box (`cascade/DIRECTIONS.md` D8); neither Nibi venv nor this Mac
    has it (both Nibi copies are pristine, sha256 `bfaec14e...`). Ask: copy

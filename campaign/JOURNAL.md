@@ -2657,3 +2657,15 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   beyond the interval). On Nibi the rounds and time verdicts never disagree
   in any category. `campaign/addendum/tables/speedbench{,_eq4,_eq4_summary,
   _pilot}__gpt-oss-20b.csv`.
+
+- **2026-09-30, addendum step 0.2 done: the consolidated V2 sampler is back.**
+  Bill recovered `rejection_sampler_utils.py` from the old H100 box. The copy
+  arrived with CRLF line endings and no final newline (sha256 a031ce63...);
+  normalized, it is byte-identical to the recorded final state 68d0a904...
+  (alpha-gate fix, mask fix, gated debug prints; `patches/HASHES.txt`). It is
+  now `patches/vllm-0.26.0-v2-consolidated.patch` (diff against pristine
+  vLLM 0.26.0, round trip verified) and installed in both lane venvs.
+  Qwen3 smoke test on lane A (gsm8k_qwen3 case_001, seed 7): strict and
+  mentored_dec 0.75 both ok, and the server log shows `[MENTORED-DEC PATCH V2
+  (re-added)] alpha=0.75` in the engine process. All 141 Qwen3 rows (plus
+  Qwen3's own SPEED-Bench pilot) queued over lanes A and B, ~37 GPU-h each.

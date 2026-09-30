@@ -77,9 +77,13 @@ alpha grows).
    with a matching sha256, its self-test is skipped (~2.5 min of GPU per
    arm). Any fresh apply or switch still runs the test. Default behaviour
    unchanged.
-3. **Lane C (Qwen3) not created while Qwen3 is blocked.** /project has a
-   500K-file quota (288K used); a third repo + venv copy is ~100K files. Qwen3
-   work goes to lanes A/B once the V2 sampler is available.
+3. **No lane C: Qwen3 runs on lanes A and B.** /project has a 500K-file
+   quota (288K used); a third repo + venv copy is ~100K files, and Bill asked
+   for two GPUs. Once the V2 sampler arrived (2026-09-30 00:36Z, installed in
+   both lane venvs; the V2 file is not touched by GPT-OSS, which runs V1) the
+   Qwen3 rows were spread over lanes A/B by estimated hours, in the plan's
+   lane-C order (2.1 -> 0.5 -> 3 -> 4.1 -> 4.2 -> 5.1 -> 4.3 / 6 / 2.2 -> 5.2
+   -> 7).
 4. **Step 2.2 aime24 seeds 1-2 are the same runs as step 6 seeds 1-2** (one
    manifest row each, step `2.2`, noted "shared by step 6").
 5. **`patches/test_mentored_dec.py`: `MENTORED_DEC_TEST_V1_ONLY`.** The
