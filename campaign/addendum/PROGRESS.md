@@ -401,3 +401,12 @@ for what is done; this file records every action and failure.
 - 2026-09-30T00:37:16Z Step 0.2: lane B venv V2 file installed (sha256 68d0a904230a)
 - 2026-09-30T00:37:44Z Step 0.2: queued the two Qwen3 smoke cases at the front of lane A (runs/addendum/smoke_qwen3)
 - 2026-09-30T00:38:14Z lane A: submitted job 22947621; lane has 2 work items, est. 0.0 GPU-h
+- 2026-09-30T01:17:20Z Step 0.2 Qwen3 smoke: PASSED -- strict ok, mentored_dec 0.75 ok; log: '[MENTORED-DEC PATCH] pid=488270 alpha=0.75 (lam=0.25) (/tmp/lossy-token-eff-mentored-dec-alpha-3164366)\nmode=lossy rule=mentored_dec alpha=0.75 (via /tmp/lossy-token-eff-mentored-dec-alpha-3164366) dr'
+- 2026-09-30T01:19:34Z lane A: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
+- 2026-09-30T01:20:14Z lane B: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
+- 2026-09-30T01:20:46Z lane A: submitted job 22948693; lane has 69 work items, est. 29.2 GPU-h
+- 2026-09-30T01:21:00Z lane A: submitted job 22948709 (afterany:22948693); lane has 69 work items, est. 29.2 GPU-h
+- 2026-09-30T01:21:30Z lane A: submitted job 22948711 (afterany:22948709); lane has 69 work items, est. 29.2 GPU-h
+- 2026-09-30T01:21:34Z lane B: submitted job 22948719; lane has 67 work items, est. 28.9 GPU-h
+- 2026-09-30T01:21:36Z lane B: submitted job 22948722 (afterany:22948719); lane has 67 work items, est. 28.9 GPU-h
+- 2026-09-30T01:21:38Z lane B: submitted job 22948725 (afterany:22948722); lane has 67 work items, est. 28.9 GPU-h
