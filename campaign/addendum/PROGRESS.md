@@ -475,3 +475,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T04:39:38Z lane A: pulled 63 new run dir(s) into runs/
 - 2026-09-30T04:40:02Z lane B: pulled 50 new run dir(s) into runs/
 - 2026-09-30T04:40:07Z step 2.1 main humaneval_qwen3 strict alpha=strict seed=2: done, 150/150 cases (jobs 22948719, 0.71 GPU-h)
+- 2026-09-30T04:40:29Z grading: uploaded 113 run dir(s) to the Nibi mirror, submitted CPU grading job 22954800
+- 2026-09-30T04:40:34Z grading: pulled 33348 verdicts into campaign/addendum/analysis/grades.csv
