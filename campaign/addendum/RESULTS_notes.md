@@ -181,3 +181,14 @@
   reasoning runs at 8192 like GPT-OSS (0/20). Qwen3 is ~3x longer here
   (mean 2352 vs 820 completion tokens); expect a few Qwen3 reasoning
   cap-outs in the step-7 tables, which report cap-out rates per category.
+
+### MT-Bench quality along the alpha grid (GPT-OSS, seed 0)
+
+- `analysis/mtbench_judge_summary.csv` (every cell 80 runs, after the
+  step-5.1 fills were judged): mentored_dec falls steadily with alpha --
+  0.15: 7.33, 0.35: 7.14, 0.55: 6.71, 0.75: 6.41 (strict 7.29) -- while
+  spec_casc_tok stays flat at or above strict (0.15: 7.51, 0.35: 7.36,
+  0.55: 7.50, 0.8: 7.49). So step 5.2's rounds-ratio stand-in for MT-Bench
+  picked mentored_dec 0.75, the loosest and lowest-scoring cell (-0.9 vs
+  strict); spec_casc_tok's pick (0.55) costs nothing. Top-up batch for the
+  230 fill runs: $5.37, ended 2026-09-30 03:53Z (judge total $50.53).

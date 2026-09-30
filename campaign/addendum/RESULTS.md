@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-30 03:47 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 03:55 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -374,18 +374,18 @@ Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum 
 
 | target | method | alpha | mean score [95% CI] | answered only | no answer | refusals |
 |---|---|---:|---|---:|---:|---:|
-| gpt-oss-20b | strict | strict | 7.29 [6.75, 7.81] | 7.29 | 0 | 0 |
+| gpt-oss-20b | strict | strict | 7.29 [6.75, 7.80] | 7.29 | 0 | 0 |
 | gpt-oss-20b | mentored_dec | 0.75 | 6.41 [5.72, 7.09] | 6.48 | 1 | 0 |
 | gpt-oss-20b | cactus | 0.35 | 4.51 [3.70, 5.34] | 4.80 | 6 | 0 |
-| gpt-oss-20b | spec_casc_opt | 0.05 | 5.74 [5.04, 6.44] | 5.86 | 2 | 0 |
+| gpt-oss-20b | spec_casc_opt | 0.05 | 5.74 [5.04, 6.45] | 5.86 | 2 | 0 |
 | gpt-oss-20b | r_fuzzy | 0.25 | 4.58 [3.94, 5.22] | 4.71 | 3 | 0 |
-| gpt-oss-20b | spec_casc_tok | 0.8 | 7.49 [6.96, 8.00] | 7.49 | 0 | 0 |
-| qwen3-8b | strict | strict | 6.94 [6.29, 7.53] | 7.79 | 10 | 0 |
-| qwen3-8b | mentored_dec | 0.75 | 6.40 [5.74, 7.08] | 7.45 | 13 | 0 |
-| qwen3-8b | cactus | 0.35 | 2.99 [2.39, 3.65] | 3.74 | 22 | 0 |
-| qwen3-8b | spec_casc_opt | 0.05 | 3.95 [3.41, 4.51] | 5.07 | 22 | 0 |
+| gpt-oss-20b | spec_casc_tok | 0.8 | 7.49 [6.96, 7.99] | 7.49 | 0 | 0 |
+| qwen3-8b | strict | strict | 6.94 [6.29, 7.55] | 7.79 | 10 | 0 |
+| qwen3-8b | mentored_dec | 0.75 | 6.40 [5.71, 7.06] | 7.45 | 13 | 0 |
+| qwen3-8b | cactus | 0.35 | 2.99 [2.40, 3.64] | 3.74 | 22 | 0 |
+| qwen3-8b | spec_casc_opt | 0.05 | 3.95 [3.40, 4.50] | 5.07 | 22 | 0 |
 | qwen3-8b | r_fuzzy | 0.25 | 3.05 [2.61, 3.51] | 3.73 | 20 | 0 |
-| qwen3-8b | spec_casc_tok | 0.8 | 7.21 [6.60, 7.81] | 8.00 | 9 | 0 |
+| qwen3-8b | spec_casc_tok | 0.8 | 7.21 [6.59, 7.80] | 8.00 | 9 | 0 |
 
 ## Step 2: seeds on the relaxed arms
 
@@ -839,4 +839,15 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
   reasoning runs at 8192 like GPT-OSS (0/20). Qwen3 is ~3x longer here
   (mean 2352 vs 820 completion tokens); expect a few Qwen3 reasoning
   cap-outs in the step-7 tables, which report cap-out rates per category.
+
+### MT-Bench quality along the alpha grid (GPT-OSS, seed 0)
+
+- `analysis/mtbench_judge_summary.csv` (every cell 80 runs, after the
+  step-5.1 fills were judged): mentored_dec falls steadily with alpha --
+  0.15: 7.33, 0.35: 7.14, 0.55: 6.71, 0.75: 6.41 (strict 7.29) -- while
+  spec_casc_tok stays flat at or above strict (0.15: 7.51, 0.35: 7.36,
+  0.55: 7.50, 0.8: 7.49). So step 5.2's rounds-ratio stand-in for MT-Bench
+  picked mentored_dec 0.75, the loosest and lowest-scoring cell (-0.9 vs
+  strict); spec_casc_tok's pick (0.55) costs nothing. Top-up batch for the
+  230 fill runs: $5.37, ended 2026-09-30 03:53Z (judge total $50.53).
 
