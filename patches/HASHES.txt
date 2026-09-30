@@ -625,6 +625,8 @@ bfaec14e220cf669ddfd2b3ef6d2c556dc8fae60ef71e65a2e7ae068fb386a2a  upstream
 # prints, mask bug still present):
 # c62c6a4a220e4d805d70882c0b0e72d289b9277f516509a43bf247d5943b0caf
 68d0a904230a82d7aa90916e9ed60297e3c725eeb0188b633893e03fb5b9f938  mentored-dec
+# vllm-0.26.0-v2-consolidated.patch (added 2026-09-29, NAACL addendum step 0.2): pristine (bfaec14e220c...)
+# -> this state, recovered from the old H100 box; apply with `patch -p1 -d <site-packages>`.
 #
 # gpu_model_runner.py (the FLAT file -- vLLM's "V1" model runner, confirmed
 # active by default in this config; NOT vllm/v1/worker/gpu/model_runner.py

@@ -396,3 +396,6 @@ for what is done; this file records every action and failure.
 - 2026-09-30T00:34:30Z lane B: pulled 632 new run dir(s) into runs/
 - 2026-09-30T00:34:54Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 22947546
 - 2026-09-30T00:34:58Z grading: pulled 31271 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-30T00:36:45Z Step 0.2: wrote patches/vllm-0.26.0-v2-consolidated.patch (528 lines; pristine bfaec14e220c -> 68d0a904230a, round-trip verified)
+- 2026-09-30T00:37:13Z Step 0.2: lane A venv V2 file installed (sha256 68d0a904230a)
+- 2026-09-30T00:37:16Z Step 0.2: lane B venv V2 file installed (sha256 68d0a904230a)
