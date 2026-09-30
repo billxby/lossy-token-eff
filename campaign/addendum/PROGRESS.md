@@ -512,3 +512,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T13:42:48Z step 2.1 main livecodebench_qwen3 cactus alpha=0.35 seed=2: done, 90/90 cases (jobs 22948693, 0.68 GPU-h)
 - 2026-09-30T13:44:58Z grading: uploaded 3171 run dir(s) to the Nibi mirror, submitted CPU grading job 22966531
 - 2026-09-30T13:45:03Z grading: pulled 33461 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-30T19:11:38Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 22982085
+- 2026-09-30T19:11:40Z grading: pulled 36632 verdicts into campaign/addendum/analysis/grades.csv
