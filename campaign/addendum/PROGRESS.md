@@ -514,3 +514,12 @@ for what is done; this file records every action and failure.
 - 2026-09-30T13:45:03Z grading: pulled 33461 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-09-30T19:11:38Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 22982085
 - 2026-09-30T19:11:40Z grading: pulled 36632 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-30T19:14:14Z lane A: submitted job 22982359; lane has 49 work items, est. 26.7 GPU-h
+- 2026-09-30T19:14:16Z lane A: submitted job 22982360 (afterany:22982359); lane has 49 work items, est. 26.7 GPU-h
+- 2026-09-30T19:14:18Z lane A: submitted job 22982365 (afterany:22982360); lane has 49 work items, est. 26.7 GPU-h
+- 2026-09-30T19:14:20Z lane A: submitted job 22982368 (afterany:22982365); lane has 49 work items, est. 26.7 GPU-h
+- 2026-09-30T19:14:26Z lane B: submitted job 22982379; lane has 48 work items, est. 26.5 GPU-h
+- 2026-09-30T19:14:33Z lane B: submitted job 22982392 (afterany:22982379); lane has 48 work items, est. 26.5 GPU-h
+- 2026-09-30T19:14:48Z lane B: submitted job 22982401 (afterany:22982392); lane has 48 work items, est. 26.5 GPU-h
+- 2026-09-30T19:14:55Z lane B: submitted job 22982407 (afterany:22982401); lane has 48 work items, est. 26.5 GPU-h
+- 2026-09-30T19:15:17Z Lanes: the 12 h successors (22948709 A, 22948722 B) sat PENDING 13:24Z-19:20Z (Nibi: ~850 pending H100 jobs; our fair-share 0.23). Cancelled the six pending 12 h jobs; resubmitted 3 h chains (A: 22982359 -> 22982360 -> 22982365 -> 22982368; B: 22982379 -> 22982392 -> 22982401 -> 22982407). README deviation 11.

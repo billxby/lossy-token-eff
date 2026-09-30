@@ -155,3 +155,11 @@ alpha grows).
    Its prompts (`prompts/speedbench_qwen3/`, gitignored) come from
    `scripts/build_prompts_qwen3.py` on the GPT-OSS set, which reproduces the
    existing Qwen3 prompt sets byte for byte.
+11. **3 h lane jobs from 2026-09-30 19:20Z (the plan allows up to 12 h).**
+   After the first 12 h Qwen3 jobs timed out at 13:24Z, their chained
+   successors sat PENDING for 6 h: ~850 H100 jobs were pending on Nibi and our
+   fair-share had dropped to 0.23 after two days of continuous use, and a
+   12 h job fits almost no backfill window. Those six pending jobs were
+   cancelled and every lane now chains 3 h jobs (`JOB_TIME` in
+   `scripts/addendum_campaign.py`); a job ending mid-arm loses only the case
+   in progress (its partial dir is quarantined, the rest is skip-if-done).

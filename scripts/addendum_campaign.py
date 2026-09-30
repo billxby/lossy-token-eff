@@ -55,7 +55,10 @@ LANES = {
     "B": {"repo": f"{REMOTE_HOME}/projects/def-hongyanz/billxby/lossy-token-eff-lane2",
           "root": "/scratch/billxby/lossy-addendum/laneB", "exclude": "g[1-14]"},
 }
-MAX_CHAIN = 4          # jobs per lane queued at once (running + pending); covers ~48 h if this Mac loses the link
+MAX_CHAIN = 4          # jobs per lane queued at once (running + pending)
+# 3 h jobs since 2026-09-30 19:20Z: with ~850 H100 jobs pending, 12 h jobs stopped fitting any backfill
+# window (a lane waited 6 h); a 3 h job loses at most the case in progress when it ends (skip-if-done)
+JOB_TIME, JOB_HOURS = "3:00:00", 3.0
 # Nibi H100 SXM request time / old-box H100 PCIe request time, measured 2026-09-29 from strict seed-0
 # runs of the same cases (old box 7.1 ms/token, Nibi 2.2-2.4 ms/token; longbench_v2 is prefill-bound
 # on the old box: 72.6 s/case vs 4.7 s/case)
@@ -831,7 +834,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
         # step-7 items are <row key>@<budget>; a row split into two budget items counts once
         remaining_h = sum(float(manifest.get(key, {}).get("gpu_hours_est") or 0)
                           for key in dict.fromkeys(i["id"].split("@")[0] for i in items))
-        want = max(1, min(MAX_CHAIN, int(remaining_h / 11.0) + 1))
+        want = max(1, min(MAX_CHAIN, int(remaining_h / (0.9 * JOB_HOURS)) + 1))
         jobs = state["lanes"][lane]["jobs"]
         active = [j for j in jobs if j.get("state") in ("PENDING", "RUNNING", "CONFIGURING", "COMPLETING")]
         while len(active) < want:
@@ -839,7 +842,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
             cmd = (
                 f"cd {shlex.quote(info['repo'])} && mkdir -p {info['root']}/slurm && "
                 f"LANE={lane} REPO_DIR={shlex.quote(info['repo'])} LANE_ROOT={info['root']} "
-                f"sbatch --parsable --job-name=add-{lane} --exclude={info['exclude']} "
+                f"sbatch --parsable --job-name=add-{lane} --exclude={info['exclude']} --time={JOB_TIME} "
                 f"--output={info['root']}/slurm/%x-%j.out {dep}cascade/cluster/addendum_lane.sbatch"
             )
             out = ssh(cmd).stdout.decode().strip().splitlines()[-1]
