@@ -546,7 +546,7 @@
   },
   "extra_items": {},
   "speedbench_qwen3": {
-    "phase": "first40",
+    "phase": "full",
     "budget": {
       "reasoning": 8192,
       "math": null
@@ -593,7 +593,18 @@
       "case_053",
       "case_054"
     ],
-    "subset_relaxed": null,
-    "estimate": {}
+    "subset_relaxed": false,
+    "estimate": {
+      "s_per_case": {
+        "strict": 8.34,
+        "spec_casc_opt": 9.86,
+        "mentored_dec": 8.08,
+        "cactus": 7.37,
+        "r_fuzzy": 9.56,
+        "spec_casc_tok": 7.77
+      },
+      "full_split_gpu_h": 12.91,
+      "lane_budget_gpu_h": 24.0
+    }
   }
 }
