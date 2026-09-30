@@ -433,3 +433,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T02:33:36Z lane B: pulled 54 new run dir(s) into runs/
 - 2026-09-30T02:33:41Z step 7 (qwen3-8b): first-40 estimate of the full split (6 arms x 880): 12.9 GPU-h vs lane budget 24 GPU-h -> all arms run the full 880; s/case strict 8.3, spec_casc_opt 9.9, mentored_dec 8.1, cactus 7.4, r_fuzzy 9.6, spec_casc_tok 7.8
 - 2026-09-30T02:33:41Z step 2.1 main gsm8k_qwen3 spec_casc_opt alpha=0.05 seed=1: done, 150/150 cases (jobs 22948693, 0.31 GPU-h)
+- 2026-09-30T02:35:17Z grading: uploaded 164 run dir(s) to the Nibi mirror, submitted CPU grading job 22950822
+- 2026-09-30T02:35:19Z grading: pulled 31571 verdicts into campaign/addendum/analysis/grades.csv
