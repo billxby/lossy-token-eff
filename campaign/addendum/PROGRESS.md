@@ -482,3 +482,4 @@ for what is done; this file records every action and failure.
 - 2026-09-30T13:42:30Z lane B: pulled 1532 new run dir(s) into runs/
 - 2026-09-30T13:42:36Z step 2.1 main humaneval_qwen3 spec_casc_opt alpha=0.05 seed=1: done, 150/150 cases (jobs 22948693, 0.87 GPU-h)
 - 2026-09-30T13:42:37Z step 2.1 main humaneval_qwen3 spec_casc_opt alpha=0.05 seed=2: done, 150/150 cases (jobs 22948719, 0.90 GPU-h)
+- 2026-09-30T13:42:38Z step 2.1 main humaneval_qwen3 mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22948693, 0.69 GPU-h)
