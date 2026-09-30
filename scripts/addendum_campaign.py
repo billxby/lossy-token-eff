@@ -290,7 +290,11 @@ def make_row(step: str, condition: str, ds: str, method: str, alpha: str, seed: 
 # Lane C = the plan's Qwen3 lane (step 2.1 -> 3 -> 4.2 -> 5.1 -> 4.3 -> 6 -> 2.2 -> 5.2, with the
 # Qwen3 nibiref before step 3 and step 4.1 after it). There is no third GPU lane (user: "like 2
 # GPUs"); once Qwen3 is unblocked its rows are spread over lanes A and B after their GPT-OSS work.
-LANE_C_PRIORITY = {"2.1": 0, "0.5": 1, "3": 2, "4.1": 3, "4.2": 4, "5.1": 5, "4.3": 6, "6": 7, "2.2": 7, "5.2": 9, "7": 10}
+# Reordered 2026-09-30 19:35Z with Bill (congested Nibi queue): the rows the paper's two-model claims
+# rest on first -- seed replication (2.1, then the AIME24 seeds of 2.2 and 6), Qwen3's recommended
+# sampler (4.2), the standalone LM drafter (4.3) -- then the confirmations (0.5 Nibi reference before
+# the Nibi-timed 3 and 4.1), the alpha grid (5.1 -> 5.2), and Qwen3 SPEED-Bench last.
+LANE_C_PRIORITY = {"2.1": 0, "2.2": 1, "6": 1, "4.2": 2, "4.3": 3, "0.5": 4, "3": 5, "4.1": 6, "5.1": 7, "5.2": 8, "7": 10}
 
 
 def all_rows(keep: set[str] | None = None) -> tuple[list[dict], dict[str, list[str]]]:

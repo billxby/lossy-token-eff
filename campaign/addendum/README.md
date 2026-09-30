@@ -83,7 +83,9 @@ alpha grows).
    both lane venvs; the V2 file is not touched by GPT-OSS, which runs V1) the
    Qwen3 rows were spread over lanes A/B by estimated hours, in the plan's
    lane-C order (2.1 -> 0.5 -> 3 -> 4.1 -> 4.2 -> 5.1 -> 4.3 / 6 / 2.2 -> 5.2
-   -> 7).
+   -> 7). Reordered with Bill on 2026-09-30 19:35Z, when the Nibi queue
+   slowed: 2.1 -> 2.2 / 6 (AIME24 seeds) -> 4.2 -> 4.3 -> 0.5 -> 3 -> 4.1 ->
+   5.1 -> 5.2 -> 7, so the rows the two-model claims rest on finish first.
 4. **Step 2.2 aime24 seeds 1-2 are the same runs as step 6 seeds 1-2** (one
    manifest row each, step `2.2`, noted "shared by step 6").
 5. **`patches/test_mentored_dec.py`: `MENTORED_DEC_TEST_V1_ONLY`.** The
