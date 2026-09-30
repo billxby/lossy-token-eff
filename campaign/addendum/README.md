@@ -165,3 +165,22 @@ alpha grows).
    cancelled and every lane now chains 3 h jobs (`JOB_TIME` in
    `scripts/addendum_campaign.py`); a job ending mid-arm loses only the case
    in progress (its partial dir is quarantined, the rest is skip-if-done).
+12. **Qwen3 moved to Killarney (PAICE allocation `aip-hongyanz`), 2026-09-30
+   ~23:15Z, with Bill's go-ahead.** On Nibi our fair-share had fallen to 0.23
+   after 2.5 days of continuous use and the lane jobs sat 6 h+ in a queue of
+   ~2,200 GPU jobs; on Killarney the account's fair-share is 0.58 (no usage
+   yet), which ranks our jobs above every pending H100 job there (priority
+   2.9M vs 2.7M). Environment: `cascade/cluster/setup_nibi.sh` with
+   `PROJECT_DIR=~/projects/aip-hongyanz/billxby` and the three Qwen3 models
+   (vLLM 0.26.0, torch 2.11.0+cu129), the consolidated V2 patch applied
+   (68d0a904), two lane copies: K1 on kn169-kn173, K2 on kn174-kn178 (NVIDIA
+   H100 80GB HBM3, driver 580.159). Smoke test (gsm8k_qwen3 case_001, seed
+   7, strict and mentored_dec 0.75): bit-identical to the same test on Nibi
+   (772 / 736 tokens, same l_bar), V2 alpha line printed. Every not-done
+   Qwen3 row moved (`addendum_campaign.py move-qwen3`) except step 2.1's last
+   four arms, which stay on Nibi so that step's pairs share one machine.
+   Runs record their venv path, so `per_request.csv` labels them (machine =
+   killarney). Step 7 Qwen3: the first 40 cases per arm ran on Nibi, the
+   rest run on Killarney (each case's pair on one machine). Step 0.5's
+   Qwen3 reference runs on Killarney, the machine of the Qwen3 cells it
+   serves (steps 3, 4.1, 5.1/5.2).
