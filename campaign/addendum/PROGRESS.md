@@ -487,3 +487,4 @@ for what is done; this file records every action and failure.
 - 2026-09-30T13:42:38Z step 2.1 main humaneval_qwen3 cactus alpha=0.35 seed=1: done, 150/150 cases (jobs 22948693, 0.64 GPU-h)
 - 2026-09-30T13:42:39Z step 2.1 main humaneval_qwen3 cactus alpha=0.35 seed=2: done, 150/150 cases (jobs 22948719, 0.64 GPU-h)
 - 2026-09-30T13:42:39Z step 2.1 main humaneval_qwen3 r_fuzzy alpha=0.25 seed=1: done, 150/150 cases (jobs 22948693, 0.83 GPU-h)
+- 2026-09-30T13:42:40Z step 2.1 main humaneval_qwen3 r_fuzzy alpha=0.25 seed=2: done, 150/150 cases (jobs 22948719, 0.84 GPU-h)
