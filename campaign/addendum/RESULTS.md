@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-30 00:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 00:30 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -752,12 +752,57 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 
 - `aime24_repeats.csv` (seeds 0-4, 30 problems; interval = two-level
   bootstrap over problems and seeds): strict 0.79 [0.65, 0.91];
-  mentored_dec 0.68 [0.53, 0.82]; spec_casc_tok 0.68 [0.53, 0.82] (4 seeds
-  graded at this writing); cactus 0.51 [0.36, 0.67]; r_fuzzy 0.48 [0.33,
-  0.63]; spec_casc_opt 0.39 [0.25, 0.53]. Seed-to-seed sd of accuracy is
+  mentored_dec 0.68 [0.53, 0.82]; spec_casc_tok 0.69 [0.54, 0.82]; cactus
+  0.51 [0.36, 0.67]; r_fuzzy 0.48 [0.33, 0.63]; spec_casc_opt 0.39 [0.25,
+  0.53]. Seed-to-seed sd of accuracy is
   0.04-0.06 (1-2 problems). The cactus / r_fuzzy / spec_casc_opt losses hold
   on every seed; mentored_dec and spec_casc_tok sit ~10 points below strict
   with overlapping intervals. lambda varies widely across seeds on 30
   problems (spec_casc_tok 0.96-1.52; mentored_dec 1.28-2.15): single-seed
   AIME24 lambdas should be quoted with that spread.
+
+### MT-Bench quality (step 1.9)
+
+- **The rules that inflate MT-Bench most also lose the most judged
+  quality** (`analysis/mtbench_judge_summary.csv`, seed 0, loosest alpha,
+  claude-fable-5-1 as FastChat single-answer judge, score /10): GPT-OSS
+  strict 7.29 [6.75, 7.81] vs spec_casc_tok 7.49, mentored_dec 6.41,
+  spec_casc_opt 5.74, r_fuzzy 4.58, cactus 4.51; Qwen3 strict 6.94 vs
+  spec_casc_tok 7.21, mentored_dec 6.40, spec_casc_opt 3.95, r_fuzzy 3.05,
+  cactus 2.99. Part of the Qwen3 drop is runs that never leave `<think>`
+  (no answer, scored 1): cactus 22 of 80 vs strict 10; answered-only means
+  are in the same file. spec_casc_tok is the one rule with no quality cost
+  on either target.
+- Judge mechanics: 2070 batch requests, 1 refusal (GPT-OSS mentored_dec
+  0.15, case_054, a roleplay prompt), no parse errors; $45.16 at batch
+  price. The batch sat at 0 processed for ~9 h, then finished in ~1 h.
+
+### Step 5 (GPT-OSS half): the best settings on a second seed
+
+- `best_setting.csv`: the seed-0 choice (lowest time ratio within 2
+  accuracy points of strict) holds on Nibi seed 1 for 7 of 12 (dataset,
+  rule) pairs. It fails on aime24 (mentored_dec 0.55: accuracy 0.70 vs 0.80;
+  spec_casc_tok 0.15: time 1.12), livecodebench mentored_dec (0.87 vs 0.90)
+  and longbench_v2 (both rules slower: rounds 1.09). The accuracy failures
+  are 3 problems each (aime24 21 vs 24 of 30, livecodebench 78 vs 81 of 90);
+  AIME24's seed-to-seed accuracy sd in step 6 is 1-2 problems. On
+  longbench_v2 the rounds ratio itself changes side (0.89 / 0.97 on seed 0,
+  1.09 / 1.09 on seed 1, with lambda 1.11 -> 1.38 and 1.06 -> 1.20).
+
+### Hardware, longbench_v2 direction
+
+- On longbench_v2 the old box made relaxed rules look *cheaper* in time,
+  the opposite of the other datasets: it was prefill-bound there (72.6 vs
+  4.7 s per strict case), so the rules' extra decode time was a small share
+  of the total. spec_casc_opt time ratio 1.07 (old box) vs 1.29 / 1.24 (Nibi
+  seeds 1 / 2) at rounds 1.31 / 1.35 / 1.27 (`seeds/summary.csv`).
+
+### Operations on 2026-09-29 (nothing lost)
+
+- Lane B job 22881159 hit its 12 h limit 10 min into longbench_v2
+  spec_casc_opt seed 2: 59 cases done, one partial dir quarantined, the
+  other 91 run by 22881281.
+- The Mac stopped running the session from about 21:19Z to 00:20Z; the
+  Nibi ControlMaster dropped with it. The lanes kept running; their runs
+  wait on Nibi until one Duo push is approved (PROGRESS.md, Needs Bill 6).
 
