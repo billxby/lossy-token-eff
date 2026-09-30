@@ -172,3 +172,12 @@
 - The Mac stopped running the session from about 21:19Z to 00:20Z; the
   Nibi ControlMaster dropped with it. The lanes kept running; their runs
   wait on Nibi until one Duo push is approved (PROGRESS.md, Needs Bill 6).
+
+### Step 7: the token-budget pilot sits on its boundary for Qwen3
+
+- Qwen3-8B's strict reasoning pilot capped out on 2 of its first 20 cases
+  at 8192 tokens (`tables/speedbench_pilot__qwen3-8b.csv`, row reasoning):
+  exactly 10%, and the rule raises the budget only above 10%, so Qwen3
+  reasoning runs at 8192 like GPT-OSS (0/20). Qwen3 is ~3x longer here
+  (mean 2352 vs 820 completion tokens); expect a few Qwen3 reasoning
+  cap-outs in the step-7 tables, which report cap-out rates per category.
