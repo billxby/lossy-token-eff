@@ -1,24 +1,24 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-30 00:38 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 01:39 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 31.5; estimated remaining, runnable rows: 0.0; blocked rows: 74.7.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 31.7; estimated remaining, runnable rows: 73.1; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
-| 0.5 | 6 | 0 | 0 | 0 | 6 |
-| 2.1 | 48 | 0 | 0 | 0 | 48 |
-| 2.2 | 20 | 0 | 0 | 0 | 6 |
-| 3 | 10 | 0 | 0 | 0 | 10 |
-| 4.1 | 4 | 0 | 0 | 0 | 4 |
-| 4.2 | 0 | 0 | 0 | 0 | 12 |
-| 4.3 | 0 | 0 | 0 | 0 | 8 |
-| 5.1 | 18 | 0 | 0 | 0 | 23 |
+| 0.5 | 6 | 0 | 6 | 0 | 0 |
+| 2.1 | 48 | 2 | 46 | 0 | 0 |
+| 2.2 | 20 | 0 | 6 | 0 | 0 |
+| 3 | 10 | 0 | 10 | 0 | 0 |
+| 4.1 | 4 | 0 | 4 | 0 | 0 |
+| 4.2 | 0 | 0 | 12 | 0 | 0 |
+| 4.3 | 0 | 0 | 8 | 0 | 0 |
+| 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
-| 6 | 12 | 0 | 0 | 0 | 18 |
-| 7 | 0 | 0 | 0 | 0 | 13 |
+| 6 | 12 | 0 | 18 | 0 | 0 |
+| 7 | 0 | 0 | 6 | 0 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -628,6 +628,8 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 - **cactus** (alpha 0.35, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `cactus`): fewer verifier rounds in 11/11 categories (coding, math, humanities, stem, writing, summarization, roleplay, rag, multilingual, reasoning, qa); less wall time in 11/11 (coding, math, humanities, stem, writing, summarization, roleplay, rag, multilingual, reasoning, qa); Eq. 4 predicts a win in 10/11; completions longer by lambda 0.85 (writing) to 1.72 (multilingual); rounds and time disagree in: none.
 - **r_fuzzy** (alpha 0.25, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `r_fuzzy`): fewer verifier rounds in 9/11 categories (coding, humanities, stem, writing, summarization, roleplay, rag, reasoning, qa); less wall time in 9/11 (coding, humanities, stem, writing, summarization, roleplay, rag, reasoning, qa); Eq. 4 predicts a win in 9/11; completions longer by lambda 0.83 (humanities) to 1.86 (multilingual); rounds and time disagree in: none.
 - **spec_casc_tok** (alpha 0.8, `campaign/addendum/tables/speedbench_eq4_summary__gpt-oss-20b.csv` row `spec_casc_tok`): fewer verifier rounds in 9/11 categories (coding, math, humanities, stem, writing, summarization, rag, multilingual, reasoning); less wall time in 9/11 (coding, math, humanities, stem, writing, summarization, rag, multilingual, reasoning); Eq. 4 predicts a win in 9/11; completions longer by lambda 0.96 (humanities) to 1.32 (qa); rounds and time disagree in: none.
+
+**Token-budget pilot, qwen3-8b** (`campaign/addendum/tables/speedbench_pilot__qwen3-8b.csv`; strict at 8192 on each category's first 20 cases, >10% cap-outs would raise the category to 16384): reasoning 2/20 cap-outs of 20 (mean 2352, max 8192 tokens) -> budget 8192; math 0/4 cap-outs of 20 (mean 2448, max 2946 tokens) -> budget pending.
 
 ## Observations, failures and anything that looked wrong
 

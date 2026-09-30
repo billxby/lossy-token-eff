@@ -417,3 +417,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T01:38:35Z lane B: pulled 30 new run dir(s) into runs/
 - 2026-09-30T01:38:40Z step 7 (qwen3-8b): budget pilot reasoning: 2/20 strict cap-outs at 8192 tokens -> reasoning runs at 8192
 - 2026-09-30T01:38:40Z step 7 (qwen3-8b): pilot done; time-estimate sample = the first 40 runnable cases (case_001..case_054; Math waits for its budget) on every arm
+- 2026-09-30T01:39:18Z grading: uploaded 108 run dir(s) to the Nibi mirror, submitted CPU grading job 22949564
+- 2026-09-30T01:39:21Z grading: pulled 31271 verdicts into campaign/addendum/analysis/grades.csv
