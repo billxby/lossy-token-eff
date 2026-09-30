@@ -419,3 +419,6 @@ for what is done; this file records every action and failure.
 - 2026-09-30T01:38:40Z step 7 (qwen3-8b): pilot done; time-estimate sample = the first 40 runnable cases (case_001..case_054; Math waits for its budget) on every arm
 - 2026-09-30T01:39:18Z grading: uploaded 108 run dir(s) to the Nibi mirror, submitted CPU grading job 22949564
 - 2026-09-30T01:39:21Z grading: pulled 31271 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-30T01:56:04Z lane A: pulled 88 new run dir(s) into runs/
+- 2026-09-30T01:56:38Z lane B: pulled 151 new run dir(s) into runs/
+- 2026-09-30T01:56:43Z step 2.1 main gsm8k_qwen3 strict alpha=strict seed=1: done, 150/150 cases (jobs 22948693, 0.28 GPU-h)
