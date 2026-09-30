@@ -1,15 +1,15 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-30 01:57 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 02:16 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 32.4; estimated remaining, runnable rows: 72.3; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 33.1; estimated remaining, runnable rows: 70.6; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 6 | 0 | 0 |
-| 2.1 | 50 | 0 | 46 | 0 | 0 |
+| 2.1 | 50 | 1 | 45 | 0 | 0 |
 | 2.2 | 20 | 0 | 6 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
@@ -18,7 +18,7 @@ Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum 
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 12 | 0 | 18 | 0 | 0 |
-| 7 | 0 | 2 | 3 | 1 | 8 |
+| 7 | 0 | 1 | 0 | 5 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -635,20 +635,23 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 
 Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method, category); Eq. 4 per (method, category): `campaign/addendum/tables/speedbench_eq4__qwen3-8b.csv`; per-method counts: `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv`. Cell = lambda (completion tokens relaxed / strict) · R = verifier rounds ratio · T = wall-time ratio, all vs strict on the same cases; ↓/↑ = the 95% paired bootstrap interval lies entirely below/above 1. Strict column: mean completion tokens and cap-out rate.
 
-| category | strict tokens (cap-out) | spec_casc_opt (0.05) |
-|---|---:|---|
-| all | 2048 (5%) | λ 2.60↑ · R 1.69↑ · T 1.70↑ (n=7) |
-| coding | 4060 (20%) | λ 2.11 · R 1.63 · T 1.64 (n=1) |
-| humanities | 2864 (0%) | λ 2.78 · R 1.61 · T 1.63 (n=1) |
-| writing | 2449 (0%) | λ 1.20 · R 0.83 · T 0.83 (n=1) |
-| summarization | 648 (0%) | - |
-| roleplay | 897 (0%) | - |
-| rag | 908 (0%) | λ 0.84 · R 0.72 · T 0.72 (n=1) |
-| multilingual | 3053 (0%) | λ 6.84 · R 3.58 · T 3.64 (n=1) |
-| reasoning | 2873 (20%) | λ 1.23 · R 1.03 · T 1.04 (n=1) |
-| qa | 1100 (0%) | λ 4.82 · R 2.90 · T 2.92 (n=1) |
+| category | strict tokens (cap-out) | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) |
+|---|---:|---|---|---|---|
+| all | 2048 (5%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.66↑ · R 1.17↑ · T 1.18↑ (n=40) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) |
+| coding | 4060 (20%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.56↑ · R 1.23 · T 1.23 (n=5) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) |
+| humanities | 2864 (0%) | λ 0.89 · R 0.77 · T 0.77 (n=1) | λ 1.00 · R 0.47 · T 0.48 (n=1) | λ 2.78 · R 1.61 · T 1.63 (n=1) | λ 0.81 · R 0.66 · T 0.66 (n=1) |
+| writing | 2449 (0%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.87↑ · R 1.10 · T 1.11 (n=5) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) |
+| summarization | 648 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.89 · R 0.76↓ · T 0.77↓ (n=5) | λ 0.91 · R 0.75 · T 0.75 (n=5) |
+| roleplay | 897 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.74 · R 1.31 · T 1.32 (n=4) | λ 1.78 · R 1.44 · T 1.44 (n=4) |
+| rag | 908 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 0.92 · R 0.77 · T 0.77 (n=5) | λ 1.02 · R 0.77 · T 0.78 (n=5) |
+| multilingual | 3053 (0%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.96↑ · R 1.38↑ · T 1.40↑ (n=5) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) |
+| reasoning | 2873 (20%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.50↑ · R 1.04 · T 1.04 (n=5) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) |
+| qa | 1100 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.56 · R 1.10 · T 1.10 (n=5) | λ 1.76 · R 1.18 · T 1.19 (n=5) |
 
-- **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 2/7 categories (writing, rag); less wall time in 2/7 (writing, rag); Eq. 4 predicts a win in 2/7; completions longer by lambda 0.84 (rag) to 6.84 (multilingual); rounds and time disagree in: none.
+- **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 2/9 categories (summarization, rag); less wall time in 2/9 (summarization, rag); Eq. 4 predicts a win in 2/9; completions longer by lambda 0.89 (summarization) to 2.78 (humanities); rounds and time disagree in: none.
+- **mentored_dec** (alpha 0.75, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `mentored_dec`): fewer verifier rounds in 6/9 categories (humanities, writing, summarization, rag, reasoning, qa); less wall time in 6/9 (humanities, writing, summarization, rag, reasoning, qa); Eq. 4 predicts a win in 5/9; completions longer by lambda 0.81 (reasoning) to 1.70 (roleplay); rounds and time disagree in: none.
+- **cactus** (alpha 0.35, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `cactus`): fewer verifier rounds in 7/9 categories (coding, humanities, writing, summarization, rag, multilingual, reasoning); less wall time in 7/9 (coding, humanities, writing, summarization, rag, multilingual, reasoning); Eq. 4 predicts a win in 6/9; completions longer by lambda 1.00 (humanities) to 3.32 (roleplay); rounds and time disagree in: none.
+- **r_fuzzy** (alpha 0.25, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `r_fuzzy`): fewer verifier rounds in 4/9 categories (humanities, writing, summarization, rag); less wall time in 4/9 (humanities, writing, summarization, rag); Eq. 4 predicts a win in 4/9; completions longer by lambda 0.81 (humanities) to 1.78 (roleplay); rounds and time disagree in: none.
 
 ## Observations, failures and anything that looked wrong
 
