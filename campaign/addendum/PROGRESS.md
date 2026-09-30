@@ -540,3 +540,4 @@ for what is done; this file records every action and failure.
 - 2026-09-30T23:15:46Z lane K2: submitted job 5819355 (afterany:5819354); lane has 48 work items, est. 25.7 GPU-h
 - 2026-09-30T23:15:47Z lane K2: submitted job 5819356 (afterany:5819355); lane has 48 work items, est. 25.7 GPU-h
 - 2026-09-30T23:16:33Z Killarney (aip-hongyanz) lanes K1/K2 up: env built (vLLM 0.26.0, V2 patch 68d0a904 in both copies), Qwen3 smoke on kn173 bit-identical to Nibi's; move-qwen3 moved 94 Qwen3 rows (K1 46, K2 48, ~25.5 GPU-h each; step 2.1's last 4 arms stay on Nibi). K1 chain 5819349->...52, K2 chain 5819353->...56 (3 h each). Nibi chains trimmed to 22982359 (A) and 22982379 (B). README deviation 12.
+- 2026-09-30T23:33:35Z lane K1: pulled 8 new run dir(s) into runs/
