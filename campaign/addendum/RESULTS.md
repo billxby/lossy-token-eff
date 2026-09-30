@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-29 21:10 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 00:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -370,7 +370,22 @@ Source: `campaign/addendum/manifest.csv` (277 rows). GPU-hours used so far (sum 
 | spec_casc_tok | both | 160313 | 0.987 | 0.806 | 2.1 | 1 | 0.53 |
 | spec_casc_tok | lossy_only | 13089 | 0.287 | 0.349 | 0.9 | 2 | 1.54 |
 
-**MT-Bench judge (step 1.9)**: pending -- 2070 turn-1 judgements submitted as one Message Batch (`campaign/addendum/analysis/mtbench_judge_batches.json`), not processed yet (PROGRESS.md, Needs Bill 5); `scripts/addendum_mtbench_judge.py collect` writes the CSVs when it ends.
+**MT-Bench judge (step 1.9)** (`campaign/addendum/analysis/mtbench_judge_summary.csv`, seed-0 rows at the loosest alpha; per run: `campaign/addendum/analysis/mtbench_judge.csv`): FastChat single-answer grading of turn 1 (`single-math-v1` with the GPT-4 reference answer for math/reasoning/coding, `single-v1` otherwise), judge claude-fable-5-1 at effort medium through the Message Batches API; a run whose output never reaches an answer scores 1 without a call. Mean score out of 10 with a 95% bootstrap interval; 'answered only' leaves the no-answer runs out.
+
+| target | method | alpha | mean score [95% CI] | answered only | no answer | refusals |
+|---|---|---:|---|---:|---:|---:|
+| gpt-oss-20b | strict | strict | 7.29 [6.75, 7.81] | 7.29 | 0 | 0 |
+| gpt-oss-20b | mentored_dec | 0.75 | 6.41 [5.72, 7.09] | 6.48 | 1 | 0 |
+| gpt-oss-20b | cactus | 0.35 | 4.51 [3.70, 5.34] | 4.80 | 6 | 0 |
+| gpt-oss-20b | spec_casc_opt | 0.05 | 5.74 [5.04, 6.44] | 5.86 | 2 | 0 |
+| gpt-oss-20b | r_fuzzy | 0.25 | 4.58 [3.94, 5.22] | 4.71 | 3 | 0 |
+| gpt-oss-20b | spec_casc_tok | 0.8 | 7.49 [6.96, 8.00] | 7.49 | 0 | 0 |
+| qwen3-8b | strict | strict | 6.94 [6.29, 7.53] | 7.79 | 10 | 0 |
+| qwen3-8b | mentored_dec | 0.75 | 6.40 [5.74, 7.08] | 7.45 | 13 | 0 |
+| qwen3-8b | cactus | 0.35 | 2.99 [2.39, 3.65] | 3.74 | 22 | 0 |
+| qwen3-8b | spec_casc_opt | 0.05 | 3.95 [3.41, 4.51] | 5.07 | 22 | 0 |
+| qwen3-8b | r_fuzzy | 0.25 | 3.05 [2.61, 3.51] | 3.73 | 20 | 0 |
+| qwen3-8b | spec_casc_tok | 0.8 | 7.21 [6.60, 7.81] | 8.00 | 9 | 0 |
 
 ## Step 2: seeds on the relaxed arms
 

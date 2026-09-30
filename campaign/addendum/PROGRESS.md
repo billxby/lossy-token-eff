@@ -34,16 +34,16 @@ for what is done; this file records every action and failure.
    Then `scripts/build_speedbench_prompts.py` adds the 208 prompts, the Math
    budget pilot runs, and those cases join every arm. Everything else in
    step 7 runs without it.
-5. **MT-Bench judge (step 1.9) -- decision.** Batch
-   `msgbatch_01MWf6AJLXcXd9ep5uFx5a7v` (2070 requests, claude-fable-5-1,
-   ~$89 at batch price) was submitted 13:31Z and still showed 0 processed at
-   18:44Z. Option: `python3 scripts/addendum_mtbench_judge.py direct
-   --cancel-batch` -- the same requests through the Messages API at standard
-   price, resumable, about an hour; it also covers the 230 step-5.1 MT-Bench
-   runs added since (2300 in all). Estimate: $198 if every judgement used the
-   assumed 1500 output tokens; one test request used 107 (404 in, $0.009), so
-   likely well under that. Not done without your say-so; the collector keeps
-   waiting.
+5. ~~MT-Bench judge (step 1.9) -- decision~~ -- resolved without a decision:
+   batch `msgbatch_01MWf6AJLXcXd9ep5uFx5a7v` ended 2026-09-29 23:31Z (2070
+   succeeded, 10 h after submission; 2.95M in / 1.22M out tokens, $45.16 at
+   batch price). The 230 step-5.1 MT-Bench runs added since went in a top-up
+   batch `msgbatch_015tcqGs9bFB5aEJwmuAZKTw` (~$5) at 2026-09-30 00:24Z.
+6. **Duo (again).** The Nibi ControlMaster dropped at about 2026-09-29 21:19Z
+   (last keepalive 21:18:43Z; this Mac was not running the session from
+   then until 00:20Z). The lanes do not depend on it; their finished runs
+   wait on Nibi. Ask: approve one Duo push so the collect / grading / plan
+   loop can reconnect.
 
 ## Log
 
@@ -390,3 +390,4 @@ for what is done; this file records every action and failure.
 - 2026-09-29T21:08:47Z step 5.2 main longbench_v2 spec_casc_tok alpha=0.55 seed=1: done, 150/150 cases (jobs 22931500, 0.29 GPU-h)
 - 2026-09-29T21:09:15Z grading: uploaded 64 run dir(s) to the Nibi mirror, submitted CPU grading job 22941156
 - 2026-09-29T21:09:17Z grading: pulled 31207 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-30T00:26:38Z Step 1.9 done: the judge batch ended 23:31Z (2070 succeeded, 1 refusal, $45.16 at batch price); mtbench_judge.csv / mtbench_judge_summary.csv written (2295 runs incl. 225 no-answer). Top-up batch msgbatch_015tcqGs9bFB5aEJwmuAZKTw (230 step-5.1 fill runs) submitted. Nibi link down since ~21:19Z (Needs Bill 6).

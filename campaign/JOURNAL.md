@@ -2628,3 +2628,17 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   1.12), livecodebench mentored_dec (0.87 vs 0.90), longbench_v2 both (time
   1.03 / 1.04, rounds 1.09). `campaign/addendum/best_setting.csv`. Qwen3 half
   blocked on the V2 sampler.
+
+- **2026-09-29, addendum step 1 done** (step 1.9, the MT-Bench judge; this
+  supersedes the "blocked on an Anthropic API key" note above). FastChat
+  single-answer grading of turn 1, judge claude-fable-5-1 at effort medium
+  through the Message Batches API (2070 requests, $45.16; the batch sat
+  unprocessed for ~9 h, then ran in ~1 h). Seed 0, loosest alpha, mean
+  score out of 10 (`campaign/addendum/analysis/mtbench_judge_summary.csv`):
+  GPT-OSS strict 7.29 vs spec_casc_tok 7.49, mentored_dec 6.41,
+  spec_casc_opt 5.74, r_fuzzy 4.58, cactus 4.51; Qwen3 strict 6.94 vs
+  spec_casc_tok 7.21, mentored_dec 6.40, spec_casc_opt 3.95, r_fuzzy 3.05,
+  cactus 2.99. So the rules that inflate MT-Bench length most also cost the
+  most quality; spec_casc_tok costs none. Also refreshed: per_request.csv
+  now covers all 27,096 runs with a machine column (seed-0 tables
+  unchanged).

@@ -159,11 +159,26 @@ def section_step1() -> list[str]:
                            f"{f(r['rank_mean'], 1)} | {f(r['rank_p90'], 0)} | {f(r['entropy_mean'], 2)} |")
         out.append("")
     mj = rows(AN / "mtbench_judge_summary.csv")
-    out += ["**MT-Bench judge (step 1.9)**: " + (f"`{rel(AN / 'mtbench_judge_summary.csv')}`." if mj else
-            "pending -- 2070 turn-1 judgements submitted as one Message Batch "
-            f"(`{rel(AN / 'mtbench_judge_batches.json')}`), not processed yet (PROGRESS.md, Needs Bill 5); "
-            "`scripts/addendum_mtbench_judge.py collect` writes the CSVs when it ends."), ""]
-    return out
+    if not mj:
+        return out + ["**MT-Bench judge (step 1.9)**: pending (`scripts/addendum_mtbench_judge.py`).", ""]
+    loose = {(r["target"], r["method"]): r["alpha"] for r in rows(AN / "eq4_vs_measured.csv") if r["dataset"] == "mtbench"}
+    out += [f"**MT-Bench judge (step 1.9)** (`{rel(AN / 'mtbench_judge_summary.csv')}`, seed-0 rows at the loosest "
+            f"alpha; per run: `{rel(AN / 'mtbench_judge.csv')}`): FastChat single-answer grading of turn 1 "
+            "(`single-math-v1` with the GPT-4 reference answer for math/reasoning/coding, `single-v1` otherwise), "
+            "judge claude-fable-5-1 at effort medium through the Message Batches API; a run whose output never "
+            "reaches an answer scores 1 without a call. Mean score out of 10 with a 95% bootstrap interval; "
+            "'answered only' leaves the no-answer runs out.", "",
+            "| target | method | alpha | mean score [95% CI] | answered only | no answer | refusals |",
+            "|---|---|---:|---|---:|---:|---:|"]
+    for target in ("gpt-oss-20b", "qwen3-8b"):
+        for method in ["strict", *METHOD_ORDER]:
+            alpha = "strict" if method == "strict" else loose.get((target, method))
+            r = next((x for x in mj if (x["target"], x["method"], x["alpha"], x["seed"]) == (target, method, alpha, "0")), None)
+            if r:
+                out.append(f"| {target} | {method} | {alpha} | {f(r['mean_score'])} [{f(r['mean_score_ci_lo'])}, "
+                           f"{f(r['mean_score_ci_hi'])}] | {f(r.get('mean_score_answered_only'))} | {r['n_no_answer']} | "
+                           f"{r['n_refusal']} |")
+    return out + [""]
 
 
 def section_best() -> list[str]:
