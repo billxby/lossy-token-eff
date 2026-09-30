@@ -525,3 +525,17 @@ for what is done; this file records every action and failure.
 - 2026-09-30T19:15:17Z Lanes: the 12 h successors (22948709 A, 22948722 B) sat PENDING 13:24Z-19:20Z (Nibi: ~850 pending H100 jobs; our fair-share 0.23). Cancelled the six pending 12 h jobs; resubmitted 3 h chains (A: 22982359 -> 22982360 -> 22982365 -> 22982368; B: 22982379 -> 22982392 -> 22982401 -> 22982407). README deviation 11.
 - 2026-09-30T21:56:41Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 22992464
 - 2026-09-30T21:56:43Z grading: pulled 36632 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-09-30T23:00:28Z Killarney lane K1: Qwen3 smoke (gsm8k_qwen3 case_001 seed 7, strict + mentored_dec 0.75) submitted as job 5819283
+- 2026-09-30T23:11:26Z moved 94 Qwen3 row(s) to Killarney (K1: 46, K2: 48; est. K1 25.5 GPU-h, K2 25.7 GPU-h); kept on Nibi: steps 2.1
+- 2026-09-30T23:14:34Z lane K1: synced prompts/speedbench (7.1 MB tar) to the lane repo
+- 2026-09-30T23:14:45Z lane K2: synced prompts/speedbench (7.1 MB tar) to the lane repo
+- 2026-09-30T23:15:01Z lane K1: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
+- 2026-09-30T23:15:17Z lane K2: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
+- 2026-09-30T23:15:37Z lane K1: submitted job 5819349; lane has 45 work items, est. 25.4 GPU-h
+- 2026-09-30T23:15:38Z lane K1: submitted job 5819350 (afterany:5819349); lane has 45 work items, est. 25.4 GPU-h
+- 2026-09-30T23:15:40Z lane K1: submitted job 5819351 (afterany:5819350); lane has 45 work items, est. 25.4 GPU-h
+- 2026-09-30T23:15:42Z lane K1: submitted job 5819352 (afterany:5819351); lane has 45 work items, est. 25.4 GPU-h
+- 2026-09-30T23:15:43Z lane K2: submitted job 5819353; lane has 48 work items, est. 25.7 GPU-h
+- 2026-09-30T23:15:45Z lane K2: submitted job 5819354 (afterany:5819353); lane has 48 work items, est. 25.7 GPU-h
+- 2026-09-30T23:15:46Z lane K2: submitted job 5819355 (afterany:5819354); lane has 48 work items, est. 25.7 GPU-h
+- 2026-09-30T23:15:47Z lane K2: submitted job 5819356 (afterany:5819355); lane has 48 work items, est. 25.7 GPU-h
