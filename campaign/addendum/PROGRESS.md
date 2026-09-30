@@ -394,3 +394,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T00:29:50Z Duo: one reconnect attempt at 00:27Z, push not approved (timed out; the server re-prompted once in the same session and the script answered it -- fixed to answer once). Not retrying until Bill is available (Needs Bill 6).
 - 2026-09-30T00:33:44Z lane A: pulled 1634 new run dir(s) into runs/
 - 2026-09-30T00:34:30Z lane B: pulled 632 new run dir(s) into runs/
+- 2026-09-30T00:34:54Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 22947546
+- 2026-09-30T00:34:58Z grading: pulled 31271 verdicts into campaign/addendum/analysis/grades.csv
