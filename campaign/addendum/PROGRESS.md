@@ -496,3 +496,4 @@ for what is done; this file records every action and failure.
 - 2026-09-30T13:42:42Z step 2.1 main mtbench_qwen3 spec_casc_opt alpha=0.05 seed=2: done, 80/80 cases (jobs 22948719, 0.22 GPU-h)
 - 2026-09-30T13:42:42Z step 2.1 main mtbench_qwen3 mentored_dec alpha=0.75 seed=1: done, 80/80 cases (jobs 22948693, 0.23 GPU-h)
 - 2026-09-30T13:42:43Z step 2.1 main mtbench_qwen3 mentored_dec alpha=0.75 seed=2: done, 80/80 cases (jobs 22948719, 0.26 GPU-h)
+- 2026-09-30T13:42:43Z step 2.1 main mtbench_qwen3 cactus alpha=0.35 seed=1: done, 80/80 cases (jobs 22948693, 0.18 GPU-h)
