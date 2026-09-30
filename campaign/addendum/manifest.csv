@@ -54,10 +54,10 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_opt,0.05,1,runs,150,150,done,22948693,0.00,0.31,lane=A
 2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_opt,0.05,2,runs,150,150,done,22948719,0.00,0.30,lane=B
 2.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,1,runs,150,150,done,22948693,0.00,0.28,lane=A
-2.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,2,runs,150,13,running,22948719,0.20,,lane=B
-2.1,main,qwen3-8b,gsm8k_qwen3,cactus,0.35,1,runs,150,0,running,22948693,0.21,,lane=A
-2.1,main,qwen3-8b,gsm8k_qwen3,cactus,0.35,2,runs,150,0,queued,,0.21,,lane=B
-2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,1,runs,150,0,queued,,0.19,,lane=A
+2.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,2,runs,150,150,done,22948719,0.00,0.30,lane=B
+2.1,main,qwen3-8b,gsm8k_qwen3,cactus,0.35,1,runs,150,150,done,22948693,0.00,0.28,lane=A
+2.1,main,qwen3-8b,gsm8k_qwen3,cactus,0.35,2,runs,150,40,running,22948719,0.17,,lane=B
+2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,1,runs,150,11,running,22948693,0.18,,lane=A
 2.1,main,qwen3-8b,gsm8k_qwen3,r_fuzzy,0.25,2,runs,150,0,queued,,0.19,,lane=B
 2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,1,runs,150,0,queued,,0.21,,lane=A
 2.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,2,runs,150,0,queued,,0.21,,lane=B
