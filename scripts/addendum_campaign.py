@@ -828,7 +828,9 @@ def cmd_submit(args: argparse.Namespace) -> int:
         items = json.loads((LANES_DIR / f"{lane}.json").read_text(encoding="utf-8"))["items"]
         if not items:
             continue
-        remaining_h = sum(float(manifest.get(i["id"], {}).get("gpu_hours_est") or 0) for i in items)
+        # step-7 items are <row key>@<budget>; a row split into two budget items counts once
+        remaining_h = sum(float(manifest.get(key, {}).get("gpu_hours_est") or 0)
+                          for key in dict.fromkeys(i["id"].split("@")[0] for i in items))
         want = max(1, min(MAX_CHAIN, int(remaining_h / 11.0) + 1))
         jobs = state["lanes"][lane]["jobs"]
         active = [j for j in jobs if j.get("state") in ("PENDING", "RUNNING", "CONFIGURING", "COMPLETING")]
