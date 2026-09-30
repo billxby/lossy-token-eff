@@ -413,3 +413,7 @@ for what is done; this file records every action and failure.
 - 2026-09-30T01:21:34Z lane B: submitted job 22948719; lane has 67 work items, est. 28.9 GPU-h
 - 2026-09-30T01:21:36Z lane B: submitted job 22948722 (afterany:22948719); lane has 67 work items, est. 28.9 GPU-h
 - 2026-09-30T01:21:38Z lane B: submitted job 22948725 (afterany:22948722); lane has 67 work items, est. 28.9 GPU-h
+- 2026-09-30T01:38:12Z lane A: pulled 102 new run dir(s) into runs/
+- 2026-09-30T01:38:35Z lane B: pulled 30 new run dir(s) into runs/
+- 2026-09-30T01:38:40Z step 7 (qwen3-8b): budget pilot reasoning: 2/20 strict cap-outs at 8192 tokens -> reasoning runs at 8192
+- 2026-09-30T01:38:40Z step 7 (qwen3-8b): pilot done; time-estimate sample = the first 40 runnable cases (case_001..case_054; Math waits for its budget) on every arm
