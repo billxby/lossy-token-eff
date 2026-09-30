@@ -1,0 +1,9 @@
+target,dataset,category,method,alpha,n_pairs,l_bar_relaxed,l_bar_strict,gain,lambda,gain_over_lambda,rounds_ratio,rounds_ratio_ci_lo,rounds_ratio_ci_hi,time_ratio,time_ratio_ci_lo,time_ratio_ci_hi,eq4_predicts_win,rounds_win,time_win,time_loss_beyond_ci
+qwen3-8b,speedbench,all,spec_casc_opt,0.05,7,2.18969,1.17676,1.46534,2.59864,0.563888,1.68889,1.20847,2.4199,1.70492,1.1882,2.41305,0,0,0,1
+qwen3-8b,speedbench,coding,spec_casc_opt,0.05,1,1.97135,1.29061,1.29719,2.11297,0.613915,1.62847,,,1.63959,,,0,0,0,0
+qwen3-8b,speedbench,humanities,spec_casc_opt,0.05,1,2.51016,1.03338,1.72627,2.77514,0.622047,1.60795,,,1.63286,,,0,0,0,0
+qwen3-8b,speedbench,writing,spec_casc_opt,0.05,1,1.88784,0.984323,1.45533,1.20384,1.2089,0.828667,,,0.831467,,,1,1,1,0
+qwen3-8b,speedbench,rag,spec_casc_opt,0.05,1,2.11024,1.66667,1.16634,0.836518,1.39428,0.717514,,,0.718408,,,1,1,1,0
+qwen3-8b,speedbench,multilingual,spec_casc_opt,0.05,1,2.69797,0.932149,1.91392,6.84378,0.279658,3.57835,,,3.63597,,,0,0,0,0
+qwen3-8b,speedbench,reasoning,spec_casc_opt,0.05,1,1.63109,1.2139,1.18844,1.22906,0.966951,1.03406,,,1.03618,,,0,0,0,0
+qwen3-8b,speedbench,qa,spec_casc_opt,0.05,1,2.51918,1.11628,1.66291,4.82396,0.344719,2.89664,,,2.91935,,,0,0,0,0

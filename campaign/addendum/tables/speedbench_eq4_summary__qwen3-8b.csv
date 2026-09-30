@@ -1,0 +1,2 @@
+target,method,alpha,categories,eq4_wins,rounds_wins,time_wins,time_losses_beyond_ci,eq4_wins_that_are_time_losses,rounds_wins_that_are_time_losses,rounds_time_disagree
+qwen3-8b,spec_casc_opt,0.05,7,2,2,2,0,0,0,

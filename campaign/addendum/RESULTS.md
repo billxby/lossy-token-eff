@@ -1,15 +1,15 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-30 01:39 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 01:57 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 31.7; estimated remaining, runnable rows: 73.1; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 32.4; estimated remaining, runnable rows: 72.3; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 6 | 0 | 0 |
-| 2.1 | 48 | 2 | 46 | 0 | 0 |
+| 2.1 | 50 | 0 | 46 | 0 | 0 |
 | 2.2 | 20 | 0 | 6 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
@@ -18,7 +18,7 @@ Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum 
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 12 | 0 | 18 | 0 | 0 |
-| 7 | 0 | 0 | 6 | 0 | 8 |
+| 7 | 0 | 2 | 3 | 1 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -631,6 +631,25 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 
 **Token-budget pilot, qwen3-8b** (`campaign/addendum/tables/speedbench_pilot__qwen3-8b.csv`; strict at 8192 on each category's first 20 cases, >10% cap-outs would raise the category to 16384): reasoning 2/20 cap-outs of 20 (mean 2352, max 8192 tokens) -> budget 8192; math 0/4 cap-outs of 20 (mean 2448, max 2946 tokens) -> budget pending.
 
+### qwen3-8b
+
+Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method, category); Eq. 4 per (method, category): `campaign/addendum/tables/speedbench_eq4__qwen3-8b.csv`; per-method counts: `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv`. Cell = lambda (completion tokens relaxed / strict) · R = verifier rounds ratio · T = wall-time ratio, all vs strict on the same cases; ↓/↑ = the 95% paired bootstrap interval lies entirely below/above 1. Strict column: mean completion tokens and cap-out rate.
+
+| category | strict tokens (cap-out) | spec_casc_opt (0.05) |
+|---|---:|---|
+| all | 2048 (5%) | λ 2.60↑ · R 1.69↑ · T 1.70↑ (n=7) |
+| coding | 4060 (20%) | λ 2.11 · R 1.63 · T 1.64 (n=1) |
+| humanities | 2864 (0%) | λ 2.78 · R 1.61 · T 1.63 (n=1) |
+| writing | 2449 (0%) | λ 1.20 · R 0.83 · T 0.83 (n=1) |
+| summarization | 648 (0%) | - |
+| roleplay | 897 (0%) | - |
+| rag | 908 (0%) | λ 0.84 · R 0.72 · T 0.72 (n=1) |
+| multilingual | 3053 (0%) | λ 6.84 · R 3.58 · T 3.64 (n=1) |
+| reasoning | 2873 (20%) | λ 1.23 · R 1.03 · T 1.04 (n=1) |
+| qa | 1100 (0%) | λ 4.82 · R 2.90 · T 2.92 (n=1) |
+
+- **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 2/7 categories (writing, rag); less wall time in 2/7 (writing, rag); Eq. 4 predicts a win in 2/7; completions longer by lambda 0.84 (rag) to 6.84 (multilingual); rounds and time disagree in: none.
+
 ## Observations, failures and anything that looked wrong
 
 ### Findings worth a sentence in the paper (step 1)
@@ -807,4 +826,13 @@ Source: `campaign/addendum/tables/speedbench__gpt-oss-20b.csv`, one row per (met
 - The Mac stopped running the session from about 21:19Z to 00:20Z; the
   Nibi ControlMaster dropped with it. The lanes kept running; their runs
   wait on Nibi until one Duo push is approved (PROGRESS.md, Needs Bill 6).
+
+### Step 7: the token-budget pilot sits on its boundary for Qwen3
+
+- Qwen3-8B's strict reasoning pilot capped out on 2 of its first 20 cases
+  at 8192 tokens (`tables/speedbench_pilot__qwen3-8b.csv`, row reasoning):
+  exactly 10%, and the rule raises the budget only above 10%, so Qwen3
+  reasoning runs at 8192 like GPT-OSS (0/20). Qwen3 is ~3x longer here
+  (mean 2352 vs 820 completion tokens); expect a few Qwen3 reasoning
+  cap-outs in the step-7 tables, which report cap-out rates per category.
 
