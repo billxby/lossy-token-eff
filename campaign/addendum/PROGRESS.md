@@ -439,3 +439,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T02:52:56Z lane B: pulled 149 new run dir(s) into runs/
 - 2026-09-30T02:53:01Z step 2.1 main gsm8k_qwen3 spec_casc_opt alpha=0.05 seed=2: done, 150/150 cases (jobs 22948719, 0.30 GPU-h)
 - 2026-09-30T02:53:01Z step 2.1 main gsm8k_qwen3 mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 22948693, 0.28 GPU-h)
+- 2026-09-30T02:54:05Z grading: uploaded 299 run dir(s) to the Nibi mirror, submitted CPU grading job 22951427
+- 2026-09-30T02:54:07Z grading: pulled 31735 verdicts into campaign/addendum/analysis/grades.csv
