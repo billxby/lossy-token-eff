@@ -478,3 +478,6 @@ for what is done; this file records every action and failure.
 - 2026-09-30T04:40:29Z grading: uploaded 113 run dir(s) to the Nibi mirror, submitted CPU grading job 22954800
 - 2026-09-30T04:40:34Z grading: pulled 33348 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-09-30T05:17:09Z Nibi link dropped again ~04:49Z (this Mac went to sleep ~00:49 EDT; last keepalive 04:49:41Z). Lanes keep running on their own: 4 chained 12 h jobs per lane (A: 22948693 -> 22948709 -> 22948711 -> 22953246; B: 22948719 -> 22948722 -> 22948725 -> 22953247), enough for the ~67 GPU-h (est., likely ~80) of queued Qwen3 work. Loop paused until Bill approves a Duo push (Needs Bill 6).
+- 2026-09-30T13:41:19Z lane A: pulled 1639 new run dir(s) into runs/
+- 2026-09-30T13:42:30Z lane B: pulled 1532 new run dir(s) into runs/
+- 2026-09-30T13:42:36Z step 2.1 main humaneval_qwen3 spec_casc_opt alpha=0.05 seed=1: done, 150/150 cases (jobs 22948693, 0.87 GPU-h)
