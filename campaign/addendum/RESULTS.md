@@ -1,15 +1,15 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-09-30 03:55 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-09-30 04:05 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 35.8; estimated remaining, runnable rows: 67.9; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 36.0; estimated remaining, runnable rows: 67.5; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 6 | 0 | 0 |
-| 2.1 | 59 | 2 | 35 | 0 | 0 |
+| 2.1 | 60 | 2 | 34 | 0 | 0 |
 | 2.2 | 20 | 0 | 6 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
@@ -424,8 +424,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | qwen3-8b | gsm8k | mentored_dec | 0.75 | 1.03 | 1.00 | 1.02 | - | - | 0.01 | 1.01 (0.01) | 0.95 | 0.91 | 0.93 | - | - | 0.02 | 0.93 (0.02) | 77% | 81% | 81% | - | - | 2% |
 | qwen3-8b | gsm8k | cactus | 0.35 | 1.04 | 1.05 | 1.06 | - | - | 0.01 | 1.05 (0.01) | 0.94 | 0.93 | 0.91 | - | - | 0.01 | 0.92 (0.01) | 77% | 73% | 75% | - | - | 2% |
 | qwen3-8b | gsm8k | spec_casc_opt | 0.05 | 1.33 | 1.29 | 1.32 | - | - | 0.02 | 1.31 (0.02) | 1.12 | 1.05 | 1.06 | - | - | 0.04 | 1.08 (0.04) | 49% | 49% | 49% | - | - | 0% |
-| qwen3-8b | gsm8k | r_fuzzy | 0.25 | 0.95 | 1.01 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.81 | 0.81 | 0.85 | - | - | 0.02 | 0.82 (0.02) | 55% | 57% | - | - | - | 1% |
-| qwen3-8b | gsm8k | spec_casc_tok | 0.8 | 0.99 | 1.00 | - | - | - | 0.01 | 0.99 (0.01) | 0.96 | 0.97 | - | - | - | 0.01 | 0.97 (0.01) | 79% | - | - | - | - | - |
+| qwen3-8b | gsm8k | r_fuzzy | 0.25 | 0.95 | 1.01 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.81 | 0.81 | 0.85 | - | - | 0.02 | 0.82 (0.02) | 55% | 57% | 62% | - | - | 3% |
+| qwen3-8b | gsm8k | spec_casc_tok | 0.8 | 0.99 | 1.00 | 1.01 | - | - | 0.01 | 1.00 (0.01) | 0.96 | 0.97 | 0.97 | - | - | 0.01 | 0.97 (0.01) | 79% | 82% | - | - | - | 2% |
 | qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | - | - | - | - | - | 1.42 (-) | 1.14 | - | - | - | - | - | 1.14 (-) | 30% | - | - | - | - | - |
 | qwen3-8b | aime24 | r_fuzzy | 0.25 | 1.29 | - | - | - | - | - | 1.29 (-) | 1.18 | - | - | - | - | - | 1.18 (-) | 40% | - | - | - | - | - |
 | qwen3-8b | humaneval | mentored_dec | 0.75 | 1.08 | - | - | - | - | - | 1.08 (-) | 1.02 | - | - | - | - | - | 1.02 (-) | 85% | - | - | - | - | - |
@@ -569,7 +569,7 @@ Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, meth
 | gpt-oss-20b | longbench_v2 | mentored_dec | True | 0.55 (0.55) | 1.11 | 0.89 | 1.00 | 57% / 56% | 1.38 | 1.09 | 1.03 | 55% / 57% | no |
 | gpt-oss-20b | longbench_v2 | spec_casc_tok | True | 0.55 (0.55) | 1.06 | 0.97 | 0.94 | 57% / 56% | 1.20 | 1.09 | 1.04 | 55% / 57% | no |
 | qwen3-8b | gsm8k | mentored_dec | False | - (-) | - | - | - | - / - | - | - | - | - | - |
-| qwen3-8b | gsm8k | spec_casc_tok | False | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | 1.00 | 0.95 | 0.97 | - / 81% | - |
+| qwen3-8b | gsm8k | spec_casc_tok | False | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | 1.00 | 0.95 | 0.97 | 82% / 81% | yes |
 | qwen3-8b | aime24 | mentored_dec | False | 0.15 (0.15) | 0.91 | 0.88 | 0.89 | 73% / 70% | - | - | - | - | - |
 | qwen3-8b | aime24 | spec_casc_tok | False | 0.8 (0.8) | 0.98 | 0.93 | 0.93 | 70% / 70% | - | - | - | - | - |
 | qwen3-8b | humaneval | mentored_dec | False | 0.75 (0.75) | 1.08 | 0.99 | 1.02 | 85% / 83% | - | - | - | - | - |
