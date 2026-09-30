@@ -423,5 +423,15 @@
         "top_p": 1.0
       }
     ]
+  },
+  "speedbench_qwen3": {
+    "phase": "pilot",
+    "budget": {
+      "reasoning": null,
+      "math": null
+    },
+    "first40": [],
+    "subset_relaxed": null,
+    "estimate": {}
   }
 }

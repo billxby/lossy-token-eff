@@ -84,7 +84,8 @@ SB_FIRST, SB_PER_CAT, SB_N_CATS = 40, 40, 11  # time-estimate sample per arm; pe
 SB_BUDGET_H = 24.0   # the lane budget: one 12 h job on each GPT-OSS lane (A and B)
 SB_HOLD_MIN = 40     # a lane out of work while step 7 waits on a phase keeps its GPU this long
 SB_NOTE_MARKERS = ("waits for step-7 phase", "first-40 estimate:", "token budget 8192",
-                   "need the cais/hle prompts", "wait for the Math budget pilot")  # regenerated every plan
+                   "need the cais/hle prompts", "wait for the Math budget pilot", "GPU-h vs lane budget",
+                   "waits for the GPT-OSS step-7 run")  # regenerated every plan
 
 FIELDS = ["step", "condition", "target", "dataset", "method", "alpha", "seeds", "run_root", "n_cases_target",
           "n_done", "status", "slurm_job_ids", "gpu_hours_est", "gpu_hours_actual", "notes"]
@@ -373,16 +374,21 @@ def all_rows(keep: set[str] | None = None) -> tuple[list[dict], dict[str, list[s
     # after their other work, the Qwen3 arms last on lane C. Relaxed arms drop to 40 prompts per
     # category if the first-40 estimate of the full split exceeds SB_BUDGET_H (sb_advance).
     if sb_cases_table():  # rows appear once scripts/build_speedbench_prompts.py has written cases.csv
-        subset = sb_state(load_state()).get("subset_relaxed")
-        pilot = make_row("7", "speedbench_pilot", SB, "strict", "strict", 0,
-                         f"first {SB_PILOT_N} Reasoning + first {SB_PILOT_N} Math cases at {SB_BUDGET}; >10% cap-outs "
-                         f"raise that category to {SB_RAISED}", n_cases=len(sb_pilot_cases()))
-        rows.append(pilot)
-        lanes["B"].insert(0, row_key(pilot))
-        for fam in ("", "_qwen3"):
+        state = load_state()
+        for fam in ("", "_qwen3"):  # each model gets its own token-budget pilot and phases
+            ds = SB + fam
+            subset = sb_state(state, ds).get("subset_relaxed")
+            pilot = make_row("7", "speedbench_pilot", ds, "strict", "strict", 0,
+                             f"first {SB_PILOT_N} Reasoning + first {SB_PILOT_N} Math cases at {SB_BUDGET}; >10% cap-outs "
+                             f"raise that category to {SB_RAISED}", n_cases=len(sb_pilot_cases()))
+            rows.append(pilot)
+            if fam:
+                lanes["C"].append(row_key(pilot))
+            else:
+                lanes["B"].insert(0, row_key(pilot))
             for arm, alpha in SB_ARMS.items():
                 n = SB_PER_CAT * SB_N_CATS if (subset and arm != "strict") else N_CASES[SB]
-                add(make_row("7", "speedbench", SB + fam, arm, alpha, 0, n_cases=n), SB_LANE[arm])
+                add(make_row("7", "speedbench", ds, arm, alpha, 0, n_cases=n), SB_LANE[arm])
     by_key = {row_key(r): r for r in rows}
     lanes["C"].sort(key=lambda k: LANE_C_PRIORITY.get(by_key[k]["step"], 8))  # stable within a step
     return rows, lanes
@@ -463,9 +469,10 @@ def work_item(row: dict, cases: list[str], max_new_tokens: int | None = None) ->
 # first40: every arm runs the first 40 runnable cases (built, budget decided) -> per-arm time estimate
 # full:    the rest; relaxed arms stop at 40 per category if the estimate exceeded SB_BUDGET_H
 
-def sb_state(state: dict) -> dict:
-    return state.setdefault("speedbench", {"phase": "pilot", "budget": {c: None for c in SB_PILOT_CATS},
-                                           "first40": [], "subset_relaxed": None, "estimate": {}})
+def sb_state(state: dict, ds: str = SB) -> dict:
+    """Step-7 phase state of one model: state['speedbench'] (GPT-OSS) or state['speedbench_qwen3']."""
+    return state.setdefault(ds, {"phase": "pilot", "budget": {c: None for c in SB_PILOT_CATS},
+                                 "first40": [], "subset_relaxed": None, "estimate": {}})
 
 
 def sb_case_budget(sbs: dict, case: str) -> int | None:
@@ -484,11 +491,13 @@ def sb_is_hle(case: str) -> bool:
     return any(r["case"] == case and "cais/hle" in r["source"] for r in sb_cases_table())
 
 
-def sb_advance(sbs: dict, by_key: dict) -> bool:
-    """Move step 7 through its phases from the local runs. True when the relaxed rows' case count changed."""
-    pilot = next((r for r in by_key.values() if r["condition"] == "speedbench_pilot"), None)
+def sb_advance(sbs: dict, by_key: dict, ds: str = SB) -> bool:
+    """Move one model's step 7 through its phases from the local runs. True when its relaxed rows'
+    case count changed."""
+    pilot = next((r for r in by_key.values() if r["condition"] == "speedbench_pilot" and r["dataset"] == ds), None)
     if pilot is None or not sb_cases_table():
         return False
+    tag = f"step 7 ({target_of(ds)})"
     for cat in SB_PILOT_CATS:
         if sbs["budget"].get(cat) is not None:
             continue
@@ -498,18 +507,18 @@ def sb_advance(sbs: dict, by_key: dict) -> bool:
             continue
         capped = sum(bool(r.get("reached_max_new_tokens")) for r in runs)
         sbs["budget"][cat] = SB_RAISED if capped / len(runs) > SB_CAPOUT else SB_BUDGET
-        progress(f"step 7: budget pilot {cat}: {capped}/{len(runs)} strict cap-outs at {SB_BUDGET} tokens "
+        progress(f"{tag}: budget pilot {cat}: {capped}/{len(runs)} strict cap-outs at {SB_BUDGET} tokens "
                  f"-> {cat} runs at {sbs['budget'][cat]}")
     if sbs["phase"] == "pilot":
-        waiting = [c for c in pilot["_missing"] if sb_prompt_built(SB, c)]
+        waiting = [c for c in pilot["_missing"] if sb_prompt_built(ds, c)]
         if not waiting and int(pilot["n_done"]) > 0:
             first = [r["case"] for r in sb_cases_table()
-                     if sb_prompt_built(SB, r["case"]) and sb_case_budget(sbs, r["case"]) is not None][:SB_FIRST]
+                     if sb_prompt_built(ds, r["case"]) and sb_case_budget(sbs, r["case"]) is not None][:SB_FIRST]
             sbs.update(phase="first40", first40=first)
-            progress(f"step 7: pilot done; time-estimate sample = the first {len(first)} runnable cases "
+            progress(f"{tag}: pilot done; time-estimate sample = the first {len(first)} runnable cases "
                      f"({first[0]}..{first[-1]}; Math waits for its budget) on every arm")
     if sbs["phase"] == "first40":
-        arms = [r for r in by_key.values() if r["condition"] == "speedbench" and r["dataset"] == SB]
+        arms = [r for r in by_key.values() if r["condition"] == "speedbench" and r["dataset"] == ds]
         runs = {r["method"]: [load_run(row_run_dir(r, c)) for c in sbs["first40"]] for r in arms}
         if arms and all(x is not None for v in runs.values() for x in v):
             per_case = {m: sum(x["wall_time_seconds"] for x in v) / len(v) for m, v in runs.items()}
@@ -518,7 +527,7 @@ def sb_advance(sbs: dict, by_key: dict) -> bool:
             sbs.update(phase="full", subset_relaxed=subset,
                        estimate={"s_per_case": {m: round(s, 2) for m, s in per_case.items()},
                                  "full_split_gpu_h": round(full_h, 2), "lane_budget_gpu_h": SB_BUDGET_H})
-            progress(f"step 7: first-40 estimate of the full split (6 arms x {N_CASES[SB]}): {full_h:.1f} GPU-h "
+            progress(f"{tag}: first-40 estimate of the full split (6 arms x {N_CASES[SB]}): {full_h:.1f} GPU-h "
                      f"vs lane budget {SB_BUDGET_H:.0f} GPU-h -> "
                      + (f"relaxed arms run {SB_PER_CAT} per category ({SB_PER_CAT * SB_N_CATS}), strict all {N_CASES[SB]}"
                         if subset else f"all arms run the full {N_CASES[SB]}")
@@ -527,10 +536,11 @@ def sb_advance(sbs: dict, by_key: dict) -> bool:
     return False
 
 
-def sb_items(row: dict, sbs: dict, gpt_oss_done: bool) -> list[dict]:
-    """Work items of a step-7 row: its runnable missing cases, one item per token budget."""
+def sb_items(row: dict, sbs: dict, gate_open: bool = True) -> list[dict]:
+    """Work items of a step-7 row: its runnable missing cases, one item per token budget. Qwen3 rows
+    (pilot included) wait for the GPT-OSS run: gate_open = GPT-OSS has nothing runnable left."""
     pilot = row["condition"] == "speedbench_pilot"
-    if not pilot and (sbs["phase"] == "pilot" or (is_qwen(row["dataset"]) and not gpt_oss_done)):
+    if not gate_open or (not pilot and sbs["phase"] == "pilot"):
         return []
     groups: dict[int, list[str]] = {}
     for case in row["_missing"]:
@@ -549,8 +559,10 @@ def sb_items(row: dict, sbs: dict, gpt_oss_done: bool) -> list[dict]:
     return items
 
 
-def sb_wait_note(row: dict, sbs: dict) -> tuple[str, str]:
+def sb_wait_note(row: dict, sbs: dict, gate_open: bool = True) -> tuple[str, str]:
     """(status, note) for a step-7 row with missing cases but nothing runnable now."""
+    if not gate_open:
+        return "pending", "waits for the GPT-OSS step-7 run to finish"
     unbuilt = [c for c in row["_missing"] if not sb_prompt_built(row["dataset"], c)]
     undecided = [c for c in row["_missing"] if c not in unbuilt and sb_case_budget(sbs, c) is None]
     if row["condition"] != "speedbench_pilot" and sbs["phase"] != "full":
@@ -577,11 +589,14 @@ def cmd_plan(args: argparse.Namespace) -> int:
         row["_missing"] = missing_local(row)
         row["n_done"] = str(int(row["n_cases_target"]) - len(row["_missing"]))
         row["gpu_hours_est"] = f"{estimate_hours(row, len(row['_missing'])):.2f}"
-    sbs = sb_state(state)
-    if sb_advance(sbs, by_key):  # the relaxed step-7 rows changed size: rebuild the rows from the new state
+    sbs_of = {ds: sb_state(state, ds) for ds in (SB, SB + "_qwen3")}
+    resized = [sb_advance(sbs_of[ds], by_key, ds) for ds in sbs_of]
+    if any(resized):  # a model's relaxed step-7 rows changed size: rebuild the rows from the new state
         save_state(state)
         return cmd_plan(args)
-    sb_gpt_oss_done = all(not r["_missing"] for r in rows if r["condition"] == "speedbench" and r["dataset"] == SB)
+    # Qwen3's step 7 starts once GPT-OSS has nothing runnable left (the cais/hle cases may still be missing)
+    sb_gate = {SB: True, SB + "_qwen3": not any(
+        sb_items(r, sbs_of[SB]) for r in rows if base_of(r["dataset"]) == SB and not is_qwen(r["dataset"]) and r["_missing"])}
 
     # A row keeps the lane it first got (a row with progress in one lane's run root must never
     # move to another lane: skip-if-done only sees the lane's own root).
@@ -624,17 +639,18 @@ def cmd_plan(args: argparse.Namespace) -> int:
             if not row["_missing"] or (is_qwen(row["dataset"]) and blocked_qwen):
                 continue
             if base_of(row["dataset"]) == SB:
-                items = sb_items(row, sbs, sb_gpt_oss_done)
+                ds = row["dataset"]
+                items = sb_items(row, sbs_of[ds], sb_gate[ds])
                 if not items:
-                    row["status"], note = sb_wait_note(row, sbs)
+                    row["status"], note = sb_wait_note(row, sbs_of[ds], sb_gate[ds])
                     row["_sb_note"] = note
                     continue
                 work[lane].extend(items)
             else:
                 work[lane].append(work_item(row, row["_missing"]))
             row["status"] = "running" if active_item.get(lane) == key else ("queued" if lane_jobs else "pending")
-        if sbs["phase"] != "full":  # the short pilot / first-40 items gate the rest of step 7: run them first
-            work[lane].sort(key=lambda item: 0 if item["step"] == "7" else 1)
+        # a model's short pilot / first-40 items gate the rest of its step 7: run them first
+        work[lane].sort(key=lambda item: 0 if item["step"] == "7" and sbs_of[item["dataset"]]["phase"] != "full" else 1)
     for row in rows:
         key = row_key(row)
         lane = lane_of.get(key)
@@ -652,12 +668,13 @@ def cmd_plan(args: argparse.Namespace) -> int:
             notes.append(QWEN3_BLOCK)
         if lane in LANES and not blocked and f"lane={lane}" not in notes:
             notes.insert(0, f"lane={lane}")
-        if base_of(row["dataset"]) == SB and not is_qwen(row["dataset"]):
+        if base_of(row["dataset"]) == SB and not blocked:
+            sbs = sbs_of[row["dataset"]]
             if row.get("_sb_note"):
                 notes.append(row["_sb_note"])
             if row["condition"] == "speedbench" and sbs.get("estimate"):
                 est = sbs["estimate"]
-                notes.append(f"first-40 estimate: {est['s_per_case'].get(row['method'], 0):.1f} s/case; full split "
+                notes.append(f"first-40 estimate: {est['s_per_case'].get(row['method'], 0):.1f} s/case, full split "
                              f"{est['full_split_gpu_h']:.1f} GPU-h vs lane budget {est['lane_budget_gpu_h']:.0f}")
             budgets = ", ".join(f"{c} {b}" for c, b in sbs["budget"].items() if b)
             if budgets:
@@ -685,8 +702,10 @@ def cmd_plan(args: argparse.Namespace) -> int:
         path.parent.mkdir(parents=True, exist_ok=True)
         # a lane that runs out of work while step 7 waits on a phase (pilot, first-40 estimate) keeps its
         # GPU for SB_HOLD_MIN minutes: the next poll queues the following phase (scripts/addendum_lane.py)
-        sb_waiting = sbs["phase"] != "full" and any(
-            lane_of.get(row_key(r)) == lane and r["_missing"] for r in rows if r["condition"] == "speedbench" and r["dataset"] == SB)
+        sb_waiting = any(
+            lane_of.get(row_key(r)) == lane and r["_missing"] for r in rows
+            if r["condition"] == "speedbench" and base_of(r["dataset"]) == SB and sb_gate[r["dataset"]]
+            and sbs_of[r["dataset"]]["phase"] != "full" and not (is_qwen(r["dataset"]) and blocked_qwen))
         path.write_text(json.dumps({"lane": lane, "written": utc_now(), "hold_minutes": SB_HOLD_MIN if sb_waiting else 0,
                                     "items": work[lane]}, indent=1) + "\n", encoding="utf-8")
     save_state(state)

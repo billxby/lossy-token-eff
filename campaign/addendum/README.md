@@ -142,3 +142,12 @@ alpha grows).
    these phases, a lane that runs out of work keeps its GPU for up to 40 min
    (`hold_minutes` in the work list, `scripts/addendum_lane.py`) instead of
    exiting, so the next phase does not wait in the Slurm queue.
+   Qwen3-8B gets its own pilot and phases under the same rules (thinking
+   lengths differ from GPT-OSS, so its budgets are decided on its own strict
+   runs, in `runs/addendum/speedbench_pilot/qwen3-8b/`). Its step 7 starts
+   once GPT-OSS has nothing runnable left (the cais/hle cases may still be
+   missing); its short pilot and first-40 items run ahead of other work on
+   their lane, the full arms after every other Qwen3 row (lane C order).
+   Its prompts (`prompts/speedbench_qwen3/`, gitignored) come from
+   `scripts/build_prompts_qwen3.py` on the GPT-OSS set, which reproduces the
+   existing Qwen3 prompt sets byte for byte.
