@@ -19,6 +19,12 @@
           "state": "ENDED",
           "submitted": "2026-09-29T18:11:49Z",
           "dependency": ""
+        },
+        {
+          "id": "22947621",
+          "state": "PENDING",
+          "submitted": "2026-09-30T00:38:14Z",
+          "dependency": ""
         }
       ],
       "rows": [
@@ -357,5 +363,65 @@
   "prompt_sync": {
     "A:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",
     "B:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077"
+  },
+  "extra_items": {
+    "A": [
+      {
+        "id": "smoke|strict",
+        "step": "0.2",
+        "condition": "smoke_qwen3",
+        "dataset": "gsm8k_qwen3",
+        "method": "strict",
+        "alpha": "strict",
+        "seed": 7,
+        "cases": [
+          "case_001"
+        ],
+        "prompt_root": "prompts/gsm8k_qwen3",
+        "runs_subroot": "runs/addendum/smoke_qwen3",
+        "max_new_tokens": 2048,
+        "model_flags": [
+          "--model-path",
+          "Qwen/Qwen3-8B",
+          "--draft-model-path",
+          "RedHatAI/Qwen3-8B-speculator.eagle3",
+          "--served-model-name",
+          "qwen3-8b",
+          "--rope-scaling-json",
+          "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+        ],
+        "num_spec": 6,
+        "temperature": 1.0,
+        "top_p": 1.0
+      },
+      {
+        "id": "smoke|mentored_dec",
+        "step": "0.2",
+        "condition": "smoke_qwen3",
+        "dataset": "gsm8k_qwen3",
+        "method": "mentored_dec",
+        "alpha": "0.75",
+        "seed": 7,
+        "cases": [
+          "case_001"
+        ],
+        "prompt_root": "prompts/gsm8k_qwen3",
+        "runs_subroot": "runs/addendum/smoke_qwen3",
+        "max_new_tokens": 2048,
+        "model_flags": [
+          "--model-path",
+          "Qwen/Qwen3-8B",
+          "--draft-model-path",
+          "RedHatAI/Qwen3-8B-speculator.eagle3",
+          "--served-model-name",
+          "qwen3-8b",
+          "--rope-scaling-json",
+          "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+        ],
+        "num_spec": 6,
+        "temperature": 1.0,
+        "top_p": 1.0
+      }
+    ]
   }
 }

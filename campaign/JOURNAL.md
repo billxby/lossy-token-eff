@@ -2642,3 +2642,18 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   most quality; spec_casc_tok costs none. Also refreshed: per_request.csv
   now covers all 27,096 runs with a machine column (seed-0 tables
   unchanged).
+
+- **2026-09-30, addendum step 7 (SPEED-Bench, GPT-OSS half, non-HLE
+  cases) done** (lanes A + B, jobs 22931500, 22881281; 4.2 GPU-h).
+  Qualitative split, strict + the five rules at their loosest alpha, seed
+  0, token budget 8192 (the reasoning pilot saw 0/20 strict cap-outs).
+  672 of 880 prompts: the 208 from cais/hle (most of Math, Humanities,
+  STEM) wait for a Hugging Face token. Over all 672 cases every rule saves
+  rounds and time despite longer completions -- lambda 1.09-1.26, rounds
+  0.63-0.95, time 0.62-0.92, all beyond the 95% interval; cactus saves most
+  (time 0.62), spec_casc_tok least (0.92). Writing and roleplay save most
+  (cactus rounds 0.36 / 0.53); multilingual is where length inflation wins
+  (spec_casc_opt and r_fuzzy lambda 1.87 / 1.86, time 1.32 / 1.30, both
+  beyond the interval). On Nibi the rounds and time verdicts never disagree
+  in any category. `campaign/addendum/tables/speedbench{,_eq4,_eq4_summary,
+  _pilot}__gpt-oss-20b.csv`.

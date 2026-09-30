@@ -399,3 +399,5 @@ for what is done; this file records every action and failure.
 - 2026-09-30T00:36:45Z Step 0.2: wrote patches/vllm-0.26.0-v2-consolidated.patch (528 lines; pristine bfaec14e220c -> 68d0a904230a, round-trip verified)
 - 2026-09-30T00:37:13Z Step 0.2: lane A venv V2 file installed (sha256 68d0a904230a)
 - 2026-09-30T00:37:16Z Step 0.2: lane B venv V2 file installed (sha256 68d0a904230a)
+- 2026-09-30T00:37:44Z Step 0.2: queued the two Qwen3 smoke cases at the front of lane A (runs/addendum/smoke_qwen3)
+- 2026-09-30T00:38:14Z lane A: submitted job 22947621; lane has 2 work items, est. 0.0 GPU-h
