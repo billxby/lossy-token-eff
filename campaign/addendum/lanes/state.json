@@ -16,7 +16,7 @@
         },
         {
           "id": "22931500",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-09-29T18:11:49Z",
           "dependency": ""
         }
@@ -118,7 +118,7 @@
         },
         {
           "id": "22881281",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-09-29T05:56:30Z",
           "dependency": "22881159"
         }

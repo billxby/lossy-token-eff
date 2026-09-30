@@ -392,3 +392,5 @@ for what is done; this file records every action and failure.
 - 2026-09-29T21:09:17Z grading: pulled 31207 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-09-30T00:26:38Z Step 1.9 done: the judge batch ended 23:31Z (2070 succeeded, 1 refusal, $45.16 at batch price); mtbench_judge.csv / mtbench_judge_summary.csv written (2295 runs incl. 225 no-answer). Top-up batch msgbatch_015tcqGs9bFB5aEJwmuAZKTw (230 step-5.1 fill runs) submitted. Nibi link down since ~21:19Z (Needs Bill 6).
 - 2026-09-30T00:29:50Z Duo: one reconnect attempt at 00:27Z, push not approved (timed out; the server re-prompted once in the same session and the script answered it -- fixed to answer once). Not retrying until Bill is available (Needs Bill 6).
+- 2026-09-30T00:33:44Z lane A: pulled 1634 new run dir(s) into runs/
+- 2026-09-30T00:34:30Z lane B: pulled 632 new run dir(s) into runs/
