@@ -890,3 +890,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T20:46:47Z step 5.1 main mtbench_qwen3 mentored_dec alpha=0.55 seed=0: done, 80/80 cases (jobs 5837983, 0.21 GPU-h)
 - 2026-10-01T20:46:48Z step 5.1 main aime24_qwen3 mentored_dec alpha=0.35 seed=0: done, 30/30 cases (jobs 5839007, 0.73 GPU-h)
 - 2026-10-01T20:47:04Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T20:48:55Z Judge batch msgbatch_01FkaxMnqLU6qE23uZdXnJ4G: 153 Qwen3 MT-Bench step-5.1 runs (md 0.35: 70, md 0.55: 66, tok 0.35: 17 so far; seed 0, ~$3.4, within task #10's plan). The rest of the tok 0.35/0.55 cells go in a second batch when K2 finishes them.
