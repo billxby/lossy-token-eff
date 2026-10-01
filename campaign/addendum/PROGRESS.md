@@ -727,3 +727,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T15:52:57Z lane K2: pulled 31 new run dir(s) into runs/
 - 2026-10-01T15:52:58Z lane K3: pulled 8 new run dir(s) into runs/
 - 2026-10-01T15:53:05Z step 0.5 nibiref humaneval_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5837981, 0.73 GPU-h)
+- 2026-10-01T15:53:20Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
