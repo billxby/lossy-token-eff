@@ -1,6 +1,6 @@
 {
  "lane": "K4",
- "written": "2026-10-01T19:39:32Z",
+ "written": "2026-10-01T19:42:25Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -178,7 +178,10 @@
    ],
    "num_spec": 10,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "GPU_UTIL": "0.80"
+   }
   },
   {
    "id": "main|gsm8k_qwen3|mentored_dec|0.55|0",
@@ -189,43 +192,6 @@
    "alpha": "0.55",
    "seed": 0,
    "cases": [
-    "case_087",
-    "case_088",
-    "case_089",
-    "case_090",
-    "case_091",
-    "case_092",
-    "case_093",
-    "case_094",
-    "case_095",
-    "case_096",
-    "case_097",
-    "case_098",
-    "case_099",
-    "case_100",
-    "case_101",
-    "case_102",
-    "case_103",
-    "case_104",
-    "case_105",
-    "case_106",
-    "case_107",
-    "case_108",
-    "case_109",
-    "case_110",
-    "case_111",
-    "case_112",
-    "case_113",
-    "case_114",
-    "case_115",
-    "case_116",
-    "case_117",
-    "case_118",
-    "case_119",
-    "case_120",
-    "case_121",
-    "case_122",
-    "case_123",
     "case_124",
     "case_125",
     "case_126",

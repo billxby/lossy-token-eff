@@ -1,6 +1,6 @@
 {
  "lane": "K3",
- "written": "2026-10-01T19:39:32Z",
+ "written": "2026-10-01T19:42:25Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -12,11 +12,6 @@
    "alpha": "strict",
    "seed": 0,
    "cases": [
-    "case_022",
-    "case_023",
-    "case_024",
-    "case_025",
-    "case_026",
     "case_027",
     "case_028",
     "case_029",
@@ -214,7 +209,10 @@
    ],
    "num_spec": 10,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "GPU_UTIL": "0.80"
+   }
   },
   {
    "id": "temp1.2|livecodebench_qwen3|strict|strict|0",
