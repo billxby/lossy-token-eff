@@ -492,6 +492,11 @@ def work_item(row: dict, cases: list[str], max_new_tokens: int | None = None) ->
         item["env"] = {"SPEC_METHOD": "draft_model"}
     if row["condition"] == "qwenT0.6":
         item["extra_flags"] = ["--top-k", "20"]  # Qwen3's recommended sampler: T 0.6, top-p 0.95, top-k 20
+    if is_qwen(ds) and row["condition"].startswith("nspec") and server_settings(row["condition"])["num_spec"] >= 10:
+        # vLLM's sampler warmup over Qwen3's 152k-token vocabulary at 10 draft tokens runs out of memory once the KV
+        # cache holds 0.85 of the GPU (short by 0.6 GiB; job 5839007, 2026-10-01). The KV pool's size does not change
+        # a single request's computation (no prefix caching, one request at a time): 0.80 (README deviation 18)
+        item["env"] = {**item.get("env", {}), "GPU_UTIL": "0.80"}
     return item
 
 

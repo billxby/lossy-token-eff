@@ -259,3 +259,13 @@ alpha grows).
    for the venv python before `module load`, and `scripts/addendum_lane.py`
    stops before taking work if the modules did not load (no EBROOTCUDA), so
    no item runs in a partial environment.
+18. **Qwen3 step-3 nspec10 runs at `--gpu-memory-utilization 0.80`.** The
+   first Qwen3 nspec10 item (gsm8k, K4 job 5839007, 2026-10-01 19:31Z)
+   failed twice at server start: vLLM's sampler warmup over Qwen3's
+   152k-token vocabulary at 10 draft tokens needed 2.12 GiB after the KV
+   cache had taken 0.85 of the GPU (1.55 GiB free). GPT-OSS's nspec10 rows
+   ran at the default on Nibi. The two Qwen3 nspec10 rows (gsm8k,
+   livecodebench) pass `GPU_UTIL=0.80` to `remote/run_server_vllm.sh`; every
+   other row keeps 0.85. The KV pool's size does not change a single
+   request's computation (prefix caching off, one request at a time), and
+   0.80 still holds a full max-length request.
