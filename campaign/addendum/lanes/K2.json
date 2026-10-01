@@ -1,6 +1,6 @@
 {
  "lane": "K2",
- "written": "2026-10-01T15:34:21Z",
+ "written": "2026-10-01T15:53:05Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -12,19 +12,6 @@
    "alpha": "0.8",
    "seed": 0,
    "cases": [
-    "case_001",
-    "case_002",
-    "case_003",
-    "case_004",
-    "case_005",
-    "case_006",
-    "case_007",
-    "case_008",
-    "case_009",
-    "case_010",
-    "case_011",
-    "case_012",
-    "case_013",
     "case_014",
     "case_015",
     "case_016",
@@ -122,51 +109,6 @@
    "env": {
     "SPEC_METHOD": "draft_model"
    }
-  },
-  {
-   "id": "nibiref|humaneval_qwen3|strict|strict|0",
-   "step": "0.5",
-   "condition": "nibiref",
-   "dataset": "humaneval_qwen3",
-   "method": "strict",
-   "alpha": "strict",
-   "seed": 0,
-   "cases": [
-    "case_133",
-    "case_134",
-    "case_135",
-    "case_136",
-    "case_137",
-    "case_138",
-    "case_139",
-    "case_140",
-    "case_141",
-    "case_142",
-    "case_143",
-    "case_144",
-    "case_145",
-    "case_146",
-    "case_147",
-    "case_148",
-    "case_149",
-    "case_150"
-   ],
-   "prompt_root": "prompts/humaneval_qwen3",
-   "runs_subroot": "runs/addendum/nibiref",
-   "max_new_tokens": 9000,
-   "model_flags": [
-    "--model-path",
-    "Qwen/Qwen3-8B",
-    "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
-    "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0
   },
   {
    "id": "nibiref|longbench_v2_qwen3|strict|strict|0",
