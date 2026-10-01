@@ -829,3 +829,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T19:02:20Z step 4.1 temp1.5 gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006, 0.31 GPU-h)
 - 2026-10-01T19:02:30Z lane K3: submitted job 5843279 (afterany:5839005); lane has 9 work items, est. 5.2 GPU-h
 - 2026-10-01T19:02:45Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T19:07:53Z kn172 back early (K3 5839005 running there since 18:50Z); its first job 5839004 failed in 4 s (/cvmfs not mounted -> ELOOP on the venv python). Rebooted nodes run driver 580.178.04 (was 580.159.03). Guards pushed to K1-K4: sbatch waits for the venv python before module load; addendum_lane.py env_ready() stops if modules did not load. README deviation 17.

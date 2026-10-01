@@ -244,3 +244,18 @@ alpha grows).
    GPU-h: K1 5.9, K2 5.3, K3 6.4, K4 5.9 (was 10.0 / 3.0 / 6.5 / 4.1). The
    final tables name each arm's node(s) and flag mixed-node time ratios
    (deviation 15); rounds ratios are unaffected.
+17. **Killarney rebooted every H100 node from 2026-10-01 ~18:40Z** ("Reboot
+   ASAP": each node drains and reboots once its last job ends). Rebooted
+   nodes run NVIDIA driver 580.178.04 (was 580.159.03; kernel 6.8.0-136
+   after), so time per round may differ before and after a node's reboot.
+   Every job's Slurm log records its driver (`nvidia-smi` at job start); the
+   final tables flag time ratios whose arm and reference straddle the
+   change, alongside the node flags of deviation 15. Rounds ratios are
+   unaffected. The first job on a freshly rebooted node (K3's 5839004 on
+   kn172) failed after 4 s: /cvmfs was not mounted yet, `module load` failed
+   without stopping the batch script, and the venv python (a link into
+   /cvmfs) raised ELOOP. The next job in the chain started 4 s later and ran
+   normally. Two guards since ~19:20Z: the batch script waits up to 5 min
+   for the venv python before `module load`, and `scripts/addendum_lane.py`
+   stops before taking work if the modules did not load (no EBROOTCUDA), so
+   no item runs in a partial environment.
