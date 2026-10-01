@@ -565,3 +565,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T01:10:51Z lane K1: pulled 11 new run dir(s) into runs/
 - 2026-10-01T01:10:55Z lane K2: pulled 16 new run dir(s) into runs/
 - 2026-10-01T01:11:02Z step 6 main aime24_qwen3 mentored_dec alpha=0.75 seed=1: done, 30/30 cases (jobs 5819349, 0.80 GPU-h)
+- 2026-10-01T01:11:02Z step 6 main aime24_qwen3 cactus alpha=0.35 seed=1: done, 30/30 cases (jobs 5819353, 0.50 GPU-h)
