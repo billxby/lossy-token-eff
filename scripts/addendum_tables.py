@@ -30,6 +30,8 @@ import sys
 
 import numpy as np
 
+from addendum_analysis import machine_of
+
 REPO = pathlib.Path(__file__).resolve().parent.parent
 RUNS = REPO / "runs"
 ADD = REPO / "campaign" / "addendum"
@@ -307,24 +309,28 @@ def cmd_lmdraft(args) -> int:
 GRID = {"mentored_dec": ["0.15", "0.35", "0.55", "0.75"], "spec_casc_tok": ["0.15", "0.35", "0.55", "0.8"]}
 
 
-def nibi_cases(cell: dict[str, dict]) -> set[str]:
-    """Cases of a seed-0 cell that ran on Nibi (step 5.1 fills): config.json vllm.site_packages under /project."""
-    out = set()
-    for case, run in cell.items():
-        cfg = RUNS / run["_rel"] / "config.json"
-        try:
-            site = json.loads(cfg.read_text(encoding="utf-8")).get("vllm", {}).get("site_packages", "")
-        except (OSError, json.JSONDecodeError):
-            site = ""
-        if site.startswith("/project/") or "/projects/def-hongyanz/" in site:
-            out.add(case)
-    return out
+def run_machine(run: dict) -> str:
+    """oldbox / nibi / killarney for one run: addendum_analysis.machine_of on its config.json. (Until 2026-10-01
+    this tested for a /project/ venv path, which Killarney's /project/6101837 also matches: its runs read "nibi".)"""
+    try:
+        cfg = json.loads((RUNS / run["_rel"] / "config.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return ""
+    return machine_of(cfg.get("timestamp_utc") or "", cfg.get("vllm", {}).get("site_packages", ""))
+
+
+def cell_machine(cell: dict[str, dict]) -> str:
+    """The machine most of a cell's cases ran on ("" for an empty cell)."""
+    machines = [run_machine(run) for run in cell.values()]
+    return max(set(machines), key=machines.count) if machines else ""
 
 
 def select_best(ds: str, method: str) -> tuple[str | None, list[dict]]:
     base = ds.removesuffix("_qwen3")
     strict = load_cell(ds, "strict", "strict", 0)
     nibiref = load_cell(ds, "strict", "strict", 0, run_root="runs/addendum/nibiref")
+    # the step-0.5 strict reference's machine: Nibi for GPT-OSS, Killarney for Qwen3 (README deviation 12)
+    ref_machine = cell_machine(nibiref) or "nibi"
     cands = []
     for alpha in GRID[method]:
         cell = load_cell(ds, method, alpha, 0)
@@ -332,13 +338,13 @@ def select_best(ds: str, method: str) -> tuple[str | None, list[dict]]:
             cands.append({"alpha": alpha, "complete": False})
             continue
         c = compare(cell, strict)
-        on_nibi = nibi_cases(cell)
-        hw = "nibi" if len(on_nibi) > len(cell) / 2 else "old_box"
-        if hw == "nibi":  # hardware-matched time ratio: Nibi cases vs the Nibi strict reference
-            sub = {k: v for k, v in cell.items() if k in on_nibi}
+        on_ref = {case for case, run in cell.items() if run_machine(run) == ref_machine}
+        hw = ref_machine if len(on_ref) > len(cell) / 2 else "old_box"
+        if hw != "old_box":  # hardware-matched time ratio: this machine's cases vs its own strict reference
+            sub = {k: v for k, v in cell.items() if k in on_ref}
             t = compare(sub, nibiref)
             c["time_ratio"] = t.get("time_ratio")
-            c["time_ratio_basis"] = f"nibiref, {t.get('n_pairs', 0)} Nibi cases"
+            c["time_ratio_basis"] = f"nibiref, {t.get('n_pairs', 0)} {ref_machine.capitalize()} cases"
         else:
             c["time_ratio_basis"] = "campaign strict seed 0 (old box)"
         c.update({"alpha": alpha, "complete": True, "hardware": hw})
@@ -382,11 +388,20 @@ def cmd_best(args) -> int:
                     for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict", "n_pairs"):
                         row[f"s0_{k}"] = s0.get(k)
                     row["s0_hardware"], row["s0_time_ratio_basis"] = s0["hardware"], s0["time_ratio_basis"]
-                    s1 = compare(load_cell(ds, method, best, 1), load_cell(ds, "strict", "strict", 1))
+                    s1_arm, s1_ref = load_cell(ds, method, best, 1), load_cell(ds, "strict", "strict", 1)
+                    arm_m, ref_m = cell_machine(s1_arm), cell_machine(s1_ref)
+                    if arm_m and ref_m and arm_m != ref_m:
+                        # step 5.2 adds a strict seed 1 on the arm's machine under runs/addendum/nibiref (task #11)
+                        alt = load_cell(ds, "strict", "strict", 1, run_root="runs/addendum/nibiref")
+                        if cell_machine(alt) == arm_m:
+                            s1_ref, ref_m = alt, arm_m
+                    s1 = compare(s1_arm, s1_ref)
                     for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict", "n_pairs"):
                         row[f"s1_{k}"] = s1.get(k)
-                    # step 5.2 verdict: does the seed-0 choice hold on seed 1 (Nibi, paired with Nibi strict)?
-                    if s1.get("n_pairs") == N_CASES[base]:
+                    row["s1_hardware"], row["s1_strict_hardware"] = arm_m, ref_m
+                    # step 5.2 verdict: does the seed-0 choice hold on seed 1, paired with strict seed 1 on the same
+                    # machine? A cross-machine time ratio gives no time verdict.
+                    if s1.get("n_pairs") == N_CASES[base] and arm_m == ref_m:
                         row["s1_time_win"] = s1["time_ratio"] < 1
                         if base in GRADED:
                             row["s1_accuracy_ok"] = (None if s1["accuracy"] is None or s1["accuracy_strict"] is None

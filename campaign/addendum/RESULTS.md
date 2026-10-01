@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 19:59 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 20:03 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -598,7 +598,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 ## Step 5: alpha grid completion and best-setting validation
 
-Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, method). Chosen alpha = the grid alpha with the lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time ratios of Nibi-run cells (the step-5.1 additions) are taken against the Nibi strict reference (`s0_time_ratio_basis`). Seed 1 = the step-5.2 validation run on Nibi, paired with Nibi strict seed 1 ('-' = not complete yet); validated = seed-1 time ratio < 1 and the same accuracy rule holds on seed 1.
+Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, method). Chosen alpha = the grid alpha with the lowest seed-0 time ratio among those whose accuracy is within 2 points of strict (mtbench, ungraded: rounds ratio < 1); `chosen_alpha_by_rounds_ratio` = the same choice made on the rounds ratio. Time ratios of the step-5.1 additions are taken against the step-0.5 strict reference on the same machine (Nibi for GPT-OSS, Killarney for Qwen3; `s0_time_ratio_basis`, `hardware_s0_*`). Seed 1 = the step-5.2 validation run, paired with strict seed 1 on the same machine (`s1_hardware`, `s1_strict_hardware`; '-' = not complete yet); validated = seed-1 time ratio < 1 and the same accuracy rule holds on seed 1.
 
 | target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict | validated |
 |---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|---|
