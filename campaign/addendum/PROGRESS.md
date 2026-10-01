@@ -663,3 +663,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:13:52Z step 6 main aime24_qwen3 mentored_dec alpha=0.75 seed=3: done, 30/30 cases (jobs 5819350 5819351, 0.69 GPU-h)
 - 2026-10-01T14:13:52Z step 6 main aime24_qwen3 cactus alpha=0.35 seed=3: done, 30/30 cases (jobs 5819354 5819355, 0.54 GPU-h)
 - 2026-10-01T14:13:52Z step 6 main aime24_qwen3 r_fuzzy alpha=0.25 seed=3: done, 30/30 cases (jobs 5819351, 1.07 GPU-h)
+- 2026-10-01T14:13:53Z step 6 main aime24_qwen3 spec_casc_tok alpha=0.8 seed=3: done, 30/30 cases (jobs 5819355, 0.86 GPU-h)
