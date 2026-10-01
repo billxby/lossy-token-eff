@@ -735,3 +735,9 @@ for what is done; this file records every action and failure.
 - 2026-10-01T16:09:32Z lane K3: pulled 31 new run dir(s) into runs/
 - 2026-10-01T16:09:53Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
 - 2026-10-01T16:13:28Z Node sharing verified on kn176 (K2 5837981 + K3 5839003 side by side): separate per-job /tmp bind mounts; spec-casc-tok knob 0.8 in K2 vs -inf in K3; no failed items. Run dirs carry no node id -> final tables will map nodes from lanes/<lane>_status.jsonl and flag mixed-node time ratios (README deviation 15 caveat).
+- 2026-10-01T16:28:42Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T16:28:42Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T16:28:46Z lane K1: pulled 115 new run dir(s) into runs/
+- 2026-10-01T16:28:49Z lane K2: pulled 30 new run dir(s) into runs/
+- 2026-10-01T16:28:51Z lane K3: pulled 34 new run dir(s) into runs/
+- 2026-10-01T16:28:52Z lane K4: pulled 75 new run dir(s) into runs/
