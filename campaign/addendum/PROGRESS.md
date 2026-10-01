@@ -682,3 +682,6 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:20:51Z grading: pulled 37283 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-10-01T14:25:51Z grading: pulled 39765 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-10-01T14:26:50Z JOURNAL: steps 2 and 6 (Qwen3 halves) and 4.2 written up; grades 39765 verdicts.
+- 2026-10-01T14:49:11Z lane K1: pulled 51 new run dir(s) into runs/
+- 2026-10-01T14:49:17Z lane K2: pulled 61 new run dir(s) into runs/
+- 2026-10-01T14:49:25Z step 4.3 lmdraft livecodebench_qwen3 strict alpha=strict seed=0: done, 90/90 cases (jobs 5821776 5837975, 0.12 GPU-h)

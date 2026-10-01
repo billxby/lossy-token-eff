@@ -151,9 +151,9 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 4.3,lmdraft,qwen3-8b,gsm8k_qwen3,mentored_dec,0.75,0,runs/addendum/lmdraft,150,150,done,5821919,0.00,0.30,lane=K2
 4.3,lmdraft,qwen3-8b,gsm8k_qwen3,cactus,0.35,0,runs/addendum/lmdraft,150,150,done,5821776,0.00,0.28,lane=K1
 4.3,lmdraft,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.8,0,runs/addendum/lmdraft,150,150,done,5821919,0.00,0.33,lane=K2
-4.3,lmdraft,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/lmdraft,90,78,running,5821776,0.18,,lane=K1
-4.3,lmdraft,qwen3-8b,livecodebench_qwen3,mentored_dec,0.75,0,runs/addendum/lmdraft,90,16,running,5821919,0.70,,lane=K2
-4.3,lmdraft,qwen3-8b,livecodebench_qwen3,cactus,0.35,0,runs/addendum/lmdraft,90,0,queued,,0.84,,lane=K1
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/lmdraft,90,90,done,5821776 5837975,0.00,0.12,lane=K1
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,mentored_dec,0.75,0,runs/addendum/lmdraft,90,77,running,5821919 5837981,0.19,,lane=K2
+4.3,lmdraft,qwen3-8b,livecodebench_qwen3,cactus,0.35,0,runs/addendum/lmdraft,90,39,running,5837975,0.51,,lane=K1
 4.3,lmdraft,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,0,runs/addendum/lmdraft,90,0,queued,,0.84,,lane=K1
 5.1,main,gpt-oss-20b,gsm8k,mentored_dec,0.55,0,runs,150,150,done,22880871,0.00,0.12,lane=A
 5.1,main,gpt-oss-20b,gsm8k,spec_casc_tok,0.35,0,runs,150,150,done,22880871,0.00,0.08,lane=A

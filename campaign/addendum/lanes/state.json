@@ -363,13 +363,13 @@
         },
         {
           "id": "5821776",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T02:31:02Z",
           "dependency": "5819352"
         },
         {
           "id": "5837975",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-01T14:14:25Z",
           "dependency": "5821776"
         },
@@ -473,13 +473,13 @@
         },
         {
           "id": "5821919",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T02:50:53Z",
           "dependency": "5819356"
         },
         {
           "id": "5837981",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-01T14:14:30Z",
           "dependency": "5821919"
         },
@@ -536,6 +536,14 @@
         "speedbench|speedbench_qwen3|r_fuzzy|0.25|0",
         "speedbench|speedbench_qwen3|spec_casc_tok|0.8|0"
       ]
+    },
+    "K3": {
+      "jobs": [],
+      "rows": []
+    },
+    "K4": {
+      "jobs": [],
+      "rows": []
     }
   },
   "blocked_qwen3": false,
