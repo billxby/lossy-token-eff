@@ -637,3 +637,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T04:40:20Z lane K1: pulled 10 new run dir(s) into runs/
 - 2026-10-01T04:40:21Z lane K2: pulled 7 new run dir(s) into runs/
 - 2026-10-01T04:40:27Z step 2.1 main livecodebench_qwen3 spec_casc_tok alpha=0.8 seed=2: done, 90/90 cases (jobs 22982359, 0.90 GPU-h)
+- 2026-10-01T04:40:28Z step 2.2 main aime24_qwen3 r_fuzzy alpha=0.25 seed=2: done, 30/30 cases (jobs 5819354, 1.00 GPU-h)
