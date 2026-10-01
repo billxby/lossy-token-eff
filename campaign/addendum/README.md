@@ -216,5 +216,19 @@ alpha grows).
    whose cgroup path names this job (`/job_<SLURM_JOB_ID>/`; checked in a
    dry run inside K1's job, which found exactly its own server) -- its
    nvidia-smi step already saw only the job's GPU, and outside Slurm it
-   behaves as before. Ports differ per job. All pending Killarney jobs had
+   behaves as before. Ports differ per job (`30000 + SLURM_JOB_ID % 20000`
+   in `cascade/cluster/addendum_lane.sbatch`). All pending Killarney jobs had
    their ExcNodeList cleared; new ones are submitted without --exclude.
+   Verified at 16:10Z with K2 (job 5837981, lmdraft spec_casc_tok 0.8) and K3
+   (job 5839003, strict) running side by side on kn176: their /tmp are
+   separate bind mounts (`/slurm/tmpfs/<jobid>/.<jobid>/_tmp`), the same knob
+   file `/tmp/lossy-token-eff-spec-casc-tok-alpha-<uid>` read 0.8 in K2 and
+   -inf in K3, K3's knob writes (15:44:18Z) left K2's files untouched
+   (15:40:42Z), and neither lane logged a failed or quarantined item.
+   Caveat (extends deviation 13): a lane's next 3 h job may now land on any
+   of the ten H100 nodes, so a comparison group is more likely to span nodes.
+   Run directories do not record their node; the lane journals do (host per
+   item), and the poll archives them in `lanes/<lane>_status.jsonl`. The
+   final tables use them to name each Killarney arm's node(s) and to flag
+   time ratios whose arm and reference ran on different nodes; rounds
+   ratios are unaffected.

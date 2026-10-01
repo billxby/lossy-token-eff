@@ -734,3 +734,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T16:09:31Z lane K2: pulled 27 new run dir(s) into runs/
 - 2026-10-01T16:09:32Z lane K3: pulled 31 new run dir(s) into runs/
 - 2026-10-01T16:09:53Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T16:13:28Z Node sharing verified on kn176 (K2 5837981 + K3 5839003 side by side): separate per-job /tmp bind mounts; spec-casc-tok knob 0.8 in K2 vs -inf in K3; no failed items. Run dirs carry no node id -> final tables will map nodes from lanes/<lane>_status.jsonl and flag mixed-node time ratios (README deviation 15 caveat).
