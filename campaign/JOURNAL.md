@@ -2669,3 +2669,31 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   mentored_dec 0.75 both ok, and the server log shows `[MENTORED-DEC PATCH V2
   (re-added)] alpha=0.75` in the engine process. All 141 Qwen3 rows (plus
   Qwen3's own SPEED-Bench pilot) queued over lanes A and B, ~37 GPU-h each.
+
+- **2026-10-01, addendum step 2 (Qwen3 half) done** (2.1 on Nibi lanes A/B,
+  jobs 22948693, 22948719, 22982359; 2.2 AIME24 seeds 1-2 on Killarney K1/K2).
+  lambda replicates across seeds 0-2 for every cell (sd <= 0.10; e.g.
+  humaneval spec_casc_opt 1.72 / 1.60 / 1.67, gsm8k 1.33 / 1.29 / 1.32), and
+  so do the accuracy collapses: humaneval r_fuzzy 0.16 / 0.13 / 0.12 and
+  livecodebench r_fuzzy 0.02 / 0.00 / 0.02 against strict 0.83-0.84 and
+  0.69-0.71; spec_casc_opt 0.48-0.51 on gsm8k and humaneval. As for GPT-OSS,
+  the time ratio is lower on the Nibi seeds than on the old-box seed 0
+  (humaneval r_fuzzy 1.41 vs 1.22 / 1.19, mtbench cactus 0.75 vs 0.62 /
+  0.64). `campaign/addendum/seeds/summary.csv`.
+
+- **2026-10-01, addendum step 6 (Qwen3 half) done** (Killarney K1/K2):
+  AIME24 seeds 3-4 for strict and the five rules (1-2 from step 2.2).
+  Accuracy over seeds 0-4 (`campaign/addendum/aime24_repeats.csv`): strict
+  0.72 [0.57, 0.85], mentored_dec 0.72, spec_casc_tok 0.73 -- no loss, unlike
+  GPT-OSS's ~10 points -- while r_fuzzy 0.35, spec_casc_opt 0.32 and cactus
+  0.21 lose 37-51 points on every seed.
+
+- **2026-10-01, addendum step 4.2 done** (Qwen3-8B at its recommended sampler,
+  T 0.6 / top-p 0.95 / top-k 20, gsm8k + livecodebench, seed 0, Killarney):
+  the phenomenon is not a T = 1.0 artifact. spec_casc_opt still inflates
+  (lambda 1.52 / 1.48) and now caps out on 87% / 99% of cases, accuracy 0.20
+  / 0.00 vs strict 0.79 / 0.67; r_fuzzy falls to 0.64 / 0.10. mentored_dec,
+  cactus and spec_casc_tok stay at lambda 1.00-1.04 with accuracy at or above
+  strict. `campaign/addendum/tables/qwenT0.6__*.csv`; time ratios of the K2
+  arms carry a ~11% node penalty (README deviation 13), rounds ratios
+  0.75-0.97.

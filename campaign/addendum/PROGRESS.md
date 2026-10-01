@@ -679,3 +679,6 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:16:46Z grading: uploaded 2482 run dir(s) to the Nibi mirror, submitted CPU grading job 23059383
 - 2026-10-01T14:16:51Z grading: pulled 37283 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-10-01T14:19:47Z Qwen3 rows regrouped so each comparison (a strict reference and the arms timed against it) runs on one Killarney lane: lmdraft:livecodebench_qwen3 -> K1; ref:aime24_qwen3 -> K1; ref:gsm8k_qwen3 -> K1; ref:humaneval_qwen3 -> K2; ref:livecodebench_qwen3 -> K1; ref:longbench_v2_qwen3 -> K2; ref:mtbench_qwen3 -> K1; speedbench:speedbench_qwen3 -> K2 (est. K1 15.7 GPU-h, K2 15.6 GPU-h). Step 4.2 had strict on K1 (kn173, 9.5 ms/round) and cactus/spec_casc_opt/spec_casc_tok on K2 (kn176, 10.5-10.8 ms/round).
+- 2026-10-01T14:20:51Z grading: pulled 37283 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-01T14:25:51Z grading: pulled 39765 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-01T14:26:50Z JOURNAL: steps 2 and 6 (Qwen3 halves) and 4.2 written up; grades 39765 verdicts.

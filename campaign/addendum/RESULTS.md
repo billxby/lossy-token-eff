@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 14:17 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 14:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -426,8 +426,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | qwen3-8b | gsm8k | spec_casc_opt | 0.05 | 1.33 | 1.29 | 1.32 | - | - | 0.02 | 1.31 (0.02) | 1.12 | 1.05 | 1.06 | - | - | 0.04 | 1.08 (0.04) | 49% | 49% | 49% | - | - | 0% |
 | qwen3-8b | gsm8k | r_fuzzy | 0.25 | 0.95 | 1.01 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.81 | 0.81 | 0.85 | - | - | 0.02 | 0.82 (0.02) | 55% | 57% | 62% | - | - | 3% |
 | qwen3-8b | gsm8k | spec_casc_tok | 0.8 | 0.99 | 1.00 | 1.01 | - | - | 0.01 | 1.00 (0.01) | 0.96 | 0.97 | 0.97 | - | - | 0.01 | 0.97 (0.01) | 79% | 82% | 77% | - | - | 3% |
-| qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | 1.40 | 1.50 | 1.56 | 1.40 | 0.07 | 1.46 (0.07) | 1.14 | 1.08 | 1.22 | 1.35 | 0.97 | 0.15 | 1.15 (0.15) | 30% | 37% | 30% | - | - | 4% |
-| qwen3-8b | aime24 | r_fuzzy | 0.25 | 1.29 | 1.36 | 1.23 | 1.44 | 1.17 | 0.11 | 1.30 (0.11) | 1.18 | 1.26 | 1.23 | 1.41 | 1.08 | 0.12 | 1.23 (0.12) | 40% | 33% | 40% | - | - | 4% |
+| qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | 1.40 | 1.50 | 1.56 | 1.40 | 0.07 | 1.46 (0.07) | 1.14 | 1.08 | 1.22 | 1.35 | 0.97 | 0.15 | 1.15 (0.15) | 30% | 37% | 30% | 30% | 33% | 3% |
+| qwen3-8b | aime24 | r_fuzzy | 0.25 | 1.29 | 1.36 | 1.23 | 1.44 | 1.17 | 0.11 | 1.30 (0.11) | 1.18 | 1.26 | 1.23 | 1.41 | 1.08 | 0.12 | 1.23 (0.12) | 40% | 33% | 40% | 37% | 27% | 6% |
 | qwen3-8b | humaneval | mentored_dec | 0.75 | 1.08 | 1.05 | 1.08 | - | - | 0.02 | 1.07 (0.02) | 1.02 | 0.97 | 0.99 | - | - | 0.02 | 0.99 (0.02) | 85% | 79% | 81% | - | - | 3% |
 | qwen3-8b | humaneval | cactus | 0.35 | 1.14 | 1.09 | 1.08 | - | - | 0.03 | 1.11 (0.03) | 1.01 | 0.90 | 0.90 | - | - | 0.06 | 0.94 (0.06) | 75% | 79% | 77% | - | - | 2% |
 | qwen3-8b | humaneval | spec_casc_opt | 0.05 | 1.72 | 1.60 | 1.67 | - | - | 0.06 | 1.66 (0.06) | 1.46 | 1.30 | 1.33 | - | - | 0.08 | 1.36 (0.08) | 49% | 48% | 51% | - | - | 1% |
@@ -544,7 +544,25 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 ## Step 4.2: Qwen3 at its recommended sampler
 
-Pending.
+`campaign/addendum/tables/qwenT0.6__gsm8k_qwen3.csv`:
+
+| condition | dataset | method | alpha | n_pairs | l_bar | l_bar_strict | mean_tokens | mean_tokens_strict | lambda | rounds_ratio | time_ratio | accuracy | accuracy_strict | capout_rate | capout_rate_strict | lambda_ci_lo | lambda_ci_hi | rounds_ratio_ci_lo | rounds_ratio_ci_hi | time_ratio_ci_lo | time_ratio_ci_hi |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| qwenT0.6 | gsm8k_qwen3 | mentored_dec | 0.750 | 150.000 | 1.853 | 1.684 | 1288.870 | 1279.090 | 1.008 | 0.942 | 0.942 | 0.813 | 0.793 | 0.233 | 0.247 | 0.975 | 1.043 | 0.910 | 0.976 | 0.911 | 0.977 |
+| qwenT0.6 | gsm8k_qwen3 | cactus | 0.350 | 150.000 | 1.808 | 1.684 | 1289.150 | 1279.090 | 1.008 | 0.958 | 1.068 | 0.813 | 0.793 | 0.227 | 0.247 | 0.973 | 1.046 | 0.923 | 0.996 | 1.029 | 1.111 |
+| qwenT0.6 | gsm8k_qwen3 | spec_casc_opt | 0.050 | 150.000 | 3.336 | 1.684 | 1940.130 | 1279.090 | 1.517 | 0.953 | 1.084 | 0.200 | 0.793 | 0.867 | 0.247 | 1.425 | 1.622 | 0.894 | 1.019 | 1.018 | 1.160 |
+| qwenT0.6 | gsm8k_qwen3 | r_fuzzy | 0.250 | 150.000 | 2.051 | 1.684 | 1289.350 | 1279.090 | 1.008 | 0.885 | 0.887 | 0.640 | 0.793 | 0.387 | 0.247 | 0.921 | 1.092 | 0.810 | 0.961 | 0.812 | 0.963 |
+| qwenT0.6 | gsm8k_qwen3 | spec_casc_tok | 0.800 | 150.000 | 1.804 | 1.684 | 1285.690 | 1279.090 | 1.005 | 0.957 | 1.071 | 0.780 | 0.793 | 0.260 | 0.247 | 0.970 | 1.042 | 0.923 | 0.995 | 1.032 | 1.113 |
+
+`campaign/addendum/tables/qwenT0.6__livecodebench_qwen3.csv`:
+
+| condition | dataset | method | alpha | n_pairs | l_bar | l_bar_strict | mean_tokens | mean_tokens_strict | lambda | rounds_ratio | time_ratio | accuracy | accuracy_strict | capout_rate | capout_rate_strict | lambda_ci_lo | lambda_ci_hi | rounds_ratio_ci_lo | rounds_ratio_ci_hi | time_ratio_ci_lo | time_ratio_ci_hi |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| qwenT0.6 | livecodebench_qwen3 | mentored_dec | 0.750 | 90.000 | 1.574 | 1.359 | 8364.690 | 8006.600 | 1.045 | 0.943 | 0.944 | 0.678 | 0.667 | 0.344 | 0.333 | 0.998 | 1.094 | 0.904 | 0.986 | 0.904 | 0.989 |
+| qwenT0.6 | livecodebench_qwen3 | cactus | 0.350 | 90.000 | 1.529 | 1.359 | 8099.410 | 8006.600 | 1.012 | 0.932 | 1.033 | 0.722 | 0.667 | 0.289 | 0.333 | 0.979 | 1.045 | 0.900 | 0.966 | 0.996 | 1.072 |
+| qwenT0.6 | livecodebench_qwen3 | spec_casc_opt | 0.050 | 90.000 | 3.731 | 1.359 | 11887.500 | 8006.600 | 1.485 | 0.746 | 0.833 | 0.000 | 0.667 | 0.989 | 0.333 | 1.359 | 1.633 | 0.675 | 0.831 | 0.753 | 0.930 |
+| qwenT0.6 | livecodebench_qwen3 | r_fuzzy | 0.250 | 90.000 | 1.698 | 1.359 | 8681.840 | 8006.600 | 1.084 | 0.972 | 0.966 | 0.100 | 0.667 | 0.522 | 0.333 | 0.979 | 1.195 | 0.873 | 1.074 | 0.868 | 1.067 |
+| qwenT0.6 | livecodebench_qwen3 | spec_casc_tok | 0.800 | 90.000 | 1.508 | 1.359 | 8150.600 | 8006.600 | 1.018 | 0.946 | 1.056 | 0.678 | 0.667 | 0.322 | 0.333 | 0.980 | 1.060 | 0.909 | 0.988 | 1.013 | 1.102 |
 
 ## Step 4.3: standalone LM drafter (Qwen3-0.6B)
 
@@ -593,12 +611,12 @@ Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); se
 | gpt-oss-20b | spec_casc_opt | 0.05 | 37% | 33% | 43% | 43% | 40% | 39.3% [25.3%, 53.3%] | 0.043 | 0 1 2 3 4 |
 | gpt-oss-20b | r_fuzzy | 0.25 | 50% | 43% | 53% | 50% | 43% | 48.0% [33.3%, 62.7%] | 0.045 | 0 1 2 3 4 |
 | gpt-oss-20b | spec_casc_tok | 0.8 | 70% | 73% | 67% | 60% | 73% | 68.7% [54.0%, 82.0%] | 0.056 | 0 1 2 3 4 |
-| qwen3-8b | strict | strict | 70% | 77% | 80% | - | - | 75.6% [60.0%, 88.9%] | 0.051 | 0 1 2 |
-| qwen3-8b | mentored_dec | 0.75 | 73% | 70% | 73% | - | - | 72.2% [56.7%, 86.7%] | 0.019 | 0 1 2 |
-| qwen3-8b | cactus | 0.35 | 23% | 23% | 23% | - | - | 23.3% [10.0%, 38.9%] | 0.000 | 0 1 2 |
-| qwen3-8b | spec_casc_opt | 0.05 | 30% | 37% | 30% | - | - | 32.2% [18.9%, 46.7%] | 0.038 | 0 1 2 |
-| qwen3-8b | r_fuzzy | 0.25 | 40% | 33% | 40% | - | - | 37.8% [22.2%, 53.3%] | 0.038 | 0 1 2 |
-| qwen3-8b | spec_casc_tok | 0.8 | 70% | 63% | 70% | - | - | 67.8% [52.2%, 82.2%] | 0.038 | 0 1 2 |
+| qwen3-8b | strict | strict | 70% | 77% | 80% | 63% | 70% | 72.0% [56.7%, 85.3%] | 0.065 | 0 1 2 3 4 |
+| qwen3-8b | mentored_dec | 0.75 | 73% | 70% | 73% | 73% | 70% | 72.0% [56.0%, 86.7%] | 0.018 | 0 1 2 3 4 |
+| qwen3-8b | cactus | 0.35 | 23% | 23% | 23% | 20% | 13% | 20.7% [8.7%, 34.7%] | 0.043 | 0 1 2 3 4 |
+| qwen3-8b | spec_casc_opt | 0.05 | 30% | 37% | 30% | 30% | 33% | 32.0% [19.3%, 45.3%] | 0.030 | 0 1 2 3 4 |
+| qwen3-8b | r_fuzzy | 0.25 | 40% | 33% | 40% | 37% | 27% | 35.3% [21.3%, 50.0%] | 0.056 | 0 1 2 3 4 |
+| qwen3-8b | spec_casc_tok | 0.8 | 70% | 63% | 70% | 80% | 80% | 72.7% [58.0%, 86.0%] | 0.072 | 0 1 2 3 4 |
 
 ## Step 7: SPEED-Bench qualitative split (seed 0, Nibi)
 
@@ -850,4 +868,16 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
   picked mentored_dec 0.75, the loosest and lowest-scoring cell (-0.9 vs
   strict); spec_casc_tok's pick (0.55) costs nothing. Top-up batch for the
   230 fill runs: $5.37, ended 2026-09-30 03:53Z (judge total $50.53).
+
+### Killarney: time ratios depend on the node (step 4.2)
+
+- Mean time per round, step 4.2 (Qwen3 at T 0.6, top-p 0.95, top-k 20):
+  K1 arms on kn173/kn169 -- strict 9.47 / 9.64 ms (gsm8k / livecodebench),
+  mentored_dec 9.47 / 9.65, r_fuzzy 9.55 / 9.58 -- vs K2 arms on kn176 --
+  cactus 10.48 / 10.71, spec_casc_opt 10.74 / 10.82, spec_casc_tok 10.52 /
+  10.78. Within K1 a relaxed round costs what a strict one does (as on
+  Nibi); kn176 is ~11% slower per round whatever the rule. So
+  `tables/qwenT0.6__*.csv` time ratios for cactus, spec_casc_opt and
+  spec_casc_tok (gsm8k 1.07 / 1.08 / 1.07) are inflated by the node; their
+  rounds ratios (0.96 / 0.95 / 0.96) are not. README deviation 13.
 
