@@ -425,8 +425,6 @@
         "speedbench|speedbench_qwen3|strict|strict|0",
         "speedbench|speedbench_qwen3|spec_casc_opt|0.05|0",
         "speedbench|speedbench_qwen3|mentored_dec|0.75|0",
-        "speedbench|speedbench_qwen3|cactus|0.35|0",
-        "speedbench|speedbench_qwen3|r_fuzzy|0.25|0",
         "speedbench|speedbench_qwen3|spec_casc_tok|0.8|0"
       ]
     },
@@ -524,7 +522,8 @@
         "main|mtbench_qwen3|mentored_dec|0.35|0",
         "main|mtbench_qwen3|mentored_dec|0.55|0",
         "main|mtbench_qwen3|spec_casc_tok|0.35|0",
-        "main|mtbench_qwen3|spec_casc_tok|0.55|0"
+        "main|mtbench_qwen3|spec_casc_tok|0.55|0",
+        "speedbench|speedbench_qwen3|r_fuzzy|0.25|0"
       ]
     },
     "K3": {
@@ -594,7 +593,8 @@
         "temp1.5|gsm8k_qwen3|strict|strict|0",
         "main|gsm8k_qwen3|mentored_dec|0.35|0",
         "main|gsm8k_qwen3|mentored_dec|0.55|0",
-        "main|gsm8k_qwen3|spec_casc_tok|0.35|0"
+        "main|gsm8k_qwen3|spec_casc_tok|0.35|0",
+        "speedbench|speedbench_qwen3|cactus|0.35|0"
       ]
     }
   },
