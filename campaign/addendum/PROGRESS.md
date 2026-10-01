@@ -720,3 +720,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T15:34:03Z lane K1: pulled 95 new run dir(s) into runs/
 - 2026-10-01T15:34:05Z lane K2: pulled 49 new run dir(s) into runs/
 - 2026-10-01T15:34:28Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T15:37:31Z remote/stop_server.sh now job-scoped (own_pids: cgroup /job_<id>/); pushed to K1-K4; Killarney node exclusions removed (pending jobs' ExcNodeList cleared, new jobs without --exclude). README deviation 15.

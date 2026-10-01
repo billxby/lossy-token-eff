@@ -62,19 +62,17 @@ LANES = {
     "B": {"host": "nibi", "account": "def-hongyanz_gpu", "project": NIBI_PROJECT,
           "repo": f"{NIBI_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneB", "exclude": "g[1-14]"},
     # Killarney (PAICE allocation aip-hongyanz) from 2026-09-30: the Qwen3 rows move here (README deviation 12)
-    # four disjoint H100 node sets (kn169-kn178) from 2026-10-01 14:55Z, at Bill's suggestion (README deviation 14)
+    # four lanes from 2026-10-01 14:55Z at Bill's suggestion (README deviation 14); no node sets since 15:50Z:
+    # Killarney gives every job a private /tmp (job_container/tmpfs) and remote/stop_server.sh now stops only
+    # its own job's processes, so lanes may share a node (README deviation 15)
     "K1": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
-           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff", "root": "/scratch/billxby/lossy-addendum/laneK1",
-           "exclude": "kn[172-178]"},
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff", "root": "/scratch/billxby/lossy-addendum/laneK1", "exclude": ""},
     "K2": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
-           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneK2",
-           "exclude": "kn[169-175]"},
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneK2", "exclude": ""},
     "K3": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
-           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane3", "root": "/scratch/billxby/lossy-addendum/laneK3",
-           "exclude": "kn[169-171,174-178]"},
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane3", "root": "/scratch/billxby/lossy-addendum/laneK3", "exclude": ""},
     "K4": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
-           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane4", "root": "/scratch/billxby/lossy-addendum/laneK4",
-           "exclude": "kn[169-173,176-178]"},
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane4", "root": "/scratch/billxby/lossy-addendum/laneK4", "exclude": ""},
 }
 QWEN3_LANES = ["K1", "K2", "K3", "K4"]  # where Qwen3 rows without a lane go
 MAX_CHAIN = 4          # jobs per lane queued at once (running + pending)
@@ -899,8 +897,9 @@ def cmd_submit(args: argparse.Namespace) -> int:
             cmd = (
                 f"cd {shlex.quote(info['repo'])} && mkdir -p {info['root']}/slurm && "
                 f"LANE={lane} REPO_DIR={shlex.quote(info['repo'])} LANE_ROOT={info['root']} PROJECT_DIR={info['project']} "
-                f"sbatch --parsable --job-name=add-{lane} --account={info['account']} --exclude={info['exclude']} "
-                f"--time={JOB_TIME} --output={info['root']}/slurm/%x-%j.out {dep}cascade/cluster/addendum_lane.sbatch"
+                f"sbatch --parsable --job-name=add-{lane} --account={info['account']} "
+                + (f"--exclude={info['exclude']} " if info["exclude"] else "")
+                + f"--time={JOB_TIME} --output={info['root']}/slurm/%x-%j.out {dep}cascade/cluster/addendum_lane.sbatch"
             )
             out = ssh(f"bash -lc {shlex.quote(cmd)}", host=info["host"]).stdout.decode().strip().splitlines()[-1]
             job_id = out.split(";")[0].strip()

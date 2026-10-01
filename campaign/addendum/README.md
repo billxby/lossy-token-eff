@@ -207,3 +207,14 @@ alpha grows).
    re-spread over the four lanes whole (README deviation 13): K1 Qwen3
    SPEED-Bench, K2 step-4.3 livecodebench + humaneval + longbench_v2 +
    mtbench, K3 livecodebench, K4 aime24 + gsm8k.
+15. **Killarney lanes may share a node (2026-10-01 ~15:50Z).** The disjoint
+   node sets of deviation 14 left K3/K4 (two nodes each) waiting for a GPU.
+   The two reasons for disjoint sets do not hold on Killarney once
+   `remote/stop_server.sh` is job-scoped: every job gets a private /tmp
+   (`JobContainerType=job_container/tmpfs`), so the patched sampler's /tmp
+   knob files are per job; and the stop script now signals only processes
+   whose cgroup path names this job (`/job_<SLURM_JOB_ID>/`; checked in a
+   dry run inside K1's job, which found exactly its own server) -- its
+   nvidia-smi step already saw only the job's GPU, and outside Slurm it
+   behaves as before. Ports differ per job. All pending Killarney jobs had
+   their ExcNodeList cleared; new ones are submitted without --exclude.
