@@ -654,3 +654,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:13:48Z step 4.2 qwenT0.6 livecodebench_qwen3 cactus alpha=0.35 seed=0: done, 90/90 cases (jobs 5819356 5821919, 0.81 GPU-h)
 - 2026-10-01T14:13:48Z step 4.2 qwenT0.6 livecodebench_qwen3 r_fuzzy alpha=0.25 seed=0: done, 90/90 cases (jobs 5821776, 0.86 GPU-h)
 - 2026-10-01T14:13:49Z step 4.2 qwenT0.6 livecodebench_qwen3 spec_casc_tok alpha=0.8 seed=0: done, 90/90 cases (jobs 5821919, 0.92 GPU-h)
+- 2026-10-01T14:13:49Z step 4.3 lmdraft gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5821776, 0.42 GPU-h)
