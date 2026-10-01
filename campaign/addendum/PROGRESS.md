@@ -670,3 +670,9 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:13:54Z step 6 main aime24_qwen3 cactus alpha=0.35 seed=4: done, 30/30 cases (jobs 5819351 5819352, 0.18 GPU-h)
 - 2026-10-01T14:13:55Z step 6 main aime24_qwen3 r_fuzzy alpha=0.25 seed=4: done, 30/30 cases (jobs 5819356, 1.02 GPU-h)
 - 2026-10-01T14:13:55Z step 6 main aime24_qwen3 spec_casc_tok alpha=0.8 seed=4: done, 30/30 cases (jobs 5819352, 0.71 GPU-h)
+- 2026-10-01T14:14:25Z lane K1: submitted job 5837975 (afterany:5821776); lane has 25 work items, est. 15.2 GPU-h
+- 2026-10-01T14:14:26Z lane K1: submitted job 5837976 (afterany:5837975); lane has 25 work items, est. 15.2 GPU-h
+- 2026-10-01T14:14:28Z lane K1: submitted job 5837978 (afterany:5837976); lane has 25 work items, est. 15.2 GPU-h
+- 2026-10-01T14:14:30Z lane K2: submitted job 5837981 (afterany:5821919); lane has 28 work items, est. 15.9 GPU-h
+- 2026-10-01T14:14:31Z lane K2: submitted job 5837983 (afterany:5837981); lane has 28 work items, est. 15.9 GPU-h
+- 2026-10-01T14:14:34Z lane K2: submitted job 5838004 (afterany:5837983); lane has 28 work items, est. 15.9 GPU-h
