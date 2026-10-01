@@ -1,44 +1,8 @@
 {
  "lane": "K2",
- "written": "2026-10-01T01:52:23Z",
+ "written": "2026-10-01T02:11:34Z",
  "hold_minutes": 0,
  "items": [
-  {
-   "id": "main|aime24_qwen3|r_fuzzy|0.25|1",
-   "step": "2.2",
-   "condition": "main",
-   "dataset": "aime24_qwen3",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
-   "seed": 1,
-   "cases": [
-    "case_022",
-    "case_023",
-    "case_024",
-    "case_025",
-    "case_026",
-    "case_027",
-    "case_028",
-    "case_029",
-    "case_030"
-   ],
-   "prompt_root": "prompts/aime24_qwen3",
-   "runs_subroot": "runs",
-   "max_new_tokens": 32768,
-   "model_flags": [
-    "--model-path",
-    "Qwen/Qwen3-8B",
-    "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
-    "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0
-  },
   {
    "id": "main|aime24_qwen3|spec_casc_opt|0.05|2",
    "step": "2.2",
