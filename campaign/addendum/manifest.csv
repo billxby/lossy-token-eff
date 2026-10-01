@@ -94,7 +94,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.1,main,qwen3-8b,livecodebench_qwen3,cactus,0.35,1,runs,90,90,done,22948719,0.00,0.66,lane=B
 2.1,main,qwen3-8b,livecodebench_qwen3,cactus,0.35,2,runs,90,90,done,22948693,0.00,0.68,lane=A
 2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,1,runs,90,90,done,22982359,0.00,0.51,lane=A
-2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,2,runs,90,42,running,22948693 22982359,0.37,,lane=A
+2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,2,runs,90,75,running,22948693 22982359,0.17,,lane=A
 2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,1,runs,90,0,queued,,0.64,,lane=A
 2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,2,runs,90,0,queued,,0.64,,lane=A
 0.5,nibiref,gpt-oss-20b,humaneval,strict,strict,0,runs/addendum/nibiref,150,150,done,22880871,0.00,0.14,lane=A
@@ -226,8 +226,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 6,main,qwen3-8b,aime24_qwen3,cactus,0.35,1,runs,30,30,done,5819353,0.00,0.50,lane=K2
 2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,1,runs,30,30,done,5819353,0.00,1.08,lane=K2; seeds 1-2 shared by step 6
 6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,1,runs,30,30,done,5819349,0.00,0.85,lane=K1
-2.2,main,qwen3-8b,aime24_qwen3,strict,strict,2,runs,30,14,running,5819349,0.33,,lane=K1; seeds 1-2 shared by step 6
-2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,2,runs,30,0,running,5819353,0.62,,lane=K2; seeds 1-2 shared by step 6
+2.2,main,qwen3-8b,aime24_qwen3,strict,strict,2,runs,30,23,running,5819349 5819350,0.19,,lane=K1; seeds 1-2 shared by step 6
+2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,2,runs,30,12,running,5819353,0.40,,lane=K2; seeds 1-2 shared by step 6
 6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,2,runs,30,0,queued,,0.53,,lane=K1
 6,main,qwen3-8b,aime24_qwen3,cactus,0.35,2,runs,30,0,queued,,0.39,,lane=K2
 2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,2,runs,30,0,queued,,0.64,,lane=K2; seeds 1-2 shared by step 6
