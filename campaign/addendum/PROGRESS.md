@@ -693,3 +693,7 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:51:43Z lane K2: submitted job 5838981 (afterany:5838004); lane has 17 work items, est. 15.7 GPU-h
 - 2026-10-01T14:53:08Z grading: uploaded 112 run dir(s) to the Nibi mirror, submitted CPU grading job 23061785
 - 2026-10-01T14:53:10Z grading: pulled 39765 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-01T14:53:55Z Qwen3 rows regrouped so each comparison (a strict reference and the arms timed against it) runs on one Killarney lane: lmdraft:livecodebench_qwen3 -> K2; ref:aime24_qwen3 -> K4; ref:gsm8k_qwen3 -> K4; ref:humaneval_qwen3 -> K2; ref:livecodebench_qwen3 -> K3; ref:longbench_v2_qwen3 -> K2; ref:mtbench_qwen3 -> K2; speedbench:speedbench_qwen3 -> K1 (est. K1 12.5 GPU-h, K2 5.5 GPU-h, K3 7.6 GPU-h, K4 4.8 GPU-h). Step 4.2 had strict on K1 (kn173, 9.5 ms/round) and cactus/spec_casc_opt/spec_casc_tok on K2 (kn176, 10.5-10.8 ms/round).
+- 2026-10-01T14:56:38Z lane K1: pulled 15 new run dir(s) into runs/
+- 2026-10-01T14:56:40Z lane K2: pulled 13 new run dir(s) into runs/
+- 2026-10-01T14:56:46Z step 4.3 lmdraft livecodebench_qwen3 mentored_dec alpha=0.75 seed=0: done, 90/90 cases (jobs 5821919 5837981, 0.29 GPU-h)
