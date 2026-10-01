@@ -616,3 +616,5 @@ for what is done; this file records every action and failure.
 - 2026-10-01T03:45:42Z step 2.1 main livecodebench_qwen3 spec_casc_tok alpha=0.8 seed=1: done, 90/90 cases (jobs 22982359, 0.91 GPU-h)
 - 2026-10-01T03:45:42Z step 6 main aime24_qwen3 mentored_dec alpha=0.75 seed=2: done, 30/30 cases (jobs 5819350, 0.83 GPU-h)
 - 2026-10-01T03:45:43Z step 6 main aime24_qwen3 cactus alpha=0.35 seed=2: done, 30/30 cases (jobs 5819354, 0.36 GPU-h)
+- 2026-10-01T03:46:13Z grading: uploaded 46 run dir(s) to the Nibi mirror, submitted CPU grading job 23013968
+- 2026-10-01T03:46:17Z grading: pulled 37104 verdicts into campaign/addendum/analysis/grades.csv
