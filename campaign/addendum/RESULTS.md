@@ -1,24 +1,24 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 14:53 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 15:17 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 82.9; estimated remaining, runnable rows: 30.2; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 84.0; estimated remaining, runnable rows: 29.2; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
-| 0.5 | 6 | 0 | 6 | 0 | 0 |
+| 0.5 | 6 | 1 | 5 | 0 | 0 |
 | 2.1 | 96 | 0 | 0 | 0 | 0 |
 | 2.2 | 26 | 0 | 0 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
-| 4.3 | 5 | 2 | 1 | 0 | 0 |
+| 4.3 | 7 | 0 | 1 | 0 | 0 |
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
-| 7 | 0 | 0 | 6 | 0 | 8 |
+| 7 | 0 | 1 | 5 | 0 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -578,8 +578,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | condition | dataset | method | alpha | n_pairs | l_bar | l_bar_strict | mean_tokens | mean_tokens_strict | lambda | rounds_ratio | time_ratio | accuracy | accuracy_strict | capout_rate | capout_rate_strict | lambda_ci_lo | lambda_ci_hi | rounds_ratio_ci_lo | rounds_ratio_ci_hi | time_ratio_ci_lo | time_ratio_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 77.000 | 3.904 | 3.015 | 7435.040 | 7941.310 | 0.936 | 0.746 | 0.724 | - | 0.753 | 0.260 | 0.247 | 0.897 | 0.977 | 0.717 | 0.778 | 0.694 | 0.755 |
-| lmdraft | livecodebench_qwen3 | cactus | 0.350 | 39.000 | 4.320 | 3.015 | 7538.230 | 8010.540 | 0.941 | 0.690 | 0.675 | - | 0.744 | 0.256 | 0.256 | 0.892 | 0.992 | 0.657 | 0.726 | 0.641 | 0.711 |
+| lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 90.000 | 3.899 | 3.014 | 7435.800 | 8076.410 | 0.921 | 0.735 | 0.713 | - | - | 0.267 | 0.289 | 0.883 | 0.959 | 0.709 | 0.764 | 0.687 | 0.741 |
+| lmdraft | livecodebench_qwen3 | cactus | 0.350 | 90.000 | 4.312 | 3.014 | 7649.500 | 8076.410 | 0.947 | 0.695 | 0.683 | - | - | 0.244 | 0.289 | 0.908 | 0.988 | 0.668 | 0.725 | 0.656 | 0.713 |
 | lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 0.000 | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Step 5: alpha grid completion and best-setting validation

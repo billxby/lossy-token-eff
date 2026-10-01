@@ -710,3 +710,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T15:16:30Z lane K1: pulled 3 new run dir(s) into runs/
 - 2026-10-01T15:16:33Z lane K2: pulled 4 new run dir(s) into runs/
 - 2026-10-01T15:16:39Z step 4.3 lmdraft livecodebench_qwen3 cactus alpha=0.35 seed=0: done, 90/90 cases (jobs 5837975, 0.84 GPU-h)
+- 2026-10-01T15:16:52Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
