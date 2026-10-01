@@ -381,13 +381,13 @@
         },
         {
           "id": "5837978",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:14:28Z",
           "dependency": "5837976"
         },
         {
           "id": "5838962",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-01T14:51:42Z",
           "dependency": "5837978"
         },
@@ -474,13 +474,13 @@
         },
         {
           "id": "5838004",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:14:34Z",
           "dependency": "5837983"
         },
         {
           "id": "5838981",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-01T14:51:43Z",
           "dependency": "5838004"
         }
