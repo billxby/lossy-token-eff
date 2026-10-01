@@ -96,7 +96,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,1,runs,90,90,done,22982359,0.00,0.51,lane=A
 2.1,main,qwen3-8b,livecodebench_qwen3,r_fuzzy,0.25,2,runs,90,90,done,22948693 22982359,0.00,0.42,lane=A
 2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,1,runs,90,90,done,22982359,0.00,0.91,lane=A
-2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,2,runs,90,52,running,22982359,0.31,,lane=A
+2.1,main,qwen3-8b,livecodebench_qwen3,spec_casc_tok,0.8,2,runs,90,84,running,22982359,0.11,,lane=A
 0.5,nibiref,gpt-oss-20b,humaneval,strict,strict,0,runs/addendum/nibiref,150,150,done,22880871,0.00,0.14,lane=A
 0.5,nibiref,gpt-oss-20b,mtbench,strict,strict,0,runs/addendum/nibiref,80,80,done,22880871,0.00,0.11,lane=A
 0.5,nibiref,gpt-oss-20b,longbench_v2,strict,strict,0,runs/addendum/nibiref,150,150,done,22880871,0.00,0.24,lane=A
@@ -230,9 +230,9 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,2,runs,30,30,done,5819353 5819354,0.00,0.56,lane=K2; seeds 1-2 shared by step 6
 6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,2,runs,30,30,done,5819350,0.00,0.83,lane=K1
 6,main,qwen3-8b,aime24_qwen3,cactus,0.35,2,runs,30,30,done,5819354,0.00,0.36,lane=K2
-2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,2,runs,30,15,running,5819354,0.36,,lane=K2; seeds 1-2 shared by step 6
-6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,2,runs,30,20,running,5819350,0.22,,lane=K1
-6,main,qwen3-8b,aime24_qwen3,strict,strict,3,runs,30,0,queued,,0.55,,lane=K1
+2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,2,runs,30,25,running,5819354,0.17,,lane=K2; seeds 1-2 shared by step 6
+6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,2,runs,30,30,done,5819350,0.00,0.86,lane=K1
+6,main,qwen3-8b,aime24_qwen3,strict,strict,3,runs,30,0,running,5819350,0.55,,lane=K1
 6,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,3,runs,30,0,queued,,0.62,,lane=K2
 6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,3,runs,30,0,queued,,0.53,,lane=K1
 6,main,qwen3-8b,aime24_qwen3,cactus,0.35,3,runs,30,0,queued,,0.39,,lane=K2
