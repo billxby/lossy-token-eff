@@ -555,3 +555,5 @@ for what is done; this file records every action and failure.
 - 2026-10-01T00:14:13Z Nibi: moved lane B's 6 open row(s) to lane A (speedbench_pilot|speedbench|strict|strict|0, speedbench|speedbench|strict|strict|0, speedbench|speedbench|spec_casc_opt|0.05|0, speedbench|speedbench|mentored_dec|0.75|0, main|livecodebench_qwen3|r_fuzzy|0.25|1, main|livecodebench_qwen3|spec_casc_tok|0.8|1); lane B's pending job cancelled, so at most three lane jobs run at once (K1, K2, A)
 - 2026-10-01T00:31:50Z lane K1: pulled 13 new run dir(s) into runs/
 - 2026-10-01T00:31:50Z lane K2: pulled 11 new run dir(s) into runs/
+- 2026-10-01T00:32:33Z grading: uploaded 24 run dir(s) to the Nibi mirror, submitted CPU grading job 23002271
+- 2026-10-01T00:32:35Z grading: pulled 36681 verdicts into campaign/addendum/analysis/grades.csv

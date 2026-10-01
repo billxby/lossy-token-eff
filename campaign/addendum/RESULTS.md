@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 00:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 00:32 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 55.5; estimated remaining, runnable rows: 52.2; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 55.5; estimated remaining, runnable rows: 52.7; blocked rows: 0.8.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -18,7 +18,7 @@ Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum 
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 12 | 1 | 17 | 0 | 0 |
-| 7 | 0 | 0 | 6 | 0 | 8 |
+| 7 | 0 | 0 | 6 | 4 | 4 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -593,7 +593,7 @@ Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); se
 | gpt-oss-20b | spec_casc_opt | 0.05 | 37% | 33% | 43% | 43% | 40% | 39.3% [25.3%, 53.3%] | 0.043 | 0 1 2 3 4 |
 | gpt-oss-20b | r_fuzzy | 0.25 | 50% | 43% | 53% | 50% | 43% | 48.0% [33.3%, 62.7%] | 0.045 | 0 1 2 3 4 |
 | gpt-oss-20b | spec_casc_tok | 0.8 | 70% | 73% | 67% | 60% | 73% | 68.7% [54.0%, 82.0%] | 0.056 | 0 1 2 3 4 |
-| qwen3-8b | strict | strict | 70% | - | - | - | - | 70.0% [53.3%, 86.7%] | - | 0 |
+| qwen3-8b | strict | strict | 70% | 77% | - | - | - | 73.3% [56.7%, 88.3%] | 0.047 | 0 1 |
 | qwen3-8b | mentored_dec | 0.75 | 73% | - | - | - | - | 73.3% [56.7%, 86.7%] | - | 0 |
 | qwen3-8b | cactus | 0.35 | 23% | - | - | - | - | 23.3% [10.0%, 40.0%] | - | 0 |
 | qwen3-8b | spec_casc_opt | 0.05 | 30% | - | - | - | - | 30.0% [13.3%, 46.7%] | - | 0 |
