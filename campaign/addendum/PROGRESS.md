@@ -685,3 +685,9 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:49:11Z lane K1: pulled 51 new run dir(s) into runs/
 - 2026-10-01T14:49:17Z lane K2: pulled 61 new run dir(s) into runs/
 - 2026-10-01T14:49:25Z step 4.3 lmdraft livecodebench_qwen3 strict alpha=strict seed=0: done, 90/90 cases (jobs 5821776 5837975, 0.12 GPU-h)
+- 2026-10-01T14:49:42Z lane K3: synced prompts/speedbench (7.1 MB tar) to the lane repo
+- 2026-10-01T14:49:56Z lane K4: synced prompts/speedbench (7.1 MB tar) to the lane repo
+- 2026-10-01T14:50:11Z lane K3: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
+- 2026-10-01T14:50:24Z lane K4: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
+- 2026-10-01T14:51:42Z lane K1: submitted job 5838962 (afterany:5837978); lane has 35 work items, est. 14.5 GPU-h
+- 2026-10-01T14:51:43Z lane K2: submitted job 5838981 (afterany:5838004); lane has 17 work items, est. 15.7 GPU-h

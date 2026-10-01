@@ -384,6 +384,12 @@
           "state": "PENDING",
           "submitted": "2026-10-01T14:14:28Z",
           "dependency": "5837976"
+        },
+        {
+          "id": "5838962",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:51:42Z",
+          "dependency": "5837978"
         }
       ],
       "rows": [
@@ -494,6 +500,12 @@
           "state": "PENDING",
           "submitted": "2026-10-01T14:14:34Z",
           "dependency": "5837983"
+        },
+        {
+          "id": "5838981",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:51:43Z",
+          "dependency": "5838004"
         }
       ],
       "rows": [
@@ -729,7 +741,11 @@
     "K1:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",
     "K2:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",
     "K1:prompts/speedbench_qwen3": "b91d709c23ae7f405861b954b66e3ed9e9ffd932976b62ac6f724d7ac3015638",
-    "K2:prompts/speedbench_qwen3": "b91d709c23ae7f405861b954b66e3ed9e9ffd932976b62ac6f724d7ac3015638"
+    "K2:prompts/speedbench_qwen3": "b91d709c23ae7f405861b954b66e3ed9e9ffd932976b62ac6f724d7ac3015638",
+    "K3:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",
+    "K4:prompts/speedbench": "dd97ea5c400ceaa680a79716e7a5ae8b9975a03ff9b6a3a2e0e4bca41e8f8077",
+    "K3:prompts/speedbench_qwen3": "b91d709c23ae7f405861b954b66e3ed9e9ffd932976b62ac6f724d7ac3015638",
+    "K4:prompts/speedbench_qwen3": "b91d709c23ae7f405861b954b66e3ed9e9ffd932976b62ac6f724d7ac3015638"
   },
   "extra_items": {},
   "speedbench_qwen3": {
