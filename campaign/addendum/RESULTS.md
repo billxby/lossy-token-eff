@@ -1,14 +1,14 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 16:10 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 16:29 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 84.7; estimated remaining, runnable rows: 27.8; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 84.7; estimated remaining, runnable rows: 26.9; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
-| 0.5 | 7 | 1 | 4 | 0 | 0 |
+| 0.5 | 7 | 2 | 3 | 0 | 0 |
 | 2.1 | 96 | 0 | 0 | 0 | 0 |
 | 2.2 | 26 | 0 | 0 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
@@ -490,26 +490,27 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | n_draft | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 6.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.487 | 1.542 | 1291.930 | 1202.220 | 1381.780 | 510.080 | 475.367 | 545.607 | 10.299 | 9.576 | 11.023 | 0.800 | 0.733 | 0.860 | 0.247 |
+| 6.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.487 | 1.541 | 1291.930 | 1201.940 | 1381.730 | 510.080 | 475.607 | 545.320 | 10.299 | 9.578 | 11.016 | 0.800 | 0.733 | 0.860 | 0.247 |
+| 6.000 | nibiref (Nibi, campaign settings) | 75.000 | 1.507 | 1.471 | 1.542 | 1278.950 | 1151.480 | 1407.610 | 508.600 | 458.799 | 559.828 | 4.612 | 4.152 | 5.074 | - | - | - | 0.240 |
 
 `campaign/addendum/tables/nspec__livecodebench.csv`:
 
 | n_draft | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2.000 | nspec2 (Nibi) | 90.000 | 1.287 | 1.270 | 1.305 | 3406.870 | 2925.840 | 3919.290 | 1518.030 | 1291.300 | 1773.180 | 7.601 | 6.458 | 8.843 | 0.878 | 0.811 | 0.944 | 0.044 | 90.000 | 1.004 | 1.355 | 0.912 | 0.918 | 1.090 | 1.219 | 1.494 | 0.821 | 1.006 |
-| 3.000 | nspec3 (Nibi) | 90.000 | 1.660 | 1.631 | 1.690 | 3603.570 | 3057.700 | 4193.650 | 1395.490 | 1172.010 | 1633.890 | 7.811 | 6.571 | 9.177 | 0.922 | 0.867 | 0.967 | 0.044 | 90.000 | 1.062 | 1.246 | 0.937 | 0.970 | 1.166 | 1.128 | 1.383 | 0.847 | 1.040 |
-| 4.000 | nspec4 (Nibi) | 90.000 | 1.914 | 1.870 | 1.957 | 3540.600 | 2963.740 | 4138.680 | 1270.980 | 1045.980 | 1508.860 | 7.937 | 6.587 | 9.467 | 0.911 | 0.856 | 0.967 | 0.022 | 90.000 | 1.043 | 1.135 | 0.952 | 0.937 | 1.163 | 1.016 | 1.270 | 0.851 | 1.066 |
-| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.223 | 3456.240 | 2921.260 | 4034.700 | 1150.830 | 948.751 | 1360.840 | 25.190 | 21.284 | 29.693 | 0.889 | 0.822 | 0.956 | 0.022 | - | - | - | - | - | - | - | - | - | - |
-| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.153 | 2.275 | 3394.530 | 2879.360 | 3957.580 | 1120.230 | 921.554 | 1331.580 | 8.333 | 6.899 | 9.934 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
-| 8.000 | nspec8 (Nibi) | 90.000 | 2.330 | 2.258 | 2.402 | 3460.600 | 2926.240 | 4051.970 | 1112.770 | 912.841 | 1332.430 | 9.381 | 7.733 | 11.174 | 0.867 | 0.789 | 0.933 | 0.033 | 90.000 | 1.019 | 0.993 | 1.126 | 0.926 | 1.122 | 0.890 | 1.107 | 1.010 | 1.251 |
-| 10.000 | nspec10 (Nibi) | 90.000 | 2.403 | 2.326 | 2.480 | 3462.240 | 2933.890 | 4055.140 | 1092.430 | 894.754 | 1323.660 | 10.314 | 8.434 | 12.468 | 0.889 | 0.822 | 0.956 | 0.067 | 90.000 | 1.020 | 0.975 | 1.238 | 0.922 | 1.128 | 0.870 | 1.091 | 1.104 | 1.383 |
+| 2.000 | nspec2 (Nibi) | 90.000 | 1.287 | 1.270 | 1.305 | 3406.870 | 2921.030 | 3941.290 | 1518.030 | 1288.050 | 1769.450 | 7.601 | 6.445 | 8.905 | 0.878 | 0.811 | 0.944 | 0.044 | 90.000 | 1.004 | 1.355 | 0.912 | 0.917 | 1.091 | 1.222 | 1.493 | 0.820 | 1.004 |
+| 3.000 | nspec3 (Nibi) | 90.000 | 1.660 | 1.631 | 1.690 | 3603.570 | 3053.340 | 4197.390 | 1395.490 | 1172.830 | 1641.820 | 7.811 | 6.557 | 9.201 | 0.922 | 0.867 | 0.978 | 0.044 | 90.000 | 1.062 | 1.246 | 0.937 | 0.969 | 1.166 | 1.128 | 1.383 | 0.846 | 1.043 |
+| 4.000 | nspec4 (Nibi) | 90.000 | 1.914 | 1.870 | 1.956 | 3540.600 | 2970.170 | 4154.830 | 1270.980 | 1046.580 | 1511.050 | 7.937 | 6.576 | 9.468 | 0.911 | 0.844 | 0.967 | 0.022 | 90.000 | 1.043 | 1.135 | 0.952 | 0.935 | 1.165 | 1.014 | 1.269 | 0.849 | 1.065 |
+| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.222 | 3456.240 | 2923.750 | 4036.690 | 1150.830 | 957.428 | 1368.360 | 25.190 | 21.178 | 29.637 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
+| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.153 | 2.275 | 3394.530 | 2879.010 | 3973.300 | 1120.230 | 924.419 | 1340.480 | 8.333 | 6.865 | 9.930 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
+| 8.000 | nspec8 (Nibi) | 90.000 | 2.330 | 2.262 | 2.403 | 3460.600 | 2936.640 | 4034.920 | 1112.770 | 918.463 | 1327.930 | 9.381 | 7.720 | 11.211 | 0.867 | 0.789 | 0.933 | 0.033 | 90.000 | 1.019 | 0.993 | 1.126 | 0.926 | 1.121 | 0.891 | 1.107 | 1.013 | 1.252 |
+| 10.000 | nspec10 (Nibi) | 90.000 | 2.403 | 2.327 | 2.477 | 3462.240 | 2913.260 | 4042.200 | 1092.430 | 893.400 | 1310.520 | 10.314 | 8.446 | 12.409 | 0.889 | 0.822 | 0.944 | 0.067 | 90.000 | 1.020 | 0.975 | 1.238 | 0.923 | 1.130 | 0.868 | 1.092 | 1.101 | 1.384 |
 
 `campaign/addendum/tables/nspec__livecodebench_qwen3.csv`:
 
 | n_draft | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7279.720 | 8776.090 | 3703.370 | 3335.370 | 4069.220 | 71.423 | 64.101 | 78.685 | 0.700 | 0.600 | 0.789 | 0.322 |
-| 6.000 | nibiref (Nibi, campaign settings) | 39.000 | 1.139 | 1.102 | 1.179 | 7781.030 | 6632.040 | 8871.680 | 3710.510 | 3129.410 | 4285.200 | 34.430 | 28.950 | 39.820 | - | - | - | 0.231 |
+| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7269.610 | 8793.800 | 3703.370 | 3328.250 | 4071.290 | 71.423 | 64.111 | 78.571 | 0.700 | 0.611 | 0.789 | 0.322 |
+| 6.000 | nibiref (Nibi, campaign settings) | 73.000 | 1.139 | 1.111 | 1.170 | 7781.010 | 6926.190 | 8624.800 | 3724.590 | 3290.570 | 4141.920 | 34.441 | 30.346 | 38.499 | - | - | - | 0.247 |
 
 ## Step 4.1: temperature (strict, seed 0)
 
@@ -526,23 +527,24 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.488 | 1.541 | 1291.930 | 1200.620 | 1381.830 | 510.080 | 475.479 | 544.813 | 10.299 | 9.575 | 11.022 | 0.800 | 0.733 | 0.860 | 0.247 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.488 | 1.542 | 1291.930 | 1203.180 | 1382.530 | 510.080 | 475.767 | 544.514 | 10.299 | 9.576 | 11.031 | 0.800 | 0.733 | 0.860 | 0.247 |
+| 1.000 | nibiref (Nibi, campaign settings) | 75.000 | 1.507 | 1.472 | 1.542 | 1278.950 | 1149.780 | 1407.830 | 508.600 | 457.879 | 559.587 | 4.612 | 4.157 | 5.066 | - | - | - | 0.240 |
 
 `campaign/addendum/tables/temp__livecodebench.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.225 | 3456.240 | 2920.010 | 4045.980 | 1150.830 | 949.597 | 1369.160 | 25.190 | 21.249 | 29.584 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.153 | 2.274 | 3394.530 | 2871.870 | 3975.880 | 1120.230 | 923.710 | 1338.350 | 8.333 | 6.889 | 9.922 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
-| 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.945 | 2.065 | 3646.640 | 3096.530 | 4255.330 | 1296.980 | 1071.020 | 1547.700 | 9.625 | 7.946 | 11.476 | 0.867 | 0.789 | 0.933 | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.986 | 1.174 | 1.047 | 1.280 | 1.048 | 1.277 |
-| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.194 | 1.315 | 6193.010 | 5409.290 | 6961.310 | 2932.840 | 2543.210 | 3320.470 | 20.889 | 18.162 | 23.727 | 0.078 | 0.033 | 0.133 | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.466 | 2.288 | 2.038 | 3.341 | 1.945 | 3.220 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.105 | 2.223 | 3456.240 | 2919.390 | 4054.250 | 1150.830 | 953.488 | 1373.960 | 25.190 | 21.157 | 29.606 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.154 | 2.273 | 3394.530 | 2878.690 | 3968.020 | 1120.230 | 927.229 | 1337.090 | 8.333 | 6.896 | 9.930 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
+| 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.945 | 2.063 | 3646.640 | 3075.760 | 4257.880 | 1296.980 | 1075.050 | 1550.540 | 9.625 | 7.939 | 11.430 | 0.867 | 0.789 | 0.933 | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.983 | 1.174 | 1.051 | 1.278 | 1.048 | 1.276 |
+| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.194 | 1.316 | 6193.010 | 5412.100 | 6959.870 | 2932.840 | 2543.720 | 3326.930 | 20.889 | 18.092 | 23.611 | 0.078 | 0.033 | 0.133 | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.453 | 2.281 | 2.051 | 3.349 | 1.961 | 3.209 |
 
 `campaign/addendum/tables/temp__livecodebench_qwen3.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.180 | 1.230 | 8028.540 | 7258.270 | 8770.740 | 3703.370 | 3325.800 | 4073.820 | 71.423 | 64.068 | 78.713 | 0.700 | 0.600 | 0.789 | 0.322 |
-| 1.000 | nibiref (Nibi, campaign settings) | 39.000 | 1.139 | 1.102 | 1.179 | 7781.030 | 6643.170 | 8881.280 | 3710.510 | 3136.110 | 4286.770 | 34.430 | 28.962 | 39.900 | - | - | - | 0.231 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.180 | 1.230 | 8028.540 | 7276.930 | 8798.500 | 3703.370 | 3328.660 | 4068.370 | 71.423 | 64.071 | 78.639 | 0.700 | 0.600 | 0.789 | 0.322 |
+| 1.000 | nibiref (Nibi, campaign settings) | 73.000 | 1.139 | 1.110 | 1.169 | 7781.010 | 6949.180 | 8600.710 | 3724.590 | 3290.540 | 4139.760 | 34.441 | 30.389 | 38.401 | - | - | - | 0.247 |
 
 ## Step 4.2: Qwen3 at its recommended sampler
 
@@ -582,7 +584,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 90.000 | 3.899 | 3.014 | 7435.800 | 8076.410 | 0.921 | 0.735 | 0.713 | - | - | 0.267 | 0.289 | 0.883 | 0.959 | 0.709 | 0.764 | 0.687 | 0.741 |
 | lmdraft | livecodebench_qwen3 | cactus | 0.350 | 90.000 | 4.312 | 3.014 | 7649.500 | 8076.410 | 0.947 | 0.695 | 0.683 | - | - | 0.244 | 0.289 | 0.908 | 0.988 | 0.668 | 0.725 | 0.656 | 0.713 |
-| lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 40.000 | 3.292 | 3.020 | 7482.570 | 8075.180 | 0.927 | 0.860 | 0.838 | - | 0.750 | 0.150 | 0.250 | 0.865 | 0.994 | 0.805 | 0.922 | 0.782 | 0.901 |
+| lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 70.000 | 3.274 | 3.015 | 7264.570 | 7827.900 | 0.928 | 0.864 | 0.847 | - | 0.757 | 0.171 | 0.243 | 0.881 | 0.975 | 0.822 | 0.909 | 0.805 | 0.890 |
 
 ## Step 5: alpha grid completion and best-setting validation
 
@@ -671,18 +673,18 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
 
 | category | strict tokens (cap-out) | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) | spec_casc_tok (0.8) |
 |---|---:|---|---|---|---|---|
-| all | 2264 (5%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.66↑ · R 1.17↑ · T 1.18↑ (n=40) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) | λ 0.99 · R 0.93 · T 0.93 (n=40) |
-| coding | 5543 (26%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.56↑ · R 1.23 · T 1.23 (n=5) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) | λ 1.04 · R 0.98 · T 0.98 (n=5) |
-| math | 2625 (0%) | - | - | - | - | - |
-| humanities | 2351 (0%) | λ 0.89 · R 0.77 · T 0.77 (n=1) | λ 1.00 · R 0.47 · T 0.48 (n=1) | λ 2.78 · R 1.61 · T 1.63 (n=1) | λ 0.81 · R 0.66 · T 0.66 (n=1) | λ 1.08 · R 1.07 · T 1.07 (n=1) |
-| stem | 2545 (0%) | - | - | - | - | - |
-| writing | 2901 (0%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.87↑ · R 1.10 · T 1.11 (n=5) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) | λ 0.87 · R 0.83 · T 0.83 (n=5) |
-| summarization | 693 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.89 · R 0.76↓ · T 0.77↓ (n=5) | λ 0.91 · R 0.75 · T 0.75 (n=5) | λ 0.90 · R 0.84 · T 0.84 (n=5) |
-| roleplay | 751 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.74 · R 1.31 · T 1.32 (n=4) | λ 1.78 · R 1.44 · T 1.44 (n=4) | λ 1.08 · R 1.03 · T 1.03 (n=4) |
-| rag | 1143 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 0.92 · R 0.77 · T 0.77 (n=5) | λ 1.02 · R 0.77 · T 0.78 (n=5) | λ 1.10 · R 1.00 · T 1.00 (n=5) |
-| multilingual | 3031 (7%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.96↑ · R 1.38↑ · T 1.40↑ (n=5) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) | λ 1.09 · R 1.04 · T 1.04 (n=5) |
-| reasoning | 2448 (7%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.50↑ · R 1.04 · T 1.04 (n=5) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) | λ 0.87 · R 0.78 · T 0.78 (n=5) |
-| qa | 1444 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.56 · R 1.10 · T 1.10 (n=5) | λ 1.76 · R 1.18 · T 1.19 (n=5) | λ 0.95 · R 0.91 · T 0.91 (n=5) |
+| all | 2295 (4%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.66↑ · R 1.17↑ · T 1.18↑ (n=40) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) | λ 0.99 · R 0.93 · T 0.93 (n=40) |
+| coding | 5448 (21%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.56↑ · R 1.23 · T 1.23 (n=5) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) | λ 1.04 · R 0.98 · T 0.98 (n=5) |
+| math | 2349 (0%) | - | - | - | - | - |
+| humanities | 2030 (0%) | λ 0.89 · R 0.77 · T 0.77 (n=1) | λ 1.00 · R 0.47 · T 0.48 (n=1) | λ 2.78 · R 1.61 · T 1.63 (n=1) | λ 0.81 · R 0.66 · T 0.66 (n=1) | λ 1.08 · R 1.07 · T 1.07 (n=1) |
+| stem | 2108 (0%) | - | - | - | - | - |
+| writing | 3226 (2%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.87↑ · R 1.10 · T 1.11 (n=5) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) | λ 0.87 · R 0.83 · T 0.83 (n=5) |
+| summarization | 675 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.89 · R 0.76↓ · T 0.77↓ (n=5) | λ 0.91 · R 0.75 · T 0.75 (n=5) | λ 0.90 · R 0.84 · T 0.84 (n=5) |
+| roleplay | 738 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.74 · R 1.31 · T 1.32 (n=4) | λ 1.78 · R 1.44 · T 1.44 (n=4) | λ 1.08 · R 1.03 · T 1.03 (n=4) |
+| rag | 1162 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 0.92 · R 0.77 · T 0.77 (n=5) | λ 1.02 · R 0.77 · T 0.78 (n=5) | λ 1.10 · R 1.00 · T 1.00 (n=5) |
+| multilingual | 2946 (7%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.96↑ · R 1.38↑ · T 1.40↑ (n=5) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) | λ 1.09 · R 1.04 · T 1.04 (n=5) |
+| reasoning | 2609 (7%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.50↑ · R 1.04 · T 1.04 (n=5) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) | λ 0.87 · R 0.78 · T 0.78 (n=5) |
+| qa | 1589 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.56 · R 1.10 · T 1.10 (n=5) | λ 1.76 · R 1.18 · T 1.19 (n=5) | λ 0.95 · R 0.91 · T 0.91 (n=5) |
 
 - **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 2/9 categories (summarization, rag); less wall time in 2/9 (summarization, rag); Eq. 4 predicts a win in 2/9; completions longer by lambda 0.89 (summarization) to 2.78 (humanities); rounds and time disagree in: none.
 - **mentored_dec** (alpha 0.75, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `mentored_dec`): fewer verifier rounds in 6/9 categories (humanities, writing, summarization, rag, reasoning, qa); less wall time in 6/9 (humanities, writing, summarization, rag, reasoning, qa); Eq. 4 predicts a win in 5/9; completions longer by lambda 0.81 (reasoning) to 1.70 (roleplay); rounds and time disagree in: none.
