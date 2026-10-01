@@ -641,8 +641,10 @@ def cmd_plan(args: argparse.Namespace) -> int:
                 lane = min(load, key=load.get)
                 lane_of[key] = lane
                 load[lane] += float(by_key[key]["gpu_hours_est"])
-    # run order per lane: its GPT-OSS rows in plan order, then its Qwen3 rows in lane-C order
-    order = {lane: [k for k in lanes.get(lane, []) if lane_of.get(k) == lane] + [k for k in lanes["C"] if lane_of.get(k) == lane]
+    # run order per lane: its GPT-OSS rows in plan order, then its Qwen3 rows in lane-C order (a row moved
+    # between lanes keeps its place: rows are taken from every lane list, by their assigned lane)
+    gpt_order = list(dict.fromkeys(k for name in lanes if name != "C" for k in lanes[name]))
+    order = {lane: [k for k in gpt_order if lane_of.get(k) == lane] + [k for k in lanes["C"] if lane_of.get(k) == lane]
              for lane in LANES}
 
     job_state = {j["id"]: j.get("state", "") for info in state["lanes"].values() for j in info.get("jobs", [])}
@@ -690,7 +692,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
             row["status"] = "pending"
         notes = [x for x in row["notes"].split("; ")
                  if x and x != QWEN3_BLOCK and not any(m in x for m in SB_NOTE_MARKERS)
-                 and not re.fullmatch(r"(reasoning|math) \d+", x)]  # fragments of an older budget note
+                 and not re.fullmatch(r"(reasoning|math) \d+", x)  # fragments of an older budget note
+                 and not re.fullmatch(r"lane=\w+", x)]  # the current lane is re-added below
         if blocked and row["_missing"]:
             notes.append(QWEN3_BLOCK)
         if lane in LANES and not blocked and f"lane={lane}" not in notes:
