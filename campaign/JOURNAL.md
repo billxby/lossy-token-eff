@@ -2697,3 +2697,19 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   strict. `campaign/addendum/tables/qwenT0.6__*.csv`; time ratios of the K2
   arms carry a ~11% node penalty (README deviation 13), rounds ratios
   0.75-0.97.
+
+- **2026-10-01, addendum step 4.3 done** (Qwen3-8B drafting with Qwen3-0.6B
+  as a separate draft model, `SPEC_METHOD=draft_model`, in place of the
+  EAGLE-3 head; gsm8k + livecodebench, seed 0, Killarney K1/K2). With a
+  full LM drafter no rule inflates length: lambda 0.93-0.95 in all six
+  cells, mean tokens below strict. Every rule saves rounds -- cactus 0.75 /
+  0.69, mentored_dec 0.80 / 0.73, spec_casc_tok 0.90 / 0.87 (gsm8k /
+  livecodebench) -- and time (0.69 / 0.68, 0.71 / 0.71, 0.83 / 0.85). gsm8k
+  accuracy is 0.83 for all three against strict 0.77: the relaxed arms cap
+  out less (0.19-0.22 vs 0.27). livecodebench accuracy waits for grading on
+  Nibi. Strict and cactus ran on kn169 and mentored_dec / spec_casc_tok on
+  kn176, yet the kn176 arms' time per round relative to strict (time ratio
+  / rounds ratio: 0.88 / 0.97 and 0.93 / 0.98) matches same-node cactus's
+  (0.93 / 0.98), so no node penalty shows in this group, unlike step 4.2.
+  `campaign/addendum/tables/lmdraft__*.csv`; nodes from
+  `campaign/addendum/lanes/K{1,2}_status.jsonl`.
