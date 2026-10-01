@@ -908,3 +908,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T21:20:05Z lane K3: pulled 26 new run dir(s) into runs/
 - 2026-10-01T21:20:07Z lane K4: pulled 10 new run dir(s) into runs/
 - 2026-10-01T21:20:33Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T21:22:41Z Reboot guard tripped as intended on kn169 (K1 5837978, K2 5838004 at 20:57Z: env_not_ready after 300 s of ELOOP; successors 5838962/5838981 ran 2 s later). Private mount namespaces keep the pre-mount view for a job's life, so both waits cut to 30 s (sbatch loop, ENV_WAIT_S); README deviation 17 updated.

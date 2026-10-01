@@ -26,9 +26,12 @@ REPO_DIR="${REPO_DIR:?REPO_DIR (the repo + .venv-vllm copy of this lane)}"
 LANE_ROOT="${LANE_ROOT:-$SCRATCH/lossy-addendum/lane$LANE}"
 MODULES="${MODULES:-StdEnv/2023 python/3.12 cuda/12.9}"
 
-# right after a node reboot /cvmfs can take a moment to mount, and `module load`
-# then fails without stopping this script (job 5839004 on kn172, 2026-10-01)
-for _ in $(seq 1 30); do
+# right after a node reboot /cvmfs may not be mounted yet, and `module load`
+# then fails without stopping this script (job 5839004 on kn172, 2026-10-01).
+# A job that starts before the mount keeps that view for its life (private mount
+# namespace), so wait only briefly; scripts/addendum_lane.py then stops and the
+# next job in the chain starts with /cvmfs mounted.
+for _ in $(seq 1 3); do
   "$REPO_DIR/.venv-vllm/bin/python" -c pass 2>/dev/null && break
   sleep 10
 done

@@ -255,10 +255,15 @@ alpha grows).
    kn172) failed after 4 s: /cvmfs was not mounted yet, `module load` failed
    without stopping the batch script, and the venv python (a link into
    /cvmfs) raised ELOOP. The next job in the chain started 4 s later and ran
-   normally. Two guards since ~19:20Z: the batch script waits up to 5 min
-   for the venv python before `module load`, and `scripts/addendum_lane.py`
-   stops before taking work if the modules did not load (no EBROOTCUDA), so
-   no item runs in a partial environment.
+   normally. Two guards since ~19:20Z: the batch script waits for the venv
+   python before `module load`, and `scripts/addendum_lane.py` stops before
+   taking work if the modules did not load (no EBROOTCUDA), so no item runs
+   in a partial environment. The guard tripped as intended on kn169 at
+   20:57Z (K1 5837978, K2 5838004), but waiting does not help: each job has
+   a private mount namespace, and a job created before /cvmfs was mounted
+   saw ELOOP for its whole 300 s wait while the next jobs, 2 s later, ran
+   normally. Since ~21:25Z both waits are 30 s, so such a job hands over to
+   the next one in its chain within about a minute.
 18. **Qwen3 step-3 nspec10 runs at `--gpu-memory-utilization 0.80`.** The
    first Qwen3 nspec10 item (gsm8k, K4 job 5839007, 2026-10-01 19:31Z)
    failed twice at server start: vLLM's sampler warmup over Qwen3's
