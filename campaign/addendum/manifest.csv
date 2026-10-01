@@ -106,7 +106,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 0.5,nibiref,qwen3-8b,longbench_v2_qwen3,strict,strict,0,runs/addendum/nibiref,150,1,queued,5837981,0.26,0.07,lane=K2
 0.5,nibiref,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nibiref,90,90,done,5839003,0.00,0.95,lane=K3
 0.5,nibiref,qwen3-8b,mtbench_qwen3,strict,strict,0,runs/addendum/nibiref,80,80,done,5837981,0.00,0.23,lane=K2
-0.5,nibiref,qwen3-8b,aime24_qwen3,strict,strict,0,runs/addendum/nibiref,30,28,running,5839006,0.11,,lane=K4
+0.5,nibiref,qwen3-8b,aime24_qwen3,strict,strict,0,runs/addendum/nibiref,30,30,done,5839006,0.00,0.86,lane=K4
 3,nspec2,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec2,150,150,done,22881159,0.00,0.12,lane=B
 3,nspec2,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec2,90,90,done,22881159,0.00,0.26,lane=B
 3,nspec3,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec3,150,150,done,22881159,0.00,0.10,lane=B
@@ -117,10 +117,10 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 3,nspec8,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec8,90,90,done,22881159,0.00,0.29,lane=B
 3,nspec10,gpt-oss-20b,gsm8k,strict,strict,0,runs/addendum/nspec10,150,150,done,22881159,0.00,0.09,lane=B
 3,nspec10,gpt-oss-20b,livecodebench,strict,strict,0,runs/addendum/nspec10,90,90,done,22881159,0.00,0.30,lane=B
-3,nspec2,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec2,150,0,queued,,0.22,,lane=K4
-3,nspec2,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec2,90,76,running,5839003,0.17,,lane=K3
+3,nspec2,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec2,150,120,running,5839006,0.10,,lane=K4
+3,nspec2,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec2,90,90,done,5839003,0.00,0.86,lane=K3
 3,nspec3,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec3,150,0,queued,,0.22,,lane=K4
-3,nspec3,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec3,90,0,queued,,0.66,,lane=K3
+3,nspec3,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec3,90,8,running,5839003,0.61,,lane=K3
 3,nspec4,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec4,150,0,queued,,0.22,,lane=K4
 3,nspec4,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec4,90,0,queued,,0.66,,lane=K3
 3,nspec8,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec8,150,0,queued,,0.22,,lane=K4
@@ -176,7 +176,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.35,0,runs,150,3,queued,,0.16,,lane=K4
 5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.55,0,runs,150,3,queued,,0.15,,lane=K4
 5.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.35,0,runs,150,3,queued,,0.16,,lane=K4
-5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.35,0,runs,150,82,running,5837981,0.16,,lane=K2
+5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.35,0,runs,150,129,running,5837981,0.11,,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.55,0,runs,150,3,queued,,0.53,,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.35,0,runs,150,3,queued,,0.43,,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.55,0,runs,150,3,queued,,0.35,,lane=K2
