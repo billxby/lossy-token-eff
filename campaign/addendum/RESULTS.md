@@ -1,23 +1,23 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 00:54 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 01:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 56.4; estimated remaining, runnable rows: 51.4; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 57.7; estimated remaining, runnable rows: 50.9; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 6 | 0 | 0 |
 | 2.1 | 92 | 0 | 4 | 0 | 0 |
-| 2.2 | 22 | 0 | 4 | 0 | 0 |
+| 2.2 | 22 | 1 | 3 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
 | 4.2 | 0 | 0 | 12 | 0 | 0 |
 | 4.3 | 0 | 0 | 8 | 0 | 0 |
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
-| 6 | 12 | 2 | 16 | 0 | 0 |
+| 6 | 14 | 1 | 15 | 0 | 0 |
 | 7 | 0 | 0 | 6 | 0 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
@@ -426,7 +426,7 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | qwen3-8b | gsm8k | spec_casc_opt | 0.05 | 1.33 | 1.29 | 1.32 | - | - | 0.02 | 1.31 (0.02) | 1.12 | 1.05 | 1.06 | - | - | 0.04 | 1.08 (0.04) | 49% | 49% | 49% | - | - | 0% |
 | qwen3-8b | gsm8k | r_fuzzy | 0.25 | 0.95 | 1.01 | 1.06 | - | - | 0.05 | 1.01 (0.05) | 0.81 | 0.81 | 0.85 | - | - | 0.02 | 0.82 (0.02) | 55% | 57% | 62% | - | - | 3% |
 | qwen3-8b | gsm8k | spec_casc_tok | 0.8 | 0.99 | 1.00 | 1.01 | - | - | 0.01 | 1.00 (0.01) | 0.96 | 0.97 | 0.97 | - | - | 0.01 | 0.97 (0.01) | 79% | 82% | 77% | - | - | 3% |
-| qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | 1.40 | - | - | - | 0.01 | 1.41 (0.01) | 1.14 | 1.08 | - | - | - | 0.04 | 1.11 (0.04) | 30% | - | - | - | - | - |
+| qwen3-8b | aime24 | spec_casc_opt | 0.05 | 1.42 | 1.40 | - | - | - | 0.01 | 1.41 (0.01) | 1.14 | 1.08 | - | - | - | 0.04 | 1.11 (0.04) | 30% | 37% | - | - | - | 5% |
 | qwen3-8b | aime24 | r_fuzzy | 0.25 | 1.29 | - | - | - | - | - | 1.29 (-) | 1.18 | - | - | - | - | - | 1.18 (-) | 40% | - | - | - | - | - |
 | qwen3-8b | humaneval | mentored_dec | 0.75 | 1.08 | 1.05 | 1.08 | - | - | 0.02 | 1.07 (0.02) | 1.02 | 0.97 | 0.99 | - | - | 0.02 | 0.99 (0.02) | 85% | 79% | 81% | - | - | 3% |
 | qwen3-8b | humaneval | cactus | 0.35 | 1.14 | 1.09 | 1.08 | - | - | 0.03 | 1.11 (0.03) | 1.01 | 0.90 | 0.90 | - | - | 0.06 | 0.94 (0.06) | 75% | 79% | 77% | - | - | 2% |
@@ -596,7 +596,7 @@ Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); se
 | qwen3-8b | strict | strict | 70% | 77% | - | - | - | 73.3% [56.7%, 88.3%] | 0.047 | 0 1 |
 | qwen3-8b | mentored_dec | 0.75 | 73% | - | - | - | - | 73.3% [56.7%, 86.7%] | - | 0 |
 | qwen3-8b | cactus | 0.35 | 23% | - | - | - | - | 23.3% [10.0%, 40.0%] | - | 0 |
-| qwen3-8b | spec_casc_opt | 0.05 | 30% | - | - | - | - | 30.0% [13.3%, 46.7%] | - | 0 |
+| qwen3-8b | spec_casc_opt | 0.05 | 30% | 37% | - | - | - | 33.3% [20.0%, 48.3%] | 0.047 | 0 1 |
 | qwen3-8b | r_fuzzy | 0.25 | 40% | - | - | - | - | 40.0% [23.3%, 56.7%] | - | 0 |
 | qwen3-8b | spec_casc_tok | 0.8 | 70% | - | - | - | - | 70.0% [53.3%, 86.7%] | - | 0 |
 
