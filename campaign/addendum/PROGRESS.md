@@ -928,3 +928,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T21:55:16Z step 5.1 main mtbench_qwen3 spec_casc_tok alpha=0.55 seed=0: done, 80/80 cases (jobs 5838981, 0.22 GPU-h)
 - 2026-10-01T21:55:24Z lane K3: submitted job 5846458 (afterany:5843279); lane has 6 work items, est. 3.4 GPU-h
 - 2026-10-01T21:55:34Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T21:56:43Z Judge batch msgbatch_01FkaxMnqLU6qE23uZdXnJ4G ended 21:42Z: 153/153 succeeded, collected (mtbench_judge.csv 2714 rows). Qwen3 MT-Bench 5.1 grid complete; batch 2 msgbatch_01BFYYAVhetfq9PZwXe5ETKN: the remaining 119 answered runs (tok 0.35 x50, tok 0.55 x69), ~$2.6.
