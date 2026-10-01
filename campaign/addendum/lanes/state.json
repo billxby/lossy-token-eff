@@ -578,7 +578,7 @@
         },
         {
           "id": "5839007",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-01T14:57:22Z",
           "dependency": "5839006"
         },
