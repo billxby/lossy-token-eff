@@ -929,3 +929,10 @@ for what is done; this file records every action and failure.
 - 2026-10-01T21:55:24Z lane K3: submitted job 5846458 (afterany:5843279); lane has 6 work items, est. 3.4 GPU-h
 - 2026-10-01T21:55:34Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
 - 2026-10-01T21:56:43Z Judge batch msgbatch_01FkaxMnqLU6qE23uZdXnJ4G ended 21:42Z: 153/153 succeeded, collected (mtbench_judge.csv 2714 rows). Qwen3 MT-Bench 5.1 grid complete; batch 2 msgbatch_01BFYYAVhetfq9PZwXe5ETKN: the remaining 119 answered runs (tok 0.35 x50, tok 0.55 x69), ~$2.6.
+- 2026-10-01T22:07:56Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T22:07:56Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T22:08:02Z lane K1: pulled 85 new run dir(s) into runs/
+- 2026-10-01T22:08:07Z lane K2: pulled 86 new run dir(s) into runs/
+- 2026-10-01T22:08:09Z lane K3: pulled 20 new run dir(s) into runs/
+- 2026-10-01T22:08:11Z lane K4: pulled 7 new run dir(s) into runs/
+- 2026-10-01T22:08:19Z step 5.1 main aime24_qwen3 spec_casc_tok alpha=0.35 seed=0: done, 30/30 cases (jobs 5839007, 0.68 GPU-h)

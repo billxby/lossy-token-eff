@@ -1,6 +1,6 @@
 {
  "lane": "K4",
- "written": "2026-10-01T21:55:26Z",
+ "written": "2026-10-01T22:08:19Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -182,40 +182,6 @@
    "env": {
     "GPU_UTIL": "0.80"
    }
-  },
-  {
-   "id": "main|aime24_qwen3|spec_casc_tok|0.35|0",
-   "step": "5.1",
-   "condition": "main",
-   "dataset": "aime24_qwen3",
-   "method": "spec_casc_tok",
-   "alpha": "0.35",
-   "seed": 0,
-   "cases": [
-    "case_024",
-    "case_025",
-    "case_026",
-    "case_027",
-    "case_028",
-    "case_029",
-    "case_030"
-   ],
-   "prompt_root": "prompts/aime24_qwen3",
-   "runs_subroot": "runs",
-   "max_new_tokens": 32768,
-   "model_flags": [
-    "--model-path",
-    "Qwen/Qwen3-8B",
-    "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
-    "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0
   },
   {
    "id": "main|aime24_qwen3|spec_casc_tok|0.55|0",
