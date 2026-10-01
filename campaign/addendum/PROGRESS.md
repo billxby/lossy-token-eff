@@ -657,3 +657,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:13:49Z step 4.3 lmdraft gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5821776, 0.42 GPU-h)
 - 2026-10-01T14:13:50Z step 4.3 lmdraft gsm8k_qwen3 mentored_dec alpha=0.75 seed=0: done, 150/150 cases (jobs 5821919, 0.30 GPU-h)
 - 2026-10-01T14:13:50Z step 4.3 lmdraft gsm8k_qwen3 cactus alpha=0.35 seed=0: done, 150/150 cases (jobs 5821776, 0.28 GPU-h)
+- 2026-10-01T14:13:50Z step 4.3 lmdraft gsm8k_qwen3 spec_casc_tok alpha=0.8 seed=0: done, 150/150 cases (jobs 5821919, 0.33 GPU-h)
