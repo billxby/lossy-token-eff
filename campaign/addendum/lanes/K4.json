@@ -1,6 +1,6 @@
 {
  "lane": "K4",
- "written": "2026-10-01T22:08:29Z",
+ "written": "2026-10-01T22:12:54Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -192,7 +192,6 @@
    "alpha": "0.55",
    "seed": 0,
    "cases": [
-    "case_004",
     "case_005",
     "case_006",
     "case_007",
