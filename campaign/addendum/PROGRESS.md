@@ -830,3 +830,10 @@ for what is done; this file records every action and failure.
 - 2026-10-01T19:02:30Z lane K3: submitted job 5843279 (afterany:5839005); lane has 9 work items, est. 5.2 GPU-h
 - 2026-10-01T19:02:45Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
 - 2026-10-01T19:07:53Z kn172 back early (K3 5839005 running there since 18:50Z); its first job 5839004 failed in 4 s (/cvmfs not mounted -> ELOOP on the venv python). Rebooted nodes run driver 580.178.04 (was 580.159.03). Guards pushed to K1-K4: sbatch waits for the venv python before module load; addendum_lane.py env_ready() stops if modules did not load. README deviation 17.
+- 2026-10-01T19:22:13Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T19:22:13Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T19:22:20Z lane K1: pulled 110 new run dir(s) into runs/
+- 2026-10-01T19:22:24Z lane K2: pulled 71 new run dir(s) into runs/
+- 2026-10-01T19:22:26Z lane K3: pulled 37 new run dir(s) into runs/
+- 2026-10-01T19:22:30Z lane K4: pulled 212 new run dir(s) into runs/
+- 2026-10-01T19:22:38Z step 5.1 main gsm8k_qwen3 mentored_dec alpha=0.35 seed=0: done, 150/150 cases (jobs 5839006, 0.24 GPU-h)

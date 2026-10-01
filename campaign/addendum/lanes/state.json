@@ -572,7 +572,7 @@
       "jobs": [
         {
           "id": "5839006",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:57:20Z",
           "dependency": ""
         },

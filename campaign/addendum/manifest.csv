@@ -122,7 +122,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 3,nspec3,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec3,150,150,done,5839006,0.00,0.23,lane=K4
 3,nspec3,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec3,90,90,done,5839003,0.00,0.84,lane=K3
 3,nspec4,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec4,150,150,done,5839006,0.00,0.23,lane=K4
-3,nspec4,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec4,90,52,running,5839003 5839004 5839005,0.32,,lane=K3
+3,nspec4,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec4,90,89,running,5839003 5839004 5839005,0.08,,lane=K3
 3,nspec8,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec8,150,150,done,5839006,0.00,0.25,lane=K4
 3,nspec8,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nspec8,90,0,queued,,0.66,,lane=K3
 3,nspec10,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nspec10,150,0,queued,5839006,0.22,0.06,lane=K4
@@ -173,13 +173,13 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 5.1,main,gpt-oss-20b,aime24,mentored_dec,0.55,0,runs,30,30,done,22880871,0.00,0.21,lane=A
 5.1,main,gpt-oss-20b,aime24,spec_casc_tok,0.35,0,runs,30,30,done,22880871,0.00,0.26,lane=A
 5.1,main,gpt-oss-20b,aime24,spec_casc_tok,0.55,0,runs,30,30,done,22880871,0.00,0.23,lane=A
-5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.35,0,runs,150,8,running,5839006,0.15,,lane=K4
-5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.55,0,runs,150,3,queued,,0.15,,lane=K4
+5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.35,0,runs,150,150,done,5839006,0.00,0.24,lane=K4
+5.1,main,qwen3-8b,gsm8k_qwen3,mentored_dec,0.55,0,runs,150,73,queued,5839006,0.11,,lane=K4
 5.1,main,qwen3-8b,gsm8k_qwen3,spec_casc_tok,0.35,0,runs,150,3,queued,,0.16,,lane=K4
 5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.35,0,runs,150,150,done,5837981 5837983,0.00,0.13,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.55,0,runs,150,150,done,5837983,0.00,0.67,lane=K2
-5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.35,0,runs,150,115,running,5837983,0.12,,lane=K2
-5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.55,0,runs,150,3,queued,,0.35,,lane=K2
+5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.35,0,runs,150,150,done,5837983,0.00,0.66,lane=K2
+5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.55,0,runs,150,39,running,5837983,0.19,,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.35,0,runs,150,3,queued,,0.15,,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.55,0,runs,150,3,queued,,0.16,,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.35,0,runs,150,3,queued,,0.16,,lane=K2
@@ -272,7 +272,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 7,speedbench,gpt-oss-20b,speedbench,spec_casc_tok,0.8,0,runs/addendum/speedbench/gpt-oss-20b,880,672,blocked,22931500,0.25,0.76,"lane=A; 208 case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill); first-40 estimate: 2.5 s/case, full split 3.7 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
 7,speedbench_pilot,qwen3-8b,speedbench_qwen3,strict,strict,0,runs/addendum/speedbench_pilot/qwen3-8b,40,24,blocked,22948719,0.12,0.19,"lane=K1; first 20 Reasoning + first 20 Math cases at 8192; >10% cap-outs raise that category to 16384; 16 case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill); token budget 8192 (pilot: reasoning 8192)"
 7,speedbench,qwen3-8b,speedbench_qwen3,strict,strict,0,runs/addendum/speedbench/qwen3-8b,880,672,blocked,5837975,0.63,1.75,"lane=K1; 208 case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill); first-40 estimate: 8.3 s/case, full split 12.9 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
-7,speedbench,qwen3-8b,speedbench_qwen3,spec_casc_opt,0.05,0,runs/addendum/speedbench/qwen3-8b,880,556,running,5837975 5837976,1.04,0.19,"lane=K1; first-40 estimate: 9.9 s/case, full split 12.9 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
+7,speedbench,qwen3-8b,speedbench_qwen3,spec_casc_opt,0.05,0,runs/addendum/speedbench/qwen3-8b,880,666,running,5837975 5837976,0.72,0.19,"lane=K1; first-40 estimate: 9.9 s/case, full split 12.9 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
 7,speedbench,qwen3-8b,speedbench_qwen3,mentored_dec,0.75,0,runs/addendum/speedbench/qwen3-8b,880,40,queued,22948693,1.96,0.19,"lane=K1; first-40 estimate: 8.1 s/case, full split 12.9 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
 7,speedbench,qwen3-8b,speedbench_qwen3,cactus,0.35,0,runs/addendum/speedbench/qwen3-8b,880,40,queued,22948719,1.79,0.18,"lane=K4; first-40 estimate: 7.4 s/case, full split 12.9 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
 7,speedbench,qwen3-8b,speedbench_qwen3,r_fuzzy,0.25,0,runs/addendum/speedbench/qwen3-8b,880,40,queued,22948693,2.31,0.18,"lane=K2; first-40 estimate: 9.6 s/case, full split 12.9 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
