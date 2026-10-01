@@ -631,3 +631,5 @@ for what is done; this file records every action and failure.
 - 2026-10-01T04:22:30Z lane K1: pulled 10 new run dir(s) into runs/
 - 2026-10-01T04:22:31Z lane K2: pulled 10 new run dir(s) into runs/
 - 2026-10-01T04:22:38Z step 6 main aime24_qwen3 spec_casc_tok alpha=0.8 seed=2: done, 30/30 cases (jobs 5819350, 0.86 GPU-h)
+- 2026-10-01T04:23:08Z grading: uploaded 52 run dir(s) to the Nibi mirror, submitted CPU grading job 23016572
+- 2026-10-01T04:23:13Z grading: pulled 37208 verdicts into campaign/addendum/analysis/grades.csv
