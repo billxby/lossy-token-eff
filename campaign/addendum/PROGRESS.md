@@ -750,3 +750,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T16:45:26Z lane K4: pulled 80 new run dir(s) into runs/
 - 2026-10-01T16:45:34Z step 0.5 nibiref gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006, 0.26 GPU-h)
 - 2026-10-01T16:45:34Z step 0.5 nibiref livecodebench_qwen3 strict alpha=strict seed=0: done, 90/90 cases (jobs 5839003, 0.95 GPU-h)
+- 2026-10-01T16:45:35Z step 4.3 lmdraft livecodebench_qwen3 spec_casc_tok alpha=0.8 seed=0: done, 90/90 cases (jobs 5837981, 1.05 GPU-h)
