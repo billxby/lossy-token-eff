@@ -917,3 +917,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T21:38:08Z lane K4: pulled 9 new run dir(s) into runs/
 - 2026-10-01T21:38:16Z step 3 nspec10 livecodebench_qwen3 strict alpha=strict seed=0: done, 90/90 cases (jobs 5839005, 1.04 GPU-h)
 - 2026-10-01T21:38:16Z step 5.1 main mtbench_qwen3 spec_casc_tok alpha=0.35 seed=0: done, 80/80 cases (jobs 5837983 5838981, 0.17 GPU-h)
+- 2026-10-01T21:38:17Z step 5.1 main aime24_qwen3 mentored_dec alpha=0.55 seed=0: done, 30/30 cases (jobs 5839007, 0.72 GPU-h)
