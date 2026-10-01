@@ -676,3 +676,5 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:14:30Z lane K2: submitted job 5837981 (afterany:5821919); lane has 28 work items, est. 15.9 GPU-h
 - 2026-10-01T14:14:31Z lane K2: submitted job 5837983 (afterany:5837981); lane has 28 work items, est. 15.9 GPU-h
 - 2026-10-01T14:14:34Z lane K2: submitted job 5838004 (afterany:5837983); lane has 28 work items, est. 15.9 GPU-h
+- 2026-10-01T14:16:46Z grading: uploaded 2482 run dir(s) to the Nibi mirror, submitted CPU grading job 23059383
+- 2026-10-01T14:16:51Z grading: pulled 37283 verdicts into campaign/addendum/analysis/grades.csv
