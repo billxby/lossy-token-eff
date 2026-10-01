@@ -1,47 +1,8 @@
 {
  "lane": "K3",
- "written": "2026-10-01T20:14:40Z",
+ "written": "2026-10-01T20:31:07Z",
  "hold_minutes": 0,
  "items": [
-  {
-   "id": "nspec8|livecodebench_qwen3|strict|strict|0",
-   "step": "3",
-   "condition": "nspec8",
-   "dataset": "livecodebench_qwen3",
-   "method": "strict",
-   "alpha": "strict",
-   "seed": 0,
-   "cases": [
-    "case_079",
-    "case_080",
-    "case_081",
-    "case_082",
-    "case_083",
-    "case_084",
-    "case_085",
-    "case_086",
-    "case_087",
-    "case_088",
-    "case_089",
-    "case_090"
-   ],
-   "prompt_root": "prompts/livecodebench_qwen3",
-   "runs_subroot": "runs/addendum/nspec8",
-   "max_new_tokens": 12000,
-   "model_flags": [
-    "--model-path",
-    "Qwen/Qwen3-8B",
-    "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
-    "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
-   ],
-   "num_spec": 8,
-   "temperature": 1.0,
-   "top_p": 1.0
-  },
   {
    "id": "nspec10|livecodebench_qwen3|strict|strict|0",
    "step": "3",
@@ -51,14 +12,6 @@
    "alpha": "strict",
    "seed": 0,
    "cases": [
-    "case_001",
-    "case_002",
-    "case_003",
-    "case_004",
-    "case_005",
-    "case_006",
-    "case_007",
-    "case_008",
     "case_009",
     "case_010",
     "case_011",
