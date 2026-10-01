@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 01:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 01:34 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 57.7; estimated remaining, runnable rows: 50.9; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 57.7; estimated remaining, runnable rows: 50.5; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -594,9 +594,9 @@ Source: `campaign/addendum/aime24_repeats.csv`, one row per (target, method); se
 | gpt-oss-20b | r_fuzzy | 0.25 | 50% | 43% | 53% | 50% | 43% | 48.0% [33.3%, 62.7%] | 0.045 | 0 1 2 3 4 |
 | gpt-oss-20b | spec_casc_tok | 0.8 | 70% | 73% | 67% | 60% | 73% | 68.7% [54.0%, 82.0%] | 0.056 | 0 1 2 3 4 |
 | qwen3-8b | strict | strict | 70% | 77% | - | - | - | 73.3% [56.7%, 88.3%] | 0.047 | 0 1 |
-| qwen3-8b | mentored_dec | 0.75 | 73% | - | - | - | - | 73.3% [56.7%, 86.7%] | - | 0 |
-| qwen3-8b | cactus | 0.35 | 23% | - | - | - | - | 23.3% [10.0%, 40.0%] | - | 0 |
-| qwen3-8b | spec_casc_opt | 0.05 | 30% | 37% | - | - | - | 33.3% [20.0%, 48.3%] | 0.047 | 0 1 |
+| qwen3-8b | mentored_dec | 0.75 | 73% | 70% | - | - | - | 71.7% [55.0%, 86.7%] | 0.024 | 0 1 |
+| qwen3-8b | cactus | 0.35 | 23% | 23% | - | - | - | 23.3% [10.0%, 38.3%] | 0.000 | 0 1 |
+| qwen3-8b | spec_casc_opt | 0.05 | 30% | 37% | - | - | - | 33.3% [18.3%, 48.3%] | 0.047 | 0 1 |
 | qwen3-8b | r_fuzzy | 0.25 | 40% | - | - | - | - | 40.0% [23.3%, 56.7%] | - | 0 |
 | qwen3-8b | spec_casc_tok | 0.8 | 70% | - | - | - | - | 70.0% [53.3%, 86.7%] | - | 0 |
 
