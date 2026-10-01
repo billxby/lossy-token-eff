@@ -1,23 +1,23 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 01:34 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 01:53 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 57.7; estimated remaining, runnable rows: 50.5; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 58.6; estimated remaining, runnable rows: 50.1; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 6 | 0 | 6 | 0 | 0 |
-| 2.1 | 92 | 0 | 4 | 0 | 0 |
-| 2.2 | 22 | 1 | 3 | 0 | 0 |
+| 2.1 | 92 | 1 | 3 | 0 | 0 |
+| 2.2 | 22 | 2 | 2 | 0 | 0 |
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
 | 4.2 | 0 | 0 | 12 | 0 | 0 |
 | 4.3 | 0 | 0 | 8 | 0 | 0 |
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
-| 6 | 14 | 1 | 15 | 0 | 0 |
+| 6 | 15 | 0 | 15 | 0 | 0 |
 | 7 | 0 | 0 | 6 | 0 | 8 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
@@ -571,7 +571,7 @@ Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, meth
 | qwen3-8b | gsm8k | mentored_dec | False | - (-) | - | - | - | - / - | - | - | - | - | - |
 | qwen3-8b | gsm8k | spec_casc_tok | False | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | 1.00 | 0.95 | 0.97 | 82% / 81% | yes |
 | qwen3-8b | aime24 | mentored_dec | False | 0.15 (0.15) | 0.91 | 0.88 | 0.89 | 73% / 70% | - | - | - | - | - |
-| qwen3-8b | aime24 | spec_casc_tok | False | 0.8 (0.8) | 0.98 | 0.93 | 0.93 | 70% / 70% | - | - | - | - | - |
+| qwen3-8b | aime24 | spec_casc_tok | False | 0.8 (0.8) | 0.98 | 0.93 | 0.93 | 70% / 70% | 1.00 | 0.97 | 0.98 | - / 77% | - |
 | qwen3-8b | humaneval | mentored_dec | False | 0.75 (0.75) | 1.08 | 0.99 | 1.02 | 85% / 83% | 1.05 | 0.96 | 0.97 | 79% / 84% | no |
 | qwen3-8b | humaneval | spec_casc_tok | False | 0.8 (0.8) | 1.08 | 1.04 | 1.05 | 85% / 83% | 1.03 | 1.00 | 1.01 | 83% / 84% | no |
 | qwen3-8b | livecodebench | mentored_dec | False | 0.15 (0.15) | 1.02 | 0.99 | 0.99 | 73% / 70% | - | - | - | - | - |
