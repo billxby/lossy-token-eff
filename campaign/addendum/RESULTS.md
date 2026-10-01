@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 20:47 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 20:59 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 100.4; estimated remaining, runnable rows: 14.2; blocked rows: 3.0.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 100.4; estimated remaining, runnable rows: 13.8; blocked rows: 3.0.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -516,10 +516,10 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | 2.000 | nspec2 (Nibi) | 90.000 | 0.937 | 0.922 | 0.952 | 8094.910 | 7352.360 | 8817.970 | 4232.990 | 3819.840 | 4639.850 | 32.610 | 29.509 | 35.740 | 0.311 | 90.000 | 1.018 | 1.108 | 0.926 | 0.976 | 1.063 | 1.059 | 1.162 | 0.885 | 0.972 | - | - | - |
 | 3.000 | nspec3 (Nibi) | 90.000 | 1.058 | 1.037 | 1.079 | 7986.440 | 7237.640 | 8712.830 | 3949.020 | 3552.910 | 4334.320 | 31.819 | 28.650 | 35.011 | 0.267 | 90.000 | 1.004 | 1.034 | 0.904 | 0.967 | 1.042 | 0.994 | 1.076 | 0.868 | 0.941 | - | - | - |
 | 4.000 | nspec4 (Nibi) | 90.000 | 1.106 | 1.082 | 1.130 | 7978.070 | 7234.100 | 8727.760 | 3873.670 | 3488.730 | 4259.730 | 32.766 | 29.375 | 36.096 | 0.244 | 90.000 | 1.003 | 1.014 | 0.931 | 0.968 | 1.042 | 0.977 | 1.055 | 0.896 | 0.969 | - | - | - |
-| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7279.300 | 8797.490 | 3703.370 | 3329.310 | 4063.990 | 71.423 | 64.095 | 78.593 | 0.322 | - | - | - | - | - | - | - | - | - | - | 0.700 | 0.600 | 0.789 |
-| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.105 | 1.157 | 7954.860 | 7203.360 | 8709.720 | 3819.360 | 3429.230 | 4201.710 | 35.202 | 31.553 | 38.794 | 0.267 | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7261.660 | 8773.600 | 3703.370 | 3335.580 | 4066.270 | 71.423 | 64.266 | 78.823 | 0.322 | - | - | - | - | - | - | - | - | - | - | 0.700 | 0.600 | 0.789 |
+| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.105 | 1.156 | 7954.860 | 7183.640 | 8696.870 | 3819.360 | 3418.660 | 4194.830 | 35.202 | 31.633 | 38.923 | 0.267 | - | - | - | - | - | - | - | - | - | - | - | - | - |
 | 8.000 | nspec8 (Nibi) | 90.000 | 1.132 | 1.104 | 1.160 | 7997.340 | 7246.820 | 8745.170 | 3851.330 | 3460.770 | 4239.580 | 37.987 | 34.079 | 41.873 | 0.311 | 90.000 | 1.005 | 1.008 | 1.079 | 0.974 | 1.040 | 0.975 | 1.045 | 1.042 | 1.119 | - | - | - |
-| 10.000 | nspec10 (Nibi) | 31.000 | 1.120 | 1.080 | 1.160 | 7968.680 | 6637.960 | 9279.660 | 3842.390 | 3157.870 | 4519.190 | 40.189 | 32.997 | 47.210 | 0.323 | 31.000 | 1.010 | 1.017 | 1.146 | 0.975 | 1.047 | 0.978 | 1.059 | 1.100 | 1.196 | - | - | - |
+| 10.000 | nspec10 (Nibi) | 51.000 | 1.148 | 1.109 | 1.188 | 7777.550 | 6731.620 | 8800.940 | 3726.020 | 3191.230 | 4262.160 | 39.163 | 33.536 | 44.975 | 0.314 | 51.000 | 1.005 | 1.009 | 1.143 | 0.973 | 1.035 | 0.975 | 1.043 | 1.103 | 1.182 | - | - | - |
 
 ## Step 4.1: temperature (strict, seed 0)
 
