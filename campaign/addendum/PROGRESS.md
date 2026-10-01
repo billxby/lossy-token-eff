@@ -752,3 +752,10 @@ for what is done; this file records every action and failure.
 - 2026-10-01T16:45:34Z step 0.5 nibiref livecodebench_qwen3 strict alpha=strict seed=0: done, 90/90 cases (jobs 5839003, 0.95 GPU-h)
 - 2026-10-01T16:45:35Z step 4.3 lmdraft livecodebench_qwen3 spec_casc_tok alpha=0.8 seed=0: done, 90/90 cases (jobs 5837981, 1.05 GPU-h)
 - 2026-10-01T16:45:48Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-01T17:02:46Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T17:02:47Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T17:02:51Z lane K1: pulled 102 new run dir(s) into runs/
+- 2026-10-01T17:02:55Z lane K2: pulled 81 new run dir(s) into runs/
+- 2026-10-01T17:02:56Z lane K3: pulled 34 new run dir(s) into runs/
+- 2026-10-01T17:02:57Z lane K4: pulled 14 new run dir(s) into runs/
+- 2026-10-01T17:03:05Z step 0.5 nibiref mtbench_qwen3 strict alpha=strict seed=0: done, 80/80 cases (jobs 5837981, 0.23 GPU-h)
