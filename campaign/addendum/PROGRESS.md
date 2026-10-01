@@ -691,3 +691,5 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:50:24Z lane K4: synced prompts/speedbench_qwen3 (7.1 MB tar) to the lane repo
 - 2026-10-01T14:51:42Z lane K1: submitted job 5838962 (afterany:5837978); lane has 35 work items, est. 14.5 GPU-h
 - 2026-10-01T14:51:43Z lane K2: submitted job 5838981 (afterany:5838004); lane has 17 work items, est. 15.7 GPU-h
+- 2026-10-01T14:53:08Z grading: uploaded 112 run dir(s) to the Nibi mirror, submitted CPU grading job 23061785
+- 2026-10-01T14:53:10Z grading: pulled 39765 verdicts into campaign/addendum/analysis/grades.csv

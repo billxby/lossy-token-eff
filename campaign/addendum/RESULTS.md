@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 14:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 14:53 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 82.8; estimated remaining, runnable rows: 31.2; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 82.9; estimated remaining, runnable rows: 30.2; blocked rows: 1.6.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -14,7 +14,7 @@ Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum 
 | 3 | 10 | 0 | 10 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
-| 4.3 | 4 | 2 | 2 | 0 | 0 |
+| 4.3 | 5 | 2 | 1 | 0 | 0 |
 | 5.1 | 18 | 0 | 23 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
@@ -566,7 +566,21 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 ## Step 4.3: standalone LM drafter (Qwen3-0.6B)
 
-Pending.
+`campaign/addendum/tables/lmdraft__gsm8k_qwen3.csv`:
+
+| condition | dataset | method | alpha | n_pairs | l_bar | l_bar_strict | mean_tokens | mean_tokens_strict | lambda | rounds_ratio | time_ratio | accuracy | accuracy_strict | capout_rate | capout_rate_strict | lambda_ci_lo | lambda_ci_hi | rounds_ratio_ci_lo | rounds_ratio_ci_hi | time_ratio_ci_lo | time_ratio_ci_hi |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| lmdraft | gsm8k_qwen3 | mentored_dec | 0.750 | 150.000 | 3.822 | 3.161 | 1232.670 | 1309.720 | 0.941 | 0.800 | 0.707 | 0.827 | 0.767 | 0.200 | 0.273 | 0.900 | 0.985 | 0.762 | 0.839 | 0.674 | 0.743 |
+| lmdraft | gsm8k_qwen3 | cactus | 0.350 | 150.000 | 4.072 | 3.161 | 1224.330 | 1309.720 | 0.935 | 0.749 | 0.693 | 0.827 | 0.767 | 0.187 | 0.273 | 0.893 | 0.975 | 0.716 | 0.783 | 0.662 | 0.726 |
+| lmdraft | gsm8k_qwen3 | spec_casc_tok | 0.800 | 150.000 | 3.405 | 3.161 | 1247.030 | 1309.720 | 0.952 | 0.899 | 0.833 | 0.833 | 0.767 | 0.220 | 0.273 | 0.915 | 0.989 | 0.861 | 0.937 | 0.798 | 0.868 |
+
+`campaign/addendum/tables/lmdraft__livecodebench_qwen3.csv`:
+
+| condition | dataset | method | alpha | n_pairs | l_bar | l_bar_strict | mean_tokens | mean_tokens_strict | lambda | rounds_ratio | time_ratio | accuracy | accuracy_strict | capout_rate | capout_rate_strict | lambda_ci_lo | lambda_ci_hi | rounds_ratio_ci_lo | rounds_ratio_ci_hi | time_ratio_ci_lo | time_ratio_ci_hi |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 77.000 | 3.904 | 3.015 | 7435.040 | 7941.310 | 0.936 | 0.746 | 0.724 | - | 0.753 | 0.260 | 0.247 | 0.897 | 0.977 | 0.717 | 0.778 | 0.694 | 0.755 |
+| lmdraft | livecodebench_qwen3 | cactus | 0.350 | 39.000 | 4.320 | 3.015 | 7538.230 | 8010.540 | 0.941 | 0.690 | 0.675 | - | 0.744 | 0.256 | 0.256 | 0.892 | 0.992 | 0.657 | 0.726 | 0.641 | 0.711 |
+| lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 0.000 | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Step 5: alpha grid completion and best-setting validation
 

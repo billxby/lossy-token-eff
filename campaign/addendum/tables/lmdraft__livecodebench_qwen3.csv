@@ -1,0 +1,4 @@
+condition,dataset,method,alpha,n_pairs,l_bar,l_bar_strict,mean_tokens,mean_tokens_strict,lambda,rounds_ratio,time_ratio,accuracy,accuracy_strict,capout_rate,capout_rate_strict,lambda_ci_lo,lambda_ci_hi,rounds_ratio_ci_lo,rounds_ratio_ci_hi,time_ratio_ci_lo,time_ratio_ci_hi
+lmdraft,livecodebench_qwen3,mentored_dec,0.75,77,3.90449,3.01479,7435.04,7941.31,0.936248,0.746391,0.723683,,0.753247,0.25974,0.246753,0.896572,0.976748,0.717204,0.777694,0.694343,0.754563
+lmdraft,livecodebench_qwen3,cactus,0.35,39,4.31992,3.01521,7538.23,8010.54,0.941039,0.689606,0.674901,,0.74359,0.25641,0.25641,0.891677,0.992304,0.657232,0.726314,0.641476,0.711038
+lmdraft,livecodebench_qwen3,spec_casc_tok,0.8,0,,,,,,,,,,,,,,,,,
