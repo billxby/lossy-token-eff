@@ -705,3 +705,8 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:57:57Z Killarney now four lanes (K1 kn169-171, K2 kn176-178, K3 kn172-173, K4 kn174-175): K3 chain 5839003->..05, K4 chain 5839006->..07; groups re-spread whole (K1 SPEED-Bench 12.5 h, K2 5.5 h, K3 7.6 h, K4 4.8 h est.). README deviation 14.
 - 2026-10-01T15:14:35Z lane K1: pulled 33 new run dir(s) into runs/
 - 2026-10-01T15:14:40Z lane K2: pulled 75 new run dir(s) into runs/
+- 2026-10-01T15:16:27Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T15:16:28Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T15:16:30Z lane K1: pulled 3 new run dir(s) into runs/
+- 2026-10-01T15:16:33Z lane K2: pulled 4 new run dir(s) into runs/
+- 2026-10-01T15:16:39Z step 4.3 lmdraft livecodebench_qwen3 cactus alpha=0.35 seed=0: done, 90/90 cases (jobs 5837975, 0.84 GPU-h)

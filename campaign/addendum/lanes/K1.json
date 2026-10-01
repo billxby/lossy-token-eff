@@ -1,41 +1,8 @@
 {
  "lane": "K1",
- "written": "2026-10-01T15:14:48Z",
+ "written": "2026-10-01T15:16:39Z",
  "hold_minutes": 0,
  "items": [
-  {
-   "id": "lmdraft|livecodebench_qwen3|cactus|0.35|0",
-   "step": "4.3",
-   "condition": "lmdraft",
-   "dataset": "livecodebench_qwen3",
-   "method": "cactus",
-   "alpha": "0.35",
-   "seed": 0,
-   "cases": [
-    "case_088",
-    "case_089",
-    "case_090"
-   ],
-   "prompt_root": "prompts/livecodebench_qwen3",
-   "runs_subroot": "runs/addendum/lmdraft",
-   "max_new_tokens": 12000,
-   "model_flags": [
-    "--model-path",
-    "Qwen/Qwen3-8B",
-    "--draft-model-path",
-    "Qwen/Qwen3-0.6B",
-    "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "draft_model"
-   }
-  },
   {
    "id": "speedbench|speedbench_qwen3|strict|strict|0@8192",
    "step": "7",
