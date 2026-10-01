@@ -854,3 +854,10 @@ for what is done; this file records every action and failure.
 - 2026-10-01T19:42:17Z lane K3: pulled 5 new run dir(s) into runs/
 - 2026-10-01T19:42:19Z lane K4: pulled 37 new run dir(s) into runs/
 - 2026-10-01T19:42:52Z Qwen3 nspec10 gsm8k failed twice at server start (CUDA OOM in vLLM's sampler warmup, 2.12 GiB needed, 1.55 free at GPU_UTIL 0.85). Both Qwen3 nspec10 rows now carry GPU_UTIL=0.80 (README deviation 18); K3 reaches livecodebench nspec10 after nspec8, K4 retries gsm8k nspec10 in its next job.
+- 2026-10-01T19:58:10Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T19:58:10Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T19:58:16Z lane K1: pulled 96 new run dir(s) into runs/
+- 2026-10-01T19:58:21Z lane K2: pulled 35 new run dir(s) into runs/
+- 2026-10-01T19:58:22Z lane K3: pulled 25 new run dir(s) into runs/
+- 2026-10-01T19:58:27Z lane K4: pulled 174 new run dir(s) into runs/
+- 2026-10-01T19:58:34Z step 5.1 main gsm8k_qwen3 mentored_dec alpha=0.55 seed=0: done, 150/150 cases (jobs 5839006 5839007, 0.14 GPU-h)
