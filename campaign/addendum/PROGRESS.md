@@ -792,3 +792,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T17:54:52Z step 3 nspec2 gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006, 0.23 GPU-h)
 - 2026-10-01T17:54:52Z step 3 nspec3 gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006, 0.23 GPU-h)
 - 2026-10-01T17:54:53Z step 5.1 main humaneval_qwen3 mentored_dec alpha=0.35 seed=0: done, 150/150 cases (jobs 5837981 5837983, 0.13 GPU-h)
+- 2026-10-01T17:55:07Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
