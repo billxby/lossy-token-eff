@@ -536,13 +536,13 @@
         },
         {
           "id": "5839004",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:57:17Z",
           "dependency": "5839003"
         },
         {
           "id": "5839005",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-01T14:57:19Z",
           "dependency": "5839004"
         }
