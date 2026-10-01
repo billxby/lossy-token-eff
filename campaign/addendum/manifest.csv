@@ -224,8 +224,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,1,runs,30,30,done,5819353,0.00,0.95,lane=K2; seeds 1-2 shared by step 6
 6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,1,runs,30,30,done,5819349,0.00,0.80,lane=K1
 6,main,qwen3-8b,aime24_qwen3,cactus,0.35,1,runs,30,30,done,5819353,0.00,0.50,lane=K2
-2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,1,runs,30,1,running,5819353,0.62,,lane=K2; seeds 1-2 shared by step 6
-6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,1,runs,30,8,running,5819349,0.40,,lane=K1
+2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,1,runs,30,13,running,5819353,0.39,,lane=K2; seeds 1-2 shared by step 6
+6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,1,runs,30,21,running,5819349,0.21,,lane=K1
 2.2,main,qwen3-8b,aime24_qwen3,strict,strict,2,runs,30,0,queued,,0.55,,lane=K1; seeds 1-2 shared by step 6
 2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,2,runs,30,0,queued,,0.62,,lane=K2; seeds 1-2 shared by step 6
 6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,2,runs,30,0,queued,,0.53,,lane=K1
