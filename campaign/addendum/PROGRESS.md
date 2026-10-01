@@ -599,3 +599,6 @@ for what is done; this file records every action and failure.
 - 2026-10-01T02:50:53Z lane K2: submitted job 5821919 (afterany:5819356); lane has 45 work items, est. 23.7 GPU-h
 - 2026-10-01T02:51:09Z grading: uploaded 48 run dir(s) to the Nibi mirror, submitted CPU grading job 23009738
 - 2026-10-01T02:51:12Z grading: pulled 36931 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-01T03:08:39Z lane A: pulled 36 new run dir(s) into runs/
+- 2026-10-01T03:09:16Z lane K1: pulled 14 new run dir(s) into runs/
+- 2026-10-01T03:09:17Z lane K2: pulled 9 new run dir(s) into runs/
