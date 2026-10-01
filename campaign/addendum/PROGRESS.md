@@ -702,3 +702,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:57:19Z lane K3: submitted job 5839005 (afterany:5839004); lane has 12 work items, est. 7.6 GPU-h
 - 2026-10-01T14:57:20Z lane K4: submitted job 5839006; lane has 16 work items, est. 4.8 GPU-h
 - 2026-10-01T14:57:22Z lane K4: submitted job 5839007 (afterany:5839006); lane has 16 work items, est. 4.8 GPU-h
+- 2026-10-01T14:57:57Z Killarney now four lanes (K1 kn169-171, K2 kn176-178, K3 kn172-173, K4 kn174-175): K3 chain 5839003->..05, K4 chain 5839006->..07; groups re-spread whole (K1 SPEED-Bench 12.5 h, K2 5.5 h, K3 7.6 h, K4 4.8 h est.). README deviation 14.

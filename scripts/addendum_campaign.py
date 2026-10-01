@@ -62,14 +62,21 @@ LANES = {
     "B": {"host": "nibi", "account": "def-hongyanz_gpu", "project": NIBI_PROJECT,
           "repo": f"{NIBI_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneB", "exclude": "g[1-14]"},
     # Killarney (PAICE allocation aip-hongyanz) from 2026-09-30: the Qwen3 rows move here (README deviation 12)
+    # four disjoint H100 node sets (kn169-kn178) from 2026-10-01 14:55Z, at Bill's suggestion (README deviation 14)
     "K1": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
            "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff", "root": "/scratch/billxby/lossy-addendum/laneK1",
-           "exclude": "kn[174-178]"},
+           "exclude": "kn[172-178]"},
     "K2": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
            "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane2", "root": "/scratch/billxby/lossy-addendum/laneK2",
-           "exclude": "kn[169-173]"},
+           "exclude": "kn[169-175]"},
+    "K3": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane3", "root": "/scratch/billxby/lossy-addendum/laneK3",
+           "exclude": "kn[169-171,174-178]"},
+    "K4": {"host": "killarney", "account": "aip-hongyanz", "project": KILLARNEY_PROJECT,
+           "repo": f"{KILLARNEY_PROJECT}/lossy-token-eff-lane4", "root": "/scratch/billxby/lossy-addendum/laneK4",
+           "exclude": "kn[169-173,176-178]"},
 }
-QWEN3_LANES = ["K1", "K2"]  # where Qwen3 rows without a lane go
+QWEN3_LANES = ["K1", "K2", "K3", "K4"]  # where Qwen3 rows without a lane go
 MAX_CHAIN = 4          # jobs per lane queued at once (running + pending)
 # 3 h jobs since 2026-09-30 19:20Z: with ~850 H100 jobs pending, 12 h jobs stopped fitting any backfill
 # window (a lane waited 6 h); a 3 h job loses at most the case in progress when it ends (skip-if-done)

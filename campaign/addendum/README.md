@@ -198,3 +198,12 @@ alpha grows).
    longbench_v2, SPEED-Bench). A lane still moves between nodes of its set
    from one 3 h job to the next, so a group can span nodes; the rounds ratio
    is the hardware-independent comparison throughout.
+14. **Four Killarney lanes from 2026-10-01 ~15:00Z, at Bill's suggestion**
+   (beyond the plan's "at most three jobs running", which was set with
+   Nibi's queue in mind). Disjoint H100 node sets: K1 kn169-kn171, K2
+   kn176-kn178, K3 kn172-kn173, K4 kn174-kn175 (the pending K1/K2 jobs were
+   narrowed in place with `scontrol update ExcNodeList`); K3/K4 are copies of
+   K1's repo + patched venv (V2 68d0a904). The comparison groups were
+   re-spread over the four lanes whole (README deviation 13): K1 Qwen3
+   SPEED-Bench, K2 step-4.3 livecodebench + humaneval + longbench_v2 +
+   mtbench, K3 livecodebench, K4 aime24 + gsm8k.
