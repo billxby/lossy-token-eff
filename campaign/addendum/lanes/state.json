@@ -522,7 +522,26 @@
       ]
     },
     "K3": {
-      "jobs": [],
+      "jobs": [
+        {
+          "id": "5839003",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:57:15Z",
+          "dependency": ""
+        },
+        {
+          "id": "5839004",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:57:17Z",
+          "dependency": "5839003"
+        },
+        {
+          "id": "5839005",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:57:19Z",
+          "dependency": "5839004"
+        }
+      ],
       "rows": [
         "nibiref|livecodebench_qwen3|strict|strict|0",
         "nspec2|livecodebench_qwen3|strict|strict|0",
@@ -539,7 +558,20 @@
       ]
     },
     "K4": {
-      "jobs": [],
+      "jobs": [
+        {
+          "id": "5839006",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:57:20Z",
+          "dependency": ""
+        },
+        {
+          "id": "5839007",
+          "state": "PENDING",
+          "submitted": "2026-10-01T14:57:22Z",
+          "dependency": "5839006"
+        }
+      ],
       "rows": [
         "nibiref|aime24_qwen3|strict|strict|0",
         "main|aime24_qwen3|mentored_dec|0.35|0",

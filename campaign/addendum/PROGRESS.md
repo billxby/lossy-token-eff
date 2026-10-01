@@ -697,3 +697,8 @@ for what is done; this file records every action and failure.
 - 2026-10-01T14:56:38Z lane K1: pulled 15 new run dir(s) into runs/
 - 2026-10-01T14:56:40Z lane K2: pulled 13 new run dir(s) into runs/
 - 2026-10-01T14:56:46Z step 4.3 lmdraft livecodebench_qwen3 mentored_dec alpha=0.75 seed=0: done, 90/90 cases (jobs 5821919 5837981, 0.29 GPU-h)
+- 2026-10-01T14:57:15Z lane K3: submitted job 5839003; lane has 12 work items, est. 7.6 GPU-h
+- 2026-10-01T14:57:17Z lane K3: submitted job 5839004 (afterany:5839003); lane has 12 work items, est. 7.6 GPU-h
+- 2026-10-01T14:57:19Z lane K3: submitted job 5839005 (afterany:5839004); lane has 12 work items, est. 7.6 GPU-h
+- 2026-10-01T14:57:20Z lane K4: submitted job 5839006; lane has 16 work items, est. 4.8 GPU-h
+- 2026-10-01T14:57:22Z lane K4: submitted job 5839007 (afterany:5839006); lane has 16 work items, est. 4.8 GPU-h
