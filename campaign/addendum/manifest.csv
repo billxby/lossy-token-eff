@@ -220,9 +220,9 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 6,main,gpt-oss-20b,aime24,cactus,0.18,4,runs,30,30,done,22881159,0.00,0.29,lane=B
 6,main,gpt-oss-20b,aime24,r_fuzzy,0.25,4,runs,30,30,done,22881159,0.00,0.39,lane=B
 6,main,gpt-oss-20b,aime24,spec_casc_tok,0.8,4,runs,30,30,done,22881159,0.00,0.31,lane=B
-2.2,main,qwen3-8b,aime24_qwen3,strict,strict,1,runs,30,22,running,5819349,0.20,,lane=K1; lane=B; seeds 1-2 shared by step 6
-2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,1,runs,30,5,running,5819353,0.53,,lane=K2; lane=A; seeds 1-2 shared by step 6
-6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,1,runs,30,0,queued,,0.53,,lane=K1; lane=B
+2.2,main,qwen3-8b,aime24_qwen3,strict,strict,1,runs,30,30,done,5819349,0.00,0.85,lane=K1; lane=B; seeds 1-2 shared by step 6
+2.2,main,qwen3-8b,aime24_qwen3,spec_casc_opt,0.05,1,runs,30,18,running,5819353,0.29,,lane=K2; lane=A; seeds 1-2 shared by step 6
+6,main,qwen3-8b,aime24_qwen3,mentored_dec,0.75,1,runs,30,1,running,5819349,0.51,,lane=K1; lane=B
 6,main,qwen3-8b,aime24_qwen3,cactus,0.35,1,runs,30,0,queued,,0.39,,lane=K2; lane=A
 2.2,main,qwen3-8b,aime24_qwen3,r_fuzzy,0.25,1,runs,30,0,queued,,0.64,,lane=K2; lane=B; seeds 1-2 shared by step 6
 6,main,qwen3-8b,aime24_qwen3,spec_casc_tok,0.8,1,runs,30,0,queued,,0.52,,lane=K1; lane=A
