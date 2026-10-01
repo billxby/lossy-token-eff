@@ -926,3 +926,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T21:55:05Z lane K3: pulled 20 new run dir(s) into runs/
 - 2026-10-01T21:55:07Z lane K4: pulled 13 new run dir(s) into runs/
 - 2026-10-01T21:55:16Z step 5.1 main mtbench_qwen3 spec_casc_tok alpha=0.55 seed=0: done, 80/80 cases (jobs 5838981, 0.22 GPU-h)
+- 2026-10-01T21:55:24Z lane K3: submitted job 5846458 (afterany:5843279); lane has 6 work items, est. 3.4 GPU-h
