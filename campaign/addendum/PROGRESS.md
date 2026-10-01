@@ -625,3 +625,5 @@ for what is done; this file records every action and failure.
 - 2026-10-01T04:03:26Z lane A: pulled 21 new run dir(s) into runs/
 - 2026-10-01T04:04:09Z lane K1: pulled 7 new run dir(s) into runs/
 - 2026-10-01T04:04:10Z lane K2: pulled 8 new run dir(s) into runs/
+- 2026-10-01T04:04:46Z grading: uploaded 36 run dir(s) to the Nibi mirror, submitted CPU grading job 23015826
+- 2026-10-01T04:04:48Z grading: pulled 37150 verdicts into campaign/addendum/analysis/grades.csv
