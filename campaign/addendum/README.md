@@ -232,3 +232,15 @@ alpha grows).
    final tables use them to name each Killarney arm's node(s) and to flag
    time ratios whose arm and reference ran on different nodes; rounds
    ratios are unaffected.
+16. **Qwen3 SPEED-Bench arms spread over lanes (2026-10-01 ~17:25Z).** With
+   the whole SPEED-Bench group on K1 (deviation 14), K1 held 10.0 of the
+   ~24 remaining GPU-h while K2 and K4 would have idled after 3-4 h. Since
+   deviation 15 a lane's next job may land on any node, so one lane no
+   longer means one node, and step 4.3 showed no node penalty between
+   kn169 and kn176 (JOURNAL). The two relaxed arms with only their first-40
+   cases done (already pulled, so nothing reruns) moved whole: r_fuzzy to K2
+   and cactus to K4, each after that lane's other work; spec_casc_opt
+   (mid-run), mentored_dec and spec_casc_tok stay on K1. Estimated remaining
+   GPU-h: K1 5.9, K2 5.3, K3 6.4, K4 5.9 (was 10.0 / 3.0 / 6.5 / 4.1). The
+   final tables name each arm's node(s) and flag mixed-node time ratios
+   (deviation 15); rounds ratios are unaffected.
