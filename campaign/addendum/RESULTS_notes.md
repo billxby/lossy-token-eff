@@ -192,3 +192,15 @@
   picked mentored_dec 0.75, the loosest and lowest-scoring cell (-0.9 vs
   strict); spec_casc_tok's pick (0.55) costs nothing. Top-up batch for the
   230 fill runs: $5.37, ended 2026-09-30 03:53Z (judge total $50.53).
+
+### Killarney: time ratios depend on the node (step 4.2)
+
+- Mean time per round, step 4.2 (Qwen3 at T 0.6, top-p 0.95, top-k 20):
+  K1 arms on kn173/kn169 -- strict 9.47 / 9.64 ms (gsm8k / livecodebench),
+  mentored_dec 9.47 / 9.65, r_fuzzy 9.55 / 9.58 -- vs K2 arms on kn176 --
+  cactus 10.48 / 10.71, spec_casc_opt 10.74 / 10.82, spec_casc_tok 10.52 /
+  10.78. Within K1 a relaxed round costs what a strict one does (as on
+  Nibi); kn176 is ~11% slower per round whatever the rule. So
+  `tables/qwenT0.6__*.csv` time ratios for cactus, spec_casc_opt and
+  spec_casc_tok (gsm8k 1.07 / 1.08 / 1.07) are inflated by the node; their
+  rounds ratios (0.96 / 0.95 / 0.96) are not. README deviation 13.

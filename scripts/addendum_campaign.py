@@ -1153,7 +1153,7 @@ def cmd_poll(args: argparse.Namespace) -> int:
     except (RuntimeError, subprocess.SubprocessError, OSError) as exc:
         progress(f"grading step failed ({exc}); retried next poll")
     if pathlib.Path(ANALYSIS_PY).exists():  # needs numpy + matplotlib (campaign_report.py)
-        for sub in ("seeds", "nspec", "temp", "aime", "best", "speedbench"):
+        for sub in ("seeds", "nspec", "temp", "qwenT", "lmdraft", "aime", "best", "speedbench"):
             done = subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_tables.py"), sub], cwd=REPO,
                                   capture_output=True, text=True)
             if done.returncode != 0:

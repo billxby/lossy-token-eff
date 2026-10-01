@@ -184,3 +184,17 @@ alpha grows).
    rest run on Killarney (each case's pair on one machine). Step 0.5's
    Qwen3 reference runs on Killarney, the machine of the Qwen3 cells it
    serves (steps 3, 4.1, 5.1/5.2).
+13. **Killarney nodes differ in time per round; comparisons are kept on one
+   lane (2026-10-01 14:30Z).** Step 4.2 (Qwen3 at T 0.6) ran strict,
+   mentored_dec and r_fuzzy on K1 (kn173/kn169: 9.5-9.6 ms per round, the
+   relaxed arms within 1% of strict) and cactus, spec_casc_opt and
+   spec_casc_tok on K2 (kn176: 10.5-10.8 ms per round), so those three time
+   ratios carry a ~11% node penalty; their rounds ratios and lambda do not
+   (README deviation 12 had spread rows over K1/K2 one by one). Every
+   not-yet-started Qwen3 row was then regrouped so that each comparison --
+   a dataset's step-0.5 reference with its step-3, 4.1 and 5.1 rows; each
+   step-4.3 dataset; Qwen3 SPEED-Bench -- sits on one lane (K1: gsm8k,
+   livecodebench, mtbench, aime24 and step 4.3 livecodebench; K2: humaneval,
+   longbench_v2, SPEED-Bench). A lane still moves between nodes of its set
+   from one 3 h job to the next, so a group can span nodes; the rounds ratio
+   is the hardware-independent comparison throughout.
