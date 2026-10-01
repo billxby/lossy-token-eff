@@ -421,13 +421,13 @@
       "jobs": [
         {
           "id": "5819353",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-09-30T23:15:43Z",
           "dependency": ""
         },
         {
           "id": "5819354",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-09-30T23:15:45Z",
           "dependency": "5819353"
         },

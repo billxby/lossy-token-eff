@@ -591,3 +591,7 @@ for what is done; this file records every action and failure.
 - 2026-10-01T02:31:02Z lane K1: submitted job 5821776 (afterany:5819352); lane has 42 work items, est. 23.5 GPU-h
 - 2026-10-01T02:31:55Z grading: uploaded 54 run dir(s) to the Nibi mirror, submitted CPU grading job 23007804
 - 2026-10-01T02:31:59Z grading: pulled 36877 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-01T02:49:30Z lane A: pulled 30 new run dir(s) into runs/
+- 2026-10-01T02:50:30Z lane K1: pulled 10 new run dir(s) into runs/
+- 2026-10-01T02:50:31Z lane K2: pulled 8 new run dir(s) into runs/
+- 2026-10-01T02:50:37Z step 2.1 main livecodebench_qwen3 r_fuzzy alpha=0.25 seed=2: done, 90/90 cases (jobs 22948693 22982359, 0.42 GPU-h)
