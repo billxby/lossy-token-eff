@@ -1,21 +1,21 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 18:44 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 19:03 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 93.6; estimated remaining, runnable rows: 19.5; blocked rows: 2.2.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 93.9; estimated remaining, runnable rows: 18.8; blocked rows: 2.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
 | 0.5 | 11 | 0 | 1 | 0 | 0 |
 | 2.1 | 96 | 0 | 0 | 0 | 0 |
 | 2.2 | 26 | 0 | 0 | 0 | 0 |
-| 3 | 16 | 0 | 4 | 0 | 0 |
-| 4.1 | 5 | 1 | 2 | 0 | 0 |
+| 3 | 16 | 1 | 3 | 0 | 0 |
+| 4.1 | 6 | 0 | 2 | 0 | 0 |
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
 | 4.3 | 8 | 0 | 0 | 0 | 0 |
-| 5.1 | 20 | 1 | 20 | 0 | 0 |
+| 5.1 | 20 | 2 | 19 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
 | 7 | 0 | 1 | 4 | 0 | 9 |
@@ -515,9 +515,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 2.000 | nspec2 (Nibi) | 90.000 | 0.937 | 0.922 | 0.952 | 8094.910 | 7352.360 | 8817.970 | 4232.990 | 3819.840 | 4639.850 | 32.610 | 29.509 | 35.740 | 0.311 | 90.000 | 1.018 | 1.108 | 0.926 | 0.976 | 1.063 | 1.059 | 1.162 | 0.885 | 0.972 | - | - | - |
 | 3.000 | nspec3 (Nibi) | 90.000 | 1.058 | 1.037 | 1.079 | 7986.440 | 7237.640 | 8712.830 | 3949.020 | 3552.910 | 4334.320 | 31.819 | 28.650 | 35.011 | 0.267 | 90.000 | 1.004 | 1.034 | 0.904 | 0.967 | 1.042 | 0.994 | 1.076 | 0.868 | 0.941 | - | - | - |
-| 4.000 | nspec4 (Nibi) | 36.000 | 1.093 | 1.058 | 1.130 | 8078.810 | 6977.330 | 9164.100 | 3933.110 | 3341.490 | 4513.860 | 32.839 | 27.874 | 37.735 | 0.222 | 36.000 | 1.017 | 1.041 | 0.937 | 0.962 | 1.085 | 0.984 | 1.111 | 0.885 | 1.002 | - | - | - |
-| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7266.570 | 8783.970 | 3703.370 | 3329.320 | 4074.360 | 71.423 | 64.419 | 78.660 | 0.322 | - | - | - | - | - | - | - | - | - | - | 0.700 | 0.600 | 0.789 |
-| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.105 | 1.156 | 7954.860 | 7203.830 | 8716.080 | 3819.360 | 3423.720 | 4207.520 | 35.202 | 31.433 | 38.773 | 0.267 | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| 4.000 | nspec4 (Nibi) | 52.000 | 1.110 | 1.077 | 1.142 | 7937.060 | 6920.710 | 8919.200 | 3849.170 | 3334.700 | 4366.530 | 32.420 | 27.945 | 36.775 | 0.269 | 52.000 | 1.015 | 1.029 | 0.933 | 0.973 | 1.064 | 0.984 | 1.081 | 0.893 | 0.982 | - | - | - |
+| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7251.860 | 8784.520 | 3703.370 | 3338.870 | 4077.890 | 71.423 | 64.155 | 78.828 | 0.322 | - | - | - | - | - | - | - | - | - | - | 0.700 | 0.600 | 0.789 |
+| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.105 | 1.156 | 7954.860 | 7177.260 | 8699.880 | 3819.360 | 3418.980 | 4200.470 | 35.202 | 31.570 | 38.806 | 0.267 | - | - | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Step 4.1: temperature (strict, seed 0)
 
@@ -534,26 +534,26 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.488 | 1.542 | 1291.930 | 1202.830 | 1382.360 | 510.080 | 475.693 | 544.347 | 10.299 | 9.575 | 11.018 | 0.800 | 0.733 | 0.860 | 0.247 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 150.000 | 1.499 | 1.474 | 1.526 | 1279.450 | 1188.400 | 1368.800 | 509.680 | 474.060 | 544.588 | 4.620 | 4.299 | 4.939 | - | - | - | 0.227 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 150.000 | 1.514 | 1.488 | 1.542 | 1291.930 | 1202.970 | 1382.340 | 510.080 | 476.052 | 544.860 | 10.299 | 9.569 | 11.052 | 0.800 | 0.733 | 0.860 | 0.247 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 150.000 | 1.499 | 1.473 | 1.525 | 1279.450 | 1189.650 | 1371.060 | 509.680 | 474.900 | 545.542 | 4.620 | 4.297 | 4.948 | - | - | - | 0.227 | - | - | - | - | - | - | - | - | - | - |
 | 1.200 | temp1.2 (Nibi) | 150.000 | 1.277 | 1.252 | 1.301 | 1300.170 | 1205.770 | 1395.190 | 570.253 | 528.659 | 611.262 | 5.176 | 4.797 | 5.550 | - | - | - | 0.253 | 150.000 | 1.016 | 1.119 | 1.120 | 0.976 | 1.059 | 1.074 | 1.169 | 1.074 | 1.168 |
-| 1.500 | temp1.5 (Nibi) | 16.000 | 0.836 | 0.779 | 0.889 | 1301.310 | 993.930 | 1599.830 | 707.188 | 543.433 | 879.128 | 6.402 | 4.925 | 7.917 | - | - | - | 0.375 | 16.000 | 0.947 | 1.298 | 1.294 | 0.834 | 1.054 | 1.146 | 1.443 | 1.141 | 1.442 |
+| 1.500 | temp1.5 (Nibi) | 150.000 | 0.821 | 0.804 | 0.837 | 1320.270 | 1227.030 | 1416.310 | 725.833 | 674.131 | 777.162 | 6.563 | 6.091 | 7.030 | - | - | - | 0.273 | 150.000 | 1.032 | 1.424 | 1.421 | 0.992 | 1.074 | 1.366 | 1.486 | 1.362 | 1.481 |
 
 `campaign/addendum/tables/temp__livecodebench.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.105 | 2.224 | 3456.240 | 2924.600 | 4044.290 | 1150.830 | 955.932 | 1366.550 | 25.190 | 21.168 | 29.587 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
-| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.154 | 2.275 | 3394.530 | 2871.270 | 3975.220 | 1120.230 | 926.043 | 1335.570 | 8.333 | 6.907 | 9.929 | 0.911 | 0.844 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
-| 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.946 | 2.063 | 3646.640 | 3090.640 | 4256.100 | 1296.980 | 1074.220 | 1536.110 | 9.625 | 7.986 | 11.471 | 0.867 | 0.789 | 0.933 | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.983 | 1.174 | 1.047 | 1.283 | 1.045 | 1.275 |
-| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.193 | 1.316 | 6193.010 | 5424.670 | 6950.050 | 2932.840 | 2542.740 | 3326.080 | 20.889 | 18.081 | 23.657 | 0.078 | 0.033 | 0.133 | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.462 | 2.275 | 2.038 | 3.354 | 1.961 | 3.194 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 2.164 | 2.106 | 2.223 | 3456.240 | 2928.210 | 4053.710 | 1150.830 | 950.600 | 1369.800 | 25.190 | 21.226 | 29.555 | 0.889 | 0.822 | 0.944 | 0.022 | - | - | - | - | - | - | - | - | - | - |
+| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 2.213 | 2.152 | 2.276 | 3394.530 | 2873.180 | 3977.400 | 1120.230 | 922.233 | 1338.140 | 8.333 | 6.899 | 9.941 | 0.911 | 0.856 | 0.967 | 0.044 | - | - | - | - | - | - | - | - | - | - |
+| 1.200 | temp1.2 (Nibi) | 90.000 | 2.004 | 1.945 | 2.065 | 3646.640 | 3078.040 | 4267.890 | 1296.980 | 1076.140 | 1545.250 | 9.625 | 7.951 | 11.500 | 0.867 | 0.800 | 0.933 | 0.056 | 90.000 | 1.074 | 1.158 | 1.155 | 0.985 | 1.172 | 1.051 | 1.279 | 1.048 | 1.275 |
+| 1.500 | temp1.5 (Nibi) | 90.000 | 1.254 | 1.194 | 1.317 | 6193.010 | 5420.020 | 6986.990 | 2932.840 | 2547.720 | 3333.360 | 20.889 | 18.185 | 23.626 | 0.078 | 0.022 | 0.133 | 0.022 | 90.000 | 1.824 | 2.618 | 2.507 | 1.462 | 2.281 | 2.044 | 3.364 | 1.952 | 3.214 |
 
 `campaign/addendum/tables/temp__livecodebench_qwen3.csv`:
 
 | temperature | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi | capout_rate |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.180 | 1.230 | 8028.540 | 7274.040 | 8781.540 | 3703.370 | 3338.750 | 4070.470 | 71.423 | 63.955 | 78.543 | 0.700 | 0.600 | 0.789 | 0.322 |
-| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.105 | 1.156 | 7954.860 | 7214.180 | 8724.120 | 3819.360 | 3430.290 | 4203.820 | 35.202 | 31.591 | 38.794 | - | - | - | 0.267 |
+| 1.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.230 | 8028.540 | 7272.390 | 8770.920 | 3703.370 | 3329.000 | 4065.920 | 71.423 | 64.199 | 78.598 | 0.700 | 0.600 | 0.789 | 0.322 |
+| 1.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.106 | 1.156 | 7954.860 | 7180.640 | 8717.100 | 3819.360 | 3423.650 | 4201.220 | 35.202 | 31.615 | 38.827 | - | - | - | 0.267 |
 
 ## Step 4.2: Qwen3 at its recommended sampler
 
@@ -682,20 +682,20 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
 
 | category | strict tokens (cap-out) | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) | spec_casc_tok (0.8) |
 |---|---:|---|---|---|---|---|
-| all | 2332 (5%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.42↑ · R 1.02 · T 1.13↑ (n=458) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) | λ 0.99 · R 0.93 · T 0.93 (n=40) |
-| coding | 5495 (24%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.38↑ · R 1.05 · T 1.16↑ (n=55) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) | λ 1.04 · R 0.98 · T 0.98 (n=5) |
-| math | 2356 (0%) | - | - | λ 2.09↑ · R 1.53↑ · T 1.71↑ (n=13) | - | - |
-| humanities | 2127 (0%) | λ 0.89 · R 0.77 · T 0.77 (n=1) | λ 1.00 · R 0.47 · T 0.48 (n=1) | λ 1.89↑ · R 1.18 · T 1.28 (n=7) | λ 0.81 · R 0.66 · T 0.66 (n=1) | λ 1.08 · R 1.07 · T 1.07 (n=1) |
+| all | 2332 (5%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.40↑ · R 1.01 · T 1.12↑ (n=556) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) | λ 0.99 · R 0.93 · T 0.93 (n=40) |
+| coding | 5495 (24%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.34↑ · R 1.03 · T 1.14↑ (n=66) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) | λ 1.04 · R 0.98 · T 0.98 (n=5) |
+| math | 2356 (0%) | - | - | λ 2.23↑ · R 1.60↑ · T 1.79↑ (n=15) | - | - |
+| humanities | 2127 (0%) | λ 0.89 · R 0.77 · T 0.77 (n=1) | λ 1.00 · R 0.47 · T 0.48 (n=1) | λ 1.72↑ · R 1.09 · T 1.19 (n=8) | λ 0.81 · R 0.66 · T 0.66 (n=1) | λ 1.08 · R 1.07 · T 1.07 (n=1) |
 | stem | 2259 (0%) | - | - | λ 1.11 · R 0.89 · T 1.00 (n=5) | - | - |
-| writing | 3203 (1%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.39↑ · R 0.96 · T 1.07 (n=54) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) | λ 0.87 · R 0.83 · T 0.83 (n=5) |
-| summarization | 660 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.96 · R 0.84↓ · T 0.91 (n=54) | λ 0.91 · R 0.75 · T 0.75 (n=5) | λ 0.90 · R 0.84 · T 0.84 (n=5) |
-| roleplay | 713 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.31 · R 0.94 · T 1.04 (n=54) | λ 1.78 · R 1.44 · T 1.44 (n=4) | λ 1.08 · R 1.03 · T 1.03 (n=4) |
-| rag | 1181 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 1.54↑ · R 1.07 · T 1.18 (n=54) | λ 1.02 · R 0.77 · T 0.78 (n=5) | λ 1.10 · R 1.00 · T 1.00 (n=5) |
-| multilingual | 3004 (10%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.61↑ · R 1.12 · T 1.23↑ (n=54) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) | λ 1.09 · R 1.04 · T 1.04 (n=5) |
-| reasoning | 2829 (10%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.44↑ · R 1.03 · T 1.14 (n=54) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) | λ 0.87 · R 0.78 · T 0.78 (n=5) |
-| qa | 1594 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.17 · R 0.80↓ · T 0.88 (n=54) | λ 1.76 · R 1.18 · T 1.19 (n=5) | λ 0.95 · R 0.91 · T 0.91 (n=5) |
+| writing | 3203 (1%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.36↑ · R 0.96 · T 1.06 (n=66) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) | λ 0.87 · R 0.83 · T 0.83 (n=5) |
+| summarization | 660 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.99 · R 0.86↓ · T 0.92 (n=66) | λ 0.91 · R 0.75 · T 0.75 (n=5) | λ 0.90 · R 0.84 · T 0.84 (n=5) |
+| roleplay | 713 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.41↑ · R 0.95 · T 1.06 (n=66) | λ 1.78 · R 1.44 · T 1.44 (n=4) | λ 1.08 · R 1.03 · T 1.03 (n=4) |
+| rag | 1181 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 1.47↑ · R 1.05 · T 1.17 (n=66) | λ 1.02 · R 0.77 · T 0.78 (n=5) | λ 1.10 · R 1.00 · T 1.00 (n=5) |
+| multilingual | 3004 (10%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.61↑ · R 1.12 · T 1.24↑ (n=66) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) | λ 1.09 · R 1.04 · T 1.04 (n=5) |
+| reasoning | 2829 (10%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.37↑ · R 0.98 · T 1.09 (n=66) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) | λ 0.87 · R 0.78 · T 0.78 (n=5) |
+| qa | 1594 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.20↑ · R 0.82↓ · T 0.91 (n=66) | λ 1.76 · R 1.18 · T 1.19 (n=5) | λ 0.95 · R 0.91 · T 0.91 (n=5) |
 
-- **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 5/11 categories (stem, writing, summarization, roleplay, qa); less wall time in 2/11 (summarization, qa); Eq. 4 predicts a win in 4/11; completions longer by lambda 0.96 (summarization) to 2.09 (math); rounds and time disagree in: stem writing roleplay.
+- **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 6/11 categories (stem, writing, summarization, roleplay, reasoning, qa); less wall time in 2/11 (summarization, qa); Eq. 4 predicts a win in 4/11; completions longer by lambda 0.99 (summarization) to 2.23 (math); rounds and time disagree in: stem writing roleplay reasoning.
 - **mentored_dec** (alpha 0.75, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `mentored_dec`): fewer verifier rounds in 6/9 categories (humanities, writing, summarization, rag, reasoning, qa); less wall time in 6/9 (humanities, writing, summarization, rag, reasoning, qa); Eq. 4 predicts a win in 5/9; completions longer by lambda 0.81 (reasoning) to 1.70 (roleplay); rounds and time disagree in: none.
 - **cactus** (alpha 0.35, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `cactus`): fewer verifier rounds in 7/9 categories (coding, humanities, writing, summarization, rag, multilingual, reasoning); less wall time in 7/9 (coding, humanities, writing, summarization, rag, multilingual, reasoning); Eq. 4 predicts a win in 6/9; completions longer by lambda 1.00 (humanities) to 3.32 (roleplay); rounds and time disagree in: none.
 - **r_fuzzy** (alpha 0.25, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `r_fuzzy`): fewer verifier rounds in 4/9 categories (humanities, writing, summarization, rag); less wall time in 4/9 (humanities, writing, summarization, rag); Eq. 4 predicts a win in 4/9; completions longer by lambda 0.81 (humanities) to 1.78 (roleplay); rounds and time disagree in: none.
