@@ -1,24 +1,24 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-01 16:46 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-01 17:03 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 87.0; estimated remaining, runnable rows: 26.0; blocked rows: 1.6.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 88.9; estimated remaining, runnable rows: 24.5; blocked rows: 2.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
-| 0.5 | 9 | 2 | 1 | 0 | 0 |
+| 0.5 | 10 | 1 | 1 | 0 | 0 |
 | 2.1 | 96 | 0 | 0 | 0 | 0 |
 | 2.2 | 26 | 0 | 0 | 0 | 0 |
 | 3 | 10 | 1 | 9 | 0 | 0 |
 | 4.1 | 4 | 0 | 4 | 0 | 0 |
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
 | 4.3 | 8 | 0 | 0 | 0 | 0 |
-| 5.1 | 18 | 0 | 23 | 0 | 0 |
+| 5.1 | 18 | 1 | 22 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
-| 7 | 0 | 1 | 5 | 0 | 8 |
+| 7 | 0 | 1 | 4 | 0 | 9 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -509,9 +509,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | n_draft | source | n_cases | mean_l_bar | mean_l_bar_ci_lo | mean_l_bar_ci_hi | mean_completion_tokens | mean_completion_tokens_ci_lo | mean_completion_tokens_ci_hi | mean_verifier_rounds | mean_verifier_rounds_ci_lo | mean_verifier_rounds_ci_hi | mean_wall_time_s | mean_wall_time_s_ci_lo | mean_wall_time_s_ci_hi | capout_rate | n_pairs_vs_nibiref | lambda_vs_nibiref | rounds_ratio_vs_nibiref | time_ratio_vs_nibiref | lambda_vs_nibiref_ci_lo | lambda_vs_nibiref_ci_hi | rounds_ratio_vs_nibiref_ci_lo | rounds_ratio_vs_nibiref_ci_hi | time_ratio_vs_nibiref_ci_lo | time_ratio_vs_nibiref_ci_hi | accuracy | accuracy_ci_lo | accuracy_ci_hi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2.000 | nspec2 (Nibi) | 5.000 | 0.944 | 0.896 | 0.995 | 8547.600 | 4982.800 | 12000.000 | 4461.600 | 2532.600 | 6331.800 | 34.958 | 19.804 | 50.005 | 0.600 | 5.000 | 1.025 | 1.099 | 0.925 | 0.913 | 1.119 | 0.974 | 1.213 | 0.813 | 1.026 | - | - | - |
-| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.181 | 1.229 | 8028.540 | 7252.460 | 8786.810 | 3703.370 | 3320.240 | 4074.710 | 71.423 | 64.248 | 78.832 | 0.322 | - | - | - | - | - | - | - | - | - | - | 0.700 | 0.600 | 0.789 |
-| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.104 | 1.156 | 7954.860 | 7176.020 | 8718.620 | 3819.360 | 3434.780 | 4209.250 | 35.202 | 31.519 | 38.819 | 0.267 | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| 2.000 | nspec2 (Nibi) | 39.000 | 0.941 | 0.920 | 0.963 | 7955.440 | 6814.450 | 9065.830 | 4147.030 | 3521.660 | 4756.740 | 31.900 | 27.096 | 36.648 | 0.256 | 39.000 | 1.022 | 1.118 | 0.927 | 0.972 | 1.076 | 1.060 | 1.183 | 0.877 | 0.982 | - | - | - |
+| 6.000 | campaign seed 0 (old box, H100 PCIe) | 90.000 | 1.205 | 1.180 | 1.230 | 8028.540 | 7272.770 | 8789.020 | 3703.370 | 3329.260 | 4077.060 | 71.423 | 64.096 | 78.714 | 0.322 | - | - | - | - | - | - | - | - | - | - | 0.700 | 0.600 | 0.789 |
+| 6.000 | nibiref (Nibi, campaign settings) | 90.000 | 1.130 | 1.105 | 1.156 | 7954.860 | 7178.310 | 8692.690 | 3819.360 | 3427.780 | 4204.790 | 35.202 | 31.553 | 38.959 | 0.267 | - | - | - | - | - | - | - | - | - | - | - | - | - |
 
 ## Step 4.1: temperature (strict, seed 0)
 
@@ -674,18 +674,18 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
 
 | category | strict tokens (cap-out) | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) | spec_casc_tok (0.8) |
 |---|---:|---|---|---|---|---|
-| all | 2337 (5%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.66↑ · R 1.17↑ · T 1.18↑ (n=40) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) | λ 0.99 · R 0.93 · T 0.93 (n=40) |
-| coding | 5605 (24%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.56↑ · R 1.23 · T 1.23 (n=5) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) | λ 1.04 · R 0.98 · T 0.98 (n=5) |
-| math | 2376 (0%) | - | - | - | - | - |
+| all | 2332 (5%) | λ 1.12 · R 0.97 · T 0.97 (n=40) | λ 1.74↑ · R 0.88 · T 0.88 (n=40) | λ 1.66↑ · R 1.17↑ · T 1.18↑ (n=40) | λ 1.47↑ · R 1.14 · T 1.15 (n=40) | λ 0.99 · R 0.93 · T 0.93 (n=40) |
+| coding | 5495 (24%) | λ 1.18 · R 1.02 · T 1.03 (n=5) | λ 1.48↑ · R 0.83 · T 0.83 (n=5) | λ 1.56↑ · R 1.23 · T 1.23 (n=5) | λ 1.66↑ · R 1.37 · T 1.38 (n=5) | λ 1.04 · R 0.98 · T 0.98 (n=5) |
+| math | 2356 (0%) | - | - | - | - | - |
 | humanities | 2127 (0%) | λ 0.89 · R 0.77 · T 0.77 (n=1) | λ 1.00 · R 0.47 · T 0.48 (n=1) | λ 2.78 · R 1.61 · T 1.63 (n=1) | λ 0.81 · R 0.66 · T 0.66 (n=1) | λ 1.08 · R 1.07 · T 1.07 (n=1) |
 | stem | 2259 (0%) | - | - | - | - | - |
-| writing | 3216 (1%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.87↑ · R 1.10 · T 1.11 (n=5) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) | λ 0.87 · R 0.83 · T 0.83 (n=5) |
-| summarization | 657 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.89 · R 0.76↓ · T 0.77↓ (n=5) | λ 0.91 · R 0.75 · T 0.75 (n=5) | λ 0.90 · R 0.84 · T 0.84 (n=5) |
-| roleplay | 739 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.74 · R 1.31 · T 1.32 (n=4) | λ 1.78 · R 1.44 · T 1.44 (n=4) | λ 1.08 · R 1.03 · T 1.03 (n=4) |
-| rag | 1164 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 0.92 · R 0.77 · T 0.77 (n=5) | λ 1.02 · R 0.77 · T 0.78 (n=5) | λ 1.10 · R 1.00 · T 1.00 (n=5) |
-| multilingual | 2941 (9%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.96↑ · R 1.38↑ · T 1.40↑ (n=5) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) | λ 1.09 · R 1.04 · T 1.04 (n=5) |
-| reasoning | 2717 (9%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.50↑ · R 1.04 · T 1.04 (n=5) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) | λ 0.87 · R 0.78 · T 0.78 (n=5) |
-| qa | 1642 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.56 · R 1.10 · T 1.10 (n=5) | λ 1.76 · R 1.18 · T 1.19 (n=5) | λ 0.95 · R 0.91 · T 0.91 (n=5) |
+| writing | 3203 (1%) | λ 1.13 · R 0.95 · T 0.94 (n=5) | λ 2.27↑ · R 0.96 · T 0.97 (n=5) | λ 1.87↑ · R 1.10 · T 1.11 (n=5) | λ 1.08 · R 0.80↓ · T 0.80↓ (n=5) | λ 0.87 · R 0.83 · T 0.83 (n=5) |
+| summarization | 660 (0%) | λ 1.10 · R 0.97 · T 0.97 (n=5) | λ 1.21 · R 0.71↓ · T 0.72↓ (n=5) | λ 0.89 · R 0.76↓ · T 0.77↓ (n=5) | λ 0.91 · R 0.75 · T 0.75 (n=5) | λ 0.90 · R 0.84 · T 0.84 (n=5) |
+| roleplay | 713 (0%) | λ 1.70 · R 1.46 · T 1.47 (n=4) | λ 3.32 · R 1.37 · T 1.39 (n=4) | λ 1.74 · R 1.31 · T 1.32 (n=4) | λ 1.78 · R 1.44 · T 1.44 (n=4) | λ 1.08 · R 1.03 · T 1.03 (n=4) |
+| rag | 1181 (0%) | λ 1.18 · R 0.99 · T 0.99 (n=5) | λ 1.02 · R 0.59↓ · T 0.60↓ (n=5) | λ 0.92 · R 0.77 · T 0.77 (n=5) | λ 1.02 · R 0.77 · T 0.78 (n=5) | λ 1.10 · R 1.00 · T 1.00 (n=5) |
+| multilingual | 3004 (10%) | λ 1.26↑ · R 1.11 · T 1.11 (n=5) | λ 1.77↑ · R 0.92 · T 0.93 (n=5) | λ 1.96↑ · R 1.38↑ · T 1.40↑ (n=5) | λ 1.69↑ · R 1.31↑ · T 1.33↑ (n=5) | λ 1.09 · R 1.04 · T 1.04 (n=5) |
+| reasoning | 2829 (10%) | λ 0.81 · R 0.68 · T 0.67 (n=5) | λ 1.41 · R 0.74 · T 0.75 (n=5) | λ 1.50↑ · R 1.04 · T 1.04 (n=5) | λ 1.51↑ · R 1.14 · T 1.15 (n=5) | λ 0.87 · R 0.78 · T 0.78 (n=5) |
+| qa | 1594 (0%) | λ 1.07 · R 0.88 · T 0.88 (n=5) | λ 2.61↑ · R 1.26 · T 1.28 (n=5) | λ 1.56 · R 1.10 · T 1.10 (n=5) | λ 1.76 · R 1.18 · T 1.19 (n=5) | λ 0.95 · R 0.91 · T 0.91 (n=5) |
 
 - **spec_casc_opt** (alpha 0.05, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_opt`): fewer verifier rounds in 2/9 categories (summarization, rag); less wall time in 2/9 (summarization, rag); Eq. 4 predicts a win in 2/9; completions longer by lambda 0.89 (summarization) to 2.78 (humanities); rounds and time disagree in: none.
 - **mentored_dec** (alpha 0.75, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `mentored_dec`): fewer verifier rounds in 6/9 categories (humanities, writing, summarization, rag, reasoning, qa); less wall time in 6/9 (humanities, writing, summarization, rag, reasoning, qa); Eq. 4 predicts a win in 5/9; completions longer by lambda 0.81 (reasoning) to 1.70 (roleplay); rounds and time disagree in: none.
