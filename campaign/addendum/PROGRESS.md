@@ -767,3 +767,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T17:19:17Z lane K3: pulled 31 new run dir(s) into runs/
 - 2026-10-01T17:19:18Z lane K4: pulled 8 new run dir(s) into runs/
 - 2026-10-01T17:19:35Z lane K1: submitted job 5840933 (afterany:5838962); lane has 5 work items, est. 10.0 GPU-h
+- 2026-10-01T17:19:41Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
