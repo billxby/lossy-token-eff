@@ -790,3 +790,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T17:54:42Z lane K3: pulled 32 new run dir(s) into runs/
 - 2026-10-01T17:54:44Z lane K4: pulled 180 new run dir(s) into runs/
 - 2026-10-01T17:54:52Z step 3 nspec2 gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006, 0.23 GPU-h)
+- 2026-10-01T17:54:52Z step 3 nspec3 gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006, 0.23 GPU-h)
