@@ -184,7 +184,13 @@
         "main|livecodebench_qwen3|mentored_dec|0.75|2",
         "main|livecodebench_qwen3|cactus|0.35|2",
         "main|livecodebench_qwen3|r_fuzzy|0.25|2",
-        "main|livecodebench_qwen3|spec_casc_tok|0.8|2"
+        "main|livecodebench_qwen3|spec_casc_tok|0.8|2",
+        "speedbench_pilot|speedbench|strict|strict|0",
+        "speedbench|speedbench|strict|strict|0",
+        "speedbench|speedbench|spec_casc_opt|0.05|0",
+        "speedbench|speedbench|mentored_dec|0.75|0",
+        "main|livecodebench_qwen3|r_fuzzy|0.25|1",
+        "main|livecodebench_qwen3|spec_casc_tok|0.8|1"
       ]
     },
     "B": {
@@ -299,10 +305,6 @@
         "main|longbench_v2|mentored_dec|0.75|2",
         "main|longbench_v2|r_fuzzy|0.25|1",
         "main|longbench_v2|r_fuzzy|0.25|2",
-        "speedbench_pilot|speedbench|strict|strict|0",
-        "speedbench|speedbench|strict|strict|0",
-        "speedbench|speedbench|spec_casc_opt|0.05|0",
-        "speedbench|speedbench|mentored_dec|0.75|0",
         "main|gsm8k_qwen3|strict|strict|2",
         "main|gsm8k_qwen3|spec_casc_opt|0.05|2",
         "main|gsm8k_qwen3|mentored_dec|0.75|2",
@@ -323,9 +325,7 @@
         "main|livecodebench_qwen3|strict|strict|1",
         "main|livecodebench_qwen3|spec_casc_opt|0.05|1",
         "main|livecodebench_qwen3|mentored_dec|0.75|1",
-        "main|livecodebench_qwen3|cactus|0.35|1",
-        "main|livecodebench_qwen3|r_fuzzy|0.25|1",
-        "main|livecodebench_qwen3|spec_casc_tok|0.8|1"
+        "main|livecodebench_qwen3|cactus|0.35|1"
       ]
     },
     "K1": {

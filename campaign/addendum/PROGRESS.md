@@ -552,3 +552,4 @@ for what is done; this file records every action and failure.
 - 2026-10-01T00:12:37Z step 2.2 main aime24_qwen3 strict alpha=strict seed=1: done, 30/30 cases (jobs 5819349, 0.85 GPU-h)
 - 2026-10-01T00:13:12Z grading: uploaded 22 run dir(s) to the Nibi mirror, submitted CPU grading job 23001726
 - 2026-10-01T00:13:15Z grading: pulled 36659 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-01T00:14:13Z Nibi: moved lane B's 6 open row(s) to lane A (speedbench_pilot|speedbench|strict|strict|0, speedbench|speedbench|strict|strict|0, speedbench|speedbench|spec_casc_opt|0.05|0, speedbench|speedbench|mentored_dec|0.75|0, main|livecodebench_qwen3|r_fuzzy|0.25|1, main|livecodebench_qwen3|spec_casc_tok|0.8|1); lane B's pending job cancelled, so at most three lane jobs run at once (K1, K2, A)
