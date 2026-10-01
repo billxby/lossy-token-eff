@@ -909,3 +909,10 @@ for what is done; this file records every action and failure.
 - 2026-10-01T21:20:07Z lane K4: pulled 10 new run dir(s) into runs/
 - 2026-10-01T21:20:33Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
 - 2026-10-01T21:22:41Z Reboot guard tripped as intended on kn169 (K1 5837978, K2 5838004 at 20:57Z: env_not_ready after 300 s of ELOOP; successors 5838962/5838981 ran 2 s later). Private mount namespaces keep the pre-mount view for a job's life, so both waits cut to 30 s (sbatch loop, ENV_WAIT_S); README deviation 17 updated.
+- 2026-10-01T21:37:52Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T21:37:52Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-01T21:37:58Z lane K1: pulled 124 new run dir(s) into runs/
+- 2026-10-01T21:38:03Z lane K2: pulled 94 new run dir(s) into runs/
+- 2026-10-01T21:38:05Z lane K3: pulled 20 new run dir(s) into runs/
+- 2026-10-01T21:38:08Z lane K4: pulled 9 new run dir(s) into runs/
+- 2026-10-01T21:38:16Z step 3 nspec10 livecodebench_qwen3 strict alpha=strict seed=0: done, 90/90 cases (jobs 5839005, 1.04 GPU-h)
