@@ -956,3 +956,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T04:09:04Z step 5.1 main livecodebench_qwen3 mentored_dec alpha=0.35 seed=0: done, 90/90 cases (jobs 5843279, 0.88 GPU-h)
 - 2026-10-02T04:09:04Z step 5.1 main livecodebench_qwen3 mentored_dec alpha=0.55 seed=0: done, 90/90 cases (jobs 5843279 5846458, 0.82 GPU-h)
 - 2026-10-02T04:09:04Z step 5.1 main livecodebench_qwen3 spec_casc_tok alpha=0.35 seed=0: done, 90/90 cases (jobs 5846458, 0.88 GPU-h)
+- 2026-10-02T04:09:05Z step 5.1 main livecodebench_qwen3 spec_casc_tok alpha=0.55 seed=0: done, 90/90 cases (jobs 5846458, 0.87 GPU-h)
