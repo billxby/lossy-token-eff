@@ -2713,3 +2713,49 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   (0.93 / 0.98), so no node penalty shows in this group, unlike step 4.2.
   `campaign/addendum/tables/lmdraft__*.csv`; nodes from
   `campaign/addendum/lanes/K{1,2}_status.jsonl`.
+
+- **2026-10-02, addendum step 3 (Qwen3 half) done; step 3 complete**
+  (Killarney K3/K4): strict at N_draft 2/3/4/8/10, gsm8k + livecodebench,
+  seed 0, against the Killarney N=6 reference (`nibiref`). As for GPT-OSS,
+  short drafts cost no time and long ones do: N 2-4 time 0.97-1.01x
+  (gsm8k) and 0.90-0.93x (livecodebench) despite 1-21% more rounds; N 8
+  1.08x on both; N 10 1.16x / 1.14x. EAGLE-3's acceptance saturates early
+  on Qwen3: l_bar 1.11 -> 1.53 on gsm8k (N 2 -> 8; N 6 1.50) and 0.94 ->
+  1.14 on livecodebench, so rounds stay at 1.00-1.02x beyond N 6. N 10 ran
+  at GPU_UTIL 0.80 (README deviation 18), and N 8 livecodebench / both N 10
+  points ran on kn172 after its reboot against a kn176 reference; the
+  same-node N 8 gsm8k point (1.08x) matches the cross-node livecodebench
+  one. Accuracy 0.73-0.81 / 0.70-0.74, within noise of the reference.
+  `campaign/addendum/tables/nspec__*_qwen3.csv` (node columns: README
+  deviations 15-17).
+
+- **2026-10-02, addendum step 4.1 (Qwen3 half) done; step 4 complete**
+  (Killarney K3/K4): lossless strict at T 1.2 and 1.5. Unlike GPT-OSS
+  (lambda 1.27x / 3.9x on gsm8k), Qwen3's length barely moves (lambda
+  1.02-1.04 on both datasets); the cost is acceptance: l_bar 1.50 -> 1.28
+  -> 0.82 on gsm8k and 1.13 -> 0.90 -> 0.49 on livecodebench, so rounds and
+  time rise to 1.12x / 1.42x (gsm8k) and 1.15x / 1.49x (livecodebench) at T
+  1.2 / 1.5. Accuracy holds at T 1.2 (0.81 vs 0.80; 0.72 vs 0.73) and
+  slips at T 1.5 (0.77; 0.64). The livecodebench points ran on kn172 after
+  its reboot (time and rounds ratios agree, 1.14 / 1.15 and 1.49 / 1.49).
+  `campaign/addendum/tables/temp__*_qwen3.csv`. With 4.2 and 4.3 (above),
+  step 4 is complete for both models.
+
+- **2026-10-02, addendum step 7 (Qwen3 half) done; step 7 complete except
+  the HLE prompts** (Killarney K1/K2/K4 after a Nibi first-40 phase): all
+  six arms on SPEED-Bench's qualitative split, 672 of 880 prompts (the 208
+  HLE prompts need a Hugging Face token; PROGRESS.md Needs Bill), token
+  budget 8192. Overall: cactus saves the most despite inflating (lambda 1.35,
+  rounds 0.67, time 0.68, a rounds and time win in all 11 categories);
+  spec_casc_tok (lambda 1.01, rounds 0.95, time 0.95) and r_fuzzy (1.20 /
+  0.95 / 0.96) save a little; spec_casc_opt's inflation cancels its
+  acceptance (lambda 1.40, rounds 1.02, time 1.13; math lambda 2.04, rounds
+  1.47). mentored_dec (lambda 1.07, rounds 0.93) shows time 1.02 over all
+  672 pairs but 0.91 over its 249 same-node pairs: 423 of its cases ran on
+  kn176 against a kn169 strict -- the node artifact the new `same_node_pairs`
+  / `time_ratio_same_node` columns catch, and the likely reason 4 of its 11
+  categories show a rounds win with a time loss. Unlike GPT-OSS, where
+  multilingual was the one category that inflated past a win, Qwen3's
+  failures concentrate in spec_casc_opt on math, humanities and
+  multilingual. `campaign/addendum/tables/speedbench{,_eq4,_eq4_summary}__
+  qwen3-8b.csv`.
