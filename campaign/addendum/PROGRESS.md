@@ -963,3 +963,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T04:26:39Z Bill approved the longbench drafter fix. hf/local/Qwen3-8B-speculator.eagle3-maxpos65536 on Killarney (files identical to snapshot 08610ffa except config max_position_embeddings 65536); longbench_v2_qwen3 items use it plus VLLM_CACHE_ROOT=/scratch/billxby/vllm_cache_longdrafter (README deviation 19). New eagle_head kernel bound 65536. K2 job 5857990 ran nibiref strict, md 0.35, md 0.55 with the old work list (failed) before the push; tok 0.35 started 04:23:38 with the new drafter.
 - 2026-10-02T04:33:35Z grading: uploaded 4140 run dir(s) to the Nibi mirror, submitted CPU grading job 23110057
 - 2026-10-02T04:33:36Z grading: pulled 39877 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-02T04:47:08Z lane K2: pulled 57 new run dir(s) into runs/

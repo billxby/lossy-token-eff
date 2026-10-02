@@ -181,8 +181,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.35,0,runs,150,150,done,5837983,0.00,0.66,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.55,0,runs,150,150,done,5837983,0.00,0.65,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.35,0,runs,150,6,queued,5837983 5838981 5845269 5857990,0.16,0.26,lane=K2
-5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.55,0,runs,150,6,running,5837983 5838981 5845269 5857990,0.16,0.17,lane=K2
-5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.35,0,runs,150,6,queued,5837983 5838981 5845269,0.16,0.18,lane=K2
+5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.55,0,runs,150,6,queued,5837983 5838981 5845269 5857990,0.16,0.22,lane=K2
+5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.35,0,runs,150,63,running,5837983 5838981 5845269 5857990,0.14,0.18,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.55,0,runs,150,6,queued,5837983 5838981 5845269,0.16,0.15,lane=K2
 5.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.35,0,runs,90,90,done,5843279,0.00,0.88,lane=K3
 5.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.55,0,runs,90,90,done,5843279 5846458,0.00,0.82,lane=K3
