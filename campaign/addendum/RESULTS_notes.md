@@ -204,3 +204,38 @@
   `tables/qwenT0.6__*.csv` time ratios for cactus, spec_casc_opt and
   spec_casc_tok (gsm8k 1.07 / 1.08 / 1.07) are inflated by the node; their
   rounds ratios (0.96 / 0.95 / 0.96) are not. README deviation 13.
+
+### Same-node pairs: the node effect is real but not fixed (2026-10-02)
+
+- Every table that pairs an arm with strict now says where each side ran
+  (`nodes`, `nodes_strict`), how many case pairs shared a node
+  (`same_node_pairs`) and the time ratio over those pairs alone
+  (`time_ratio_same_node`; README deviations 13, 15, 17). Nodes come from
+  the lane journals (`lanes/<lane>_status.jsonl`), matched by each run's
+  config.json timestamp; run directories do not record them.
+- The kn176 penalty of step 4.2 (~11% per round) did not hold later: in
+  step 4.3 the kn176 arms' time-per-round ratios (0.88-0.98) match the
+  same-node cactus arm's (0.93 / 0.98). So a cross-node time ratio is not
+  a fixed offset from the same-node one; quote the rounds ratio, or the
+  same-node time ratio where there are enough pairs.
+- Where it matters: SPEED-Bench Qwen3 mentored_dec reads T 1.02 over all
+  672 pairs but 0.91 over its 249 same-node pairs (rounds 0.93,
+  `tables/speedbench__qwen3-8b.csv` row `mentored_dec`, category `all`);
+  spec_casc_opt 1.13 vs 1.06 (93 pairs). On Nibi (GPT-OSS SPEED-Bench, lanes
+  A and B on disjoint node sets) many arms are cross-node too, but rounds
+  and time agree in every category there.
+
+### Killarney's rolling reboot and two Qwen3-only failures (2026-10-01/02)
+
+- Killarney rebooted every H100 node from 2026-10-01 ~18:40Z; rebooted nodes
+  run NVIDIA driver 580.178.04 (was 580.159.03; README deviation 17). Runs
+  straddle the change; same-node pairs on one side of it agree with
+  cross-driver ones where both exist (step 3 N 8: 1.08 on gsm8k, same node,
+  and on livecodebench, across the reboot).
+- Qwen3 at 10 draft tokens ran out of memory in vLLM's sampler warmup at
+  GPU_UTIL 0.85 (README deviation 18); it ran at 0.80.
+- Qwen3 longbench_v2 crashed on Killarney once a sequence passed 40960
+  positions: the EAGLE-3 drafter's own config caps its rope table there
+  (README deviation 19). The old box ran 339 such cases without the
+  repository recording how; the Killarney rows draft with a copy whose
+  config allows 65536 positions, identical below 40960.
