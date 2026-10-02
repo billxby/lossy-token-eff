@@ -425,7 +425,8 @@
         "speedbench|speedbench_qwen3|strict|strict|0",
         "speedbench|speedbench_qwen3|spec_casc_opt|0.05|0",
         "speedbench|speedbench_qwen3|mentored_dec|0.75|0",
-        "speedbench|speedbench_qwen3|spec_casc_tok|0.8|0"
+        "speedbench|speedbench_qwen3|spec_casc_tok|0.8|0",
+        "nibiref|longbench_v2_qwen3|strict|strict|0"
       ]
     },
     "K2": {
@@ -525,9 +526,6 @@
         "main|humaneval_qwen3|mentored_dec|0.55|0",
         "main|humaneval_qwen3|spec_casc_tok|0.35|0",
         "main|humaneval_qwen3|spec_casc_tok|0.55|0",
-        "nibiref|longbench_v2_qwen3|strict|strict|0",
-        "main|longbench_v2_qwen3|mentored_dec|0.35|0",
-        "main|longbench_v2_qwen3|mentored_dec|0.55|0",
         "main|longbench_v2_qwen3|spec_casc_tok|0.35|0",
         "main|longbench_v2_qwen3|spec_casc_tok|0.55|0",
         "nibiref|mtbench_qwen3|strict|strict|0",
@@ -535,7 +533,10 @@
         "main|mtbench_qwen3|mentored_dec|0.55|0",
         "main|mtbench_qwen3|spec_casc_tok|0.35|0",
         "main|mtbench_qwen3|spec_casc_tok|0.55|0",
-        "speedbench|speedbench_qwen3|r_fuzzy|0.25|0"
+        "speedbench|speedbench_qwen3|r_fuzzy|0.25|0",
+        "nibiref|humaneval_qwen3|strict|strict|1",
+        "main|mtbench_qwen3|mentored_dec|0.55|1",
+        "nibiref|mtbench_qwen3|strict|strict|1"
       ]
     },
     "K3": {
@@ -583,7 +584,13 @@
         "main|livecodebench_qwen3|mentored_dec|0.35|0",
         "main|livecodebench_qwen3|mentored_dec|0.55|0",
         "main|livecodebench_qwen3|spec_casc_tok|0.35|0",
-        "main|livecodebench_qwen3|spec_casc_tok|0.55|0"
+        "main|livecodebench_qwen3|spec_casc_tok|0.55|0",
+        "main|longbench_v2_qwen3|mentored_dec|0.35|0",
+        "main|gsm8k_qwen3|mentored_dec|0.35|1",
+        "nibiref|gsm8k_qwen3|strict|strict|1",
+        "main|aime24_qwen3|mentored_dec|0.55|1",
+        "main|humaneval_qwen3|mentored_dec|0.55|1",
+        "main|livecodebench_qwen3|mentored_dec|0.35|1"
       ]
     },
     "K4": {
@@ -624,7 +631,11 @@
         "main|gsm8k_qwen3|mentored_dec|0.35|0",
         "main|gsm8k_qwen3|mentored_dec|0.55|0",
         "main|gsm8k_qwen3|spec_casc_tok|0.35|0",
-        "speedbench|speedbench_qwen3|cactus|0.35|0"
+        "speedbench|speedbench_qwen3|cactus|0.35|0",
+        "main|longbench_v2_qwen3|mentored_dec|0.55|0",
+        "main|aime24_qwen3|spec_casc_tok|0.35|1",
+        "main|humaneval_qwen3|spec_casc_tok|0.35|1",
+        "nibiref|livecodebench_qwen3|strict|strict|1"
       ]
     }
   },
@@ -739,6 +750,116 @@
       "seed": 1,
       "lane": "A",
       "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "gsm8k_qwen3",
+      "method": "mentored_dec",
+      "alpha": "0.35",
+      "seed": 1,
+      "lane": "K2",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "nibiref",
+      "dataset": "gsm8k_qwen3",
+      "method": "strict",
+      "alpha": "strict",
+      "seed": 1,
+      "lane": "K2",
+      "notes": "strict seed 1 for the step-5.2 pair"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "aime24_qwen3",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "K1",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "aime24_qwen3",
+      "method": "spec_casc_tok",
+      "alpha": "0.35",
+      "seed": 1,
+      "lane": "K1",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "humaneval_qwen3",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "K3",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "nibiref",
+      "dataset": "humaneval_qwen3",
+      "method": "strict",
+      "alpha": "strict",
+      "seed": 1,
+      "lane": "K3",
+      "notes": "strict seed 1 for the step-5.2 pair"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "humaneval_qwen3",
+      "method": "spec_casc_tok",
+      "alpha": "0.35",
+      "seed": 1,
+      "lane": "K3",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "livecodebench_qwen3",
+      "method": "mentored_dec",
+      "alpha": "0.35",
+      "seed": 1,
+      "lane": "K4",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "nibiref",
+      "dataset": "livecodebench_qwen3",
+      "method": "strict",
+      "alpha": "strict",
+      "seed": 1,
+      "lane": "K4",
+      "notes": "strict seed 1 for the step-5.2 pair"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "mtbench_qwen3",
+      "method": "mentored_dec",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "K2",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "nibiref",
+      "dataset": "mtbench_qwen3",
+      "method": "strict",
+      "alpha": "strict",
+      "seed": 1,
+      "lane": "K2",
+      "notes": "strict seed 1 for the step-5.2 pair"
     }
   ],
   "speedbench": {
