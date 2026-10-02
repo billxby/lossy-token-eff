@@ -1000,3 +1000,6 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:29:13Z step 5.2: 24 cells have an eligible best setting; added 3 seed-1 row(s): longbench_v2_qwen3/mentored_dec/0.75 -> K1, longbench_v2_qwen3/strict/strict -> K1, longbench_v2_qwen3/spec_casc_tok/0.55 -> K1
 - 2026-10-02T14:56:48Z lane K1: submitted job 5883236; lane has 2 work items, est. 0.4 GPU-h
 - 2026-10-02T14:56:51Z lane K2: submitted job 5883237; lane has 1 work items, est. 0.3 GPU-h
+- 2026-10-02T16:15:03Z lane K1: pulled 178 new run dir(s) into runs/
+- 2026-10-02T16:15:16Z lane K2: pulled 150 new run dir(s) into runs/
+- 2026-10-02T16:15:31Z step 5.2 main longbench_v2_qwen3 mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 5883237, 0.95 GPU-h)

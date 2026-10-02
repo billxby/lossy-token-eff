@@ -191,6 +191,20 @@
         "speedbench|speedbench|mentored_dec|0.75|0",
         "main|livecodebench_qwen3|r_fuzzy|0.25|1",
         "main|livecodebench_qwen3|spec_casc_tok|0.8|1"
+      ],
+      "collected_jobs": [
+        "22880871",
+        "22880999",
+        "22931500",
+        "22947621",
+        "22948693",
+        "22948709",
+        "22948711",
+        "22953246",
+        "22982359",
+        "22982360",
+        "22982365",
+        "22982368"
       ]
     },
     "B": {
@@ -326,6 +340,18 @@
         "main|livecodebench_qwen3|spec_casc_opt|0.05|1",
         "main|livecodebench_qwen3|mentored_dec|0.75|1",
         "main|livecodebench_qwen3|cactus|0.35|1"
+      ],
+      "collected_jobs": [
+        "22881159",
+        "22881281",
+        "22948719",
+        "22948722",
+        "22948725",
+        "22953247",
+        "22982379",
+        "22982392",
+        "22982401",
+        "22982407"
       ]
     },
     "K1": {
@@ -405,7 +431,7 @@
         },
         {
           "id": "5883236",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-02T14:56:48Z",
           "dependency": ""
         }
@@ -443,6 +469,20 @@
         "main|aime24_qwen3|spec_casc_tok|0.35|1",
         "main|longbench_v2_qwen3|strict|strict|1",
         "main|longbench_v2_qwen3|spec_casc_tok|0.55|1"
+      ],
+      "collected_jobs": [
+        "5819283",
+        "5819349",
+        "5819350",
+        "5819351",
+        "5819352",
+        "5821776",
+        "5837975",
+        "5837976",
+        "5837978",
+        "5838962",
+        "5840933",
+        "5862541"
       ]
     },
     "K2": {
@@ -515,7 +555,7 @@
         },
         {
           "id": "5883237",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-02T14:56:51Z",
           "dependency": ""
         }
@@ -561,6 +601,20 @@
         "main|gsm8k_qwen3|mentored_dec|0.35|1",
         "nibiref|gsm8k_qwen3|strict|strict|1",
         "main|longbench_v2_qwen3|mentored_dec|0.75|1"
+      ],
+      "collected_jobs": [
+        "5819353",
+        "5819354",
+        "5819355",
+        "5819356",
+        "5821919",
+        "5837981",
+        "5837983",
+        "5838004",
+        "5838981",
+        "5845269",
+        "5857990",
+        "5883237"
       ]
     },
     "K3": {
@@ -619,6 +673,14 @@
         "main|humaneval_qwen3|mentored_dec|0.55|1",
         "nibiref|humaneval_qwen3|strict|strict|1",
         "main|humaneval_qwen3|spec_casc_tok|0.35|1"
+      ],
+      "collected_jobs": [
+        "5839003",
+        "5839004",
+        "5839005",
+        "5843279",
+        "5846458",
+        "5862551"
       ]
     },
     "K4": {
@@ -669,6 +731,12 @@
         "main|longbench_v2_qwen3|mentored_dec|0.55|0",
         "nibiref|livecodebench_qwen3|strict|strict|1",
         "main|livecodebench_qwen3|mentored_dec|0.35|1"
+      ],
+      "collected_jobs": [
+        "5839006",
+        "5839007",
+        "5840988",
+        "5862558"
       ]
     }
   },
