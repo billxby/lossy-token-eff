@@ -103,7 +103,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 0.5,nibiref,gpt-oss-20b,aime24,strict,strict,0,runs/addendum/nibiref,30,30,done,22880871,0.00,0.22,lane=A
 0.5,nibiref,qwen3-8b,gsm8k_qwen3,strict,strict,0,runs/addendum/nibiref,150,150,done,5839006,0.00,0.26,lane=K4
 0.5,nibiref,qwen3-8b,humaneval_qwen3,strict,strict,0,runs/addendum/nibiref,150,150,done,5837981,0.00,0.73,lane=K2
-0.5,nibiref,qwen3-8b,longbench_v2_qwen3,strict,strict,0,runs/addendum/nibiref,150,1,queued,5837981 5837983 5838981 5845269,0.26,0.35,lane=K2
+0.5,nibiref,qwen3-8b,longbench_v2_qwen3,strict,strict,0,runs/addendum/nibiref,150,1,queued,5837981 5837983 5838981 5845269 5857990,0.26,0.44,lane=K2
 0.5,nibiref,qwen3-8b,livecodebench_qwen3,strict,strict,0,runs/addendum/nibiref,90,90,done,5839003,0.00,0.95,lane=K3
 0.5,nibiref,qwen3-8b,mtbench_qwen3,strict,strict,0,runs/addendum/nibiref,80,80,done,5837981,0.00,0.23,lane=K2
 0.5,nibiref,qwen3-8b,aime24_qwen3,strict,strict,0,runs/addendum/nibiref,30,30,done,5839006,0.00,0.86,lane=K4
@@ -180,8 +180,8 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 5.1,main,qwen3-8b,humaneval_qwen3,mentored_dec,0.55,0,runs,150,150,done,5837983,0.00,0.67,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.35,0,runs,150,150,done,5837983,0.00,0.66,lane=K2
 5.1,main,qwen3-8b,humaneval_qwen3,spec_casc_tok,0.55,0,runs,150,150,done,5837983,0.00,0.65,lane=K2
-5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.35,0,runs,150,6,queued,5837983 5838981 5845269,0.16,0.20,lane=K2
-5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.55,0,runs,150,6,queued,5837983 5838981 5845269,0.16,0.17,lane=K2
+5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.35,0,runs,150,6,queued,5837983 5838981 5845269 5857990,0.16,0.26,lane=K2
+5.1,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.55,0,runs,150,6,running,5837983 5838981 5845269 5857990,0.16,0.17,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.35,0,runs,150,6,queued,5837983 5838981 5845269,0.16,0.18,lane=K2
 5.1,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.55,0,runs,150,6,queued,5837983 5838981 5845269,0.16,0.15,lane=K2
 5.1,main,qwen3-8b,livecodebench_qwen3,mentored_dec,0.35,0,runs,90,90,done,5843279,0.00,0.88,lane=K3

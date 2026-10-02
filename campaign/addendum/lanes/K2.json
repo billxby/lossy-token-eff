@@ -1,6 +1,6 @@
 {
  "lane": "K2",
- "written": "2026-10-02T04:09:17Z",
+ "written": "2026-10-02T04:23:28Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -169,7 +169,7 @@
     "--model-path",
     "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-8B-speculator.eagle3-maxpos65536",
     "--served-model-name",
     "qwen3-8b",
     "--rope-scaling-json",
@@ -177,7 +177,10 @@
    ],
    "num_spec": 6,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_longdrafter"
+   }
   },
   {
    "id": "main|longbench_v2_qwen3|mentored_dec|0.35|0",
@@ -340,7 +343,7 @@
     "--model-path",
     "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-8B-speculator.eagle3-maxpos65536",
     "--served-model-name",
     "qwen3-8b",
     "--rope-scaling-json",
@@ -348,7 +351,10 @@
    ],
    "num_spec": 6,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_longdrafter"
+   }
   },
   {
    "id": "main|longbench_v2_qwen3|mentored_dec|0.55|0",
@@ -511,7 +517,7 @@
     "--model-path",
     "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-8B-speculator.eagle3-maxpos65536",
     "--served-model-name",
     "qwen3-8b",
     "--rope-scaling-json",
@@ -519,7 +525,10 @@
    ],
    "num_spec": 6,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_longdrafter"
+   }
   },
   {
    "id": "main|longbench_v2_qwen3|spec_casc_tok|0.35|0",
@@ -682,7 +691,7 @@
     "--model-path",
     "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-8B-speculator.eagle3-maxpos65536",
     "--served-model-name",
     "qwen3-8b",
     "--rope-scaling-json",
@@ -690,7 +699,10 @@
    ],
    "num_spec": 6,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_longdrafter"
+   }
   },
   {
    "id": "main|longbench_v2_qwen3|spec_casc_tok|0.55|0",
@@ -853,7 +865,7 @@
     "--model-path",
     "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.eagle3",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-8B-speculator.eagle3-maxpos65536",
     "--served-model-name",
     "qwen3-8b",
     "--rope-scaling-json",
@@ -861,7 +873,10 @@
    ],
    "num_spec": 6,
    "temperature": 1.0,
-   "top_p": 1.0
+   "top_p": 1.0,
+   "env": {
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_longdrafter"
+   }
   }
  ]
 }
