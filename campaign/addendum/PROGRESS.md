@@ -981,3 +981,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:12:16Z lane K4: pulled 324 new run dir(s) into runs/
 - 2026-10-02T14:12:27Z step 0.5 nibiref longbench_v2_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5862541, 0.97 GPU-h)
 - 2026-10-02T14:12:28Z step 5.1 main longbench_v2_qwen3 mentored_dec alpha=0.35 seed=0: done, 150/150 cases (jobs 5862551, 0.98 GPU-h)
+- 2026-10-02T14:12:29Z step 5.1 main longbench_v2_qwen3 mentored_dec alpha=0.55 seed=0: done, 150/150 cases (jobs 5862558, 0.98 GPU-h)
