@@ -1004,3 +1004,5 @@ for what is done; this file records every action and failure.
 - 2026-10-02T16:15:16Z lane K2: pulled 150 new run dir(s) into runs/
 - 2026-10-02T16:15:31Z step 5.2 main longbench_v2_qwen3 mentored_dec alpha=0.75 seed=1: done, 150/150 cases (jobs 5883237, 0.95 GPU-h)
 - 2026-10-02T16:15:32Z step 5.2 main longbench_v2_qwen3 strict alpha=strict seed=1: done, 150/150 cases (jobs 5883236, 0.96 GPU-h)
+- 2026-10-02T16:16:28Z grading: uploaded 328 run dir(s) to the Nibi mirror, submitted CPU grading job 23140383
+- 2026-10-02T16:16:30Z grading: pulled 45892 verdicts into campaign/addendum/analysis/grades.csv
