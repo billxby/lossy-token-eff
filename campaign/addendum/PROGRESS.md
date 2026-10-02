@@ -994,3 +994,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:12:34Z step 5.2 main livecodebench_qwen3 mentored_dec alpha=0.35 seed=1: done, 90/90 cases (jobs 5862558, 0.90 GPU-h)
 - 2026-10-02T14:12:34Z step 5.2 nibiref livecodebench_qwen3 strict alpha=strict seed=1: done, 90/90 cases (jobs 5862558, 0.91 GPU-h)
 - 2026-10-02T14:12:34Z step 5.2 main mtbench_qwen3 mentored_dec alpha=0.55 seed=1: done, 80/80 cases (jobs 5857990, 0.20 GPU-h)
+- 2026-10-02T14:12:35Z step 5.2 nibiref mtbench_qwen3 strict alpha=strict seed=1: done, 80/80 cases (jobs 5857990, 0.23 GPU-h)
