@@ -387,13 +387,13 @@
         },
         {
           "id": "5838962",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:51:42Z",
           "dependency": "5837978"
         },
         {
           "id": "5840933",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-01T17:19:35Z",
           "dependency": "5838962"
         }
@@ -480,13 +480,13 @@
         },
         {
           "id": "5838981",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:51:43Z",
           "dependency": "5838004"
         },
         {
           "id": "5845269",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-01T21:03:46Z",
           "dependency": "5838981"
         }
@@ -554,13 +554,13 @@
         },
         {
           "id": "5843279",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T19:02:30Z",
           "dependency": "5839005"
         },
         {
           "id": "5846458",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-01T21:55:24Z",
           "dependency": "5843279"
         }
@@ -590,13 +590,13 @@
         },
         {
           "id": "5839007",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-01T14:57:22Z",
           "dependency": "5839006"
         },
         {
           "id": "5840988",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-01T17:22:51Z",
           "dependency": "5839007"
         }

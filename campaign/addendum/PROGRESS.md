@@ -944,3 +944,10 @@ for what is done; this file records every action and failure.
 - 2026-10-01T22:12:45Z lane K3: pulled 8 new run dir(s) into runs/
 - 2026-10-01T22:12:47Z lane K4: pulled 1 new run dir(s) into runs/
 - 2026-10-01T22:13:08Z grading step failed (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'mkdir -p /scratch/billxby/lossy-addendum/mirror/runs && cd /scratch/billxby/lossy-addendum/mirror/runs && tar -xf -']' returned non-zero exit status 255.); retried next poll
+- 2026-10-02T04:07:38Z lane A: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneA 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-02T04:07:39Z lane B: collect FAILED (Command '['ssh', '-o', 'BatchMode=yes', '-o', 'ControlMaster=no', 'nibi', 'cd /scratch/billxby/lossy-addendum/laneB 2>/dev/null || exit 0; T=$(date +%s); if [ -f .collect_marker ]; then F=\'-newer .collect_marker\'; else F=\'\'; fi; find runs -name run.json $F 2>/dev/null | xargs -r grep -l \'"status": "ok"\' ; echo "__T=$T"']' returned non-zero exit status 255.); will retry next cycle
+- 2026-10-02T04:07:55Z lane K1: pulled 422 new run dir(s) into runs/
+- 2026-10-02T04:08:16Z lane K2: pulled 468 new run dir(s) into runs/
+- 2026-10-02T04:08:29Z lane K3: pulled 467 new run dir(s) into runs/
+- 2026-10-02T04:08:53Z lane K4: pulled 808 new run dir(s) into runs/
+- 2026-10-02T04:09:02Z step 3 nspec10 gsm8k_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5839006 5839007 5840988, 0.40 GPU-h)
