@@ -997,3 +997,5 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:12:35Z step 5.2 nibiref mtbench_qwen3 strict alpha=strict seed=1: done, 80/80 cases (jobs 5857990, 0.23 GPU-h)
 - 2026-10-02T14:14:31Z grading: uploaded 1818 run dir(s) to the Nibi mirror, submitted CPU grading job 23135057
 - 2026-10-02T14:14:35Z grading: pulled 44074 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-02T14:27:09Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 23135224
+- 2026-10-02T14:27:12Z grading: pulled 45892 verdicts into campaign/addendum/analysis/grades.csv
