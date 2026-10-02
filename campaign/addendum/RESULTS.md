@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-02 04:10 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-02 04:34 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 114.3; estimated remaining, runnable rows: 0.9; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 114.5; estimated remaining, runnable rows: 0.9; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -15,7 +15,7 @@ Source: `campaign/addendum/manifest.csv` (278 rows). GPU-hours used so far (sum 
 | 4.1 | 8 | 0 | 0 | 0 | 0 |
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
 | 4.3 | 8 | 0 | 0 | 0 | 0 |
-| 5.1 | 37 | 0 | 4 | 0 | 0 |
+| 5.1 | 37 | 1 | 3 | 0 | 0 |
 | 5.2 | 11 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
 | 7 | 0 | 0 | 0 | 0 | 14 |
@@ -596,9 +596,9 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 
 | condition | dataset | method | alpha | n_pairs | l_bar | l_bar_strict | mean_tokens | mean_tokens_strict | lambda | rounds_ratio | time_ratio | accuracy | accuracy_strict | capout_rate | capout_rate_strict | time_per_round_ratio | nodes | nodes_strict | same_node_pairs | same_node | lambda_ci_lo | lambda_ci_hi | rounds_ratio_ci_lo | rounds_ratio_ci_hi | time_ratio_ci_lo | time_ratio_ci_hi | time_ratio_same_node |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 90.000 | 3.899 | 3.014 | 7435.800 | 8076.410 | 0.921 | 0.735 | 0.713 | - | - | 0.267 | 0.289 | 0.970 | kn176 | kn169 | 0.000 | False | 0.883 | 0.959 | 0.709 | 0.764 | 0.687 | 0.741 | - |
-| lmdraft | livecodebench_qwen3 | cactus | 0.350 | 90.000 | 4.312 | 3.014 | 7649.500 | 8076.410 | 0.947 | 0.695 | 0.683 | - | - | 0.244 | 0.289 | 0.983 | kn169 | kn169 | 90.000 | True | 0.908 | 0.988 | 0.668 | 0.725 | 0.656 | 0.713 | 0.683 |
-| lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 90.000 | 3.275 | 3.014 | 7551.780 | 8076.410 | 0.935 | 0.871 | 0.853 | - | - | 0.211 | 0.289 | 0.980 | kn176 | kn169 | 0.000 | False | 0.896 | 0.975 | 0.835 | 0.907 | 0.818 | 0.889 | - |
+| lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 90.000 | 3.899 | 3.014 | 7435.800 | 8076.410 | 0.921 | 0.735 | 0.713 | - | 0.722 | 0.267 | 0.289 | 0.970 | kn176 | kn169 | 0.000 | False | 0.883 | 0.959 | 0.709 | 0.764 | 0.687 | 0.741 | - |
+| lmdraft | livecodebench_qwen3 | cactus | 0.350 | 90.000 | 4.312 | 3.014 | 7649.500 | 8076.410 | 0.947 | 0.695 | 0.683 | - | 0.722 | 0.244 | 0.289 | 0.983 | kn169 | kn169 | 90.000 | True | 0.908 | 0.988 | 0.668 | 0.725 | 0.656 | 0.713 | 0.683 |
+| lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 90.000 | 3.275 | 3.014 | 7551.780 | 8076.410 | 0.935 | 0.871 | 0.853 | - | 0.722 | 0.211 | 0.289 | 0.980 | kn176 | kn169 | 0.000 | False | 0.896 | 0.975 | 0.835 | 0.907 | 0.818 | 0.889 | - |
 
 ## Step 5: alpha grid completion and best-setting validation
 
