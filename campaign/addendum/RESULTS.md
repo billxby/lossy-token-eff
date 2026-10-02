@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-02 17:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-02 23:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -949,4 +949,13 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
   (README deviation 19). The old box ran 339 such cases without the
   repository recording how; the Killarney rows draft with a copy whose
   config allows 65536 positions, identical below 40960.
+
+### SPEED-Bench without the HLE prompts (2026-10-02)
+
+- The 208 `cais/hle` prompts were not run (README deviation 21), so every
+  arm has 672 of 880 prompts. Humanities, Math and STEM rest on 8, 18 and 6
+  prompts per arm: read their rows as indicative only (e.g. Qwen3
+  spec_casc_opt's Math lambda 2.04 / rounds 1.47 is 18 prompts). The
+  overall (`all`) rows and the eight complete categories carry the step-7
+  conclusions.
 

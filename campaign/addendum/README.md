@@ -311,3 +311,11 @@ alpha grows).
    lane (it used to spread every new Qwen3 row by load, which split the
    pairs until they were moved back). Longbench's step-5.2 rows follow once
    its grid is complete and graded.
+21. **SPEED-Bench's 208 HLE prompts are not run (2026-10-02, Bill's
+   decision).** They come from the gated `cais/hle` dataset (a Hugging Face
+   token was never set up) and were judged not essential: every arm of both
+   models has the other 672 of the 880 qualitative-split prompts, all eight
+   other categories are complete (80 each), and no other step uses them.
+   Humanities, Math and STEM keep only their non-HLE prompts (8, 18 and 6
+   per arm), so their per-category ratios are thin; RESULTS.md gives n per
+   cell. The 14 step-7 rows stay `blocked` in the manifest with this reason.

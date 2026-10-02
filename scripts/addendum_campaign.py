@@ -107,8 +107,8 @@ SB_FIRST, SB_PER_CAT, SB_N_CATS = 40, 40, 11  # time-estimate sample per arm; pe
 SB_BUDGET_H = 24.0   # the lane budget: one 12 h job on each GPT-OSS lane (A and B)
 SB_HOLD_MIN = 40     # a lane out of work while step 7 waits on a phase keeps its GPU this long
 SB_NOTE_MARKERS = ("waits for step-7 phase", "first-40 estimate:", "token budget 8192",
-                   "need the cais/hle prompts", "wait for the Math budget pilot", "GPU-h vs lane budget",
-                   "waits for the GPT-OSS step-7 run")  # regenerated every plan
+                   "need the cais/hle prompts", "are cais/hle prompts", "wait for the Math budget pilot",
+                   "GPU-h vs lane budget", "waits for the GPT-OSS step-7 run")  # regenerated every plan
 
 FIELDS = ["step", "condition", "target", "dataset", "method", "alpha", "seeds", "run_root", "n_cases_target",
           "n_done", "status", "slurm_job_ids", "gpu_hours_est", "gpu_hours_actual", "notes"]
@@ -615,7 +615,8 @@ def sb_wait_note(row: dict, sbs: dict, gate_open: bool = True) -> tuple[str, str
     if row["condition"] != "speedbench_pilot" and sbs["phase"] != "full":
         return "pending", f"waits for step-7 phase '{sbs['phase']}' to finish"
     if unbuilt or undecided:
-        return "blocked", (f"{len(unbuilt)} case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill)"
+        return "blocked", (f"{len(unbuilt)} case(s) are cais/hle prompts, not run: dropped by Bill's decision "
+                           "2026-10-02 (README deviation 21)"
                            + (f"; {len(undecided)} wait for the Math budget pilot" if undecided else ""))
     return "pending", ""
 

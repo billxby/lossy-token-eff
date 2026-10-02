@@ -29,7 +29,9 @@ for what is done; this file records every action and failure.
    drop; queued jobs keep running, but nothing is pulled back, graded or
    resubmitted until Bill approves one Duo push per cluster (last done
    2026-10-02 14:07Z, both).
-4. **SPEED-Bench HLE prompts (step 7) -- 208 of 880 cases.** Humanities
+4. ~~SPEED-Bench HLE prompts~~ -- closed 2026-10-02: Bill decided not to run
+   them (not essential; README deviation 21). Original ask, for the record:
+   **SPEED-Bench HLE prompts (step 7) -- 208 of 880 cases.** Humanities
    (72/80), Math (62/80) and STEM (74/80) come from `cais/hle`, a gated
    Hugging Face dataset (auto-approved on request). Ask: accept the terms at
    https://huggingface.co/datasets/cais/hle with your HF account, create a
@@ -1017,3 +1019,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T17:05:53Z grading: pulled 46342 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-10-02T17:13:10Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 23143323
 - 2026-10-02T17:13:12Z grading: pulled 46342 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-02T23:13:21Z Bill dropped the SPEED-Bench HLE prompts (not essential): the 14 step-7 rows stay blocked with that reason (README deviation 21). Campaign closed: 278 done, 14 blocked.

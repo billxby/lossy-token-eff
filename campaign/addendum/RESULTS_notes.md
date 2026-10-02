@@ -239,3 +239,12 @@
   (README deviation 19). The old box ran 339 such cases without the
   repository recording how; the Killarney rows draft with a copy whose
   config allows 65536 positions, identical below 40960.
+
+### SPEED-Bench without the HLE prompts (2026-10-02)
+
+- The 208 `cais/hle` prompts were not run (README deviation 21), so every
+  arm has 672 of 880 prompts. Humanities, Math and STEM rest on 8, 18 and 6
+  prompts per arm: read their rows as indicative only (e.g. Qwen3
+  spec_casc_opt's Math lambda 2.04 / rounds 1.47 is 18 prompts). The
+  overall (`all`) rows and the eight complete categories carry the step-7
+  conclusions.
