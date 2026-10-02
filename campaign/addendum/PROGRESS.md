@@ -975,3 +975,8 @@ for what is done; this file records every action and failure.
 - 2026-10-02T04:54:20Z Rebalanced the critical path (README deviation 16): main|aime24_qwen3|mentored_dec|0.55|1 -> K1; main|aime24_qwen3|spec_casc_tok|0.35|1 -> K1; main|gsm8k_qwen3|mentored_dec|0.35|1 -> K2; nibiref|gsm8k_qwen3|strict|strict|1 -> K2; nibiref|humaneval_qwen3|strict|strict|1 -> K3; main|humaneval_qwen3|spec_casc_tok|0.35|1 -> K3; main|livecodebench_qwen3|mentored_dec|0.35|1 -> K4 (est. K1 0.9, K2 1.0, K3 1.2, K4 1.2 GPU-h).
 - 2026-10-02T04:56:02Z lane K2: pulled 8 new run dir(s) into runs/
 - 2026-10-02T04:57:26Z Step 5.2 Qwen3: 11 rows added (7 seed-1 arms + 4 Killarney strict seed-1 refs under nibiref), each dataset on one lane after its longbench item: K1 aime24, K2 gsm8k+mtbench, K3 humaneval, K4 livecodebench (README deviation 20). Longbench rows spread over K1-K4 (strict ref K1, md 0.35 K3, md 0.55 K4, tok on K2) since each longbench cell takes ~1 h. cmd_plan now honours an extra row's Killarney lane.
+- 2026-10-02T14:10:55Z lane K1: pulled 209 new run dir(s) into runs/
+- 2026-10-02T14:11:27Z lane K2: pulled 663 new run dir(s) into runs/
+- 2026-10-02T14:11:51Z lane K3: pulled 594 new run dir(s) into runs/
+- 2026-10-02T14:12:16Z lane K4: pulled 324 new run dir(s) into runs/
+- 2026-10-02T14:12:27Z step 0.5 nibiref longbench_v2_qwen3 strict alpha=strict seed=0: done, 150/150 cases (jobs 5862541, 0.97 GPU-h)
