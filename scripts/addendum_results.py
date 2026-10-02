@@ -193,10 +193,14 @@ def section_best() -> list[str]:
             "ratios of the step-5.1 additions are taken against the step-0.5 strict reference on the same machine "
             "(Nibi for GPT-OSS, Killarney for Qwen3; `s0_time_ratio_basis`, `hardware_s0_*`). Seed 1 = the step-5.2 "
             "validation run, paired with strict seed 1 on the same machine (`s1_hardware`, `s1_strict_hardware`; "
-            "'-' = not complete yet); validated = seed-1 time ratio < 1 and the same accuracy rule holds on seed 1.", "",
+            "'-' = not complete yet); validated = seed-1 time ratio < 1 and the same accuracy rule holds on seed 1. "
+            "s1 same node = seed-1 pairs whose arm and strict ran on one node (`s1_same_node_pairs`; README "
+            "deviations 13-17): a seed-1 time verdict on cross-node pairs carries the node effect, the rounds ratio "
+            "does not.", "",
             "| target | dataset | method | grid complete | chosen alpha (by rounds) | s0 lambda | s0 rounds ratio | "
-            "s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict | validated |",
-            "|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|---|"]
+            "s0 time ratio | s0 acc / strict | s1 lambda | s1 rounds ratio | s1 time ratio | s1 acc / strict | "
+            "s1 same node | validated |",
+            "|---|---|---|---|---|---:|---:|---:|---|---:|---:|---:|---|---:|---|"]
     for r in b:
         s1_full = int(float(r.get("s1_n_pairs") or 0)) == N_CASES.get(r["dataset"], -1)  # all cases paired
         s1 = (lambda k: f(r.get(k)) if s1_full else "-")
@@ -205,6 +209,7 @@ def section_best() -> list[str]:
                    f"{f(r.get('s0_rounds_ratio'))} | {f(r.get('s0_time_ratio'))} | {pct(r.get('s0_accuracy'))} / "
                    f"{pct(r.get('s0_accuracy_strict'))} | {s1('s1_lambda')} | {s1('s1_rounds_ratio')} | {s1('s1_time_ratio')} | "
                    + (f"{pct(r.get('s1_accuracy'))} / {pct(r.get('s1_accuracy_strict'))}" if s1_full else "-")
+                   + (f" | {r.get('s1_same_node_pairs') or '?'}/{r.get('s1_n_pairs')}" if s1_full else " | -")
                    + f" | {({'True': 'yes', 'False': 'no'}).get(r.get('validated') or '', '-')} |")
     return out + [""]
 

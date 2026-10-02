@@ -879,6 +879,9 @@ def reachable(host: str) -> bool:
     return ssh("true", check=False, host=host, timeout=60).returncode == 0
 
 
+LIVE_STATES = {"PENDING", "RUNNING", "CONFIGURING", "COMPLETING", "SUSPENDED", "REQUEUED", "RESIZING", "", None}
+
+
 def refresh_job_states(state: dict) -> dict[str, dict[str, str] | None]:
     """Update every lane job's state; lanes on an unreachable host keep their last known states."""
     live_by_host = {host: squeue_states(host) for host in dict.fromkeys(info["host"] for info in LANES.values())}
@@ -999,12 +1002,21 @@ def cmd_collect(args: argparse.Namespace) -> int:
     before = {row_key(r): r for r in load_manifest()}
     total = 0
     for lane, info in LANES.items():
+        # A lane none of whose jobs is live, and whose every job had already ended at its last successful collect,
+        # cannot hold new runs: skip it (its find over the run root took 10-15 min on Nibi's /scratch, 2026-10-02).
+        lane_state = state["lanes"].setdefault(lane, {})
+        jobs = lane_state.get("jobs", [])
+        ended = sorted(j["id"] for j in jobs if j.get("state") not in LIVE_STATES)
+        if len(ended) == len(jobs) and lane_state.get("collected_jobs") == ended:
+            continue
         try:
             pulled = pull_lane_runs(lane, info)
         except (RuntimeError, subprocess.SubprocessError) as exc:
             progress(f"lane {lane}: collect FAILED ({exc}); will retry next cycle")
             print(f"lane {lane}: collect failed: {exc}", file=sys.stderr)
             continue
+        lane_state["collected_jobs"] = ended
+        save_state(state)
         total += len(pulled)
         if pulled:
             progress(f"lane {lane}: pulled {len(pulled)} new run dir(s) into runs/")
