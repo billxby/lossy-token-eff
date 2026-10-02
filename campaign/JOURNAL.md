@@ -2759,3 +2759,28 @@ paper's own tables (`campaign/tables`, `campaign/results`) are untouched.
   failures concentrate in spec_casc_opt on math, humanities and
   multilingual. `campaign/addendum/tables/speedbench{,_eq4,_eq4_summary}__
   qwen3-8b.csv`.
+
+- **2026-10-02, addendum step 5 (Qwen3 half) done; step 5 complete** (5.1
+  on Killarney K2-K4, 2026-10-01/02; 5.2 on Killarney K1-K4, 2026-10-02;
+  README deviations 19, 20). 5.1 filled mentored_dec and spec_casc_tok at
+  0.35 / 0.55 on all six Qwen3 datasets (longbench_v2 with the
+  extended-position drafter); their seed-0 time ratios are taken against
+  the Killarney strict reference. 5.2 picked the alpha with the lowest
+  seed-0 time ratio within 2 accuracy points of strict (mtbench: rounds
+  ratio < 1) and ran it at seed 1 against a Killarney strict seed 1 --
+  except where the pick was the campaign's alpha (spec_casc_tok 0.8 on
+  gsm8k, livecodebench, mtbench), whose seed-1 pair already existed from
+  step 2.1 on Nibi. 8 of 12 hold: gsm8k both (mentored_dec 0.35 time 0.965,
+  accuracy 0.85 vs 0.81; spec_casc_tok 0.8 0.971), aime24 mentored_dec 0.55
+  (0.997, 0.80 vs 0.77), livecodebench spec_casc_tok 0.8 (0.973), mtbench
+  both (mentored_dec 0.55 0.901, spec_casc_tok 0.8 0.959) and longbench_v2
+  both (mentored_dec 0.75 0.965 on cross-node pairs with rounds 0.996;
+  spec_casc_tok 0.55 0.992 with rounds 1.005) -- several of these by a
+  percent or less. 4 do not: aime24 spec_casc_tok 0.35 (accuracy 0.70 vs
+  0.77), livecodebench mentored_dec 0.35 (0.73 vs 0.76), and humaneval both
+  (time 1.020 / 1.030 at seed 1). On humaneval the seed-0 picks rested on
+  time 0.90 with rounds 1.07-1.08: a node artifact that the same-node
+  seed-1 pairs (150 / 150) remove. The time-based picks often differ from
+  the rounds-based ones (`chosen_alpha_by_rounds_ratio`; e.g. aime24 0.15 /
+  0.8, humaneval 0.75 / 0.8). `campaign/addendum/best_setting.csv` (columns
+  `s1_*`, incl. `s1_same_node_pairs`).
