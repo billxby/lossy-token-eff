@@ -969,3 +969,6 @@ for what is done; this file records every action and failure.
 - 2026-10-02T04:50:26Z Rebalanced the critical path (README deviation 16): nibiref|longbench_v2_qwen3|strict|strict|0 -> K1; main|longbench_v2_qwen3|mentored_dec|0.35|0 -> K3; main|longbench_v2_qwen3|mentored_dec|0.55|0 -> K4 (est. K1 0.3, K2 0.3, K3 0.2, K4 0.2 GPU-h).
 - 2026-10-02T04:51:01Z step 5.2: 22 cells have an eligible best setting; added 11 seed-1 row(s): gsm8k_qwen3/mentored_dec/0.35 -> K1, gsm8k_qwen3/strict/strict (nibiref) -> K1, aime24_qwen3/mentored_dec/0.55 -> K2, aime24_qwen3/spec_casc_tok/0.35 -> K2, humaneval_qwen3/mentored_dec/0.55 -> K3, humaneval_qwen3/strict/strict (nibiref) -> K3, humaneval_qwen3/spec_casc_tok/0.35 -> K3, livecodebench_qwen3/mentored_dec/0.35 -> K4, livecodebench_qwen3/strict/strict (nibiref) -> K4, mtbench_qwen3/mentored_dec/0.55 -> K1, mtbench_qwen3/strict/strict (nibiref) -> K1
 - 2026-10-02T04:53:15Z lane K2: pulled 20 new run dir(s) into runs/
+- 2026-10-02T04:53:43Z lane K1: submitted job 5862541; lane has 1 work items, est. 0.3 GPU-h
+- 2026-10-02T04:53:44Z lane K3: submitted job 5862551; lane has 6 work items, est. 1.5 GPU-h
+- 2026-10-02T04:53:47Z lane K4: submitted job 5862558; lane has 4 work items, est. 1.4 GPU-h
