@@ -1,22 +1,22 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-02 05:51 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-02 14:15 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (289 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 114.5; estimated remaining, runnable rows: 4.3; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (289 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 124.8; estimated remaining, runnable rows: 0.0; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
-| 0.5 | 11 | 0 | 1 | 0 | 0 |
+| 0.5 | 12 | 0 | 0 | 0 | 0 |
 | 2.1 | 96 | 0 | 0 | 0 | 0 |
 | 2.2 | 26 | 0 | 0 | 0 | 0 |
 | 3 | 20 | 0 | 0 | 0 | 0 |
 | 4.1 | 8 | 0 | 0 | 0 | 0 |
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
 | 4.3 | 8 | 0 | 0 | 0 | 0 |
-| 5.1 | 37 | 1 | 3 | 0 | 0 |
-| 5.2 | 11 | 0 | 11 | 0 | 0 |
+| 5.1 | 41 | 0 | 0 | 0 | 0 |
+| 5.2 | 22 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
 | 7 | 0 | 0 | 0 | 0 | 14 |
 
@@ -618,18 +618,18 @@ Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, meth
 | gpt-oss-20b | mtbench | spec_casc_tok | True | 0.55 (0.8) | 0.97 | 0.93 | 0.89 | - / - | 1.00 | 0.95 | 0.95 | - / - | yes |
 | gpt-oss-20b | longbench_v2 | mentored_dec | True | 0.55 (0.55) | 1.11 | 0.89 | 1.00 | 57% / 56% | 1.38 | 1.09 | 1.03 | 55% / 57% | no |
 | gpt-oss-20b | longbench_v2 | spec_casc_tok | True | 0.55 (0.55) | 1.06 | 0.97 | 0.94 | 57% / 56% | 1.20 | 1.09 | 1.04 | 55% / 57% | no |
-| qwen3-8b | gsm8k | mentored_dec | True | 0.35 (0.35) | 0.99 | 0.96 | 0.96 | 82% / 80% | - | - | - | - | - |
+| qwen3-8b | gsm8k | mentored_dec | True | 0.35 (0.35) | 0.99 | 0.96 | 0.96 | 82% / 80% | 1.00 | 0.96 | 0.96 | - / - | - |
 | qwen3-8b | gsm8k | spec_casc_tok | True | 0.8 (0.8) | 0.99 | 0.95 | 0.96 | 79% / 80% | 1.00 | 0.95 | 0.97 | 82% / 81% | yes |
-| qwen3-8b | aime24 | mentored_dec | True | 0.55 (0.15) | 0.99 | 1.01 | 0.88 | 77% / 70% | - | - | - | - | - |
-| qwen3-8b | aime24 | spec_casc_tok | True | 0.35 (0.8) | 0.95 | 0.99 | 0.83 | 77% / 70% | - | - | - | - | - |
-| qwen3-8b | humaneval | mentored_dec | True | 0.55 (0.75) | 1.10 | 1.08 | 0.90 | 83% / 83% | - | - | - | - | - |
-| qwen3-8b | humaneval | spec_casc_tok | True | 0.35 (0.8) | 1.04 | 1.07 | 0.90 | 85% / 83% | - | - | - | - | - |
-| qwen3-8b | livecodebench | mentored_dec | True | 0.35 (0.15) | 1.03 | 1.02 | 0.98 | 70% / 70% | - | - | - | - | - |
+| qwen3-8b | aime24 | mentored_dec | True | 0.55 (0.15) | 0.99 | 1.01 | 0.88 | 77% / 70% | 1.03 | 0.98 | 1.00 | - / 77% | - |
+| qwen3-8b | aime24 | spec_casc_tok | True | 0.35 (0.8) | 0.95 | 0.99 | 0.83 | 77% / 70% | 0.94 | 0.92 | 0.93 | - / 77% | - |
+| qwen3-8b | humaneval | mentored_dec | True | 0.55 (0.75) | 1.10 | 1.08 | 0.90 | 83% / 83% | 1.05 | 1.00 | 1.02 | - / - | no |
+| qwen3-8b | humaneval | spec_casc_tok | True | 0.35 (0.8) | 1.04 | 1.07 | 0.90 | 85% / 83% | 1.03 | 1.03 | 1.03 | - / - | no |
+| qwen3-8b | livecodebench | mentored_dec | True | 0.35 (0.15) | 1.03 | 1.02 | 0.98 | 70% / 70% | 1.01 | 0.97 | 0.99 | - / - | - |
 | qwen3-8b | livecodebench | spec_casc_tok | True | 0.8 (0.8) | 1.00 | 0.94 | 0.96 | 71% / 70% | 1.02 | 0.96 | 0.97 | 72% / 69% | yes |
-| qwen3-8b | mtbench | mentored_dec | True | 0.55 (0.75) | 1.00 | 0.93 | 0.83 | - / - | - | - | - | - | - |
+| qwen3-8b | mtbench | mentored_dec | True | 0.55 (0.75) | 1.00 | 0.93 | 0.83 | - / - | 1.02 | 0.92 | 0.90 | - / - | yes |
 | qwen3-8b | mtbench | spec_casc_tok | True | 0.8 (0.8) | 1.04 | 0.96 | 0.99 | - / - | 1.02 | 0.96 | 0.96 | - / - | yes |
-| qwen3-8b | longbench_v2 | mentored_dec | False | 0.75 (0.75) | 1.06 | 0.98 | 0.99 | 51% / 53% | - | - | - | - | - |
-| qwen3-8b | longbench_v2 | spec_casc_tok | False | 0.15 (0.15) | 1.05 | 1.03 | 1.03 | 51% / 53% | - | - | - | - | - |
+| qwen3-8b | longbench_v2 | mentored_dec | True | 0.75 (0.75) | 1.06 | 0.98 | 0.99 | 51% / 53% | - | - | - | - | - |
+| qwen3-8b | longbench_v2 | spec_casc_tok | True | 0.15 (0.15) | 1.05 | 1.03 | 1.03 | 51% / 53% | - | - | - | - | - |
 
 ## Step 6: AIME24 accuracy repeats
 
@@ -914,4 +914,39 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
   `tables/qwenT0.6__*.csv` time ratios for cactus, spec_casc_opt and
   spec_casc_tok (gsm8k 1.07 / 1.08 / 1.07) are inflated by the node; their
   rounds ratios (0.96 / 0.95 / 0.96) are not. README deviation 13.
+
+### Same-node pairs: the node effect is real but not fixed (2026-10-02)
+
+- Every table that pairs an arm with strict now says where each side ran
+  (`nodes`, `nodes_strict`), how many case pairs shared a node
+  (`same_node_pairs`) and the time ratio over those pairs alone
+  (`time_ratio_same_node`; README deviations 13, 15, 17). Nodes come from
+  the lane journals (`lanes/<lane>_status.jsonl`), matched by each run's
+  config.json timestamp; run directories do not record them.
+- The kn176 penalty of step 4.2 (~11% per round) did not hold later: in
+  step 4.3 the kn176 arms' time-per-round ratios (0.88-0.98) match the
+  same-node cactus arm's (0.93 / 0.98). So a cross-node time ratio is not
+  a fixed offset from the same-node one; quote the rounds ratio, or the
+  same-node time ratio where there are enough pairs.
+- Where it matters: SPEED-Bench Qwen3 mentored_dec reads T 1.02 over all
+  672 pairs but 0.91 over its 249 same-node pairs (rounds 0.93,
+  `tables/speedbench__qwen3-8b.csv` row `mentored_dec`, category `all`);
+  spec_casc_opt 1.13 vs 1.06 (93 pairs). On Nibi (GPT-OSS SPEED-Bench, lanes
+  A and B on disjoint node sets) many arms are cross-node too, but rounds
+  and time agree in every category there.
+
+### Killarney's rolling reboot and two Qwen3-only failures (2026-10-01/02)
+
+- Killarney rebooted every H100 node from 2026-10-01 ~18:40Z; rebooted nodes
+  run NVIDIA driver 580.178.04 (was 580.159.03; README deviation 17). Runs
+  straddle the change; same-node pairs on one side of it agree with
+  cross-driver ones where both exist (step 3 N 8: 1.08 on gsm8k, same node,
+  and on livecodebench, across the reboot).
+- Qwen3 at 10 draft tokens ran out of memory in vLLM's sampler warmup at
+  GPU_UTIL 0.85 (README deviation 18); it ran at 0.80.
+- Qwen3 longbench_v2 crashed on Killarney once a sequence passed 40960
+  positions: the EAGLE-3 drafter's own config caps its rope table there
+  (README deviation 19). The old box ran 339 such cases without the
+  repository recording how; the Killarney rows draft with a copy whose
+  config allows 65536 positions, identical below 40960.
 
