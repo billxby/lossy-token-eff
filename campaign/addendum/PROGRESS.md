@@ -958,3 +958,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T04:09:04Z step 5.1 main livecodebench_qwen3 spec_casc_tok alpha=0.35 seed=0: done, 90/90 cases (jobs 5846458, 0.88 GPU-h)
 - 2026-10-02T04:09:05Z step 5.1 main livecodebench_qwen3 spec_casc_tok alpha=0.55 seed=0: done, 90/90 cases (jobs 5846458, 0.87 GPU-h)
 - 2026-10-02T04:09:05Z step 5.1 main aime24_qwen3 spec_casc_tok alpha=0.55 seed=0: done, 30/30 cases (jobs 5839007 5840988, 0.40 GPU-h)
+- 2026-10-02T04:09:15Z lane K2: submitted job 5857990; lane has 5 work items, est. 0.9 GPU-h
