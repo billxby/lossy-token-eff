@@ -276,7 +276,7 @@ step,condition,target,dataset,method,alpha,seeds,run_root,n_cases_target,n_done,
 5.2,nibiref,qwen3-8b,mtbench_qwen3,strict,strict,1,runs/addendum/nibiref,80,80,done,5857990,0.00,0.23,lane=K2; strict seed 1 for the step-5.2 pair
 5.2,main,qwen3-8b,longbench_v2_qwen3,mentored_dec,0.75,1,runs,150,150,done,5883237,0.00,0.95,lane=K2; best-setting validation
 5.2,main,qwen3-8b,longbench_v2_qwen3,strict,strict,1,runs,150,150,done,5883236,0.00,0.96,lane=K1; strict seed 1 for the step-5.2 pair
-5.2,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.55,1,runs,150,56,running,5883236,0.14,,lane=K1; best-setting validation
+5.2,main,qwen3-8b,longbench_v2_qwen3,spec_casc_tok,0.55,1,runs,150,150,done,5883236,0.00,0.94,lane=K1; best-setting validation
 7,speedbench_pilot,gpt-oss-20b,speedbench,strict,strict,0,runs/addendum/speedbench_pilot/gpt-oss-20b,40,24,blocked,22881281,0.12,0.11,"lane=A; first 20 Reasoning + first 20 Math cases at 8192; >10% cap-outs raise that category to 16384; 16 case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill); token budget 8192 (pilot: reasoning 8192)"
 7,speedbench,gpt-oss-20b,speedbench,strict,strict,0,runs/addendum/speedbench/gpt-oss-20b,880,672,blocked,22881281,0.27,0.81,"lane=A; 208 case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill); first-40 estimate: 2.6 s/case, full split 3.7 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
 7,speedbench,gpt-oss-20b,speedbench,spec_casc_opt,0.05,0,runs/addendum/speedbench/gpt-oss-20b,880,672,blocked,22881281,0.23,0.69,"lane=A; 208 case(s) need the cais/hle prompts (Hugging Face token, PROGRESS.md Needs Bill); first-40 estimate: 2.0 s/case, full split 3.7 GPU-h vs lane budget 24; token budget 8192 (pilot: reasoning 8192)"
