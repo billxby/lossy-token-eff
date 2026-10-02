@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-02 16:25 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-02 17:01 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (292 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 126.7; estimated remaining, runnable rows: 0.1; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (292 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 127.6; estimated remaining, runnable rows: 0.0; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -16,7 +16,7 @@ Source: `campaign/addendum/manifest.csv` (292 rows). GPU-hours used so far (sum 
 | 4.2 | 12 | 0 | 0 | 0 | 0 |
 | 4.3 | 8 | 0 | 0 | 0 | 0 |
 | 5.1 | 41 | 0 | 0 | 0 | 0 |
-| 5.2 | 24 | 1 | 0 | 0 | 0 |
+| 5.2 | 25 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
 | 7 | 0 | 0 | 0 | 0 | 14 |
 
@@ -629,7 +629,7 @@ Source: `campaign/addendum/best_setting.csv`, one row per (target, dataset, meth
 | qwen3-8b | mtbench | mentored_dec | True | 0.55 (0.75) | 1.00 | 0.93 | 0.83 | - / - | 1.02 | 0.92 | 0.90 | - / - | 80/80 | yes |
 | qwen3-8b | mtbench | spec_casc_tok | True | 0.8 (0.8) | 1.04 | 0.96 | 0.99 | - / - | 1.02 | 0.96 | 0.96 | - / - | 0/80 | yes |
 | qwen3-8b | longbench_v2 | mentored_dec | True | 0.75 (0.75) | 1.06 | 0.98 | 0.99 | 51% / 53% | 1.05 | 1.00 | 0.97 | 51% / 51% | 0/150 | yes |
-| qwen3-8b | longbench_v2 | spec_casc_tok | True | 0.55 (0.15) | 0.99 | 1.12 | 0.95 | 53% / 53% | - | - | - | - | - | - |
+| qwen3-8b | longbench_v2 | spec_casc_tok | True | 0.55 (0.15) | 0.99 | 1.12 | 0.95 | 53% / 53% | 1.03 | 1.01 | 0.99 | - / 51% | 150/150 | - |
 
 ## Step 6: AIME24 accuracy repeats
 
