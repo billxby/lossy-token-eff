@@ -432,7 +432,9 @@
         "speedbench|speedbench_qwen3|spec_casc_opt|0.05|0",
         "speedbench|speedbench_qwen3|mentored_dec|0.75|0",
         "speedbench|speedbench_qwen3|spec_casc_tok|0.8|0",
-        "nibiref|longbench_v2_qwen3|strict|strict|0"
+        "nibiref|longbench_v2_qwen3|strict|strict|0",
+        "main|aime24_qwen3|mentored_dec|0.55|1",
+        "main|aime24_qwen3|spec_casc_tok|0.35|1"
       ]
     },
     "K2": {
@@ -540,9 +542,10 @@
         "main|mtbench_qwen3|spec_casc_tok|0.35|0",
         "main|mtbench_qwen3|spec_casc_tok|0.55|0",
         "speedbench|speedbench_qwen3|r_fuzzy|0.25|0",
-        "nibiref|humaneval_qwen3|strict|strict|1",
         "main|mtbench_qwen3|mentored_dec|0.55|1",
-        "nibiref|mtbench_qwen3|strict|strict|1"
+        "nibiref|mtbench_qwen3|strict|strict|1",
+        "main|gsm8k_qwen3|mentored_dec|0.35|1",
+        "nibiref|gsm8k_qwen3|strict|strict|1"
       ]
     },
     "K3": {
@@ -598,11 +601,9 @@
         "main|livecodebench_qwen3|spec_casc_tok|0.35|0",
         "main|livecodebench_qwen3|spec_casc_tok|0.55|0",
         "main|longbench_v2_qwen3|mentored_dec|0.35|0",
-        "main|gsm8k_qwen3|mentored_dec|0.35|1",
-        "nibiref|gsm8k_qwen3|strict|strict|1",
-        "main|aime24_qwen3|mentored_dec|0.55|1",
         "main|humaneval_qwen3|mentored_dec|0.55|1",
-        "main|livecodebench_qwen3|mentored_dec|0.35|1"
+        "nibiref|humaneval_qwen3|strict|strict|1",
+        "main|humaneval_qwen3|spec_casc_tok|0.35|1"
       ]
     },
     "K4": {
@@ -651,9 +652,8 @@
         "main|gsm8k_qwen3|spec_casc_tok|0.35|0",
         "speedbench|speedbench_qwen3|cactus|0.35|0",
         "main|longbench_v2_qwen3|mentored_dec|0.55|0",
-        "main|aime24_qwen3|spec_casc_tok|0.35|1",
-        "main|humaneval_qwen3|spec_casc_tok|0.35|1",
-        "nibiref|livecodebench_qwen3|strict|strict|1"
+        "nibiref|livecodebench_qwen3|strict|strict|1",
+        "main|livecodebench_qwen3|mentored_dec|0.35|1"
       ]
     }
   },

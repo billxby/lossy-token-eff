@@ -972,3 +972,5 @@ for what is done; this file records every action and failure.
 - 2026-10-02T04:53:43Z lane K1: submitted job 5862541; lane has 1 work items, est. 0.3 GPU-h
 - 2026-10-02T04:53:44Z lane K3: submitted job 5862551; lane has 6 work items, est. 1.5 GPU-h
 - 2026-10-02T04:53:47Z lane K4: submitted job 5862558; lane has 4 work items, est. 1.4 GPU-h
+- 2026-10-02T04:54:20Z Rebalanced the critical path (README deviation 16): main|aime24_qwen3|mentored_dec|0.55|1 -> K1; main|aime24_qwen3|spec_casc_tok|0.35|1 -> K1; main|gsm8k_qwen3|mentored_dec|0.35|1 -> K2; nibiref|gsm8k_qwen3|strict|strict|1 -> K2; nibiref|humaneval_qwen3|strict|strict|1 -> K3; main|humaneval_qwen3|spec_casc_tok|0.35|1 -> K3; main|livecodebench_qwen3|mentored_dec|0.35|1 -> K4 (est. K1 0.9, K2 1.0, K3 1.2, K4 1.2 GPU-h).
+- 2026-10-02T04:56:02Z lane K2: pulled 8 new run dir(s) into runs/
