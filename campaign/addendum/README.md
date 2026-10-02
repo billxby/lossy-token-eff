@@ -294,3 +294,20 @@ alpha grows).
    it had before (the 13 earlier Killarney longbench runs stay comparable).
    These items get their own compile cache (`VLLM_CACHE_ROOT=/scratch/
    billxby/vllm_cache_longdrafter`); its drafter kernel's bound is 65536.
+20. **Qwen3 step 5.2 pairs each seed-1 arm with a Killarney strict seed 1
+   (2026-10-02 ~04:55Z).** The Qwen3 seed-1 arms run on Killarney, but the
+   strict seed 1 they are judged against ran on Nibi (step 2.1) for gsm8k,
+   humaneval, livecodebench and mtbench; only aime24's (step 2.2) ran on
+   Killarney. `add52` now adds, for those datasets, a strict seed 1 under
+   `runs/addendum/nibiref` on the arm's lane (the step 0.5 idea, one seed
+   on), and `addendum_tables.py best` pairs seed 1 by machine. That gives
+   7 seed-1 arms with graded grids (gsm8k md 0.35; aime24 md 0.55, tok 0.35;
+   humaneval md 0.55, tok 0.35; livecodebench md 0.35; mtbench md 0.55) and
+   4 strict references. Cells whose chosen alpha is the campaign's own
+   (tok 0.8 on gsm8k, livecodebench, mtbench) already have their seed-1 pair
+   from step 2.1 on Nibi. Each dataset's rows share one lane: K1 aime24, K2
+   gsm8k + mtbench, K3 humaneval, K4 livecodebench, each after that lane's
+   longbench_v2 item. `cmd_plan` now honours an extra row's named Killarney
+   lane (it used to spread every new Qwen3 row by load, which split the
+   pairs until they were moved back). Longbench's step-5.2 rows follow once
+   its grid is complete and graded.

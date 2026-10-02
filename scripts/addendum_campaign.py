@@ -657,9 +657,12 @@ def cmd_plan(args: argparse.Namespace) -> int:
     if not blocked_qwen:  # spread new lane-C (Qwen3) rows over the Qwen3 lanes by remaining estimated hours
         targets = [lane for lane in QWEN3_LANES if lane in LANES] or list(LANES)
         load = {lane: sum(float(by_key[k]["gpu_hours_est"]) for k in by_key if lane_of.get(k) == lane) for lane in targets}
+        # ...except an extra row (step 5.2) that names its Qwen3 lane: a seed-1 pair must share a lane
+        extra_lane = {row_key(make_row(e["step"], e["condition"], e["dataset"], e["method"], e["alpha"], int(e["seed"]))):
+                      e.get("lane") for e in state.get("extra_rows", [])}
         for key in lanes["C"]:
             if key not in lane_of:
-                lane = min(load, key=load.get)
+                lane = extra_lane[key] if extra_lane.get(key) in load else min(load, key=load.get)
                 lane_of[key] = lane
                 load[lane] += float(by_key[key]["gpu_hours_est"])
     # run order per lane: its GPT-OSS rows in plan order, then its Qwen3 rows in lane-C order (a row moved
@@ -1113,27 +1116,51 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 ANALYSIS_PY = os.environ.get("ADDENDUM_ANALYSIS_PY", str(JOB_TMP / "venv" / "bin" / "python"))
 
 
+def strict_seed1_machine(ds: str) -> str:
+    """killarney / nibi / oldbox for a dataset's existing strict seed-1 runs (config.json venv path), '' if none."""
+    for cfg in sorted((REPO / "runs" / ds / "strict" / "strict").glob("case_*/seed_1/config.json")):
+        site = json.loads(cfg.read_text(encoding="utf-8")).get("vllm", {}).get("site_packages", "")
+        if "/6101837/" in site or "/aip-hongyanz/" in site:
+            return "killarney"
+        return "nibi" if "/6071935/" in site or "/def-hongyanz/" in site else "oldbox"
+    return ""
+
+
 def cmd_add52(args: argparse.Namespace) -> int:
     """Step 5.2: once the step-5.1 grid is complete, add seed-1 rows at each cell's chosen alpha
-    (scripts/addendum_tables.py best --plan), plus strict seed 1 where that dataset lacks it."""
+    (scripts/addendum_tables.py best --plan), plus strict seed 1 where that dataset lacks it. A Qwen3 seed-1 arm runs
+    on Killarney, so when the dataset's strict seed 1 ran elsewhere (Nibi, step 2.1) its partner is a Killarney strict
+    seed 1 under runs/addendum/nibiref, and each dataset's rows share one Killarney lane (README deviation 20)."""
     done = subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_tables.py"), "best", "--plan"],
                           cwd=REPO, capture_output=True, text=True, check=True)
     plan = json.loads(done.stdout.strip().splitlines()[-1])
     state = load_state()
     extra = state.setdefault("extra_rows", [])
-    have = {(e["dataset"], e["method"], e["alpha"], int(e["seed"])) for e in extra}
+    have = {(e["dataset"], e["method"], e["alpha"], int(e["seed"]), e.get("condition", "main")) for e in extra}
+    qwen_lane = {e["dataset"]: e["lane"] for e in extra if e["step"] == "5.2" and is_qwen(e["dataset"])}
     added = []
     for p in plan:
-        for method, alpha in ((p["method"], p["alpha"]), ("strict", "strict")):
-            row = make_row("5.2", "main", p["dataset"], method, alpha, 1)
-            key = (p["dataset"], method, alpha, 1)
+        arm = make_row("5.2", "main", p["dataset"], p["method"], p["alpha"], 1)
+        if not missing_local(arm):  # this seed-1 pair already exists (step 2.1 / 2.2)
+            continue
+        lane, ref_condition = getattr(args, "lane", "A"), "main"
+        if is_qwen(p["dataset"]):
+            if p["dataset"] not in qwen_lane:  # round-robin over the Killarney lanes by dataset
+                used = list(qwen_lane.values())
+                qwen_lane[p["dataset"]] = min(QWEN3_LANES, key=lambda l: (used.count(l), QWEN3_LANES.index(l)))
+            lane = qwen_lane[p["dataset"]]
+            if strict_seed1_machine(p["dataset"]) not in ("killarney", ""):
+                ref_condition = "nibiref"
+        for method, alpha, condition in ((p["method"], p["alpha"], "main"), ("strict", "strict", ref_condition)):
+            row = make_row("5.2", condition, p["dataset"], method, alpha, 1)
+            key = (p["dataset"], method, alpha, 1, condition)
             if key in have or not missing_local(row):
                 continue
             have.add(key)
-            extra.append({"step": "5.2", "condition": "main", "dataset": p["dataset"], "method": method,
-                          "alpha": alpha, "seed": 1, "lane": getattr(args, "lane", "A"),
+            extra.append({"step": "5.2", "condition": condition, "dataset": p["dataset"], "method": method,
+                          "alpha": alpha, "seed": 1, "lane": lane,
                           "notes": "best-setting validation" if method != "strict" else "strict seed 1 for the step-5.2 pair"})
-            added.append(f"{p['dataset']}/{method}/{alpha}")
+            added.append(f"{p['dataset']}/{method}/{alpha}" + (" (nibiref)" if condition == "nibiref" else "") + f" -> {lane}")
     save_state(state)
     progress(f"step 5.2: {len(plan)} cells have an eligible best setting; added {len(added)} seed-1 row(s): {', '.join(added) or '-'}")
     print(f"added {len(added)} row(s)")
