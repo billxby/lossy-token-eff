@@ -274,3 +274,23 @@ alpha grows).
    other row keeps 0.85. The KV pool's size does not change a single
    request's computation (prefix caching off, one request at a time), and
    0.80 still holds a full max-length request.
+19. **Qwen3 longbench_v2 drafts with a copy of the EAGLE-3 drafter whose
+   config allows 65536 positions (2026-10-02, approved by Bill).** Every
+   Killarney longbench_v2_qwen3 item crashed once a sequence passed 40960
+   positions: CUDA device-side assert `index out of bounds ... < 40960`. The
+   bound sat in the drafter's compiled rope kernel (vllm_cache/
+   torch_compile_cache/<hash>/rank_0_0/eagle_head; the target's kernels had
+   65536). `--hf-overrides` raises the target's max_position_embeddings to
+   65536 alongside YaRN (2026-08-22), but RedHatAI/Qwen3-8B-speculator.eagle3
+   builds its rope table from its own transformer_layer_config
+   (max_position_embeddings 40960, rope_scaling null; snapshot 08610ffa, the
+   config unchanged since the 2025-10 upload). The old box ran 339 longbench
+   cases past 40960 positions with the same drafter; nothing in the repo
+   records how. The longbench_v2_qwen3 rows now use
+   `hf/local/Qwen3-8B-speculator.eagle3-maxpos65536` on Killarney: the
+   snapshot's files byte-identical except config.json's
+   max_position_embeddings 40960 -> 65536. Plain RoPE continues past 40960
+   with the same theta, so every position below 40960 gets exactly the values
+   it had before (the 13 earlier Killarney longbench runs stay comparable).
+   These items get their own compile cache (`VLLM_CACHE_ROOT=/scratch/
+   billxby/vllm_cache_longdrafter`); its drafter kernel's bound is 65536.

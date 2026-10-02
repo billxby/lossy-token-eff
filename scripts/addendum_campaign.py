@@ -473,12 +473,21 @@ def progress(line: str) -> None:
         handle.write(f"- {utc_now()} {line}\n")
 
 
+# The EAGLE-3 drafter's own config stops at 40960 positions (its rope table; --hf-overrides only reaches the target),
+# so longbench_v2_qwen3's longest sequences (~59k) crash its compiled rope kernel on Killarney. This copy of snapshot
+# 08610ffa differs only in transformer_layer_config.max_position_embeddings = 65536 (README deviation 19).
+LONG_DRAFTER = f"{KILLARNEY_PROJECT}/hf/local/Qwen3-8B-speculator.eagle3-maxpos65536"
+LONG_DRAFTER_CACHE = "/scratch/billxby/vllm_cache_longdrafter"  # not the cache holding the 40960-bound kernel
+
+
 def work_item(row: dict, cases: list[str], max_new_tokens: int | None = None) -> dict:
     ds = row["dataset"]
     family = MODEL_FAMILIES["qwen3" if is_qwen(ds) else "gpt_oss_20b"]
     flags = model_flags(*family)
     if row["condition"] == "lmdraft":
         flags = model_flags(family[0], "Qwen/Qwen3-0.6B", family[2], family[3])
+    elif ds == "longbench_v2_qwen3":
+        flags = model_flags(family[0], LONG_DRAFTER, family[2], family[3])
     item = {
         "id": row_key(row), "step": row["step"], "condition": row["condition"], "dataset": ds,
         "method": row["method"], "alpha": row["alpha"], "seed": int(row["seeds"]), "cases": cases,
@@ -497,6 +506,8 @@ def work_item(row: dict, cases: list[str], max_new_tokens: int | None = None) ->
         # cache holds 0.85 of the GPU (short by 0.6 GiB; job 5839007, 2026-10-01). The KV pool's size does not change
         # a single request's computation (no prefix caching, one request at a time): 0.80 (README deviation 18)
         item["env"] = {**item.get("env", {}), "GPU_UTIL": "0.80"}
+    if ds == "longbench_v2_qwen3" and row["condition"] != "lmdraft":
+        item["env"] = {**item.get("env", {}), "VLLM_CACHE_ROOT": LONG_DRAFTER_CACHE}
     return item
 
 
