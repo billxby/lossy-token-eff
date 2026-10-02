@@ -24,10 +24,11 @@ for what is done; this file records every action and failure.
    alphas, so comparability would rest on that file being a no-op at neutral
    alphas. Not done without your say-so.
 2. ~~MT-Bench judge API key (step 1.9)~~ -- resolved 2026-09-29 13:29Z (`~/.config/lossy-token-eff/judge.env`, now mode 600).
-3. **Duo.** The Nibi link is one ControlMaster session opened 2026-09-29
-   05:25Z with a keepalive channel. If it drops, queued jobs keep running on
-   Nibi (lanes are chained up to ~48 h ahead) but nothing is pulled back or
-   resubmitted until one more Duo push is approved.
+3. **Duo.** Each cluster link (Nibi, and Killarney since 2026-09-30) is one
+   ControlMaster session with a keepalive channel. When this Mac sleeps both
+   drop; queued jobs keep running, but nothing is pulled back, graded or
+   resubmitted until Bill approves one Duo push per cluster (last done
+   2026-10-02 14:07Z, both).
 4. **SPEED-Bench HLE prompts (step 7) -- 208 of 880 cases.** Humanities
    (72/80), Math (62/80) and STEM (74/80) come from `cais/hle`, a gated
    Hugging Face dataset (auto-approved on request). Ask: accept the terms at
@@ -42,11 +43,8 @@ for what is done; this file records every action and failure.
    succeeded, 10 h after submission; 2.95M in / 1.22M out tokens, $45.16 at
    batch price). The 230 step-5.1 MT-Bench runs added since went in a top-up
    batch `msgbatch_015tcqGs9bFB5aEJwmuAZKTw` (~$5) at 2026-09-30 00:24Z.
-6. **Duo (again).** The Nibi ControlMaster dropped at about 2026-09-29 21:19Z
-   (last keepalive 21:18:43Z; this Mac was not running the session from
-   then until 00:20Z). The lanes do not depend on it; their finished runs
-   wait on Nibi. Ask: approve one Duo push so the collect / grading / plan
-   loop can reconnect.
+6. ~~Duo (again)~~ -- resolved: the 2026-09-29 21:19Z Nibi drop and every
+   later one (both clusters) were reconnected with one push each; see item 3.
 
 ## Log
 

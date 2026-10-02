@@ -329,7 +329,8 @@ def section_seeds() -> list[str]:
         return out + ["Pending.", ""]
     seeds = sorted({k.split("_s")[-1] for k in s[0] if k.startswith("lambda_s")})
     out += [f"Source: `{rel(ADD / 'seeds' / 'summary.csv')}` (per-seed tables `campaign/addendum/seeds/<dataset>__seed<k>.csv`). "
-            "Seed 0 is the campaign's run (old box, H100 PCIe); seeds 1-2 ran on Nibi (H100 SXM). Ratios pair each seed's "
+            "Seed 0 is the campaign's run (old box, H100 PCIe); seeds 1-2 ran on Nibi (H100 SXM), except Qwen3 aime24's "
+            "(Killarney H100, step 2.2; README deviation 12). Ratios pair each seed's "
             "relaxed arm with strict of the same seed; '-' = that seed is not complete yet.", "",
             "| target | dataset | method | alpha | " + " | ".join(f"lambda s{k}" for k in seeds) + " | lambda mean (sd) | "
             + " | ".join(f"time ratio s{k}" for k in seeds) + " | time mean (sd) | " + " | ".join(f"acc s{k}" for k in seeds) + " |",

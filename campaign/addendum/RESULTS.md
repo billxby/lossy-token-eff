@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-02 14:57 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-02 14:58 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -389,7 +389,7 @@ Source: `campaign/addendum/manifest.csv` (292 rows). GPU-hours used so far (sum 
 
 ## Step 2: seeds on the relaxed arms
 
-Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendum/seeds/<dataset>__seed<k>.csv`). Seed 0 is the campaign's run (old box, H100 PCIe); seeds 1-2 ran on Nibi (H100 SXM). Ratios pair each seed's relaxed arm with strict of the same seed; '-' = that seed is not complete yet.
+Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendum/seeds/<dataset>__seed<k>.csv`). Seed 0 is the campaign's run (old box, H100 PCIe); seeds 1-2 ran on Nibi (H100 SXM), except Qwen3 aime24's (Killarney H100, step 2.2; README deviation 12). Ratios pair each seed's relaxed arm with strict of the same seed; '-' = that seed is not complete yet.
 
 | target | dataset | method | alpha | lambda s0 | lambda s1 | lambda s2 | lambda s3 | lambda s4 | lambda sd | lambda mean (sd) | time ratio s0 | time ratio s1 | time ratio s2 | time ratio s3 | time ratio s4 | time ratio sd | time mean (sd) | acc s0 | acc s1 | acc s2 | acc s3 | acc s4 | acc sd |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
