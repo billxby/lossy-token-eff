@@ -402,6 +402,12 @@
           "state": "ENDED",
           "submitted": "2026-10-02T04:53:43Z",
           "dependency": ""
+        },
+        {
+          "id": "5883236",
+          "state": "PENDING",
+          "submitted": "2026-10-02T14:56:48Z",
+          "dependency": ""
         }
       ],
       "rows": [
@@ -434,7 +440,9 @@
         "speedbench|speedbench_qwen3|spec_casc_tok|0.8|0",
         "nibiref|longbench_v2_qwen3|strict|strict|0",
         "main|aime24_qwen3|mentored_dec|0.55|1",
-        "main|aime24_qwen3|spec_casc_tok|0.35|1"
+        "main|aime24_qwen3|spec_casc_tok|0.35|1",
+        "main|longbench_v2_qwen3|strict|strict|1",
+        "main|longbench_v2_qwen3|spec_casc_tok|0.55|1"
       ]
     },
     "K2": {
@@ -504,6 +512,12 @@
           "state": "ENDED",
           "submitted": "2026-10-02T04:09:15Z",
           "dependency": ""
+        },
+        {
+          "id": "5883237",
+          "state": "PENDING",
+          "submitted": "2026-10-02T14:56:51Z",
+          "dependency": ""
         }
       ],
       "rows": [
@@ -545,7 +559,8 @@
         "main|mtbench_qwen3|mentored_dec|0.55|1",
         "nibiref|mtbench_qwen3|strict|strict|1",
         "main|gsm8k_qwen3|mentored_dec|0.35|1",
-        "nibiref|gsm8k_qwen3|strict|strict|1"
+        "nibiref|gsm8k_qwen3|strict|strict|1",
+        "main|longbench_v2_qwen3|mentored_dec|0.75|1"
       ]
     },
     "K3": {
@@ -878,6 +893,36 @@
       "seed": 1,
       "lane": "K2",
       "notes": "strict seed 1 for the step-5.2 pair"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "longbench_v2_qwen3",
+      "method": "mentored_dec",
+      "alpha": "0.75",
+      "seed": 1,
+      "lane": "K2",
+      "notes": "best-setting validation"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "longbench_v2_qwen3",
+      "method": "strict",
+      "alpha": "strict",
+      "seed": 1,
+      "lane": "K1",
+      "notes": "strict seed 1 for the step-5.2 pair"
+    },
+    {
+      "step": "5.2",
+      "condition": "main",
+      "dataset": "longbench_v2_qwen3",
+      "method": "spec_casc_tok",
+      "alpha": "0.55",
+      "seed": 1,
+      "lane": "K1",
+      "notes": "best-setting validation"
     }
   ],
   "speedbench": {

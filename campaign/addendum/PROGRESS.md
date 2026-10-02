@@ -999,3 +999,6 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:14:35Z grading: pulled 44074 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-10-02T14:27:09Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 23135224
 - 2026-10-02T14:27:12Z grading: pulled 45892 verdicts into campaign/addendum/analysis/grades.csv
+- 2026-10-02T14:29:13Z step 5.2: 24 cells have an eligible best setting; added 3 seed-1 row(s): longbench_v2_qwen3/mentored_dec/0.75 -> K1, longbench_v2_qwen3/strict/strict -> K1, longbench_v2_qwen3/spec_casc_tok/0.55 -> K1
+- 2026-10-02T14:56:48Z lane K1: submitted job 5883236; lane has 2 work items, est. 0.4 GPU-h
+- 2026-10-02T14:56:51Z lane K2: submitted job 5883237; lane has 1 work items, est. 0.3 GPU-h
