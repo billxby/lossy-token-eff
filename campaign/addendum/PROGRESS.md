@@ -984,3 +984,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:12:29Z step 5.1 main longbench_v2_qwen3 mentored_dec alpha=0.55 seed=0: done, 150/150 cases (jobs 5862558, 0.98 GPU-h)
 - 2026-10-02T14:12:30Z step 5.1 main longbench_v2_qwen3 spec_casc_tok alpha=0.35 seed=0: done, 150/150 cases (jobs 5837983 5838981 5845269 5857990, 1.10 GPU-h)
 - 2026-10-02T14:12:30Z step 5.1 main longbench_v2_qwen3 spec_casc_tok alpha=0.55 seed=0: done, 150/150 cases (jobs 5837983 5838981 5845269 5857990, 1.03 GPU-h)
+- 2026-10-02T14:12:31Z step 5.2 main gsm8k_qwen3 mentored_dec alpha=0.35 seed=1: done, 150/150 cases (jobs 5857990, 0.25 GPU-h)
