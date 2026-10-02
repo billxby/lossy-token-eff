@@ -990,3 +990,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T14:12:32Z step 5.2 main aime24_qwen3 spec_casc_tok alpha=0.35 seed=1: done, 30/30 cases (jobs 5862541, 0.81 GPU-h)
 - 2026-10-02T14:12:33Z step 5.2 main humaneval_qwen3 mentored_dec alpha=0.55 seed=1: done, 150/150 cases (jobs 5862551, 0.68 GPU-h)
 - 2026-10-02T14:12:33Z step 5.2 nibiref humaneval_qwen3 strict alpha=strict seed=1: done, 150/150 cases (jobs 5862551, 0.65 GPU-h)
+- 2026-10-02T14:12:33Z step 5.2 main humaneval_qwen3 spec_casc_tok alpha=0.35 seed=1: done, 150/150 cases (jobs 5862551, 0.68 GPU-h)
