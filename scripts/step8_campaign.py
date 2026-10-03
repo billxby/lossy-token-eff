@@ -126,7 +126,7 @@ BLOCK3_CANDIDATES = {
     "dflash": ("RedHatAI/Qwen3-8B-speculator.dflash", "dflash"),
     "thinking-eagle3": ("RedHatAI/Qwen3-8B-Thinking-speculator.eagle3", "eagle3"),
 }
-BLOCK3_DRAFTER = ""  # set from the Block 0 report; Block 3's dedicated row is not planned until then
+BLOCK3_DRAFTER = "dspark"  # Block 0(d), 2026-10-03: first in Bill's order to pass the q probe (q present, 0% one-hot)
 PAIRS = [
     pair("1", "r1llama", "eagle3", R1_E3, "eagle3", "dedicated", ["gsm8k", "livecodebench", "mtbench", "aime24"],
          "killarney", drafter_path=maxpos(R1_E3)),

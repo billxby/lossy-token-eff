@@ -183,7 +183,18 @@ def lists() -> dict[str, list[dict]]:
     oh["extra_flags"] = ["--spec-casc-opt-head-beta=0.15"]
     oh["params_dir"] = "alphaneginf_beta0.15"
     k4v.append(oh)
-    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t, "K2f": k2f, "K4v": k4v}
+    # determinism check (2026-10-03 19:35Z): on the V2 path the lossless arm gave 166 tokens when its server compiled
+    # cold (first item on a fresh compile cache) and 142 when it loaded the cache, the same 142 as all five rules at
+    # their strict points. Lossless again, twice, on the now-warm cache of f2_v2: both must give the 142-token output.
+    k3w = []
+    for rep in (1, 2):
+        it = dict(next(i for i in k2f if i["id"] == "b0|f2_v2_l31_eagle3_maxpos|gsm8k_llama31|strict|strict"))
+        it = {**it, "id": f"b0|f3_v2_strict_warm{rep}|gsm8k_llama31|strict|strict",
+              "condition": f"step8_block0/f3_v2_strict_warm{rep}",
+              "runs_subroot": f"runs/addendum/step8_block0/f3_v2_strict_warm{rep}", "env": dict(it["env"])}
+        k3w.append(it)
+    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t, "K2f": k2f, "K4v": k4v,
+            "K3w": k3w}
 
 
 def main() -> int:
