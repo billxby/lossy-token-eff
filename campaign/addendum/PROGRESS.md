@@ -1183,3 +1183,10 @@ for what is done; this file records every action and failure.
 - 2026-10-03T14:50:54Z lane K2: pulled 26 new run dir(s) into runs/
 - 2026-10-03T14:50:55Z lane K3: pulled 35 new run dir(s) into runs/
 - 2026-10-03T14:50:56Z lane K4: pulled 36 new run dir(s) into runs/
+- 2026-10-03T14:59:34Z Step 7.6: spec_casc_opt runs on the draft-model path (Qwen3-0.6B drafter, SPEC_METHOD=draft_model) -- first time; K1 job 5906409 on kn172, item started 14:55:31Z, 9 ok runs by 14:59Z (case_001: 3002 tokens, finish stop, l_bar 3.15), no errors in the server log. r_fuzzy (also new on this path) follows later in each block.
+- 2026-10-03T15:23:20Z lane A: pulled 298 new run dir(s) into runs/
+- 2026-10-03T15:23:24Z lane K1: pulled 151 new run dir(s) into runs/
+- 2026-10-03T15:23:29Z lane K2: pulled 142 new run dir(s) into runs/
+- 2026-10-03T15:23:31Z lane K3: pulled 153 new run dir(s) into runs/
+- 2026-10-03T15:23:34Z lane K4: pulled 132 new run dir(s) into runs/
+- 2026-10-03T15:23:50Z step 7.5 speedbench speedbench r_fuzzy alpha=0.25 seed=1: done, 672/672 cases (jobs 23191120 23191121 23191123, 0.74 GPU-h)
