@@ -1130,3 +1130,9 @@ for what is done; this file records every action and failure.
 - 2026-10-03T11:30:08Z lane K4: submitted job 5906429 (afterany:5906428); lane has 36 work items, est. 11.2 GPU-h
 - 2026-10-03T11:30:09Z lane K4: submitted job 5906431 (afterany:5906429); lane has 36 work items, est. 11.2 GPU-h
 - 2026-10-03T11:30:11Z lane K4: submitted job 5906433 (afterany:5906431); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T12:04:57Z lane A: pulled 401 new run dir(s) into runs/
+- 2026-10-03T12:05:38Z lane B: pulled 419 new run dir(s) into runs/
+- 2026-10-03T12:05:51Z lane K1: pulled 168 new run dir(s) into runs/
+- 2026-10-03T12:05:59Z lane K2: pulled 175 new run dir(s) into runs/
+- 2026-10-03T12:06:01Z lane K3: pulled 166 new run dir(s) into runs/
+- 2026-10-03T12:06:05Z lane K4: pulled 159 new run dir(s) into runs/
