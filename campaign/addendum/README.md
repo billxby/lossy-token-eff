@@ -319,3 +319,62 @@ alpha grows).
    Humanities, Math and STEM keep only their non-HLE prompts (8, 18 and 6
    per arm), so their per-category ratios are thin; RESULTS.md gives n per
    cell. The 14 step-7 rows stay `blocked` in the manifest with this reason.
+
+## Step 8 (more drafters, the Llama-3.1-8B family, the fix on Qwen3-8B)
+
+Branch `addendum-step8` off main d35d52de7; plan and protocol in `step8/GOAL.md`, orchestration in
+`scripts/step8_campaign.py`, Block 0 checks in `scripts/step8_block0.py`. Numbered from 29 (22-28 are used
+by the unmerged `speedbench-oct` branch).
+
+29. **Llama weights from mirrors (2026-10-03, approved by Bill).** `meta-llama/Llama-3.1-8B-Instruct` and
+   `meta-llama/Llama-3.2-1B-Instruct` are gated and no Hugging Face token is set up. The runs use
+   `RedHatAI/Llama-3.1-8B-Instruct` (snapshot 83c92747) and `alpindale/Llama-3.2-1B-Instruct` (snapshot
+   f92201d8). Every non-weight file of both mirrors is blob-identical to Meta's (git oids of config.json
+   0bb6fd75 / 3e3aaf51, generation_config.json cc7276af / 75ae0831, tokenizer.json 5cc5f00a,
+   tokenizer_config.json db88166e / 4ff488a1, special_tokens_map.json 02ee80b6, read from the gated repos'
+   public file listings). Meta hides its weight hashes, so the weights are checked against independent copies:
+   Llama-3.1-8B-Instruct shards sha256 2b1879f356aed350..., 09d433f650646834..., fc1cdddd6bfa9112...,
+   92ecfe1a2414458b... (identical in RedHatAI, NousResearch and unsloth; recomputed on Killarney after download),
+   Llama-3.2-1B-Instruct model.safetensors sha256
+   1ff795ff6a07e6a68085d206fb84417da2f083f68391c2843cd2b8ac6df8538f (identical in alpindale and unsloth). The
+   NousResearch mirror was tried first and dropped: its tokenizer_config.json carries Meta's first-release chat
+   template, which renders no "Cutting Knowledge Date" system header (all 350 prompts differed from the current
+   template). Tables cite Meta's ids.
+30. **Persistent server per arm for calibration and full runs (step 8 protocol, Bill 2026-10-03).** The
+   matched-l_bar protocol of `scripts/campaign_run.py` (calibration on case_001-003 at the 4-point grids, targets
+   at the 20/55/90th percentile of the shared span, nearest grid alpha) runs on one persistent server per arm
+   (`persistent_arm_replay.py`, prefix caching off, one request at a time), never shared across arms: a fresh
+   server costs ~4.5-5 min on these clusters. A full arm's server starts at case_004 (case_001-003 are its
+   calibration runs, on their own server). Every run's config.json records host, Slurm job and its server's
+   start time; the request ordinal is in run.json as before. The paper's Limitations already describes the
+   body's runs as first cases after a fresh start, the rest on a reused process.
+31. **The yuhuili EAGLE heads run from copies whose config allows 65536 positions.**
+   `yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B`, `yuhuili/EAGLE3-LLaMA3.1-Instruct-8B` and
+   `yuhuili/EAGLE-LLaMA3.1-Instruct-8B` declare max_position_embeddings 2048; vLLM caps the drafter at that, and
+   R1-Distill's LiveCodeBench strict runs crashed past it (device-side assert in the drafter's compiled rope
+   kernel, Block 0 job 5913648; the deviation-19 failure). `hf/local/<name>-maxpos65536` on Killarney: config.json
+   with max_position_embeddings 65536, weights symlinked. Plain RoPE: positions below 2048 get the values they
+   had. Whether the heads draft well past the length they were trained on is measured in Block 0 (acceptance vs
+   position) and reported in RESULTS.md.
+32. **Consolidated V2 sampler with spec_casc_tok_lt and spec_casc_opt_head (Block 6).**
+   `patches/vllm-0.26.0-v2-consolidated-step8.patch` (sha256 796e3c85...): the 68d0a904 file plus the two
+   rules as defer masks ANDed into the existing one (both are switch rules, so these are complete ports, not
+   accept-test-only), and an observation-only q probe (Block 0(d)). At the two rules' neutral values every other
+   method's decision is unchanged; checked bit for bit on GPU (job 5913862: strict and the five rules on the old
+   and the new file, same case and seed) before the file replaces 68d0a904 in any lane venv.
+33. **DeepSeek-R1-Distill-Llama-8B is served with a corrected tokenizer class.** Its tokenizer_config.json
+   declares `LlamaTokenizerFast` (legacy) for a byte-level BPE tokenizer.json. Under transformers 5.18 (the
+   lane venvs) that class encodes every prompt wrongly (spaces dropped: "Every morning Aya" -> Every / mor /
+   ning / Ay / ago ...; 0 of 350 R1 prompts match the tokenizers library's encoding of the model's own
+   tokenizer.json) and decodes without byte-level decoding (output.txt full of Ġ / Ċ, so LiveCodeBench code
+   blocks could not be extracted). vLLM loads it the same way. The server now gets `--tokenizer
+   hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast` (`TOKENIZER` in `remote/run_server_vllm.sh`): the same
+   tokenizer.json, special tokens and chat template, declared `PreTrainedTokenizerFast` (350 of 350 prompts match
+   tokenizer.json; decoding correct). Llama-3.1-8B-Instruct (350/350), Qwen3-8B (1322/1322) and GPT-OSS-20B are
+   unaffected. The first Block 0 R1 runs (a_*, b_*) ran on the mis-encoded prompts and are kept only as the
+   record of this; every R1 number comes from the rerun (a2_*, b2_*, prof2_*).
+34. **A compile cache per step-8 pair.** Qwen3-8B + Qwen3-1.7B (draft_model) crashed in the drafter's CUDA-graph
+   capture (illegal memory access) right after vLLM loaded an AOT-compiled graph from the shared
+   `$SCRATCH/vllm_cache`, which already held the same architecture compiled for Qwen3-0.6B (step 4.3). With a
+   cache of its own it ran (strict and mentored_dec 0.75, job 5913861). Every step-8 pair now compiles into
+   `/scratch/billxby/vllm_cache_step8/<pair>` (`VLLM_CACHE_ROOT`).
