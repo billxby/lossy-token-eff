@@ -41,7 +41,8 @@ run() {  # $1 = label, rest = persistent_arm_replay args
     --runs-root "$OUT/$label/runs" --log-root "$OUT/$label/logs" --max-new-tokens 2048 --num-spec 6 \
     --temperature 1.0 --top-p 1.0 --server-seed 0 --port "$PORT" --no-trace-proposals \
     --model-path Qwen/Qwen3-8B --draft-model-path RedHatAI/Qwen3-8B-speculator.eagle3 --served-model-name qwen3-8b \
-    --rope-scaling-json '{"rope_type":"yarn","factor":1.6,"original_max_position_embeddings":40960}' "$@"
+    --rope-scaling-json '{"rope_type":"yarn","factor":1.6,"original_max_position_embeddings":40960}' "$@" \
+    || echo "run $label exited nonzero"  # one failed arm must not stop the rest (set -e)
 }
 SIX=(--arms strict mentored_dec cactus spec_casc_opt r_fuzzy spec_casc_tok --mentored-dec-alpha 0.75
      --cactus-alpha 0.35 --spec-casc-opt-alpha 0.05 --r-fuzzy-alpha 0.25 --spec-casc-tok-alpha 0.8)

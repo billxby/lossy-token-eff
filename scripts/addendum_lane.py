@@ -153,7 +153,8 @@ class Lane:
             *item.get("extra_flags", []),
         ]
         if item["method"] not in ("strict", "baseline"):
-            cmd += [f"--{item['method'].replace('_', '-')}-alpha", str(item["alpha"])]
+            # "=" form: a separate "-inf" argument is taken for an option by argparse (step 8 Block 0, exit 2)
+            cmd += [f"--{item['method'].replace('_', '-')}-alpha={item['alpha']}"]
         return cmd
 
     def env_ready(self) -> bool:

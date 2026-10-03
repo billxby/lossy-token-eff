@@ -159,7 +159,18 @@ def lists() -> dict[str, list[dict]]:
         for budget in (1024, 2048, 4096, 8192):
             k1t.append(item(f"prof2_r1_eagle3_maxpos_{budget}", ds, "strict", "strict", c(case), R1, maxpos(R1_E3), r1,
                             "eagle3", max_new_tokens=budget, extra_env=tok))
-    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t}
+    # rerun (2026-10-03 17:50Z): (1) the -inf arms exited 2 -- the lane passed "--x-alpha -inf" and argparse took
+    # "-inf" for an option (now "--x-alpha=-inf"); (2) cactus 0.35 / r_fuzzy 0.25 on Llama-3.1 + EAGLE-3 crashed with
+    # the published 2048-position head config (README deviation 31): the V2-path checks again with the 65536 copy and
+    # the pair's own compile cache; (3) the GPT-OSS check needed prompts/gsm8k on Killarney (copied).
+    l31c = {"VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3"}
+    k2f = [dict(i, env={**i["env"], **l31c}) for i in
+           strict_limit("f2_v2_l31_eagle3_maxpos", "gsm8k_llama31", L31, maxpos(L31_E3), l31, "draft_model")]
+    for i in k2f:
+        i["env"]["SPEC_METHOD"] = "eagle3"
+    k2f += [i for i in k3 if i["id"].startswith("b0|f_v1_l31_llama1b")]  # skip-if-done: only the failed ones run
+    k2f += [i for i in k4 if i["id"].startswith("b0|e_gptoss")]
+    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t, "K2f": k2f}
 
 
 def main() -> int:
