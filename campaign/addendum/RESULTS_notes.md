@@ -248,3 +248,54 @@
   spec_casc_opt's Math lambda 2.04 / rounds 1.47 is 18 prompts). The
   overall (`all`) rows and the eight complete categories carry the step-7
   conclusions.
+
+### SPEED-Bench follow-up (branch speedbench-oct, 2026-10-03)
+
+- Named finding, quantified (`analysis/speedbench_length_vs_rounds.csv`):
+  across SPEED-Bench's categories a rule's rounds ratio rises with its
+  length change (Spearman rho > 0 for every target x setting x rule) and,
+  where a rule loses rounds somewhere, the losing categories are the ones
+  whose completions grew most -- except spec_casc_opt at its loosest alpha,
+  whose winning and losing categories overlap slightly in lambda.
+- Dose response (step 7.1, `tables/speedbench_gentle__<target>.csv` vs
+  `tables/speedbench__<target>.csv`, rows `all`): every rule saves fewer
+  rounds at its gentlest alpha than at its loosest. cactus still saves a
+  lot at 0.03 (R 0.72 GPT-OSS, 0.79 Qwen3); r_fuzzy at 0.03 and
+  spec_casc_tok at 0.15 are within lossless run-to-run variation.
+- Same-node timing works: every step-7.1 (rule, category) row has
+  `same_node` True, and over all prompts the time ratio is within 0.023
+  (GPT-OSS) / 0.008 (Qwen3) of the rounds ratio -- a relaxed round costs
+  what a strict one does (time per round ratio 0.98-0.99 / 1.005-1.008). So
+  step 7's Qwen3 time ratios above 1 for mentored_dec and spec_casc_opt
+  were node effects; the rounds ratio was the right reading.
+- Lossless vs lossless (`tables/speedbench_gentle_strict_rerun__<target>.csv`:
+  step 7.1's strict against step 7's, same seed, different request
+  ordinals): per-category lambda moves by up to ~10% (GPT-OSS) / ~8% (Qwen3)
+  in the 80-prompt categories, and one category per target has an interval
+  excluding 1 (GPT-OSS multilingual rounds 1.13, Qwen3 summarization lambda
+  0.92). A single-seed per-category effect of that size is not evidence.
+- Judged quality at the loosest alphas (`analysis/speedbench_judge_summary.csv`):
+  spec_casc_tok is the only rule with no loss on either target (+0.11,
+  +0.06, intervals include 0); cactus, r_fuzzy and spec_casc_opt lose 1.8
+  to 3.9 points and mentored_dec 0.8 (GPT-OSS) / 0.2 (Qwen3). For Qwen3 a
+  large part of the loss is runs with no answer (cap-out inside <think>):
+  118 (spec_casc_opt) and 109 (r_fuzzy) of 672, vs 29 for lossless. So the
+  loosest settings' rounds savings come with a quality cost for four of
+  the five rules -- a caveat the named finding should carry.
+- Where the extra length goes (`analysis/speedbench_mechanism__<target>.csv`,
+  loosest, all prompts): GPT-OSS puts all of it in the analysis channel
+  (thinking share 1.06-1.56 = the final answer gets slightly shorter);
+  Qwen3 mostly in <think> except cactus (0.43: more than half lands in the
+  answer), and Qwen3's cap-outs rise from 5% (strict) to 21% (cactus), 20%
+  (spec_casc_opt) and 14% (r_fuzzy).
+- Admitted tokens on SPEED-Bench (`analysis/speedbench_admit__gpt-oss-20b.csv`,
+  22 traced prompts per arm) reproduce the paper's tab:admit: the
+  relaxed-only share is 15-25% for four rules and 8% for spec_casc_tok, whose
+  relaxed-only tokens sit near the target's argmax (mean rank 0.96, median p
+  0.28) while the others' are deep in the tail (mean rank 59-408).
+- Operations: on Nibi a block arm's startup is 6 min (restart) to 11.5-14
+  min (patch switch + self-test, venv on /project) vs 1.7-3.6 min on
+  Killarney, so a 336-prompt GPT-OSS block used ~2.6 h of its 3 h job; the
+  lane guard deferred every next block correctly (8 deferrals, each picked
+  up by the chain's next job within seconds). The judge's API credit ran
+  out at the end of the loosest-settings batch (PROGRESS Needs Bill 7).
