@@ -123,16 +123,43 @@ SB_TRACE_PER_CAT = 2
 SB_TRACE_SLOWDOWN = 2.0  # assumed cost of --trace-proposals per case (block estimate only)
 
 
+KLANES = ["K1", "K2", "K3", "K4"]
+
+
 def block_specs() -> list[dict]:
-    """The block-major comparisons, in run order on each lane."""
-    return [
+    """The block-major comparisons, in run order on each lane. Steps 7.5-7.7 (P5) exist only once state.json says
+    `p5_enabled` (set when P1-P4 are committed): (a) seed 1 at the loosest alphas, both targets, in step 7's run root;
+    (b) Qwen3 with the standalone Qwen3-0.6B drafter and (c) Qwen3 at its recommended sampler (T 0.6, top-p 0.95,
+    top-k 20), both at the loosest alphas, in the step-4.3 / 4.2 run roots."""
+    specs = [
         {"step": "7.1", "condition": "speedbench_gentle", "dataset": "speedbench", "seed": 0, "arms": SB_GENTLE,
          "n_blocks": 2, "lanes": ["A", "B"], "cases": "runnable"},
         {"step": "7.1", "condition": "speedbench_gentle", "dataset": "speedbench_qwen3", "seed": 0, "arms": SB_GENTLE,
-         "n_blocks": 8, "lanes": ["K1", "K2", "K3", "K4"], "cases": "runnable"},
+         "n_blocks": 8, "lanes": KLANES, "cases": "runnable"},
         {"step": "7.4", "condition": "speedbench_trace", "dataset": "speedbench", "seed": 0, "arms": SB_ARMS,
          "n_blocks": 1, "lanes": ["A"], "cases": "trace", "trace": True},
     ]
+    if STATE.is_file() and json.loads(STATE.read_text(encoding="utf-8")).get("p5_enabled"):
+        specs += [
+            {"step": "7.5", "condition": "speedbench", "dataset": "speedbench", "seed": 1, "arms": SB_ARMS,
+             "n_blocks": 2, "lanes": ["A", "B"], "cases": "runnable"},
+            {"step": "7.5", "condition": "speedbench", "dataset": "speedbench_qwen3", "seed": 1, "arms": SB_ARMS,
+             "n_blocks": 8, "lanes": KLANES, "cases": "runnable"},
+            {"step": "7.6", "condition": "lmdraft", "dataset": "speedbench_qwen3", "seed": 0, "arms": SB_ARMS,
+             "n_blocks": 8, "lanes": KLANES, "cases": "runnable", "run_root": "runs/addendum/lmdraft", "slowdown": 1.3},
+            {"step": "7.7", "condition": "qwenT0.6", "dataset": "speedbench_qwen3", "seed": 0, "arms": SB_ARMS,
+             "n_blocks": 8, "lanes": KLANES, "cases": "runnable", "run_root": "runs/addendum/qwenT0.6"},
+        ]
+    return specs
+
+
+def spec_row(spec: dict, arm: str) -> dict:
+    """The manifest row of one arm of a block-major spec (its run root may be the spec's own)."""
+    row = make_row(spec["step"], spec["condition"], spec["dataset"], arm, spec["arms"][arm], spec["seed"],
+                   n_cases=len(spec_cases(spec)))
+    if spec.get("run_root"):
+        row["run_root"] = spec["run_root"]
+    return row
 
 
 FIELDS = ["step", "condition", "target", "dataset", "method", "alpha", "seeds", "run_root", "n_cases_target",
@@ -491,11 +518,10 @@ def all_rows(keep: set[str] | None = None) -> tuple[list[dict], dict[str, list[s
             for arm, alpha in SB_ARMS.items():
                 n = SB_PER_CAT * SB_N_CATS if (subset and arm != "strict") else N_CASES[SB]
                 add(make_row("7", "speedbench", ds, arm, alpha, 0, n_cases=n), SB_LANE[arm])
-        # steps 7.1 / 7.4: block-major rows are in no lane list -- each of their blocks names its lane
+        # steps 7.1+: block-major rows are in no lane list -- each of their blocks names its lane
         for spec in block_specs():
-            for arm, alpha in spec["arms"].items():
-                rows.append(make_row(spec["step"], spec["condition"], spec["dataset"], arm, alpha, spec["seed"],
-                                     n_cases=len(spec_cases(spec))))
+            for arm in spec["arms"]:
+                rows.append(spec_row(spec, arm))
     by_key = {row_key(r): r for r in rows}
     lanes["C"].sort(key=lambda k: LANE_C_PRIORITY.get(by_key[k]["step"], 8))  # stable within a step
     return rows, lanes
@@ -709,10 +735,10 @@ def block_items(by_key: dict[str, dict], state: dict) -> tuple[dict[str, list[di
     work: dict[str, list[dict]] = {lane: [] for lane in LANES}
     lanes_of: dict[str, list[str]] = {}
     for spec in block_specs():
-        keys = {arm: row_key(make_row(spec["step"], spec["condition"], spec["dataset"], arm, alpha, spec["seed"]))
-                for arm, alpha in spec["arms"].items()}
+        keys = {arm: row_key(spec_row(spec, arm)) for arm in spec["arms"]}
         arms = [a for a in ARMS6 if a in spec["arms"]]
-        per_case = SB_S_PER_CASE[spec["dataset"]] * (SB_TRACE_SLOWDOWN if spec.get("trace") else 1.0)
+        per_case = (SB_S_PER_CASE[spec["dataset"]] * (SB_TRACE_SLOWDOWN if spec.get("trace") else 1.0)
+                    * spec.get("slowdown", 1.0))
         for block in spec_blocks(spec, state):
             for arm in arms:
                 if block["lane"] not in lanes_of.setdefault(keys[arm], []):
