@@ -392,3 +392,8 @@ by the unmerged `speedbench-oct` branch).
    order (DSpark -> DFlash -> Thinking EAGLE-3) to pass the q probe: draft-prob tensor (1024, 6, 151936) present at
    the patched V2 sampler, 0% one-hot rows, mean max q 0.78-0.92, mean draft entropy 0.28-0.80 nats. vLLM 0.26.0
    runs dspark on the V2 runner only, so its cactus and spec_casc_tok rows are accept-test-only.
+38. **Block 5 runs although R1-Distill's and Llama-3.2-1B's tokenizers are not identical (Bill, 2026-10-03).** Same
+   vocabulary size (128256) and the same ids for 128249 tokens; the other 7 are special tokens R1 renamed (BOS/EOS
+   128000/128001) or repurposed from Llama's reserved range (128011-128015: `<｜User｜>`, `<｜Assistant｜>`,
+   `<think>`, `</think>`, pad), untrained in the 1B drafter. vLLM requires only the vocabulary size; acceptance
+   near those ids may suffer, correctness cannot (lossless verification by the target).

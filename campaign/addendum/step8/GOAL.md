@@ -76,6 +76,15 @@ Fallbacks: (a) fails -> Qwen3-14B + RedHatAI EAGLE-3 with the Qwen3 prompts; Med
 Every step-8 table row also carries `drafter_family` (eagle3, eagle1, medusa, dspark, dflash, draft_model)
 next to `sampler_path`.
 
+## Decisions after the Block 0 report (Bill, 2026-10-03)
+
+- Block 1 runs as planned on all four datasets (option A). R1-Distill's EAGLE-3 head stops drafting past ~2048
+  positions; that is reported as a property of the published drafter, not worked around. Estimated ~45-50 GPU-h
+  (was 25), blocks 1-6 ~125 GPU-h.
+- Block 5 runs: R1-Distill and Llama-3.2-1B share the vocabulary size and 128249 of 128256 token ids; the 7 others
+  are special tokens R1 renamed or repurposed (README deviation 38).
+- Medusa dropped (README deviation 36). Block 3's second drafter is DSpark (deviation 37).
+
 ## Status
 
 See `../PROGRESS.md` (step-8 entries) and `../RESULTS.md` (Step 8 sections).

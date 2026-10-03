@@ -75,7 +75,9 @@ ARM_H = {
     "qwen3": {"gsm8k": 0.26, "livecodebench": 0.95, "mtbench": 0.23, "aime24": 0.86},
 }
 ARM_H["llama31"] = ARM_H["gpt_oss_20b"]
-ARM_H["r1llama"] = ARM_H["qwen3"]
+# R1-Distill measured in Block 0 (lossless + EAGLE-3, Killarney): LiveCodeBench ~53 s/case, AIME24 ~90 s/case
+# (its drafter stops drafting past ~2048 positions), GSM8K ~1.2 s/case
+ARM_H["r1llama"] = {"gsm8k": 0.05, "livecodebench": 1.35, "mtbench": 0.2, "aime24": 0.8}
 SUFFIX = {"gpt_oss_20b": "", "qwen3": "_qwen3", "llama31": "_llama31", "r1llama": "_r1llama"}
 TARGET_SLUG = {"gpt_oss_20b": "gpt-oss-20b", "qwen3": "qwen3-8b", "llama31": "llama31-8b-instruct",
                "r1llama": "r1-distill-llama-8b"}
@@ -425,8 +427,12 @@ def cmd_submit(args: argparse.Namespace) -> int:
         if remaining <= 0:
             continue
         want = max(1, min(MAX_CHAIN, math.ceil(remaining / (0.9 * JOB_HOURS))))
+        warm = state.get("warm", {}).get(info["host"])
         while len(active) < want:
-            dep = f"--dependency=afterany:{active[-1]['id']} " if active else ""
+            if active:
+                dep = f"--dependency=afterany:{active[-1]['id']} "
+            else:  # a lane's first job waits for its cluster's warm-up job (README deviation 35), if still known
+                dep = f"--dependency=afterok:{warm} " if warm and live[info["host"]].get(warm) else ""
             cmd = (f"cd {shlex.quote(info['repo'])} && mkdir -p {info['root']}/slurm && "
                    f"LANE={lane} REPO_DIR={shlex.quote(info['repo'])} LANE_ROOT={info['root']} PROJECT_DIR={info['project']} "
                    f"sbatch --parsable --job-name=s8-{lane} --account={info['account']} "
@@ -440,6 +446,39 @@ def cmd_submit(args: argparse.Namespace) -> int:
             ac.progress(f"step 8 lane {lane}: submitted job {job['id']}" + (f" (afterany:{job['dependency']})" if job["dependency"] else "")
                         + f", ~{remaining:.1f} GPU-h assigned")
             print(f"lane {lane}: submitted {job['id']}")
+    save_state(state)
+    return 0
+
+
+WARM_SUBROOT = "runs/addendum/step8_warmup"  # outside RUN_SUBROOT: warm-up runs are never measured or pulled
+
+
+def cmd_warm(args: argparse.Namespace) -> int:
+    """README deviation 35: one throwaway server per pair (lossless, case_001, 64 tokens) on the pair's own compile
+    cache, so no measured arm runs on a freshly compiled server. One job per cluster; each lane's first job waits
+    for it (afterok, cmd_submit)."""
+    state = load_state()
+    for host, lanes in ACTIVE_LANES.items():
+        pairs = [p for p in PAIRS if p["host"] == host and p["block"] in BLOCKS_ENABLED and p["id"] not in DISABLED_PAIRS]
+        if not pairs:
+            continue
+        items = []
+        for p in pairs:
+            item = make_item(p, p["datasets"][0], "strict", "strict", "warm", ["case_001"])
+            item.update(id=f"warm|{p['id']}", runs_subroot=f"{WARM_SUBROOT}/{p['id']}", max_new_tokens=64)
+            items.append(item)
+        info = LANES[lanes[0]]
+        root = f"/scratch/billxby/step8/warm_{host}"
+        work = json.dumps({"items": items, "hold_minutes": 0}, indent=1).encode()
+        ac.ssh(f"mkdir -p {root}/slurm && cat > {root}/work.json", input_bytes=work, host=host)
+        cmd = (f"cd {shlex.quote(info['repo'])} && LANE=warm-{host} REPO_DIR={shlex.quote(info['repo'])} LANE_ROOT={root} "
+               f"PROJECT_DIR={info['project']} sbatch --parsable --job-name=s8-warm --account={info['account']} "
+               + (f"--exclude={info['exclude']} " if info["exclude"] else "")
+               + f"--time=2:00:00 --output={root}/slurm/%x-%j.out cascade/cluster/addendum_lane.sbatch")
+        job = ac.ssh(f"bash -lc {shlex.quote(cmd)}", host=host).stdout.decode().strip().splitlines()[-1].split(";")[0]
+        state.setdefault("warm", {})[host] = job
+        ac.progress(f"step 8: warm-up job {job} on {host} ({len(items)} pair caches)")
+        print(f"{host}: warm-up job {job} for {[p['id'] for p in pairs]}")
     save_state(state)
     return 0
 
@@ -476,10 +515,10 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary"])
+    parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "warm"])
     args = parser.parse_args()
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
-            "summary": cmd_summary}[args.cmd](args)
+            "summary": cmd_summary, "warm": cmd_warm}[args.cmd](args)
 
 
 if __name__ == "__main__":

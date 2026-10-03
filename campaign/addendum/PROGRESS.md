@@ -1023,3 +1023,33 @@ for what is done; this file records every action and failure.
 - 2026-10-03T17:29:31Z step 8: pulled 28 run dir(s)
 - 2026-10-03T18:30:39Z step 8: pulled 14 run dir(s)
 - 2026-10-03T19:31:48Z step 8: pulled 16 run dir(s)
+- 2026-10-03T20:33:35Z step 8: warm-up job 5915423 on killarney (8 pair caches)
+- 2026-10-03T20:33:38Z step 8: warm-up job 23211714 on nibi (1 pair caches)
+- 2026-10-03T20:33:43Z step 8 lane K1: submitted job 5915424, ~7.0 GPU-h assigned
+- 2026-10-03T20:33:44Z step 8 lane K1: submitted job 5915425 (afterany:5915424), ~7.0 GPU-h assigned
+- 2026-10-03T20:33:46Z step 8 lane K1: submitted job 5915426 (afterany:5915425), ~7.0 GPU-h assigned
+- 2026-10-03T20:33:47Z step 8 lane K2: submitted job 5915427, ~7.0 GPU-h assigned
+- 2026-10-03T20:33:49Z step 8 lane K2: submitted job 5915428 (afterany:5915427), ~7.0 GPU-h assigned
+- 2026-10-03T20:33:50Z step 8 lane K2: submitted job 5915429 (afterany:5915428), ~7.0 GPU-h assigned
+- 2026-10-03T20:33:52Z step 8 lane K3: submitted job 5915430, ~7.0 GPU-h assigned
+- 2026-10-03T20:33:53Z step 8 lane K3: submitted job 5915432 (afterany:5915430), ~7.0 GPU-h assigned
+- 2026-10-03T20:33:54Z step 8 lane K3: submitted job 5915433 (afterany:5915432), ~7.0 GPU-h assigned
+- 2026-10-03T20:33:56Z step 8 lane K4: submitted job 5915434, ~6.9 GPU-h assigned
+- 2026-10-03T20:33:57Z step 8 lane K4: submitted job 5915435 (afterany:5915434), ~6.9 GPU-h assigned
+- 2026-10-03T20:33:58Z step 8 lane K4: submitted job 5915436 (afterany:5915435), ~6.9 GPU-h assigned
+- 2026-10-03T20:34:00Z step 8 lane K5: submitted job 5915437, ~6.9 GPU-h assigned
+- 2026-10-03T20:34:03Z step 8 lane K5: submitted job 5915438 (afterany:5915437), ~6.9 GPU-h assigned
+- 2026-10-03T20:34:05Z step 8 lane K5: submitted job 5915440 (afterany:5915438), ~6.9 GPU-h assigned
+- 2026-10-03T20:34:07Z step 8 lane K6: submitted job 5915441, ~7.0 GPU-h assigned
+- 2026-10-03T20:34:09Z step 8 lane K6: submitted job 5915442 (afterany:5915441), ~7.0 GPU-h assigned
+- 2026-10-03T20:34:10Z step 8 lane K6: submitted job 5915443 (afterany:5915442), ~7.0 GPU-h assigned
+- 2026-10-03T20:34:11Z step 8 lane K7: submitted job 5915444, ~7.0 GPU-h assigned
+- 2026-10-03T20:34:13Z step 8 lane K7: submitted job 5915445 (afterany:5915444), ~7.0 GPU-h assigned
+- 2026-10-03T20:34:14Z step 8 lane K7: submitted job 5915446 (afterany:5915445), ~7.0 GPU-h assigned
+- 2026-10-03T20:34:16Z step 8 lane K8: submitted job 5915448, ~7.0 GPU-h assigned
+- 2026-10-03T20:34:17Z step 8 lane K8: submitted job 5915449 (afterany:5915448), ~7.0 GPU-h assigned
+- 2026-10-03T20:34:19Z step 8 lane K8: submitted job 5915450 (afterany:5915449), ~7.0 GPU-h assigned
+- 2026-10-03T20:34:20Z step 8 lane A: submitted job 23211736, ~2.9 GPU-h assigned
+- 2026-10-03T20:34:22Z step 8 lane A: submitted job 23211737 (afterany:23211736), ~2.9 GPU-h assigned
+- 2026-10-03T20:34:25Z step 8 lane B: submitted job 23211740, ~2.9 GPU-h assigned
+- 2026-10-03T20:34:28Z step 8 lane B: submitted job 23211747 (afterany:23211740), ~2.9 GPU-h assigned
