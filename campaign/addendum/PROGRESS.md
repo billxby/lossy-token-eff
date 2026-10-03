@@ -1177,3 +1177,4 @@ for what is done; this file records every action and failure.
 - 2026-10-03T14:43:03Z step 7.5 speedbench speedbench mentored_dec alpha=0.75 seed=1: done, 672/672 cases (jobs 23191120 23191121 23191123, 0.75 GPU-h)
 - 2026-10-03T14:43:04Z step 7.5 speedbench speedbench cactus alpha=0.35 seed=1: done, 672/672 cases (jobs 23191120 23191121 23191123, 0.70 GPU-h)
 - 2026-10-03T14:43:05Z step 7.5 speedbench speedbench_qwen3 r_fuzzy alpha=0.25 seed=1: done, 672/672 cases (jobs 5906406 5906408 5906413 5906415 5906421 5906422 5906428 5906429, 2.08 GPU-h)
+- 2026-10-03T14:43:06Z step 7.5 speedbench speedbench_qwen3 spec_casc_tok alpha=0.8 seed=1: done, 672/672 cases (jobs 5906406 5906408 5906413 5906415 5906421 5906422 5906428 5906429, 2.18 GPU-h)
