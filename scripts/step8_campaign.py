@@ -148,7 +148,11 @@ PAIRS = [
          "killarney", arms=FIX_ARMS),
 ]
 BLOCKS_ENABLED = {"1", "2", "3", "4", "5", "6"}  # plan only these (block 0 decides drafter paths and fallbacks)
-DISABLED_PAIRS: dict[str, str] = {}  # pair id -> reason (block 0 fallbacks)
+DISABLED_PAIRS: dict[str, str] = {  # pair id -> reason (block 0 fallbacks)
+    "llama31-8b-instruct__medusa": "block 0: no draft probabilities reach the sampler (vLLM's medusa path passes "
+                                   "draft_probs None: every traced q(x) = 1.0, no draft entropy); the cascade and fuzzy "
+                                   "rules need q -- dropped per the plan's Medusa fallback",
+}
 
 
 def cases(n: int, start: int = 1) -> list[str]:
