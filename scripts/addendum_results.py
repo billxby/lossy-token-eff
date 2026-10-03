@@ -252,15 +252,17 @@ def same_node_note(r: dict) -> str:
     return " · cross-node"
 
 
-def section_speedbench(prefix: str = "speedbench", title: str | None = None) -> list[str]:
+def section_speedbench(prefix: str = "speedbench", title: str | None = None,
+                       base: pathlib.Path | None = None) -> list[str]:
     out = [title or ("## Step 7: SPEED-Bench qualitative split (seed 0; GPT-OSS on Nibi, Qwen3's first 40 prompts per arm "
                      "on Nibi and the rest on Killarney)"), ""]
     found = False
     for family in ("gpt-oss-20b", "qwen3-8b"):
-        path = ADD / "tables" / f"{prefix}__{family}.csv"
-        eq4_path = ADD / "tables" / f"{prefix}_eq4__{family}.csv"
-        sum_path = ADD / "tables" / f"{prefix}_eq4_summary__{family}.csv"
-        pilot_path = ADD / "tables" / f"{prefix}_pilot__{family}.csv"
+        base_dir = base or ADD / "tables"
+        path = base_dir / f"{prefix}__{family}.csv"
+        eq4_path = base_dir / f"{prefix}_eq4__{family}.csv"
+        sum_path = base_dir / f"{prefix}_eq4_summary__{family}.csv"
+        pilot_path = base_dir / f"{prefix}_pilot__{family}.csv"
         pilot = rows(pilot_path)
         if pilot:
             found = True
@@ -425,6 +427,10 @@ def section_speedbench_followup() -> list[str]:
             out.append("")
     if not any_mech:
         out += ["Pending.", ""]
+    # P5: seed 1 at the loosest alphas (step 7.5), the Qwen3-0.6B drafter (7.6), Qwen3 at T 0.6 (7.7)
+    out += section_speedbench("speedbench_seed1", "## Step 7.5: SPEED-Bench seed 1 at the loosest alphas (P5a; block-major with a strict seed 1 in the same blocks)", base=ADD / "seeds")
+    out += section_speedbench("speedbench_lmdraft", "## Step 7.6: SPEED-Bench, Qwen3-8B with the standalone Qwen3-0.6B drafter (P5b; loosest alphas)")
+    out += section_speedbench("speedbench_qwenT0.6", "## Step 7.7: SPEED-Bench, Qwen3-8B at T 0.6 / top-p 0.95 / top-k 20 (P5c; loosest alphas)")
     # P4: admitted tokens
     path = AN / "speedbench_admit__gpt-oss-20b.csv"
     t = rows(path)

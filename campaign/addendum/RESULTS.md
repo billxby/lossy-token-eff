@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-03 11:34 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-03 13:14 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 146.4; estimated remaining, runnable rows: 37.7; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 155.6; estimated remaining, runnable rows: 28.8; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -21,7 +21,7 @@ Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum 
 | 7 | 0 | 0 | 0 | 0 | 14 |
 | 7.1 | 12 | 0 | 0 | 0 | 0 |
 | 7.4 | 6 | 0 | 0 | 0 | 0 |
-| 7.5 | 0 | 0 | 12 | 0 | 0 |
+| 7.5 | 0 | 1 | 11 | 0 | 0 |
 | 7.6 | 0 | 0 | 6 | 0 | 0 |
 | 7.7 | 0 | 0 | 6 | 0 | 0 |
 
@@ -907,6 +907,18 @@ Source: `campaign/addendum/analysis/speedbench_mechanism__qwen3-8b.csv` (rows se
 | multilingual | - · 10%/6% · 0.99 [0.74, 1.37] · - | -78% · 10%/6% · 1.00 [0.83, 1.40] · - | 122% · 10%/6% · 1.02 [0.85, 1.82] · 121% | 111% · 11%/6% · 1.02 [0.92, 1.95] · 87% | - · 9%/6% · 1.00 [0.78, 1.52] · 1104% |
 | reasoning | - · 6%/8% · 1.01 [0.86, 1.25] · - | - · 6%/8% · 1.00 [0.85, 1.63] · - | 111% · 10%/8% · 1.01 [0.91, 1.56] · 120% | - · 8%/8% · 1.00 [0.86, 1.43] · - | - · 8%/8% · 1.00 [0.84, 1.32] · - |
 | qa | - · 0%/1% · 0.95 [0.73, 1.50] · - | -708% · 1%/1% · 1.04 [0.77, 1.67] · - | - · 2%/1% · 0.92 [0.68, 1.46] · - | - · 0%/1% · 1.00 [0.76, 1.33] · - | - · 1%/1% · 0.93 [0.68, 1.24] · - |
+
+## Step 7.5: SPEED-Bench seed 1 at the loosest alphas (P5a; block-major with a strict seed 1 in the same blocks)
+
+Pending.
+
+## Step 7.6: SPEED-Bench, Qwen3-8B with the standalone Qwen3-0.6B drafter (P5b; loosest alphas)
+
+Pending.
+
+## Step 7.7: SPEED-Bench, Qwen3-8B at T 0.6 / top-p 0.95 / top-k 20 (P5c; loosest alphas)
+
+Pending.
 
 ## SPEED-Bench: what relaxation admits (P4, GPT-OSS-20B, traced)
 
