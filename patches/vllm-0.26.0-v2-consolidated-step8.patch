@@ -1,6 +1,6 @@
 --- a/vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py
 +++ b/vllm/v1/worker/gpu/spec_decode/rejection_sampler_utils.py
-@@ -1,11 +1,290 @@
+@@ -1,9 +1,290 @@
  # SPDX-License-Identifier: Apache-2.0
  # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
 +import math
@@ -11,7 +11,7 @@
  
  from vllm.triton_utils import tl, tldevice, triton
  from vllm.v1.worker.gpu.sample.gumbel import gumbel_block_argmax, tl_rand32
- 
++
 +# mentored-dec (V2): re-added 2026-08-20 after discovering the proof-of-
 +# concept edits below were built starting from a PRISTINE copy of this
 +# file, not from mentored-dec's own already-patched V2 state -- meaning
@@ -40,7 +40,7 @@
 +    file=sys.stderr,
 +    flush=True,
 +)
- 
++
 +# LOSSY-VERIFICATION PILOT PATCH (not upstream vLLM), PROOF-OF-CONCEPT
 +# (2026-08-20).
 +#
@@ -236,6 +236,8 @@
 +    flush=True,
 +)
 +
++_Q_PROBE_LEFT = 3  # rejection_sample() calls that print the q probe line (step 8 block 0(d))
++
 +# spec-casc-tok-hsr-guard (V2 port, 2026-08-22): the actuator half of the
 +# hidden-state-recurrence-triggered strict window. See
 +# analysis/semantic_guard/README.md's "spec_casc_tok_hsr_guard" section and
@@ -286,12 +288,10 @@
 +    file=sys.stderr,
 +    flush=True,
 +)
-+
-+
+ 
+ 
  @triton.jit
- def _compute_max_and_sumexp(logits):
-     max = tl.max(logits, axis=0)
-@@ -508,9 +787,36 @@
+@@ -508,9 +789,36 @@
      # [num_logits, num_blocks]
      local_residual_mass_ptr,
      local_residual_mass_stride,
@@ -328,7 +328,7 @@
      SYNTHETIC_MODE: tl.constexpr,
      USE_BLOCK_VERIFICATION: tl.constexpr,
  ):
-@@ -619,9 +925,57 @@
+@@ -619,9 +927,57 @@
                      rate = tl.load(synthetic_conditional_rates_ptr + i)
                      accepted &= u < rate
                  else:
@@ -389,7 +389,7 @@
                  accepted &= is_valid_draft
                  tl.store(sampled_ptr + req_idx * sampled_stride + i, draft_sampled)
              accepted_length += accepted
-@@ -1029,6 +1383,163 @@
+@@ -1029,6 +1385,182 @@
      num_sampled = sampled.new_empty(num_reqs, dtype=torch.int32)
      target_rejected_logsumexp = target_logits.new_empty(num_reqs, dtype=torch.float32)
      draft_rejected_logsumexp = target_logits.new_empty(num_reqs, dtype=torch.float32)
@@ -413,6 +413,25 @@
 +    # Skipping this on a warmup pass means defer_mask stays None there,
 +    # which is harmless: warmup output is never served to a real client.
 +    defer_mask: torch.Tensor | None = None
++    # q probe (step 8 block 0(d), observation only): on the first real calls of this process, print whether
++    # per-position draft probabilities reach the sampler and whether they are one-hot (the cascade and fuzzy
++    # rules need a real q). Never alters acceptance.
++    global _Q_PROBE_LEFT
++    if num_reqs <= 8 and _Q_PROBE_LEFT > 0:
++        _Q_PROBE_LEFT -= 1
++        if not has_draft_logits:
++            print(f"[Q-PROBE V2] pid={os.getpid()} draft_logits=None (no q reaches the sampler)",
++                  file=sys.stderr, flush=True)
++        else:
++            _qi = expanded_idx_mapping.clamp(0, draft_logits.shape[0] - 1)
++            _qp = expanded_local_pos.clamp(0, draft_logits.shape[1] - 1)
++            _q = draft_logits[_qi, _qp][:, :vocab_size].softmax(dim=-1, dtype=torch.float32)
++            _qmax = _q.max(dim=-1).values
++            _qent = -(_q * torch.log(_q.clamp_min(1e-12))).sum(dim=-1)
++            print(f"[Q-PROBE V2] pid={os.getpid()} draft_logits=present shape={tuple(draft_logits.shape)} "
++                  f"rows={_q.shape[0]} mean_max_q={_qmax.mean().item():.4f} "
++                  f"frac_one_hot={(_qmax > 0.999).float().mean().item():.4f} "
++                  f"mean_entropy_nats={_qent.mean().item():.4f}", file=sys.stderr, flush=True)
 +    if has_draft_logits and num_reqs <= 8:
 +        # Clamp before gathering: expanded_idx_mapping/expanded_local_pos
 +        # cover the FULL flattened num_logits space, which includes
@@ -553,7 +572,7 @@
      _rejection_kernel[(num_reqs,)](
          sampled,
          sampled.stride(0),
-@@ -1060,14 +1571,38 @@
+@@ -1060,14 +1592,38 @@
          cumulative_log_p,
          local_residual_mass,
          local_residual_mass.stride(0) if local_residual_mass is not None else 0,

@@ -53,17 +53,28 @@ in deviation 29); tables cite Meta's ids with a note.
 | 0 | load checks a-f, prompt sets g | ~2 | Killarney |
 | 1 | R1-Distill-Llama-8B + EAGLE-3; GSM8K, LCB, MT-Bench, AIME24 | ~25 | Killarney |
 | 2 | Llama-3.1-8B-Instruct: EAGLE-3, EAGLE-1, Medusa (GSM8K, LCB, MT-Bench); Llama-3.2-1B standalone | ~11 | Nibi |
-| 3 | Qwen3-8B: DFlash (or Thinking EAGLE-3) on GSM8K, LCB, MT-Bench; Qwen3-1.7B standalone | ~23 | Killarney |
+| 3 | Qwen3-8B: the one second dedicated drafter that passed 0(d), full protocol on GSM8K, LCB, MT-Bench; Qwen3-1.7B standalone | ~30 | Killarney |
 | 4 | GPT-OSS-20B + RedHatAI EAGLE-3: GSM8K, LCB, MT-Bench | ~6 | Nibi |
 | 5 | R1-Distill-Llama-8B + Llama-3.2-1B standalone | ~7 | Killarney |
 | 6 | fix on Qwen3-8B: tok_lt (0.15, 0.20), opt_head (beta 0.15, alpha 0.05), GSM8K + LCB; GPT-OSS fix re-export | ~5 | Killarney |
 | 7 | (optional) Qwen3-8B P-EAGLE loosest, GSM8K + LCB | ~7 | Killarney |
 
-Estimates are the addendum's measured per-arm rates for 11 arms; the matched-l_bar protocol can need up
-to 16 arms plus calibration, so blocks 1-4 may run up to ~1.5x. Actual hours reported per block.
+Total for blocks 1-6 about 102 GPU-h (Bill, 2026-10-03). Actual hours reported per block.
+
+Block 0(d) (Bill, 2026-10-03): Qwen3-8B's second dedicated drafter, checked in this order, stopping at the
+first that passes: (i) deepseek-ai/dspark_qwen3_8b_block7 (method dspark); (ii) RedHatAI/Qwen3-8B-speculator.dflash
+(dflash); (iii) RedHatAI/Qwen3-8B-Thinking-speculator.eagle3 (eagle3). A drafter passes only if vLLM 0.26.0 serves
+it with the patched sampler AND per-position draft probabilities q reach the rejection sampler, confirmed on one
+prompt by a log that the draft-prob tensor is present and not one-hot (the cascade and fuzzy rules need q).
+The Block 0 report names the one that passed and its sampler path. Qwen3-1.7B stays the draft_model row.
+The same q probe is logged for every other drafter (V2: the `[Q-PROBE V2]` line of the step-8 V2 file; V1:
+a traced strict run, `patches/relaxation_trace.py` records q(x) and the draft entropy).
 
 Fallbacks: (a) fails -> Qwen3-14B + RedHatAI EAGLE-3 with the Qwen3 prompts; Medusa fails -> drop;
-(b) or the Llama-3.2-1B check fails -> drop that standalone row; DFlash not served -> Qwen3-8B-Thinking EAGLE-3.
+(b) or the Llama-3.2-1B check fails -> drop that standalone row.
+
+Every step-8 table row also carries `drafter_family` (eagle3, eagle1, medusa, dspark, dflash, draft_model)
+next to `sampler_path`.
 
 ## Status
 
