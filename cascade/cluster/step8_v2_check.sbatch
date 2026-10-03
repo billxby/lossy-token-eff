@@ -90,7 +90,7 @@ for spec_drafter in dspark:deepseek-ai/dspark_qwen3_8b_block7 dflash:RedHatAI/Qw
   fi
   echo "=== block 0(d): $drafter ($spec) fails"
 done
-probe d_qwen17b gsm8k_qwen3 Qwen/Qwen3-8B Qwen/Qwen3-1.7B qwen3-8b draft_model "$Q3ROPE" trace
+VLLM_CACHE_ROOT=/scratch/billxby/vllm_cache_step8/qwen3-8b__qwen3-1.7b probe d_qwen17b gsm8k_qwen3 Qwen/Qwen3-8B Qwen/Qwen3-1.7B qwen3-8b draft_model "$Q3ROPE" trace
 probe q_q3_eagle3 gsm8k_qwen3 Qwen/Qwen3-8B RedHatAI/Qwen3-8B-speculator.eagle3 qwen3-8b eagle3 "$Q3ROPE" notrace
 L="$PROJECT_DIR/hf/local"
 probe q_r1_eagle3 gsm8k_r1llama deepseek-ai/DeepSeek-R1-Distill-Llama-8B "$L/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536" r1-distill-llama-8b eagle3 "" notrace

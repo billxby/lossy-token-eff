@@ -89,37 +89,59 @@ def maxpos(repo: str) -> str:
     return f"{HF_LOCAL}/{repo.split('/')[1]}-maxpos65536"
 
 
+DRAFTER_FAMILY = {"eagle3": "eagle3", "eagle": "eagle1", "medusa": "medusa", "dspark": "dspark", "dflash": "dflash",
+                  "draft_model": "draft_model"}
+V2, V1 = "V2 accept-test-only", "V1 full patches"
+
+
+def sampler_path(family: str, spec: str) -> str:
+    """vLLM 0.26.0 (config/vllm.py use_v2_model_runner): dense targets run eagle/eagle3/dflash/dspark on the V2 runner,
+    whose consolidated sampler is accept-test-only for cactus and spec_casc_tok; medusa and draft_model fall back to V1,
+    and GPT-OSS-20B (MoE) is always V1 -- both with the full patches."""
+    return V2 if family != "gpt_oss_20b" and spec in ("eagle", "eagle3", "dflash", "dspark") else V1
+
+
 def pair(block: str, family: str, slug: str, drafter: str, spec: str, kind: str, datasets: list[str], host: str,
-         sampler: str, drafter_path: str | None = None, env: dict | None = None, arms: list | None = None) -> dict:
+         drafter_path: str | None = None, env: dict | None = None, arms: list | None = None) -> dict:
+    pid = f"{TARGET_SLUG[family]}__{slug}"
+    # a compile cache per pair: two drafters of one architecture (Qwen3-0.6B / 1.7B) collided in the shared cache
+    # (Block 0, 2026-10-03: illegal memory access in the drafter's graph capture after an AOT cache load)
+    env = {"VLLM_CACHE_ROOT": f"/scratch/billxby/vllm_cache_step8/{pid}", **(env or {})}
     return {"block": block, "family": family, "slug": slug, "drafter": drafter, "drafter_path": drafter_path or drafter,
-            "spec": spec, "kind": kind, "datasets": datasets, "host": host, "sampler": sampler, "env": env or {},
-            "arms": arms, "id": f"{TARGET_SLUG[family]}__{slug}"}
+            "spec": spec, "kind": kind, "datasets": datasets, "host": host, "sampler": sampler_path(family, spec),
+            "drafter_family": DRAFTER_FAMILY[spec], "env": env, "arms": arms, "id": pid}
 
 
 R1_E3, L31_E3, L31_E1 = ("yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B", "yuhuili/EAGLE3-LLaMA3.1-Instruct-8B",
                          "yuhuili/EAGLE-LLaMA3.1-Instruct-8B")
 L32_1B = "alpindale/Llama-3.2-1B-Instruct"
-V2, V1 = "V2 accept-test-only", "V1 full patches"
 FIX_ARMS = [("spec_casc_tok_lt", "0.15", None), ("spec_casc_tok_lt", "0.2", None), ("spec_casc_opt_head", "0.05", "0.15")]
+# Block 0(d): Qwen3-8B's second dedicated drafter = the first of these, in this order, to pass the q probe (Bill)
+BLOCK3_CANDIDATES = {
+    "dspark": ("deepseek-ai/dspark_qwen3_8b_block7", "dspark"),
+    "dflash": ("RedHatAI/Qwen3-8B-speculator.dflash", "dflash"),
+    "thinking-eagle3": ("RedHatAI/Qwen3-8B-Thinking-speculator.eagle3", "eagle3"),
+}
+BLOCK3_DRAFTER = ""  # set from the Block 0 report; Block 3's dedicated row is not planned until then
 PAIRS = [
     pair("1", "r1llama", "eagle3", R1_E3, "eagle3", "dedicated", ["gsm8k", "livecodebench", "mtbench", "aime24"],
-         "killarney", V2, drafter_path=maxpos(R1_E3)),
-    pair("2", "llama31", "eagle3", L31_E3, "eagle3", "dedicated", ["gsm8k", "livecodebench", "mtbench"], "killarney", V2,
+         "killarney", drafter_path=maxpos(R1_E3)),
+    pair("2", "llama31", "eagle3", L31_E3, "eagle3", "dedicated", ["gsm8k", "livecodebench", "mtbench"], "killarney",
          drafter_path=maxpos(L31_E3)),
-    pair("2", "llama31", "eagle1", L31_E1, "eagle", "dedicated", ["gsm8k", "livecodebench", "mtbench"], "killarney", V2,
+    pair("2", "llama31", "eagle1", L31_E1, "eagle", "dedicated", ["gsm8k", "livecodebench", "mtbench"], "killarney",
          drafter_path=maxpos(L31_E1)),
     pair("2", "llama31", "medusa", "nebius/MEDUSA-Llama-3.1-8B-Instruct", "medusa", "dedicated",
-         ["gsm8k", "livecodebench", "mtbench"], "killarney", V1),
-    pair("2", "llama31", "llama32-1b", L32_1B, "draft_model", "standalone", ["gsm8k", "livecodebench"], "killarney", V1),
-    pair("3", "qwen3", "dflash", "RedHatAI/Qwen3-8B-speculator.dflash", "dflash", "dedicated",
-         ["gsm8k", "livecodebench", "mtbench"], "killarney", V2),
+         ["gsm8k", "livecodebench", "mtbench"], "killarney"),
+    pair("2", "llama31", "llama32-1b", L32_1B, "draft_model", "standalone", ["gsm8k", "livecodebench"], "killarney"),
+    *([pair("3", "qwen3", BLOCK3_DRAFTER, *BLOCK3_CANDIDATES[BLOCK3_DRAFTER], "dedicated",
+            ["gsm8k", "livecodebench", "mtbench"], "killarney")] if BLOCK3_DRAFTER else []),
     pair("3", "qwen3", "qwen3-1.7b", "Qwen/Qwen3-1.7B", "draft_model", "standalone", ["gsm8k", "livecodebench"],
-         "killarney", V1),
+         "killarney"),
     pair("4", "gpt_oss_20b", "rh-eagle3", "RedHatAI/gpt-oss-20b-speculator.eagle3", "eagle3", "dedicated",
-         ["gsm8k", "livecodebench", "mtbench"], "nibi", V1, env={"MENTORED_DEC_TEST_V1_ONLY": "1"}),
-    pair("5", "r1llama", "llama32-1b", L32_1B, "draft_model", "standalone", ["gsm8k", "livecodebench"], "killarney", V1),
+         ["gsm8k", "livecodebench", "mtbench"], "nibi", env={"MENTORED_DEC_TEST_V1_ONLY": "1"}),
+    pair("5", "r1llama", "llama32-1b", L32_1B, "draft_model", "standalone", ["gsm8k", "livecodebench"], "killarney"),
     pair("6", "qwen3", "eagle3-fix", MODEL_FAMILIES["qwen3"][1], "eagle3", "fix", ["gsm8k", "livecodebench"],
-         "killarney", V2, arms=FIX_ARMS),
+         "killarney", arms=FIX_ARMS),
 ]
 BLOCKS_ENABLED = {"1", "2", "3", "4", "5", "6"}  # plan only these (block 0 decides drafter paths and fallbacks)
 DISABLED_PAIRS: dict[str, str] = {}  # pair id -> reason (block 0 fallbacks)
@@ -289,7 +311,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
             per_lane[lane].append((p, item))
         rows.append({"block": p["block"], "pair": p["id"], "target": CANONICAL.get(MODEL_FAMILIES[p["family"]][0],
                      MODEL_FAMILIES[p["family"]][0]), "drafter": CANONICAL.get(p["drafter"], p["drafter"]),
-                     "spec_method": p["spec"], "sampler_path": p["sampler"], "dataset": item["dataset"],
+                     "spec_method": p["spec"], "drafter_family": p["drafter_family"],
+                     "sampler_path": p["sampler"], "dataset": item["dataset"],
                      "method": item["method"], "alpha": item["alpha"],
                      "beta": item["extra_flags"][1] if item.get("extra_flags") else "",
                      "stage": item["id"].rsplit("|", 1)[1], "n_cases": len(item["cases"]),

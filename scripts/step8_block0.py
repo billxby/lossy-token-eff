@@ -121,7 +121,17 @@ def lists() -> dict[str, list[dict]]:
         item("p_q3_peagle", "gsm8k_qwen3", "strict", "strict", c(1), QWEN3, "RedHatAI/Qwen3-8B-speculator.peagle", q, "eagle3", rope=QWEN3_ROPE_SCALING,
              extra_env={"PARALLEL_DRAFTING": "true"}),
     ]
-    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4}
+    # retest (2026-10-03 17:30Z): Qwen3-1.7B as draft_model crashed in the drafter's CUDA-graph capture right after
+    # loading an AOT-compiled graph from the shared compile cache (illegal memory access); the same architecture's
+    # Qwen3-0.6B (addendum step 4.3) compiled into that cache. Same items with a compile cache of their own.
+    own = {"VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__qwen3-1.7b"}
+    k1r = [
+        item("d_q3_qwen17b_owncache", "gsm8k_qwen3", "strict", "strict", c(1), QWEN3, "Qwen/Qwen3-1.7B", q, "draft_model",
+             rope=QWEN3_ROPE_SCALING, extra_env=own),
+        item("d_q3_qwen17b_owncache", "gsm8k_qwen3", "mentored_dec", "0.75", c(1), QWEN3, "Qwen/Qwen3-1.7B", q, "draft_model",
+             rope=QWEN3_ROPE_SCALING, extra_env=own),
+    ]
+    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r}
 
 
 def main() -> int:
