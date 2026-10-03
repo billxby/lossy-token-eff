@@ -292,6 +292,40 @@ def seeds_present(ds: str) -> list[int]:
     return sorted(seeds)
 
 
+def speedbench_seed_rows() -> list[dict]:
+    """Step 7.5 (P5a, branch speedbench-oct): SPEED-Bench rows of seeds/summary.csv -- the five rules at the loosest
+    alpha vs strict of the same seed in step 7's run root, once a seed beyond 0 exists (672 runnable prompts) -- and
+    the per-category tables seeds/speedbench_seed<k>{,_eq4,_eq4_summary}__<family>.csv."""
+    rows, cats = [], sb_categories()
+    for family, ds in (("gpt-oss-20b", "speedbench"), ("qwen3-8b", "speedbench_qwen3")):
+        root = f"runs/addendum/speedbench/{family}"
+        seeds = [s for s in range(5) if load_cell(ds, "strict", "strict", s, run_root=root)]
+        if seeds in ([], [0]):
+            continue
+        strict = {s: load_cell(ds, "strict", "strict", s, run_root=root) for s in seeds}
+        for method, alpha in SB_ARMS:
+            row = {"target": family, "dataset": "speedbench", "method": method, "alpha": alpha}
+            per = {}
+            for s in seeds:
+                c = compare(load_cell(ds, method, alpha, s, run_root=root), strict[s])
+                full = c["n_pairs"] == SB_N_RUNNABLE
+                row[f"n_pairs_s{s}"] = c["n_pairs"]
+                for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict"):
+                    row[f"{k}_s{s}"] = c.get(k) if full else None
+                if full:
+                    per[s] = c
+            for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict"):
+                vals = [per[s][k] for s in sorted(per) if per[s].get(k) is not None]
+                row[f"{k}_mean"] = float(np.mean(vals)) if vals else None
+                row[f"{k}_sd"] = float(np.std(vals, ddof=1)) if len(vals) > 1 else None
+                row[f"{k}_n_seeds"] = len(vals)
+            rows.append(row)
+        for s in seeds:
+            if s:
+                sb_tables(family, ds, root, SB_ARMS, cats, f"speedbench_seed{s}", seed=s, out_dir=ADD / "seeds")
+    return rows
+
+
 def cmd_seeds(args) -> int:
     py = sys.executable
     for ds in STEP2_CELLS:
@@ -327,6 +361,7 @@ def cmd_seeds(args) -> int:
                 row[f"{k}_sd"] = float(np.std(vals, ddof=1)) if len(vals) > 1 else None
                 row[f"{k}_n_seeds"] = len(vals)
             rows.append(row)
+    rows += speedbench_seed_rows()
     seeds_all = sorted({s for ds in STEP2_CELLS for s in seeds_present(ds)})
     fields = ["target", "dataset", "method", "alpha"]
     for k in ("lambda", "rounds_ratio", "time_ratio", "accuracy", "accuracy_strict"):
@@ -412,17 +447,31 @@ def arm_table(condition: str, arms: list[tuple[str, str]], datasets: list[str]) 
         write_csv(ADD / "tables" / f"{condition}__{ds}.csv", rows)
 
 
+def speedbench_condition_tables(condition: str) -> None:
+    """Steps 7.6 / 7.7 (P5b/c, branch speedbench-oct): Qwen3 on SPEED-Bench under another server setting, the five
+    rules at step 7's loosest alphas vs strict of the same setting -- tables/<condition>__speedbench_qwen3.csv (the
+    columns of the step-4.2/4.3 tables, all 672 prompts) and per category
+    tables/speedbench_<condition>{,_eq4,_eq4_summary}__qwen3-8b.csv. Nothing until the setting's strict has runs."""
+    root = f"runs/addendum/{condition}"
+    if not load_cell("speedbench_qwen3", "strict", "strict", 0, run_root=root):
+        return
+    arm_table(condition, [("strict", "strict"), *SB_ARMS], ["speedbench_qwen3"])
+    sb_tables("qwen3-8b", "speedbench_qwen3", root, SB_ARMS, sb_categories(), f"speedbench_{condition}")
+
+
 def cmd_qwenT(args) -> int:
     arms = [("strict", "strict")] + [(m, loosest("gsm8k_qwen3", m)) for m in FIVE]
     arm_table("qwenT0.6", arms, ["gsm8k_qwen3"])
     arms = [("strict", "strict")] + [(m, loosest("livecodebench_qwen3", m)) for m in FIVE]
     arm_table("qwenT0.6", arms, ["livecodebench_qwen3"])
+    speedbench_condition_tables("qwenT0.6")
     return 0
 
 
 def cmd_lmdraft(args) -> int:
     arms = [("strict", "strict"), ("mentored_dec", "0.75"), ("cactus", "0.35"), ("spec_casc_tok", "0.8")]
     arm_table("lmdraft", arms, ["gsm8k_qwen3", "livecodebench_qwen3"])
+    speedbench_condition_tables("lmdraft")
     return 0
 
 
@@ -588,6 +637,7 @@ SB_ARMS = [("spec_casc_opt", "0.05"), ("mentored_dec", "0.75"), ("cactus", "0.35
 SB_CATS = ["coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag", "multilingual",
            "reasoning", "qa"]  # step 7's order
 SB_MIN_CI = 5  # fewer pairs than this: no bootstrap interval (it would be degenerate)
+SB_N_RUNNABLE = 672  # 880 minus the 208 cais/hle prompts (README deviation 21)
 
 
 def sb_categories() -> dict[str, str]:
@@ -596,10 +646,13 @@ def sb_categories() -> dict[str, str]:
         return {r["case"]: r["category"] for r in csv.DictReader(handle)}
 
 
-def sb_tables(family: str, ds: str, root: str, arms: list[tuple[str, str]], cats: dict[str, str], prefix: str) -> None:
-    """tables/<prefix>__<family>.csv (per arm x category: means, ratios to the strict of the same run root with paired
-    bootstrap intervals, cap-out rates, nodes), <prefix>_eq4__<family>.csv and <prefix>_eq4_summary__<family>.csv."""
-    strict = load_cell(ds, "strict", "strict", 0, run_root=root)
+def sb_tables(family: str, ds: str, root: str, arms: list[tuple[str, str]], cats: dict[str, str], prefix: str,
+              seed: int = 0, out_dir: pathlib.Path | None = None) -> None:
+    """tables/<prefix>__<family>.csv (per arm x category: means, ratios to the strict of the same run root and seed
+    with paired bootstrap intervals, cap-out rates, nodes), <prefix>_eq4__<family>.csv and
+    <prefix>_eq4_summary__<family>.csv (out_dir: tables/ unless given)."""
+    out_dir = out_dir or ADD / "tables"
+    strict = load_cell(ds, "strict", "strict", seed, run_root=root)
     if not strict:
         return
     rng = np.random.default_rng(RNG_SEED)
@@ -618,7 +671,7 @@ def sb_tables(family: str, ds: str, root: str, arms: list[tuple[str, str]], cats
             row["capout_rate"] = float(np.mean([r.get("finish_reason") == "length" for r in S.values()]))
             rows.append(row)
     for method, alpha in arms:
-        relaxed = load_cell(ds, method, alpha, 0, run_root=root)
+        relaxed = load_cell(ds, method, alpha, seed, run_root=root)
         for cat in ["all", *SB_CATS]:
             R, S = in_cat(relaxed, cat), in_cat(strict, cat)
             n = len(set(R) & set(S))
@@ -652,8 +705,8 @@ def sb_tables(family: str, ds: str, root: str, arms: list[tuple[str, str]], cats
                 "time_loss_beyond_ci": int(c.get("time_ratio_ci_lo") is not None and c["time_ratio_ci_lo"] > 1),
                 "same_node": c.get("same_node"), "same_node_pairs": c.get("same_node_pairs"),
             })
-    write_csv(ADD / "tables" / f"{prefix}__{family}.csv", rows)
-    write_csv(ADD / "tables" / f"{prefix}_eq4__{family}.csv", eq4)
+    write_csv(out_dir / f"{prefix}__{family}.csv", rows)
+    write_csv(out_dir / f"{prefix}_eq4__{family}.csv", eq4)
     summary = []
     for method, alpha in arms:
         cells = [r for r in eq4 if r["method"] == method and r["category"] != "all"]
@@ -668,7 +721,7 @@ def sb_tables(family: str, ds: str, root: str, arms: list[tuple[str, str]], cats
             "rounds_wins_that_are_time_losses": sum(r["rounds_win"] and r["time_ratio"] > 1 for r in cells),
             "rounds_time_disagree": " ".join(r["category"] for r in cells if r["rounds_win"] != r["time_win"]),
         })
-    write_csv(ADD / "tables" / f"{prefix}_eq4_summary__{family}.csv", summary)
+    write_csv(out_dir / f"{prefix}_eq4_summary__{family}.csv", summary)
 
 
 SB_GENTLE_ARMS = [("spec_casc_opt", "-0.3"), ("mentored_dec", "0.15"), ("cactus", "0.03"), ("r_fuzzy", "0.03"),
