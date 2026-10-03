@@ -458,7 +458,8 @@ def cmd_cycle(args: argparse.Namespace) -> int:
     cmd_push(args)
     cmd_submit(args)
     cmd_plan(argparse.Namespace(quiet=False))
-    paths = ["campaign/addendum/step8", "campaign/addendum/PROGRESS.md", "campaign/calibration", RUN_SUBROOT]
+    # runs/** is gitignored (the addendum's runs live on disk too); the manifest, calibration and tables are committed
+    paths = ["campaign/addendum/step8", "campaign/addendum/PROGRESS.md", "campaign/calibration", "campaign/addendum/tables"]
     if ac.commit(f"step 8: cycle {ac.utc_now()}", [p for p in paths if (REPO / p).exists()]):
         ac.git("push", "-q", "origin", "addendum-step8", check=False)
     return 0

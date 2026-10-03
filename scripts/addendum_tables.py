@@ -71,9 +71,10 @@ def grades() -> dict[str, int | None]:
     return _grades
 
 
-def load_cell(ds: str, method: str, alpha: str, seed: int, run_root: str = "runs") -> dict[str, dict]:
-    """case -> run record (ok runs only) with 'correct' attached (None if not graded)."""
-    root = REPO / run_root / ds / method / params_dir(method, alpha)
+def load_cell(ds: str, method: str, alpha: str, seed: int, run_root: str = "runs", params: str | None = None) -> dict[str, dict]:
+    """case -> run record (ok runs only) with 'correct' attached (None if not graded). `params` overrides the
+    params dir (a second knob, e.g. spec_casc_opt_head's alpha<a>_beta<b>)."""
+    root = REPO / run_root / ds / method / (params or params_dir(method, alpha))
     out = {}
     for run_json in sorted(root.glob(f"case_*/seed_{seed}/run.json")):
         try:
@@ -197,7 +198,10 @@ def run_config(run: dict) -> dict:
 
 def run_node(run: dict) -> str:
     """The node a run ran on, matched by its config.json timestamp to its item's interval in the lane journals
-    ('' when no journal covers it)."""
+    ('' when no journal covers it). Runs from step 8 on record their host in config.json; that wins."""
+    host = run_config(run).get("host")
+    if host:
+        return host
     parts = run["_rel"].split("/")
     if parts[0] == "addendum":  # runs/addendum/<condition>/[<target>/ for step 7]<dataset>/...
         condition, rest = parts[1], parts[3:] if parts[1].startswith("speedbench") else parts[2:]
@@ -710,11 +714,61 @@ def cmd_speedbench(args) -> int:
     return 0
 
 
+# ------------------------------------------------------------------ step 8 (campaign/addendum/step8/GOAL.md)
+
+def cmd_step8(args) -> int:
+    """tables/step8__<target>__<drafter>.csv: one row per (target, drafter, rule, setting, dataset), every arm paired
+    with its own pair's lossless reference on the cases both have. Dedicated drafters: the three matched-l_bar settings
+    (low / mid / high = the 20/55/90th-percentile targets of campaign/calibration/<base>_<family>_<drafter>.json);
+    standalone: loosest; fix (block 6): Qwen3-8B + EAGLE-3 against the Killarney Qwen3 lossless reference
+    (runs/addendum/nibiref, README deviation 12)."""
+    import step8_campaign as s8
+    from campaign_run import base_dataset
+    rng = np.random.default_rng(RNG_SEED)
+    label = lambda p: {"target": s8.CANONICAL.get(s8.MODEL_FAMILIES[p["family"]][0], s8.MODEL_FAMILIES[p["family"]][0]),
+                       "drafter": s8.CANONICAL.get(p["drafter"], p["drafter"]), "drafter_family": p["drafter_family"],
+                       "spec_method": p["spec"], "sampler_path": p["sampler"]}
+    for p in s8.PAIRS:
+        root = f"{s8.RUN_SUBROOT}/{p['id']}"
+        rows = []
+        for base in p["datasets"]:
+            ds = base + s8.SUFFIX[p["family"]]
+            if p["kind"] == "fix":
+                strict = load_cell(ds, "strict", "strict", 0, run_root="runs/addendum/nibiref")
+                arms = [(m, a, b, "fix") for m, a, b in p["arms"]]
+            else:
+                strict = load_cell(ds, "strict", "strict", 0, run_root=root)
+                if p["kind"] == "standalone":
+                    arms = [(m, f"{s8.LOOSEST[m]:g}", None, "loosest") for m in FIVE]
+                else:
+                    path = s8.calib_path(p, base)
+                    if not path.is_file():
+                        continue
+                    cal = json.loads(path.read_text(encoding="utf-8"))
+                    targets = cal["targets_l_bar"]
+                    arms = []
+                    for m in FIVE:
+                        for i, a in enumerate(cal["chosen_alphas"][m]):
+                            arms.append((m, f"{float(a):g}", None, ["low", "mid", "high"][i] if i < 3 else str(i)))
+            for m, a, b, setting in arms:
+                runs = load_cell(ds, m, a, 0, run_root=root, params=s8.params_dir(m, a, b))
+                c = compare(runs, strict, rng)
+                extra = {}
+                if p["kind"] == "dedicated":
+                    extra["l_bar_target"] = targets[["low", "mid", "high"].index(setting)] if setting in ("low", "mid", "high") else None
+                rows.append({**label(p), "dataset": ds, "method": m, "alpha": a, "beta": b or "", "setting": setting,
+                             **extra, **c})
+        if rows:
+            write_csv(ADD / "tables" / f"step8__{s8.TARGET_SLUG[p['family']]}__{p['slug']}.csv", rows)
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = parser.add_subparsers(dest="cmd", required=True)
     for name, fn in (("seeds", cmd_seeds), ("nspec", cmd_nspec), ("temp", cmd_temp), ("qwenT", cmd_qwenT),
-                     ("lmdraft", cmd_lmdraft), ("aime", cmd_aime), ("speedbench", cmd_speedbench)):
+                     ("lmdraft", cmd_lmdraft), ("aime", cmd_aime), ("speedbench", cmd_speedbench),
+                     ("step8", cmd_step8)):
         sub.add_parser(name).set_defaults(fn=fn)
     p = sub.add_parser("best")
     p.add_argument("--plan", action="store_true")
