@@ -7623,5 +7623,15 @@
     "r007614": "addendum/speedbench/qwen3-8b/speedbench_qwen3/spec_casc_tok/alpha0.8/case_880/seed_0"
    }
   }
- ]
+ ],
+ "cost": {
+  "batch_in": 13914588,
+  "batch_out": 4362351,
+  "direct_in": 0,
+  "direct_out": 0,
+  "usd": 178.63,
+  "prompt": "single-v1",
+  "prompt_sha256": "ce396064defa102b61edcbd854fc405a892ac707a82f5dc6d5da6e26f002a872",
+  "computed": "2026-10-03T07:52:12Z"
+ }
 }

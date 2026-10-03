@@ -322,8 +322,16 @@ def cmd_direct(args) -> int:
                 print(f"canceled batch {b['id']}", flush=True)
         state_path.write_text(json.dumps(state, indent=1) + "\n")
     done = direct_results(cache_path)
-    if args.suite == "speedbench":  # runs in a batch that was not canceled are that batch's to score
-        done = {**done, **{rel: {} for b in state["batches"] if not b.get("canceled") for rel in b["ids"].values()}}
+    if args.suite == "speedbench":
+        # a batch still running scores its own runs; an ended batch's scores are in the last `collect` output, so only
+        # its errored / unparsed requests are judged here
+        pending = {rel for b in state["batches"] if not b.get("canceled")
+                   and client.messages.batches.retrieve(b["id"]).processing_status != "ended" for rel in b["ids"].values()}
+        stem_csv = OUT / f"{suite_paths(args)[2]}.csv"
+        # a refusal or an unparsable verdict is the judge's answer (kept, as in step 1.9); only API failures retry
+        batch_ok = ({r["relpath"] for r in csv.DictReader(stem_csv.open(encoding="utf-8"))
+                     if r["judge_api"] == "batch" and not r["verdict"].startswith("batch_")} if stem_csv.is_file() else set())
+        done = {**done, **{rel: {} for rel in pending | batch_ok}}
     runs = [r for r in suite_runs(args) if r["answer_chars"] > 0 and r["relpath"] not in done]
     print(f"{len(runs)} run(s) to judge directly ({len(done)} already judged or in a batch)", flush=True)
 

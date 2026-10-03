@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-03 07:50 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-03 07:53 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -714,7 +714,43 @@ Pending.
 
 ## SPEED-Bench judge scores (P2)
 
-Pending.
+### gpt-oss-20b
+
+Source: `campaign/addendum/analysis/speedbench_judge_summary.csv` (rows target `gpt-oss-20b`). Cell = mean judge score (1-10; a run with no answer scores 1) and, for relaxed arms, the paired per-prompt difference to lossless (step 7's strict) on the same prompts; ↓/↑ = its 95% bootstrap interval lies below/above 0. Header: setting / rule (alpha).
+
+| category | lossless | loosest cactus (0.35) | loosest mentored_dec (0.75) | loosest r_fuzzy (0.25) | loosest spec_casc_opt (0.05) | loosest spec_casc_tok (0.8) |
+|---|---|---|---|---|---|---|
+| all | 6.08 | 3.27 (-2.81↓) | 5.31 (-0.77↓) | 3.81 (-2.27↓) | 4.28 (-1.81↓) | 6.19 (+0.11) |
+| coding | 7.75 | 5.03 (-2.73↓) | 7.36 (-0.39) | 2.92 (-4.83↓) | 4.31 (-3.44↓) | 8.05 (+0.30) |
+| math | 9.83 | 8.83 (-1.00↓) | 9.72 (-0.11) | 9.17 (-0.67↓) | 9.06 (-0.78↓) | 9.50 (-0.33) |
+| humanities | 4.62 | 1.12 (-3.50↓) | 3.00 (-1.62↓) | 2.75 (-1.88↓) | 2.88 (-1.75↓) | 5.50 (+0.88↑) |
+| stem | 6.83 | 1.83 (-5.00↓) | 5.17 (-1.67) | 3.50 (-3.33↓) | 3.67 (-3.17↓) | 6.00 (-0.83) |
+| writing | 3.79 | 1.29 (-2.50↓) | 2.58 (-1.21↓) | 1.91 (-1.88↓) | 2.08 (-1.71↓) | 4.11 (+0.33↑) |
+| summarization | 7.16 | 2.12 (-5.04↓) | 6.20 (-0.96↓) | 4.21 (-2.95↓) | 5.14 (-2.02↓) | 7.15 (-0.01) |
+| roleplay | 4.47 | 1.29 (-3.15↓) | 2.89 (-1.59↓) | 2.15 (-2.33↓) | 2.73 (-1.75↓) | 4.69 (+0.21) |
+| rag | 6.54 | 4.31 (-2.19↓) | 6.08 (-0.43) | 4.95 (-1.54↓) | 5.61 (-0.96↓) | 6.50 (-0.08) |
+| multilingual | 7.60 | 4.22 (-3.38↓) | 7.34 (-0.26) | 5.51 (-2.09↓) | 5.12 (-2.48↓) | 7.71 (+0.11) |
+| reasoning | 7.42 | 5.17 (-2.25↓) | 6.74 (-0.69↓) | 5.66 (-1.76↓) | 5.79 (-1.64↓) | 7.45 (+0.03) |
+| qa | 3.14 | 1.70 (-1.44↓) | 2.52 (-0.61↓) | 2.06 (-1.07↓) | 2.54 (-0.60↓) | 3.21 (+0.07) |
+
+### qwen3-8b
+
+Source: `campaign/addendum/analysis/speedbench_judge_summary.csv` (rows target `qwen3-8b`). Cell = mean judge score (1-10; a run with no answer scores 1) and, for relaxed arms, the paired per-prompt difference to lossless (step 7's strict) on the same prompts; ↓/↑ = its 95% bootstrap interval lies below/above 0. Header: setting / rule (alpha).
+
+| category | lossless | loosest cactus (0.35) | loosest mentored_dec (0.75) | loosest r_fuzzy (0.25) | loosest spec_casc_opt (0.05) | loosest spec_casc_tok (0.8) |
+|---|---|---|---|---|---|---|
+| all | 6.36 | 2.46 (-3.91↓) | 6.16 (-0.21↓) | 3.15 (-3.22↓) | 3.74 (-2.63↓) | 6.42 (+0.06) |
+| coding | 6.14 | 1.58 (-4.49↓) | 5.21 (-0.93↓) | 1.24 (-4.90↓) | 2.23 (-3.91↓) | 6.09 (-0.05) |
+| math | 9.56 | 5.28 (-4.28↓) | 9.44 (-0.11) | 4.00 (-5.56↓) | 4.94 (-4.61↓) | 9.61 (+0.06) |
+| humanities | 6.38 | 1.12 (-5.25↓) | 5.62 (-0.75) | 2.88 (-3.50↓) | 2.25 (-4.12↓) | 5.88 (-0.50) |
+| stem | 7.50 | 1.83 (-5.67↓) | 7.67 (+0.17) | 2.83 (-4.67↓) | 5.00 (-2.50↓) | 7.83 (+0.33) |
+| writing | 5.64 | 1.35 (-4.25↓) | 5.31 (-0.33↓) | 2.40 (-3.24↓) | 2.69 (-2.95↓) | 5.51 (-0.12) |
+| summarization | 7.39 | 3.55 (-3.84↓) | 7.31 (-0.07) | 4.12 (-3.26↓) | 5.44 (-1.95↓) | 7.46 (+0.07) |
+| roleplay | 5.97 | 1.50 (-4.47↓) | 5.80 (-0.17) | 3.65 (-2.33↓) | 4.04 (-1.94↓) | 5.97 (+0.00) |
+| rag | 7.24 | 4.12 (-3.13↓) | 6.78 (-0.48↓) | 4.26 (-3.00↓) | 4.53 (-2.73↓) | 7.06 (-0.16) |
+| multilingual | 7.39 | 2.37 (-5.13↓) | 7.64 (+0.25) | 3.56 (-3.80↓) | 3.76 (-3.62↓) | 7.81 (+0.42↑) |
+| reasoning | 6.97 | 3.15 (-3.81↓) | 7.09 (+0.11) | 3.67 (-3.30↓) | 4.44 (-2.54↓) | 7.14 (+0.16) |
+| qa | 3.38 | 1.52 (-1.85↓) | 3.33 (-0.05) | 2.12 (-1.25↓) | 2.58 (-0.80↓) | 3.54 (+0.16) |
 
 ## SPEED-Bench mechanism: where the extra length goes (P3)
 

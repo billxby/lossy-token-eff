@@ -47,6 +47,16 @@ for what is done; this file records every action and failure.
    batch `msgbatch_015tcqGs9bFB5aEJwmuAZKTw` (~$5) at 2026-09-30 00:24Z.
 6. ~~Duo (again)~~ -- resolved: the 2026-09-29 21:19Z Nibi drop and every
    later one (both clusters) were reconnected with one push each; see item 3.
+7. **Anthropic API credit (SPEED-Bench judge, P2) -- 2026-10-03.** The
+   loosest-settings batch (msgbatch_01XBKAopAPJXpcaCV6BLMPxy, 7615 requests,
+   $178.63 at batch price) used up the key's balance: its last 2 requests
+   errored and the retry got "Your credit balance is too low to access the
+   Anthropic API". Step 7 (loosest + lossless) is scored except those 2
+   lossless prompts; step 7.1 (gentlest, 3,360 runs per target) is not.
+   Ask: add credit (~$150 covers the gentlest half at batch price) to the
+   account behind `~/.config/lossy-token-eff/judge.env`; then
+   `python3 scripts/addendum_mtbench_judge.py --suite speedbench --settings loosest gentlest --model claude-fable-5-1 submit`
+   (and `collect --no-wait`, `direct` for the 2 errored).
 
 ## Log
 
@@ -1036,3 +1046,5 @@ for what is done; this file records every action and failure.
 - 2026-10-03T07:45:23Z Cluster state at launch: Nibi fair-share 0.25, ~1820 H100 jobs pending; Killarney fair-share 0.56, kn170/kn178 down, kn171/kn177 draining (Reboot ASAP).
 - 2026-10-03T07:45:23Z Steps 7.1/7.4 queued block-major (README deviation 23): GPT-OSS 2 blocks of 336 on lanes A/B (Nibi), Qwen3 8 blocks of 84 on K1-K4 (Killarney), step 7.4's 22 prompts x 6 arms on lane A after its block; chains A 23178537->23178540, B 23178541, K1 5903624->5903625, K2 5903626->5903631, K3 5903632->5903634, K4 5903635->5903637.
 - 2026-10-03T07:45:23Z P2: judge batch msgbatch_01XBKAopAPJXpcaCV6BLMPxy submitted (7615 requests: step 7 lossless + loosest, both targets; 449 no-answer runs scored 1 without a call); est. ~$168 at batch price.
+- 2026-10-03T07:53:13Z P2: loosest batch msgbatch_01XBKAopAPJXpcaCV6BLMPxy ended in ~10 min: 7613 succeeded (17 refusals kept as verdict=refusal, as in step 1.9), 2 errored; tokens 13.91M in / 4.36M out = $178.63 at batch price. Retrying the 2 errored directly failed: credit balance too low (Needs Bill 7); the gentlest half waits for credit.
+- 2026-10-03T07:53:13Z P2 (loosest, all prompts): mean judge score vs lossless (paired diff) -- gpt-oss-20b lossless 6.08; spec_casc_tok 0.8 +0.11 [-0.01,0.23], mentored_dec 0.75 -0.77, spec_casc_opt 0.05 -1.81, r_fuzzy 0.25 -2.27, cactus 0.35 -2.81; qwen3-8b lossless 6.36; spec_casc_tok +0.06 [-0.06,0.18], mentored_dec -0.21, spec_casc_opt -2.63, r_fuzzy -3.22, cactus -3.91 (analysis/speedbench_judge_summary.csv).
