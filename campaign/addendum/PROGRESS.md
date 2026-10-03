@@ -1055,3 +1055,10 @@ for what is done; this file records every action and failure.
 - 2026-10-03T08:22:11Z lane K3: pulled 133 new run dir(s) into runs/
 - 2026-10-03T08:22:13Z lane K4: pulled 129 new run dir(s) into runs/
 - 2026-10-03T08:22:24Z step 7.1 speedbench_gentle speedbench strict alpha=strict seed=0: done, 672/672 cases (jobs 23178537 23178541, 1.08 GPU-h)
+- 2026-10-03T08:50:11Z lane A: pulled 411 new run dir(s) into runs/
+- 2026-10-03T08:50:53Z lane B: pulled 435 new run dir(s) into runs/
+- 2026-10-03T08:50:56Z lane K1: pulled 177 new run dir(s) into runs/
+- 2026-10-03T08:50:59Z lane K2: pulled 162 new run dir(s) into runs/
+- 2026-10-03T08:51:01Z lane K3: pulled 137 new run dir(s) into runs/
+- 2026-10-03T08:51:04Z lane K4: pulled 126 new run dir(s) into runs/
+- 2026-10-03T08:51:15Z step 7.1 speedbench_gentle speedbench spec_casc_opt alpha=-0.3 seed=0: done, 672/672 cases (jobs 23178537 23178541, 0.80 GPU-h)
