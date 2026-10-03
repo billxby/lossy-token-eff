@@ -455,13 +455,13 @@
         },
         {
           "id": "5903624",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-03T07:40:03Z",
           "dependency": ""
         },
         {
           "id": "5903625",
-          "state": "PENDING",
+          "state": "RUNNING",
           "submitted": "2026-10-03T07:40:05Z",
           "dependency": "5903624"
         }
