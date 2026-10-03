@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+"""Step 8, Block 0 (campaign/addendum/step8/GOAL.md): load checks as lane work lists.
+
+Every check is an ordinary scripts/addendum_lane.py item (persistent_arm_replay.py, the campaign's
+settings), written to its own run root `runs/addendum/step8_block0/<check>/` under a Killarney lane
+root, so a check exercises exactly the path the campaign arms will take. Four lists, one per
+Killarney lane copy (concurrent jobs never share a venv):
+
+  K1  (a) R1-Distill-Llama-8B + EAGLE-3, (b) + Llama-3.2-1B draft_model   -- incl. grading samples
+  K2  (c) Llama-3.1-8B-Instruct + EAGLE-3, and (f) on the V2 path          -- incl. grading samples
+  K3  (c) + EAGLE-1, + Medusa, + Llama-3.2-1B draft_model, and (f) on the V1 path
+  K4  (d) Qwen3-8B + DFlash / Thinking EAGLE-3 / Qwen3-1.7B, (e) GPT-OSS-20B + RedHatAI EAGLE-3, P-EAGLE
+
+(f) strict-limit: each of the five rules at its strict point (mentored_dec / cactus 0, the other three
+-inf) must reproduce the lossless run token for token (same case, seed, server seed); at its loosest
+grid alpha it must differ and the server log must carry the patch's alpha line. The yuhuili EAGLE
+heads declare max_position_embeddings 2048, so each gets a generation past 2048 positions with the
+published config and with a copy whose config allows 65536 (the README deviation 19 fix).
+
+  python3 scripts/step8_block0.py write     # campaign/addendum/step8/block0/K<n>.json
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import pathlib
+import sys
+
+REPO = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO / "scripts"))
+from campaign_run import ALPHA_GRIDS, MODEL_FAMILIES, QWEN3_ROPE_SCALING, TOKEN_BUDGETS, model_flags  # noqa: E402
+
+OUT = REPO / "campaign" / "addendum" / "step8" / "block0"
+LOCAL = "/home/billxby/projects/aip-hongyanz/billxby/hf/local"
+FIVE = ["mentored_dec", "cactus", "spec_casc_opt", "r_fuzzy", "spec_casc_tok"]
+STRICT_POINT = {"mentored_dec": "0", "cactus": "0", "spec_casc_opt": "-inf", "r_fuzzy": "-inf", "spec_casc_tok": "-inf"}
+LOOSEST = {m: f"{max(ALPHA_GRIDS[m]):g}" for m in FIVE}
+
+R1, R1_E3 = MODEL_FAMILIES["r1llama"][0], MODEL_FAMILIES["r1llama"][1]
+L31, L31_E3 = MODEL_FAMILIES["llama31"][0], MODEL_FAMILIES["llama31"][1]
+L31_E1, L31_MEDUSA, L32_1B = "yuhuili/EAGLE-LLaMA3.1-Instruct-8B", "nebius/MEDUSA-Llama-3.1-8B-Instruct", "alpindale/Llama-3.2-1B-Instruct"
+QWEN3 = MODEL_FAMILIES["qwen3"][0]
+GPTOSS = MODEL_FAMILIES["gpt_oss_20b"][0]
+
+
+def maxpos(repo: str) -> str:
+    return f"{LOCAL}/{repo.split('/')[1]}-maxpos65536"
+
+
+def item(check: str, dataset: str, method: str, alpha: str, cases: list[str], target: str, drafter: str,
+         served: str, spec_method: str, max_new_tokens: int | None = None, rope: str = "",
+         extra_env: dict | None = None) -> dict:
+    env = {"SPEC_METHOD": spec_method, **(extra_env or {})}
+    if target == GPTOSS:
+        env["MENTORED_DEC_TEST_V1_ONLY"] = "1"  # GPT-OSS is V1-only (README deviation 5)
+    return {
+        "id": f"b0|{check}|{dataset}|{method}|{alpha}", "step": "8.0", "condition": f"step8_block0/{check}",
+        "dataset": dataset, "method": method, "alpha": alpha, "seed": 0, "cases": cases,
+        "prompt_root": f"prompts/{dataset}", "runs_subroot": f"runs/addendum/step8_block0/{check}",
+        "max_new_tokens": max_new_tokens or TOKEN_BUDGETS[dataset],
+        "model_flags": model_flags(target, drafter, served, rope),
+        "num_spec": 6, "temperature": 1.0, "top_p": 1.0, "env": env,
+    }
+
+
+def c(*nums: int) -> list[str]:
+    return [f"case_{n:03d}" for n in nums]
+
+
+def strict_limit(check: str, dataset: str, target: str, drafter: str, served: str, spec_method: str,
+                 rope: str = "") -> list[dict]:
+    """(f): strict on case_001, each rule at its strict point and at its loosest alpha on the same case."""
+    out = [item(check, dataset, "strict", "strict", c(1), target, drafter, served, spec_method, rope=rope)]
+    for method in FIVE:
+        for alpha in (STRICT_POINT[method], LOOSEST[method]):
+            out.append(item(check, dataset, method, alpha, c(1), target, drafter, served, spec_method, rope=rope))
+    return out
+
+
+def lists() -> dict[str, list[dict]]:
+    r1, l31 = "r1-distill-llama-8b", "llama31-8b-instruct"
+    k1 = [
+        # (a) + 5 graded GSM8K and 5 graded LiveCodeBench samples (think-block extraction), full budgets
+        item("a_r1_eagle3", "gsm8k_r1llama", "strict", "strict", c(1, 2, 3, 4, 5), R1, R1_E3, r1, "eagle3"),
+        item("a_r1_eagle3", "livecodebench_r1llama", "strict", "strict", c(1, 2, 3, 4, 5), R1, R1_E3, r1, "eagle3"),
+        item("a_r1_eagle3", "gsm8k_r1llama", "mentored_dec", "0.75", c(1), R1, R1_E3, r1, "eagle3"),
+        # past 2048 positions with the 65536-position copy (the published config is exercised above: LCB runs long)
+        item("a_r1_eagle3_maxpos", "livecodebench_r1llama", "strict", "strict", c(1, 2), R1, maxpos(R1_E3), r1, "eagle3"),
+        # (b)
+        item("b_r1_llama1b", "gsm8k_r1llama", "strict", "strict", c(1, 2, 3, 4, 5), R1, L32_1B, r1, "draft_model"),
+        item("b_r1_llama1b", "gsm8k_r1llama", "mentored_dec", "0.75", c(1), R1, L32_1B, r1, "draft_model"),
+    ]
+    k2 = [
+        item("c_l31_eagle3", "gsm8k_llama31", "strict", "strict", c(1, 2, 3, 4, 5), L31, L31_E3, l31, "eagle3"),
+        item("c_l31_eagle3", "livecodebench_llama31", "strict", "strict", c(1, 2, 3, 4, 5), L31, L31_E3, l31, "eagle3"),
+        item("c_l31_eagle3_maxpos", "livecodebench_llama31", "strict", "strict", c(1, 2), L31, maxpos(L31_E3), l31, "eagle3"),
+        *strict_limit("f_v2_l31_eagle3", "gsm8k_llama31", L31, L31_E3, l31, "eagle3"),
+    ]
+    k3 = [
+        item("c_l31_eagle1", "gsm8k_llama31", "strict", "strict", c(1), L31, L31_E1, l31, "eagle"),
+        item("c_l31_eagle1", "livecodebench_llama31", "strict", "strict", c(1, 2), L31, L31_E1, l31, "eagle"),
+        item("c_l31_eagle1_maxpos", "livecodebench_llama31", "strict", "strict", c(1, 2), L31, maxpos(L31_E1), l31, "eagle"),
+        item("c_l31_medusa", "gsm8k_llama31", "strict", "strict", c(1), L31, L31_MEDUSA, l31, "medusa"),
+        item("c_l31_medusa", "livecodebench_llama31", "strict", "strict", c(1), L31, L31_MEDUSA, l31, "medusa"),
+        item("c_l31_medusa", "gsm8k_llama31", "mentored_dec", "0.75", c(1), L31, L31_MEDUSA, l31, "medusa"),
+        item("c_l31_llama1b", "gsm8k_llama31", "strict", "strict", c(1), L31, L32_1B, l31, "draft_model"),
+        *strict_limit("f_v1_l31_llama1b", "gsm8k_llama31", L31, L32_1B, l31, "draft_model"),
+    ]
+    q, g = "qwen3-8b", "gpt-oss-20b"
+    k4 = [
+        item("d_q3_dflash", "gsm8k_qwen3", "strict", "strict", c(1), QWEN3, "RedHatAI/Qwen3-8B-speculator.dflash", q, "dflash", rope=QWEN3_ROPE_SCALING),
+        item("d_q3_dflash", "gsm8k_qwen3", "mentored_dec", "0.75", c(1), QWEN3, "RedHatAI/Qwen3-8B-speculator.dflash", q, "dflash", rope=QWEN3_ROPE_SCALING),
+        item("d_q3_thinking_eagle3", "gsm8k_qwen3", "strict", "strict", c(1), QWEN3, "RedHatAI/Qwen3-8B-Thinking-speculator.eagle3", q, "eagle3", rope=QWEN3_ROPE_SCALING),
+        item("d_q3_thinking_eagle3", "gsm8k_qwen3", "mentored_dec", "0.75", c(1), QWEN3, "RedHatAI/Qwen3-8B-Thinking-speculator.eagle3", q, "eagle3", rope=QWEN3_ROPE_SCALING),
+        item("d_q3_qwen17b", "gsm8k_qwen3", "strict", "strict", c(1), QWEN3, "Qwen/Qwen3-1.7B", q, "draft_model", rope=QWEN3_ROPE_SCALING),
+        item("d_q3_qwen17b", "gsm8k_qwen3", "mentored_dec", "0.75", c(1), QWEN3, "Qwen/Qwen3-1.7B", q, "draft_model", rope=QWEN3_ROPE_SCALING),
+        item("e_gptoss_rh_eagle3", "gsm8k", "strict", "strict", c(1), GPTOSS, "RedHatAI/gpt-oss-20b-speculator.eagle3", g, "eagle3"),
+        item("e_gptoss_rh_eagle3", "gsm8k", "mentored_dec", "0.75", c(1), GPTOSS, "RedHatAI/gpt-oss-20b-speculator.eagle3", g, "eagle3"),
+        # block 7's drafter, checked now while the node is warm (P-EAGLE drafts in parallel: V1 runner)
+        item("p_q3_peagle", "gsm8k_qwen3", "strict", "strict", c(1), QWEN3, "RedHatAI/Qwen3-8B-speculator.peagle", q, "eagle3", rope=QWEN3_ROPE_SCALING,
+             extra_env={"PARALLEL_DRAFTING": "true"}),
+    ]
+    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4}
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("cmd", choices=["write"])
+    parser.parse_args()
+    OUT.mkdir(parents=True, exist_ok=True)
+    for lane, items in lists().items():
+        (OUT / f"{lane}.json").write_text(json.dumps({"items": items, "hold_minutes": 0}, indent=1) + "\n", encoding="utf-8")
+        print(f"{lane}: {len(items)} items, {sum(len(i['cases']) for i in items)} runs")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
