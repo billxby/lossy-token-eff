@@ -1111,3 +1111,22 @@ for what is done; this file records every action and failure.
 - 2026-10-03T11:24:32Z lane K4: pulled 20 new run dir(s) into runs/
 - 2026-10-03T11:24:45Z step 7.1 speedbench_gentle speedbench_qwen3 spec_casc_tok alpha=0.15 seed=0: done, 672/672 cases (jobs 5903624 5903625 5903626 5903631 5903632 5903634 5903635 5903637, 2.26 GPU-h)
 - 2026-10-03T11:29:09Z P1-P4 committed (P2 as its loosest half: the judge's API credit ran out; README deviation 26). P5 enabled (state.json p5_enabled): step 7.5 seed 1 at the loosest alphas (GPT-OSS 3 blocks of 224 on A/B, Qwen3 8 blocks of 84 on K1-K4), then 7.6 Qwen3 + Qwen3-0.6B drafter and 7.7 Qwen3 at T 0.6 / top-p 0.95 / top-k 20 (8 blocks each); README deviation 27.
+- 2026-10-03T11:29:44Z lane A: submitted job 23191120; lane has 12 work items, est. 4.5 GPU-h
+- 2026-10-03T11:29:46Z lane A: submitted job 23191121 (afterany:23191120); lane has 12 work items, est. 4.5 GPU-h
+- 2026-10-03T11:29:48Z lane B: submitted job 23191123; lane has 6 work items, est. 2.2 GPU-h
+- 2026-10-03T11:29:50Z lane K1: submitted job 5906406; lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:29:51Z lane K1: submitted job 5906408 (afterany:5906406); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:29:53Z lane K1: submitted job 5906409 (afterany:5906408); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:29:54Z lane K1: submitted job 5906411 (afterany:5906409); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:29:56Z lane K2: submitted job 5906413; lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:29:57Z lane K2: submitted job 5906415 (afterany:5906413); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:29:58Z lane K2: submitted job 5906417 (afterany:5906415); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:00Z lane K2: submitted job 5906419 (afterany:5906417); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:01Z lane K3: submitted job 5906421; lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:03Z lane K3: submitted job 5906422 (afterany:5906421); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:04Z lane K3: submitted job 5906424 (afterany:5906422); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:05Z lane K3: submitted job 5906426 (afterany:5906424); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:07Z lane K4: submitted job 5906428; lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:08Z lane K4: submitted job 5906429 (afterany:5906428); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:09Z lane K4: submitted job 5906431 (afterany:5906429); lane has 36 work items, est. 11.2 GPU-h
+- 2026-10-03T11:30:11Z lane K4: submitted job 5906433 (afterany:5906431); lane has 36 work items, est. 11.2 GPU-h
