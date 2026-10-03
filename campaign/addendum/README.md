@@ -364,7 +364,15 @@ alpha grows).
    MT-Bench used `single-math-v1` with GPT-4 references for its math,
    reasoning and coding questions. The judge sees `source.json`'s problem
    (turn 1, the text the model answered) and the answer only. Lossless =
-   step 7's strict; both settings' paired differences use it.
+   step 7's strict; both settings' paired differences use it. Judge model
+   requested and served: `claude-fable-5-1` (every scored row's
+   `judge_model_served`), effort medium, Batches API. Cost: the loosest half
+   (batch `msgbatch_01XBKAopAPJXpcaCV6BLMPxy`, 2026-10-03 07:49Z, 7615
+   requests, ended in ~10 min) used 13.91M input / 4.36M output tokens =
+   **$178.63** at batch price ($5 / $25 per MTok); 17 requests were refused
+   by the judge (kept as `verdict=refusal`, excluded from the means, as in
+   step 1.9) and 2 errored when the key's credit ran out. The gentlest half
+   waits for credit (PROGRESS.md Needs Bill 7).
 
 ## SPEED-Bench follow-up (branch speedbench-oct, from 2026-10-03)
 
