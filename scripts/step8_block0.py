@@ -170,7 +170,20 @@ def lists() -> dict[str, list[dict]]:
         i["env"]["SPEC_METHOD"] = "eagle3"
     k2f += [i for i in k3 if i["id"].startswith("b0|f_v1_l31_llama1b")]  # skip-if-done: only the failed ones run
     k2f += [i for i in k4 if i["id"].startswith("b0|e_gptoss")]
-    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t, "K2f": k2f}
+    # the V2 check job (cascade/cluster/step8_v2_check.sbatch, 5914176) passed "-inf" as a separate argument for the two
+    # new rules' strict points; those two arms, with a lossless run in the same job, on the lane left on the 796e3c85 file
+    q3 = ("Qwen/Qwen3-8B", "RedHatAI/Qwen3-8B-speculator.eagle3", "qwen3-8b")
+    k4v = [item("v2fix_strict_point", "gsm8k_qwen3", "strict", "strict", c(1), *q3, "eagle3", max_new_tokens=2048,
+                rope=QWEN3_ROPE_SCALING),
+           item("v2fix_strict_point", "gsm8k_qwen3", "spec_casc_tok_lt", "-inf", c(1), *q3, "eagle3", max_new_tokens=2048,
+                rope=QWEN3_ROPE_SCALING)]
+    oh = item("v2fix_strict_point", "gsm8k_qwen3", "spec_casc_opt_head", "-inf", c(1), *q3, "eagle3", max_new_tokens=2048,
+              rope=QWEN3_ROPE_SCALING)
+    oh["id"] += "|b0.15"
+    oh["extra_flags"] = ["--spec-casc-opt-head-beta=0.15"]
+    oh["params_dir"] = "alphaneginf_beta0.15"
+    k4v.append(oh)
+    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t, "K2f": k2f, "K4v": k4v}
 
 
 def main() -> int:

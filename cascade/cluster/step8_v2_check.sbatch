@@ -50,8 +50,8 @@ install "$V2_DIR/v2_consolidated.py" 68d0a904
 run old "${SIX[@]}"
 install "$V2_DIR/v2_step8.py" 796e3c85
 run new "${SIX[@]}"
-for a in -inf 0.15 0.2; do run new --arms spec_casc_tok_lt --spec-casc-tok-lt-alpha "$a"; done
-for a in -inf 0.05; do run new --arms spec_casc_opt_head --spec-casc-opt-head-alpha "$a" --spec-casc-opt-head-beta 0.15; done
+for a in -inf 0.15 0.2; do run new --arms spec_casc_tok_lt --spec-casc-tok-lt-alpha="$a"; done
+for a in -inf 0.05; do run new --arms spec_casc_opt_head --spec-casc-opt-head-alpha="$a" --spec-casc-opt-head-beta=0.15; done
 
 # ---- block 0(d) and the q probe of every other drafter (Bill, 2026-10-03): a drafter passes only if its per-position
 # draft probabilities q reach the patched sampler and are not one-hot. V2 drafters: the [Q-PROBE V2] line of the
