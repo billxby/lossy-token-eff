@@ -1070,3 +1070,6 @@ for what is done; this file records every action and failure.
 - 2026-10-03T21:56:55Z step 8: pulled 42 run dir(s)
 - 2026-10-03T21:56:55Z step 8: calibrated r1-distill-llama-8b__eagle3 livecodebench_r1llama: targets [1.193, 2.474, 3.755], mentored_dec [0.75, 0.15], cactus [0.03, 0.18, 0.35], spec_casc_opt [0.05, -0.3], r_fuzzy [0.25, 0.03], spec_casc_tok [0.55, 0.15, 0.8]
 - 2026-10-03T21:57:06Z step 8 grading: 20 new run dir(s) uploaded, 20 pending, CPU job 23212465
+- 2026-10-03T22:27:01Z step 8: pulled 90 run dir(s)
+- 2026-10-03T22:27:01Z step 8: calibrated r1-distill-llama-8b__eagle3 mtbench_r1llama: targets [2.222, 3.228, 4.234], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.08, 0.35], spec_casc_opt [-0.1, 0.05, -0.3], r_fuzzy [0.25, 0.03], spec_casc_tok [0.8, 0.15]
+- 2026-10-03T22:27:26Z step 8 grading: 78 new run dir(s) uploaded, 78 pending, CPU job 23213035
