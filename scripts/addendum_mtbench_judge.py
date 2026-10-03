@@ -26,6 +26,15 @@ A run whose output never reaches an answer (GPT-OSS: no final channel;
 Qwen3: no text outside <think> blocks) is not sent to the judge: it gets
 score 1 and verdict=no_answer (the reader saw nothing); summaries report the
 mean with and without those runs.
+
+--suite speedbench (branch speedbench-oct, README deviation 25): the same judge, effort, Batches API and
+no-answer rule on the SPEED-Bench qualitative runs (672 prompts per arm, both targets): step 7's lossless
+strict and five rules at their loosest alpha, and step 7.1's five rules at their gentlest alpha
+(--settings picks which). SPEED-Bench has no reference answers, so every category uses FastChat's
+`single-v1` prompt (MT-Bench used `single-math-v1` with GPT-4 references for math/reasoning/coding).
+State, cache and outputs are separate files: analysis/speedbench_judge{_batches.json,_direct.jsonl,.csv,
+_summary.csv}; the summary is per (target, arm, category) and per (target, arm, all), with the paired
+per-prompt score difference to lossless.
 """
 
 from __future__ import annotations
@@ -127,6 +136,69 @@ def collect_runs(seeds: list[str] | None = None) -> list[dict]:
     return runs
 
 
+SB_SETTINGS = {  # setting -> (run-root condition, method -> alpha); step 7 = loosest, step 7.1 = gentlest
+    "loosest": ("speedbench", {"strict": "strict", "spec_casc_opt": "0.05", "mentored_dec": "0.75", "cactus": "0.35",
+                               "r_fuzzy": "0.25", "spec_casc_tok": "0.8"}),
+    "gentlest": ("speedbench_gentle", {"spec_casc_opt": "-0.3", "mentored_dec": "0.15", "cactus": "0.03",
+                                       "r_fuzzy": "0.03", "spec_casc_tok": "0.15"}),
+}
+SB_FAMILIES = (("speedbench", "gpt-oss-20b"), ("speedbench_qwen3", "qwen3-8b"))
+SB_PROMPT = "single-v1"  # no reference answers in SPEED-Bench
+
+
+def sb_params(method: str, alpha: str) -> str:
+    return method if method == "strict" else f"alpha{float(alpha):g}".replace("-", "neg")
+
+
+def collect_runs_sb(settings: list[str]) -> list[dict]:
+    """SPEED-Bench runs to judge: every ok seed-0 run of the chosen settings' arms (step 7's strict is the
+    lossless arm, setting 'lossless')."""
+    prompts = {d["name"]: d for d in map(json.loads, (JUDGE_DIR / "judge_prompts.jsonl").open())}
+    runs = []
+    for ds, target in SB_FAMILIES:
+        for setting in settings:
+            condition, arms = SB_SETTINGS[setting]
+            for method, alpha in arms.items():
+                root = RUNS / "addendum" / condition / target / ds / method / sb_params(method, alpha)
+                for run_json in sorted(root.glob("case_*/seed_0/run.json")):
+                    run_dir = run_json.parent
+                    run = json.loads(run_json.read_text(encoding="utf-8"))
+                    if run.get("status") != "ok":
+                        continue
+                    case = run_dir.parent.name
+                    case_dir = REPO / "prompts" / ds / case
+                    question = json.loads((case_dir / "source.json").read_text(encoding="utf-8"))["problem"]
+                    category = json.loads((case_dir / "metadata.json").read_text(encoding="utf-8"))["category"]
+                    answer = answer_text((run_dir / "output.txt").read_text(encoding="utf-8", errors="replace"), target)
+                    runs.append({
+                        "relpath": str(run_dir.relative_to(RUNS)), "target": target, "method": method, "alpha": alpha,
+                        "setting": "lossless" if method == "strict" else setting, "case": case, "seed": "0",
+                        "category": category, "question_id": case, "prompt_version": SB_PROMPT,
+                        "answer_chars": len(answer), "finish_reason": run.get("finish_reason"),
+                        "system": prompts[SB_PROMPT]["system_prompt"],
+                        "user": prompts[SB_PROMPT]["prompt_template"].format(question=question, answer=answer),
+                    })
+    return runs
+
+
+def suite_runs(args) -> list[dict]:
+    return collect_runs_sb(args.settings) if args.suite == "speedbench" else collect_runs(args.seeds)
+
+
+def suite_paths(args) -> tuple[pathlib.Path, pathlib.Path, str]:
+    """(batch state file, direct-call cache, output stem) of the suite."""
+    if args.suite == "speedbench":
+        return OUT / "speedbench_judge_batches.json", OUT / "speedbench_judge_direct.jsonl", "speedbench_judge"
+    return STATE, OUT / "mtbench_judge_direct.jsonl", "mtbench_judge"
+
+
+def prompt_hash() -> str:
+    """sha256 of the single-v1 judge prompt (system prompt + template) as sent."""
+    import hashlib
+    p = {d["name"]: d for d in map(json.loads, (JUDGE_DIR / "judge_prompts.jsonl").open())}[SB_PROMPT]
+    return hashlib.sha256((p["system_prompt"] + "\n\n" + p["prompt_template"]).encode()).hexdigest()
+
+
 def custom_id(i: int) -> str:
     return f"r{i:06d}"
 
@@ -150,7 +222,7 @@ def load_key_file() -> None:
 
 
 def cmd_plan(args) -> int:
-    runs = collect_runs(args.seeds)
+    runs = suite_runs(args)
     to_judge = [r for r in runs if r["answer_chars"] > 0]
     chars_in = sum(len(r["system"]) + len(r["user"]) for r in to_judge)
     tok_in = chars_in / 3.5
@@ -158,12 +230,14 @@ def cmd_plan(args) -> int:
     cost = tok_in / 1e6 * PRICE_IN + tok_out / 1e6 * PRICE_OUT
     by = {}
     for r in runs:
-        by.setdefault((r["target"], r["seed"]), 0)
-        by[(r["target"], r["seed"])] += 1
-    print(f"{len(runs)} MT-Bench runs (all 160 cases map to a FastChat question); {len(runs) - len(to_judge)} have no answer")
-    print("runs per (target, seed):", by)
+        key = (r["target"], r.get("setting", ""), r["method"]) if args.suite == "speedbench" else (r["target"], r["seed"])
+        by[key] = by.get(key, 0) + 1
+    print(f"{len(runs)} {args.suite} runs; {len(runs) - len(to_judge)} have no answer")
+    print("runs per arm:", by)
     print(f"to judge: {len(to_judge)} requests, ~{tok_in / 1e6:.1f}M input tokens, ~{tok_out / 1e6:.1f}M output tokens "
           f"(assumed {args.est_output_tokens}/request incl. thinking) -> ~${cost:.0f} with {args.model} on the Batches API")
+    if args.suite == "speedbench":
+        print(f"judge prompt {SB_PROMPT} sha256 {prompt_hash()}")
     return 0
 
 
@@ -173,8 +247,9 @@ def cmd_submit(args) -> int:
     from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
     from anthropic.types.messages.batch_create_params import Request
 
-    runs = [r for r in collect_runs(args.seeds) if r["answer_chars"] > 0]
-    state = json.loads(STATE.read_text()) if STATE.is_file() else {"batches": []}
+    state_path, _, _ = suite_paths(args)
+    runs = [r for r in suite_runs(args) if r["answer_chars"] > 0]
+    state = json.loads(state_path.read_text()) if state_path.is_file() else {"batches": []}
     done = {rel for b in state["batches"] for rel in b["ids"].values()}
     runs = [r for r in runs if r["relpath"] not in done]
     if not runs:
@@ -194,7 +269,7 @@ def cmd_submit(args) -> int:
     batch = client.messages.batches.create(requests=requests)
     state["batches"].append({"id": batch.id, "model": args.model, "effort": args.effort,
                              "created": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "ids": ids})
-    STATE.write_text(json.dumps(state, indent=1) + "\n")
+    state_path.write_text(json.dumps(state, indent=1) + "\n")
     print(f"created batch {batch.id} with {len(requests)} requests ({args.model}, effort {args.effort})")
     return 0
 
@@ -216,10 +291,10 @@ def verdict_of(msg, model: str, effort: str, api: str) -> dict:
     return row
 
 
-def direct_results() -> dict[str, dict]:
+def direct_results(path: pathlib.Path = DIRECT_CACHE) -> dict[str, dict]:
     out = {}
-    if DIRECT_CACHE.is_file():
-        for line in DIRECT_CACHE.read_text(encoding="utf-8").splitlines():
+    if path.is_file():
+        for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip():
                 row = json.loads(line)
                 out[row["relpath"]] = row
@@ -235,7 +310,8 @@ def cmd_direct(args) -> int:
     from concurrent.futures import ThreadPoolExecutor, as_completed
 
     client = anthropic.Anthropic(max_retries=8)
-    state = json.loads(STATE.read_text()) if STATE.is_file() else {"batches": []}
+    state_path, cache_path, _ = suite_paths(args)
+    state = json.loads(state_path.read_text()) if state_path.is_file() else {"batches": []}
     if args.cancel_batch:
         for b in state["batches"]:
             if b.get("canceled"):
@@ -244,10 +320,12 @@ def cmd_direct(args) -> int:
                 client.messages.batches.cancel(b["id"])
                 b["canceled"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
                 print(f"canceled batch {b['id']}", flush=True)
-        STATE.write_text(json.dumps(state, indent=1) + "\n")
-    done = direct_results()
-    runs = [r for r in collect_runs(args.seeds) if r["answer_chars"] > 0 and r["relpath"] not in done]
-    print(f"{len(runs)} run(s) to judge directly ({len(done)} already in {DIRECT_CACHE.name})", flush=True)
+        state_path.write_text(json.dumps(state, indent=1) + "\n")
+    done = direct_results(cache_path)
+    if args.suite == "speedbench":  # runs in a batch that was not canceled are that batch's to score
+        done = {**done, **{rel: {} for b in state["batches"] if not b.get("canceled") for rel in b["ids"].values()}}
+    runs = [r for r in suite_runs(args) if r["answer_chars"] > 0 and r["relpath"] not in done]
+    print(f"{len(runs)} run(s) to judge directly ({len(done)} already judged or in a batch)", flush=True)
 
     def judge(r: dict) -> dict:
         with client.messages.stream(model=args.model, max_tokens=16000, system=r["system"],
@@ -259,7 +337,7 @@ def cmd_direct(args) -> int:
                 "t": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
 
     tok_in = tok_out = failed = 0
-    with ThreadPoolExecutor(args.workers) as pool, DIRECT_CACHE.open("a", encoding="utf-8") as out:
+    with ThreadPoolExecutor(args.workers) as pool, cache_path.open("a", encoding="utf-8") as out:
         futures = {pool.submit(judge, r): r for r in runs}
         for i, fut in enumerate(as_completed(futures), start=1):
             try:
@@ -282,15 +360,63 @@ def cmd_direct(args) -> int:
     return cmd_collect(args)
 
 
+SB_CATS = ["coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag", "multilingual",
+           "reasoning", "qa"]  # step 7's order
+
+
+def boot_ci(x, rng, np) -> tuple[float, float]:
+    boot = x[rng.integers(0, len(x), size=(10000, len(x)))].mean(axis=1)
+    return round(float(np.percentile(boot, 2.5)), 4), round(float(np.percentile(boot, 97.5)), 4)
+
+
+def sb_summary(rows: list[dict], np) -> list[dict]:
+    """Per (target, arm, category) and (target, arm, all): n, no-answer count, mean score with a 95% bootstrap
+    interval (10,000 resamples over prompts, numpy seed 20261001), the answered-only mean, and the paired per-prompt
+    difference arm - lossless (step 7's strict) on the prompts both have, with its bootstrap interval."""
+    rng = np.random.default_rng(20261001)
+    order = {"lossless": 0, "loosest": 1, "gentlest": 2}
+    arms = sorted({(r["target"], r["setting"], r["method"], r["alpha"]) for r in rows},
+                  key=lambda a: (a[0], order[a[1]], a[2]))
+    lossless = {(r["target"], r["case"]): r["score"] for r in rows if r["setting"] == "lossless" and r["score"] is not None}
+    out = []
+    for target, setting, method, alpha in arms:
+        for cat in ["all", *SB_CATS]:
+            cell = [r for r in rows if (r["target"], r["setting"], r["method"], r["alpha"]) == (target, setting, method, alpha)
+                    and (cat == "all" or r["category"] == cat)]
+            if not cell:
+                continue
+            scores = np.array([r["score"] for r in cell if r["score"] is not None], float)
+            answered = np.array([r["score"] for r in cell if r["score"] is not None and r["verdict"] == "ok"], float)
+            row = {"target": target, "setting": setting, "method": method, "alpha": alpha, "category": cat,
+                   "n": len(cell), "n_scored": len(scores), "n_no_answer": sum(r["verdict"] == "no_answer" for r in cell),
+                   "n_refusal": sum(r["verdict"] == "refusal" for r in cell),
+                   "n_parse_error": sum(r["verdict"] == "parse_error" for r in cell)}
+            for name, x in (("mean_score", scores), ("mean_score_answered_only", answered)):
+                if len(x):
+                    row[name] = round(float(x.mean()), 4)
+                    row[f"{name}_ci_lo"], row[f"{name}_ci_hi"] = boot_ci(x, rng, np)
+            if setting != "lossless":
+                d = np.array([r["score"] - lossless[(target, r["case"])] for r in cell
+                              if r["score"] is not None and (target, r["case"]) in lossless], float)
+                row["n_pairs"] = len(d)
+                if len(d):
+                    row["mean_diff_vs_lossless"] = round(float(d.mean()), 4)
+                    row["mean_diff_vs_lossless_ci_lo"], row["mean_diff_vs_lossless_ci_hi"] = boot_ci(d, rng, np)
+            out.append(row)
+    return out
+
+
 def cmd_collect(args) -> int:
     load_key_file()
     import anthropic
     import numpy as np
 
     client = anthropic.Anthropic()
-    state = json.loads(STATE.read_text())
-    runs = {r["relpath"]: r for r in collect_runs(args.seeds)}
+    state_path, cache_path, stem = suite_paths(args)
+    state = json.loads(state_path.read_text()) if state_path.is_file() else {"batches": []}
+    runs = {r["relpath"]: r for r in suite_runs(args)}
     scored = {}
+    tokens = {"batch_in": 0, "batch_out": 0, "direct_in": 0, "direct_out": 0}
     def retrying(fn, what: str):
         """Transient API trouble (5xx, e.g. a 503 'credential validation failed', or a dropped network) must
         not lose a submitted batch: keep retrying for up to 6 hours; 4xx errors still raise."""
@@ -315,6 +441,8 @@ def cmd_collect(args) -> int:
             if batch.processing_status == "ended":
                 break
             if getattr(args, "no_wait", False) and not b.get("canceled"):
+                print(f"batch {b['id']}: {batch.processing_status}, {batch.request_counts.processing} processing, "
+                      f"{batch.request_counts.succeeded} succeeded -- not waiting", flush=True)
                 batch = None  # still running: use what `direct` judged instead
                 break
             print(f"batch {b['id']}: {batch.processing_status}, {batch.request_counts.processing} processing", flush=True)
@@ -328,8 +456,12 @@ def cmd_collect(args) -> int:
                        "judge_model_served": "", "stop_reason": "", "verdict": f"batch_{result.result.type}", "score": None}
             else:
                 row = verdict_of(result.result.message, b["model"], b["effort"], "batch")
+                tokens["batch_in"] += result.result.message.usage.input_tokens
+                tokens["batch_out"] += result.result.message.usage.output_tokens
             scored[rel] = row
-    for rel, row in direct_results().items():  # direct calls fill whatever the batches did not score
+    for rel, row in direct_results(cache_path).items():  # direct calls fill whatever the batches did not score
+        tokens["direct_in"] += row.get("input_tokens") or 0
+        tokens["direct_out"] += row.get("output_tokens") or 0
         if rel not in scored or scored[rel].get("score") is None:
             scored[rel] = row
     rows = []
@@ -340,15 +472,33 @@ def cmd_collect(args) -> int:
                  "judge_model_served": "", "stop_reason": ""}
         if s is None:
             continue
-        rows.append({k: r[k] for k in ("relpath", "target", "method", "alpha", "case", "seed", "category",
-                                        "question_id", "prompt_version", "answer_chars", "finish_reason")} | s)
+        rows.append({k: r.get(k, "") for k in ("relpath", "target", "setting", "method", "alpha", "case", "seed",
+                                               "category", "question_id", "prompt_version", "answer_chars",
+                                               "finish_reason")} | s)
     fields = ["relpath", "target", "method", "alpha", "case", "seed", "category", "question_id", "prompt_version",
               "answer_chars", "finish_reason", "judge_model", "judge_effort", "judge_api", "judge_model_served",
               "stop_reason", "verdict", "score"]
-    with (OUT / "mtbench_judge.csv").open("w", newline="", encoding="utf-8") as handle:
+    if args.suite == "speedbench":
+        fields.insert(1, "setting")
+    with (OUT / f"{stem}.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+    cost = ((tokens["batch_in"] * PRICE_IN + tokens["batch_out"] * PRICE_OUT)
+            + 2 * (tokens["direct_in"] * PRICE_IN + tokens["direct_out"] * PRICE_OUT)) / 1e6
+    print(f"judge tokens {tokens} -> ${cost:.2f} (batch at ${PRICE_IN:g}/${PRICE_OUT:g} per MTok, direct at twice that)")
+    if args.suite == "speedbench":
+        summary = sb_summary(rows, np)
+        state["cost"] = {**tokens, "usd": round(cost, 2), "prompt": SB_PROMPT, "prompt_sha256": prompt_hash(),
+                         "computed": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+        state_path.write_text(json.dumps(state, indent=1) + "\n")
+        with (OUT / f"{stem}_summary.csv").open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(dict.fromkeys(k for r in summary for k in r)),
+                                    lineterminator="\n")
+            writer.writeheader()
+            writer.writerows(summary)
+        print(f"wrote {stem}.csv ({len(rows)} rows) and {stem}_summary.csv ({len(summary)} rows)")
+        return 0
     rng = np.random.default_rng(20261001)
     summary = []
     arms = sorted({(r["target"], r["method"], r["alpha"], r["seed"]) for r in rows})
@@ -367,11 +517,11 @@ def cmd_collect(args) -> int:
                 row[f"{name}_ci_lo"] = round(float(np.percentile(boot, 2.5)), 4)
                 row[f"{name}_ci_hi"] = round(float(np.percentile(boot, 97.5)), 4)
         summary.append(row)
-    with (OUT / "mtbench_judge_summary.csv").open("w", newline="", encoding="utf-8") as handle:
+    with (OUT / f"{stem}_summary.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(dict.fromkeys(k for r in summary for k in r)), lineterminator="\n")
         writer.writeheader()
         writer.writerows(summary)
-    print(f"wrote mtbench_judge.csv ({len(rows)} rows) and mtbench_judge_summary.csv ({len(summary)} arms)")
+    print(f"wrote {stem}.csv ({len(rows)} rows) and {stem}_summary.csv ({len(summary)} arms)")
     return 0
 
 
@@ -381,9 +531,16 @@ def main() -> int:
     parser.add_argument("--effort", default="medium", choices=["low", "medium", "high", "xhigh", "max"])
     parser.add_argument("--est-output-tokens", type=int, default=1500)
     parser.add_argument("--seeds", nargs="+", default=["0"], help="Request seeds to judge (default: 0, the campaign's runs).")
+    parser.add_argument("--suite", default="mtbench", choices=["mtbench", "speedbench"])
+    parser.add_argument("--settings", nargs="+", default=["loosest", "gentlest"], choices=sorted(SB_SETTINGS),
+                        help="speedbench suite: which settings' arms (step 7 loosest + its lossless strict; step 7.1 "
+                             "gentlest). Collect needs every setting that was submitted.")
     sub = parser.add_subparsers(dest="cmd", required=True)
-    for name, fn in (("plan", cmd_plan), ("submit", cmd_submit), ("collect", cmd_collect)):
+    for name, fn in (("plan", cmd_plan), ("submit", cmd_submit)):
         sub.add_parser(name).set_defaults(fn=fn)
+    p = sub.add_parser("collect")
+    p.add_argument("--no-wait", action="store_true", help="Skip batches still running instead of waiting for them.")
+    p.set_defaults(fn=cmd_collect)
     p = sub.add_parser("direct")
     p.add_argument("--cancel-batch", action="store_true", help="Cancel unfinished batches in the state file first.")
     p.add_argument("--workers", type=int, default=16)
