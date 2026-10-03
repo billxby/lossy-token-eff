@@ -1020,3 +1020,14 @@ for what is done; this file records every action and failure.
 - 2026-10-02T17:13:10Z grading: uploaded 0 run dir(s) to the Nibi mirror, submitted CPU grading job 23143323
 - 2026-10-02T17:13:12Z grading: pulled 46342 verdicts into campaign/addendum/analysis/grades.csv
 - 2026-10-02T23:13:21Z Bill dropped the SPEED-Bench HLE prompts (not essential): the 14 step-7 rows stay blocked with that reason (README deviation 21). Campaign closed: 278 done, 14 blocked.
+- 2026-10-03T07:39:58Z lane A: submitted job 23178537; lane has 12 work items, est. 3.0 GPU-h
+- 2026-10-03T07:39:59Z lane A: submitted job 23178540 (afterany:23178537); lane has 12 work items, est. 3.0 GPU-h
+- 2026-10-03T07:40:02Z lane B: submitted job 23178541; lane has 6 work items, est. 2.3 GPU-h
+- 2026-10-03T07:40:03Z lane K1: submitted job 5903624; lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:05Z lane K1: submitted job 5903625 (afterany:5903624); lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:06Z lane K2: submitted job 5903626; lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:09Z lane K2: submitted job 5903631 (afterany:5903626); lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:11Z lane K3: submitted job 5903632; lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:13Z lane K3: submitted job 5903634 (afterany:5903632); lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:15Z lane K4: submitted job 5903635; lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:40:17Z lane K4: submitted job 5903637 (afterany:5903635); lane has 12 work items, est. 3.6 GPU-h
