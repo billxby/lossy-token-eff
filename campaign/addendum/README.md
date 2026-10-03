@@ -373,6 +373,26 @@ alpha grows).
    by the judge (kept as `verdict=refusal`, excluded from the means, as in
    step 1.9) and 2 errored when the key's credit ran out. The gentlest half
    waits for credit (PROGRESS.md Needs Bill 7).
+26. **P5 starts with P2 cut to the loosest half.** The brief gates P5 on
+   P1-P4 being committed and says "if the budget forces a cut, score the
+   loosest settings first". The judge's credit ran out after the loosest
+   half (deviation 25), so P2 is committed as that cut, and P5 started on
+   2026-10-03 ~11:35Z once P1, P3 and P4 were committed too. The gentlest
+   half needs only API credit, no GPU.
+27. **P5 run layout.** All three are block-major like step 7.1 (deviation
+   23), each with its own strict in the same blocks. (a) Seed 1 at the
+   loosest alphas (step 7.5): step 7's run root, `seed_1` directories next to
+   step 7's `seed_0` (nothing overwritten); GPT-OSS in 3 blocks of 224 on
+   Nibi lanes A/B (a 336-prompt block needed ~2.9 h of a 3 h job in step
+   7.1: a Nibi block arm costs 6-14 min of startup), Qwen3 in 8 blocks of 84
+   on Killarney. (b) Qwen3 with the standalone Qwen3-0.6B drafter (step
+   7.6): `runs/addendum/lmdraft/speedbench_qwen3/`, all five rules at
+   step 7's loosest alphas plus strict -- step 4.3 ran three rules (the
+   plan's choice for cost); the brief's ~15 GPU-h matches all five, and
+   spec_casc_opt / r_fuzzy run on the draft-model path here for the first
+   time. (c) Qwen3 at T 0.6 / top-p 0.95 / top-k 20 (step 7.7):
+   `runs/addendum/qwenT0.6/speedbench_qwen3/`, all five rules + strict as
+   in step 4.2. Order on every Killarney lane: (a), then (b), then (c).
 
 ## SPEED-Bench follow-up (branch speedbench-oct, from 2026-10-03)
 
