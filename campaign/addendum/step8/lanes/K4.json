@@ -1,39 +1,6 @@
 {
  "items": [
   {
-   "id": "s8|r1-distill-llama-8b__eagle3|gsm8k_r1llama|cactus|0.03|calib",
-   "step": "8.1",
-   "condition": "step8/r1-distill-llama-8b__eagle3",
-   "dataset": "gsm8k_r1llama",
-   "method": "cactus",
-   "alpha": "0.03",
-   "seed": 0,
-   "cases": [
-    "case_001",
-    "case_002",
-    "case_003"
-   ],
-   "prompt_root": "prompts/gsm8k_r1llama",
-   "runs_subroot": "runs/addendum/step8/r1-distill-llama-8b__eagle3",
-   "max_new_tokens": 2048,
-   "model_flags": [
-    "--model-path",
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-    "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
-    "--served-model-name",
-    "r1-distill-llama-8b"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
-    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
-   }
-  },
-  {
    "id": "s8|r1-distill-llama-8b__eagle3|gsm8k_r1llama|r_fuzzy|0.03|calib",
    "step": "8.1",
    "condition": "step8/r1-distill-llama-8b__eagle3",

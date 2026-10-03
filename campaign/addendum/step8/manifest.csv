@@ -1,16 +1,16 @@
 block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method,alpha,beta,stage,n_cases,n_done,status,lane,gpu_hours_est
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,strict,strict,,full,150,0,pending,K3,0.13
-1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,mentored_dec,0.15,,calib,3,0,pending,K1,0.08
+1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,mentored_dec,0.15,,calib,3,3,done,K1,0.00
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,mentored_dec,0.35,,calib,3,0,pending,K8,0.08
-1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,mentored_dec,0.55,,calib,3,0,pending,K3,0.08
+1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,mentored_dec,0.55,,calib,3,3,done,K3,0.00
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,mentored_dec,0.75,,calib,3,0,pending,K7,0.08
-1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,cactus,0.03,,calib,3,0,pending,K4,0.08
+1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,cactus,0.03,,calib,3,3,done,K4,0.00
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,cactus,0.08,,calib,3,0,pending,K5,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,cactus,0.18,,calib,3,0,pending,K6,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,cactus,0.35,,calib,3,0,pending,K1,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_opt,-0.3,,calib,3,0,pending,K8,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_opt,-0.1,,calib,3,0,pending,K3,0.08
-1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_opt,-0.02,,calib,3,0,pending,K2,0.08
+1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_opt,-0.02,,calib,3,3,done,K2,0.00
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_opt,0.05,,calib,3,0,pending,K7,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,r_fuzzy,0.03,,calib,3,0,pending,K4,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,r_fuzzy,0.08,,calib,3,0,pending,K5,0.08
@@ -18,7 +18,7 @@ block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,r_fuzzy,0.25,,calib,3,0,pending,K1,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_tok,0.15,,calib,3,0,pending,K8,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_tok,0.35,,calib,3,0,pending,K3,0.08
-1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_tok,0.55,,calib,3,0,pending,K2,0.08
+1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_tok,0.55,,calib,3,3,done,K2,0.00
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,gsm8k_r1llama,spec_casc_tok,0.8,,calib,3,0,pending,K7,0.08
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_r1llama,strict,strict,,full,90,0,pending,K1,1.43
 1,r1-distill-llama-8b__eagle3,deepseek-ai/DeepSeek-R1-Distill-Llama-8B,yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_r1llama,mentored_dec,0.15,,calib,3,0,pending,K7,0.12

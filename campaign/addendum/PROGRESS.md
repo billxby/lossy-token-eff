@@ -1054,3 +1054,13 @@ for what is done; this file records every action and failure.
 - 2026-10-03T20:34:25Z step 8 lane B: submitted job 23211740, ~2.9 GPU-h assigned
 - 2026-10-03T20:34:28Z step 8 lane B: submitted job 23211747 (afterany:23211740), ~2.9 GPU-h assigned
 - 2026-10-03T20:45:36Z step 8: warm-up job 5915590 on killarney (1 pair caches)
+- 2026-10-03T20:55:07Z step 8: pulled 15 run dir(s)
+- 2026-10-03T20:55:14Z step 8 lane K1: submitted job 5915646 (afterany:5915426), ~7.6 GPU-h assigned
+- 2026-10-03T20:55:15Z step 8 lane K2: submitted job 5915647 (afterany:5915429), ~7.6 GPU-h assigned
+- 2026-10-03T20:55:16Z step 8 lane K3: submitted job 5915648 (afterany:5915433), ~7.7 GPU-h assigned
+- 2026-10-03T20:55:20Z step 8 lane K4: submitted job 5915650 (afterany:5915436), ~7.6 GPU-h assigned
+- 2026-10-03T20:55:22Z step 8 lane K5: submitted job 5915651 (afterany:5915440), ~7.7 GPU-h assigned
+- 2026-10-03T20:55:24Z step 8 lane K6: submitted job 5915652 (afterany:5915443), ~7.7 GPU-h assigned
+- 2026-10-03T20:55:26Z step 8 lane K7: submitted job 5915653 (afterany:5915446), ~7.7 GPU-h assigned
+- 2026-10-03T20:55:27Z step 8 lane K8: submitted job 5915654 (afterany:5915450), ~7.7 GPU-h assigned
+- 2026-10-03T20:55:33Z step 8 grading: 15 new run dir(s) uploaded, 15 pending, CPU job 23211914
