@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-03 11:33 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-03 11:34 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1190,9 +1190,11 @@ Source: `campaign/addendum/analysis/speedbench_admit__gpt-oss-20b.csv` (step 7.4
 - Same-node timing works: every step-7.1 (rule, category) row has
   `same_node` True, and over all prompts the time ratio is within 0.023
   (GPT-OSS) / 0.008 (Qwen3) of the rounds ratio -- a relaxed round costs
-  what a strict one does (time per round ratio 0.98-0.99 / 1.005-1.008). So
-  step 7's Qwen3 time ratios above 1 for mentored_dec and spec_casc_opt
-  were node effects; the rounds ratio was the right reading.
+  what a strict one does (time per round ratio 0.98-0.99 / 1.005-1.008).
+  Step 7's own same-node Qwen3 subsets say the same at the loosest alphas
+  (mentored_dec T 0.91 vs R 0.93 over 249 pairs; spec_casc_opt 1.06 vs
+  1.02 over 93), so its all-pairs Qwen3 time ratios above 1 were node
+  effects and the rounds ratio is the reading to quote.
 - Lossless vs lossless (`tables/speedbench_gentle_strict_rerun__<target>.csv`:
   step 7.1's strict against step 7's, same seed, different request
   ordinals): per-category lambda moves by up to ~10% (GPT-OSS) / ~8% (Qwen3)
