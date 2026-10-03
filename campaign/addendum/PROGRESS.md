@@ -1048,3 +1048,10 @@ for what is done; this file records every action and failure.
 - 2026-10-03T07:45:23Z P2: judge batch msgbatch_01XBKAopAPJXpcaCV6BLMPxy submitted (7615 requests: step 7 lossless + loosest, both targets; 449 no-answer runs scored 1 without a call); est. ~$168 at batch price.
 - 2026-10-03T07:53:13Z P2: loosest batch msgbatch_01XBKAopAPJXpcaCV6BLMPxy ended in ~10 min: 7613 succeeded (17 refusals kept as verdict=refusal, as in step 1.9), 2 errored; tokens 13.91M in / 4.36M out = $178.63 at batch price. Retrying the 2 errored directly failed: credit balance too low (Needs Bill 7); the gentlest half waits for credit.
 - 2026-10-03T07:53:13Z P2 (loosest, all prompts): mean judge score vs lossless (paired diff) -- gpt-oss-20b lossless 6.08; spec_casc_tok 0.8 +0.11 [-0.01,0.23], mentored_dec 0.75 -0.77, spec_casc_opt 0.05 -1.81, r_fuzzy 0.25 -2.27, cactus 0.35 -2.81; qwen3-8b lossless 6.36; spec_casc_tok +0.06 [-0.06,0.18], mentored_dec -0.21, spec_casc_opt -2.63, r_fuzzy -3.22, cactus -3.91 (analysis/speedbench_judge_summary.csv).
+- 2026-10-03T08:21:12Z lane A: pulled 362 new run dir(s) into runs/
+- 2026-10-03T08:21:59Z lane B: pulled 336 new run dir(s) into runs/
+- 2026-10-03T08:22:05Z lane K1: pulled 168 new run dir(s) into runs/
+- 2026-10-03T08:22:08Z lane K2: pulled 151 new run dir(s) into runs/
+- 2026-10-03T08:22:11Z lane K3: pulled 133 new run dir(s) into runs/
+- 2026-10-03T08:22:13Z lane K4: pulled 129 new run dir(s) into runs/
+- 2026-10-03T08:22:24Z step 7.1 speedbench_gentle speedbench strict alpha=strict seed=0: done, 672/672 cases (jobs 23178537 23178541, 1.08 GPU-h)
