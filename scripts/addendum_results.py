@@ -252,15 +252,15 @@ def same_node_note(r: dict) -> str:
     return " · cross-node"
 
 
-def section_speedbench() -> list[str]:
-    out = ["## Step 7: SPEED-Bench qualitative split (seed 0; GPT-OSS on Nibi, Qwen3's first 40 prompts per arm on Nibi "
-           "and the rest on Killarney)", ""]
+def section_speedbench(prefix: str = "speedbench", title: str | None = None) -> list[str]:
+    out = [title or ("## Step 7: SPEED-Bench qualitative split (seed 0; GPT-OSS on Nibi, Qwen3's first 40 prompts per arm "
+                     "on Nibi and the rest on Killarney)"), ""]
     found = False
     for family in ("gpt-oss-20b", "qwen3-8b"):
-        path = ADD / "tables" / f"speedbench__{family}.csv"
-        eq4_path = ADD / "tables" / f"speedbench_eq4__{family}.csv"
-        sum_path = ADD / "tables" / f"speedbench_eq4_summary__{family}.csv"
-        pilot_path = ADD / "tables" / f"speedbench_pilot__{family}.csv"
+        path = ADD / "tables" / f"{prefix}__{family}.csv"
+        eq4_path = ADD / "tables" / f"{prefix}_eq4__{family}.csv"
+        sum_path = ADD / "tables" / f"{prefix}_eq4_summary__{family}.csv"
+        pilot_path = ADD / "tables" / f"{prefix}_pilot__{family}.csv"
         pilot = rows(pilot_path)
         if pilot:
             found = True
@@ -320,6 +320,102 @@ def section_speedbench() -> list[str]:
                        f"disagree in: {r['rounds_time_disagree'] or 'none'}.{node}")
         out.append("")
     return out + ([] if found else ["Pending.", ""])
+
+
+def section_speedbench_followup() -> list[str]:
+    """Branch speedbench-oct (README "SPEED-Bench follow-up"): step 7.1 tables, judge scores, mechanism, traces."""
+    out = section_speedbench("speedbench_gentle", "## Step 7.1: SPEED-Bench at the gentlest alphas (P1; seed 0, a fresh "
+                             "strict, every case's arms in one block on one node: README deviation 23)")
+    # P2: judge
+    js = rows(AN / "speedbench_judge_summary.csv")
+    out += ["## SPEED-Bench judge scores (P2)", ""]
+    if not js:
+        out += ["Pending.", ""]
+    for family in ("gpt-oss-20b", "qwen3-8b"):
+        t = [r for r in js if r["target"] == family]
+        if not t:
+            continue
+        arms = list(dict.fromkeys((r["setting"], r["method"], r["alpha"]) for r in t))
+        by = {(r["setting"], r["method"], r["alpha"], r["category"]): r for r in t}
+        out += [f"### {family}", "",
+                f"Source: `{rel(AN / 'speedbench_judge_summary.csv')}` (rows target `{family}`). Cell = mean judge "
+                "score (1-10; a run with no answer scores 1) and, for relaxed arms, the paired per-prompt difference to "
+                "lossless (step 7's strict) on the same prompts; ↓/↑ = its 95% bootstrap interval lies below/above 0. "
+                "Header: setting / rule (alpha).", "",
+                "| category | " + " | ".join(f"{s} {m} ({a})" if m != "strict" else "lossless" for s, m, a in arms) + " |",
+                "|---|" + "---|" * len(arms)]
+        for cat in SB_CAT_ORDER:
+            cells = []
+            for s, m, a in arms:
+                r = by.get((s, m, a, cat))
+                if not r:
+                    cells.append("-")
+                    continue
+                cell = f"{f(r.get('mean_score'))}"
+                if r.get("mean_diff_vs_lossless"):
+                    lo, hi = r.get("mean_diff_vs_lossless_ci_lo"), r.get("mean_diff_vs_lossless_ci_hi")
+                    mark = "" if lo in (None, "") else ("↓" if float(hi) < 0 else ("↑" if float(lo) > 0 else ""))
+                    cell += f" ({float(r['mean_diff_vs_lossless']):+.2f}{mark})"
+                cells.append(cell)
+            if any(c != "-" for c in cells):
+                out.append(f"| {cat} | " + " | ".join(cells) + " |")
+        out.append("")
+    # P3: mechanism
+    out += ["## SPEED-Bench mechanism: where the extra length goes (P3)", ""]
+    any_mech = False
+    for family in ("gpt-oss-20b", "qwen3-8b"):
+        path = AN / f"speedbench_mechanism__{family}.csv"
+        t = rows(path)
+        if not t:
+            continue
+        any_mech = True
+        for setting in ("loosest", "gentlest"):
+            st = [r for r in t if r["setting"] == setting]
+            if not st:
+                continue
+            by = {(r["method"], r["category"]): r for r in st}
+            methods = [m for m in METHOD_ORDER if any(k[0] == m for k in by)]
+            out += [f"### {family}, {setting} alphas", "",
+                    f"Source: `{rel(path)}` (rows setting `{setting}`). Cell = share of the extra characters in the "
+                    "thinking channel (GPT-OSS analysis channel, Qwen3 <think>; '-' when the rule is not longer) · cap-out "
+                    "rate relaxed/strict · median per-prompt length ratio [p25, p90] · share of the net extra tokens in "
+                    "the top tenth of prompts.", "",
+                    "| category | " + " | ".join(f"{m} ({next(r['alpha'] for (mm, _), r in by.items() if mm == m)})"
+                                                for m in methods) + " |",
+                    "|---|" + "---|" * len(methods)]
+            for cat in SB_CAT_ORDER:
+                cells = []
+                for m in methods:
+                    r = by.get((m, cat))
+                    if not r:
+                        cells.append("-")
+                        continue
+                    cells.append(f"{pct(r['extra_share_think'])} · {pct(r['capout_rate_relaxed'])}/"
+                                 f"{pct(r['capout_rate_strict'])} · {f(r['ratio_p50'])} [{f(r['ratio_p25'])}, "
+                                 f"{f(r['ratio_p90'])}] · {pct(r['top10pct_share_of_net_extra'])}")
+                if any(c != "-" for c in cells):
+                    out.append(f"| {cat} | " + " | ".join(cells) + " |")
+            out.append("")
+    if not any_mech:
+        out += ["Pending.", ""]
+    # P4: admitted tokens
+    path = AN / "speedbench_admit__gpt-oss-20b.csv"
+    t = rows(path)
+    out += ["## SPEED-Bench: what relaxation admits (P4, GPT-OSS-20B, traced)", ""]
+    if not t:
+        return out + ["Pending.", ""]
+    out += [f"Source: `{rel(path)}` (step 7.4: the first 2 runnable prompts of each category, 22 per arm, loosest "
+            "alphas). Committed draft tokens that only the relaxed rule accepts ('only') vs those lossless verification "
+            "would also accept ('both'), as the paper's tab:admit.", "",
+            "| rule (alpha) | committed draft tokens | only share | target prob. median: only / both | rank mean: only "
+            "| entropy mean: only / both |", "|---|---:|---:|---|---:|---|"]
+    for r in sorted(t, key=lambda r: (r["method"] != "strict", METHOD_ORDER.index(r["method"])
+                                      if r["method"] in METHOD_ORDER else 9)):
+        out.append(f"| {r['method']} ({r['alpha']}) | {r['n_committed_draft_tokens']} | {pct(r['share_lossy_only'], 1)} | "
+                   f"{f(r.get('lossy_only_p_median'), 3)} / {f(r.get('both_p_median'), 3)} | "
+                   f"{f(r.get('lossy_only_rank_mean'))} | {f(r.get('lossy_only_entropy_mean'))} / "
+                   f"{f(r.get('both_entropy_mean'))} |")
+    return out + [""]
 
 
 def section_seeds() -> list[str]:
@@ -401,6 +497,7 @@ def main() -> int:
     lines += section_best()
     lines += section_aime()
     lines += section_speedbench()
+    lines += section_speedbench_followup()
     notes = ADD / "RESULTS_notes.md"
     lines += ["## Observations, failures and anything that looked wrong", ""]
     lines += [notes.read_text(encoding="utf-8").strip() if notes.is_file() else "(none yet)", ""]

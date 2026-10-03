@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-02 23:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-03 07:50 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (292 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 127.6; estimated remaining, runnable rows: 0.0; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (310 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 127.6; estimated remaining, runnable rows: 16.0; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -19,6 +19,8 @@ Source: `campaign/addendum/manifest.csv` (292 rows). GPU-hours used so far (sum 
 | 5.2 | 25 | 0 | 0 | 0 | 0 |
 | 6 | 30 | 0 | 0 | 0 | 0 |
 | 7 | 0 | 0 | 0 | 0 | 14 |
+| 7.1 | 0 | 0 | 12 | 0 | 0 |
+| 7.4 | 0 | 0 | 6 | 0 | 0 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -705,6 +707,58 @@ Source: `campaign/addendum/tables/speedbench__qwen3-8b.csv`, one row per (method
 - **cactus** (alpha 0.35, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `cactus`): fewer verifier rounds in 11/11 categories (coding, math, humanities, stem, writing, summarization, roleplay, rag, multilingual, reasoning, qa); less wall time in 11/11 (coding, math, humanities, stem, writing, summarization, roleplay, rag, multilingual, reasoning, qa); Eq. 4 predicts a win in 11/11; completions longer by lambda 1.17 (math) to 2.02 (roleplay); rounds and time disagree in: none. Over all categories T 0.68 · cross-node (`campaign/addendum/tables/speedbench__qwen3-8b.csv` row `cactus`, category `all`).
 - **r_fuzzy** (alpha 0.25, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `r_fuzzy`): fewer verifier rounds in 8/11 categories (humanities, stem, writing, summarization, roleplay, rag, multilingual, qa); less wall time in 8/11 (humanities, stem, writing, summarization, roleplay, rag, multilingual, qa); Eq. 4 predicts a win in 7/11; completions longer by lambda 0.96 (summarization) to 1.39 (math); rounds and time disagree in: none.
 - **spec_casc_tok** (alpha 0.8, `campaign/addendum/tables/speedbench_eq4_summary__qwen3-8b.csv` row `spec_casc_tok`): fewer verifier rounds in 10/11 categories (coding, math, humanities, stem, writing, summarization, rag, multilingual, reasoning, qa); less wall time in 10/11 (coding, math, humanities, stem, writing, summarization, rag, multilingual, reasoning, qa); Eq. 4 predicts a win in 10/11; completions longer by lambda 0.85 (stem) to 1.06 (roleplay); rounds and time disagree in: none. Over all categories T 0.95 · T same-node 0.95 (632 pairs) (`campaign/addendum/tables/speedbench__qwen3-8b.csv` row `spec_casc_tok`, category `all`).
+
+## Step 7.1: SPEED-Bench at the gentlest alphas (P1; seed 0, a fresh strict, every case's arms in one block on one node: README deviation 23)
+
+Pending.
+
+## SPEED-Bench judge scores (P2)
+
+Pending.
+
+## SPEED-Bench mechanism: where the extra length goes (P3)
+
+### gpt-oss-20b, loosest alphas
+
+Source: `campaign/addendum/analysis/speedbench_mechanism__gpt-oss-20b.csv` (rows setting `loosest`). Cell = share of the extra characters in the thinking channel (GPT-OSS analysis channel, Qwen3 <think>; '-' when the rule is not longer) · cap-out rate relaxed/strict · median per-prompt length ratio [p25, p90] · share of the net extra tokens in the top tenth of prompts.
+
+| category | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) | spec_casc_tok (0.8) |
+|---|---|---|---|---|---|
+| all | 106% · 2%/1% · 1.12 [0.85, 2.11] · 103% | 121% · 2%/1% · 1.26 [0.88, 2.86] · 84% | 109% · 2%/1% · 1.14 [0.88, 2.34] · 93% | 111% · 1%/1% · 1.22 [0.87, 2.59] · 93% | 156% · 1%/1% · 1.00 [0.79, 1.92] · 178% |
+| coding | 85% · 6%/5% · 1.13 [0.92, 1.79] · 76% | 83% · 8%/5% · 1.45 [0.96, 3.08] · 48% | 81% · 6%/5% · 1.33 [1.00, 2.35] · 53% | 66% · 5%/5% · 1.21 [0.95, 2.49] · 63% | 117% · 6%/5% · 1.01 [0.82, 1.54] · 200% |
+| math | 122% · 0%/0% · 0.90 [0.86, 1.35] · 134% | 84% · 0%/0% · 0.99 [0.93, 1.39] · 110% | 106% · 0%/0% · 1.05 [0.91, 1.72] · 68% | 95% · 0%/0% · 1.54 [1.20, 2.64] · 44% | 503% · 0%/0% · 0.92 [0.81, 1.26] · - |
+| humanities | - · 0%/0% · 1.05 [0.74, 1.40] · - | - · 0%/0% · 1.11 [0.79, 1.93] · 133% | 176% · 0%/0% · 1.04 [0.89, 1.88] · 75% | - · 0%/0% · 0.83 [0.78, 1.15] · - | - · 0%/0% · 0.99 [0.82, 1.34] · - |
+| stem | 75% · 0%/0% · 1.30 [1.17, 1.52] · 39% | 87% · 0%/0% · 1.65 [1.19, 2.30] · 32% | 29% · 0%/0% · 1.30 [1.12, 2.52] · 46% | 21% · 0%/0% · 1.23 [1.12, 1.82] · 31% | 132% · 0%/0% · 0.97 [0.76, 1.49] · 142% |
+| writing | - · 0%/0% · 0.98 [0.80, 1.52] · - | - · 0%/0% · 0.85 [0.66, 1.43] · - | - · 1%/0% · 1.04 [0.81, 1.62] · 1047% | - · 0%/0% · 0.97 [0.77, 1.47] · - | - · 0%/0% · 1.06 [0.88, 1.56] · 413% |
+| summarization | 46% · 0%/0% · 1.07 [0.89, 1.91] · 104% | 37% · 0%/0% · 1.31 [0.95, 2.47] · 47% | -13% · 0%/0% · 1.05 [0.85, 1.68] · 102% | 30% · 0%/0% · 1.18 [0.87, 2.06] · 64% | 14% · 0%/0% · 0.94 [0.74, 1.92] · - |
+| roleplay | 76% · 0%/0% · 1.09 [0.91, 2.12] · 68% | 96% · 0%/0% · 1.28 [0.89, 2.46] · 75% | 104% · 0%/0% · 1.11 [0.88, 2.12] · 82% | 87% · 0%/0% · 1.05 [0.78, 2.78] · 90% | 106% · 0%/0% · 1.10 [0.83, 2.17] · 81% |
+| rag | 86% · 0%/0% · 1.22 [0.73, 2.56] · 102% | 99% · 0%/0% · 1.43 [0.94, 4.26] · 69% | - · 0%/0% · 1.11 [0.71, 2.22] · 472% | 81% · 0%/0% · 1.16 [0.87, 2.61] · 104% | 350% · 1%/0% · 0.96 [0.76, 1.96] · 367% |
+| multilingual | 102% · 4%/1% · 1.24 [0.88, 2.35] · 79% | 100% · 5%/1% · 1.45 [1.03, 3.78] · 58% | 99% · 5%/1% · 1.44 [1.05, 3.35] · 54% | 99% · 4%/1% · 1.60 [1.22, 3.19] · 51% | 160% · 1%/1% · 1.05 [0.77, 1.81] · 317% |
+| reasoning | 102% · 2%/0% · 1.12 [0.78, 1.97] · 100% | 98% · 1%/0% · 1.53 [1.03, 2.80] · 48% | 92% · 2%/0% · 1.16 [0.90, 2.18] · 77% | 85% · 2%/0% · 1.31 [1.04, 2.54] · 68% | 130% · 0%/0% · 0.93 [0.81, 1.89] · 269% |
+| qa | 94% · 1%/0% · 1.32 [0.96, 2.93] · 42% | 95% · 0%/0% · 1.25 [0.77, 2.96] · 67% | 116% · 1%/0% · 1.13 [0.81, 2.76] · 126% | 87% · 1%/0% · 1.29 [0.82, 2.75] · 63% | 121% · 4%/0% · 1.04 [0.74, 2.75] · 81% |
+
+### qwen3-8b, loosest alphas
+
+Source: `campaign/addendum/analysis/speedbench_mechanism__qwen3-8b.csv` (rows setting `loosest`). Cell = share of the extra characters in the thinking channel (GPT-OSS analysis channel, Qwen3 <think>; '-' when the rule is not longer) · cap-out rate relaxed/strict · median per-prompt length ratio [p25, p90] · share of the net extra tokens in the top tenth of prompts.
+
+| category | mentored_dec (0.75) | cactus (0.35) | spec_casc_opt (0.05) | r_fuzzy (0.25) | spec_casc_tok (0.8) |
+|---|---|---|---|---|---|
+| all | 91% · 8%/5% · 1.04 [0.87, 1.68] · 134% | 43% · 21%/5% · 1.14 [0.91, 2.47] · 69% | 93% · 20%/5% · 1.21 [0.94, 2.48] · 61% | 102% · 14%/5% · 1.12 [0.84, 2.11] · 85% | -10% · 6%/5% · 1.00 [0.84, 1.55] · 867% |
+| coding | 121% · 44%/24% · 1.05 [1.00, 1.59] · 48% | 72% · 74%/24% · 1.28 [1.00, 2.05] · 30% | 125% · 71%/24% · 1.35 [1.01, 2.32] · 28% | 107% · 76%/24% · 1.39 [1.00, 2.63] · 29% | 131% · 29%/24% · 1.01 [0.99, 1.35] · 124% |
+| math | 361% · 0%/0% · 1.00 [0.83, 1.44] · - | 88% · 0%/0% · 1.12 [0.98, 1.86] · 53% | 108% · 28%/0% · 1.73 [1.20, 5.18] · 32% | 113% · 6%/0% · 1.38 [1.10, 2.30] · 37% | - · 0%/0% · 0.90 [0.78, 1.64] · - |
+| humanities | 68% · 0%/0% · 0.92 [0.85, 1.74] · 147% | 49% · 25%/0% · 1.13 [0.87, 3.77] · 56% | 24% · 12%/0% · 1.22 [1.04, 2.85] · 45% | 61% · 0%/0% · 1.08 [0.87, 1.64] · 85% | - · 0%/0% · 0.90 [0.83, 1.09] · - |
+| stem | - · 0%/0% · 0.92 [0.77, 1.31] · - | 12% · 17%/0% · 1.10 [0.97, 2.00] · 74% | -59% · 0%/0% · 1.04 [0.95, 1.46] · 79% | - · 0%/0% · 0.94 [0.91, 1.24] · - | - · 0%/0% · 0.87 [0.70, 1.16] · - |
+| writing | 44% · 5%/1% · 1.02 [0.90, 1.40] · 135% | 28% · 34%/1% · 1.32 [1.00, 2.95] · 38% | 89% · 19%/1% · 1.27 [1.05, 2.13] · 46% | 182% · 1%/1% · 1.01 [0.82, 1.54] · 617% | 245% · 4%/1% · 0.98 [0.87, 1.32] · 887% |
+| summarization | - · 0%/0% · 0.99 [0.84, 1.39] · - | 89% · 1%/0% · 1.11 [0.95, 1.92] · 89% | - · 0%/0% · 1.07 [0.79, 1.63] · - | - · 0%/0% · 0.98 [0.54, 1.72] · - | - · 0%/0% · 0.94 [0.76, 1.39] · - |
+| roleplay | 63% · 0%/0% · 1.13 [0.90, 1.83] · 82% | 36% · 6%/0% · 1.45 [1.07, 3.00] · 71% | 20% · 4%/0% · 1.09 [0.82, 2.14] · 111% | 105% · 0%/0% · 1.26 [0.92, 2.16] · 52% | 45% · 0%/0% · 1.05 [0.89, 1.60] · 103% |
+| rag | -65% · 0%/0% · 1.05 [0.87, 1.59] · 334% | 3% · 4%/0% · 1.09 [0.80, 2.43] · 106% | 59% · 4%/0% · 1.15 [0.91, 2.84] · 90% | 63% · 0%/0% · 1.02 [0.71, 2.34] · 172% | - · 0%/0% · 0.98 [0.82, 1.66] · - |
+| multilingual | 115% · 9%/10% · 1.00 [0.78, 1.91] · - | 36% · 21%/10% · 1.01 [0.83, 1.85] · 86% | 103% · 32%/10% · 1.53 [1.00, 3.59] · 39% | 93% · 16%/10% · 1.06 [0.78, 2.47] · 87% | 97% · 9%/10% · 1.00 [0.84, 1.79] · 1000% |
+| reasoning | 93% · 8%/10% · 1.13 [0.94, 1.98] · 67% | 52% · 21%/10% · 1.04 [0.87, 3.09] · 65% | 84% · 22%/10% · 1.24 [0.96, 2.12] · 56% | 95% · 19%/10% · 1.34 [0.94, 2.34] · 53% | 21% · 6%/10% · 1.00 [0.87, 1.60] · 364% |
+| qa | - · 1%/0% · 0.97 [0.74, 1.56] · 566% | -110% · 8%/0% · 1.07 [0.71, 2.15] · 135% | 29% · 8%/0% · 1.13 [0.72, 2.25] · 90% | 56% · 1%/0% · 1.09 [0.77, 1.61] · 478% | - · 2%/0% · 0.96 [0.75, 1.57] · 6380% |
+
+## SPEED-Bench: what relaxation admits (P4, GPT-OSS-20B, traced)
+
+Pending.
 
 ## Observations, failures and anything that looked wrong
 
