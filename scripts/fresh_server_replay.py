@@ -203,6 +203,15 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--no-trace-proposals", dest="trace_proposals", action="store_false")
     parser.add_argument(
+        "--trace-per-arm",
+        action="store_true",
+        help=(
+            "persistent_arm_replay.py only: allow --trace-proposals by writing ONE trace per server (arm+seed) to "
+            "<runs root>/<bench>/<method>/<params>/proposals_seed<N>_<stamp>.jsonl instead of per case; the cases "
+            "of that server are not told apart inside it (campaign/addendum/README.md deviation 24)."
+        ),
+    )
+    parser.add_argument(
         "--capture-hidden-states",
         action="store_true",
         help=(

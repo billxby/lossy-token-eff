@@ -26,6 +26,13 @@ Rules this enforces (campaign/addendum/README.md "Ground rules"):
 Every attempt is journaled to <lane-root>/status.jsonl (start/end, job id,
 cases missing before and ok after, exit code, elapsed seconds); the
 orchestrator reads that for gpu_hours_actual and slurm_job_ids.
+
+Items may carry a `group` (step 7.1 and later: one block of cases, every arm
+of it, so each case's arms share a node) and `group_est_s`: a job does not
+start a group no item of which has run yet unless the job's remaining time
+covers the estimate (README deviation 23); it ends instead, and the next
+job in the chain starts the group on its own node. Items with `trace` run
+with --trace-proposals --trace-per-arm instead of --no-trace-proposals.
 """
 
 from __future__ import annotations
@@ -44,10 +51,47 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 MIN_FREE_GB = 2
 MAX_ATTEMPTS_PER_JOB = 2
 ENV_WAIT_S = 30  # how long a job waits for the CVMFS software stack after a node reboot (see Lane.env_ready)
+GROUP_SAFETY, GROUP_MARGIN_S = 1.15, 300  # a group starts only if time left >= est * 1.15 + 5 min
+GROUP_FRESH_JOB_S = 600  # ...unless the job started less than 10 min ago (a group longer than a whole job still runs)
 
 
 def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def parse_slurm_duration(text: str) -> float | None:
+    """Seconds in squeue's %L format ([D-]HH:MM:SS, MM:SS, SS); None for UNLIMITED / NOT_SET / garbage."""
+    text = text.strip()
+    days = 0
+    if "-" in text:
+        head, text = text.split("-", 1)
+        if not head.isdigit():
+            return None
+        days = int(head)
+    parts = text.split(":")
+    if not parts or not all(p.isdigit() for p in parts) or len(parts) > 3:
+        return None
+    seconds = 0
+    for p in parts:
+        seconds = seconds * 60 + int(p)
+    return days * 86400 + seconds
+
+
+def job_deadline() -> float | None:
+    """Epoch seconds at which Slurm ends this job (None outside Slurm or when unknown)."""
+    end = os.environ.get("SLURM_JOB_END_TIME", "")
+    if end.isdigit():
+        return float(end)
+    job = os.environ.get("SLURM_JOB_ID")
+    if not job:
+        return None
+    try:
+        out = subprocess.run(["squeue", "-h", "-j", job, "-o", "%L"], capture_output=True, text=True,
+                             timeout=60, check=False).stdout
+    except (OSError, subprocess.SubprocessError):
+        return None
+    left = parse_slurm_duration(out.splitlines()[0]) if out.strip() else None
+    return time.time() + left if left is not None else None
 
 
 def params_dir(method: str, alpha: str) -> str:
@@ -149,7 +193,7 @@ class Lane:
             "--top-p", str(item["top_p"]),
             "--server-seed", str(item.get("server_seed", 0)),
             "--port", str(self.args.port),
-            "--no-trace-proposals",
+            *(["--trace-proposals", "--trace-per-arm"] if item.get("trace") else ["--no-trace-proposals"]),
             *item.get("model_flags", []),
             *item.get("extra_flags", []),
         ]
@@ -184,11 +228,34 @@ class Lane:
             return False
         return True
 
+    def group_started(self, group: str, work: list[dict]) -> bool:
+        """True when some item of `group` already has an ok case in this lane's run root."""
+        return any(run_state(item_run_dir(self.root, item, case)) == "ok"
+                   for item in work if item.get("group") == group for case in item["cases"])
+
+    def group_fits(self, item: dict, work: list[dict]) -> bool:
+        """Whether this job may start `item` given its group (see the module docstring). Records the decision."""
+        group = item.get("group")
+        if not group or group in self.groups_entered:
+            return True
+        if not self.group_started(group, work):
+            need = float(item.get("group_est_s") or 0) * GROUP_SAFETY + GROUP_MARGIN_S
+            left = (self.deadline - time.time()) if self.deadline else None
+            fresh = time.time() - self.job_started < GROUP_FRESH_JOB_S
+            if left is not None and left < need and not fresh:
+                self.journal(event="group_deferred", group=group, need_s=round(need), left_s=round(left))
+                return False
+        self.groups_entered.add(group)
+        self.journal(event="group_start", group=group,
+                     left_s=round(self.deadline - time.time()) if self.deadline else None)
+        return True
+
     def run(self) -> int:
         self.journal(event="job_start", work=str(self.args.work))
         if not self.env_ready():
             self.journal(event="job_end", failures=1)
             return 1
+        self.job_started, self.deadline, self.groups_entered = time.time(), job_deadline(), set()
         attempts: dict[str, int] = {}
         failures = 0
         idle_since = None
@@ -197,12 +264,15 @@ class Lane:
                 self.journal(event="stop_file")
                 break
             target = None
-            for item in self.load_work():
+            work = self.load_work()
+            for item in work:
                 if attempts.get(item["id"], 0) >= MAX_ATTEMPTS_PER_JOB:
                     continue
                 if self.missing_cases(item, quarantine=False):
                     target = item
                     break
+            if target is not None and not self.group_fits(target, work):
+                break  # the next job in the chain starts this group on its own node
             if target is None:
                 # the orchestrator may be about to queue the next phase (step 7): keep the GPU a while
                 hold = self.hold_minutes()

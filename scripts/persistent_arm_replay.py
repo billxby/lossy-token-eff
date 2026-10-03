@@ -101,7 +101,7 @@ def request_many(
 
 def main() -> int:
     args = fsr.parse_args()
-    if args.trace_proposals:
+    if args.trace_proposals and not args.trace_per_arm:
         print(
             "persistent_arm_replay.py requires --no-trace-proposals: tracing resolves its "
             "destination once per server process, and this script runs many cases per "
@@ -161,9 +161,13 @@ def main() -> int:
         started = time.perf_counter()
         status = "ok"
         process = None
+        # --trace-per-arm: one proposal trace for this server, staged outside the run tree (the tracer resolves
+        # its destination once, at import inside EngineCore) and moved next to the arm's case directories after
+        trace_stage = (REPO_ROOT / args.log_root / f"{tag}_batch_{stamp}_proposals.jsonl"
+                       if args.trace_proposals else None)
         try:
             fsr.stop_server()
-            fsr.set_trace_destination(None)
+            fsr.set_trace_destination(trace_stage)
             fsr.set_hidden_state_destination(None)
             process = fsr.start_server(args, arm, log_path)
             try:
@@ -175,6 +179,13 @@ def main() -> int:
                 fsr.stop_server()
                 if process is not None and process.poll() is None:
                     os.killpg(os.getpgid(process.pid), signal.SIGKILL)
+                if trace_stage is not None:
+                    fsr.set_trace_destination(None)
+                    if trace_stage.is_file():
+                        dest = runs_root / method / params / f"proposals_seed{seed}_{stamp}.jsonl"
+                        dest.parent.mkdir(parents=True, exist_ok=True)
+                        trace_stage.replace(dest)
+                        print(f"  trace for {len(missing)} case(s) -> {dest}", flush=True)
         except (RuntimeError, OSError) as exc:
             status = f"{type(exc).__name__}: {exc}"
             failures += 1

@@ -110,6 +110,31 @@ SB_NOTE_MARKERS = ("waits for step-7 phase", "first-40 estimate:", "token budget
                    "need the cais/hle prompts", "are cais/hle prompts", "wait for the Math budget pilot",
                    "GPU-h vs lane budget", "waits for the GPT-OSS step-7 run")  # regenerated every plan
 
+# Steps 7.1 and 7.4 (branch speedbench-oct, 2026-10-03; README deviations 22-24). 7.1: the five rules at the gentlest
+# alpha of the main-grid alpha grids, with a fresh strict reference; 7.4: the step-7 arms (loosest + strict) traced on
+# the first two runnable prompts of each category (GPT-OSS). These run "block-major": a comparison's runnable cases
+# are split into blocks, and a block runs every arm back to back inside one job (scripts/addendum_lane.py starts a
+# block only when the job's remaining time covers it), so a case's arms share a node and the time ratios need no
+# cross-node flag. Blocks are pinned to a lane in state.json (skip-if-done sees only the lane's own run root).
+SB_GENTLE = {"strict": "strict", "spec_casc_opt": "-0.3", "mentored_dec": "0.15", "cactus": "0.03",
+             "r_fuzzy": "0.03", "spec_casc_tok": "0.15"}
+SB_S_PER_CASE = {"speedbench": 3.33, "speedbench_qwen3": 9.54}  # step 7 strict, mean over its 672 runs
+SB_TRACE_PER_CAT = 2
+SB_TRACE_SLOWDOWN = 2.0  # assumed cost of --trace-proposals per case (block estimate only)
+
+
+def block_specs() -> list[dict]:
+    """The block-major comparisons, in run order on each lane."""
+    return [
+        {"step": "7.1", "condition": "speedbench_gentle", "dataset": "speedbench", "seed": 0, "arms": SB_GENTLE,
+         "n_blocks": 2, "lanes": ["A", "B"], "cases": "runnable"},
+        {"step": "7.1", "condition": "speedbench_gentle", "dataset": "speedbench_qwen3", "seed": 0, "arms": SB_GENTLE,
+         "n_blocks": 8, "lanes": ["K1", "K2", "K3", "K4"], "cases": "runnable"},
+        {"step": "7.4", "condition": "speedbench_trace", "dataset": "speedbench", "seed": 0, "arms": SB_ARMS,
+         "n_blocks": 1, "lanes": ["A"], "cases": "trace", "trace": True},
+    ]
+
+
 FIELDS = ["step", "condition", "target", "dataset", "method", "alpha", "seeds", "run_root", "n_cases_target",
           "n_done", "status", "slurm_job_ids", "gpu_hours_est", "gpu_hours_actual", "notes"]
 QWEN3_BLOCK = "blocked: Qwen3 needs the consolidated V2 sampler (cascade/DIRECTIONS.md D8), not obtainable yet -- see PROGRESS.md Needs Bill"
@@ -146,10 +171,60 @@ def cases_for(ds: str) -> list[str]:
 
 
 def row_cases(row: dict) -> list[str]:
-    """The cases a row targets: case_001..case_<n_cases_target>, or the step-7 pilot's case list."""
+    """The cases a row targets: case_001..case_<n_cases_target>, the step-7 pilot's case list, or a block-major
+    comparison's case list."""
     if row["condition"] == "speedbench_pilot":
         return sb_pilot_cases()
+    spec = block_spec_of(row)
+    if spec:
+        return spec_cases(spec)
     return [f"case_{i:03d}" for i in range(1, int(row["n_cases_target"]) + 1)]
+
+
+def block_spec_of(row: dict) -> dict | None:
+    for spec in block_specs():
+        if ((row["step"], row["condition"], row["dataset"], str(row["seeds"]))
+                == (spec["step"], spec["condition"], spec["dataset"], str(spec["seed"])) and row["method"] in spec["arms"]):
+            return spec
+    return None
+
+
+def sb_runnable(ds: str) -> list[str]:
+    """SPEED-Bench cases whose prompt is built (every case but the 208 cais/hle ones, README deviation 21)."""
+    return [r["case"] for r in sb_cases_table() if sb_prompt_built(ds, r["case"])]
+
+
+def spec_cases(spec: dict) -> list[str]:
+    cases = sb_runnable(spec["dataset"])
+    if spec["cases"] == "trace":  # the first SB_TRACE_PER_CAT runnable prompts of each category, in case order
+        seen: dict[str, int] = {}
+        keep = []
+        for case in cases:
+            cat = sb_category(case)
+            if seen.get(cat, 0) < SB_TRACE_PER_CAT:
+                keep.append(case)
+                seen[cat] = seen.get(cat, 0) + 1
+        cases = keep
+    return cases
+
+
+def spec_key(spec: dict) -> str:
+    return f"{spec['condition']}|{spec['dataset']}|s{spec['seed']}"
+
+
+def spec_blocks(spec: dict, state: dict) -> list[dict]:
+    """The spec's blocks [{id, lane, cases}], created once (contiguous chunks in case order -- SPEED-Bench's own
+    round-robin over categories, so each block mixes every category -- dealt to the lanes in turn) and kept in
+    state.json: a block with runs in one lane's root must never move to another lane."""
+    blocks = state.setdefault("blocks", {})
+    key = spec_key(spec)
+    if key not in blocks:
+        cases = spec_cases(spec)
+        n = spec["n_blocks"]
+        bounds = [round(i * len(cases) / n) for i in range(n + 1)]
+        blocks[key] = [{"id": f"b{i + 1}", "lane": spec["lanes"][i % len(spec["lanes"])],
+                        "cases": cases[bounds[i]:bounds[i + 1]]} for i in range(n)]
+    return blocks[key]
 
 
 _sb_table: list[dict] | None = None
@@ -269,7 +344,7 @@ def estimate_hours(row: dict, n_missing: int) -> float:
         return 0.0
     ds, method, alpha = row["dataset"], row["method"], row["alpha"]
     if base_of(ds) == SB:  # Nibi-measured once 40 cases are in; 10 s/case (about 4k tokens) until then
-        per_case = sb_measured_seconds(row) or 10.0
+        per_case = sb_measured_seconds(row) or (SB_S_PER_CASE[ds] if row["step"] != "7" else 10.0)
         return round((n_missing * per_case + STARTUP_S) / 3600.0, 2)
     per_case = mean_case_seconds(ds, method, alpha) if row["condition"] in ("main", "qwenT0.6") else None
     if per_case is None:
@@ -416,6 +491,11 @@ def all_rows(keep: set[str] | None = None) -> tuple[list[dict], dict[str, list[s
             for arm, alpha in SB_ARMS.items():
                 n = SB_PER_CAT * SB_N_CATS if (subset and arm != "strict") else N_CASES[SB]
                 add(make_row("7", "speedbench", ds, arm, alpha, 0, n_cases=n), SB_LANE[arm])
+        # steps 7.1 / 7.4: block-major rows are in no lane list -- each of their blocks names its lane
+        for spec in block_specs():
+            for arm, alpha in spec["arms"].items():
+                rows.append(make_row(spec["step"], spec["condition"], spec["dataset"], arm, alpha, spec["seed"],
+                                     n_cases=len(spec_cases(spec))))
     by_key = {row_key(r): r for r in rows}
     lanes["C"].sort(key=lambda k: LANE_C_PRIORITY.get(by_key[k]["step"], 8))  # stable within a step
     return rows, lanes
@@ -621,6 +701,67 @@ def sb_wait_note(row: dict, sbs: dict, gate_open: bool = True) -> tuple[str, str
     return "pending", ""
 
 
+def block_items(by_key: dict[str, dict], state: dict) -> tuple[dict[str, list[dict]], dict[str, list[str]]]:
+    """Work items of the block-major rows per lane -- spec order, block order, then the arms in ARMS6 order (strict
+    and spec_casc_opt share a patch) -- and row key -> the lanes holding its blocks. A block stays listed while any
+    of its arms misses a case locally, with every arm (the lane skips what its root has), so the lane sees whole
+    groups. group_est_s: missing cases x step 7's strict s/case + one server start per arm with work."""
+    work: dict[str, list[dict]] = {lane: [] for lane in LANES}
+    lanes_of: dict[str, list[str]] = {}
+    for spec in block_specs():
+        keys = {arm: row_key(make_row(spec["step"], spec["condition"], spec["dataset"], arm, alpha, spec["seed"]))
+                for arm, alpha in spec["arms"].items()}
+        arms = [a for a in ARMS6 if a in spec["arms"]]
+        per_case = SB_S_PER_CASE[spec["dataset"]] * (SB_TRACE_SLOWDOWN if spec.get("trace") else 1.0)
+        for block in spec_blocks(spec, state):
+            for arm in arms:
+                if block["lane"] not in lanes_of.setdefault(keys[arm], []):
+                    lanes_of[keys[arm]].append(block["lane"])
+            missing = {arm: [c for c in block["cases"] if c in set(by_key[keys[arm]]["_missing"])] for arm in arms}
+            if not any(missing.values()):
+                continue
+            gid = f"{spec_key(spec)}|{block['id']}"
+            est = sum(len(m) * per_case + STARTUP_S for m in missing.values() if m)
+            for arm in arms:
+                item = work_item(by_key[keys[arm]], block["cases"], max_new_tokens=SB_BUDGET)
+                item.update(id=f"{keys[arm]}@{SB_BUDGET}#{block['id']}", group=gid, group_est_s=round(est))
+                if spec.get("trace"):
+                    item["trace"] = True
+                work[block["lane"]].append(item)
+    return work, lanes_of
+
+
+def plan_block_row(row: dict, lanes: list[str], state: dict, active_item: dict[str, str]) -> None:
+    """Status, notes, job ids and measured hours of a block-major row (it may span lanes)."""
+    key = row_key(row)
+    live = any(j.get("state") in ("RUNNING", "PENDING") for lane in lanes for j in state["lanes"][lane]["jobs"])
+    if not row["_missing"]:
+        row["status"] = "done"
+    elif any(active_item.get(lane) == key for lane in lanes):
+        row["status"] = "running"
+    else:
+        row["status"] = "queued" if live else "pending"
+    spec = block_spec_of(row)
+    notes = [x for x in row["notes"].split("; ") if x and not x.startswith("lane=") and "block-major" not in x]
+    notes.insert(0, "lane=" + "+".join(lanes))
+    notes.append(f"block-major: {spec['n_blocks']} block(s) of the {len(spec_cases(spec))} cases, every arm of a block "
+                 "in one job (README deviation 23)")
+    row["notes"] = "; ".join(notes)
+    jobs, secs = [], 0.0
+    for lane in lanes:
+        for ev in lane_status_events(lane):
+            if (ev.get("item") or "").split("@")[0] != key:
+                continue
+            if ev.get("event") == "item_start" and ev["job"] not in jobs:
+                jobs.append(ev["job"])
+            if ev.get("event") == "item_end":
+                secs += float(ev.get("elapsed_s") or 0.0)
+    if jobs:
+        row["slurm_job_ids"] = " ".join(jobs)
+    if secs:
+        row["gpu_hours_actual"] = f"{secs / 3600:.2f}"
+
+
 def cmd_plan(args: argparse.Namespace) -> int:
     old = {row_key(r): r for r in load_manifest()}
     rows, lanes = all_rows(keep=set(old))
@@ -644,7 +785,9 @@ def cmd_plan(args: argparse.Namespace) -> int:
         return cmd_plan(args)
     # Qwen3's step 7 starts once GPT-OSS has nothing runnable left (the cais/hle cases may still be missing)
     sb_gate = {SB: True, SB + "_qwen3": not any(
-        sb_items(r, sbs_of[SB]) for r in rows if base_of(r["dataset"]) == SB and not is_qwen(r["dataset"]) and r["_missing"])}
+        sb_items(r, sbs_of[SB]) for r in rows if base_of(r["dataset"]) == SB and not is_qwen(r["dataset"])
+        and r["_missing"] and r["step"] == "7")}
+    bwork, block_lanes = block_items(by_key, state)
 
     # A row keeps the lane it first got (a row with progress in one lane's run root must never
     # move to another lane: skip-if-done only sees the lane's own root).
@@ -703,10 +846,14 @@ def cmd_plan(args: argparse.Namespace) -> int:
             else:
                 work[lane].append(work_item(row, row["_missing"]))
             row["status"] = "running" if active_item.get(lane) == key else ("queued" if lane_jobs else "pending")
+        work[lane].extend(bwork[lane])  # block-major rows (steps 7.1, 7.4) after the lane's other work
         # a model's short pilot / first-40 items gate the rest of its step 7: run them first
         work[lane].sort(key=lambda item: 0 if item["step"] == "7" and sbs_of[item["dataset"]]["phase"] != "full" else 1)
     for row in rows:
         key = row_key(row)
+        if key in block_lanes:
+            plan_block_row(row, block_lanes[key], state, active_item)
+            continue
         lane = lane_of.get(key)
         blocked = is_qwen(row["dataset"]) and blocked_qwen
         if not row["_missing"]:
@@ -909,9 +1056,12 @@ def cmd_submit(args: argparse.Namespace) -> int:
         if live_by_host.get(info["host"]) is None:  # job states unknown: submitting could double the chain
             print(f"lane {lane}: {info['host']} unreachable, nothing submitted")
             continue
-        # step-7 items are <row key>@<budget>; a row split into two budget items counts once
-        remaining_h = sum(float(manifest.get(key, {}).get("gpu_hours_est") or 0)
-                          for key in dict.fromkeys(i["id"].split("@")[0] for i in items))
+        # step-7 items are <row key>@<budget>; a row split into two budget items counts once. Block-major items
+        # (steps 7.1+) count their group's estimate once: one block row spans lanes, so its manifest hours do not
+        groups = {i["group"]: float(i.get("group_est_s") or 0) / 3600 for i in items if i.get("group")}
+        remaining_h = sum(groups.values()) + sum(
+            float(manifest.get(key, {}).get("gpu_hours_est") or 0)
+            for key in dict.fromkeys(i["id"].split("@")[0] for i in items if not i.get("group")))
         want = max(1, min(MAX_CHAIN, int(remaining_h / (0.9 * JOB_HOURS)) + 1))
         jobs = state["lanes"][lane]["jobs"]
         active = [j for j in jobs if j.get("state") in ("PENDING", "RUNNING", "CONFIGURING", "COMPLETING")]
@@ -938,25 +1088,38 @@ def cmd_submit(args: argparse.Namespace) -> int:
 
 # ------------------------------------------------------------------ collect
 
+def collect_roots() -> list[str]:
+    """Where new runs can appear: the run roots of the manifest rows that are not done (or blocked). A walk of a
+    lane's whole run tree took 10-15 min on Nibi's /scratch (2026-10-02); every older row is done."""
+    roots = sorted({r["run_root"] for r in load_manifest() if r["status"] not in ("done", "blocked")})
+    return [shlex.quote(r) for r in roots] or ["runs"]
+
+
 def pull_lane_runs(lane: str, info: dict) -> list[str]:
-    """Pull every ok run dir from the lane's run root that does not exist locally. Returns rel paths."""
+    """Pull every ok run dir from the lane's run root that does not exist locally, and every per-arm proposal trace
+    (persistent_arm_replay.py --trace-per-arm: <arm dir>/proposals_seed<N>_<stamp>.jsonl) not here yet. Returns
+    rel paths."""
     root = info["root"]
+    roots = " ".join(collect_roots())
     script = (
         f"cd {root} 2>/dev/null || exit 0; T=$(date +%s); "
         f"if [ -f .collect_marker ]; then F='-newer .collect_marker'; else F=''; fi; "
-        f"find runs -name run.json $F 2>/dev/null | xargs -r grep -l '\"status\": \"ok\"' ; echo \"__T=$T\""
+        f"find {roots} -name run.json $F 2>/dev/null | xargs -r grep -l '\"status\": \"ok\"' ; "
+        f"find {roots} -name 'proposals_seed*.jsonl' 2>/dev/null; echo \"__T=$T\""
     )
     host = info["host"]
     out = ssh(script, timeout=900, host=host).stdout.decode().splitlines()
     stamp = next((l.split("=", 1)[1] for l in out if l.startswith("__T=")), None)
     rels = [l.strip()[: -len("/run.json")] for l in out if l.strip().endswith("/run.json")]
     rels = [r for r in rels if not r.startswith("runs/addendum/smoke")]  # step-0.2 smoke runs are deleted, not kept
+    traces = [l.strip() for l in out if l.strip().endswith(".jsonl") and "/proposals_seed" in l]
     new = [r for r in rels if not (REPO / r).exists()]
+    new_traces = [t for t in traces if not (REPO / t).exists()]
     pulled = []
-    if new:
+    if new or new_traces:
         JOB_TMP.mkdir(parents=True, exist_ok=True)
         stage = pathlib.Path(tempfile.mkdtemp(prefix=f"pull_{lane}_", dir=JOB_TMP))
-        listing = ("\n".join(new) + "\n").encode()
+        listing = ("\n".join(new + new_traces) + "\n").encode()
         proc = subprocess.run([*ssh_cmd(host), f"cd {root} && tar -cf - -T -"], input=listing, capture_output=True,
                               timeout=1800)
         if proc.returncode != 0:
@@ -971,6 +1134,12 @@ def pull_lane_runs(lane: str, info: dict) -> list[str]:
             dst.parent.mkdir(parents=True, exist_ok=True)
             os.rename(src, dst)
             pulled.append(rel)
+        for rel in new_traces:  # whole files, never appended to or replaced
+            src, dst = stage / rel, REPO / rel
+            if src.is_file() and not dst.exists():
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                os.rename(src, dst)
+                pulled.append(rel)
         shutil.rmtree(stage, ignore_errors=True)
     if stamp:
         ssh(f"cd {root} && touch -d @{stamp} .collect_marker", check=False, host=host)
@@ -983,6 +1152,14 @@ def pull_lane_runs(lane: str, info: dict) -> list[str]:
 
 def git(*argv: str, check: bool = True) -> subprocess.CompletedProcess:
     return subprocess.run(["git", *argv], cwd=REPO, capture_output=True, text=True, check=check)
+
+
+def push_branch() -> str:
+    """The checked-out branch (addendum-oct2026 until 2026-10-02, speedbench-oct since); never main/master."""
+    branch = git("rev-parse", "--abbrev-ref", "HEAD").stdout.strip()
+    if branch in ("main", "master", "HEAD", ""):
+        raise SystemExit(f"refusing to push branch {branch!r}")
+    return branch
 
 
 COAUTHOR = "\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
@@ -1037,7 +1214,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
     if total and not done_now:
         commit(f"addendum: progress {utc_now()} ({total} runs pulled, no arm completed)", staged)
     if not args.no_push:
-        pushed = git("push", "-q", "origin", "addendum-oct2026", check=False)
+        pushed = git("push", "-q", "origin", push_branch(), check=False)
         if pushed.returncode != 0:
             print(f"git push failed: {pushed.stderr[-300:]}", file=sys.stderr)
     print(f"collect: {total} run dir(s) pulled, {len(done_now)} arm(s) completed")
@@ -1121,7 +1298,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
     cmd_plan(argparse.Namespace(quiet=True))  # statuses reflect the jobs just submitted
     commit(f"addendum: cycle {utc_now()}", ["campaign/addendum/manifest.csv", "campaign/addendum/PROGRESS.md",
                                              "campaign/addendum/lanes"])
-    git("push", "-q", "origin", "addendum-oct2026", check=False)
+    git("push", "-q", "origin", push_branch(), check=False)
     print_summary(load_manifest())
     return 0
 
@@ -1223,7 +1400,7 @@ def cmd_poll(args: argparse.Namespace) -> int:
         subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_hardware.py")], cwd=REPO, capture_output=True)
         subprocess.run([ANALYSIS_PY, str(REPO / "scripts" / "addendum_results.py")], cwd=REPO, capture_output=True)
     commit(f"addendum: tables and RESULTS.md refresh {utc_now()}", ["campaign/addendum"])
-    git("push", "-q", "origin", "addendum-oct2026", check=False)
+    git("push", "-q", "origin", push_branch(), check=False)
     return 0
 
 

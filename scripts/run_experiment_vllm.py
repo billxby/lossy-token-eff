@@ -594,6 +594,9 @@ def run_one(
 
     config = {
         "timestamp_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+        # the node this request ran on (time per round depends on it; campaign/addendum/README.md deviation 22)
+        "host": os.uname().nodename,
+        "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
         "backend": "vllm",
         "tag": tag,
         **provenance["acceptance"],
