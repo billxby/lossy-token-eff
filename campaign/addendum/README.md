@@ -378,3 +378,17 @@ by the unmerged `speedbench-oct` branch).
    `$SCRATCH/vllm_cache`, which already held the same architecture compiled for Qwen3-0.6B (step 4.3). With a
    cache of its own it ran (strict and mentored_dec 0.75, job 5913861). Every step-8 pair now compiles into
    `/scratch/billxby/vllm_cache_step8/<pair>` (`VLLM_CACHE_ROOT`).
+35. **A freshly compiled server is not bit-identical to a cache-loaded one on the V2 path; every pair's cache is
+   warmed before its arms.** Llama-3.1-8B-Instruct + EAGLE-3, GSM8K case_001, seed 0: lossless gave 166 tokens
+   whenever its server was the first on a fresh compile cache and 142 tokens on a warm one (two warm reruns, jobs
+   5914666), byte-identical to all five rules at their strict points (Block 0 strict-limit check). Fresh
+   compilation autotunes kernels by timing; a cache load replays one choice. Both outputs are lossless draws; only
+   the numerics differ. Every step-8 pair therefore gets one throwaway warm-up server (case_001, outside the run
+   tree) on its own cache before any measured arm, so no measured arm runs on a fresh compile.
+36. **Medusa dropped from Block 2** (the plan's Medusa fallback). nebius/MEDUSA-Llama-3.1-8B-Instruct (6 heads)
+   loads and serves, but vLLM's medusa path hands the sampler no draft probabilities: all 224 traced proposals have
+   q(x) = 1.0 and no draft entropy (Block 0 q probe). The cascade and fuzzy rules need q (Bill's Block 0(d) rule).
+37. **Block 3's second Qwen3-8B drafter is deepseek-ai/dspark_qwen3_8b_block7 (method dspark)**, the first in Bill's
+   order (DSpark -> DFlash -> Thinking EAGLE-3) to pass the q probe: draft-prob tensor (1024, 6, 151936) present at
+   the patched V2 sampler, 0% one-hot rows, mean max q 0.78-0.92, mean draft entropy 0.28-0.80 nats. vLLM 0.26.0
+   runs dspark on the V2 runner only, so its cactus and spec_casc_tok rows are accept-test-only.

@@ -1022,3 +1022,4 @@ for what is done; this file records every action and failure.
 - 2026-10-02T23:13:21Z Bill dropped the SPEED-Bench HLE prompts (not essential): the 14 step-7 rows stay blocked with that reason (README deviation 21). Campaign closed: 278 done, 14 blocked.
 - 2026-10-03T17:29:31Z step 8: pulled 28 run dir(s)
 - 2026-10-03T18:30:39Z step 8: pulled 14 run dir(s)
+- 2026-10-03T19:31:48Z step 8: pulled 16 run dir(s)
