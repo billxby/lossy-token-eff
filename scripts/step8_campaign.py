@@ -89,6 +89,10 @@ def maxpos(repo: str) -> str:
     return f"{HF_LOCAL}/{repo.split('/')[1]}-maxpos65536"
 
 
+# README deviation 33: R1-Distill's declared tokenizer class mis-encodes every prompt under transformers 5.18; the server
+# gets a copy of the same tokenizer.json declared PreTrainedTokenizerFast (remote/run_server_vllm.sh TOKENIZER)
+R1_TOKENIZER = f"{HF_LOCAL}/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
+FAMILY_ENV = {"r1llama": {"TOKENIZER": R1_TOKENIZER}}
 DRAFTER_FAMILY = {"eagle3": "eagle3", "eagle": "eagle1", "medusa": "medusa", "dspark": "dspark", "dflash": "dflash",
                   "draft_model": "draft_model"}
 V2, V1 = "V2 accept-test-only", "V1 full patches"
@@ -106,7 +110,7 @@ def pair(block: str, family: str, slug: str, drafter: str, spec: str, kind: str,
     pid = f"{TARGET_SLUG[family]}__{slug}"
     # a compile cache per pair: two drafters of one architecture (Qwen3-0.6B / 1.7B) collided in the shared cache
     # (Block 0, 2026-10-03: illegal memory access in the drafter's graph capture after an AOT cache load)
-    env = {"VLLM_CACHE_ROOT": f"/scratch/billxby/vllm_cache_step8/{pid}", **(env or {})}
+    env = {"VLLM_CACHE_ROOT": f"/scratch/billxby/vllm_cache_step8/{pid}", **FAMILY_ENV.get(family, {}), **(env or {})}
     return {"block": block, "family": family, "slug": slug, "drafter": drafter, "drafter_path": drafter_path or drafter,
             "spec": spec, "kind": kind, "datasets": datasets, "host": host, "sampler": sampler_path(family, spec),
             "drafter_family": DRAFTER_FAMILY[spec], "env": env, "arms": arms, "id": pid}
@@ -438,6 +442,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
 
 def cmd_collect(args: argparse.Namespace) -> int:
     ac.LANES_DIR = LANES_DIR  # lane journals land in campaign/addendum/step8/lanes/
+    LANES_DIR.mkdir(parents=True, exist_ok=True)
     pulled = []
     for lane in lanes_in_use():
         if not ac.reachable(LANES[lane]["host"]):

@@ -131,7 +131,35 @@ def lists() -> dict[str, list[dict]]:
         item("d_q3_qwen17b_owncache", "gsm8k_qwen3", "mentored_dec", "0.75", c(1), QWEN3, "Qwen/Qwen3-1.7B", q, "draft_model",
              rope=QWEN3_ROPE_SCALING, extra_env=own),
     ]
-    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r}
+    # acceptance vs position (2026-10-03 17:45Z): R1 + its EAGLE-3 head gave l_bar 2.4-3.3 on GSM8K (<= 717 tokens) but
+    # 1.17 at 4139 tokens and 0.40 at 12000 (LiveCodeBench). The head's published config stops at 2048 positions. Same
+    # case and seed at four budgets (fresh server each: lossless decoding with a fixed seed repeats the prefix), so the
+    # differences between budgets give accepted tokens per position segment.
+    k1p = []
+    for ds, case in (("livecodebench_r1llama", 2), ("aime24_r1llama", 1)):
+        for budget in (1024, 2048, 4096, 8192):
+            it = item(f"prof_r1_eagle3_maxpos_{budget}", ds, "strict", "strict", c(case), R1, maxpos(R1_E3), r1, "eagle3",
+                      max_new_tokens=budget)
+            it["env"]["VLLM_CACHE_ROOT"] = "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3"
+            k1p.append(it)
+    # rerun of every R1 check with the tokenizer fix (README deviation 33): R1's declared tokenizer class dropped the
+    # spaces of every prompt under transformers 5.18 (0 of 350 prompts matched tokenizer.json), so a_* / b_* / prof_*
+    # above ran on mis-encoded prompts and are kept only as the record of that bug
+    tok = {"TOKENIZER": f"{LOCAL}/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast",
+           "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3"}
+    tok1b = {**tok, "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__llama32-1b"}
+    k1t = [
+        item("a2_r1_eagle3_maxpos", "gsm8k_r1llama", "strict", "strict", c(1, 2, 3, 4, 5), R1, maxpos(R1_E3), r1, "eagle3", extra_env=tok),
+        item("a2_r1_eagle3_maxpos", "livecodebench_r1llama", "strict", "strict", c(1, 2, 3, 4, 5), R1, maxpos(R1_E3), r1, "eagle3", extra_env=tok),
+        item("a2_r1_eagle3_maxpos", "gsm8k_r1llama", "mentored_dec", "0.75", c(1), R1, maxpos(R1_E3), r1, "eagle3", extra_env=tok),
+        item("b2_r1_llama1b", "gsm8k_r1llama", "strict", "strict", c(1, 2, 3, 4, 5), R1, L32_1B, r1, "draft_model", extra_env=tok1b),
+        item("b2_r1_llama1b", "gsm8k_r1llama", "mentored_dec", "0.75", c(1), R1, L32_1B, r1, "draft_model", extra_env=tok1b),
+    ]
+    for ds, case in (("livecodebench_r1llama", 2), ("aime24_r1llama", 1)):
+        for budget in (1024, 2048, 4096, 8192):
+            k1t.append(item(f"prof2_r1_eagle3_maxpos_{budget}", ds, "strict", "strict", c(case), R1, maxpos(R1_E3), r1,
+                            "eagle3", max_new_tokens=budget, extra_env=tok))
+    return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t}
 
 
 def main() -> int:
