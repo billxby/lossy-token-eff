@@ -397,3 +397,8 @@ by the unmerged `speedbench-oct` branch).
    128000/128001) or repurposed from Llama's reserved range (128011-128015: `<｜User｜>`, `<｜Assistant｜>`,
    `<think>`, `</think>`, pad), untrained in the 1B drafter. vLLM requires only the vocabulary size; acceptance
    near those ids may suffer, correctness cannot (lossless verification by the target).
+39. **Block 4 (GPT-OSS-20B + RedHatAI EAGLE-3) runs on Killarney, not Nibi (2026-10-03 ~20:20Z).** At launch every
+   Nibi GPU node was down or drained (sinfo: 324 "Node unexpectedly rebooted", 96 "gres/gpu count reported", 24
+   drained for an image test / issue #1079); the Nibi warm-up and lane jobs sat in ReqNodeNotAvail and were
+   cancelled. GPT-OSS-20B, the drafter and its prompt sets are on Killarney; the whole block runs there (one node
+   type, like every other step-8 block).

@@ -1112,6 +1112,303 @@
    }
   },
   {
+   "id": "s8|gpt-oss-20b__rh-eagle3|gsm8k|mentored_dec|0.75|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "gsm8k",
+   "method": "mentored_dec",
+   "alpha": "0.75",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/gsm8k",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 2048,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|gsm8k|spec_casc_opt|0.05|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "gsm8k",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/gsm8k",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 2048,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|gsm8k|spec_casc_tok|0.8|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "gsm8k",
+   "method": "spec_casc_tok",
+   "alpha": "0.8",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/gsm8k",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 2048,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|livecodebench|mentored_dec|0.75|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "livecodebench",
+   "method": "mentored_dec",
+   "alpha": "0.75",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/livecodebench",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 12000,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|livecodebench|spec_casc_opt|-0.3|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "livecodebench",
+   "method": "spec_casc_opt",
+   "alpha": "-0.3",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/livecodebench",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 12000,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|livecodebench|r_fuzzy|0.15|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "livecodebench",
+   "method": "r_fuzzy",
+   "alpha": "0.15",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/livecodebench",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 12000,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|mtbench|mentored_dec|0.35|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "mtbench",
+   "method": "mentored_dec",
+   "alpha": "0.35",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/mtbench",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|mtbench|cactus|0.35|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "mtbench",
+   "method": "cactus",
+   "alpha": "0.35",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/mtbench",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
+   "id": "s8|gpt-oss-20b__rh-eagle3|mtbench|r_fuzzy|0.25|calib",
+   "step": "8.4",
+   "condition": "step8/gpt-oss-20b__rh-eagle3",
+   "dataset": "mtbench",
+   "method": "r_fuzzy",
+   "alpha": "0.25",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/mtbench",
+   "runs_subroot": "runs/addendum/step8/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   }
+  },
+  {
    "id": "s8|llama31-8b-instruct__eagle3|livecodebench_llama31|strict|strict|full",
    "step": "8.2",
    "condition": "step8/llama31-8b-instruct__eagle3",

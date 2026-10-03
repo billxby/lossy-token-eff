@@ -144,7 +144,8 @@ PAIRS = [
     pair("3", "qwen3", "qwen3-1.7b", "Qwen/Qwen3-1.7B", "draft_model", "standalone", ["gsm8k", "livecodebench"],
          "killarney"),
     pair("4", "gpt_oss_20b", "rh-eagle3", "RedHatAI/gpt-oss-20b-speculator.eagle3", "eagle3", "dedicated",
-         ["gsm8k", "livecodebench", "mtbench"], "nibi", env={"MENTORED_DEC_TEST_V1_ONLY": "1"}),
+         # on Killarney since 2026-10-03 ~20:20Z: every Nibi GPU node down or drained (README deviation 39)
+         ["gsm8k", "livecodebench", "mtbench"], "killarney", env={"MENTORED_DEC_TEST_V1_ONLY": "1"}),
     pair("5", "r1llama", "llama32-1b", L32_1B, "draft_model", "standalone", ["gsm8k", "livecodebench"], "killarney"),
     pair("6", "qwen3", "eagle3-fix", MODEL_FAMILIES["qwen3"][1], "eagle3", "fix", ["gsm8k", "livecodebench"],
          "killarney", arms=FIX_ARMS),
@@ -307,6 +308,9 @@ def cmd_plan(args: argparse.Namespace) -> int:
             planned.append((p, item, missing, est_hours(p, item, len(missing))))
     # sticky assignment: an item keeps its lane once given one (its partial runs live in that lane root)
     for p, item, missing, hours in planned:
+        # an item whose pair moved cluster is reassigned (its lane root on the old cluster holds none of its runs)
+        if item["id"] in assign and LANES[assign[item["id"]]]["host"] != p["host"]:
+            del assign[item["id"]]
         if item["id"] in assign:
             load[assign[item["id"]]] += hours
     for p, item, missing, hours in sorted(planned, key=lambda t: -t[3]):  # LPT: longest first to least-loaded lane
@@ -459,7 +463,8 @@ def cmd_warm(args: argparse.Namespace) -> int:
     for it (afterok, cmd_submit)."""
     state = load_state()
     for host, lanes in ACTIVE_LANES.items():
-        pairs = [p for p in PAIRS if p["host"] == host and p["block"] in BLOCKS_ENABLED and p["id"] not in DISABLED_PAIRS]
+        pairs = [p for p in PAIRS if p["host"] == host and p["block"] in BLOCKS_ENABLED and p["id"] not in DISABLED_PAIRS
+                 and (not getattr(args, "only", None) or p["id"] in args.only)]
         if not pairs:
             continue
         items = []
@@ -562,6 +567,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "warm", "grade"])
+    parser.add_argument("--only", nargs="*", help="warm: only these pair ids")
     args = parser.parse_args()
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
             "summary": cmd_summary, "warm": cmd_warm, "grade": cmd_grade}[args.cmd](args)

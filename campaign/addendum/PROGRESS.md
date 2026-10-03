@@ -1053,3 +1053,4 @@ for what is done; this file records every action and failure.
 - 2026-10-03T20:34:22Z step 8 lane A: submitted job 23211737 (afterany:23211736), ~2.9 GPU-h assigned
 - 2026-10-03T20:34:25Z step 8 lane B: submitted job 23211740, ~2.9 GPU-h assigned
 - 2026-10-03T20:34:28Z step 8 lane B: submitted job 23211747 (afterany:23211740), ~2.9 GPU-h assigned
+- 2026-10-03T20:45:36Z step 8: warm-up job 5915590 on killarney (1 pair caches)
