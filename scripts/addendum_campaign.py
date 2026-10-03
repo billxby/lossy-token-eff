@@ -737,8 +737,15 @@ def block_items(by_key: dict[str, dict], state: dict) -> tuple[dict[str, list[di
     groups. group_est_s: missing cases x step 7's strict s/case + one server start per arm with work."""
     work: dict[str, list[dict]] = {lane: [] for lane in LANES}
     lanes_of: dict[str, list[str]] = {}
+    stopped = state.get("stopped_steps", {})  # step -> reason: rows kept, no more work (README deviation 28)
     for spec in block_specs():
         keys = {arm: row_key(spec_row(spec, arm)) for arm in spec["arms"]}
+        if spec["step"] in stopped:
+            for block in spec_blocks(spec, state):
+                for arm in spec["arms"]:
+                    if block["lane"] not in lanes_of.setdefault(keys[arm], []):
+                        lanes_of[keys[arm]].append(block["lane"])
+            continue
         arms = [a for a in ARMS6 if a in spec["arms"]]
         per_case = (SB_S_PER_CASE[spec["dataset"]] * (SB_TRACE_SLOWDOWN if spec.get("trace") else 1.0)
                     * spec.get("slowdown", 1.0))
@@ -764,14 +771,20 @@ def plan_block_row(row: dict, lanes: list[str], state: dict, active_item: dict[s
     """Status, notes, job ids and measured hours of a block-major row (it may span lanes)."""
     key = row_key(row)
     live = any(j.get("state") in ("RUNNING", "PENDING") for lane in lanes for j in state["lanes"][lane]["jobs"])
+    stop_reason = state.get("stopped_steps", {}).get(row["step"])
     if not row["_missing"]:
         row["status"] = "done"
+    elif stop_reason:
+        row["status"] = "stopped"
     elif any(active_item.get(lane) == key for lane in lanes):
         row["status"] = "running"
     else:
         row["status"] = "queued" if live else "pending"
     spec = block_spec_of(row)
-    notes = [x for x in row["notes"].split("; ") if x and not x.startswith("lane=") and "block-major" not in x]
+    notes = [x for x in row["notes"].split("; ") if x and not x.startswith("lane=") and "block-major" not in x
+             and not x.startswith("stopped:")]
+    if stop_reason and row["_missing"]:
+        notes.append(f"stopped: {stop_reason}")
     notes.insert(0, "lane=" + "+".join(lanes))
     notes.append(f"block-major: {spec['n_blocks']} block(s) of the {len(spec_cases(spec))} cases, every arm of a block "
                  "in one job (README deviation 23)")

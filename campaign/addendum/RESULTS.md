@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-03 15:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-03 16:16 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 166.4; estimated remaining, runnable rows: 20.9; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 169.5; estimated remaining, runnable rows: 0.0; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -22,8 +22,8 @@ Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum 
 | 7.1 | 12 | 0 | 0 | 0 | 0 |
 | 7.4 | 6 | 0 | 0 | 0 | 0 |
 | 7.5 | 12 | 0 | 0 | 0 | 0 |
-| 7.6 | 0 | 1 | 5 | 0 | 0 |
-| 7.7 | 0 | 0 | 6 | 0 | 0 |
+| 7.6 | 0 | 0 | 0 | 0 | 0 |
+| 7.7 | 0 | 0 | 0 | 0 | 0 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 

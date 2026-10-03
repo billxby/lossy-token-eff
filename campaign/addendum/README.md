@@ -393,6 +393,18 @@ alpha grows).
    time. (c) Qwen3 at T 0.6 / top-p 0.95 / top-k 20 (step 7.7):
    `runs/addendum/qwenT0.6/speedbench_qwen3/`, all five rules + strict as
    in step 4.2. Order on every Killarney lane: (a), then (b), then (c).
+28. **P5 (b) and (c) stopped by Bill, 2026-10-03 ~16:15Z** ("stop
+   everything, we're done here"): they were robustness extras the named
+   finding does not rest on. Every Killarney job was cancelled (12, four of
+   them mid-block) and each lane root got a `STOP` file (the driver exits
+   before its next item; delete it to run that lane again). `state.json`
+   `stopped_steps` keeps steps 7.6 / 7.7 in the manifest as `stopped` with no
+   work. What exists: step 7.6 (Qwen3-0.6B drafter) blocks b1-b4 -- strict
+   and four rules on 336 of the 672 prompts (each block on one node), and
+   126 spec_casc_tok runs -- under `runs/addendum/lmdraft/speedbench_qwen3/`,
+   not tabulated (`addendum_tables.py lmdraft` would tabulate them as they
+   are); step 7.7 has no runs. Partial run directories of the cancelled
+   cases stay on Killarney's /scratch (never pulled: no ok run.json).
 
 ## SPEED-Bench follow-up (branch speedbench-oct, from 2026-10-03)
 

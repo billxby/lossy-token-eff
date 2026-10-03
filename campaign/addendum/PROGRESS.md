@@ -1200,3 +1200,5 @@ for what is done; this file records every action and failure.
 - 2026-10-03T16:15:13Z lane K2: pulled 88 new run dir(s) into runs/
 - 2026-10-03T16:15:15Z lane K3: pulled 80 new run dir(s) into runs/
 - 2026-10-03T16:15:17Z lane K4: pulled 88 new run dir(s) into runs/
+- 2026-10-03T16:16:17Z Bill (16:1xZ): stop everything, we're done. Heartbeat loop stopped; Killarney jobs 5906409 5906417 5906424 5906431 (running) and 5906411 5906419 5906426 5906433 5909260 5909262 5909263 5909265 (pending) cancelled; STOP files in laneK1-K4; nothing was queued on Nibi. Final collect pulled 336 run dirs; steps 7.6/7.7 marked stopped (README deviation 28).
+- 2026-10-03T16:16:17Z SPEED-Bench follow-up closed: steps 7.1, 7.4, 7.5 done (P1, P4, P5a); P2 scored for step 7 (loosest + lossless) only -- the gentlest half waits for API credit (Needs Bill 7); P3 done; P5b partial (step 7.6 blocks b1-b4), P5c not run. GPU time (item elapsed in the lane journals): 7.1 18.18 h, 7.4 0.58 h, 7.5 17.31 h, 7.6 5.81 h (+ ~1 h of cancelled spec_casc_tok items) = 41.9 GPU-h; judge $178.63.
