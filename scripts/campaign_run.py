@@ -130,6 +130,14 @@ TOKEN_BUDGETS.update({f"{name}{suffix}": budget for name, budget in list(TOKEN_B
                       if not name.endswith("_qwen3") for suffix in ("_llama31", "_r1llama")})
 
 
+def base_dataset(dataset: str) -> str:
+    """gsm8k_qwen3 / gsm8k_llama31 / gsm8k_r1llama -> gsm8k (the grader and token-budget key)."""
+    for suffix in FAMILY_SUFFIXES:
+        if dataset.endswith(suffix):
+            return dataset.removesuffix(suffix)
+    return dataset
+
+
 def model_family_for(dataset: str) -> tuple[str, str, str, str]:
     """(model_path, draft_model_path, served_model_name, rope_scaling_json) for this dataset name."""
     for suffix, family in FAMILY_SUFFIXES.items():

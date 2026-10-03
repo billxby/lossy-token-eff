@@ -166,6 +166,8 @@ def main() -> int:
             fsr.set_trace_destination(None)
             fsr.set_hidden_state_destination(None)
             process = fsr.start_server(args, arm, log_path)
+            # recorded in every case's config.json (run_experiment_vllm.py inherits it): when this arm's server came up
+            os.environ["LOSSY_SERVER_STARTED_UTC"] = dt.datetime.now(dt.timezone.utc).isoformat()
             try:
                 completed = request_many(args, arm, missing, seed, tag, method, params, runs_root, log_path)
                 if completed.returncode != 0:

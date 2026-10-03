@@ -627,6 +627,13 @@ bfaec14e220cf669ddfd2b3ef6d2c556dc8fae60ef71e65a2e7ae068fb386a2a  upstream
 68d0a904230a82d7aa90916e9ed60297e3c725eeb0188b633893e03fb5b9f938  mentored-dec
 # vllm-0.26.0-v2-consolidated.patch (added 2026-09-29, NAACL addendum step 0.2): pristine (bfaec14e220c...)
 # -> this state, recovered from the old H100 box; apply with `patch -p1 -d <site-packages>`.
+# updated 2026-10-03 (step 8 block 6, campaign/addendum/step8/GOAL.md): the same file plus V2 ports of
+# spec-casc-tok-lt and spec-casc-opt-head (two more defer masks ANDed into the existing one; complete
+# ports, both being switch rules). vllm-0.26.0-v2-consolidated-step8.patch: pristine -> this state.
+# Labelled "mentored-dec" like 68d0a904 above, which it supersedes: at the two new rules' neutral
+# values (alpha -inf) every other method's defer mask is unchanged (checked bit for bit, README
+# deviation 32).
+e449b8a154e31da5c1b04079ad7b5e7ca2c47f4faa8b76963ce376e87b234132  mentored-dec
 #
 # gpu_model_runner.py (the FLAT file -- vLLM's "V1" model runner, confirmed
 # active by default in this config; NOT vllm/v1/worker/gpu/model_runner.py

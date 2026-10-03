@@ -58,10 +58,9 @@ def params_dir(method: str, alpha: str) -> str:
 
 
 def item_run_dir(lane_root: pathlib.Path, item: dict, case: str) -> pathlib.Path:
-    return (
-        lane_root / item["runs_subroot"] / item["dataset"] / item["method"]
-        / params_dir(item["method"], item["alpha"]) / case / f"seed_{item['seed']}"
-    )
+    # an item with a second knob (spec_casc_opt_head's beta, via extra_flags) names its full params dir itself
+    params = item.get("params_dir") or params_dir(item["method"], item["alpha"])
+    return lane_root / item["runs_subroot"] / item["dataset"] / item["method"] / params / case / f"seed_{item['seed']}"
 
 
 def run_state(run_dir: pathlib.Path) -> str:
