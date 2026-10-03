@@ -121,6 +121,9 @@ SB_GENTLE = {"strict": "strict", "spec_casc_opt": "-0.3", "mentored_dec": "0.15"
 SB_S_PER_CASE = {"speedbench": 3.33, "speedbench_qwen3": 9.54}  # step 7 strict, mean over its 672 runs
 SB_TRACE_PER_CAT = 2
 SB_TRACE_SLOWDOWN = 2.0  # assumed cost of --trace-proposals per case (block estimate only)
+# per arm of a block: stop + patch switch/self-test + server start, measured on step 7.1 (2026-10-03): Nibi 6 min for
+# a restart alone, 11.5-14 min with a switch and self-test (venv on /project); Killarney 1.7-3.6 min
+BLOCK_STARTUP_S = {"nibi": 600, "killarney": 240}
 
 
 KLANES = ["K1", "K2", "K3", "K4"]
@@ -142,7 +145,7 @@ def block_specs() -> list[dict]:
     if STATE.is_file() and json.loads(STATE.read_text(encoding="utf-8")).get("p5_enabled"):
         specs += [
             {"step": "7.5", "condition": "speedbench", "dataset": "speedbench", "seed": 1, "arms": SB_ARMS,
-             "n_blocks": 2, "lanes": ["A", "B"], "cases": "runnable"},
+             "n_blocks": 3, "lanes": ["A", "B"], "cases": "runnable"},
             {"step": "7.5", "condition": "speedbench", "dataset": "speedbench_qwen3", "seed": 1, "arms": SB_ARMS,
              "n_blocks": 8, "lanes": KLANES, "cases": "runnable"},
             {"step": "7.6", "condition": "lmdraft", "dataset": "speedbench_qwen3", "seed": 0, "arms": SB_ARMS,
@@ -747,7 +750,7 @@ def block_items(by_key: dict[str, dict], state: dict) -> tuple[dict[str, list[di
             if not any(missing.values()):
                 continue
             gid = f"{spec_key(spec)}|{block['id']}"
-            est = sum(len(m) * per_case + STARTUP_S for m in missing.values() if m)
+            est = sum(len(m) * per_case + BLOCK_STARTUP_S[LANES[block["lane"]]["host"]] for m in missing.values() if m)
             for arm in arms:
                 item = work_item(by_key[keys[arm]], block["cases"], max_new_tokens=SB_BUDGET)
                 item.update(id=f"{keys[arm]}@{SB_BUDGET}#{block['id']}", group=gid, group_est_s=round(est))

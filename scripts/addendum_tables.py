@@ -734,9 +734,35 @@ def cmd_speedbench_gentle(args) -> int:
     cats = sb_categories()
     for family, ds in (("gpt-oss-20b", "speedbench"), ("qwen3-8b", "speedbench_qwen3")):
         sb_tables(family, ds, f"runs/addendum/speedbench_gentle/{family}", SB_GENTLE_ARMS, cats, "speedbench_gentle")
+        # lossless vs lossless: step 7.1's strict against step 7's, same seed and settings -- what a per-category
+        # ratio moves by with no relaxation at all (request ordinals differ, so outputs may too)
+        fresh = load_cell(ds, "strict", "strict", 0, run_root=f"runs/addendum/speedbench_gentle/{family}")
+        old = load_cell(ds, "strict", "strict", 0, run_root=f"runs/addendum/speedbench/{family}")
+        if fresh and old:
+            rng = np.random.default_rng(RNG_SEED)
+            out = []
+            for cat in ["all", *SB_CATS]:
+                A = {c: r for c, r in fresh.items() if cat == "all" or cats.get(c) == cat}
+                B = {c: r for c, r in old.items() if cat == "all" or cats.get(c) == cat}
+                n = len(set(A) & set(B))
+                c = compare(A, B, rng if n >= SB_MIN_CI else None)
+                if c["n_pairs"]:
+                    same = sum(A[x]["output_tokens"] == B[x]["output_tokens"] for x in set(A) & set(B))
+                    out.append({"target": family, "category": cat, "n_pairs": c["n_pairs"],
+                                "identical_token_count_pairs": same,
+                                **{k: c.get(k) for k in ("mean_tokens", "mean_tokens_strict", "lambda", "lambda_ci_lo",
+                                                         "lambda_ci_hi", "rounds_ratio", "rounds_ratio_ci_lo",
+                                                         "rounds_ratio_ci_hi", "time_ratio", "nodes", "nodes_strict",
+                                                         "same_node_pairs")}})
+            write_csv(ADD / "tables" / f"speedbench_gentle_strict_rerun__{family}.csv", out)
     readme = ADD / "tables" / "README.md"
     text = readme.read_text(encoding="utf-8")
     lines = {
+        "speedbench_gentle_strict_rerun__<family>.csv": "step 7.1's strict against step 7's strict (both lossless, "
+        "seed 0, same settings; request ordinals differ, so a case's output can too), per category: lambda and rounds "
+        "ratio with 95% paired bootstrap intervals and how many pairs have identical completion lengths -- the "
+        "per-category movement with no relaxation at all. time_ratio is cross-machine/cross-node here. "
+        "(scripts/addendum_tables.py speedbench_gentle)",
         "speedbench_gentle__<family>.csv": "step 7.1 (P1 of the SPEED-Bench follow-up; runs/addendum/speedbench_gentle/"
         "<family>/): the columns of speedbench__<family>.csv for the five rules at the gentlest alpha of the main-grid "
         "alpha grids (spec_casc_opt -0.3, mentored_dec 0.15, cactus 0.03, r_fuzzy 0.03, spec_casc_tok 0.15), seed 0, "
