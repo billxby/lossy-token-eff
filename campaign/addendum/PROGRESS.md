@@ -1190,3 +1190,4 @@ for what is done; this file records every action and failure.
 - 2026-10-03T15:23:31Z lane K3: pulled 153 new run dir(s) into runs/
 - 2026-10-03T15:23:34Z lane K4: pulled 132 new run dir(s) into runs/
 - 2026-10-03T15:23:50Z step 7.5 speedbench speedbench r_fuzzy alpha=0.25 seed=1: done, 672/672 cases (jobs 23191120 23191121 23191123, 0.74 GPU-h)
+- 2026-10-03T15:23:51Z step 7.5 speedbench speedbench spec_casc_tok alpha=0.8 seed=1: done, 672/672 cases (jobs 23191120 23191121 23191123, 0.87 GPU-h)
