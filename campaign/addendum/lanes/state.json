@@ -503,19 +503,19 @@
         },
         {
           "id": "5906409",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:29:53Z",
           "dependency": "5906408"
         },
         {
           "id": "5906411",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:29:54Z",
           "dependency": "5906409"
         },
         {
           "id": "5909260",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T13:12:22Z",
           "dependency": "5906411"
         }
@@ -571,7 +571,10 @@
         "5903624",
         "5903625",
         "5906406",
-        "5906408"
+        "5906408",
+        "5906409",
+        "5906411",
+        "5909260"
       ]
     },
     "K2": {
@@ -674,19 +677,19 @@
         },
         {
           "id": "5906417",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:29:58Z",
           "dependency": "5906415"
         },
         {
           "id": "5906419",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:30:00Z",
           "dependency": "5906417"
         },
         {
           "id": "5909262",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T13:12:25Z",
           "dependency": "5906419"
         }
@@ -749,7 +752,10 @@
         "5903626",
         "5903631",
         "5906413",
-        "5906415"
+        "5906415",
+        "5906417",
+        "5906419",
+        "5909262"
       ]
     },
     "K3": {
@@ -816,19 +822,19 @@
         },
         {
           "id": "5906424",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:30:04Z",
           "dependency": "5906422"
         },
         {
           "id": "5906426",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:30:05Z",
           "dependency": "5906424"
         },
         {
           "id": "5909263",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T13:12:27Z",
           "dependency": "5906426"
         }
@@ -861,7 +867,10 @@
         "5903632",
         "5903634",
         "5906421",
-        "5906422"
+        "5906422",
+        "5906424",
+        "5906426",
+        "5909263"
       ]
     },
     "K4": {
@@ -916,19 +925,19 @@
         },
         {
           "id": "5906431",
-          "state": "RUNNING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:30:09Z",
           "dependency": "5906429"
         },
         {
           "id": "5906433",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T11:30:11Z",
           "dependency": "5906431"
         },
         {
           "id": "5909265",
-          "state": "PENDING",
+          "state": "ENDED",
           "submitted": "2026-10-03T13:12:29Z",
           "dependency": "5906433"
         }
@@ -963,7 +972,10 @@
         "5903635",
         "5903637",
         "5906428",
-        "5906429"
+        "5906429",
+        "5906431",
+        "5906433",
+        "5909265"
       ]
     }
   },
@@ -5657,5 +5669,9 @@
       }
     ]
   },
-  "p5_enabled": true
+  "p5_enabled": true,
+  "stopped_steps": {
+    "7.6": "Bill stopped the bonus P5 runs on 2026-10-03 ~16:15Z (not essential to the finding); jobs cancelled, partial runs kept (README deviation 28)",
+    "7.7": "Bill stopped the bonus P5 runs on 2026-10-03 ~16:15Z (not essential to the finding); jobs cancelled, partial runs kept (README deviation 28)"
+  }
 }

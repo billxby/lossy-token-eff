@@ -1195,3 +1195,8 @@ for what is done; this file records every action and failure.
 - 2026-10-03T15:57:16Z lane K2: pulled 193 new run dir(s) into runs/
 - 2026-10-03T15:57:20Z lane K3: pulled 187 new run dir(s) into runs/
 - 2026-10-03T15:57:23Z lane K4: pulled 168 new run dir(s) into runs/
+- 2026-10-03T15:58:47Z Step 7.6: r_fuzzy also runs on the draft-model path (126 ok runs by 15:57Z on K1-K3, no failed item); step 7.5 complete for both targets (committed c8d0a456b).
+- 2026-10-03T16:15:09Z lane K1: pulled 80 new run dir(s) into runs/
+- 2026-10-03T16:15:13Z lane K2: pulled 88 new run dir(s) into runs/
+- 2026-10-03T16:15:15Z lane K3: pulled 80 new run dir(s) into runs/
+- 2026-10-03T16:15:17Z lane K4: pulled 88 new run dir(s) into runs/
