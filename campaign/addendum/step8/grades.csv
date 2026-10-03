@@ -1,0 +1,16 @@
+relpath,dataset,method,params,case,seed,verdict,correct
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/cactus/alpha0.03/case_001/seed_0,gsm8k_r1llama,cactus,alpha0.03,case_001,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/cactus/alpha0.03/case_002/seed_0,gsm8k_r1llama,cactus,alpha0.03,case_002,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/cactus/alpha0.03/case_003/seed_0,gsm8k_r1llama,cactus,alpha0.03,case_003,0,wrong,0
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/mentored_dec/alpha0.15/case_001/seed_0,gsm8k_r1llama,mentored_dec,alpha0.15,case_001,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/mentored_dec/alpha0.15/case_002/seed_0,gsm8k_r1llama,mentored_dec,alpha0.15,case_002,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/mentored_dec/alpha0.15/case_003/seed_0,gsm8k_r1llama,mentored_dec,alpha0.15,case_003,0,wrong,0
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/mentored_dec/alpha0.55/case_001/seed_0,gsm8k_r1llama,mentored_dec,alpha0.55,case_001,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/mentored_dec/alpha0.55/case_002/seed_0,gsm8k_r1llama,mentored_dec,alpha0.55,case_002,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/mentored_dec/alpha0.55/case_003/seed_0,gsm8k_r1llama,mentored_dec,alpha0.55,case_003,0,wrong,0
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/spec_casc_opt/alphaneg0.02/case_001/seed_0,gsm8k_r1llama,spec_casc_opt,alphaneg0.02,case_001,0,wrong,0
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/spec_casc_opt/alphaneg0.02/case_002/seed_0,gsm8k_r1llama,spec_casc_opt,alphaneg0.02,case_002,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/spec_casc_opt/alphaneg0.02/case_003/seed_0,gsm8k_r1llama,spec_casc_opt,alphaneg0.02,case_003,0,wrong,0
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/spec_casc_tok/alpha0.55/case_001/seed_0,gsm8k_r1llama,spec_casc_tok,alpha0.55,case_001,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/spec_casc_tok/alpha0.55/case_002/seed_0,gsm8k_r1llama,spec_casc_tok,alpha0.55,case_002,0,correct,1
+addendum/step8/r1-distill-llama-8b__eagle3/gsm8k_r1llama/spec_casc_tok/alpha0.55/case_003/seed_0,gsm8k_r1llama,spec_casc_tok,alpha0.55,case_003,0,wrong,0

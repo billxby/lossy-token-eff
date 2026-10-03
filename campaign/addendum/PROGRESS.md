@@ -1064,3 +1064,6 @@ for what is done; this file records every action and failure.
 - 2026-10-03T20:55:26Z step 8 lane K7: submitted job 5915653 (afterany:5915446), ~7.7 GPU-h assigned
 - 2026-10-03T20:55:27Z step 8 lane K8: submitted job 5915654 (afterany:5915450), ~7.7 GPU-h assigned
 - 2026-10-03T20:55:33Z step 8 grading: 15 new run dir(s) uploaded, 15 pending, CPU job 23211914
+- 2026-10-03T21:41:17Z step 8: pulled 133 run dir(s)
+- 2026-10-03T21:41:17Z step 8: calibrated r1-distill-llama-8b__eagle3 gsm8k_r1llama: targets [3.032, 3.648, 4.265], mentored_dec [0.15, 0.75], cactus [0.03, 0.08, 0.35], spec_casc_opt [-0.3, -0.02, 0.05], r_fuzzy [0.08, 0.15, 0.25], spec_casc_tok [0.8, 0.15]
+- 2026-10-03T21:41:30Z step 8 grading: 104 new run dir(s) uploaded, 104 pending, CPU job 23212394
