@@ -74,7 +74,7 @@ qs = [r.get("q") for r in rows]
 real = [q for q in qs if q is not None]
 ent = [r.get("draft_entropy") for r in rows if r.get("draft_entropy") is not None]
 print(f"[Q-PROBE V1 trace] proposals={len(rows)} q_present={len(real)} q_lt_0.999={sum(q < 0.999 for q in real)} "
-      f"mean_draft_entropy={sum(ent) / len(ent) if ent else float(\"nan\"):.4f}")' {} \; 2>/dev/null || true
+      f"mean_draft_entropy={sum(ent) / len(ent) if ent else -1.0:.4f}")' {} \; 2>/dev/null || true
   find "$OUT/q/$label/runs" -name run.json -exec grep -l '"status": "ok"' {} \; | head -1 | sed 's/^/ok run: /'
 }
 Q3ROPE='{"rope_type":"yarn","factor":1.6,"original_max_position_embeddings":40960}'
