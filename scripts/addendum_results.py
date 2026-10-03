@@ -360,6 +360,33 @@ def section_speedbench_followup() -> list[str]:
             if any(c != "-" for c in cells):
                 out.append(f"| {cat} | " + " | ".join(cells) + " |")
         out.append("")
+    # the named finding: a rule wins or loses rounds with the category's length change
+    lr_path = AN / "speedbench_length_vs_rounds.csv"
+    lr = rows(lr_path)
+    out += ["## SPEED-Bench: rounds follow the category's length change", ""]
+    if not lr:
+        out += ["Pending.", ""]
+    else:
+        n_pos = sum(float(r["spearman_lambda_rounds"]) > 0 for r in lr)
+        n_sig = sum(float(r["spearman_p"]) < 0.05 for r in lr)
+        with_losses = [r for r in lr if r["losses_all_longer_than_wins"] in ("True", "False")]
+        sep = [r for r in with_losses if r["losses_all_longer_than_wins"] == "True"]
+        out += [f"Source: `{rel(lr_path)}`. Across the 11 categories, Spearman rho(lambda, rounds ratio) is positive in "
+                f"{n_pos}/{len(lr)} (target, setting, rule) cells, p < 0.05 (permutation) in {n_sig}/{len(lr)}. In "
+                f"{len(sep)} of the {len(with_losses)} cells where a rule loses rounds somewhere, every losing category "
+                "has a larger length change than every winning one"
+                + (" (exceptions: " + "; ".join(f"{r['target']} {r['setting']} {r['method']}: largest winning lambda "
+                                                 f"{f(r['max_lambda_of_wins'])} vs smallest losing {f(r['min_lambda_of_losses'])}"
+                                                 for r in with_losses if r not in sep) + ")" if len(sep) < len(with_losses) else "")
+                + ".", "",
+                "| target | setting | rule (alpha) | rho (p) | rho, 8 full categories (p) | loses rounds in | largest lambda of a win / smallest of a loss |",
+                "|---|---|---|---|---|---|---|"]
+        for r in lr:
+            out.append(f"| {r['target']} | {r['setting']} | {r['method']} ({r['alpha']}) | "
+                       f"{f(r['spearman_lambda_rounds'])} ({f(r['spearman_p'], 3)}) | "
+                       f"{f(r['spearman_lambda_rounds_8full'])} ({f(r['spearman_p_8full'], 3)}) | "
+                       f"{r['rounds_losses'] or '-'} | {f(r['max_lambda_of_wins'])} / {f(r['min_lambda_of_losses'])} |")
+        out.append("")
     # P3: mechanism
     out += ["## SPEED-Bench mechanism: where the extra length goes (P3)", ""]
     any_mech = False

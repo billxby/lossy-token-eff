@@ -1,10 +1,10 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-03 11:27 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-03 11:31 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
-Source: `campaign/addendum/manifest.csv` (310 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 146.4; estimated remaining, runnable rows: 0.0; blocked rows: 5.2.
+Source: `campaign/addendum/manifest.csv` (334 rows). GPU-hours used so far (sum of `gpu_hours_actual`): 146.4; estimated remaining, runnable rows: 37.7; blocked rows: 5.2.
 
 | step | done | running | queued | pending | blocked |
 |---|---:|---:|---:|---:|---:|
@@ -21,6 +21,9 @@ Source: `campaign/addendum/manifest.csv` (310 rows). GPU-hours used so far (sum 
 | 7 | 0 | 0 | 0 | 0 | 14 |
 | 7.1 | 12 | 0 | 0 | 0 | 0 |
 | 7.4 | 6 | 0 | 0 | 0 | 0 |
+| 7.5 | 0 | 0 | 12 | 0 | 0 |
+| 7.6 | 0 | 0 | 6 | 0 | 0 |
+| 7.7 | 0 | 0 | 6 | 0 | 0 |
 
 ## Step 1: zero-GPU analyses (seed 0, the paper's data)
 
@@ -799,6 +802,33 @@ Source: `campaign/addendum/analysis/speedbench_judge_summary.csv` (rows target `
 | multilingual | 7.39 | 2.37 (-5.13↓) | 7.64 (+0.25) | 3.56 (-3.80↓) | 3.76 (-3.62↓) | 7.81 (+0.42↑) |
 | reasoning | 6.97 | 3.15 (-3.81↓) | 7.09 (+0.11) | 3.67 (-3.30↓) | 4.44 (-2.54↓) | 7.14 (+0.16) |
 | qa | 3.38 | 1.52 (-1.85↓) | 3.33 (-0.05) | 2.12 (-1.25↓) | 2.58 (-0.80↓) | 3.54 (+0.16) |
+
+## SPEED-Bench: rounds follow the category's length change
+
+Source: `campaign/addendum/analysis/speedbench_length_vs_rounds.csv`. Across the 11 categories, Spearman rho(lambda, rounds ratio) is positive in 20/20 (target, setting, rule) cells, p < 0.05 (permutation) in 17/20. In 12 of the 14 cells where a rule loses rounds somewhere, every losing category has a larger length change than every winning one (exceptions: gpt-oss-20b loosest spec_casc_opt: largest winning lambda 1.37 vs smallest losing 1.30; qwen3-8b loosest spec_casc_opt: largest winning lambda 1.47 vs smallest losing 1.35).
+
+| target | setting | rule (alpha) | rho (p) | rho, 8 full categories (p) | loses rounds in | largest lambda of a win / smallest of a loss |
+|---|---|---|---|---|---|---|
+| gpt-oss-20b | loosest | mentored_dec (0.75) | 0.42 (0.200) | 0.43 (0.301) | multilingual | 1.34 / 1.43 |
+| gpt-oss-20b | loosest | cactus (0.35) | 0.79 (0.005) | 0.95 (0.001) | - | 1.72 / - |
+| gpt-oss-20b | loosest | spec_casc_opt (0.05) | 0.85 (0.001) | 0.90 (0.004) | coding math multilingual | 1.37 / 1.30 |
+| gpt-oss-20b | loosest | r_fuzzy (0.25) | 0.82 (0.004) | 0.64 (0.095) | math multilingual | 1.37 / 1.71 |
+| gpt-oss-20b | loosest | spec_casc_tok (0.8) | 0.81 (0.004) | 0.50 (0.216) | roleplay qa | 1.08 / 1.25 |
+| gpt-oss-20b | gentlest | mentored_dec (0.15) | 0.92 (0.000) | 0.90 (0.005) | coding rag reasoning | 1.06 / 1.07 |
+| gpt-oss-20b | gentlest | cactus (0.03) | 0.45 (0.167) | 0.55 (0.172) | - | 1.33 / - |
+| gpt-oss-20b | gentlest | spec_casc_opt (-0.3) | 0.68 (0.025) | 0.50 (0.217) | - | 1.15 / - |
+| gpt-oss-20b | gentlest | r_fuzzy (0.03) | 0.97 (0.000) | 0.95 (0.001) | coding summarization roleplay multilingual | 1.02 / 1.05 |
+| gpt-oss-20b | gentlest | spec_casc_tok (0.15) | 0.80 (0.004) | 0.69 (0.066) | coding humanities writing roleplay rag multilingual reasoning qa | 1.00 / 1.03 |
+| qwen3-8b | loosest | mentored_dec (0.75) | 0.88 (0.001) | 0.83 (0.016) | - | 1.16 / - |
+| qwen3-8b | loosest | cactus (0.35) | 0.28 (0.407) | 0.57 (0.151) | - | 2.02 / - |
+| qwen3-8b | loosest | spec_casc_opt (0.05) | 0.85 (0.002) | 0.67 (0.081) | coding math humanities rag multilingual | 1.47 / 1.35 |
+| qwen3-8b | loosest | r_fuzzy (0.25) | 0.93 (0.000) | 0.90 (0.006) | coding math reasoning | 1.25 / 1.31 |
+| qwen3-8b | loosest | spec_casc_tok (0.8) | 0.93 (0.000) | 0.86 (0.011) | roleplay | 1.03 / 1.06 |
+| qwen3-8b | gentlest | mentored_dec (0.15) | 0.95 (0.000) | 0.98 (0.000) | coding math writing | 0.99 / 1.04 |
+| qwen3-8b | gentlest | cactus (0.03) | 0.72 (0.016) | 0.57 (0.152) | - | 1.09 / - |
+| qwen3-8b | gentlest | spec_casc_opt (-0.3) | 0.88 (0.001) | 0.69 (0.071) | multilingual | 1.06 / 1.08 |
+| qwen3-8b | gentlest | r_fuzzy (0.03) | 0.97 (0.000) | 0.95 (0.002) | coding math writing rag multilingual | 1.01 / 1.02 |
+| qwen3-8b | gentlest | spec_casc_tok (0.15) | 0.99 (0.000) | 0.98 (0.000) | writing | 1.01 / 1.02 |
 
 ## SPEED-Bench mechanism: where the extra length goes (P3)
 

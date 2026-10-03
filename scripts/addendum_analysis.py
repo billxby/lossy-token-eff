@@ -777,6 +777,55 @@ def a_speedbench_mechanism(rows, cells, args):
          "held by the top tenth of prompts).")
 
 
+SB_THIN = {"math", "humanities", "stem"}  # 18 / 8 / 6 prompts per arm without the cais/hle rows (README deviation 21)
+
+
+def a_speedbench_length_rounds(rows, cells, args):
+    """Does a rule win or lose rounds with the category's length change? Per (target, setting, rule), across the
+    SPEED-Bench categories of tables/speedbench{,_gentle}_eq4__<target>.csv: Spearman rho between lambda and the rounds
+    ratio (permutation p), over all 11 categories and over the 8 with 80 prompts; the categories where the rule loses
+    rounds (ratio > 1), and the largest lambda among its wins vs the smallest among its losses (separated = every loss
+    has a larger length change than every win)."""
+    rng = np.random.default_rng(RNG_SEED)
+    out = []
+    for target, _ in SB_FAMILIES:
+        for setting, prefix in (("loosest", "speedbench"), ("gentlest", "speedbench_gentle")):
+            path = REPO / "campaign" / "addendum" / "tables" / f"{prefix}_eq4__{target}.csv"
+            if not path.is_file():
+                continue
+            with path.open(newline="", encoding="utf-8") as handle:
+                eq4 = [r for r in csv.DictReader(handle) if r["category"] != "all"]
+            for method in [m for m in FIVE if any(r["method"] == m for r in eq4)]:
+                cats = [r for r in eq4 if r["method"] == method]
+                lam = [float(r["lambda"]) for r in cats]
+                rr = [float(r["rounds_ratio"]) for r in cats]
+                rho, p = spearman(lam, rr, rng)
+                full = [r for r in cats if r["category"] not in SB_THIN]
+                rho8, p8 = spearman([float(r["lambda"]) for r in full], [float(r["rounds_ratio"]) for r in full], rng)
+                wins = [r for r in cats if float(r["rounds_ratio"]) < 1]
+                losses = [r for r in cats if float(r["rounds_ratio"]) >= 1]
+                max_win = max((float(r["lambda"]) for r in wins), default=None)
+                min_loss = min((float(r["lambda"]) for r in losses), default=None)
+                out.append({
+                    "target": target, "setting": setting, "method": method, "alpha": cats[0]["alpha"],
+                    "n_categories": len(cats), "spearman_lambda_rounds": rho, "spearman_p": p,
+                    "spearman_lambda_rounds_8full": rho8, "spearman_p_8full": p8,
+                    "rounds_wins": len(wins), "rounds_losses": " ".join(r["category"] for r in losses),
+                    "max_lambda_of_wins": max_win, "min_lambda_of_losses": min_loss,
+                    "losses_all_longer_than_wins": (None if max_win is None or min_loss is None else min_loss > max_win),
+                    "mean_gain": mean([float(r["gain"]) for r in cats]),
+                })
+    if out:
+        write_csv("speedbench_length_vs_rounds.csv", out, list(out[0].keys()))
+    note("speedbench_length_vs_rounds.csv",
+         "SPEED-Bench, per (target, setting, rule): across categories of tables/speedbench{,_gentle}_eq4__<target>.csv "
+         "(loosest = step 7, gentlest = step 7.1), Spearman rho between lambda (completion tokens relaxed/strict) and "
+         "the rounds ratio with a two-sided permutation p (20,000 draws), over all 11 categories and over the 8 with "
+         "80 prompts (math, humanities, stem have 18 / 8 / 6); the categories where the rule does not save rounds "
+         "(ratio >= 1); the largest lambda among its winning categories vs the smallest among its losing ones "
+         "(losses_all_longer_than_wins = the two sets separate on lambda); mean Eq. 4 gain (l_bar + 1)/(l_bar* + 1).")
+
+
 def a_speedbench_admit(rows, cells, args):
     """Step 7.4 traces (README deviation 24): per rule, committed drafted tokens split into lossy_only / both, as
     admitted_tokens.csv, plus the share of committed draft tokens that only the relaxed rule accepts (tab:admit)."""
@@ -842,8 +891,9 @@ ANALYSES = {
     "distribution": a_distribution, "repetition": a_repetition, "time_per_round": a_time_per_round,
     "admitted_tokens": a_admitted_tokens, "eq4": a_eq4,
     "speedbench_mechanism": a_speedbench_mechanism, "speedbench_admit": a_speedbench_admit,
+    "speedbench_length_rounds": a_speedbench_length_rounds,
 }
-SB_ONLY = {"speedbench_mechanism", "speedbench_admit"}  # need none of the campaign runs
+SB_ONLY = {"speedbench_mechanism", "speedbench_admit", "speedbench_length_rounds"}  # need none of the campaign runs
 
 
 def write_readme() -> None:
