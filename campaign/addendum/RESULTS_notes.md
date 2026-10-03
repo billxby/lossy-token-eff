@@ -253,10 +253,18 @@
 
 - Named finding, quantified (`analysis/speedbench_length_vs_rounds.csv`):
   across SPEED-Bench's categories a rule's rounds ratio rises with its
-  length change (Spearman rho > 0 for every target x setting x rule) and,
-  where a rule loses rounds somewhere, the losing categories are the ones
-  whose completions grew most -- except spec_casc_opt at its loosest alpha,
-  whose winning and losing categories overlap slightly in lambda.
+  length change (Spearman rho > 0 for every target x setting x rule, seed 1
+  included) and, where a rule loses rounds somewhere, the losing categories
+  are mostly the ones whose completions grew most; the exceptions overlap
+  only slightly in lambda and are spec_casc_opt at its loosest alpha on
+  both seeds plus two seed-1 cells (GPT-OSS cactus, whose one loss is the
+  18-prompt Math category; Qwen3 mentored_dec).
+- Seed 1 (step 7.5, `seeds/summary.csv` rows `speedbench`, per category
+  `seeds/speedbench_seed1*__<target>.csv`): every rule keeps its direction;
+  all-prompt rounds ratios move by 0.00-0.07 from seed 0, and the
+  per-category Eq. 4 win counts by at most 2 of 11. Its Qwen3 time ratios
+  are same-node (mentored_dec 0.94, spec_casc_opt 1.05 vs 1.02 / 1.13 at
+  seed 0 across nodes) and track the rounds ratios.
 - Dose response (step 7.1, `tables/speedbench_gentle__<target>.csv` vs
   `tables/speedbench__<target>.csv`, rows `all`): every rule saves fewer
   rounds at its gentlest alpha than at its loosest. cactus still saves a

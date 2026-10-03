@@ -789,8 +789,10 @@ def a_speedbench_length_rounds(rows, cells, args):
     rng = np.random.default_rng(RNG_SEED)
     out = []
     for target, _ in SB_FAMILIES:
-        for setting, prefix in (("loosest", "speedbench"), ("gentlest", "speedbench_gentle")):
-            path = REPO / "campaign" / "addendum" / "tables" / f"{prefix}_eq4__{target}.csv"
+        for setting, path in (
+                ("loosest", REPO / "campaign" / "addendum" / "tables" / f"speedbench_eq4__{target}.csv"),
+                ("gentlest", REPO / "campaign" / "addendum" / "tables" / f"speedbench_gentle_eq4__{target}.csv"),
+                ("loosest_seed1", REPO / "campaign" / "addendum" / "seeds" / f"speedbench_seed1_eq4__{target}.csv")):
             if not path.is_file():
                 continue
             with path.open(newline="", encoding="utf-8") as handle:
@@ -819,7 +821,7 @@ def a_speedbench_length_rounds(rows, cells, args):
         write_csv("speedbench_length_vs_rounds.csv", out, list(out[0].keys()))
     note("speedbench_length_vs_rounds.csv",
          "SPEED-Bench, per (target, setting, rule): across categories of tables/speedbench{,_gentle}_eq4__<target>.csv "
-         "(loosest = step 7, gentlest = step 7.1), Spearman rho between lambda (completion tokens relaxed/strict) and "
+         "(loosest = step 7, gentlest = step 7.1, loosest_seed1 = step 7.5 from seeds/speedbench_seed1_eq4__<target>.csv), Spearman rho between lambda (completion tokens relaxed/strict) and "
          "the rounds ratio with a two-sided permutation p (20,000 draws), over all 11 categories and over the 8 with "
          "80 prompts (math, humanities, stem have 18 / 8 / 6); the categories where the rule does not save rounds "
          "(ratio >= 1); the largest lambda among its winning categories vs the smallest among its losing ones "

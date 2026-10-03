@@ -9,13 +9,23 @@ gpt-oss-20b,gentlest,cactus,0.03,11,0.454545,0.1672,0.547619,0.17235,11,,1.33481
 gpt-oss-20b,gentlest,spec_casc_opt,-0.3,11,0.681818,0.02525,0.5,0.2171,11,,1.15475,,,1.15765
 gpt-oss-20b,gentlest,r_fuzzy,0.03,11,0.972727,0,0.952381,0.00115,7,coding summarization roleplay multilingual,1.01758,1.05225,True,1.02584
 gpt-oss-20b,gentlest,spec_casc_tok,0.15,11,0.8,0.0041,0.690476,0.06635,3,coding humanities writing roleplay rag multilingual reasoning qa,1.00334,1.02935,True,1.01085
-qwen3-8b,loosest,mentored_dec,0.75,11,0.881818,0.00065,0.833333,0.0156,11,,1.16457,,,1.14627
-qwen3-8b,loosest,cactus,0.35,11,0.281818,0.4067,0.571429,0.15095,11,,2.02233,,,1.92798
-qwen3-8b,loosest,spec_casc_opt,0.05,11,0.845455,0.0019,0.666667,0.08125,6,coding math humanities rag multilingual,1.46535,1.34817,False,1.32719
-qwen3-8b,loosest,r_fuzzy,0.25,11,0.927273,5e-05,0.904762,0.00565,8,coding math reasoning,1.25345,1.3058,True,1.28558
-qwen3-8b,loosest,spec_casc_tok,0.8,11,0.927273,0.00025,0.857143,0.01065,10,roleplay,1.03387,1.05882,True,1.05452
-qwen3-8b,gentlest,mentored_dec,0.15,11,0.954545,0,0.97619,0.0004,8,coding math writing,0.991055,1.03756,True,1.02064
-qwen3-8b,gentlest,cactus,0.03,11,0.718182,0.01645,0.571429,0.15185,11,,1.09022,,,1.27589
-qwen3-8b,gentlest,spec_casc_opt,-0.3,11,0.881818,0.0009,0.690476,0.0714,10,multilingual,1.0612,1.07882,True,1.05941
+gpt-oss-20b,loosest_seed1,mentored_dec,0.75,11,0.690909,0.0247,0.52381,0.19855,11,,1.18912,,,1.43973
+gpt-oss-20b,loosest_seed1,cactus,0.35,11,0.954545,5e-05,0.952381,0.0011,10,math,1.60661,1.54156,False,1.89523
+gpt-oss-20b,loosest_seed1,spec_casc_opt,0.05,11,0.927273,0.0001,0.904762,0.00435,7,coding math multilingual reasoning,1.2175,1.42528,True,1.40892
+gpt-oss-20b,loosest_seed1,r_fuzzy,0.25,11,0.963636,0,1,0.0001,9,math multilingual,1.45711,1.4751,True,1.52797
+gpt-oss-20b,loosest_seed1,spec_casc_tok,0.8,11,0.945455,5e-05,0.928571,0.00255,11,,1.13895,,,1.12215
+qwen3-8b,loosest,mentored_dec,0.75,11,0.881818,0.00045,0.833333,0.017,11,,1.16457,,,1.14627
+qwen3-8b,loosest,cactus,0.35,11,0.281818,0.4001,0.571429,0.15255,11,,2.02233,,,1.92798
+qwen3-8b,loosest,spec_casc_opt,0.05,11,0.845455,0.0021,0.666667,0.0836,6,coding math humanities rag multilingual,1.46535,1.34817,False,1.32719
+qwen3-8b,loosest,r_fuzzy,0.25,11,0.927273,0.00015,0.904762,0.00415,8,coding math reasoning,1.25345,1.3058,True,1.28558
+qwen3-8b,loosest,spec_casc_tok,0.8,11,0.927273,0.00015,0.857143,0.01015,10,roleplay,1.03387,1.05882,True,1.05452
+qwen3-8b,gentlest,mentored_dec,0.15,11,0.954545,5e-05,0.97619,0.00055,8,coding math writing,0.991055,1.03756,True,1.02064
+qwen3-8b,gentlest,cactus,0.03,11,0.718182,0.0158,0.571429,0.15205,11,,1.09022,,,1.27589
+qwen3-8b,gentlest,spec_casc_opt,-0.3,11,0.881818,0.00065,0.690476,0.07035,10,multilingual,1.0612,1.07882,True,1.05941
 qwen3-8b,gentlest,r_fuzzy,0.03,11,0.972727,0,0.952381,0.0015,6,coding math writing rag multilingual,1.01343,1.02062,True,1.00995
-qwen3-8b,gentlest,spec_casc_tok,0.15,11,0.990909,0,0.97619,0.00025,10,writing,1.01233,1.01811,True,1.00283
+qwen3-8b,gentlest,spec_casc_tok,0.15,11,0.990909,0,0.97619,0.0006,10,writing,1.01233,1.01811,True,1.00283
+qwen3-8b,loosest_seed1,mentored_dec,0.75,11,0.9,0.00025,0.880952,0.0078,10,multilingual,1.2277,1.10308,False,1.14416
+qwen3-8b,loosest_seed1,cactus,0.35,11,0.454545,0.16285,0.309524,0.45865,11,,1.84645,,,1.95073
+qwen3-8b,loosest_seed1,spec_casc_opt,0.05,11,0.781818,0.0066,0.642857,0.0979,4,math stem summarization roleplay rag multilingual qa,1.39532,1.36525,False,1.33841
+qwen3-8b,loosest_seed1,r_fuzzy,0.25,11,0.909091,0.0003,0.904762,0.00465,9,math multilingual,1.18345,1.28094,True,1.2889
+qwen3-8b,loosest_seed1,spec_casc_tok,0.8,11,0.863636,0.00125,0.761905,0.03825,8,roleplay multilingual qa,1.03356,1.05451,True,1.05303
