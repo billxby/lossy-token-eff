@@ -657,11 +657,193 @@ def a_eq4(rows, cells, args):
          "plan quotes from the paper's tables.")
 
 
+# ------------------------------------------------------- SPEED-Bench follow-up
+# Branch speedbench-oct (campaign/addendum/README.md "SPEED-Bench follow-up"): step 7's runs (the five rules at the
+# loosest alpha, paired with step 7's strict) and step 7.1's (the gentlest alpha, paired with 7.1's own strict, run in
+# the same block on the same node), per SPEED-Bench category. These read only runs/addendum/speedbench*/.
+
+SB_FAMILIES = (("gpt-oss-20b", "speedbench"), ("qwen3-8b", "speedbench_qwen3"))
+SB_SETTINGS = {  # setting -> (run-root condition, method -> alpha)
+    "loosest": ("speedbench", {"spec_casc_opt": "0.05", "mentored_dec": "0.75", "cactus": "0.35", "r_fuzzy": "0.25",
+                               "spec_casc_tok": "0.8"}),
+    "gentlest": ("speedbench_gentle", {"spec_casc_opt": "-0.3", "mentored_dec": "0.15", "cactus": "0.03",
+                                       "r_fuzzy": "0.03", "spec_casc_tok": "0.15"}),
+}
+SB_CATS = ["coding", "math", "humanities", "stem", "writing", "summarization", "roleplay", "rag", "multilingual",
+           "reasoning", "qa"]  # step 7's order
+
+
+def sb_categories() -> dict[str, str]:
+    with (REPO / "campaign" / "addendum" / "speedbench" / "cases.csv").open(newline="", encoding="utf-8") as handle:
+        return {r["case"]: r["category"] for r in csv.DictReader(handle)}
+
+
+def sb_cell(target: str, ds: str, condition: str, method: str, alpha: str) -> dict[str, dict]:
+    """case -> {output_tokens, finish_reason, think_chars, answer_chars} for the ok seed-0 runs of one arm."""
+    root = REPO / "runs" / "addendum" / condition / target / ds / method / params_dir(method, alpha)
+    out = {}
+    for run_json in sorted(root.glob("case_*/seed_0/run.json")):
+        try:
+            run = json.loads(run_json.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if run.get("status") != "ok":
+            continue
+        out_txt = run_json.parent / "output.txt"
+        text = out_txt.read_text(encoding="utf-8", errors="replace") if out_txt.is_file() else ""
+        think, answer, _ = split_think_answer(text, target)
+        out[run_json.parent.parent.name] = {"output_tokens": run.get("output_tokens"),
+                                            "finish_reason": run.get("finish_reason"),
+                                            "think_chars": think, "answer_chars": answer}
+    return out
+
+
+def mechanism_row(pairs: list[tuple[dict, dict]]) -> dict:
+    """split_inflation.csv + censoring.csv (cap-outs, both-finished lambda) + distribution.csv columns for one cell."""
+    Lr, Ls = [r["output_tokens"] for r, _ in pairs], [s["output_tokens"] for _, s in pairs]
+    tr, ts = sum(r["think_chars"] for r, _ in pairs), sum(s["think_chars"] for _, s in pairs)
+    ar, as_ = sum(r["answer_chars"] for r, _ in pairs), sum(s["answer_chars"] for _, s in pairs)
+    extra_chars = (tr + ar) - (ts + as_)
+    fin = [(r, s) for r, s in pairs if r["finish_reason"] == "stop" and s["finish_reason"] == "stop"]
+    row = {
+        "n_pairs": len(pairs), "mean_tokens_relaxed": mean(Lr), "mean_tokens_strict": mean(Ls),
+        "lambda": ratio(mean(Lr), mean(Ls)),
+        "mean_think_chars_relaxed": tr / len(pairs), "mean_think_chars_strict": ts / len(pairs),
+        "mean_answer_chars_relaxed": ar / len(pairs), "mean_answer_chars_strict": as_ / len(pairs),
+        "lambda_think_chars": ratio(tr, ts), "lambda_answer_chars": ratio(ar, as_),
+        "extra_chars_total": extra_chars, "extra_chars_think": tr - ts,
+        "extra_share_think": ((tr - ts) / extra_chars) if extra_chars > 0 else None,
+        "capout_rate_relaxed": mean([1.0 if r["finish_reason"] == "length" else 0.0 for r, _ in pairs]),
+        "capout_rate_strict": mean([1.0 if s["finish_reason"] == "length" else 0.0 for _, s in pairs]),
+        "n_pairs_both_finished": len(fin),
+        "lambda_both_finished": ratio(mean([r["output_tokens"] for r, _ in fin]),
+                                      mean([s["output_tokens"] for _, s in fin])) if fin else None,
+    }
+    p = [(r, s) for r, s in pairs if s["output_tokens"]]
+    if p:
+        ratios = np.array([r["output_tokens"] / s["output_tokens"] for r, s in p])
+        extra = np.array([r["output_tokens"] - s["output_tokens"] for r, s in p], dtype=float)
+        k = max(1, math.ceil(0.1 * len(p)))
+        top = np.sort(extra)[::-1][:k].sum()
+        pos = extra[extra > 0]
+        top_pos = np.sort(pos)[::-1][:k].sum() if len(pos) else 0.0
+        q = np.percentile(ratios, [10, 25, 50, 75, 90])
+        row.update({
+            "ratio_p10": q[0], "ratio_p25": q[1], "ratio_p50": q[2], "ratio_p75": q[3], "ratio_p90": q[4],
+            "share_ratio_gt2": float((ratios > 2).mean()), "share_ratio_lt_half": float((ratios < 0.5).mean()),
+            "extra_tokens_total": float(extra.sum()), "top10pct_cases": k,
+            "top10pct_share_of_net_extra": float(top / extra.sum()) if extra.sum() > 0 else None,
+            "top10pct_share_of_positive_extra": float(top_pos / pos.sum()) if len(pos) and pos.sum() > 0 else None,
+        })
+    return row
+
+
+MECH_FIELDS = ["target", "setting", "method", "alpha", "category", "reference", "n_pairs", "mean_tokens_relaxed",
+               "mean_tokens_strict", "lambda", "mean_think_chars_relaxed", "mean_think_chars_strict",
+               "mean_answer_chars_relaxed", "mean_answer_chars_strict", "lambda_think_chars", "lambda_answer_chars",
+               "extra_chars_total", "extra_chars_think", "extra_share_think", "capout_rate_relaxed",
+               "capout_rate_strict", "n_pairs_both_finished", "lambda_both_finished", "ratio_p10", "ratio_p25",
+               "ratio_p50", "ratio_p75", "ratio_p90", "share_ratio_gt2", "share_ratio_lt_half", "extra_tokens_total",
+               "top10pct_cases", "top10pct_share_of_net_extra", "top10pct_share_of_positive_extra"]
+
+
+def a_speedbench_mechanism(rows, cells, args):
+    cats = sb_categories()
+    for target, ds in SB_FAMILIES:
+        out = []
+        for setting, (condition, arms) in SB_SETTINGS.items():
+            strict = sb_cell(target, ds, condition, "strict", "strict")
+            if not strict:
+                continue
+            for method, alpha in arms.items():
+                relaxed = sb_cell(target, ds, condition, method, alpha)
+                for cat in ["all", *SB_CATS]:
+                    pairs = [(relaxed[c], strict[c]) for c in sorted(set(relaxed) & set(strict))
+                             if cat == "all" or cats.get(c) == cat]
+                    if pairs:
+                        out.append({"target": target, "setting": setting, "method": method, "alpha": alpha,
+                                    "category": cat, "reference": f"strict of runs/addendum/{condition}/{target}",
+                                    **mechanism_row(pairs)})
+        if out:
+            write_csv(f"speedbench_mechanism__{target}.csv", out, MECH_FIELDS)
+    note("speedbench_mechanism__<target>.csv",
+         "SPEED-Bench (672 prompts, seed 0), per (setting, method, category; 'all' = every prompt): setting loosest = "
+         "step 7 (runs/addendum/speedbench/) paired with step 7's strict, gentlest = step 7.1 "
+         "(runs/addendum/speedbench_gentle/) paired with step 7.1's own strict, on the cases both have. Columns as "
+         "split_inflation.csv (thinking vs answer characters; extra_share_think = share of the extra characters "
+         "that land in the thinking channel: GPT-OSS analysis channel, Qwen3 <think> blocks; blank when the relaxed "
+         "arm is not longer), censoring.csv (cap-out rates = finish_reason length; lambda over both-finished pairs) "
+         "and distribution.csv (quantiles of the per-prompt ratio L_relaxed / L_strict, share of the net extra tokens "
+         "held by the top tenth of prompts).")
+
+
+def a_speedbench_admit(rows, cells, args):
+    """Step 7.4 traces (README deviation 24): per rule, committed drafted tokens split into lossy_only / both, as
+    admitted_tokens.csv, plus the share of committed draft tokens that only the relaxed rule accepts (tab:admit)."""
+    from array import array
+    arms = {"strict": "strict", **SB_SETTINGS["loosest"][1]}
+    out = []
+    for method, alpha in arms.items():
+        root = REPO / "runs" / "addendum" / "speedbench_trace" / "gpt-oss-20b" / "speedbench" / method / params_dir(method, alpha)
+        traces = sorted(root.glob("proposals_seed0_*.jsonl"))
+        if not traces:
+            continue
+        cases = sorted(p.parent.parent.name for p in root.glob("case_*/seed_0/run.json"))
+        groups = {cls: {"p": array("d"), "rank": array("d"), "entropy": array("d")} for cls in ("lossy_only", "both")}
+        n_committed = n_other = 0
+        for trace in traces:
+            with trace.open(encoding="utf-8") as handle:
+                for line in handle:
+                    if '"actually_accepted":true' not in line:
+                        continue
+                    d = json.loads(line)
+                    n_committed += 1
+                    if d.get("lossy_only_accepted"):
+                        cls = "lossy_only"
+                    elif d.get("strict_would_accept") and d.get("lossy_would_accept"):
+                        cls = "both"
+                    else:
+                        n_other += 1
+                        continue
+                    for key, field in (("p", "p"), ("rank", "target_rank"), ("entropy", "target_entropy")):
+                        value = d.get(field)
+                        groups[cls][key].append(float("nan") if value is None else float(value))
+        n_only, n_both = len(groups["lossy_only"]["p"]), len(groups["both"]["p"])
+        row = {"target": "gpt-oss-20b", "method": method, "alpha": alpha, "n_trace_files": len(traces),
+               "n_cases": len(cases), "n_committed_draft_tokens": n_committed, "n_lossy_only": n_only, "n_both": n_both,
+               "n_neither": n_other,
+               "share_lossy_only": n_only / (n_only + n_both) if (n_only + n_both) else None}
+        for cls, g in groups.items():
+            for key in ("p", "rank", "entropy"):
+                v = np.frombuffer(g[key], dtype=float)
+                v = v[~np.isnan(v)]
+                if len(v):
+                    row[f"{cls}_{key}_mean"] = float(v.mean())
+                    row[f"{cls}_{key}_median"] = float(np.median(v))
+                    row[f"{cls}_{key}_p10"] = float(np.percentile(v, 10))
+                    row[f"{cls}_{key}_p90"] = float(np.percentile(v, 90))
+        out.append(row)
+    if out:
+        fields = ["target", "method", "alpha", "n_trace_files", "n_cases", "n_committed_draft_tokens", "n_lossy_only",
+                  "n_both", "n_neither", "share_lossy_only"] + [
+            f"{cls}_{k}_{s}" for cls in ("lossy_only", "both") for k in ("p", "rank", "entropy")
+            for s in ("mean", "median", "p10", "p90")]
+        write_csv("speedbench_admit__gpt-oss-20b.csv", out, fields)
+    note("speedbench_admit__gpt-oss-20b.csv",
+         "step 7.4 traces (runs/addendum/speedbench_trace/gpt-oss-20b/, the first 2 runnable SPEED-Bench prompts of "
+         "each category = 22, seed 0, one proposals_seed0_*.jsonl per arm: README deviation 24): committed drafted "
+         "tokens (actually_accepted) split as admitted_tokens.csv into lossy_only (the relaxed rule accepted, strict "
+         "would not have on the same u) and both; share_lossy_only = lossy_only / (lossy_only + both) -- tab:admit's "
+         "share column; target probability p, target rank (0 = argmax) and target entropy (nats) per class.")
+
+
 ANALYSES = {
     "per_request": a_per_request, "split_inflation": a_split_inflation, "censoring": a_censoring,
     "distribution": a_distribution, "repetition": a_repetition, "time_per_round": a_time_per_round,
     "admitted_tokens": a_admitted_tokens, "eq4": a_eq4,
+    "speedbench_mechanism": a_speedbench_mechanism, "speedbench_admit": a_speedbench_admit,
 }
+SB_ONLY = {"speedbench_mechanism", "speedbench_admit"}  # need none of the campaign runs
 
 
 def write_readme() -> None:
@@ -690,11 +872,14 @@ def main() -> int:
     args = parser.parse_args()
     global OUT_SUFFIX
     OUT_SUFFIX = f"__seed{args.seed}" if args.seed != 0 else ""
-    rows = load_runs(args.runs_root)
-    print(f"loaded {len(rows)} runs")
-    cells = loosest_cells(rows, args.seed)
+    if args.only and set(args.only) <= SB_ONLY:  # the SPEED-Bench analyses read their own runs
+        rows, cells = [], []
+    else:
+        rows = load_runs(args.runs_root)
+        print(f"loaded {len(rows)} runs")
+        cells = loosest_cells(rows, args.seed)
     for name, fn in ANALYSES.items():
-        if args.only and name not in args.only:
+        if (args.only and name not in args.only) or (not args.only and name in SB_ONLY):
             continue
         fn(rows, cells, args)
     if OUT_SUFFIX:  # describe the per-seed variants without touching the seed-0 descriptions

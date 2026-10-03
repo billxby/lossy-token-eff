@@ -319,3 +319,68 @@ alpha grows).
    Humanities, Math and STEM keep only their non-HLE prompts (8, 18 and 6
    per arm), so their per-category ratios are thin; RESULTS.md gives n per
    cell. The 14 step-7 rows stay `blocked` in the manifest with this reason.
+22. **Every run records its node (branch speedbench-oct, 2026-10-03).**
+   `scripts/run_experiment_vllm.py` writes `host` (the node name) and
+   `slurm_job_id` into each run's config.json. Runs before this have neither;
+   for them the tables keep matching the run's timestamp to the lane
+   journals (deviation 15). Nothing else in config.json changed.
+23. **Steps 7.1 and 7.4 run block-major, with their own strict reference.**
+   The follow-up's comparisons (below) split their runnable cases into
+   blocks -- contiguous chunks in case order, which is SPEED-Bench's own
+   round-robin over categories, so every block mixes all categories -- and
+   a block runs every arm of the comparison (strict included) back to back
+   inside one job: `scripts/addendum_lane.py` starts a block only when the
+   job's remaining time (`squeue %L`) covers the block's estimate x 1.15 +
+   5 min, and otherwise ends the job so the next job in the chain starts
+   the block on its own node. Each block is pinned to one lane in
+   `lanes/state.json` (`blocks`). So a case's arms share a node by
+   construction, and the time ratios need no cross-node flag; a block cut
+   mid-way (node failure) would show up as `same_node` False, with the
+   hosts in config.json. Step 7.1 has a fresh strict reference (its own run
+   root, `runs/addendum/speedbench_gentle/<family>/`), never step 7's: step
+   7's GPT-OSS strict and relaxed arms ran on different lanes (disjoint node
+   sets) and Qwen3's mixed Nibi and several Killarney nodes. GPT-OSS runs on
+   Nibi (lanes A/B: 2 blocks of 336 prompts), Qwen3 on Killarney (K1-K4: 8
+   blocks of 84), one machine per model as in step 7.
+24. **Step 7.4 traces one file per arm, not per case.** The tracer
+   (`patches/relaxation_trace.py`) resolves its output file once per server
+   process, so `persistent_arm_replay.py` used to refuse
+   `--trace-proposals`; tracing each of the 22 prompts x 6 arms through
+   `fresh_server_replay.py` would cost 132 server starts (~5 min each on
+   Nibi) against ~1 GPU-h budgeted. `--trace-per-arm` lets the persistent
+   driver write one trace per server to
+   `<arm dir>/proposals_seed0_<stamp>.jsonl` (requests are served one at a
+   time, so the file is the arm's 22 prompts in order; the cases are not
+   told apart inside it). The admitted-token statistics are per rule, so
+   nothing is lost; the collect step pulls these files whole, never
+   appending or replacing.
+25. **SPEED-Bench judge prompt.** The step-7 follow-up scores SPEED-Bench
+   with the MT-Bench judge of step 1.9 (`scripts/addendum_mtbench_judge.py
+   --suite speedbench`: claude-fable-5-1, effort medium, Batches API, the
+   same no-answer rule: a run with no final channel / no text outside
+   `<think>` scores 1 without a call). SPEED-Bench has no reference answers,
+   so every category uses FastChat's `single-v1` prompt (sha256 of system
+   prompt + template `ce396064defa102b61edcbd854fc405a892ac707a82f5dc6d5da6e26f002a872`);
+   MT-Bench used `single-math-v1` with GPT-4 references for its math,
+   reasoning and coding questions. The judge sees `source.json`'s problem
+   (turn 1, the text the model answered) and the answer only. Lossless =
+   step 7's strict; both settings' paired differences use it.
+
+## SPEED-Bench follow-up (branch speedbench-oct, from 2026-10-03)
+
+Goal (Bill, 2026-10-03): make step 7 stand as a named finding -- on the
+field's standard lossless speed benchmark the rules save rounds overall,
+and the per-category breakdown shows the same rule winning or losing with
+the category's length change. Priorities, in order; manifest steps:
+
+| priority | step | what | where |
+|---|---|---|---|
+| P1 | 7.1 | the five rules at the gentlest main-grid alpha (mentored_dec 0.15, cactus 0.03, spec_casc_opt -0.3, r_fuzzy 0.03, spec_casc_tok 0.15) + a fresh strict, seed 0, all 672 prompts, both targets, block-major | `runs/addendum/speedbench_gentle/<family>/`; `tables/speedbench_gentle{,_eq4,_eq4_summary}__<family>.csv` |
+| P2 | -- | judge score of step 7 (loosest) and 7.1 (gentlest) + lossless, 11 arms x 672 x 2 targets | `analysis/speedbench_judge{,_summary}.csv` |
+| P3 | -- | mechanism from run.json: thinking share of the extra characters, cap-outs, per-prompt length-ratio distribution | `analysis/speedbench_mechanism__<family>.csv` |
+| P4 | 7.4 | GPT-OSS, first 2 runnable prompts per category (22) at the loosest settings + lossless, traced | `runs/addendum/speedbench_trace/gpt-oss-20b/`; `analysis/speedbench_admit__gpt-oss-20b.csv` |
+| P5 | 7.5-7.7 | only after P1-P4 are committed: (a) seed 1 at the loosest settings, (b) Qwen3 + Qwen3-0.6B drafter, (c) Qwen3 at T 0.6 / top-p 0.95 / top-k 20 | seeds / lmdraft / qwenT0.6 tables |
+
+The orchestrator is the same (`scripts/addendum_campaign.py cycle`); it
+now pushes the checked-out branch (never main). Deviations 22-25 above
+cover what changed.

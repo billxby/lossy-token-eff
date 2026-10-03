@@ -1031,3 +1031,8 @@ for what is done; this file records every action and failure.
 - 2026-10-03T07:40:13Z lane K3: submitted job 5903634 (afterany:5903632); lane has 12 work items, est. 3.6 GPU-h
 - 2026-10-03T07:40:15Z lane K4: submitted job 5903635; lane has 12 work items, est. 3.6 GPU-h
 - 2026-10-03T07:40:17Z lane K4: submitted job 5903637 (afterany:5903635); lane has 12 work items, est. 3.6 GPU-h
+- 2026-10-03T07:45:23Z SPEED-Bench follow-up started on branch speedbench-oct (from main d35d52de7), Bill's brief of 2026-10-03: P1 step 7.1 (gentlest alphas + fresh strict), P2 judge, P3 mechanism, P4 step 7.4 traces, P5 only after P1-P4 are committed (README 'SPEED-Bench follow-up', deviations 22-25).
+- 2026-10-03T07:45:23Z Duo: Nibi and Killarney ControlMasters reopened 07:2xZ (one push each, approved by Bill); Mac on AC with system sleep disabled.
+- 2026-10-03T07:45:23Z Cluster state at launch: Nibi fair-share 0.25, ~1820 H100 jobs pending; Killarney fair-share 0.56, kn170/kn178 down, kn171/kn177 draining (Reboot ASAP).
+- 2026-10-03T07:45:23Z Steps 7.1/7.4 queued block-major (README deviation 23): GPT-OSS 2 blocks of 336 on lanes A/B (Nibi), Qwen3 8 blocks of 84 on K1-K4 (Killarney), step 7.4's 22 prompts x 6 arms on lane A after its block; chains A 23178537->23178540, B 23178541, K1 5903624->5903625, K2 5903626->5903631, K3 5903632->5903634, K4 5903635->5903637.
+- 2026-10-03T07:45:23Z P2: judge batch msgbatch_01XBKAopAPJXpcaCV6BLMPxy submitted (7615 requests: step 7 lossless + loosest, both targets; 449 no-answer runs scored 1 without a call); est. ~$168 at batch price.
