@@ -1,6 +1,6 @@
 {
  "lane": "K1",
- "written": "2026-10-03T13:12:34Z",
+ "written": "2026-10-03T13:45:24Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -114,7 +114,7 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "group": "speedbench|speedbench_qwen3|s1|b5",
-   "group_est_s": 5695
+   "group_est_s": 3545
   },
   {
    "id": "speedbench|speedbench_qwen3|spec_casc_opt|0.05|1@8192#b5",
@@ -227,7 +227,7 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "group": "speedbench|speedbench_qwen3|s1|b5",
-   "group_est_s": 5695
+   "group_est_s": 3545
   },
   {
    "id": "speedbench|speedbench_qwen3|mentored_dec|0.75|1@8192#b5",
@@ -340,7 +340,7 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "group": "speedbench|speedbench_qwen3|s1|b5",
-   "group_est_s": 5695
+   "group_est_s": 3545
   },
   {
    "id": "speedbench|speedbench_qwen3|cactus|0.35|1@8192#b5",
@@ -453,7 +453,7 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "group": "speedbench|speedbench_qwen3|s1|b5",
-   "group_est_s": 5695
+   "group_est_s": 3545
   },
   {
    "id": "speedbench|speedbench_qwen3|r_fuzzy|0.25|1@8192#b5",
@@ -566,7 +566,7 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "group": "speedbench|speedbench_qwen3|s1|b5",
-   "group_est_s": 5695
+   "group_est_s": 3545
   },
   {
    "id": "speedbench|speedbench_qwen3|spec_casc_tok|0.8|1@8192#b5",
@@ -679,7 +679,7 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "group": "speedbench|speedbench_qwen3|s1|b5",
-   "group_est_s": 5695
+   "group_est_s": 3545
   },
   {
    "id": "lmdraft|speedbench_qwen3|strict|strict|0@8192#b1",

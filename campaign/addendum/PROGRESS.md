@@ -1153,3 +1153,9 @@ for what is done; this file records every action and failure.
 - 2026-10-03T13:12:27Z lane K3: submitted job 5909263 (afterany:5906426); lane has 30 work items, est. 9.4 GPU-h
 - 2026-10-03T13:12:29Z lane K4: submitted job 5909265 (afterany:5906433); lane has 30 work items, est. 9.5 GPU-h
 - 2026-10-03T13:14:15Z Step 7.5 GPT-OSS: blocks b1 (lane A, g1) and b2 (lane B, g16) done; lane A deferred b3 (needs 9587 s, had 4698 s) and its next job 23191121 sits PENDING on priority (Nibi fair-share 0.236). Lane B has no work and no job, so 23191121's ExcNodeList (g[15-28]) was cleared to let it backfill on any Nibi node; no other job of ours can share its node's /tmp knob files while lane B is idle.
+- 2026-10-03T13:44:44Z lane A: pulled 29 new run dir(s) into runs/
+- 2026-10-03T13:44:53Z lane K1: pulled 175 new run dir(s) into runs/
+- 2026-10-03T13:44:59Z lane K2: pulled 158 new run dir(s) into runs/
+- 2026-10-03T13:45:03Z lane K3: pulled 172 new run dir(s) into runs/
+- 2026-10-03T13:45:09Z lane K4: pulled 180 new run dir(s) into runs/
+- 2026-10-03T13:45:24Z step 7.5 speedbench speedbench_qwen3 strict alpha=strict seed=1: done, 672/672 cases (jobs 5906406 5906408 5906413 5906415 5906421 5906422 5906428 5906429, 2.30 GPU-h)
