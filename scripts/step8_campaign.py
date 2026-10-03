@@ -500,11 +500,57 @@ def cmd_collect(args: argparse.Namespace) -> int:
     return 0
 
 
+MIRROR = "/scratch/billxby/step8/mirror"   # on Nibi: graded there (the code graders cap memory with RLIMIT_AS)
+GRADES = S8 / "grades.csv"                 # relpath (relative to runs/) -> verdict, read by addendum_tables.py
+
+
+def cmd_grade(args: argparse.Namespace) -> int:
+    """Upload not-yet-graded step-8 runs to the Nibi mirror, pull finished verdicts back, and submit one CPU
+    grading job (cascade/cluster/addendum_grade.sbatch, the campaign's own graders) when there is new work."""
+    import io
+    import tarfile
+    data = ac.ssh(f"cat {MIRROR}/grades.csv 2>/dev/null", check=False).stdout
+    if data:
+        GRADES.write_bytes(data)
+    graded = set()
+    if GRADES.is_file():
+        with GRADES.open(newline="", encoding="utf-8") as handle:
+            graded = {r["relpath"] for r in csv.DictReader(handle) if r.get("verdict")}
+    uploaded_file = S8 / "mirror_uploaded.txt"
+    uploaded = set(uploaded_file.read_text().split()) if uploaded_file.is_file() else set()
+    rels = sorted(str(p.parent.relative_to(REPO / "runs")) for p in (REPO / RUN_SUBROOT).glob("*/*/*/*/case_*/seed_*/run.json"))
+    rels = [r for r in rels if base_dataset(r.split("/")[3]) in ("gsm8k", "livecodebench", "aime24")]
+    new = [r for r in rels if r not in graded and r not in uploaded]
+    if new:
+        buf = io.BytesIO()
+        with tarfile.open(fileobj=buf, mode="w") as tar:
+            for rel in new:
+                for name in ("run.json", "config.json", "output.txt"):
+                    path = REPO / "runs" / rel / name
+                    if path.is_file():
+                        tar.add(path, arcname=f"{rel}/{name}")
+        ac.ssh(f"mkdir -p {MIRROR}/runs && cd {MIRROR}/runs && tar -xf -", input_bytes=buf.getvalue(), timeout=1800)
+        with uploaded_file.open("a") as handle:
+            handle.write("\n".join(new) + "\n")
+    queued = ac.ssh("bash -lc 'squeue -u billxby -h -n s8-grade -o %i'", check=False).stdout.decode().split()
+    pending = [r for r in uploaded | set(new) if r not in graded]
+    if pending and not queued:
+        repo = LANES["A"]["repo"]
+        out = ac.ssh(f"bash -lc {shlex.quote(f'cd {repo} && mkdir -p {MIRROR}/slurm && MIRROR={MIRROR} REPO_DIR={repo} sbatch --parsable --job-name=s8-grade --account=def-hongyanz_cpu --output={MIRROR}/slurm/%x-%j.out cascade/cluster/addendum_grade.sbatch')}").stdout.decode().strip()
+        ac.progress(f"step 8 grading: {len(new)} new run dir(s) uploaded, {len(pending)} pending, CPU job {out}")
+    print(f"grading: {len(graded)} graded, {len(new)} uploaded now, {len(pending)} pending, job {'queued' if queued else 'submitted' if pending else 'none'}")
+    return 0
+
+
 def cmd_cycle(args: argparse.Namespace) -> int:
     cmd_collect(args)
     cmd_plan(argparse.Namespace(quiet=True))
     cmd_push(args)
     cmd_submit(args)
+    try:
+        cmd_grade(args)
+    except Exception as exc:  # grading lives on Nibi; its outage must not stop the Killarney lanes
+        print(f"grading skipped: {type(exc).__name__}: {exc}")
     cmd_plan(argparse.Namespace(quiet=False))
     # runs/** is gitignored (the addendum's runs live on disk too); the manifest, calibration and tables are committed
     paths = ["campaign/addendum/step8", "campaign/addendum/PROGRESS.md", "campaign/calibration", "campaign/addendum/tables"]
@@ -515,10 +561,10 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "warm"])
+    parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "warm", "grade"])
     args = parser.parse_args()
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
-            "summary": cmd_summary, "warm": cmd_warm}[args.cmd](args)
+            "summary": cmd_summary, "warm": cmd_warm, "grade": cmd_grade}[args.cmd](args)
 
 
 if __name__ == "__main__":

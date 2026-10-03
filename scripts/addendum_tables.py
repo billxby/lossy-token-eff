@@ -63,11 +63,12 @@ def grades() -> dict[str, int | None]:
     global _grades
     if _grades is None:
         _grades = {}
-        path = ADD / "analysis" / "grades.csv"
-        if path.is_file():
-            with path.open(newline="", encoding="utf-8") as handle:
-                for r in csv.DictReader(handle):
-                    _grades[r["relpath"]] = int(r["correct"]) if r["correct"] in ("0", "1") else None
+        # step 8 grades its own runs into step8/grades.csv (scripts/step8_campaign.py grade); same format, disjoint keys
+        for path in (ADD / "analysis" / "grades.csv", ADD / "step8" / "grades.csv"):
+            if path.is_file():
+                with path.open(newline="", encoding="utf-8") as handle:
+                    for r in csv.DictReader(handle):
+                        _grades[r["relpath"]] = int(r["correct"]) if r["correct"] in ("0", "1") else None
     return _grades
 
 
