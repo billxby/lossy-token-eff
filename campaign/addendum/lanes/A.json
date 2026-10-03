@@ -1,6 +1,6 @@
 {
  "lane": "A",
- "written": "2026-10-03T13:46:17Z",
+ "written": "2026-10-03T14:19:10Z",
  "hold_minutes": 0,
  "items": [
   {
@@ -255,7 +255,7 @@
     "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "group": "speedbench|speedbench|s1|b3",
-   "group_est_s": 8046
+   "group_est_s": 5254
   },
   {
    "id": "speedbench|speedbench|spec_casc_opt|0.05|1@8192#b3",
@@ -509,7 +509,7 @@
     "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "group": "speedbench|speedbench|s1|b3",
-   "group_est_s": 8046
+   "group_est_s": 5254
   },
   {
    "id": "speedbench|speedbench|mentored_dec|0.75|1@8192#b3",
@@ -763,7 +763,7 @@
     "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "group": "speedbench|speedbench|s1|b3",
-   "group_est_s": 8046
+   "group_est_s": 5254
   },
   {
    "id": "speedbench|speedbench|cactus|0.35|1@8192#b3",
@@ -1017,7 +1017,7 @@
     "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "group": "speedbench|speedbench|s1|b3",
-   "group_est_s": 8046
+   "group_est_s": 5254
   },
   {
    "id": "speedbench|speedbench|r_fuzzy|0.25|1@8192#b3",
@@ -1271,7 +1271,7 @@
     "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "group": "speedbench|speedbench|s1|b3",
-   "group_est_s": 8046
+   "group_est_s": 5254
   },
   {
    "id": "speedbench|speedbench|spec_casc_tok|0.8|1@8192#b3",
@@ -1525,7 +1525,7 @@
     "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "group": "speedbench|speedbench|s1|b3",
-   "group_est_s": 8046
+   "group_est_s": 5254
   }
  ]
 }
