@@ -1104,3 +1104,7 @@ for what is done; this file records every action and failure.
 - 2026-10-04T02:31:20Z step 8: pulled 313 run dir(s)
 - 2026-10-04T02:31:21Z step 8: calibrated gpt-oss-20b__rh-eagle3 gsm8k: targets [2.477, 3.326, 4.175], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.35], spec_casc_opt [-0.1, 0.05, -0.3], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.55, 0.15, 0.8]
 - 2026-10-04T02:31:49Z step 8 grading: 286 new run dir(s) uploaded, 286 pending, CPU job 23216627
+- 2026-10-04T02:42:20Z step 8: pulled 533 run dir(s)
+- 2026-10-04T02:42:21Z step 8: calibrated gpt-oss-20b__rh-eagle3 livecodebench: targets [2.025, 3.291, 4.556], mentored_dec [0.55, 0.75, 0.15], cactus [0.03, 0.08, 0.18], spec_casc_opt [-0.02, -0.3, 0.05], r_fuzzy [0.08, 0.03, 0.25], spec_casc_tok [0.55, 0.15, 0.8]
+- 2026-10-04T02:42:21Z step 8: calibrated gpt-oss-20b__rh-eagle3 mtbench: targets [2.316, 3.683, 5.051], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.02, 0.05, -0.3], r_fuzzy [0.08, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
+- 2026-10-04T02:42:47Z step 8 grading: 527 new run dir(s) uploaded, 527 pending, CPU job 23216699
