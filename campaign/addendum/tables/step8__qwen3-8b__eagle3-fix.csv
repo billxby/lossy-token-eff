@@ -1,7 +1,7 @@
-target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs
-Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_tok_lt,0.15,,fix,0
-Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_tok_lt,0.2,,fix,0
-Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_opt_head,0.05,0.15,fix,0
-Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok_lt,0.15,,fix,0
-Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok_lt,0.2,,fix,0
-Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_opt_head,0.05,0.15,fix,0
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs,l_bar,l_bar_strict,mean_tokens,mean_tokens_strict,lambda,rounds_ratio,time_ratio,accuracy,accuracy_strict,capout_rate,capout_rate_strict,time_per_round_ratio,nodes,nodes_strict,same_node_pairs,same_node,lambda_ci_lo,lambda_ci_hi,rounds_ratio_ci_lo,rounds_ratio_ci_hi,time_ratio_ci_lo,time_ratio_ci_hi
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_tok_lt,0.15,,fix,119,1.54309,1.49562,1343.58,1302.04,1.0319,1.01007,0.983327,,0.781513,0.243697,0.243697,0.973521,kn175,kn176,0,False,0.995716,1.07209,0.973241,1.05076,0.948249,1.02282
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_tok_lt,0.2,,fix,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_opt_head,0.05,0.15,fix,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok_lt,0.15,,fix,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok_lt,0.2,,fix,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_opt_head,0.05,0.15,fix,4,1.0996,1.07507,7997.75,7423.75,1.07732,1.07372,1.04701,,0.75,0.25,0.25,0.975123,kn175,kn176,0,False,1.00579,1.23273,0.98177,1.20717,0.957611,1.16576
