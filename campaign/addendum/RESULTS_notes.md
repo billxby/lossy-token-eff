@@ -248,3 +248,15 @@
   spec_casc_opt's Math lambda 2.04 / rounds 1.47 is 18 prompts). The
   overall (`all`) rows and the eight complete categories carry the step-7
   conclusions.
+
+- **Step 8, Block 1 (R1-Distill-Llama-8B + yuhuili EAGLE-3), complete 2026-10-04 08:03Z, 34.0 GPU-h.**
+  The published drafter stops drafting past ~2048 positions (Block 0 profile: segment l_bar 2.2-3.4 below
+  2048, 0.67-1.23 at 2048-4096, 0.23 beyond), so lossless l_bar is 3.07 on GSM8K but 0.77 on LiveCodeBench
+  and 0.60 on AIME24. No rule gives a rounds speedup on GSM8K without an accuracy cost (R 0.87-1.12;
+  accuracy 47-77% vs 77% lossless; the best points are spec_casc_tok 0.8, R 0.90 / 75%, and mentored_dec
+  0.75, R 0.87 / 69%). cactus (V2: accept-test-only) runs away on the long benchmarks: 90-98% of its
+  LiveCodeBench and AIME24 answers hit the token cap and accuracy falls to 0-3%.
+- **AIME grader quirk (affects every row, unchanged).** `scripts/grade_aime.py` accepts only a 1-3 digit
+  `\boxed{}`; a longer boxed number falls through to the last 1-3 digit integer of the answer. R1 lossless
+  case_008 boxed 78125 (reference 025) and is scored correct from "3125 \cdot 25"; by strict boxed matching
+  R1's lossless AIME24 accuracy is 7/30, not 8/30. The grader is the campaign's own and is left as is.
