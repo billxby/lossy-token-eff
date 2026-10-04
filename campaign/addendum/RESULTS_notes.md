@@ -260,3 +260,13 @@
   `\boxed{}`; a longer boxed number falls through to the last 1-3 digit integer of the answer. R1 lossless
   case_008 boxed 78125 (reference 025) and is scored correct from "3125 \cdot 25"; by strict boxed matching
   R1's lossless AIME24 accuracy is 7/30, not 8/30. The grader is the campaign's own and is left as is.
+- **Step 8, Block 2 (Llama-3.1-8B-Instruct), complete 2026-10-04 10:33Z, 32.9 GPU-h** (estimate 11: the
+  matched-l_bar protocol's many short arms each pay a server start). Medusa dropped (deviation 36).
+  spec_casc_tok is the one rule that speeds Llama up without an accuracy cost, with every drafter: rounds
+  ratio 0.63-0.78 with shorter answers (lambda 0.77-0.88) and accuracy within noise of lossless (EAGLE-3,
+  EAGLE-1, Llama-3.2-1B standalone, on GSM8K, LiveCodeBench and MT-Bench). cactus (V2 accept-test-only for
+  EAGLE-3/-1) inflates answers 4-14x with cap-outs of 40-82% and near-zero accuracy; r_fuzzy at its looser
+  alphas also inflates (lambda 2.4-6.4) and its accepted length falls below lossless (degenerate repetitive
+  text). With the standalone Llama-3.2-1B drafter (V1, full patches) cactus and r_fuzzy inflate far less
+  (lambda 1.2-1.5), mentored_dec and spec_casc_opt reach R 0.68-0.74 at a 3-9 point accuracy cost.
+  Bootstrap intervals on the EAGLE rows are wide (cap-out runs dominate the means).
