@@ -1095,3 +1095,6 @@ for what is done; this file records every action and failure.
 - 2026-10-04T01:50:08Z step 8: calibrated llama31-8b-instruct__eagle1 mtbench_llama31: targets [1.406, 2.172, 2.938], mentored_dec [0.75, 0.15], cactus [0.03, 0.08, 0.35], spec_casc_opt [-0.3, -0.1, 0.05], r_fuzzy [0.25, 0.03], spec_casc_tok [0.35, 0.15, 0.8]
 - 2026-10-04T01:50:08Z step 8: calibrated qwen3-8b__dspark gsm8k_qwen3: targets [2.805, 3.246, 3.687], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.35], spec_casc_opt [-0.3, -0.1, 0.05], r_fuzzy [0.08, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
 - 2026-10-04T01:50:34Z step 8 grading: 590 new run dir(s) uploaded, 590 pending, CPU job 23216368
+- 2026-10-04T02:01:22Z step 8: pulled 577 run dir(s)
+- 2026-10-04T02:01:22Z step 8: calibrated qwen3-8b__dspark livecodebench_qwen3: targets [2.861, 2.882, 2.904], mentored_dec [0.35, 0.55, 0.15], cactus [0.08, 0.03, 0.35], spec_casc_opt [-0.3, 0.05], r_fuzzy [0.15, 0.03, 0.25], spec_casc_tok [0.8, 0.15]
+- 2026-10-04T02:02:52Z step 8 grading: 571 new run dir(s) uploaded, 571 pending, CPU job 23216437
