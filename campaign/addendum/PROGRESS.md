@@ -1140,3 +1140,13 @@ for what is done; this file records every action and failure.
 - 2026-10-04T05:32:23Z step 8 grading: 814 new run dir(s) uploaded, 814 pending, CPU job 23218373
 - 2026-10-04T05:42:56Z step 8: pulled 644 run dir(s)
 - 2026-10-04T05:43:20Z step 8 grading: 423 new run dir(s) uploaded, 423 pending, CPU job 23218457
+- 2026-10-04T06:01:52Z step 8: pulled 1266 run dir(s)
+- 2026-10-04T06:02:03Z step 8 lane K1: submitted job 5923721 (afterany:5920139), ~10.8 GPU-h assigned
+- 2026-10-04T06:02:06Z step 8 lane K2: submitted job 5923722 (afterany:5920140), ~9.9 GPU-h assigned
+- 2026-10-04T06:02:08Z step 8 lane K3: submitted job 5923724 (afterany:5920141), ~9.6 GPU-h assigned
+- 2026-10-04T06:02:10Z step 8 lane K4: submitted job 5923725 (afterany:5920142), ~9.9 GPU-h assigned
+- 2026-10-04T06:02:12Z step 8 lane K5: submitted job 5923726 (afterany:5920143), ~10.4 GPU-h assigned
+- 2026-10-04T06:02:14Z step 8 lane K6: submitted job 5923728 (afterany:5920144), ~9.3 GPU-h assigned
+- 2026-10-04T06:02:16Z step 8 lane K7: submitted job 5923730 (afterany:5920145), ~9.4 GPU-h assigned
+- 2026-10-04T06:02:18Z step 8 lane K8: submitted job 5923732 (afterany:5920146), ~8.3 GPU-h assigned
+- 2026-10-04T06:03:19Z step 8 grading: 1174 new run dir(s) uploaded, 1174 pending, CPU job 23218625
