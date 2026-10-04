@@ -202,7 +202,7 @@ block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method
 2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,spec_casc_opt,0.05,,full,87,87,done,K2,0.00
 2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,r_fuzzy,0.08,,full,87,87,done,K5,0.00
 2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,r_fuzzy,0.03,,full,87,87,done,K4,0.00
-2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,r_fuzzy,0.25,,full,87,57,pending,K1,0.17
+2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,r_fuzzy,0.25,,full,87,82,pending,K1,0.10
 2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,spec_casc_tok,0.35,,full,87,87,done,K8,0.00
 2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,spec_casc_tok,0.8,,full,87,87,done,K7,0.00
 2,llama31-8b-instruct__eagle3,meta-llama/Llama-3.1-8B-Instruct,yuhuili/EAGLE3-LLaMA3.1-Instruct-8B,eagle3,eagle3,V2 accept-test-only,livecodebench_llama31,spec_casc_tok,0.15,,full,87,87,done,K6,0.00
@@ -415,7 +415,7 @@ block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,mentored_dec,0.35,,full,87,87,done,K5,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,mentored_dec,0.55,,full,87,87,done,K4,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,mentored_dec,0.15,,full,87,0,pending,K1,1.00
-3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,cactus,0.08,,full,87,69,pending,K2,0.27
+3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,cactus,0.08,,full,87,87,done,K2,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,cactus,0.03,,full,87,87,done,K6,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,cactus,0.35,,full,87,87,done,K8,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,spec_casc_opt,-0.3,,full,87,87,done,K7,0.00
@@ -423,7 +423,7 @@ block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,r_fuzzy,0.15,,full,87,13,pending,K5,0.86
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,r_fuzzy,0.03,,full,87,87,done,K4,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,r_fuzzy,0.25,,full,87,0,pending,K1,1.00
-3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok,0.8,,full,87,0,pending,K2,1.00
+3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok,0.8,,full,87,2,pending,K2,0.98
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok,0.15,,full,87,87,done,K6,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,strict,strict,,full,80,80,done,K3,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,mentored_dec,0.15,,calib,3,3,done,K4,0.00
@@ -456,20 +456,20 @@ block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,spec_casc_opt,-0.1,,full,77,77,done,K7,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,spec_casc_opt,0.05,,full,77,77,done,K3,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,r_fuzzy,0.15,,full,77,77,done,K8,0.00
-3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,r_fuzzy,0.25,,full,77,0,pending,K7,0.30
+3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,r_fuzzy,0.25,,full,77,55,pending,K7,0.14
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,r_fuzzy,0.03,,full,77,0,pending,K5,0.30
-3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,spec_casc_tok,0.8,,full,77,34,pending,K4,0.20
+3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,spec_casc_tok,0.8,,full,77,77,done,K4,0.00
 3,qwen3-8b__dspark,Qwen/Qwen3-8B,deepseek-ai/dspark_qwen3_8b_block7,dspark,dspark,V2 accept-test-only,mtbench_qwen3,spec_casc_tok,0.15,,full,77,0,pending,K1,0.30
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,strict,strict,,full,150,0,pending,K5,0.34
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,mentored_dec,0.75,,full,150,150,done,K6,0.00
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,cactus,0.35,,full,150,0,pending,K7,0.34
-3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_opt,0.05,,full,150,85,pending,K8,0.19
-3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,r_fuzzy,0.25,,full,150,0,pending,K4,0.34
+3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_opt,0.05,,full,150,145,pending,K8,0.09
+3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,r_fuzzy,0.25,,full,150,34,pending,K4,0.28
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_tok,0.8,,full,150,0,pending,K5,0.34
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,strict,strict,,full,90,0,pending,K8,1.03
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,mentored_dec,0.75,,full,90,0,pending,K1,1.03
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,cactus,0.35,,full,90,0,pending,K2,1.03
-3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,full,90,30,pending,K3,0.71
+3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,full,90,54,pending,K3,0.46
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,full,90,0,pending,K4,1.03
 3,qwen3-8b__qwen3-1.7b,Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_tok,0.8,,full,90,0,pending,K5,1.03
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,strict,strict,,full,150,0,pending,K5,0.22
@@ -535,7 +535,7 @@ block,pair,target,drafter,spec_method,drafter_family,sampler_path,dataset,method
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,cactus,0.08,,full,87,0,pending,K2,0.34
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,cactus,0.18,,full,87,0,pending,K8,0.34
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,spec_casc_opt,-0.02,,full,87,0,pending,K1,0.34
-4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,spec_casc_opt,-0.3,,full,87,1,pending,K6,0.34
+4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,spec_casc_opt,-0.3,,full,87,5,pending,K6,0.33
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,spec_casc_opt,0.05,,full,87,0,pending,K4,0.34
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,r_fuzzy,0.08,,full,87,0,pending,K3,0.34
 4,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,livecodebench,r_fuzzy,0.03,,full,87,0,pending,K7,0.34
