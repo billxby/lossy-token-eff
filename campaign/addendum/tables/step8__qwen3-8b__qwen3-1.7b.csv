@@ -1,11 +1,11 @@
-target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,mentored_dec,0.75,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,cactus,0.35,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_opt,0.05,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,r_fuzzy,0.25,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_tok,0.8,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,mentored_dec,0.75,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,cactus,0.35,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,loosest,0
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_tok,0.8,,loosest,0
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs,l_bar,l_bar_strict,mean_tokens,mean_tokens_strict,lambda,rounds_ratio,time_ratio,accuracy,accuracy_strict,capout_rate,capout_rate_strict,time_per_round_ratio,nodes,nodes_strict,same_node_pairs,same_node,lambda_ci_lo,lambda_ci_hi,rounds_ratio_ci_lo,rounds_ratio_ci_hi,time_ratio_ci_lo,time_ratio_ci_hi
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,mentored_dec,0.75,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,cactus,0.35,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_opt,0.05,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,r_fuzzy,0.25,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,mentored_dec,0.75,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,cactus,0.35,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,loosest,23,4.98635,3.77128,7737.52,7973.09,0.970455,0.766328,0.766322,0.826087,,0.173913,0.304348,0.999992,kn176,kn175,0,False,0.886385,1.07198,0.696535,0.848686,0.694863,0.851723
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,loosest,13,5.32247,3.86327,7735.85,8295.92,0.932488,0.704788,0.700739,,,0.230769,0.384615,0.994255,kn174,kn175,0,False,0.836387,1.01534,0.62162,0.779186,0.615336,0.779527
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
