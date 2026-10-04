@@ -478,3 +478,15 @@ addendum/step8/r1-distill-llama-8b__eagle3/aime24_r1llama/spec_casc_tok/alpha0.3
 addendum/step8/r1-distill-llama-8b__eagle3/aime24_r1llama/spec_casc_tok/alpha0.55/case_001/seed_0
 addendum/step8/r1-distill-llama-8b__eagle3/aime24_r1llama/spec_casc_tok/alpha0.55/case_002/seed_0
 addendum/step8/r1-distill-llama-8b__eagle3/aime24_r1llama/spec_casc_tok/alpha0.55/case_003/seed_0
+addendum/step8/llama31-8b-instruct__eagle1/livecodebench_llama31/spec_casc_opt/alphaneg0.02/case_001/seed_0
+addendum/step8/llama31-8b-instruct__eagle1/livecodebench_llama31/spec_casc_opt/alphaneg0.02/case_002/seed_0
+addendum/step8/llama31-8b-instruct__eagle1/livecodebench_llama31/spec_casc_opt/alphaneg0.02/case_003/seed_0
+addendum/step8/qwen3-8b__dspark/gsm8k_qwen3/cactus/alpha0.35/case_001/seed_0
+addendum/step8/qwen3-8b__dspark/gsm8k_qwen3/cactus/alpha0.35/case_002/seed_0
+addendum/step8/qwen3-8b__dspark/gsm8k_qwen3/cactus/alpha0.35/case_003/seed_0
+addendum/step8/qwen3-8b__dspark/livecodebench_qwen3/cactus/alpha0.18/case_001/seed_0
+addendum/step8/qwen3-8b__dspark/livecodebench_qwen3/cactus/alpha0.18/case_002/seed_0
+addendum/step8/qwen3-8b__dspark/livecodebench_qwen3/cactus/alpha0.18/case_003/seed_0
+addendum/step8/qwen3-8b__dspark/livecodebench_qwen3/r_fuzzy/alpha0.15/case_001/seed_0
+addendum/step8/qwen3-8b__dspark/livecodebench_qwen3/r_fuzzy/alpha0.15/case_002/seed_0
+addendum/step8/qwen3-8b__dspark/livecodebench_qwen3/r_fuzzy/alpha0.15/case_003/seed_0
