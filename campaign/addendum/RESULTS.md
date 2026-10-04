@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-04 02:42 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-04 03:02 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -712,7 +712,7 @@ Seed 0, N_draft 6, T 1.0, top-p 1.0, the paper's budgets; one persistent server 
 
 ### Block 1: DeepSeek-R1-Distill-Llama-8B + EAGLE-3 (yuhuili), matched-l_bar protocol
 
-GPU-h actual (lane journals): 13.1.
+GPU-h actual (lane journals): 13.4.
 
 `campaign/addendum/tables/step8__r1-distill-llama-8b__eagle3.csv` -- deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B (eagle3, V2 accept-test-only):
 
@@ -721,28 +721,28 @@ GPU-h actual (lane journals): 13.1.
 | gsm8k_r1llama | mentored_dec | low | 0.15 | 150 | 3.27 (3.07) | 623 (623) | 1.00 [0.95, 1.06] | 0.94 [0.89, 1.00] | 0.93 · cross-node | 6% (7%) | 78% (77%) | kn173:147+kn175:3 |
 | gsm8k_r1llama | mentored_dec | mid+high | 0.75 | 150 | 3.95 (3.07) | 691 (623) | 1.11 [1.05, 1.18]↑ | 0.87 [0.82, 0.93]↓ | 0.87 · cross-node | 12% (7%) | 69% (77%) | kn173:147+kn175:3 |
 | gsm8k_r1llama | cactus | low | 0.03 | 150 | 3.62 (3.07) | 825 (623) | 1.32 [1.21, 1.46]↑ | 1.12 [1.01, 1.25]↑ | 1.09 | 17% (7%) | 62% (77%) | kn175 |
-| gsm8k_r1llama | cactus | mid | 0.08 | 150 | 3.92 (3.07) | 889 (623) | 1.43 [1.30, 1.57]↑ | 1.11 [1.01, 1.24]↑ | 1.08 · cross-node | 21% (7%) | - (77%) | kn174:147+kn175:3 |
+| gsm8k_r1llama | cactus | mid | 0.08 | 150 | 3.92 (3.07) | 889 (623) | 1.43 [1.30, 1.57]↑ | 1.11 [1.01, 1.24]↑ | 1.08 · cross-node | 21% (7%) | 60% (77%) | kn174:147+kn175:3 |
 | gsm8k_r1llama | cactus | high | 0.35 | 150 | 4.52 (3.07) | 910 (623) | 1.46 [1.33, 1.61]↑ | 1.00 [0.90, 1.11] | 0.99 · cross-node | 21% (7%) | 55% (77%) | kn173:147+kn175:3 |
-| gsm8k_r1llama | spec_casc_opt | low | -0.3 | 150 | 3.53 (3.07) | 667 (623) | 1.07 [1.00, 1.15]↑ | 0.94 [0.87, 1.01] | 0.94 · cross-node | 9% (7%) | - (77%) | kn173:147+kn175:3 |
+| gsm8k_r1llama | spec_casc_opt | low | -0.3 | 150 | 3.53 (3.07) | 667 (623) | 1.07 [1.00, 1.15]↑ | 0.94 [0.87, 1.01] | 0.94 · cross-node | 9% (7%) | 68% (77%) | kn173:147+kn175:3 |
 | gsm8k_r1llama | spec_casc_opt | mid | -0.02 | 150 | 3.71 (3.07) | 704 (623) | 1.13 [1.04, 1.23]↑ | 0.94 [0.87, 1.02] | 0.92 | 13% (7%) | 66% (77%) | kn175 |
-| gsm8k_r1llama | spec_casc_opt | high | 0.05 | 150 | 3.81 (3.07) | 693 (623) | 1.11 [1.04, 1.20]↑ | 0.89 [0.83, 0.97]↓ | 0.88 · cross-node | 13% (7%) | - (77%) | kn174:147+kn175:3 |
+| gsm8k_r1llama | spec_casc_opt | high | 0.05 | 150 | 3.81 (3.07) | 693 (623) | 1.11 [1.04, 1.20]↑ | 0.89 [0.83, 0.97]↓ | 0.88 · cross-node | 13% (7%) | 68% (77%) | kn174:147+kn175:3 |
 | gsm8k_r1llama | r_fuzzy | low | 0.08 | 150 | 3.32 (3.07) | 726 (623) | 1.17 [1.08, 1.26]↑ | 1.08 [0.99, 1.18] | 1.07 · cross-node | 12% (7%) | 62% (77%) | kn174:147+kn175:3 |
-| gsm8k_r1llama | r_fuzzy | mid | 0.15 | 3 | 3.53 (2.94) | 1086 (497) | 2.18 [1.15, 3.00]↑ | 1.78 [1.21, 2.16]↑ | 1.72 | 33% (0%) | 33% (67%) | kn175 |
-| gsm8k_r1llama | r_fuzzy | high | 0.25 | 150 | 4.16 (3.07) | 942 (623) | 1.51 [1.37, 1.68]↑ | 1.11 [1.00, 1.26] | 1.11 · cross-node | 27% (7%) | 47% (77%) | kn173:147+kn175:3 |
-| gsm8k_r1llama | spec_casc_tok | low+mid+high | 0.8 | 21 | 3.25 (2.95) | 736 (661) | 1.11 [0.99, 1.28] | 1.02 [0.90, 1.19] | 1.02 · cross-node | 5% (10%) | - (62%) | kn173:18+kn175:3 |
+| gsm8k_r1llama | r_fuzzy | mid | 0.15 | 150 | 3.66 (3.07) | 822 (623) | 1.32 [1.21, 1.44]↑ | 1.09 [1.00, 1.20]↑ | 1.10 · cross-node | 17% (7%) | - (77%) | kn174:147+kn175:3 |
+| gsm8k_r1llama | r_fuzzy | high | 0.25 | 150 | 4.16 (3.07) | 942 (623) | 1.51 [1.36, 1.69]↑ | 1.11 [1.00, 1.25] | 1.11 · cross-node | 27% (7%) | 47% (77%) | kn173:147+kn175:3 |
+| gsm8k_r1llama | spec_casc_tok | low+mid+high | 0.8 | 150 | 3.50 (3.07) | 629 (623) | 1.01 [0.95, 1.07] | 0.90 [0.85, 0.96]↓ | 0.91 · cross-node | 7% (7%) | - (77%) | kn173:147+kn175:3 |
 | gsm8k_r1llama | spec_casc_tok | extra | 0.15 | 150 | 3.11 (3.07) | 608 (623) | 0.98 [0.90, 1.06] | 0.97 [0.89, 1.07] | 0.95 | 5% (7%) | 77% (77%) | kn175 |
-| livecodebench_r1llama | mentored_dec | low+mid+high | 0.75 | 48 | 0.89 (0.82) | 9467 (8776) | 1.08 [1.00, 1.17]↑ | 0.97 [0.89, 1.08] | 0.98 · cross-node | 38% (46%) | - (-) | kn174:45+kn175:3 |
+| livecodebench_r1llama | mentored_dec | low+mid+high | 0.75 | 62 | 0.85 (0.77) | 9619 (9038) | 1.06 [1.00, 1.13]↑ | 0.96 [0.89, 1.04] | 0.96 · cross-node | 39% (45%) | - (-) | kn174:59+kn175:3 |
 | livecodebench_r1llama | mentored_dec | extra | 0.15 | 3 | 0.82 (0.70) | 8352 (8479) | 0.99 [0.91, 1.00] | 0.97 [0.79, 1.02] | 0.98 | 33% (33%) | 67% (67%) | kn175 |
-| livecodebench_r1llama | cactus | low+mid | 0.03 | 3 | 2.09 (0.70) | 12000 (8479) | 1.42 [1.00, 3.12] | 0.70 [0.49, 2.15] | 0.70 | 100% (33%) | 0% (67%) | kn175 |
-| livecodebench_r1llama | cactus | high | 0.18 | 48 | 3.54 (0.82) | 11633 (8776) | 1.33 [1.20, 1.50]↑ | 0.44 [0.38, 0.52]↓ | 0.45 | 96% (46%) | - (-) | kn175 |
-| livecodebench_r1llama | cactus | extra | 0.35 | 3 | 4.12 (0.70) | 12000 (8479) | 1.42 [1.00, 3.12] | 0.42 [0.28, 1.36] | 0.42 | 100% (33%) | 0% (67%) | kn175 |
-| livecodebench_r1llama | spec_casc_opt | low+mid+high | 0.05 | 48 | 1.38 (0.82) | 9313 (8776) | 1.06 [0.97, 1.18] | 0.73 [0.66, 0.82]↓ | 0.73 · cross-node | 31% (46%) | - (-) | kn173:45+kn175:3 |
-| livecodebench_r1llama | spec_casc_opt | extra | -0.3 | 3 | 0.67 (0.70) | 8996 (8479) | 1.06 [1.00, 1.33] | 1.03 [0.99, 1.45] | 1.04 | 33% (33%) | 33% (67%) | kn175 |
-| livecodebench_r1llama | r_fuzzy | low+mid+high | 0.25 | 11 | 0.75 (0.70) | 9966 (8927) | 1.12 [1.04, 1.22]↑ | 1.02 [0.94, 1.13] | 1.03 · cross-node | 55% (36%) | - (64%) | kn174:8+kn175:3 |
+| livecodebench_r1llama | cactus | low+mid | 0.03 | 21 | 2.23 (0.78) | 11811 (8626) | 1.37 [1.18, 1.65]↑ | 0.65 [0.53, 0.85]↓ | 0.66 · cross-node | 95% (38%) | - (62%) | kn174:18+kn175:3 |
+| livecodebench_r1llama | cactus | high | 0.18 | 62 | 3.57 (0.77) | 11716 (9038) | 1.30 [1.19, 1.43]↑ | 0.42 [0.38, 0.49]↓ | 0.43 · T same-node 0.45 (54 pairs) | 97% (45%) | 2% (-) | kn175 |
+| livecodebench_r1llama | cactus | extra | 0.35 | 17 | 4.25 (0.67) | 12000 (9250) | 1.30 [1.12, 1.56]↑ | 0.37 [0.31, 0.47]↓ | 0.38 · cross-node | 100% (41%) | - (59%) | kn174:12+kn175:5 |
+| livecodebench_r1llama | spec_casc_opt | low+mid+high | 0.05 | 62 | 1.35 (0.77) | 9246 (9038) | 1.02 [0.94, 1.12] | 0.71 [0.65, 0.78]↓ | 0.71 · T same-node 0.71 (11 pairs) | 31% (45%) | - (-) | kn173:59+kn175:3 |
+| livecodebench_r1llama | spec_casc_opt | extra | -0.3 | 13 | 0.82 (0.75) | 8962 (8439) | 1.06 [1.01, 1.13]↑ | 0.98 [0.86, 1.10] | 0.99 · cross-node | 46% (31%) | - (69%) | kn173:10+kn175:3 |
+| livecodebench_r1llama | r_fuzzy | low+mid+high | 0.25 | 29 | 0.72 (0.74) | 10254 (8916) | 1.15 [1.06, 1.27]↑ | 1.04 [0.94, 1.19] | 1.05 · cross-node | 41% (45%) | - (55%) | kn174:23+kn175:6 |
 | livecodebench_r1llama | r_fuzzy | extra | 0.03 | 3 | 0.62 (0.70) | 8849 (8479) | 1.04 [1.00, 1.19] | 1.07 [1.03, 1.28]↑ | 1.07 | 33% (33%) | 67% (67%) | kn175 |
 | livecodebench_r1llama | spec_casc_tok | low+mid+high | 0.55 | 3 | 0.66 (0.70) | 8330 (8479) | 0.98 [0.87, 1.20] | 0.98 [0.81, 1.29] | 0.98 | 33% (33%) | 67% (67%) | kn175 |
 | livecodebench_r1llama | spec_casc_tok | extra | 0.15 | 3 | 0.56 (0.70) | 9681 (8479) | 1.14 [1.00, 1.31] | 1.19 [1.03, 1.52]↑ | 1.20 | 67% (33%) | 33% (67%) | kn175 |
-| livecodebench_r1llama | spec_casc_tok | extra | 0.8 | 3 | 0.57 (0.70) | 9105 (8479) | 1.07 [0.92, 1.69] | 1.07 [0.86, 2.13] | 1.07 | 33% (33%) | 33% (67%) | kn175 |
+| livecodebench_r1llama | spec_casc_tok | extra | 0.8 | 5 | 0.65 (0.66) | 8872 (8761) | 1.01 [0.90, 1.22] | 1.00 [0.86, 1.27] | 1.01 | 40% (40%) | - (60%) | kn175 |
 
 ### Block 2: Llama-3.1-8B-Instruct: EAGLE-3, EAGLE-1 (matched l_bar) and Llama-3.2-1B standalone (loosest)
 

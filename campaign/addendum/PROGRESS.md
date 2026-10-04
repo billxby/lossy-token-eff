@@ -1108,3 +1108,13 @@ for what is done; this file records every action and failure.
 - 2026-10-04T02:42:21Z step 8: calibrated gpt-oss-20b__rh-eagle3 livecodebench: targets [2.025, 3.291, 4.556], mentored_dec [0.55, 0.75, 0.15], cactus [0.03, 0.08, 0.18], spec_casc_opt [-0.02, -0.3, 0.05], r_fuzzy [0.08, 0.03, 0.25], spec_casc_tok [0.55, 0.15, 0.8]
 - 2026-10-04T02:42:21Z step 8: calibrated gpt-oss-20b__rh-eagle3 mtbench: targets [2.316, 3.683, 5.051], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.02, 0.05, -0.3], r_fuzzy [0.08, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
 - 2026-10-04T02:42:47Z step 8 grading: 527 new run dir(s) uploaded, 527 pending, CPU job 23216699
+- 2026-10-04T03:01:25Z step 8: pulled 406 run dir(s)
+- 2026-10-04T03:01:35Z step 8 lane K1: submitted job 5920139 (afterany:5918875), ~13.9 GPU-h assigned
+- 2026-10-04T03:01:36Z step 8 lane K2: submitted job 5920140 (afterany:5918877), ~13.8 GPU-h assigned
+- 2026-10-04T03:01:38Z step 8 lane K3: submitted job 5920141 (afterany:5918878), ~13.8 GPU-h assigned
+- 2026-10-04T03:01:39Z step 8 lane K4: submitted job 5920142 (afterany:5918879), ~13.8 GPU-h assigned
+- 2026-10-04T03:01:41Z step 8 lane K5: submitted job 5920143 (afterany:5918880), ~14.0 GPU-h assigned
+- 2026-10-04T03:01:42Z step 8 lane K6: submitted job 5920144 (afterany:5918885), ~13.9 GPU-h assigned
+- 2026-10-04T03:01:44Z step 8 lane K7: submitted job 5920145 (afterany:5918886), ~14.0 GPU-h assigned
+- 2026-10-04T03:01:46Z step 8 lane K8: submitted job 5920146 (afterany:5918888), ~13.8 GPU-h assigned
+- 2026-10-04T03:02:07Z step 8 grading: 406 new run dir(s) uploaded, 406 pending, CPU job 23216838
