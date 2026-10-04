@@ -1,0 +1,15 @@
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,l_bar_target,n_pairs
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,mentored_dec,0.35,,low,2.477,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,mentored_dec,0.75,,mid+high,3.326/4.175,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,mentored_dec,0.15,,extra,,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,cactus,0.03,,low+mid,2.477/3.326,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,cactus,0.35,,high,4.175,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,spec_casc_opt,-0.1,,low,2.477,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,spec_casc_opt,0.05,,mid+high,3.326/4.175,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,spec_casc_opt,-0.3,,extra,,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,r_fuzzy,0.15,,low,2.477,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,r_fuzzy,0.25,,mid+high,3.326/4.175,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,r_fuzzy,0.03,,extra,,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,spec_casc_tok,0.55,,low+mid+high,2.477/3.326/4.175,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,spec_casc_tok,0.15,,extra,,0
+openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,gsm8k,spec_casc_tok,0.8,,extra,,0
