@@ -288,3 +288,15 @@
   but moves l_bar only 1.55 -> 1.56. On Qwen3 the head-restricted fix is safe and nearly inert (+3% acceptance),
   against +12% on GPT-OSS-20B (`tables/fix__gpt-oss-20b.csv`, 3 seeds). Time ratios pair Killarney arms with a
   Killarney reference on another node (kn175/kn176): read the rounds ratio.
+- **Step 8, Block 4 (GPT-OSS-20B + RedHatAI EAGLE-3, V1 full patches, on Killarney: deviation 39), complete
+  2026-10-04 ~14:30Z, 16.9 GPU-h** (estimate 6). Lossless l_bar 2.13 / 1.57 / 1.82 (GSM8K / LiveCodeBench /
+  MT-Bench), below the paper's nebius head. spec_casc_tok is the only rule with a rounds gain at unchanged accuracy,
+  and only on GSM8K (R 0.83 [0.75, 0.91], 97% = lossless); on LiveCodeBench no rule speeds up (R 1.01-2.28) and the
+  looser cactus / r_fuzzy / spec_casc_opt settings lose 34-72 accuracy points; on MT-Bench cactus reaches R 0.74 with
+  answers 1.4-1.7x longer. With a weaker drafter than the paper's, the relaxations mostly buy longer answers.
+- **Step 8, Block 5 (R1-Distill-Llama-8B + Llama-3.2-1B standalone, V1, loosest), complete 2026-10-04 ~14:30Z,
+  7.5 GPU-h.** The 1B drafter keeps drafting on long answers (lossless l_bar 1.56 on LiveCodeBench vs 0.77 for the
+  EAGLE-3 head of Block 1; 2.71 on GSM8K) despite the 7 mismatched special tokens (deviation 38). GSM8K:
+  spec_casc_tok 0.8 R 0.89 [0.82, 0.95] at 77% vs 71% lossless and mentored_dec 0.75 R 0.87 at 73%; cactus,
+  spec_casc_opt and r_fuzzy inflate (lambda 2.0-3.2, R 1.4-2.3, accuracy 44-51%). LiveCodeBench: every rule cuts
+  rounds (R 0.50-0.84) but every one loses accuracy (4-42% vs 56%).
