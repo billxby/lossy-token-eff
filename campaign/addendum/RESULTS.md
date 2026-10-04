@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-04 15:43 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-04 15:54 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1069,22 +1069,22 @@ GPU-h actual (lane journals): 2.5.
 
 ### Block 7 (optional): Qwen3-8B + RedHatAI P-EAGLE (parallel drafting), loosest
 
-GPU-h actual (lane journals): 1.4.
+GPU-h actual (lane journals): 4.4.
 
 `campaign/addendum/tables/step8__qwen3-8b__peagle.csv` -- Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle (eagle3, V1 full patches):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gsm8k_qwen3 | mentored_dec | loosest | 0.75 | 150 | 2.37 (2.16) | 1331 (1303) | 1.02 [0.99, 1.06] | 0.95 [0.92, 0.99]↓ | 0.95 · cross-node | 25% (23%) | - (81%) | kn174 |
-| gsm8k_qwen3 | cactus | loosest | 0.35 | 150 | 2.47 (2.16) | 1358 (1303) | 1.04 [1.00, 1.08]↑ | 0.94 [0.91, 0.98]↓ | 0.95 | 27% (23%) | - (81%) | kn175 |
-| gsm8k_qwen3 | spec_casc_opt | loosest | 0.05 | 150 | 2.36 (2.16) | 1334 (1303) | 1.02 [0.98, 1.07] | 0.96 [0.92, 1.00]↓ | 0.94 · cross-node | 27% (23%) | - (81%) | kn174 |
-| gsm8k_qwen3 | r_fuzzy | loosest | 0.25 | 116 | 2.75 (2.15) | 1704 (1333) | 1.28 [1.21, 1.36]↑ | 1.07 [1.01, 1.14]↑ | 1.07 | 59% (24%) | - (81%) | kn175 |
-| gsm8k_qwen3 | spec_casc_tok | loosest | 0.8 | 74 | 2.24 (2.16) | 1322 (1288) | 1.03 [0.96, 1.10] | 1.00 [0.94, 1.07] | 1.00 · cross-node | 26% (24%) | - (81%) | kn174 |
-| livecodebench_qwen3 | mentored_dec | loosest | 0.75 | 88 | 2.10 (1.84) | 8086 (7982) | 1.01 [0.97, 1.05] | 0.92 [0.88, 0.96]↓ | 0.92 | 32% (27%) | - (-) | kn175 |
-| livecodebench_qwen3 | cactus | loosest | 0.35 | 75 | 2.25 (1.85) | 8791 (7969) | 1.10 [1.05, 1.16]↑ | 0.95 [0.91, 1.00] | 0.95 · cross-node | 43% (28%) | - (-) | kn176 |
-| livecodebench_qwen3 | spec_casc_opt | loosest | 0.05 | 83 | 2.08 (1.85) | 8345 (8008) | 1.04 [0.99, 1.09] | 0.95 [0.91, 1.00]↓ | 0.95 · cross-node | 31% (27%) | - (-) | kn176 |
-| livecodebench_qwen3 | r_fuzzy | loosest | 0.25 | 59 | 2.38 (1.85) | 10555 (8074) | 1.31 [1.22, 1.42]↑ | 1.10 [1.03, 1.20]↑ | 1.14 · cross-node | 69% (29%) | - (-) | kn172 |
-| livecodebench_qwen3 | spec_casc_tok | loosest | 0.8 | 76 | 2.00 (1.85) | 8179 (7962) | 1.03 [0.97, 1.09] | 0.97 [0.92, 1.03] | 0.97 · cross-node | 29% (28%) | - (-) | kn176 |
+| gsm8k_qwen3 | mentored_dec | loosest | 0.75 | 150 | 2.37 (2.16) | 1331 (1303) | 1.02 [0.99, 1.06] | 0.95 [0.92, 0.99]↓ | 0.95 · cross-node | 25% (23%) | 79% (81%) | kn174 |
+| gsm8k_qwen3 | cactus | loosest | 0.35 | 150 | 2.47 (2.16) | 1358 (1303) | 1.04 [1.00, 1.08]↑ | 0.94 [0.91, 0.98]↓ | 0.95 | 27% (23%) | 77% (81%) | kn175 |
+| gsm8k_qwen3 | spec_casc_opt | loosest | 0.05 | 150 | 2.36 (2.16) | 1334 (1303) | 1.02 [0.98, 1.07] | 0.96 [0.92, 1.00]↓ | 0.94 · cross-node | 27% (23%) | 77% (81%) | kn174 |
+| gsm8k_qwen3 | r_fuzzy | loosest | 0.25 | 150 | 2.75 (2.16) | 1672 (1303) | 1.28 [1.22, 1.36]↑ | 1.08 [1.02, 1.14]↑ | 1.08 | 56% (23%) | - (81%) | kn175 |
+| gsm8k_qwen3 | spec_casc_tok | loosest | 0.8 | 150 | 2.23 (2.16) | 1304 (1303) | 1.00 [0.96, 1.04] | 0.98 [0.94, 1.02] | 0.98 · cross-node | 28% (23%) | - (81%) | kn174 |
+| livecodebench_qwen3 | mentored_dec | loosest | 0.75 | 90 | 2.10 (1.84) | 8173 (8072) | 1.01 [0.97, 1.05] | 0.92 [0.88, 0.96]↓ | 0.92 | 33% (29%) | - (73%) | kn175 |
+| livecodebench_qwen3 | cactus | loosest | 0.35 | 90 | 2.24 (1.84) | 8847 (8072) | 1.10 [1.05, 1.14]↑ | 0.94 [0.91, 0.99]↓ | 0.95 · cross-node | 46% (29%) | - (73%) | kn176 |
+| livecodebench_qwen3 | spec_casc_opt | loosest | 0.05 | 90 | 2.08 (1.84) | 8413 (8072) | 1.04 [1.00, 1.09] | 0.95 [0.91, 0.99]↓ | 0.95 · cross-node | 34% (29%) | - (73%) | kn176 |
+| livecodebench_qwen3 | r_fuzzy | loosest | 0.25 | 85 | 2.39 (1.84) | 10645 (8102) | 1.31 [1.24, 1.40]↑ | 1.10 [1.04, 1.18]↑ | 1.14 · cross-node | 71% (28%) | - (74%) | kn172 |
+| livecodebench_qwen3 | spec_casc_tok | loosest | 0.8 | 90 | 1.99 (1.84) | 8363 (8072) | 1.04 [0.99, 1.09] | 0.98 [0.93, 1.03] | 0.98 · cross-node | 33% (29%) | - (73%) | kn176 |
 
 ## Observations, failures and anything that looked wrong
 

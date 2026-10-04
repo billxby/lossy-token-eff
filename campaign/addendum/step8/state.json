@@ -754,7 +754,7 @@
     {
      "dependency": "",
      "id": "5927687",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-04T15:42:36Z"
     }
    ]
@@ -806,7 +806,7 @@
     {
      "dependency": "",
      "id": "5927430",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-04T15:01:20Z"
     }
    ]
@@ -864,7 +864,7 @@
     {
      "dependency": "",
      "id": "5927431",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-04T15:01:22Z"
     }
    ]
@@ -974,7 +974,7 @@
     {
      "dependency": "",
      "id": "5927433",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-04T15:01:25Z"
     }
    ]
@@ -1026,7 +1026,7 @@
     {
      "dependency": "",
      "id": "5927434",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-04T15:01:26Z"
     }
    ]
@@ -1078,7 +1078,7 @@
     {
      "dependency": "",
      "id": "5927435",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-04T15:01:28Z"
     }
    ]
