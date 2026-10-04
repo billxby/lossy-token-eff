@@ -1,11 +1,11 @@
-target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,mentored_dec,0.75,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,cactus,0.35,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,spec_casc_opt,0.05,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,r_fuzzy,0.25,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,spec_casc_tok,0.8,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,mentored_dec,0.75,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,cactus,0.35,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,spec_casc_opt,0.05,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,r_fuzzy,0.25,,loosest,0
-meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,spec_casc_tok,0.8,,loosest,0
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs,l_bar,l_bar_strict,mean_tokens,mean_tokens_strict,lambda,rounds_ratio,time_ratio,accuracy,accuracy_strict,capout_rate,capout_rate_strict,time_per_round_ratio,nodes,nodes_strict,same_node_pairs,same_node,lambda_ci_lo,lambda_ci_hi,rounds_ratio_ci_lo,rounds_ratio_ci_hi,time_ratio_ci_lo,time_ratio_ci_hi
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,mentored_dec,0.75,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,cactus,0.35,,loosest,112,5.4418,4.06149,384.545,285.25,1.3481,0.987254,0.959603,,,0.0535714,0.0178571,0.971992,kn175,kn173,0,False,1.01771,1.77398,0.747938,1.28986,0.74106,1.2392
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,spec_casc_opt,0.05,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,r_fuzzy,0.25,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_llama31,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,mentored_dec,0.75,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,cactus,0.35,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,spec_casc_opt,0.05,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,r_fuzzy,0.25,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+meta-llama/Llama-3.1-8B-Instruct,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_llama31,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
