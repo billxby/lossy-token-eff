@@ -6,6 +6,6 @@ Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen
 Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
 Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,mentored_dec,0.75,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
 Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,cactus,0.35,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,loosest,23,4.98635,3.77128,7737.52,7973.09,0.970455,0.766328,0.766322,0.826087,,0.173913,0.304348,0.999992,kn176,kn175,0,False,0.886385,1.07198,0.696535,0.848686,0.694863,0.851723
-Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,loosest,13,5.32247,3.86327,7735.85,8295.92,0.932488,0.704788,0.700739,,,0.230769,0.384615,0.994255,kn174,kn175,0,False,0.836387,1.01534,0.62162,0.779186,0.615336,0.779527
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,loosest,40,4.99591,3.78337,7616.6,8050.27,0.946129,0.74585,0.746907,0.8,,0.2,0.3,1.00142,kn176,kn175,0,False,0.876817,1.01662,0.689958,0.805317,0.689145,0.808144
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,loosest,39,5.22376,3.78198,7332.15,8009.49,0.915434,0.688807,0.688568,,,0.25641,0.307692,0.999653,kn174,kn175,0,False,0.85959,0.967,0.644439,0.730358,0.642768,0.732472
 Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
