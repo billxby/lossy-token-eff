@@ -1073,3 +1073,18 @@ for what is done; this file records every action and failure.
 - 2026-10-03T22:27:01Z step 8: pulled 90 run dir(s)
 - 2026-10-03T22:27:01Z step 8: calibrated r1-distill-llama-8b__eagle3 mtbench_r1llama: targets [2.222, 3.228, 4.234], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.08, 0.35], spec_casc_opt [-0.1, 0.05, -0.3], r_fuzzy [0.25, 0.03], spec_casc_tok [0.8, 0.15]
 - 2026-10-03T22:27:26Z step 8 grading: 78 new run dir(s) uploaded, 78 pending, CPU job 23213035
+- 2026-10-04T00:32:04Z step 8: pulled 365 run dir(s)
+- 2026-10-04T00:32:04Z step 8: calibrated r1-distill-llama-8b__eagle3 aime24_r1llama: targets [1.195, 2.335, 3.475], mentored_dec [0.35, 0.15, 0.75], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.1, 0.05, -0.3], r_fuzzy [0.03, 0.25], spec_casc_tok [0.55, 0.15, 0.8]
+- 2026-10-04T00:32:04Z step 8: calibrated llama31-8b-instruct__eagle3 gsm8k_llama31: targets [1.524, 2.753, 3.982], mentored_dec [0.35, 0.55, 0.75], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.1, -0.02, 0.05], r_fuzzy [0.15, 0.03, 0.25], spec_casc_tok [0.15, 0.8]
+- 2026-10-04T00:32:04Z step 8: calibrated llama31-8b-instruct__eagle3 livecodebench_llama31: targets [1.415, 2.944, 4.473], mentored_dec [0.75, 0.35, 0.15], cactus [0.03, 0.08, 0.35], spec_casc_opt [-0.3, -0.02, 0.05], r_fuzzy [0.08, 0.03, 0.25], spec_casc_tok [0.35, 0.8, 0.15]
+- 2026-10-04T00:32:04Z step 8: calibrated llama31-8b-instruct__eagle3 mtbench_llama31: targets [1.901, 3.286, 4.67], mentored_dec [0.15, 0.75], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.3, 0.05], r_fuzzy [0.15, 0.03, 0.25], spec_casc_tok [0.55, 0.8, 0.15]
+- 2026-10-04T00:32:04Z step 8: calibrated llama31-8b-instruct__eagle1 gsm8k_llama31: targets [1.57, 2.246, 2.921], mentored_dec [0.55, 0.75, 0.15], cactus [0.03, 0.08, 0.35], spec_casc_opt [-0.3, 0.05, -0.02], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.55, 0.8, 0.15]
+- 2026-10-04T00:32:27Z step 8 lane K1: submitted job 5918875 (afterany:5915646), ~11.0 GPU-h assigned
+- 2026-10-04T00:32:29Z step 8 lane K2: submitted job 5918877 (afterany:5915647), ~11.0 GPU-h assigned
+- 2026-10-04T00:32:31Z step 8 lane K3: submitted job 5918878 (afterany:5915648), ~11.0 GPU-h assigned
+- 2026-10-04T00:32:33Z step 8 lane K4: submitted job 5918879 (afterany:5915650), ~11.0 GPU-h assigned
+- 2026-10-04T00:32:34Z step 8 lane K5: submitted job 5918880 (afterany:5915651), ~11.0 GPU-h assigned
+- 2026-10-04T00:32:36Z step 8 lane K6: submitted job 5918885 (afterany:5915652), ~10.9 GPU-h assigned
+- 2026-10-04T00:32:38Z step 8 lane K7: submitted job 5918886 (afterany:5915653), ~11.1 GPU-h assigned
+- 2026-10-04T00:32:40Z step 8 lane K8: submitted job 5918888 (afterany:5915654), ~11.0 GPU-h assigned
+- 2026-10-04T00:32:55Z step 8 grading: 263 new run dir(s) uploaded, 263 pending, CPU job 23215968
