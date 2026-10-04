@@ -193,8 +193,15 @@ def lists() -> dict[str, list[dict]]:
               "condition": f"step8_block0/f3_v2_strict_warm{rep}",
               "runs_subroot": f"runs/addendum/step8_block0/f3_v2_strict_warm{rep}", "env": dict(it["env"])}
         k3w.append(it)
+    # Block 6 check (2026-10-04 13:40Z): spec_casc_tok_lt 0.15 and 0.2 gave byte-identical outputs on all 240 cases
+    # (spec_casc_opt_head on 238). Plausible for a drafter whose drafts are almost always the target's argmax or far
+    # below it (lossless l_bar 1.5), but the mask must be shown live: much wider heads (0.55, 0.8) on case_001-030
+    # must change the outputs and raise l_bar.
+    fixenv = {"VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__eagle3-fix"}
+    k3x = [item(f"fixcheck_tok_lt_{a}", "gsm8k_qwen3", "spec_casc_tok_lt", a, [f"case_{n:03d}" for n in range(1, 31)],
+                *q3, "eagle3", rope=QWEN3_ROPE_SCALING, extra_env=fixenv) for a in ("0.55", "0.8")]
     return {"K1": k1, "K2": k2, "K3": k3, "K4": k4, "K1r": k1r, "K1p": k1p, "K1t": k1t, "K2f": k2f, "K4v": k4v,
-            "K3w": k3w}
+            "K3w": k3w, "K3x": k3x}
 
 
 def main() -> int:

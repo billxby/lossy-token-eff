@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-04 13:45 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-04 13:52 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1344,4 +1344,14 @@ GPU-h actual (lane journals): 2.5.
   0.69-0.83 with slightly shorter answers and accuracy at or above lossless (GSM8K 81-85% vs 79%, LiveCodeBench
   71-80% vs 69%): a strong drafter leaves little for the relaxation to break. Lossless GSM8K cap-outs are 25-30%
   for Qwen3 at the paper's 2048-token budget (thinking traces), as in the paper's own Qwen3 rows.
+- **Step 8, Block 6 (the fix on Qwen3-8B + its EAGLE-3 head, V2 port), complete 2026-10-04 13:34Z.** Against the
+  Killarney lossless reference (runs/addendum/nibiref): spec_casc_tok_lt 0.15 and 0.2 and spec_casc_opt_head
+  (0.05, beta 0.15) all give l_bar 1.54 vs 1.50 (GSM8K) and 1.17 vs 1.13 (LiveCodeBench), rounds ratio 0.99
+  [0.95, 1.03], lambda 1.01, accuracy unchanged (79% vs 80%, 74% vs 73%). The three settings produce byte-identical
+  outputs on all 240 cases (opt_head on 238): with this drafter (lossless l_bar 1.5, as in the paper's Qwen3 rows)
+  the drafted token is almost never within 80-85% of the target's top probability while failing the lossless
+  test. The masks are live: tok_lt at 0.55 changes all 30 of 30 GSM8K outputs against 0.15 (check job 5926723)
+  but moves l_bar only 1.55 -> 1.56. On Qwen3 the head-restricted fix is safe and nearly inert (+3% acceptance),
+  against +12% on GPT-OSS-20B (`tables/fix__gpt-oss-20b.csv`, 3 seeds). Time ratios pair Killarney arms with a
+  Killarney reference on another node (kn175/kn176): read the rounds ratio.
 
