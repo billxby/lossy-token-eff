@@ -437,6 +437,18 @@
   "s8|qwen3-8b__eagle3-fix|livecodebench_qwen3|spec_casc_opt_head|0.05|b0.15|full": "K8",
   "s8|qwen3-8b__eagle3-fix|livecodebench_qwen3|spec_casc_tok_lt|0.15|full": "K6",
   "s8|qwen3-8b__eagle3-fix|livecodebench_qwen3|spec_casc_tok_lt|0.2|full": "K7",
+  "s8|qwen3-8b__peagle|gsm8k_qwen3|cactus|0.35|full": "K7",
+  "s8|qwen3-8b__peagle|gsm8k_qwen3|mentored_dec|0.75|full": "K8",
+  "s8|qwen3-8b__peagle|gsm8k_qwen3|r_fuzzy|0.25|full": "K7",
+  "s8|qwen3-8b__peagle|gsm8k_qwen3|spec_casc_opt|0.05|full": "K8",
+  "s8|qwen3-8b__peagle|gsm8k_qwen3|spec_casc_tok|0.8|full": "K8",
+  "s8|qwen3-8b__peagle|gsm8k_qwen3|strict|strict|full": "K7",
+  "s8|qwen3-8b__peagle|livecodebench_qwen3|cactus|0.35|full": "K3",
+  "s8|qwen3-8b__peagle|livecodebench_qwen3|mentored_dec|0.75|full": "K2",
+  "s8|qwen3-8b__peagle|livecodebench_qwen3|r_fuzzy|0.25|full": "K5",
+  "s8|qwen3-8b__peagle|livecodebench_qwen3|spec_casc_opt|0.05|full": "K4",
+  "s8|qwen3-8b__peagle|livecodebench_qwen3|spec_casc_tok|0.8|full": "K6",
+  "s8|qwen3-8b__peagle|livecodebench_qwen3|strict|strict|full": "K1",
   "s8|qwen3-8b__qwen3-1.7b|gsm8k_qwen3|cactus|0.35|full": "K7",
   "s8|qwen3-8b__qwen3-1.7b|gsm8k_qwen3|mentored_dec|0.75|full": "K6",
   "s8|qwen3-8b__qwen3-1.7b|gsm8k_qwen3|r_fuzzy|0.25|full": "K4",
@@ -680,6 +692,12 @@
      "id": "5925115",
      "state": "ENDED",
      "submitted": "2026-10-04T09:02:29Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927428",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:17Z"
     }
    ]
   },
@@ -726,6 +744,12 @@
      "id": "5923722",
      "state": "ENDED",
      "submitted": "2026-10-04T06:02:06Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927429",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:18Z"
     }
    ]
   },
@@ -772,6 +796,12 @@
      "id": "5923724",
      "state": "ENDED",
      "submitted": "2026-10-04T06:02:08Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927430",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:20Z"
     }
    ]
   },
@@ -824,6 +854,12 @@
      "id": "5926129",
      "state": "ENDED",
      "submitted": "2026-10-04T12:44:36Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927431",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:22Z"
     }
    ]
   },
@@ -876,6 +912,12 @@
      "id": "5925116",
      "state": "ENDED",
      "submitted": "2026-10-04T09:02:30Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927432",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:23Z"
     }
    ]
   },
@@ -922,6 +964,12 @@
      "id": "5923728",
      "state": "ENDED",
      "submitted": "2026-10-04T06:02:14Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927433",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:25Z"
     }
    ]
   },
@@ -968,6 +1016,12 @@
      "id": "5923730",
      "state": "ENDED",
      "submitted": "2026-10-04T06:02:16Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927434",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:26Z"
     }
    ]
   },
@@ -1014,6 +1068,12 @@
      "id": "5923732",
      "state": "ENDED",
      "submitted": "2026-10-04T06:02:18Z"
+    },
+    {
+     "dependency": "",
+     "id": "5927435",
+     "state": "PENDING",
+     "submitted": "2026-10-04T15:01:28Z"
     }
    ]
   }
@@ -1031,7 +1091,7 @@
   "K8": "927d14f61f59526db297231b1e7dd881cd050c11cf342307b4e747d51c7687ba"
  },
  "warm": {
-  "killarney": "5915590",
+  "killarney": "5927427",
   "nibi": "23211714"
  }
 }

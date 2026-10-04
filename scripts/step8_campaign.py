@@ -108,13 +108,15 @@ def sampler_path(family: str, spec: str) -> str:
 
 
 def pair(block: str, family: str, slug: str, drafter: str, spec: str, kind: str, datasets: list[str], host: str,
-         drafter_path: str | None = None, env: dict | None = None, arms: list | None = None) -> dict:
+         drafter_path: str | None = None, env: dict | None = None, arms: list | None = None,
+         sampler: str | None = None) -> dict:
     pid = f"{TARGET_SLUG[family]}__{slug}"
     # a compile cache per pair: two drafters of one architecture (Qwen3-0.6B / 1.7B) collided in the shared cache
     # (Block 0, 2026-10-03: illegal memory access in the drafter's graph capture after an AOT cache load)
     env = {"VLLM_CACHE_ROOT": f"/scratch/billxby/vllm_cache_step8/{pid}", **FAMILY_ENV.get(family, {}), **(env or {})}
     return {"block": block, "family": family, "slug": slug, "drafter": drafter, "drafter_path": drafter_path or drafter,
-            "spec": spec, "kind": kind, "datasets": datasets, "host": host, "sampler": sampler_path(family, spec),
+            "spec": spec, "kind": kind, "datasets": datasets, "host": host,
+            "sampler": sampler or sampler_path(family, spec),
             "drafter_family": DRAFTER_FAMILY[spec], "env": env, "arms": arms, "id": pid}
 
 
@@ -149,8 +151,12 @@ PAIRS = [
     pair("5", "r1llama", "llama32-1b", L32_1B, "draft_model", "standalone", ["gsm8k", "livecodebench"], "killarney"),
     pair("6", "qwen3", "eagle3-fix", MODEL_FAMILIES["qwen3"][1], "eagle3", "fix", ["gsm8k", "livecodebench"],
          "killarney", arms=FIX_ARMS),
+    # Block 7 (optional; started 2026-10-04 ~14:40Z once blocks 0-6 were committed and the lanes free): P-EAGLE drafts
+    # in parallel, which vLLM 0.26.0 runs on the V1 runner (V2's EagleSpeculator does not support parallel drafting)
+    pair("7", "qwen3", "peagle", "RedHatAI/Qwen3-8B-speculator.peagle", "eagle3", "standalone", ["gsm8k", "livecodebench"],
+         "killarney", env={"PARALLEL_DRAFTING": "true"}, sampler=V1),
 ]
-BLOCKS_ENABLED = {"1", "2", "3", "4", "5", "6"}  # plan only these (block 0 decides drafter paths and fallbacks)
+BLOCKS_ENABLED = {"1", "2", "3", "4", "5", "6", "7"}  # plan only these (block 0 decides drafter paths and fallbacks)
 DISABLED_PAIRS: dict[str, str] = {  # pair id -> reason (block 0 fallbacks)
     "llama31-8b-instruct__medusa": "block 0: no draft probabilities reach the sampler (vLLM's medusa path passes "
                                    "draft_probs None: every traced q(x) = 1.0, no draft entropy); the cascade and fuzzy "

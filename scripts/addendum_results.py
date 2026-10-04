@@ -394,6 +394,7 @@ STEP8_BLOCKS = {
     "4": "Block 4: GPT-OSS-20B + RedHatAI EAGLE-3, matched-l_bar protocol",
     "5": "Block 5: DeepSeek-R1-Distill-Llama-8B + Llama-3.2-1B standalone (loosest)",
     "6": "Block 6: the fix (head-restricted relaxation) on Qwen3-8B; GPT-OSS-20B re-export",
+    "7": "Block 7 (optional): Qwen3-8B + RedHatAI P-EAGLE (parallel drafting), loosest",
 }
 
 
