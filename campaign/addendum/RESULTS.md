@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-04 13:03 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-04 13:04 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1334,4 +1334,12 @@ GPU-h actual (lane journals): 1.3.
   text). With the standalone Llama-3.2-1B drafter (V1, full patches) cactus and r_fuzzy inflate far less
   (lambda 1.2-1.5), mentored_dec and spec_casc_opt reach R 0.68-0.74 at a 3-9 point accuracy cost.
   Bootstrap intervals on the EAGLE rows are wide (cap-out runs dominate the means).
+- **Step 8, Block 3 (Qwen3-8B: DSpark, Qwen3-1.7B), complete 2026-10-04 13:03Z, 25.2 GPU-h.** With DSpark (V2:
+  cactus and spec_casc_tok accept-test-only) every rule gives a modest, tight rounds gain (R 0.77-0.95, intervals
+  +-0.04) with lengths near lossless (lambda 0.91-1.10); accuracy holds at the gentler settings and falls at the
+  loosest (LiveCodeBench: spec_casc_opt 0.05 30%, r_fuzzy 0.25 32%, vs 74% lossless). With the standalone
+  Qwen3-1.7B drafter (V1, full patches; lossless l_bar 3.8) all five rules at their loosest alpha reach R
+  0.69-0.83 with slightly shorter answers and accuracy at or above lossless (GSM8K 81-85% vs 79%, LiveCodeBench
+  71-80% vs 69%): a strong drafter leaves little for the relaxation to break. Lossless GSM8K cap-outs are 25-30%
+  for Qwen3 at the paper's 2048-token budget (thinking traces), as in the paper's own Qwen3 rows.
 
