@@ -1168,3 +1168,5 @@ for what is done; this file records every action and failure.
 - 2026-10-04T08:03:11Z step 8 grading: 798 new run dir(s) uploaded, 798 pending, CPU job 23219627
 - 2026-10-04T08:14:03Z step 8: pulled 847 run dir(s)
 - 2026-10-04T08:14:37Z step 8 grading: 722 new run dir(s) uploaded, 722 pending, CPU job 23219693
+- 2026-10-04T08:32:18Z step 8: pulled 926 run dir(s)
+- 2026-10-04T08:32:52Z step 8 grading: 602 new run dir(s) uploaded, 602 pending, CPU job 23219812
