@@ -1,0 +1,11 @@
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_r1llama,mentored_dec,0.75,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_r1llama,cactus,0.35,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_r1llama,spec_casc_opt,0.05,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_r1llama,r_fuzzy,0.25,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,gsm8k_r1llama,spec_casc_tok,0.8,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_r1llama,mentored_dec,0.75,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_r1llama,cactus,0.35,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_r1llama,spec_casc_opt,0.05,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_r1llama,r_fuzzy,0.25,,loosest,0
+deepseek-ai/DeepSeek-R1-Distill-Llama-8B,meta-llama/Llama-3.2-1B-Instruct,draft_model,draft_model,V1 full patches,livecodebench_r1llama,spec_casc_tok,0.8,,loosest,0

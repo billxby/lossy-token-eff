@@ -1,0 +1,11 @@
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,mentored_dec,0.75,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,cactus,0.35,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_opt,0.05,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,r_fuzzy,0.25,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,gsm8k_qwen3,spec_casc_tok,0.8,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,mentored_dec,0.75,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,cactus,0.35,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,loosest,0
+Qwen/Qwen3-8B,Qwen/Qwen3-1.7B,draft_model,draft_model,V1 full patches,livecodebench_qwen3,spec_casc_tok,0.8,,loosest,0

@@ -10,7 +10,9 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import json
 import pathlib
+import sys
 from collections import Counter, defaultdict
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
@@ -385,6 +387,87 @@ def section_tables(title: str, pattern: str) -> list[str]:
     return out
 
 
+STEP8_BLOCKS = {
+    "1": "Block 1: DeepSeek-R1-Distill-Llama-8B + EAGLE-3 (yuhuili), matched-l_bar protocol",
+    "2": "Block 2: Llama-3.1-8B-Instruct: EAGLE-3, EAGLE-1 (matched l_bar) and Llama-3.2-1B standalone (loosest)",
+    "3": "Block 3: Qwen3-8B: DSpark (matched l_bar) and Qwen3-1.7B standalone (loosest)",
+    "4": "Block 4: GPT-OSS-20B + RedHatAI EAGLE-3, matched-l_bar protocol",
+    "5": "Block 5: DeepSeek-R1-Distill-Llama-8B + Llama-3.2-1B standalone (loosest)",
+    "6": "Block 6: the fix (head-restricted relaxation) on Qwen3-8B; GPT-OSS-20B re-export",
+}
+
+
+def step8_gpu_hours() -> dict[str, float]:
+    """Actual GPU-h per block: item wall time from the step-8 lane journals (campaign/addendum/step8/lanes/), by the
+    pair named in each item id (s8|<pair>|...), plus warm-up items (by pair)."""
+    sys.path.insert(0, str(REPO / "scripts"))
+    import step8_campaign as s8
+    block_of = {p["id"]: p["block"] for p in s8.PAIRS}
+    hours: dict[str, float] = {}
+    for path in sorted((ADD / "step8" / "lanes").glob("*_status.jsonl")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            if r.get("event") != "item_end":
+                continue
+            parts = str(r.get("item", "")).split("|")
+            pid = parts[1] if len(parts) > 1 and parts[0] in ("s8", "warm") else None
+            if pid in block_of:
+                hours[block_of[pid]] = hours.get(block_of[pid], 0.0) + float(r.get("elapsed_s") or 0) / 3600
+    return hours
+
+
+def section_step8() -> list[str]:
+    """Step 8 (campaign/addendum/step8/GOAL.md): one subsection per block from tables/step8__<target>__<drafter>.csv
+    (scripts/addendum_tables.py step8)."""
+    sys.path.insert(0, str(REPO / "scripts"))
+    import step8_campaign as s8
+    out = ["## Step 8: more drafters, the Llama-3.1-8B family, the fix on Qwen3-8B", "",
+           "Seed 0, N_draft 6, T 1.0, top-p 1.0, the paper's budgets; one persistent server per arm (README deviation "
+           "30); every arm paired case by case with its own pair's lossless run. Ratios: lambda (completion tokens), R "
+           "(draft rounds), T (wall time), relaxed / lossless, with 95% bootstrap intervals over cases (arrows: interval "
+           "excludes 1). Accuracy: the campaign's graders (MT-Bench: none). `sampler_path`: V2 = vLLM's V2 runner, whose "
+           "sampler is accept-test-only for cactus and spec_casc_tok; V1 = full patches. Block 0: `step8/BLOCK0.md`.", ""]
+    hours = step8_gpu_hours()
+    for block, title in STEP8_BLOCKS.items():
+        out += [f"### {title}", "", f"GPU-h actual (lane journals): {hours.get(block, 0.0):.1f}.", ""]
+        found = False
+        for p in s8.PAIRS:
+            if p["block"] != block:
+                continue
+            path = ADD / "tables" / f"step8__{s8.TARGET_SLUG[p['family']]}__{p['slug']}.csv"
+            t = [r for r in rows(path) if r.get("n_pairs") not in ("", "0")] if path.is_file() else []
+            if not t:
+                continue
+            found = True
+            out += [f"`{rel(path)}` -- {t[0]['target']} + {t[0]['drafter']} ({t[0]['drafter_family']}, "
+                    f"{t[0]['sampler_path']}):", "",
+                    "| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | "
+                    "R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |",
+                    "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+            for r in t:
+                alpha = r["alpha"] + (f", beta {r['beta']}" if r.get("beta") else "")
+                out.append(
+                    f"| {r['dataset']} | {r['method']} | {r['setting']} | {alpha} | {r['n_pairs']} | "
+                    f"{f(r['l_bar'])} ({f(r['l_bar_strict'])}) | {f(r['mean_tokens'], 0)} ({f(r['mean_tokens_strict'], 0)}) | "
+                    f"{f(r['lambda'])} [{f(r['lambda_ci_lo'])}, {f(r['lambda_ci_hi'])}]{arrow(r['lambda_ci_lo'], r['lambda_ci_hi'])} | "
+                    f"{f(r['rounds_ratio'])} [{f(r['rounds_ratio_ci_lo'])}, {f(r['rounds_ratio_ci_hi'])}]"
+                    f"{arrow(r['rounds_ratio_ci_lo'], r['rounds_ratio_ci_hi'])} | {f(r['time_ratio'])}{same_node_note(r)} | "
+                    f"{pct(r['capout_rate'])} ({pct(r['capout_rate_strict'])}) | "
+                    f"{pct(r['accuracy']) if r.get('accuracy') else '-'} ({pct(r['accuracy_strict']) if r.get('accuracy_strict') else '-'}) | "
+                    f"{r.get('nodes', '')} |")
+            out.append("")
+        if block == "6":
+            out += section_tables("GPT-OSS-20B fix results re-exported (cascade workspace, 3 seeds on Nibi):",
+                                  "fix__gpt-oss-20b.csv")[2:]
+            found = True
+        if not found:
+            out += ["Pending.", ""]
+    return out
+
+
 def main() -> int:
     lines = ["# NAACL-2027 addendum: results", "",
              f"Generated {dt.datetime.now(dt.timezone.utc).strftime('%Y-%m-%d %H:%M UTC')} by `scripts/addendum_results.py` "
@@ -401,6 +484,7 @@ def main() -> int:
     lines += section_best()
     lines += section_aime()
     lines += section_speedbench()
+    lines += section_step8()
     notes = ADD / "RESULTS_notes.md"
     lines += ["## Observations, failures and anything that looked wrong", ""]
     lines += [notes.read_text(encoding="utf-8").strip() if notes.is_file() else "(none yet)", ""]

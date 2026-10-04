@@ -557,8 +557,13 @@ def cmd_cycle(args: argparse.Namespace) -> int:
     except Exception as exc:  # grading lives on Nibi; its outage must not stop the Killarney lanes
         print(f"grading skipped: {type(exc).__name__}: {exc}")
     cmd_plan(argparse.Namespace(quiet=False))
+    # tables and RESULTS.md regenerated from what is pulled and graded so far (never edited by hand)
+    for script, arg in (("addendum_tables.py", "step8"), ("addendum_results.py", None)):
+        subprocess.run([sys.executable, str(REPO / "scripts" / script), *([arg] if arg else [])], cwd=REPO,
+                       capture_output=True, check=False)
     # runs/** is gitignored (the addendum's runs live on disk too); the manifest, calibration and tables are committed
-    paths = ["campaign/addendum/step8", "campaign/addendum/PROGRESS.md", "campaign/calibration", "campaign/addendum/tables"]
+    paths = ["campaign/addendum/step8", "campaign/addendum/PROGRESS.md", "campaign/calibration", "campaign/addendum/tables",
+             "campaign/addendum/RESULTS.md"]
     if ac.commit(f"step 8: cycle {ac.utc_now()}", [p for p in paths if (REPO / p).exists()]):
         ac.git("push", "-q", "origin", "addendum-step8", check=False)
     return 0

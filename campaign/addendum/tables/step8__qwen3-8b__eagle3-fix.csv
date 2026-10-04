@@ -1,0 +1,7 @@
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_tok_lt,0.15,,fix,0
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_tok_lt,0.2,,fix,0
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,gsm8k_qwen3,spec_casc_opt_head,0.05,0.15,fix,0
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok_lt,0.15,,fix,0
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_tok_lt,0.2,,fix,0
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.eagle3,eagle3,eagle3,V2 accept-test-only,livecodebench_qwen3,spec_casc_opt_head,0.05,0.15,fix,0

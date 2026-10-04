@@ -749,14 +749,20 @@ def cmd_step8(args) -> int:
                     targets = cal["targets_l_bar"]
                     arms = []
                     for m in FIVE:
-                        for i, a in enumerate(cal["chosen_alphas"][m]):
-                            arms.append((m, f"{float(a):g}", None, ["low", "mid", "high"][i] if i < 3 else str(i)))
+                        # setting = the target(s) this alpha is the nearest grid point to (campaign_run.pick_alphas);
+                        # "extra" = a grid extreme pick_alphas adds when two targets share one alpha
+                        pts = [(g["alpha"], g["mean_l_bar"]) for g in cal["grid_results"][m]]
+                        nearest = [min(pts, key=lambda q: abs(q[1] - t))[0] for t in targets] if pts else []
+                        for a in cal["chosen_alphas"][m]:
+                            names = [n for n, pick in zip(("low", "mid", "high"), nearest) if pick == a]
+                            arms.append((m, f"{float(a):g}", None, "+".join(names) or "extra"))
             for m, a, b, setting in arms:
                 runs = load_cell(ds, m, a, 0, run_root=root, params=s8.params_dir(m, a, b))
                 c = compare(runs, strict, rng)
                 extra = {}
                 if p["kind"] == "dedicated":
-                    extra["l_bar_target"] = targets[["low", "mid", "high"].index(setting)] if setting in ("low", "mid", "high") else None
+                    names = [n for n in setting.split("+") if n in ("low", "mid", "high")]
+                    extra["l_bar_target"] = "/".join(f"{targets[['low', 'mid', 'high'].index(n)]:.3f}" for n in names) or None
                 rows.append({**label(p), "dataset": ds, "method": m, "alpha": a, "beta": b or "", "setting": setting,
                              **extra, **c})
         if rows:
