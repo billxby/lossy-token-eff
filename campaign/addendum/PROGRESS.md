@@ -1098,3 +1098,6 @@ for what is done; this file records every action and failure.
 - 2026-10-04T02:01:22Z step 8: pulled 577 run dir(s)
 - 2026-10-04T02:01:22Z step 8: calibrated qwen3-8b__dspark livecodebench_qwen3: targets [2.861, 2.882, 2.904], mentored_dec [0.35, 0.55, 0.15], cactus [0.08, 0.03, 0.35], spec_casc_opt [-0.3, 0.05], r_fuzzy [0.15, 0.03, 0.25], spec_casc_tok [0.8, 0.15]
 - 2026-10-04T02:02:52Z step 8 grading: 571 new run dir(s) uploaded, 571 pending, CPU job 23216437
+- 2026-10-04T02:13:25Z step 8: pulled 219 run dir(s)
+- 2026-10-04T02:13:25Z step 8: calibrated qwen3-8b__dspark mtbench_qwen3: targets [2.034, 2.635, 3.237], mentored_dec [0.55, 0.75, 0.15], cactus [0.08, 0.35, 0.03], spec_casc_opt [-0.3, -0.1, 0.05], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
+- 2026-10-04T02:17:13Z step 8 grading: 210 new run dir(s) uploaded, 210 pending, CPU job 23216551
