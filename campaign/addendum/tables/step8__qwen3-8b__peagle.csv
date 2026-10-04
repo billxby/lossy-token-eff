@@ -1,0 +1,11 @@
+target,drafter,drafter_family,spec_method,sampler_path,dataset,method,alpha,beta,setting,n_pairs,l_bar,l_bar_strict,mean_tokens,mean_tokens_strict,lambda,rounds_ratio,time_ratio,accuracy,accuracy_strict,capout_rate,capout_rate_strict,time_per_round_ratio,nodes,nodes_strict,same_node_pairs,same_node,lambda_ci_lo,lambda_ci_hi,rounds_ratio_ci_lo,rounds_ratio_ci_hi,time_ratio_ci_lo,time_ratio_ci_hi
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,gsm8k_qwen3,mentored_dec,0.75,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,gsm8k_qwen3,cactus,0.35,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,gsm8k_qwen3,spec_casc_opt,0.05,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,gsm8k_qwen3,r_fuzzy,0.25,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,gsm8k_qwen3,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,livecodebench_qwen3,mentored_dec,0.75,,loosest,6,2.15841,1.9337,9340.33,9460.67,0.987281,0.90388,0.903678,,,0.5,0.333333,0.999777,kn175,kn175,6,True,0.902834,1.05382,0.848797,0.964509,0.850752,0.961827
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,livecodebench_qwen3,cactus,0.35,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,livecodebench_qwen3,spec_casc_opt,0.05,,loosest,4,2.1207,1.97785,8263.25,8313.5,0.993956,0.932119,0.932502,,,0.5,0.25,1.00041,kn176,kn175,0,False,0.744877,1.13906,0.71572,1.08009,0.720774,1.07962
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,livecodebench_qwen3,r_fuzzy,0.25,,loosest,0,,,,,,,,,,,,,,,,,,,,,,
+Qwen/Qwen3-8B,RedHatAI/Qwen3-8B-speculator.peagle,eagle3,eagle3,V1 full patches,livecodebench_qwen3,spec_casc_tok,0.8,,loosest,0,,,,,,,,,,,,,,,,,,,,,,

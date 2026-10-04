@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-04 15:00 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-04 15:12 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -984,7 +984,7 @@ GPU-h actual (lane journals): 16.9.
 | livecodebench | r_fuzzy | extra | 0.25 | 90 | 1.60 (1.57) | 7561 (3445) | 2.19 [1.92, 2.54]↑ | 2.28 [1.85, 2.85]↑ | 2.26 · cross-node | 24% (6%) | 11% (83%) | kn175:87+kn174:3 |
 | livecodebench | spec_casc_tok | low+mid+high | 0.55 | 90 | 1.65 (1.57) | 3768 (3445) | 1.09 [0.97, 1.22] | 1.06 [0.89, 1.26] | 1.05 · cross-node | 6% (6%) | 91% (83%) | kn176:87+kn174:3 |
 | livecodebench | spec_casc_tok | extra | 0.15 | 90 | 1.56 (1.57) | 3769 (3445) | 1.09 [0.98, 1.23] | 1.10 [0.93, 1.32] | 1.09 · cross-node | 6% (6%) | 93% (83%) | kn175:87+kn174:3 |
-| livecodebench | spec_casc_tok | extra | 0.8 | 90 | 1.71 (1.57) | 3873 (3445) | 1.12 [1.01, 1.24]↑ | 1.10 [0.95, 1.26] | 1.23 · cross-node | 7% (6%) | - (83%) | kn176:87+kn175:3 |
+| livecodebench | spec_casc_tok | extra | 0.8 | 90 | 1.71 (1.57) | 3873 (3445) | 1.12 [1.01, 1.24]↑ | 1.10 [0.95, 1.26] | 1.23 · cross-node | 7% (6%) | 87% (83%) | kn176:87+kn175:3 |
 | mtbench | mentored_dec | low | 0.35 | 80 | 2.13 (1.82) | 1355 (1157) | 1.17 [1.06, 1.30]↑ | 1.04 [0.94, 1.15] | 1.05 · T same-node 1.09 (77 pairs) | 2% (1%) | - (-) | kn175:77+kn173:3 |
 | mtbench | mentored_dec | mid+high | 0.75 | 80 | 2.83 (1.82) | 1570 (1157) | 1.36 [1.23, 1.51]↑ | 0.95 [0.85, 1.06] | 0.97 · cross-node | 5% (1%) | - (-) | kn174 |
 | mtbench | mentored_dec | extra | 0.15 | 80 | 1.92 (1.82) | 1292 (1157) | 1.12 [1.02, 1.23]↑ | 1.06 [0.97, 1.17] | 1.08 · cross-node | 2% (1%) | - (-) | kn176:77+kn175:3 |
@@ -1008,14 +1008,14 @@ GPU-h actual (lane journals): 7.5.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| gsm8k_r1llama | mentored_dec | loosest | 0.75 | 150 | 3.32 (2.71) | 450 (440) | 1.02 [0.96, 1.09] | 0.87 [0.81, 0.94]↓ | 0.84 · cross-node | 1% (1%) | 73% (-) | kn175 |
-| gsm8k_r1llama | cactus | loosest | 0.35 | 150 | 4.26 (2.71) | 971 (440) | 2.21 [1.92, 2.51]↑ | 1.37 [1.20, 1.55]↑ | 1.31 | 35% (1%) | 44% (-) | kn176 |
-| gsm8k_r1llama | spec_casc_opt | loosest | 0.05 | 150 | 3.98 (2.71) | 1395 (440) | 3.17 [2.81, 3.55]↑ | 2.30 [2.00, 2.60]↑ | 2.21 · cross-node | 52% (1%) | 51% (-) | kn174 |
-| gsm8k_r1llama | r_fuzzy | loosest | 0.25 | 150 | 3.13 (2.71) | 892 (440) | 2.03 [1.79, 2.27]↑ | 1.99 [1.71, 2.31]↑ | 1.93 · cross-node | 19% (1%) | 49% (-) | kn175 |
-| gsm8k_r1llama | spec_casc_tok | loosest | 0.8 | 150 | 2.96 (2.71) | 426 (440) | 0.97 [0.91, 1.03] | 0.89 [0.82, 0.95]↓ | 0.86 · cross-node | 1% (1%) | 77% (-) | kn175 |
+| gsm8k_r1llama | mentored_dec | loosest | 0.75 | 150 | 3.32 (2.71) | 450 (440) | 1.02 [0.96, 1.09] | 0.87 [0.81, 0.94]↓ | 0.84 · cross-node | 1% (1%) | 73% (71%) | kn175 |
+| gsm8k_r1llama | cactus | loosest | 0.35 | 150 | 4.26 (2.71) | 971 (440) | 2.21 [1.92, 2.51]↑ | 1.37 [1.20, 1.55]↑ | 1.31 | 35% (1%) | 44% (71%) | kn176 |
+| gsm8k_r1llama | spec_casc_opt | loosest | 0.05 | 150 | 3.98 (2.71) | 1395 (440) | 3.17 [2.81, 3.55]↑ | 2.30 [2.00, 2.60]↑ | 2.21 · cross-node | 52% (1%) | 51% (71%) | kn174 |
+| gsm8k_r1llama | r_fuzzy | loosest | 0.25 | 150 | 3.13 (2.71) | 892 (440) | 2.03 [1.79, 2.27]↑ | 1.99 [1.71, 2.31]↑ | 1.93 · cross-node | 19% (1%) | 49% (71%) | kn175 |
+| gsm8k_r1llama | spec_casc_tok | loosest | 0.8 | 150 | 2.96 (2.71) | 426 (440) | 0.97 [0.91, 1.03] | 0.89 [0.82, 0.95]↓ | 0.86 · cross-node | 1% (1%) | 77% (71%) | kn175 |
 | livecodebench_r1llama | mentored_dec | loosest | 0.75 | 90 | 2.59 (1.56) | 10337 (8742) | 1.18 [1.12, 1.26]↑ | 0.84 [0.79, 0.89]↓ | 0.83 | 63% (39%) | 32% (56%) | kn176 |
 | livecodebench_r1llama | cactus | loosest | 0.35 | 90 | 5.50 (1.56) | 11179 (8742) | 1.28 [1.18, 1.40]↑ | 0.50 [0.46, 0.55]↓ | 0.50 · cross-node | 83% (39%) | 4% (56%) | kn174 |
-| livecodebench_r1llama | spec_casc_opt | loosest | 0.05 | 90 | 2.62 (1.56) | 9539 (8742) | 1.09 [1.02, 1.17]↑ | 0.78 [0.72, 0.84]↓ | 0.79 · cross-node | 44% (39%) | - (56%) | kn175 |
+| livecodebench_r1llama | spec_casc_opt | loosest | 0.05 | 90 | 2.62 (1.56) | 9539 (8742) | 1.09 [1.02, 1.17]↑ | 0.78 [0.72, 0.84]↓ | 0.79 · cross-node | 44% (39%) | 30% (56%) | kn175 |
 | livecodebench_r1llama | r_fuzzy | loosest | 0.25 | 90 | 2.07 (1.56) | 7688 (8742) | 0.88 [0.81, 0.96]↓ | 0.74 [0.67, 0.80]↓ | 0.73 · cross-node | 2% (39%) | 14% (56%) | kn175 |
 | livecodebench_r1llama | spec_casc_tok | loosest | 0.8 | 90 | 2.34 (1.56) | 9067 (8742) | 1.04 [0.99, 1.09] | 0.78 [0.75, 0.82]↓ | 0.78 · cross-node | 46% (39%) | 42% (56%) | kn175 |
 
@@ -1066,6 +1066,17 @@ GPU-h actual (lane journals): 2.5.
 | fix | aime24 | spec_casc_opt_head | -0.100 | 30.000 | 2.470 | 2.224 | 10698.200 | 8481.430 | 1.261 | 1.159 | 1.187 | 0.633 | 0.800 | 0.167 | 0.067 | 1.024 | - | - | - | - | - | - | - | - | - | - | - | gpt-oss-20b | nebius/EAGLE3-gpt-oss-20b | 0.350 | 0.000 | 1.000 | Nibi, one H100 SXM, vLLM 0.26.0 (V1 runner), persistent warm server per arm and seed (scripts/persistent_arm_replay.py); job 21848564 (opt_head arms; strict seed 0 is E1F job 21804913's, identical rows) | E6 | campaign/tables/aime24_e6.csv (method=spec_casc_opt_head, params=alphaneg0.1_beta0.35, seeds 0; strict same case+seed); accuracy: campaign/results/aime24_e6.csv (method=spec_casc_opt_head_beta0.35, alpha=-0.1); accuracy_strict: cascade/RESULTS.md 2.4 'Lossless (seed 0): ... 80%'; reported in cascade/RESULTS.md 2.4 |
 | fix | aime24 | spec_casc_opt_head | -0.020 | 30.000 | 2.533 | 2.224 | 9481.370 | 8481.430 | 1.118 | 1.001 | 1.028 | 0.800 | 0.800 | 0.067 | 0.067 | 1.026 | - | - | - | - | - | - | - | - | - | - | - | gpt-oss-20b | nebius/EAGLE3-gpt-oss-20b | 0.350 | 0.000 | 1.000 | Nibi, one H100 SXM, vLLM 0.26.0 (V1 runner), persistent warm server per arm and seed (scripts/persistent_arm_replay.py); job 21848564 (opt_head arms; strict seed 0 is E1F job 21804913's, identical rows) | E6 | campaign/tables/aime24_e6.csv (method=spec_casc_opt_head, params=alphaneg0.02_beta0.35, seeds 0; strict same case+seed); accuracy: campaign/results/aime24_e6.csv (method=spec_casc_opt_head_beta0.35, alpha=-0.02); accuracy_strict: cascade/RESULTS.md 2.4 'Lossless (seed 0): ... 80%'; reported in cascade/RESULTS.md 2.4 |
 | fix | aime24 | spec_casc_opt_head | 0.050 | 30.000 | 2.528 | 2.224 | 10772.200 | 8481.430 | 1.270 | 1.151 | 1.164 | 0.667 | 0.800 | 0.167 | 0.067 | 1.011 | - | - | - | - | - | - | - | - | - | - | - | gpt-oss-20b | nebius/EAGLE3-gpt-oss-20b | 0.350 | 0.000 | 1.000 | Nibi, one H100 SXM, vLLM 0.26.0 (V1 runner), persistent warm server per arm and seed (scripts/persistent_arm_replay.py); job 21848564 (opt_head arms; strict seed 0 is E1F job 21804913's, identical rows) | E6 | campaign/tables/aime24_e6.csv (method=spec_casc_opt_head, params=alpha0.05_beta0.35, seeds 0; strict same case+seed); accuracy: campaign/results/aime24_e6.csv (method=spec_casc_opt_head_beta0.35, alpha=0.05); accuracy_strict: cascade/RESULTS.md 2.4 'Lossless (seed 0): ... 80%'; reported in cascade/RESULTS.md 2.4 |
+
+### Block 7 (optional): Qwen3-8B + RedHatAI P-EAGLE (parallel drafting), loosest
+
+GPU-h actual (lane journals): 0.0.
+
+`campaign/addendum/tables/step8__qwen3-8b__peagle.csv` -- Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle (eagle3, V1 full patches):
+
+| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| livecodebench_qwen3 | mentored_dec | loosest | 0.75 | 6 | 2.16 (1.93) | 9340 (9461) | 0.99 [0.90, 1.05] | 0.90 [0.85, 0.96]↓ | 0.90 | 50% (33%) | - (-) | kn175 |
+| livecodebench_qwen3 | spec_casc_opt | loosest | 0.05 | 4 | 2.12 (1.98) | 8263 (8314) | 0.99 [0.74, 1.14] | 0.93 [0.72, 1.08] | 0.93 · cross-node | 50% (25%) | - (-) | kn176 |
 
 ## Observations, failures and anything that looked wrong
 
