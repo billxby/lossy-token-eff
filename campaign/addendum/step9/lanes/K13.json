@@ -408,12 +408,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.1|calib",
+   "id": "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|0.05|calib",
    "step": "9.4c",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "humaneval_llama31",
    "method": "spec_casc_opt",
-   "alpha": "-0.1",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",
@@ -446,12 +446,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.35|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.75|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
    "method": "mentored_dec",
-   "alpha": "0.35",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",
@@ -485,12 +485,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.25|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.55|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
+   "method": "spec_casc_tok",
+   "alpha": "0.55",
    "seed": 0,
    "cases": [
     "case_001",
