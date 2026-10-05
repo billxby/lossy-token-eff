@@ -17,5 +17,7 @@ block,cluster,pair,dataset,case,output_tokens,finish_reason,l_bar,wall_s,host,an
 4a,killarney,gpt-oss-20b__rh-eagle3,humaneval,case_002,1334,stop,1.482,3.8,kn173,fenced_block,47 lines,extracted,RedHatAI/gpt-oss-20b-speculator.eagle3
 4b,killarney,qwen3-8b__dspark,humaneval_qwen3,case_001,2220,stop,2.742,5.4,kn173,fenced_block,18 lines,extracted,deepseek-ai/dspark_qwen3_8b_block7
 4b,killarney,qwen3-8b__dspark,humaneval_qwen3,case_002,9000,length,2.053,26.2,kn173,final_channel_without_code_block,,no_answer,deepseek-ai/dspark_qwen3_8b_block7
+4c,killarney,llama31-8b-instruct__eagle3,humaneval_llama31,case_001,484,stop,3.000,1.2,kn169,fenced_block,33 lines,extracted,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536
+4c,killarney,llama31-8b-instruct__eagle3,humaneval_llama31,case_002,547,stop,1.894,1.7,kn169,fenced_block,1 lines,extracted,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536
 4e,killarney,r1-distill-llama-8b__eagle3,humaneval_r1llama,case_001,1706,stop,2.884,4.0,kn173,fenced_block,17 lines,extracted,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536
 4e,killarney,r1-distill-llama-8b__eagle3,humaneval_r1llama,case_002,9000,length,0.443,56.8,kn173,final_channel_without_code_block,,no_answer,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536

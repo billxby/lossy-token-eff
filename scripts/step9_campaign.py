@@ -450,7 +450,12 @@ def cmd_plan(args: argparse.Namespace) -> int:
         waiting = any(r["host"] == host and r["status"] != "done" and (r["stage"] in ("calib", "smoke") or
                                                                      not r["slurm_job_ids"]) for r in rows)
         entries.sort(key=lambda e: (BLOCK_ORDER[e[0]], STAGE_RANK[e[1]["id"].rsplit("|", 1)[1]]))
-        work = {"items": [e[1] for e in entries], "hold_minutes": 30 if waiting else 0}
+        # README deviation 43: FlashInfer JIT-builds its sampling module into ~/.cache/flashinfer under one file lock,
+        # and its build.ninja names the lane's own venv, so 16 lanes kept rebuilding it in turn (servers hung >20 min
+        # in warmup). A workspace per lane: built once per lane from the same sources and flags, then loaded.
+        fi_env = {"FLASHINFER_WORKSPACE_BASE": f"/scratch/billxby/step9/flashinfer/{lane}"}
+        work = {"items": [{**e[1], "env": {**e[1]["env"], **fi_env}} for e in entries],
+                "hold_minutes": 30 if waiting else 0}
         (LANES_DIR / f"{lane}.json").write_text(json.dumps(work, indent=1) + "\n", encoding="utf-8")
     save_state(state)
     if not getattr(args, "quiet", False):

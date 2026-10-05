@@ -440,3 +440,11 @@ Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`
    2026-10-08 13:00 while all 16 Killarney lanes ran, so the Llama blocks (no run yet, no Nibi job ever started) moved
    to Killarney as well, on step 8's warm Llama caches; every step-9 block runs on Killarney H100s and the Nibi jobs
    were cancelled. Nibi only grades (CPU).
+43. **A FlashInfer JIT workspace per Killarney lane (2026-10-05 ~22:45Z).** Six of the first ~110 step-9 servers hung
+   in engine warmup (no /health within the startup timeout; the lane retried each item, no run affected). Every vLLM
+   server JIT-builds FlashInfer's sampling module into `~/.cache/flashinfer/0.6.14/90a/cached_ops/sampling` under one
+   file lock, and the module's `build.ninja` names the building lane's own venv, so with 16 lanes the shared build was
+   invalidated and redone by each lane in turn (the directory held fresh object files and never a linked module; this
+   rebuild is also why a server start took ~5 min). Each lane now builds into its own workspace
+   (`FLASHINFER_WORKSPACE_BASE=/scratch/billxby/step9/flashinfer/<lane>`): the same sources, flags and compiler, built
+   once per lane and loaded afterwards. Outputs are unaffected; server starts get shorter.
