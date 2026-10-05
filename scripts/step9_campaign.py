@@ -216,6 +216,10 @@ def make_item(block: str, pid: str, base: str, method: str, alpha: str, stage: s
         "model_flags": model_flags(target, p["drafter_path"], served, rope),
         "num_spec": 6, "temperature": 1.0, "top_p": 1.0, "env": {"SPEC_METHOD": p["spec"], **p["env"]},
         "host": host,
+        # 3 of the first 88 servers (kn175, kn176) hung after their engine came up and never answered /health; a
+        # healthy start takes 5-9 min (cold compile included), so give up after 20 min, not the default 30 (the
+        # lane retries the item; no run is affected)
+        "extra_flags": ["--startup-timeout", "1200"],
     }
 
 
