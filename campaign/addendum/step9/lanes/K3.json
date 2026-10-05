@@ -36,12 +36,12 @@
    "host": "killarney"
   },
   {
-   "id": "s9|gpt-oss-20b__rh-eagle3|longbench_v2|cactus|0.35|calib",
+   "id": "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_opt|-0.3|calib",
    "step": "9.3a",
    "condition": "step9/gpt-oss-20b__rh-eagle3",
    "dataset": "longbench_v2",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "spec_casc_opt",
+   "alpha": "-0.3",
    "seed": 0,
    "cases": [
     "case_001",
@@ -70,12 +70,12 @@
    "host": "killarney"
   },
   {
-   "id": "s9|qwen3-8b__dspark|longbench_v2_qwen3|mentored_dec|0.55|calib",
+   "id": "s9|qwen3-8b__dspark|longbench_v2_qwen3|mentored_dec|0.15|calib",
    "step": "9.3b",
    "condition": "step9/qwen3-8b__dspark",
    "dataset": "longbench_v2_qwen3",
    "method": "mentored_dec",
-   "alpha": "0.55",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -105,12 +105,12 @@
    "host": "killarney"
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|mentored_dec|0.55|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|mentored_dec|0.15|calib",
    "step": "9.3e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "longbench_v2_r1llama",
    "method": "mentored_dec",
-   "alpha": "0.55",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -139,12 +139,12 @@
    "host": "killarney"
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.35|calib",
    "step": "9.3e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "longbench_v2_r1llama",
    "method": "spec_casc_tok",
-   "alpha": "0.8",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",

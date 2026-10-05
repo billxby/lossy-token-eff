@@ -1,7 +1,8 @@
 relpath,dataset,method,params,case,last_boxed,grader_answer,grader_extracted_by,verdict
-addendum/step9/gpt-oss-20b__rh-eagle3/aime24/cactus/alpha0.03/case_005/seed_0,aime24,cactus,alpha0.03,case_005,"p=17,\qquad m=134",134,last_integer,
-addendum/step9/gpt-oss-20b__rh-eagle3/aime24/cactus/alpha0.08/case_014/seed_0,aime24,cactus,alpha0.08,case_014,2025,,final_channel_without_integer,
-addendum/step9/gpt-oss-20b__rh-eagle3/aime24/mentored_dec/alpha0.55/case_005/seed_0,aime24,mentored_dec,alpha0.55,case_005,"p=17,\qquad m=110",110,last_integer,
-addendum/step9/gpt-oss-20b__rh-eagle3/aime24/mentored_dec/alpha0.75/case_005/seed_0,aime24,mentored_dec,alpha0.75,case_005,"p=17,\quad m=110",110,last_integer,
-addendum/step9/gpt-oss-20b__rh-eagle3/aime24/r_fuzzy/alpha0.03/case_005/seed_0,aime24,r_fuzzy,alpha0.03,case_005,"p=17,\; m=151",151,last_integer,
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/cactus/alpha0.03/case_005/seed_0,aime24,cactus,alpha0.03,case_005,"p=17,\qquad m=134",134,last_integer,wrong
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/cactus/alpha0.08/case_014/seed_0,aime24,cactus,alpha0.08,case_014,2025,,final_channel_without_integer,no_answer
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/mentored_dec/alpha0.55/case_005/seed_0,aime24,mentored_dec,alpha0.55,case_005,"p=17,\qquad m=110",110,last_integer,correct
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/mentored_dec/alpha0.75/case_005/seed_0,aime24,mentored_dec,alpha0.75,case_005,"p=17,\quad m=110",110,last_integer,correct
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/r_fuzzy/alpha0.03/case_005/seed_0,aime24,r_fuzzy,alpha0.03,case_005,"p=17,\; m=151",151,last_integer,wrong
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/r_fuzzy/alpha0.25/case_006/seed_0,aime24,r_fuzzy,alpha0.25,case_006,8832143,,final_channel_without_integer,
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alphaneg0.3/case_002/seed_0,aime24,spec_casc_opt,alphaneg0.3,case_002,"\,m+n = 100+13 = 113\,",113,last_integer,correct
