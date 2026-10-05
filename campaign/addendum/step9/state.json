@@ -1,7 +1,10 @@
 {
  "alert_seen": {
-  "K1": 2,
-  "K2": 2
+  "K1": 10,
+  "K2": 10,
+  "K3": 4,
+  "K4": 4,
+  "K5": 4
  },
  "assign": {
   "b0|gpt-oss-20b__rh-eagle3|aime24|strict|strict|smoke": "K2",
@@ -60,6 +63,27 @@
   "s9|gpt-oss-20b__rh-eagle3|humaneval|spec_casc_tok|0.55|calib": "K1",
   "s9|gpt-oss-20b__rh-eagle3|humaneval|spec_casc_tok|0.8|calib": "K14",
   "s9|gpt-oss-20b__rh-eagle3|humaneval|strict|strict|strict": "K16",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|cactus|0.03|calib": "K1",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|cactus|0.08|calib": "K2",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|cactus|0.18|calib": "K14",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|cactus|0.35|calib": "K5",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|mentored_dec|0.15|calib": "K1",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|mentored_dec|0.35|calib": "K2",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|mentored_dec|0.55|calib": "K5",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|mentored_dec|0.75|calib": "K6",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|r_fuzzy|0.03|calib": "K10",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|r_fuzzy|0.08|calib": "K11",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|r_fuzzy|0.15|calib": "K12",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|r_fuzzy|0.25|calib": "K3",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_opt|-0.02|calib": "K13",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_opt|-0.1|calib": "K7",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_opt|-0.3|calib": "K6",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_opt|0.05|calib": "K9",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.15|calib": "K16",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.35|calib": "K1",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.55|calib": "K2",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.8|calib": "K14",
+  "s9|gpt-oss-20b__rh-eagle3|longbench_v2|strict|strict|strict": "K5",
   "s9|qwen3-8b__dspark|aime24_qwen3|cactus|0.03|calib": "K12",
   "s9|qwen3-8b__dspark|aime24_qwen3|cactus|0.08|calib": "K13",
   "s9|qwen3-8b__dspark|aime24_qwen3|cactus|0.18|calib": "K14",
@@ -81,6 +105,27 @@
   "s9|qwen3-8b__dspark|aime24_qwen3|spec_casc_tok|0.55|calib": "K11",
   "s9|qwen3-8b__dspark|aime24_qwen3|spec_casc_tok|0.8|calib": "K12",
   "s9|qwen3-8b__dspark|aime24_qwen3|strict|strict|strict": "K13",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|cactus|0.03|calib": "K10",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|cactus|0.08|calib": "K11",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|cactus|0.18|calib": "K12",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|cactus|0.35|calib": "K3",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|mentored_dec|0.15|calib": "K6",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|mentored_dec|0.35|calib": "K7",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|mentored_dec|0.55|calib": "K13",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|mentored_dec|0.75|calib": "K9",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.03|calib": "K14",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.08|calib": "K6",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.15|calib": "K7",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.25|calib": "K13",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_opt|-0.02|calib": "K1",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_opt|-0.1|calib": "K15",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_opt|-0.3|calib": "K16",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_opt|0.05|calib": "K2",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.15|calib": "K9",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.35|calib": "K10",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.55|calib": "K11",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.8|calib": "K12",
+  "s9|qwen3-8b__dspark|humaneval_qwen3|strict|strict|strict": "K3",
   "s9|qwen3-8b__dspark|longbench_v2_qwen3|cactus|0.03|calib": "K1",
   "s9|qwen3-8b__dspark|longbench_v2_qwen3|cactus|0.08|calib": "K14",
   "s9|qwen3-8b__dspark|longbench_v2_qwen3|cactus|0.18|calib": "K15",
@@ -145,13 +190,18 @@
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|calib": "K6",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|strict": "K8"
  },
- "b0_notified": [],
+ "b0_notified": [
+  "3a",
+  "4b"
+ ],
  "block0_passed": [
   "1",
   "2",
+  "3a",
   "3b",
   "3e",
   "4a",
+  "4b",
   "4e"
  ],
  "grade_prompts": {
@@ -440,43 +490,43 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "6dabdd46f2cc6db79ead342fdc7a3f690657e6e7b9d0e12563f0c9d2bc58fb45"
+   "work": "76c085c8c557c6155218633f59f7202c0019f56ad1d574fc06e51977f4a8f5f5"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "62d70a60ff2380a0d79bb1af35daaef038679e49b5236f17cbbf098a94eeac06"
+   "work": "d81f30112309661e5c2a7106093baf16d79ca5997cee9ff4d597f66f8e969afc"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "fb44575317235907a85a66925b127c4203d6f62aa9859fe4782034e9f2d79eb1"
+   "work": "6ad70f775ae26baae109d3446e2f11eb1583f7745b678d2b360d6d2856962527"
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "2207982c9f5977fbad481bced04a54b7ede06473b4df7633bd90643c44d737f3"
+   "work": "c20b1e4e24ea6bace6bb4ceeaf999342a98e65d3a975a1444f8c17510b82af9b"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "41f05aade36e4db9885a3265529da7c01d99e51f748b92c52dea2aedaadfae83"
+   "work": "e469e52834afabf12cf668513741454955f3b82eeb5bb1af3cf8f6ca9d9baffd"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "a0cea8221c4db0095de71abd546d2eec1a591a8b6ab50d3264ecdda2985e6411"
+   "work": "4ec6fd3cb6ada43155ece3045f4968c109415d41a927367d7d0b513be5e5cb45"
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "199686ccf6e85e51eb26b2fde68ce927e0adff667910cca0d93e02f9d118d1ff"
+   "work": "8c676303a677f4c25a45ed549ab39a2fe8cdaf826632bacfbc5611cd7fc6690c"
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d6d1529c53c2f7c7ac70ca1aeab1df3ce183dcef5fbe09467f0312030954f5e1"
+   "work": "01b9d1663b6949962ec04818950f1196e17a01a4e272fc344f206531a9584128"
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d4f89bc193a43e5b343941ee45c679ef4bca3d6f22de70d37999ecf78d882d0a"
+   "work": "c4372287d72026b2c0fce3d666773dcfc36a5793140f73be2cb00256e04117aa"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "053780df4ae7497774b544bfe63822e4cfc7a74be078099062205ff0ef470f42"
+   "work": "190ee8f97ab8556e3a8ec04874a66f2cec3bae5bccb9ad23e822b2abd19ac78c"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -484,15 +534,15 @@
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "12b63d20f132136a3ae87cc7364468337ee017181661682102e492346cffe9b0"
+   "work": "d9f1a839fe680a1c525568081c68d6b8ca7c41c31b9f4f6b82f8e0e6db5de2b8"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "4870e825c91a91b7b7bb6665ac04ee971a0ce161c87c43c81bff383084d12915"
+   "work": "29258a163ee061961c3c672f282d3d2500946b1c2037318c788b99f3754d720b"
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "512c097859263a7b2afa19176a55ccf9deeeb84ae3b3aecd3a6802ad8ef2f17c"
+   "work": "263ef962c45397837c6dc8d309b34d40959f0d64bc8b73e9fe92936417c94366"
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -500,7 +550,7 @@
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "22b09cb63d49242fa3f1a9f512c9ca0462b9d281bd31b762daa9895b523ce9f2"
+   "work": "3036833806d78fe5e5826ee172ce251db406136594d4c235fcc136132a85fd89"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
