@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 20:50 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 20:51 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1104,7 +1104,7 @@ GPU-h actual (lane journals): 3.2.
 | aime24 | cactus | low | 0.03 | 3 | 2.11 (1.15) | 8572 (10036) | 0.85 [0.81, 1.23] | 0.50 [0.43, 1.02] | 0.50 · cross-node | 0% (0%) | 33% (67%) | kn173 |
 | aime24 | cactus | mid | 0.08 | 3 | 2.93 (1.15) | 9250 (10036) | 0.92 [0.83, 1.21] | 0.41 [0.33, 0.88]↓ | 0.41 · cross-node | 0% (0%) | 33% (67%) | kn173 |
 | aime24 | cactus | high | 0.18 | 3 | 3.96 (1.15) | 22787 (10036) | 2.27 [1.42, 2.49]↑ | 0.72 [0.59, 1.02] | 0.70 · cross-node | 67% (0%) | 33% (67%) | kn171 |
-| aime24 | spec_casc_opt | low+mid+high | 0.05 | 4 | 1.62 (0.94) | 17102 (13535) | 1.26 [0.68, 2.08] | 1.01 [0.34, 2.08] | 1.01 · cross-node | 25% (0%) | - (50%) | kn173:3+kn171:1 |
+| aime24 | spec_casc_opt | low+mid+high | 0.05 | 6 | 1.47 (1.18) | 17508 (10930) | 1.60 [0.93, 2.73] | 1.30 [0.58, 2.79] | 1.30 · cross-node | 17% (0%) | - (67%) | kn173:3+kn171:3 |
 | aime24 | spec_casc_opt | extra | -0.3 | 3 | 1.11 (1.15) | 19505 (10036) | 1.94 [1.35, 2.19]↑ | 2.32 [1.22, 2.55]↑ | 2.32 | 33% (0%) | 67% (67%) | kn174 |
 | aime24 | r_fuzzy | low+mid+high | 0.25 | 3 | 1.40 (1.15) | 23349 (10036) | 2.33 [2.19, 2.49]↑ | 2.73 [1.65, 3.10]↑ | 2.75 · cross-node | 67% (0%) | 33% (67%) | kn173 |
 | aime24 | r_fuzzy | extra | 0.03 | 3 | 1.04 (1.15) | 16268 (10036) | 1.62 [1.01, 2.13]↑ | 1.94 [1.00, 2.54]↑ | 1.94 · cross-node | 0% (0%) | 67% (67%) | kn171 |

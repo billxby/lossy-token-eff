@@ -181,3 +181,8 @@ addendum/step9/qwen3-8b__dspark/humaneval_qwen3/cactus/alpha0.08/case_003/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_tok/alpha0.15/case_001/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_tok/alpha0.15/case_002/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_tok/alpha0.15/case_003/seed_0
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_005/seed_0
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_006/seed_0
+addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.1/case_002/seed_0
+addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_004/seed_0
+addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_005/seed_0
