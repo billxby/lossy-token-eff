@@ -17955,6 +17955,11 @@ addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_082/s
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_083/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_083,0,no_answer,0
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_084/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_084,0,no_answer,0
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_085/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_085,0,no_answer,0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_086/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_086,0,no_answer,0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_087/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_087,0,error,0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_088/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_088,0,error,0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_089/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_089,0,no_answer,0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_090/seed_0,livecodebench_qwen3,r_fuzzy,alpha0.25,case_090,0,no_answer,0
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_opt/alpha0.05/case_001/seed_0,livecodebench_qwen3,spec_casc_opt,alpha0.05,case_001,0,passed,1
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_opt/alpha0.05/case_002/seed_0,livecodebench_qwen3,spec_casc_opt,alpha0.05,case_002,0,no_answer,0
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_opt/alpha0.05/case_003/seed_0,livecodebench_qwen3,spec_casc_opt,alpha0.05,case_003,0,no_answer,0

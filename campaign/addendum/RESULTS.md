@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 01:07 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 01:14 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1083,7 +1083,7 @@ GPU-h actual (lane journals): 5.2.
 | livecodebench_qwen3 | mentored_dec | loosest | 0.75 | 90 | 2.10 (1.84) | 8173 (8072) | 1.01 [0.97, 1.05] | 0.92 [0.88, 0.96]↓ | 0.92 | 33% (29%) | 67% (73%) | kn175 |
 | livecodebench_qwen3 | cactus | loosest | 0.35 | 90 | 2.24 (1.84) | 8847 (8072) | 1.10 [1.05, 1.14]↑ | 0.94 [0.91, 0.99]↓ | 0.95 · cross-node | 46% (29%) | 56% (73%) | kn176 |
 | livecodebench_qwen3 | spec_casc_opt | loosest | 0.05 | 90 | 2.08 (1.84) | 8413 (8072) | 1.04 [1.00, 1.09] | 0.95 [0.91, 0.99]↓ | 0.95 · cross-node | 34% (29%) | 51% (73%) | kn176 |
-| livecodebench_qwen3 | r_fuzzy | loosest | 0.25 | 90 | 2.38 (1.84) | 10562 (8072) | 1.31 [1.23, 1.40]↑ | 1.10 [1.04, 1.17]↑ | 1.13 · cross-node | 70% (29%) | - (73%) | kn172 |
+| livecodebench_qwen3 | r_fuzzy | loosest | 0.25 | 90 | 2.38 (1.84) | 10562 (8072) | 1.31 [1.23, 1.40]↑ | 1.10 [1.04, 1.17]↑ | 1.13 · cross-node | 70% (29%) | 3% (73%) | kn172 |
 | livecodebench_qwen3 | spec_casc_tok | loosest | 0.8 | 90 | 1.99 (1.84) | 8363 (8072) | 1.04 [0.99, 1.09] | 0.98 [0.93, 1.03] | 0.98 · cross-node | 33% (29%) | 64% (73%) | kn176 |
 
 ## Observations, failures and anything that looked wrong
