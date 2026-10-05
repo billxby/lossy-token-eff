@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 22:27 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 22:38 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1136,31 +1136,48 @@ GPU-h actual (lane journals): 12.6.
 
 ### Block 3a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 3.5.
+GPU-h actual (lane journals): 3.9.
 
 Pending.
 
 ### Block 3b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 2.6.
+GPU-h actual (lane journals): 3.6.
 
-Pending.
+`campaign/addendum/tables/step9__qwen3-8b__dspark.csv` (dspark, V2 accept-test-only):
+
+| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| longbench_v2_qwen3 | mentored_dec | low | 0.55 | 3 | 1.75 (1.51) | 1325 (969) | 1.37 [0.92, 2.04] | 1.25 [0.84, 1.87] | 1.17 · cross-node | 0% (0%) | 67% (67%) | kn173 |
+| longbench_v2_qwen3 | mentored_dec | mid+high | 0.35 | 3 | 1.83 (1.51) | 1358 (969) | 1.40 [0.66, 2.09] | 1.27 [0.61, 1.87] | 1.18 | 0% (0%) | 67% (67%) | kn175 |
+| longbench_v2_qwen3 | mentored_dec | extra | 0.15 | 3 | 1.66 (1.51) | 1401 (969) | 1.45 [0.77, 3.05] | 1.37 [0.74, 2.73] | 1.29 · cross-node | 0% (0%) | 67% (67%) | kn174 |
+| longbench_v2_qwen3 | cactus | low | 0.08 | 3 | 1.81 (1.51) | 1280 (969) | 1.32 [0.81, 1.88] | 1.20 [0.72, 1.53] | 1.18 · cross-node | 0% (0%) | 67% (67%) | kn172 |
+| longbench_v2_qwen3 | cactus | mid+high | 0.35 | 3 | 2.25 (1.51) | 1415 (969) | 1.46 [1.32, 1.67]↑ | 1.15 [1.13, 1.18]↑ | 1.12 · cross-node | 0% (0%) | 67% (67%) | kn169 |
+| longbench_v2_qwen3 | cactus | extra | 0.03 | 3 | 1.68 (1.51) | 1241 (969) | 1.28 [0.98, 2.29] | 1.20 [0.97, 1.99] | 1.17 · cross-node | 0% (0%) | 67% (67%) | kn169 |
+| longbench_v2_qwen3 | spec_casc_opt | low | -0.3 | 3 | 1.96 (1.51) | 1041 (969) | 1.07 [0.80, 1.70] | 0.91 [0.77, 1.31] | 0.97 · cross-node | 0% (0%) | 67% (67%) | kn176 |
+| longbench_v2_qwen3 | spec_casc_opt | mid | -0.02 | 3 | 2.24 (1.51) | 974 (969) | 1.01 [0.92, 1.14] | 0.80 [0.77, 0.81]↓ | 0.87 · cross-node | 0% (0%) | 67% (67%) | kn169 |
+| longbench_v2_qwen3 | spec_casc_opt | high | 0.05 | 3 | 2.83 (1.51) | 1479 (969) | 1.53 [1.28, 2.02]↑ | 1.01 [0.86, 1.27] | 1.00 | 0% (0%) | - (67%) | kn175 |
+| longbench_v2_qwen3 | r_fuzzy | low | 0.15 | 3 | 1.82 (1.51) | 1078 (969) | 1.11 [0.84, 2.09] | 1.00 [0.78, 1.74] | 1.01 · cross-node | 0% (0%) | 100% (67%) | kn171 |
+| longbench_v2_qwen3 | r_fuzzy | mid+high | 0.25 | 3 | 2.04 (1.51) | 1152 (969) | 1.19 [1.00, 1.62]↑ | 1.00 [0.88, 1.19] | 1.02 · cross-node | 0% (0%) | 67% (67%) | kn174 |
+| longbench_v2_qwen3 | r_fuzzy | extra | 0.03 | 3 | 1.55 (1.51) | 804 (969) | 0.83 [0.68, 1.31] | 0.83 [0.69, 1.23] | 0.90 · cross-node | 0% (0%) | 67% (67%) | kn176 |
+| longbench_v2_qwen3 | spec_casc_tok | low+mid+high | 0.8 | 3 | 1.79 (1.51) | 1142 (969) | 1.18 [1.06, 1.40]↑ | 1.08 [1.00, 1.16] | 1.07 · cross-node | 0% (0%) | 67% (67%) | kn169 |
+| longbench_v2_qwen3 | spec_casc_tok | extra | 0.15 | 3 | 1.49 (1.51) | 1087 (969) | 1.12 [0.72, 2.80] | 1.13 [0.73, 2.61] | 1.10 | 0% (0%) | 67% (67%) | kn175 |
 
 ### Block 3c: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE3-LLaMA3.1-Instruct-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 0.4.
 
 Pending.
 
 ### Block 3d: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE-LLaMA3.1-Instruct-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 0.2.
 
 Pending.
 
 ### Block 3e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 3.2.
+GPU-h actual (lane journals): 3.8.
 
 Pending.
 
@@ -1172,7 +1189,7 @@ Pending.
 
 ### Block 4b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, humaneval (killarney)
 
-GPU-h actual (lane journals): 1.0.
+GPU-h actual (lane journals): 1.1.
 
 Pending.
 
@@ -1210,7 +1227,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 36.3 over 8 blocks.
+Step 9 GPU-h so far (lane journals): 38.9 over 10 blocks.
 
 ## Observations, failures and anything that looked wrong
 

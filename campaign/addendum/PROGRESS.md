@@ -1318,3 +1318,7 @@ for what is done; this file records every action and failure.
 - 2026-10-05T22:26:23Z step 9 grading: 107 new run dir(s) uploaded, 107 pending, CPU job 23281662
 - 2026-10-05T22:26:37Z step 9 Block 0 passed: 3c
 - 2026-10-05T22:27:08Z step 9: pulled 12 run dir(s)
+- 2026-10-05T22:37:51Z step 9: pulled 49 run dir(s)
+- 2026-10-05T22:37:51Z step 9 block 3b: calibrated qwen3-8b__dspark longbench_v2_qwen3: targets [1.759, 2.228, 2.697], mentored_dec [0.55, 0.35, 0.15], cactus [0.08, 0.35, 0.03], spec_casc_opt [-0.3, -0.02, 0.05], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
+- 2026-10-05T22:38:00Z step 9 lane K16: submitted job 5969204 (--dependency=afterany:5967098), ~2.8 GPU-h assigned
+- 2026-10-05T22:38:14Z step 9 grading: 47 new run dir(s) uploaded, 47 pending, CPU job 23282305
