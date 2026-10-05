@@ -1,9 +1,9 @@
 {
  "items": [
   {
-   "id": "b0|llama31-8b-instruct__eagle1|longbench_v2_llama31|strict|strict|smoke",
-   "step": "9.3d",
-   "condition": "step9/llama31-8b-instruct__eagle1",
+   "id": "b0|llama31-8b-instruct__eagle3|longbench_v2_llama31|strict|strict|smoke",
+   "step": "9.3c",
+   "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "longbench_v2_llama31",
    "method": "strict",
    "alpha": "strict",
@@ -13,13 +13,13 @@
     "case_002"
    ],
    "prompt_root": "prompts/longbench_v2_llama31",
-   "runs_subroot": "runs/addendum/step9_block0/nibi/llama31-8b-instruct__eagle1",
+   "runs_subroot": "runs/addendum/step9_block0/nibi/llama31-8b-instruct__eagle3",
    "max_new_tokens": 8192,
    "model_flags": [
     "--model-path",
     "RedHatAI/Llama-3.1-8B-Instruct",
     "--draft-model-path",
-    "/home/billxby/projects/def-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "/home/billxby/projects/def-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
     "--served-model-name",
     "llama31-8b-instruct"
    ],
@@ -27,8 +27,8 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
-    "SPEC_METHOD": "eagle",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/llama31-8b-instruct__eagle1"
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/llama31-8b-instruct__eagle3"
    },
    "host": "nibi"
   },

@@ -1269,3 +1269,10 @@ for what is done; this file records every action and failure.
 - 2026-10-05T19:39:12Z step 9 Block 0 passed: 3a, 4b
 - 2026-10-05T19:40:18Z step 9: pulled 1 run dir(s)
 - 2026-10-05T19:40:38Z step 9 grading: 1 new run dir(s) uploaded, 1 pending, CPU job 23269901
+- 2026-10-05T19:50:55Z step 9: pulled 17 run dir(s)
+- 2026-10-05T19:51:07Z step 9 lane K1: submitted job 5967251 (--dependency=afterany:5966710), ~4.2 GPU-h assigned
+- 2026-10-05T19:51:09Z step 9 lane K2: submitted job 5967252 (--dependency=afterany:5966711), ~2.9 GPU-h assigned
+- 2026-10-05T19:51:10Z step 9 lane K3: submitted job 5967253 (--dependency=afterany:5966712), ~3.0 GPU-h assigned
+- 2026-10-05T19:51:11Z step 9 lane K4: submitted job 5967254 (--dependency=afterany:5966713), ~3.0 GPU-h assigned
+- 2026-10-05T19:51:13Z step 9 lane K5: submitted job 5967255 (--dependency=afterany:5966714), ~3.0 GPU-h assigned
+- 2026-10-05T19:51:24Z step 9 grading: 17 new run dir(s) uploaded, 17 pending, CPU job 23270647
