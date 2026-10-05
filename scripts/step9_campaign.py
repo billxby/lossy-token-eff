@@ -347,26 +347,33 @@ def cmd_plan(args: argparse.Namespace) -> int:
         for item in block_items(block, state):
             missing = item_missing(item)
             planned.append((block, item, missing, est_hours(item, len(missing))))
+    hours_actual, jobs = journal_hours(), journal_jobs()
     load = {lane: 0.0 for lane in LANES}
     for block, item, missing, hours in planned:
         # an item whose block moved cluster is reassigned (its old lane root holds none of its runs: the smoke run
         # dirs name the cluster, and a block only moves before its first measured run)
         if item["id"] in assign and LANES[assign[item["id"]]]["host"] != item["host"]:
             del assign[item["id"]]
+        # only an item that has started stays on its lane (its partial runs live in that lane root); the others are
+        # placed afresh every cycle (the journals were pulled just before), so work follows the lanes that run
+        if item["id"] in assign and item["id"] not in jobs and missing:
+            del assign[item["id"]]
         if item["id"] in assign and missing:
             load[assign[item["id"]]] += hours
-    # sticky assignment (an item's partial runs live in its lane root); new items in priority order (block, then
-    # stage) to the least-loaded lane of the block's cluster that exists (K9-K16 and N3-N4 once their copy is
-    # checked: lane_ready), so every lane works on the earliest blocks first
+    # unstarted items in priority order (block, then stage) to the lane of the block's cluster with the least work,
+    # counting a lane whose job is still queued as 2 GPU-h busier (4 with no job): lanes that run take the earliest
+    # blocks. Lanes that exist only: K9-K16 and N3-N4 once their copy is checked (lane_ready).
     ready = [l for l in LANES if l in STATIC_READY or l in state.get("lanes_ready", [])]
+    job_states = {l: {j.get("state") for j in state["lanes"].get(l, {}).get("jobs", [])} for l in LANES}
+    wait = {l: 0.0 if "RUNNING" in job_states[l] else 2.0 if job_states[l] & {"PENDING", "CONFIGURING"} else 4.0
+            for l in LANES}
     order = lambda t: (BLOCK_ORDER[t[0]], STAGE_RANK[t[1]["id"].rsplit("|", 1)[1]], -t[3])
     for block, item, missing, hours in sorted(planned, key=order):
         if item["id"] not in assign and missing:
             lane = min((l for l in ready if LANES[l]["host"] == item["host"]),
-                       key=lambda l: (load[l], l[0], int(l[1:])))
+                       key=lambda l: (load[l] + wait[l], l[0], int(l[1:])))
             assign[item["id"]] = lane
             load[lane] += hours
-    hours_actual, jobs = journal_hours(), journal_jobs()
     rows, per_lane = [], {lane: [] for lane in LANES}
     for block, item, missing, hours in planned:
         _, pid, base = BLOCKS[BLOCK_ORDER[block]]
@@ -393,12 +400,12 @@ def cmd_plan(args: argparse.Namespace) -> int:
     LANES_DIR.mkdir(parents=True, exist_ok=True)
     for lane, entries in per_lane.items():
         host = LANES[lane]["host"]
-        calib_pending = any(r["stage"] in ("calib", "smoke") and r["status"] != "done" and r["host"] == host
-                            for r in rows)
+        # a lane out of work keeps its GPU 30 min while its cluster still has work that has not started (the next
+        # cycle places some on it) or a calibration / Block 0 check about to release more
+        waiting = any(r["host"] == host and r["status"] != "done" and (r["stage"] in ("calib", "smoke") or
+                                                                     not r["slurm_job_ids"]) for r in rows)
         entries.sort(key=lambda e: (BLOCK_ORDER[e[0]], STAGE_RANK[e[1]["id"].rsplit("|", 1)[1]]))
-        # a lane out of work while a calibration (or a Block 0 check) on its cluster is about to release full arms
-        # keeps its GPU this long
-        work = {"items": [e[1] for e in entries], "hold_minutes": 30 if calib_pending else 0}
+        work = {"items": [e[1] for e in entries], "hold_minutes": 30 if waiting else 0}
         (LANES_DIR / f"{lane}.json").write_text(json.dumps(work, indent=1) + "\n", encoding="utf-8")
     save_state(state)
     if not getattr(args, "quiet", False):
@@ -599,6 +606,9 @@ def cmd_submit(args: argparse.Namespace) -> int:
             print(f"{host} unreachable: nothing submitted")
             continue
         warm = state.get("warm", {}).get(host)
+        # while the cluster has unfinished work every lane keeps a job queued, assigned items or not: a lane whose job
+        # starts holds its GPU (hold_minutes) and the next cycle places unstarted items on it (cmd_plan)
+        host_pending = any(r["host"] == host and r["status"] != "done" for r in rows)
         for lane, info in LANES.items():
             if info["host"] != host:
                 continue
@@ -607,7 +617,7 @@ def cmd_submit(args: argparse.Namespace) -> int:
                 job["state"] = live.get(job["id"], "ENDED")
             active = [j for j in jobs if j["state"] in ("PENDING", "RUNNING", "CONFIGURING", "COMPLETING")]
             remaining = sum(float(r["gpu_hours_est"]) for r in rows if r["lane"] == lane and r["status"] != "done")
-            if remaining <= 0 or lane not in state.get("prompts_verified_lanes", []):
+            if not host_pending or lane not in state.get("prompts_verified_lanes", []):
                 continue
             want = max(1, min(MAX_CHAIN, math.ceil(remaining / (0.9 * JOB_HOURS))))
             while len(active) < want:
