@@ -1326,3 +1326,6 @@ for what is done; this file records every action and failure.
 - 2026-10-05T22:41:12Z step 9 Block 0 passed: 4c
 - 2026-10-05T22:41:31Z step 9: pulled 4 run dir(s)
 - 2026-10-05T22:42:32Z step 9 grading: 8 new run dir(s) uploaded, 8 pending, CPU job 23282505
+- 2026-10-05T22:53:20Z step 9: pulled 401 run dir(s)
+- 2026-10-05T22:53:28Z step 9 lane K14: submitted job 5969348 (--dependency=afterany:5967096), ~2.8 GPU-h assigned
+- 2026-10-05T22:55:06Z step 9 grading: 401 new run dir(s) uploaded, 401 pending, CPU job 23283135

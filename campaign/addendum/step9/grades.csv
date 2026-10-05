@@ -653,6 +653,8 @@ addendum/step9/gpt-oss-20b__rh-eagle3/longbench_v2/strict/strict/case_147/seed_0
 addendum/step9/gpt-oss-20b__rh-eagle3/longbench_v2/strict/strict/case_148/seed_0,longbench_v2,strict,strict,case_148,0,correct,1
 addendum/step9/gpt-oss-20b__rh-eagle3/longbench_v2/strict/strict/case_149/seed_0,longbench_v2,strict,strict,case_149,0,wrong,0
 addendum/step9/gpt-oss-20b__rh-eagle3/longbench_v2/strict/strict/case_150/seed_0,longbench_v2,strict,strict,case_150,0,wrong,0
+addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/cactus/alpha0.03/case_001/seed_0,longbench_v2_llama31,cactus,alpha0.03,case_001,0,wrong,0
+addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/cactus/alpha0.03/case_002/seed_0,longbench_v2_llama31,cactus,alpha0.03,case_002,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/spec_casc_opt/alpha0.05/case_001/seed_0,longbench_v2_llama31,spec_casc_opt,alpha0.05,case_001,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/spec_casc_opt/alpha0.05/case_002/seed_0,longbench_v2_llama31,spec_casc_opt,alpha0.05,case_002,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/spec_casc_opt/alpha0.05/case_003/seed_0,longbench_v2_llama31,spec_casc_opt,alpha0.05,case_003,0,wrong,0
@@ -662,6 +664,9 @@ addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/spec_casc_opt/al
 addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.08/case_001/seed_0,longbench_v2_llama31,cactus,alpha0.08,case_001,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.08/case_002/seed_0,longbench_v2_llama31,cactus,alpha0.08,case_002,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.08/case_003/seed_0,longbench_v2_llama31,cactus,alpha0.08,case_003,0,wrong,0
+addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.35/case_001/seed_0,longbench_v2_llama31,cactus,alpha0.35,case_001,0,correct,1
+addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.35/case_002/seed_0,longbench_v2_llama31,cactus,alpha0.35,case_002,0,wrong,0
+addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.35/case_003/seed_0,longbench_v2_llama31,cactus,alpha0.35,case_003,0,correct,1
 addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/mentored_dec/alpha0.15/case_001/seed_0,longbench_v2_llama31,mentored_dec,alpha0.15,case_001,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/mentored_dec/alpha0.15/case_002/seed_0,longbench_v2_llama31,mentored_dec,alpha0.15,case_002,0,wrong,0
 addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/mentored_dec/alpha0.15/case_003/seed_0,longbench_v2_llama31,mentored_dec,alpha0.15,case_003,0,wrong,0
@@ -1361,6 +1366,9 @@ addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_150/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_tok/alpha0.15/case_001/seed_0,humaneval_r1llama,spec_casc_tok,alpha0.15,case_001,0,passed,1
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_tok/alpha0.15/case_002/seed_0,humaneval_r1llama,spec_casc_tok,alpha0.15,case_002,0,no_answer,0
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_tok/alpha0.15/case_003/seed_0,humaneval_r1llama,spec_casc_tok,alpha0.15,case_003,0,passed,1
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.03/case_001/seed_0,longbench_v2_r1llama,cactus,alpha0.03,case_001,0,wrong,0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.03/case_002/seed_0,longbench_v2_r1llama,cactus,alpha0.03,case_002,0,wrong,0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.03/case_003/seed_0,longbench_v2_r1llama,cactus,alpha0.03,case_003,0,correct,1
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.08/case_001/seed_0,longbench_v2_r1llama,cactus,alpha0.08,case_001,0,wrong,0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.08/case_002/seed_0,longbench_v2_r1llama,cactus,alpha0.08,case_002,0,no_answer,0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.08/case_003/seed_0,longbench_v2_r1llama,cactus,alpha0.08,case_003,0,wrong,0
