@@ -1,0 +1,225 @@
+{
+ "assign": {
+  "b0|gpt-oss-20b__rh-eagle3|aime24|strict|strict|smoke": "N1",
+  "b0|gpt-oss-20b__rh-eagle3|humaneval|strict|strict|smoke": "N2",
+  "b0|gpt-oss-20b__rh-eagle3|longbench_v2|strict|strict|smoke": "N2",
+  "b0|llama31-8b-instruct__eagle1|aime24_llama31|strict|strict|smoke": "N2",
+  "b0|llama31-8b-instruct__eagle1|humaneval_llama31|strict|strict|smoke": "N2",
+  "b0|llama31-8b-instruct__eagle1|longbench_v2_llama31|strict|strict|smoke": "N1",
+  "b0|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|smoke": "N1",
+  "b0|llama31-8b-instruct__eagle3|humaneval_llama31|strict|strict|smoke": "N1",
+  "b0|llama31-8b-instruct__eagle3|longbench_v2_llama31|strict|strict|smoke": "N2",
+  "b0|qwen3-8b__dspark|aime24_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__dspark|humaneval_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__dspark|longbench_v2_qwen3|strict|strict|smoke": "K1",
+  "b0|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|smoke": "K2",
+  "b0|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|smoke": "K2"
+ },
+ "block0_passed": [],
+ "lanes": {
+  "K1": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966710",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:21Z"
+    }
+   ]
+  },
+  "K10": {
+   "jobs": []
+  },
+  "K11": {
+   "jobs": []
+  },
+  "K12": {
+   "jobs": []
+  },
+  "K13": {
+   "jobs": []
+  },
+  "K14": {
+   "jobs": []
+  },
+  "K15": {
+   "jobs": []
+  },
+  "K16": {
+   "jobs": []
+  },
+  "K2": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966711",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:23Z"
+    }
+   ]
+  },
+  "K3": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966712",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:24Z"
+    }
+   ]
+  },
+  "K4": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966713",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:25Z"
+    }
+   ]
+  },
+  "K5": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966714",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:27Z"
+    }
+   ]
+  },
+  "K6": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966715",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:28Z"
+    }
+   ]
+  },
+  "K7": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966716",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:30Z"
+    }
+   ]
+  },
+  "K8": {
+   "jobs": [
+    {
+     "dependency": "",
+     "id": "5966717",
+     "state": "PENDING",
+     "submitted": "2026-10-05T18:49:31Z"
+    }
+   ]
+  },
+  "K9": {
+   "jobs": []
+  },
+  "N1": {
+   "jobs": [
+    {
+     "dependency": "23268722",
+     "id": "23268731",
+     "state": "ENDED",
+     "submitted": "2026-10-05T19:14:07Z"
+    },
+    {
+     "dependency": "23268986",
+     "id": "23268993",
+     "state": "PENDING",
+     "submitted": "2026-10-05T19:20:09Z"
+    }
+   ]
+  },
+  "N2": {
+   "jobs": [
+    {
+     "dependency": "23268722",
+     "id": "23268736",
+     "state": "ENDED",
+     "submitted": "2026-10-05T19:14:11Z"
+    },
+    {
+     "dependency": "23268986",
+     "id": "23268997",
+     "state": "PENDING",
+     "submitted": "2026-10-05T19:20:13Z"
+    }
+   ]
+  },
+  "N3": {
+   "jobs": []
+  },
+  "N4": {
+   "jobs": []
+  }
+ },
+ "lanes_ready": [
+  "K1",
+  "K2",
+  "K3",
+  "K4",
+  "K5",
+  "K6",
+  "K7",
+  "K8",
+  "K9",
+  "K10",
+  "K11",
+  "K12",
+  "K13",
+  "K14",
+  "K15",
+  "K16"
+ ],
+ "prompts_synced": {
+  "K1": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K10": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K11": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K12": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K13": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K14": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K15": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K16": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K2": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K3": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K4": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K5": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K6": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K7": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K8": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "K9": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "N1": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}",
+  "N2": "{\"prompts/aime24\": \"173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677\", \"prompts/aime24_llama31\": \"21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb\", \"prompts/aime24_qwen3\": \"d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5\", \"prompts/humaneval\": \"5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b\", \"prompts/humaneval_llama31\": \"9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24\", \"prompts/humaneval_qwen3\": \"397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f\", \"prompts/humaneval_r1llama\": \"810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04\", \"prompts/longbench_v2\": \"8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c\", \"prompts/longbench_v2_llama31\": \"58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b\", \"prompts/longbench_v2_qwen3\": \"f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275\", \"prompts/longbench_v2_r1llama\": \"f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc\"}"
+ },
+ "prompts_verified_lanes": [
+  "K1",
+  "K2",
+  "K3",
+  "K4",
+  "K5",
+  "K6",
+  "K7",
+  "K8",
+  "K9",
+  "K10",
+  "K11",
+  "K12",
+  "K13",
+  "K14",
+  "K15",
+  "K16",
+  "N1",
+  "N2"
+ ],
+ "reported": [],
+ "warm": {
+  "nibi": "23268986"
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "items": [
+  {
+   "id": "b0|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|smoke",
+   "step": "9.3e",
+   "condition": "step9/r1-distill-llama-8b__eagle3",
+   "dataset": "longbench_v2_r1llama",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/longbench_v2_r1llama",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/r1-distill-llama-8b__eagle3",
+   "max_new_tokens": 8192,
+   "model_flags": [
+    "--model-path",
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
+    "--served-model-name",
+    "r1-distill-llama-8b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
+    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
+   },
+   "host": "killarney"
+  },
+  {
+   "id": "b0|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|smoke",
+   "step": "9.4e",
+   "condition": "step9/r1-distill-llama-8b__eagle3",
+   "dataset": "humaneval_r1llama",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/humaneval_r1llama",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/r1-distill-llama-8b__eagle3",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
+    "--served-model-name",
+    "r1-distill-llama-8b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
+    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
+   },
+   "host": "killarney"
+  }
+ ],
+ "hold_minutes": 30
+}

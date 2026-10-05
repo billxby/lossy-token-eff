@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 01:14 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 19:17 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1085,6 +1085,96 @@ GPU-h actual (lane journals): 5.2.
 | livecodebench_qwen3 | spec_casc_opt | loosest | 0.05 | 90 | 2.08 (1.84) | 8413 (8072) | 1.04 [1.00, 1.09] | 0.95 [0.91, 0.99]↓ | 0.95 · cross-node | 34% (29%) | 51% (73%) | kn176 |
 | livecodebench_qwen3 | r_fuzzy | loosest | 0.25 | 90 | 2.38 (1.84) | 10562 (8072) | 1.31 [1.23, 1.40]↑ | 1.10 [1.04, 1.17]↑ | 1.13 · cross-node | 70% (29%) | 3% (73%) | kn172 |
 | livecodebench_qwen3 | spec_casc_tok | loosest | 0.8 | 90 | 1.99 (1.84) | 8363 (8072) | 1.04 [0.99, 1.09] | 0.98 [0.93, 1.03] | 0.98 · cross-node | 33% (29%) | 64% (73%) | kn176 |
+
+## Step 9: the five rules on every dataset for the five dedicated step-8 pairs
+
+The step-8 protocol on AIME24, LongBench-v2 and HumanEval (the paper's budgets and case sets): seed 0, N_draft 6, T 1.0, top-p 1.0, one persistent server per arm, every arm paired case by case with its own pair's lossless run; three matched-l_bar settings per rule plus the grid extremes when two targets share an alpha ("extra"). Ratios relaxed / lossless with 95% bootstrap intervals over cases (arrows: interval excludes 1). Each block ran whole on one cluster (H100 80GB HBM3 on both; README deviation 42). Block 0: `step9/BLOCK0.md`. Step 8 + step 9 per pair: `tables/pairs__<target>__<drafter>.csv`.
+
+### Block 1: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, aime24 (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 2: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, aime24 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 3a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, longbench_v2 (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 3b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 3c: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE3-LLaMA3.1-Instruct-8B, longbench_v2 (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 3d: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE-LLaMA3.1-Instruct-8B, longbench_v2 (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 3e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 4b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 4c: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE3-LLaMA3.1-Instruct-8B, humaneval (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 4d: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE-LLaMA3.1-Instruct-8B, humaneval (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 4e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 5a: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE3-LLaMA3.1-Instruct-8B, aime24 (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 5b: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE-LLaMA3.1-Instruct-8B, aime24 (nibi)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+Step 9 GPU-h so far (lane journals): 0.0 over 0 blocks.
 
 ## Observations, failures and anything that looked wrong
 

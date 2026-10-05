@@ -398,6 +398,25 @@ STEP8_BLOCKS = {
 }
 
 
+def arm_table(t: list[dict]) -> list[str]:
+    """The step-8 arm table (one row per dataset, rule, setting of a tables/step{8,9}__ file)."""
+    out = ["| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | "
+           "R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |",
+           "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+    for r in t:
+        alpha = r["alpha"] + (f", beta {r['beta']}" if r.get("beta") else "")
+        out.append(
+            f"| {r['dataset']} | {r['method']} | {r['setting']} | {alpha} | {r['n_pairs']} | "
+            f"{f(r['l_bar'])} ({f(r['l_bar_strict'])}) | {f(r['mean_tokens'], 0)} ({f(r['mean_tokens_strict'], 0)}) | "
+            f"{f(r['lambda'])} [{f(r['lambda_ci_lo'])}, {f(r['lambda_ci_hi'])}]{arrow(r['lambda_ci_lo'], r['lambda_ci_hi'])} | "
+            f"{f(r['rounds_ratio'])} [{f(r['rounds_ratio_ci_lo'])}, {f(r['rounds_ratio_ci_hi'])}]"
+            f"{arrow(r['rounds_ratio_ci_lo'], r['rounds_ratio_ci_hi'])} | {f(r['time_ratio'])}{same_node_note(r)} | "
+            f"{pct(r['capout_rate'])} ({pct(r['capout_rate_strict'])}) | "
+            f"{pct(r['accuracy']) if r.get('accuracy') else '-'} ({pct(r['accuracy_strict']) if r.get('accuracy_strict') else '-'}) | "
+            f"{r.get('nodes', '')} |")
+    return out
+
+
 def step8_gpu_hours() -> dict[str, float]:
     """Actual GPU-h per block: item wall time from the step-8 lane journals (campaign/addendum/step8/lanes/), by the
     pair named in each item id (s8|<pair>|...), plus warm-up items (by pair)."""
@@ -444,21 +463,7 @@ def section_step8() -> list[str]:
                 continue
             found = True
             out += [f"`{rel(path)}` -- {t[0]['target']} + {t[0]['drafter']} ({t[0]['drafter_family']}, "
-                    f"{t[0]['sampler_path']}):", "",
-                    "| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | "
-                    "R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |",
-                    "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
-            for r in t:
-                alpha = r["alpha"] + (f", beta {r['beta']}" if r.get("beta") else "")
-                out.append(
-                    f"| {r['dataset']} | {r['method']} | {r['setting']} | {alpha} | {r['n_pairs']} | "
-                    f"{f(r['l_bar'])} ({f(r['l_bar_strict'])}) | {f(r['mean_tokens'], 0)} ({f(r['mean_tokens_strict'], 0)}) | "
-                    f"{f(r['lambda'])} [{f(r['lambda_ci_lo'])}, {f(r['lambda_ci_hi'])}]{arrow(r['lambda_ci_lo'], r['lambda_ci_hi'])} | "
-                    f"{f(r['rounds_ratio'])} [{f(r['rounds_ratio_ci_lo'])}, {f(r['rounds_ratio_ci_hi'])}]"
-                    f"{arrow(r['rounds_ratio_ci_lo'], r['rounds_ratio_ci_hi'])} | {f(r['time_ratio'])}{same_node_note(r)} | "
-                    f"{pct(r['capout_rate'])} ({pct(r['capout_rate_strict'])}) | "
-                    f"{pct(r['accuracy']) if r.get('accuracy') else '-'} ({pct(r['accuracy_strict']) if r.get('accuracy_strict') else '-'}) | "
-                    f"{r.get('nodes', '')} |")
+                    f"{t[0]['sampler_path']}):", ""] + arm_table(t)
             out.append("")
         if block == "6":
             out += section_tables("GPT-OSS-20B fix results re-exported (cascade workspace, 3 seeds on Nibi):",
@@ -466,6 +471,61 @@ def section_step8() -> list[str]:
             found = True
         if not found:
             out += ["Pending.", ""]
+    return out
+
+
+def step9_gpu_hours() -> dict[str, float]:
+    """Actual GPU-h per step-9 block: item wall time (item_end elapsed_s) from the step-9 lane journals
+    (campaign/addendum/step9/lanes/), by the (pair, dataset) in each item id s9|<pair>|<dataset>|..., as step 8."""
+    sys.path.insert(0, str(REPO / "scripts"))
+    import step9_campaign as s9
+    from campaign_run import base_dataset
+    hours: dict[str, float] = {}
+    for path in sorted((ADD / "step9" / "lanes").glob("*_status.jsonl")):
+        for line in path.read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            parts = str(r.get("item", "")).split("|")
+            if r.get("event") != "item_end" or parts[0] != "s9" or len(parts) < 3:
+                continue
+            block = s9.BLOCK_OF.get((parts[1], base_dataset(parts[2])))
+            if block:
+                hours[block] = hours.get(block, 0.0) + float(r.get("elapsed_s") or 0) / 3600
+    return hours
+
+
+def section_step9() -> list[str]:
+    """Step 9 (campaign/addendum/step9/GOAL.md): one subsection per (pair, dataset) block, in Bill's order, from
+    tables/step9__<target>__<drafter>.csv (scripts/addendum_tables.py step9)."""
+    sys.path.insert(0, str(REPO / "scripts"))
+    import step9_campaign as s9
+    out = ["## Step 9: the five rules on every dataset for the five dedicated step-8 pairs", "",
+           "The step-8 protocol on AIME24, LongBench-v2 and HumanEval (the paper's budgets and case sets): seed 0, "
+           "N_draft 6, T 1.0, top-p 1.0, one persistent server per arm, every arm paired case by case with its own "
+           "pair's lossless run; three matched-l_bar settings per rule plus the grid extremes when two targets share an "
+           "alpha (\"extra\"). Ratios relaxed / lossless with 95% bootstrap intervals over cases (arrows: interval "
+           "excludes 1). Each block ran whole on one cluster (H100 80GB HBM3 on both; README deviation 42). Block 0: "
+           "`step9/BLOCK0.md`. Step 8 + step 9 per pair: `tables/pairs__<target>__<drafter>.csv`.", ""]
+    hours = s9_hours = step9_gpu_hours()
+    for block, pid, base in s9.BLOCKS:
+        p = s9.PAIRS[pid]
+        title = (f"### Block {block}: {s9.s8.CANONICAL.get(s9.MODEL_FAMILIES[p['family']][0], s9.MODEL_FAMILIES[p['family']][0])}"
+                 f" + {s9.s8.CANONICAL.get(p['drafter'], p['drafter'])}, {base} ({s9.block_host(block)})")
+        if block in s9.DROPPED:
+            out += [title, "", f"Dropped: {s9.DROPPED[block]}.", ""]
+            continue
+        out += [title, "", f"GPU-h actual (lane journals): {hours.get(block, 0.0):.1f}.", ""]
+        path = ADD / "tables" / f"step9__{s9.s8.TARGET_SLUG[p['family']]}__{p['slug']}.csv"
+        ds = s9.ds_of(pid, base)
+        t = [r for r in rows(path) if r.get("dataset") == ds and r.get("n_pairs") not in ("", "0")] if path.is_file() else []
+        if not t:
+            out += ["Pending.", ""]
+            continue
+        out += [f"`{rel(path)}` ({t[0]['drafter_family']}, {t[0]['sampler_path']}):", ""] + arm_table(t) + [""]
+    total = sum(s9_hours.values())
+    out += [f"Step 9 GPU-h so far (lane journals): {total:.1f} over {sum(1 for h in s9_hours.values() if h)} blocks.", ""]
     return out
 
 
@@ -486,6 +546,7 @@ def main() -> int:
     lines += section_aime()
     lines += section_speedbench()
     lines += section_step8()
+    lines += section_step9()
     notes = ADD / "RESULTS_notes.md"
     lines += ["## Observations, failures and anything that looked wrong", ""]
     lines += [notes.read_text(encoding="utf-8").strip() if notes.is_file() else "(none yet)", ""]

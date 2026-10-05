@@ -1237,3 +1237,17 @@ for what is done; this file records every action and failure.
 - 2026-10-04T15:54:21Z step 8 grading: 174 new run dir(s) uploaded, 174 pending, CPU job 23222810
 - 2026-10-05T01:07:11Z step 8: pulled 5 run dir(s)
 - 2026-10-05T01:07:30Z step 8 grading: 5 new run dir(s) uploaded, 5 pending, CPU job 23230650
+- 2026-10-05T18:49:21Z step 9 lane K1: submitted job 5966710, ~0.1 GPU-h assigned
+- 2026-10-05T18:49:23Z step 9 lane K2: submitted job 5966711, ~0.2 GPU-h assigned
+- 2026-10-05T18:49:24Z step 9 lane K3: submitted job 5966712, ~0.2 GPU-h assigned
+- 2026-10-05T18:49:25Z step 9 lane K4: submitted job 5966713, ~0.3 GPU-h assigned
+- 2026-10-05T18:49:27Z step 9 lane K5: submitted job 5966714, ~0.2 GPU-h assigned
+- 2026-10-05T18:49:28Z step 9 lane K6: submitted job 5966715, ~0.3 GPU-h assigned
+- 2026-10-05T18:49:30Z step 9 lane K7: submitted job 5966716, ~0.3 GPU-h assigned
+- 2026-10-05T18:49:31Z step 9 lane K8: submitted job 5966717, ~0.2 GPU-h assigned
+- 2026-10-05T19:13:55Z step 9: warm-up job 23268722 on nibi (3 pair caches: gpt-oss-20b__rh-eagle3, llama31-8b-instruct__eagle1, llama31-8b-instruct__eagle3)
+- 2026-10-05T19:14:07Z step 9 lane N1: submitted job 23268731 (--dependency=afterok:23268722), ~0.5 GPU-h assigned
+- 2026-10-05T19:14:11Z step 9 lane N2: submitted job 23268736 (--dependency=afterok:23268722), ~0.6 GPU-h assigned
+- 2026-10-05T19:20:00Z step 9: warm-up job 23268986 on nibi (3 pair caches: gpt-oss-20b__rh-eagle3, llama31-8b-instruct__eagle1, llama31-8b-instruct__eagle3)
+- 2026-10-05T19:20:09Z step 9 lane N1: submitted job 23268993 (--dependency=afterok:23268986), ~0.5 GPU-h assigned
+- 2026-10-05T19:20:13Z step 9 lane N2: submitted job 23268997 (--dependency=afterok:23268986), ~0.6 GPU-h assigned

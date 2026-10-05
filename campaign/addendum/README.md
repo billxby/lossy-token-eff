@@ -402,3 +402,36 @@ by the unmerged `speedbench-oct` branch).
    drained for an image test / issue #1079); the Nibi warm-up and lane jobs sat in ReqNodeNotAvail and were
    cancelled. GPT-OSS-20B, the drafter and its prompt sets are on Killarney; the whole block runs there (one node
    type, like every other step-8 block).
+
+## Step 9 (the 5 rules x 6 datasets grid for the five dedicated step-8 pairs)
+
+Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`, orchestration in
+`scripts/step9_campaign.py` (step 8's pair definitions imported unchanged), Block 0 in `step9/BLOCK0.md`.
+
+40. **Qwen3-8B + DSpark on LongBench-v2 drafts with a copy of the DSpark head whose config allows 65536 positions.**
+   `deepseek-ai/dspark_qwen3_8b_block7` (snapshot 03326e50) declares max_position_embeddings 40960 with plain RoPE
+   (theta 1e6); Qwen3's longest LongBench-v2 sequence is 51,234 prompt tokens + the 8,192 budget. `hf/local/
+   dspark_qwen3_8b_block7-maxpos65536` on Killarney differs only in that field (config sha256 e470e70a -> cbf2a274;
+   weights symlinked, sha256 5c922d1f... = the published blob), as deviations 19 and 31 did for the EAGLE heads;
+   positions below 40960 get the values they had. Only LongBench-v2 uses it, with a compile cache of its own
+   (`vllm_cache_step8/qwen3-8b__dspark-maxpos65536`, first compiled by the block's Block 0 smoke run, so no measured
+   arm runs on a fresh compile: deviation 35). The other step-9 datasets stay inside 40960 and use the original head.
+41. **Sixteen Killarney lanes (K9-K16 new), prompt sets copied on the cluster.** K9-K16 are copies of K8's repo +
+   venv (`cp -a`, like K5-K8). The Mac's link to Killarney ran at ~60 KB/s on 2026-10-05 (20 MB in 346 s; Nibi: 3 s),
+   so the prompt sets go to the cluster once (`/scratch/billxby/step9/prompts_stage`) and every lane repo is made
+   byte-identical to the committed sets there (`scripts/sync_prompt_sets.py`, sha256 digest per set; a lane whose sets
+   do not verify gets no work). A first push from the Mac, stopped after 10 minutes, had left K1's
+   `prompts/longbench_v2_qwen3/case_040/rendered_prompt.txt` truncated (32,256 of 81,537 bytes); the digest check
+   caught it and the staged copy replaced it before any step-9 run.
+42. **The GPT-OSS-20B and Llama-3.1-8B-Instruct blocks run on Nibi H100s; Qwen3-8B + DSpark and R1-Distill on
+   Killarney (2026-10-05 ~19:15Z).** At launch Killarney's H100s were CPU-bound (8 idle GPUs with no free CPUs; a new
+   job's estimated start 3 h out, whatever its CPU request) while Nibi's started within minutes. Every block still runs
+   whole on one cluster, H100 80GB HBM3 on both (lossless reference and every arm of a block on the same hardware and
+   compile cache). Nibi holds the same snapshots as Killarney (gpt-oss-20b 6cee5e81, RH head c2825cb4, Llama-3.1
+   83c92747 with all four shard sha256s of deviation 29, yuhuili heads ada412b6 / d0e4a208), the same 65536-position
+   head configs (sha256 3e47bd97 / f8aa3860, weights sha256 16d5bf95 / 875f4613 on both clusters) and the same patched
+   samplers (V2 file 63d52ec3 in every Nibi and Killarney lane venv). Nibi has no per-job /tmp and the patched samplers
+   read per-user /tmp knob files, so the four Nibi lanes (N1/N2 = the addendum's lanes A/B, N3/N4 copies of B) each
+   get a disjoint node set (g1-7, g8-14, g15-21, g22-29); every Nibi pair compiles into its own Nibi cache
+   (`/scratch/billxby/vllm_cache_step9/<pair>`), warmed by one throwaway job before any Block 0 or measured run
+   (deviation 35).
