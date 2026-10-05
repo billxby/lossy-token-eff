@@ -116,12 +116,36 @@ BLOCKS = [("1", P_GPT, "aime24"), ("2", P_QWEN, "aime24"),
           ("4a", P_GPT, "humaneval"), ("4b", P_QWEN, "humaneval"), ("4c", P_L3, "humaneval"),
           ("4d", P_L1, "humaneval"), ("4e", P_R1, "humaneval"),
           ("5a", P_L3, "aime24"), ("5b", P_L1, "aime24")]
+PHASE1 = [b for b, _, _ in BLOCKS]
+# Phase 2 (GOAL.md; planned only once state.json phase2 is set, i.e. Phase 1 ended before 2026-10-08 18:00 ET): the
+# standalone pairs at each rule's loosest grid alpha + lossless, like their existing rows, pair by pair in Bill's
+# order, each on HumanEval, LongBench-v2, MT-Bench, AIME24 in that order. Qwen3-8B + Qwen3-0.6B is the addendum's
+# step-4.3 pair (tables/lmdraft__*), defined here as a step-8-style pair with a compile cache of its own (deviation 34).
+P_Q17, P_Q06, P_PE, P_L1B, P_R1B = ("qwen3-8b__qwen3-1.7b", "qwen3-8b__qwen3-0.6b", "qwen3-8b__peagle",
+                                    "llama31-8b-instruct__llama32-1b", "r1-distill-llama-8b__llama32-1b")
+PHASE2_PAIRS = [P_Q17, P_Q06, P_PE, P_L1B, P_R1B]
+PHASE2_DATASETS = ["humaneval", "longbench_v2", "mtbench", "aime24"]
+BLOCKS += [(f"{6 + i}{'abcd'[j]}", pid, base) for i, pid in enumerate(PHASE2_PAIRS)
+           for j, base in enumerate(PHASE2_DATASETS)]
+PHASE2 = [b for b, _, _ in BLOCKS if b not in PHASE1]
 BLOCK_ORDER = {b: i for i, (b, _, _) in enumerate(BLOCKS)}
 BLOCK_OF = {(pid, base): b for b, pid, base in BLOCKS}
 # the projection rule (GOAL.md): if the projection misses the deadline, drop the HumanEval blocks first, then the
 # Llama AIME24 blocks. block -> reason
 DROPPED: dict[str, str] = {}
 PAIRS = {p["id"]: p for p in s8.PAIRS}
+PAIRS[P_Q06] = s8.pair("P2", "qwen3", "qwen3-0.6b", "Qwen/Qwen3-0.6B", "draft_model", "standalone",
+                       PHASE2_DATASETS, "killarney")
+KIND = {b: ("dedicated" if b in PHASE1 else "standalone") for b, _, _ in BLOCKS}
+# seconds per case of the standalone drafters (step 8 Blocks 2, 3, 5, 7 on GSM8K / LiveCodeBench against the
+# dedicated heads of the same target), for the estimates only
+T_CASE_PAIR = {
+    P_Q17: {"aime24": 105, "humaneval": 18, "longbench_v2": 27, "mtbench": 11},
+    P_Q06: {"aime24": 100, "humaneval": 17, "longbench_v2": 26, "mtbench": 10},
+    P_PE: {"aime24": 85, "humaneval": 14, "longbench_v2": 22, "mtbench": 9},
+    P_L1B: {"aime24": 25, "humaneval": 3.5, "longbench_v2": 7, "mtbench": 5},
+    P_R1B: {"aime24": 75, "humaneval": 25, "longbench_v2": 25, "mtbench": 7},
+}
 # Every block runs whole on one cluster (lossless and all arms on one node type, as step 8), and so does every pair's
 # set of step-9 blocks. Both clusters' H100 queues were deep at launch (2026-10-05 ~19:30Z: Killarney estimated 1-4 h,
 # Nibi ~9 h for our next job), so the two Llama-3.1 heads, whose models Nibi already held, run there (README deviation
@@ -135,6 +159,12 @@ DSPARK_LONG = f"{HF_LOCAL}/dspark_qwen3_8b_block7-maxpos65536"
 OVERRIDES = {(P_QWEN, "longbench_v2"): {
     "drafter_path": DSPARK_LONG,
     "env": {"VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__dspark-maxpos65536"}}}
+# Phase 2: Qwen3-1.7B, Qwen3-0.6B and the P-EAGLE head declare 40960 positions too (plain RoPE): the same kind of
+# copy for LongBench-v2 only, each with a cache of its own (README deviation 40)
+for _pid, _name in ((P_Q17, "Qwen3-1.7B"), (P_Q06, "Qwen3-0.6B"), (P_PE, "Qwen3-8B-speculator.peagle")):
+    OVERRIDES[(_pid, "longbench_v2")] = {
+        "drafter_path": f"{HF_LOCAL}/{_name}-maxpos65536",
+        "env": {"VLLM_CACHE_ROOT": f"/scratch/billxby/vllm_cache_step8/{_pid}-maxpos65536"}}
 
 
 def utc_now() -> dt.datetime:
@@ -263,6 +293,8 @@ def block_items(block: str, state: dict) -> list[dict]:
         return [smoke_item(block)]
     n = N_CASES[base]
     items = [make_item(block, pid, base, "strict", "strict", "strict", s8.cases(n))]
+    if KIND[block] == "standalone":  # Phase 2: each rule at its loosest grid alpha on the full case set
+        return items + [make_item(block, pid, base, m, s8.fmt(LOOSEST[m]), "full", s8.cases(n)) for m in FIVE]
     for method in FIVE:
         for alpha in ALPHA_GRIDS[method]:
             items.append(make_item(block, pid, base, method, s8.fmt(alpha), "calib", CALIB_CASES))
@@ -275,10 +307,13 @@ def block_items(block: str, state: dict) -> list[dict]:
     return items
 
 
+def t_case(pid: str, base: str) -> float:
+    return T_CASE_PAIR.get(pid, T_CASE[PAIRS[pid]["family"]])[base]
+
+
 def est_hours(item: dict, n_missing: int) -> float:
-    family = PAIRS[item["id"].split("|")[1]]["family"]
-    base = base_dataset(item["dataset"])
-    return STARTUP_H + T_CASE[family][base] * n_missing / 3600 if n_missing else 0.0
+    pid = item["id"].split("|")[1]
+    return STARTUP_H + t_case(pid, base_dataset(item["dataset"])) * n_missing / 3600 if n_missing else 0.0
 
 
 # The block formula below, fed step 8's own per-case times, gives 47.7 GPU-h for step-8 Block 1 (R1-Distill + EAGLE-3,
@@ -292,7 +327,9 @@ def block_estimate(block: str) -> float:
     """GPU-h of a whole block before any of it runs: lossless + 20 calibration arms + the full arms (14, the mean of
     step 8's dedicated blocks: 12-15 distinct alphas over the five rules), scaled to step 8's actuals."""
     _, pid, base = BLOCKS[BLOCK_ORDER[block]]
-    t, n = T_CASE[PAIRS[pid]["family"]][base], N_CASES[base]
+    t, n = t_case(pid, base), N_CASES[base]
+    if KIND[block] == "standalone":  # lossless + five loosest arms, no calibration
+        return STEP8_SCALE * 6 * (STARTUP_H + n * t / 3600)
     raw = (STARTUP_H + n * t / 3600) + 20 * (STARTUP_H + 3 * t / 3600) + 14 * (STARTUP_H + (n - 3) * t / 3600)
     return STEP8_SCALE * raw
 
@@ -308,8 +345,10 @@ def save_state(state: dict) -> None:
     STATE.write_text(json.dumps(state, indent=1, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def active_blocks() -> list[str]:
-    return [b for b, _, _ in BLOCKS if b not in DROPPED]
+def active_blocks(state: dict | None = None) -> list[str]:
+    """Phase 1 blocks not dropped, then Phase 2 blocks once state.json phase2 is set."""
+    phase2 = bool((state or load_state()).get("phase2"))
+    return [b for b, _, _ in BLOCKS if b not in DROPPED and (b in PHASE1 or phase2)]
 
 
 def journal_hours() -> dict[str, float]:
@@ -343,7 +382,7 @@ def cmd_plan(args: argparse.Namespace) -> int:
     state = load_state()
     assign: dict[str, str] = state["assign"]
     planned = []
-    for block in active_blocks():
+    for block in active_blocks(state):
         for item in block_items(block, state):
             missing = item_missing(item)
             planned.append((block, item, missing, est_hours(item, len(missing))))
@@ -456,19 +495,22 @@ def cmd_summary(args: argparse.Namespace) -> int:
 def cmd_estimate(args: argparse.Namespace) -> int:
     """GOAL.md: the block list with a GPU-h estimate per block and the projected finish (at --lanes concurrent lanes,
     --duty of their wall time spent running)."""
-    total = 0.0
-    print(f"{'block':6s} {'pair':32s} {'dataset':14s} {'GPU-h':>6s}  cumulative")
-    for block, pid, base in BLOCKS:
-        h = block_estimate(block)
-        if block in DROPPED:
-            print(f"{block:6s} {pid:32s} {base:14s} {h:6.1f}  (dropped: {DROPPED[block]})")
-            continue
-        total += h
-        print(f"{block:6s} {pid:32s} {base:14s} {h:6.1f}  {total:6.1f}")
     rate = args.lanes * args.duty
-    finish = utc_now() + dt.timedelta(hours=args.block0_hours + total / rate)
-    print(f"Phase 1 total ~{total:.0f} GPU-h; at {args.lanes} lanes x {args.duty:.0%} duty = {rate:.1f} GPU-h/h -> "
-          f"projected finish {finish.astimezone(ET):%a %b %d %H:%M} ET (deadline {DEADLINE:%a %b %d %H:%M} ET)")
+    for phase, blocks in (("Phase 1", PHASE1), ("Phase 2", PHASE2)):
+        total = 0.0
+        print(f"{phase}\n{'block':6s} {'cluster':10s} {'pair':32s} {'dataset':14s} {'GPU-h':>6s}  cumulative")
+        for block, pid, base in BLOCKS:
+            if block not in blocks:
+                continue
+            h = block_estimate(block)
+            if block in DROPPED:
+                print(f"{block:6s} {block_host(block):10s} {pid:32s} {base:14s} {h:6.1f}  (dropped: {DROPPED[block]})")
+                continue
+            total += h
+            print(f"{block:6s} {block_host(block):10s} {pid:32s} {base:14s} {h:6.1f}  {total:6.1f}")
+        print(f"{phase} total ~{total:.0f} GPU-h; at {args.lanes:g} lanes x {args.duty:.0%} duty = {rate:.1f} GPU-h/h: "
+              f"~{total / rate:.1f} h of wall time")
+    print(f"deadline {DEADLINE:%a %b %d %H:%M} ET; Phase 2 only if Phase 1 ends before {PHASE2_CUTOFF:%a %b %d %H:%M} ET")
     return 0
 
 
@@ -478,7 +520,8 @@ PUSH_FILES = s8.PUSH_FILES
 
 
 def prompt_sets() -> list[str]:
-    return sorted({f"prompts/{ds_of(pid, base)}" for _, pid, base in BLOCKS})
+    active = set(active_blocks())
+    return sorted({f"prompts/{ds_of(pid, base)}" for b, pid, base in BLOCKS if b in active})
 
 
 TOOLS = "/scratch/billxby/step9"           # sync_prompt_sets.py (same path on both clusters)

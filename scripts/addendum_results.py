@@ -509,7 +509,13 @@ def section_step9() -> list[str]:
            "excludes 1). Each block ran whole on one cluster (H100 80GB HBM3 on both; README deviation 42). Block 0: "
            "`step9/BLOCK0.md`. Step 8 + step 9 per pair: `tables/pairs__<target>__<drafter>.csv`.", ""]
     hours = s9_hours = step9_gpu_hours()
+    phase2 = bool(s9.load_state().get("phase2"))
     for block, pid, base in s9.BLOCKS:
+        if block == s9.PHASE2[0]:
+            out += ["### Phase 2: standalone drafters at each rule's loosest alpha", ""]
+            if not phase2:
+                out += ["Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).", ""]
+                break
         p = s9.PAIRS[pid]
         title = (f"### Block {block}: {s9.s8.CANONICAL.get(s9.MODEL_FAMILIES[p['family']][0], s9.MODEL_FAMILIES[p['family']][0])}"
                  f" + {s9.s8.CANONICAL.get(p['drafter'], p['drafter'])}, {base} ({s9.block_host(block)})")

@@ -791,31 +791,44 @@ def cmd_step9(args) -> int:
             if bpid != pid or block in s9.DROPPED:
                 continue
             ds = s9.ds_of(pid, base)
-            path = s9.calib_path(pid, base)
-            if not path.is_file():
-                continue
-            cal = json.loads(path.read_text(encoding="utf-8"))
-            targets = cal["targets_l_bar"]
             strict = load_cell(ds, "strict", "strict", 0, run_root=root)
-            arms = []
-            for m in FIVE:
-                # setting = the target(s) this alpha is the nearest grid point to; "extra" = a grid extreme pick_alphas
-                # adds when two targets share one alpha (as cmd_step8)
-                pts = [(g["alpha"], g["mean_l_bar"]) for g in cal["grid_results"][m]]
-                nearest = [min(pts, key=lambda q: abs(q[1] - t))[0] for t in targets] if pts else []
-                for a in cal["chosen_alphas"][m]:
-                    names = [n for n, pick in zip(("low", "mid", "high"), nearest) if pick == a]
-                    arms.append((m, f"{float(a):g}", "+".join(names) or "extra"))
+            arms, targets = [], []
+            if s9.KIND[block] == "standalone":  # Phase 2: each rule at its loosest grid alpha (as step 8's standalone rows)
+                arms = [(m, f"{s9.LOOSEST[m]:g}", "loosest") for m in FIVE]
+            else:
+                path = s9.calib_path(pid, base)
+                if not path.is_file():
+                    continue
+                cal = json.loads(path.read_text(encoding="utf-8"))
+                targets = cal["targets_l_bar"]
+                for m in FIVE:
+                    # setting = the target(s) this alpha is the nearest grid point to; "extra" = a grid extreme
+                    # pick_alphas adds when two targets share one alpha (as cmd_step8)
+                    pts = [(g["alpha"], g["mean_l_bar"]) for g in cal["grid_results"][m]]
+                    nearest = [min(pts, key=lambda q: abs(q[1] - t))[0] for t in targets] if pts else []
+                    for a in cal["chosen_alphas"][m]:
+                        names = [n for n, pick in zip(("low", "mid", "high"), nearest) if pick == a]
+                        arms.append((m, f"{float(a):g}", "+".join(names) or "extra"))
             for m, a, setting in arms:
                 c = compare(load_cell(ds, m, a, 0, run_root=root), strict, rng)
-                names = [n for n in setting.split("+") if n in ("low", "mid", "high")]
+                if not c.get("n_pairs"):
+                    continue
+                extra = {}
+                if s9.KIND[block] == "dedicated":
+                    names = [n for n in setting.split("+") if n in ("low", "mid", "high")]
+                    extra["l_bar_target"] = "/".join(f"{targets[['low', 'mid', 'high'].index(n)]:.3f}" for n in names) or None
                 rows.append({**label(p), "dataset": ds, "method": m, "alpha": a, "beta": "", "setting": setting,
-                             "l_bar_target": "/".join(f"{targets[['low', 'mid', 'high'].index(n)]:.3f}" for n in names)
-                             or None, **c})
+                             **extra, **c})
         slug = f"{s9.s8.TARGET_SLUG[p['family']]}__{p['slug']}"
-        with (ADD / "tables" / f"step8__{slug}.csv").open(newline="", encoding="utf-8") as handle:
+        step8_path = ADD / "tables" / f"step8__{slug}.csv"
+        # Qwen3-8B + Qwen3-0.6B has no step-8 table (its earlier rows are the addendum's tables/lmdraft__*, another
+        # schema): its columns are those of the other Qwen3 standalone pair
+        schema_path = step8_path if step8_path.is_file() else ADD / "tables" / "step8__qwen3-8b__qwen3-1.7b.csv"
+        with schema_path.open(newline="", encoding="utf-8") as handle:
             reader = csv.DictReader(handle)
             fields, step8_rows = list(reader.fieldnames), list(reader)
+        if not step8_path.is_file():
+            step8_rows = []
         if not rows:
             continue
         extra = sorted({k for r in rows for k in r} - set(fields))
