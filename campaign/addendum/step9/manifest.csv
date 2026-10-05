@@ -1,6 +1,6 @@
 block,host,pair,target,drafter,drafter_path,spec_method,drafter_family,sampler_path,dataset,method,alpha,beta,stage,n_cases,n_done,status,lane,slurm_job_ids,gpu_hours_est,gpu_hours_actual
 1,killarney,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,aime24,strict,strict,,strict,30,0,pending,K7,,0.45,0.00
-1,killarney,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,aime24,mentored_dec,0.15,,calib,3,0,pending,K3,5966712,0.15,0.00
+1,killarney,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,aime24,mentored_dec,0.15,,calib,3,1,pending,K3,5966712,0.14,0.00
 1,killarney,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,aime24,mentored_dec,0.35,,calib,3,0,pending,K4,5966713,0.15,0.00
 1,killarney,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,aime24,mentored_dec,0.55,,calib,3,0,pending,K5,5966714,0.15,0.00
 1,killarney,gpt-oss-20b__rh-eagle3,openai/gpt-oss-20b,RedHatAI/gpt-oss-20b-speculator.eagle3,RedHatAI/gpt-oss-20b-speculator.eagle3,eagle3,eagle3,V1 full patches,aime24,mentored_dec,0.75,,calib,3,0,pending,K6,,0.15,0.00
