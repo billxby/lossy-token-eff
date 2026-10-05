@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 22:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 22:27 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1160,7 +1160,7 @@ Pending.
 
 ### Block 3e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 3.0.
+GPU-h actual (lane journals): 3.2.
 
 Pending.
 
@@ -1210,7 +1210,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 36.1 over 8 blocks.
+Step 9 GPU-h so far (lane journals): 36.3 over 8 blocks.
 
 ## Observations, failures and anything that looked wrong
 
@@ -1534,4 +1534,8 @@ Step 9 GPU-h so far (lane journals): 36.1 over 8 blocks.
   rounds (R 0.46-0.56) and it pays 27-57 accuracy points (20-50%); mentored_dec, spec_casc_opt, r_fuzzy and
   spec_casc_tok sit at R 0.88-1.67 with intervals spanning 1 and longer answers (lambda up to 1.68); spec_casc_tok
   0.8 keeps accuracy (77%) at R 1.33 [1.01, 1.86]. n = 30: wide intervals.
+- **Step 9, Block 2 (Qwen3-8B + DSpark, AIME24, Killarney), complete 2026-10-05 22:12Z, 12.6 GPU-h.** Lossless l_bar
+  2.51, accuracy 70%, 20% cap-outs at 32,768. As on step 8's datasets, DSpark leaves modest, tight gains: mentored_dec
+  0.35, cactus 0.03 and spec_casc_tok 0.15 reach R 0.85-0.89 (intervals below 1) at 70-80% accuracy; the looser
+  spec_casc_opt / r_fuzzy settings lengthen answers (lambda 1.2-1.5, cap-outs up to 70%) and lose 7-33 points.
 

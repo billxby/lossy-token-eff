@@ -1404,3 +1404,15 @@ addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/ca
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_030/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_031/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_032/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_142/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_143/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_144/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_145/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_146/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_147/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_148/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/r_fuzzy/alpha0.08/case_001/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/r_fuzzy/alpha0.08/case_002/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/r_fuzzy/alpha0.08/case_003/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_033/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_034/seed_0
