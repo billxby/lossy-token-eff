@@ -1289,3 +1289,5 @@ for what is done; this file records every action and failure.
 - 2026-10-05T20:36:58Z step 9 block 1: calibrated gpt-oss-20b__rh-eagle3 aime24: targets [1.651, 2.845, 4.039], mentored_dec [0.55, 0.15, 0.75], cactus [0.03, 0.08, 0.18], spec_casc_opt [0.05, -0.3], r_fuzzy [0.25, 0.03], spec_casc_tok [0.8, 0.15]
 - 2026-10-05T20:37:10Z step 9 lane K6: submitted job 5967646 (--dependency=afterany:5966715), ~2.8 GPU-h assigned
 - 2026-10-05T20:38:54Z step 9 grading: 34 new run dir(s) uploaded, 34 pending, CPU job 23274916
+- 2026-10-05T20:49:16Z step 9: pulled 50 run dir(s)
+- 2026-10-05T20:50:39Z step 9 grading: 50 new run dir(s) uploaded, 50 pending, CPU job 23275846
