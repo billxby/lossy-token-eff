@@ -318,3 +318,7 @@
   rounds (R 0.46-0.56) and it pays 27-57 accuracy points (20-50%); mentored_dec, spec_casc_opt, r_fuzzy and
   spec_casc_tok sit at R 0.88-1.67 with intervals spanning 1 and longer answers (lambda up to 1.68); spec_casc_tok
   0.8 keeps accuracy (77%) at R 1.33 [1.01, 1.86]. n = 30: wide intervals.
+- **Step 9, Block 2 (Qwen3-8B + DSpark, AIME24, Killarney), complete 2026-10-05 22:12Z, 12.6 GPU-h.** Lossless l_bar
+  2.51, accuracy 70%, 20% cap-outs at 32,768. As on step 8's datasets, DSpark leaves modest, tight gains: mentored_dec
+  0.35, cactus 0.03 and spec_casc_tok 0.15 reach R 0.85-0.89 (intervals below 1) at 70-80% accuracy; the looser
+  spec_casc_opt / r_fuzzy settings lengthen answers (lambda 1.2-1.5, cap-outs up to 70%) and lose 7-33 points.
