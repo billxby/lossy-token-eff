@@ -24887,3 +24887,8 @@ addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_tok/alpha0.8/case_
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_tok/alpha0.8/case_088/seed_0
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_tok/alpha0.8/case_089/seed_0
 addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/spec_casc_tok/alpha0.8/case_090/seed_0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_086/seed_0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_087/seed_0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_088/seed_0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_089/seed_0
+addendum/step8/qwen3-8b__peagle/livecodebench_qwen3/r_fuzzy/alpha0.25/case_090/seed_0
