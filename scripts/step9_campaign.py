@@ -150,7 +150,9 @@ T_CASE_PAIR = {
 # set of step-9 blocks. Both clusters' H100 queues were deep at launch (2026-10-05 ~19:30Z: Killarney estimated 1-4 h,
 # Nibi ~9 h for our next job), so the two Llama-3.1 heads, whose models Nibi already held, run there (README deviation
 # 42); GPT-OSS + RH head, Qwen3 + DSpark and R1-Distill run on Killarney with step 8's warm compile caches.
-NIBI_PAIRS = {P_L3, P_L1}
+# 2026-10-05 ~22:00Z: Nibi's start estimate for the warm-up job slipped to 2026-10-08 13:00 while all 16 Killarney
+# lanes ran; the Llama blocks (no run yet) moved to Killarney too (README deviation 42)
+NIBI_PAIRS: set[str] = set()
 BLOCK_HOST = {b: ("nibi" if pid in NIBI_PAIRS else "killarney") for b, pid, _ in BLOCKS}
 # DSpark's config stops at 40960 positions (plain RoPE, theta 1e6); Qwen3's longest LongBench-v2 sequence is 51234 +
 # 8192. This copy differs only in max_position_embeddings = 65536 (weights symlinked, sha256 5c922d1f...), with a

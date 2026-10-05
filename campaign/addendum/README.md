@@ -436,4 +436,7 @@ Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`
    files, so the four Nibi lanes (N1/N2 = the addendum's lanes A/B, N3/N4 copies of B) each get a disjoint node set
    (g1-7, g8-14, g15-21, g22-29); each Llama pair compiles into its own Nibi cache
    (`/scratch/billxby/vllm_cache_step9/<pair>`), warmed by one throwaway job before any Block 0 or measured run
-   (deviation 35).
+   (deviation 35). **Superseded 2026-10-05 ~22:00Z:** Nibi's start estimate for that warm-up job slipped to
+   2026-10-08 13:00 while all 16 Killarney lanes ran, so the Llama blocks (no run yet, no Nibi job ever started) moved
+   to Killarney as well, on step 8's warm Llama caches; every step-9 block runs on Killarney H100s and the Nibi jobs
+   were cancelled. Nibi only grades (CPU).
