@@ -313,3 +313,8 @@
   saving in 20 of 22 arms (mean R 0.82) at lossless accuracy. The paper's pattern (acceptance up, length up, the
   head-restricted rule the exception) holds on every new family and drafter; it fades with drafters close to the
   target (Qwen3-1.7B, DSpark, P-EAGLE).
+- **Step 9, Block 1 (GPT-OSS-20B + RedHatAI EAGLE-3, AIME24, Killarney), complete 2026-10-05 21:32Z, 10.6 GPU-h.**
+  Lossless l_bar 1.34 (the RH head drafts poorly on long answers; step9/BLOCK0.md), accuracy 77%. Only cactus saves
+  rounds (R 0.46-0.56) and it pays 27-57 accuracy points (20-50%); mentored_dec, spec_casc_opt, r_fuzzy and
+  spec_casc_tok sit at R 0.88-1.67 with intervals spanning 1 and longer answers (lambda up to 1.68); spec_casc_tok
+  0.8 keeps accuracy (77%) at R 1.33 [1.01, 1.86]. n = 30: wide intervals.
