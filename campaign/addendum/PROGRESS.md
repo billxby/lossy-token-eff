@@ -1299,3 +1299,7 @@ for what is done; this file records every action and failure.
 - 2026-10-05T21:04:06Z step 9 grading: 20 new run dir(s) uploaded, 20 pending, CPU job 23278450
 - 2026-10-05T21:14:30Z step 9: pulled 131 run dir(s)
 - 2026-10-05T21:14:56Z step 9 grading: 131 new run dir(s) uploaded, 131 pending, CPU job 23278869
+- 2026-10-05T21:16:06Z step 9: pulled 19 run dir(s)
+- 2026-10-05T21:16:06Z step 9 block 2: calibrated qwen3-8b__dspark aime24_qwen3: targets [2.797, 3.408, 4.019], mentored_dec [0.35, 0.75, 0.15], cactus [0.03, 0.35], spec_casc_opt [-0.3, -0.1, 0.05], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.35, 0.8, 0.15]
+- 2026-10-05T21:16:19Z step 9 lane K11: submitted job 5968019 (--dependency=afterany:5967093), ~2.8 GPU-h assigned
+- 2026-10-05T21:16:30Z step 9 grading: 19 new run dir(s) uploaded, 19 pending, CPU job 23278903

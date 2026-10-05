@@ -30,7 +30,11 @@
     "SPEC_METHOD": "eagle3",
     "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/llama31-8b-instruct__eagle3"
    },
-   "host": "nibi"
+   "host": "nibi",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
   },
   {
    "id": "b0|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|smoke",
@@ -62,7 +66,11 @@
     "SPEC_METHOD": "eagle3",
     "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/llama31-8b-instruct__eagle3"
    },
-   "host": "nibi"
+   "host": "nibi",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
   }
  ],
  "hold_minutes": 30
