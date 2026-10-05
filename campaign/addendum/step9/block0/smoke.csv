@@ -1,0 +1,13 @@
+block,cluster,pair,dataset,case,output_tokens,finish_reason,l_bar,wall_s,host,answer_segment,answer,verdict,draft_model
+1,killarney,gpt-oss-20b__rh-eagle3,aime24,case_001,1990,stop,2.360,4.9,kn173,boxed,204,correct,RedHatAI/gpt-oss-20b-speculator.eagle3
+1,killarney,gpt-oss-20b__rh-eagle3,aime24,case_002,13186,stop,0.624,62.2,kn173,boxed,113,correct,RedHatAI/gpt-oss-20b-speculator.eagle3
+2,killarney,qwen3-8b__dspark,aime24_qwen3,case_001,7560,stop,2.772,17.6,kn173,boxed,204,correct,deepseek-ai/dspark_qwen3_8b_block7
+2,killarney,qwen3-8b__dspark,aime24_qwen3,case_002,23543,stop,2.414,63.1,kn173,boxed,113,correct,deepseek-ai/dspark_qwen3_8b_block7
+3b,killarney,qwen3-8b__dspark,longbench_v2_qwen3,case_001,1349,stop,1.697,7.4,kn173,boxed,D,correct,/home/billxby/projects/aip-hongyanz/billxby/hf/local/dspark_qwen3_8b_block7-maxpos65536
+3b,killarney,qwen3-8b__dspark,longbench_v2_qwen3,case_002,563,stop,1.404,5.0,kn173,boxed,C,wrong,/home/billxby/projects/aip-hongyanz/billxby/hf/local/dspark_qwen3_8b_block7-maxpos65536
+3e,killarney,r1-distill-llama-8b__eagle3,longbench_v2_r1llama,case_001,548,stop,0.028,7.5,kn173,boxed,D,correct,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536
+3e,killarney,r1-distill-llama-8b__eagle3,longbench_v2_r1llama,case_002,538,stop,0.023,7.9,kn173,boxed,C,wrong,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536
+4a,killarney,gpt-oss-20b__rh-eagle3,humaneval,case_001,807,stop,2.019,2.3,kn173,fenced_block,49 lines,extracted,RedHatAI/gpt-oss-20b-speculator.eagle3
+4a,killarney,gpt-oss-20b__rh-eagle3,humaneval,case_002,1334,stop,1.482,3.8,kn173,fenced_block,47 lines,extracted,RedHatAI/gpt-oss-20b-speculator.eagle3
+4e,killarney,r1-distill-llama-8b__eagle3,humaneval_r1llama,case_001,1706,stop,2.884,4.0,kn173,fenced_block,17 lines,extracted,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536
+4e,killarney,r1-distill-llama-8b__eagle3,humaneval_r1llama,case_002,9000,length,0.443,56.8,kn173,final_channel_without_code_block,,no_answer,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536

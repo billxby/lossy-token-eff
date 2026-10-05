@@ -1,39 +1,6 @@
 {
  "items": [
   {
-   "id": "b0|gpt-oss-20b__rh-eagle3|longbench_v2|strict|strict|smoke",
-   "step": "9.3a",
-   "condition": "step9/gpt-oss-20b__rh-eagle3",
-   "dataset": "longbench_v2",
-   "method": "strict",
-   "alpha": "strict",
-   "seed": 0,
-   "cases": [
-    "case_001",
-    "case_002"
-   ],
-   "prompt_root": "prompts/longbench_v2",
-   "runs_subroot": "runs/addendum/step9_block0/nibi/gpt-oss-20b__rh-eagle3",
-   "max_new_tokens": 8192,
-   "model_flags": [
-    "--model-path",
-    "openai/gpt-oss-20b",
-    "--draft-model-path",
-    "RedHatAI/gpt-oss-20b-speculator.eagle3",
-    "--served-model-name",
-    "gpt-oss-20b"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/gpt-oss-20b__rh-eagle3",
-    "MENTORED_DEC_TEST_V1_ONLY": "1"
-   },
-   "host": "nibi"
-  },
-  {
    "id": "b0|llama31-8b-instruct__eagle3|longbench_v2_llama31|strict|strict|smoke",
    "step": "9.3c",
    "condition": "step9/llama31-8b-instruct__eagle3",
@@ -62,39 +29,6 @@
    "env": {
     "SPEC_METHOD": "eagle3",
     "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/llama31-8b-instruct__eagle3"
-   },
-   "host": "nibi"
-  },
-  {
-   "id": "b0|gpt-oss-20b__rh-eagle3|humaneval|strict|strict|smoke",
-   "step": "9.4a",
-   "condition": "step9/gpt-oss-20b__rh-eagle3",
-   "dataset": "humaneval",
-   "method": "strict",
-   "alpha": "strict",
-   "seed": 0,
-   "cases": [
-    "case_001",
-    "case_002"
-   ],
-   "prompt_root": "prompts/humaneval",
-   "runs_subroot": "runs/addendum/step9_block0/nibi/gpt-oss-20b__rh-eagle3",
-   "max_new_tokens": 9000,
-   "model_flags": [
-    "--model-path",
-    "openai/gpt-oss-20b",
-    "--draft-model-path",
-    "RedHatAI/gpt-oss-20b-speculator.eagle3",
-    "--served-model-name",
-    "gpt-oss-20b"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step9/gpt-oss-20b__rh-eagle3",
-    "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "host": "nibi"
   },

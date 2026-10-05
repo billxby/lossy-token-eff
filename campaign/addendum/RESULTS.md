@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 19:25 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 19:36 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1090,7 +1090,7 @@ GPU-h actual (lane journals): 5.2.
 
 The step-8 protocol on AIME24, LongBench-v2 and HumanEval (the paper's budgets and case sets): seed 0, N_draft 6, T 1.0, top-p 1.0, one persistent server per arm, every arm paired case by case with its own pair's lossless run; three matched-l_bar settings per rule plus the grid extremes when two targets share an alpha ("extra"). Ratios relaxed / lossless with 95% bootstrap intervals over cases (arrows: interval excludes 1). Each block ran whole on one cluster (H100 80GB HBM3 on both; README deviation 42). Block 0: `step9/BLOCK0.md`. Step 8 + step 9 per pair: `tables/pairs__<target>__<drafter>.csv`.
 
-### Block 1: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, aime24 (nibi)
+### Block 1: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, aime24 (killarney)
 
 GPU-h actual (lane journals): 0.0.
 
@@ -1102,7 +1102,7 @@ GPU-h actual (lane journals): 0.0.
 
 Pending.
 
-### Block 3a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, longbench_v2 (nibi)
+### Block 3a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, longbench_v2 (killarney)
 
 GPU-h actual (lane journals): 0.0.
 
@@ -1132,7 +1132,7 @@ GPU-h actual (lane journals): 0.0.
 
 Pending.
 
-### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (nibi)
+### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (killarney)
 
 GPU-h actual (lane journals): 0.0.
 

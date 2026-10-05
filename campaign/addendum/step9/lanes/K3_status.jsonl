@@ -1,0 +1,2 @@
+{"t": "2026-10-05T19:28:12Z", "lane": "K3", "job": "5966712", "host": "kn174", "event": "job_start", "work": "/scratch/billxby/step9/laneK3/work.json"}
+{"t": "2026-10-05T19:28:12Z", "lane": "K3", "job": "5966712", "host": "kn174", "event": "idle_hold", "minutes": 30.0}
