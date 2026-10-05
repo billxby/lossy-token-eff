@@ -1264,3 +1264,4 @@ for what is done; this file records every action and failure.
 - 2026-10-05T19:35:24Z step 9 lane K14: submitted job 5967096, ~1.3 GPU-h assigned
 - 2026-10-05T19:35:26Z step 9 lane K15: submitted job 5967097, ~1.5 GPU-h assigned
 - 2026-10-05T19:35:27Z step 9 lane K16: submitted job 5967098, ~1.3 GPU-h assigned
+- 2026-10-05T19:36:58Z step 9: pulled 2 run dir(s)

@@ -48,4 +48,25 @@ R1-Distill), the whole text (Llama-3.1, which does not reason in tags).
 
 ## Smoke runs
 
-(filled in from the smoke runs)
+Lossless, case_001-002, the block's full budget, on the block's own cluster and compile cache (`block0/smoke.csv`,
+`scripts/step9_block0.py`; HumanEval candidates executed by `grade_humaneval.py` on a Nibi login node, since
+RLIMIT_AS needs Linux). Killarney: jobs 5966710 (K1) and 5966711 (K2) on kn173, 2026-10-05 19:23-19:50Z.
+
+| block | pair | dataset | case_001: tokens, finish, l_bar, verdict | case_002 |
+|---|---|---|---|---|
+| 1 | GPT-OSS + RH EAGLE-3 | AIME24 | 1,990, stop, 2.36, boxed 204 correct | 13,186, stop, 0.62, boxed 113 correct |
+| 2 | Qwen3 + DSpark | AIME24 | 7,560, stop, 2.77, boxed 204 correct | 23,543, stop, 2.41, boxed 113 correct |
+| 3b | Qwen3 + DSpark (65536 copy) | LongBench-v2 | 1,349, stop, 1.70, boxed D correct | 563, stop, 1.40, boxed C wrong |
+| 3e | R1-Distill + EAGLE-3 | LongBench-v2 | 548, stop, 0.03, boxed D correct | 538, stop, 0.02, boxed C wrong |
+| 4a | GPT-OSS + RH EAGLE-3 | HumanEval | 807, stop, 2.02, fenced block passed | 1,334, stop, 1.48, passed |
+| 4e | R1-Distill + EAGLE-3 | HumanEval | 1,706, stop, 2.88, fenced block passed | 9,000, length (cap inside `<think>`), 0.44, no answer |
+
+Every server came up on its pair's warm step-8 cache, except 3b's on the new 65536-position DSpark copy, which
+compiled into its own cache (`vllm_cache_step8/qwen3-8b__dspark-maxpos65536`; this smoke run was that cache's
+warm-up). The answer segments are as expected: Harmony final channel (GPT-OSS `final_ch=True`), text after
+`</think>` (Qwen3, R1). R1-Distill's head barely drafts on LongBench-v2 (l_bar 0.02-0.03: every drafted position lies
+past ~10,000, far beyond the ~2,048 it drafts well at; BLOCK0 of step 8) while the answers themselves are normal (~540
+tokens of reasoning, `</think>`, a boxed letter): run as planned, lossless l_bar reported as is. The RH GPT-OSS head
+also drafts less on long answers (l_bar 0.62 on a 13k-token AIME24 answer vs 2.36 on a 2k one).
+
+Passed 2026-10-05 ~19:50Z (Phase 1 started on Killarney at once): 1, 2, 3b, 3e, 4a, 4e.
