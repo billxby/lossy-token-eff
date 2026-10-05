@@ -37,7 +37,7 @@
     {
      "dependency": "",
      "id": "5966710",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-05T18:49:21Z"
     }
    ]
@@ -68,7 +68,7 @@
     {
      "dependency": "",
      "id": "5966711",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-05T18:49:23Z"
     }
    ]
