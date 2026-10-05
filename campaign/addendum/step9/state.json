@@ -1,4 +1,5 @@
 {
+ "alert_seen": {},
  "assign": {
   "b0|gpt-oss-20b__rh-eagle3|aime24|strict|strict|smoke": "N1",
   "b0|gpt-oss-20b__rh-eagle3|humaneval|strict|strict|smoke": "N2",
@@ -15,7 +16,21 @@
   "b0|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|smoke": "K2",
   "b0|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|smoke": "K2"
  },
+ "b0_notified": [],
  "block0_passed": [],
+ "grade_prompts": {
+  "prompts/aime24": "173323f53f93b1f8d9a6cea0e20d11c378f4496d56097312e287fe17e3e89677",
+  "prompts/aime24_llama31": "21b0e69745456386c08928abc49cad66cbf089265a13dd90009af0a818b005cb",
+  "prompts/aime24_qwen3": "d29e18db04b8deb2cd0deebf4e07955bc6ec7a9eacda44444d5d638ca6482db5",
+  "prompts/humaneval": "5539287ef38a9e58588593b64474680d4897d189cbefb33d1fe0b76819deab1b",
+  "prompts/humaneval_llama31": "9e05fdcc89b5818f531cc80a6e7c81627a1bff68609ac77310d39b0f011c9d24",
+  "prompts/humaneval_qwen3": "397babd155f0f2e64c914e45463e5a1481624873b4ecf53983cb7c15d3e96e1f",
+  "prompts/humaneval_r1llama": "810ff2bd21e80587ee2f696df19b1dc6af4c23881baf97c5fa5e8784534d2a04",
+  "prompts/longbench_v2": "8c38994c30b033e72d07a4a369c961a66b63b0a7adadd23bb1161c56eb80256c",
+  "prompts/longbench_v2_llama31": "58a392c28f6acdeb96fe97973fccdafd34f36baec177c1e0475f94d49f68e30b",
+  "prompts/longbench_v2_qwen3": "f8c28d5744f6cf80aaae1e5bbf2e98ad7dd1bb55f5bb9ca30e3fe77281aef275",
+  "prompts/longbench_v2_r1llama": "f32c15022b89f1071ccba6957a4f798c5fd9de53517d02db729aab7b6d5d2fdc"
+ },
  "lanes": {
   "K1": {
    "jobs": [
@@ -218,6 +233,80 @@
   "N1",
   "N2"
  ],
+ "pushed": {
+  "K1": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "01f47e51715065d556f128dde20e18e5415a6196eac6675acb85fead1d446e1e"
+  },
+  "K10": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K11": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K12": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K13": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K14": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K15": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K16": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K2": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "94bba4872d41ceaa86100bc83e8750b378085e03ce1ef846688fc0da12ef48c4"
+  },
+  "K3": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K4": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K5": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K6": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K7": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K8": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "K9": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
+  },
+  "N1": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "3d6b27ac4de90e3f8ce6e0481d56edd5f43e923cc0b5a22ce73c78d62d833e8d"
+  },
+  "N2": {
+   "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
+   "work": "6c3ea1fc6b44fc719ac86f8ce5f5b13d5e431ad1c862c29048b5eee1150741ce"
+  }
+ },
  "reported": [],
  "warm": {
   "nibi": "23268986"
