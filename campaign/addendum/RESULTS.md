@@ -1390,4 +1390,17 @@ GPU-h actual (lane journals): 5.2.
   spec_casc_tok 0.8 R 0.89 [0.82, 0.95] at 77% vs 71% lossless and mentored_dec 0.75 R 0.87 at 73%; cactus,
   spec_casc_opt and r_fuzzy inflate (lambda 2.0-3.2, R 1.4-2.3, accuracy 44-51%). LiveCodeBench: every rule cuts
   rounds (R 0.50-0.84) but every one loses accuracy (4-42% vs 56%).
+- **Step 8, Block 7 (optional: Qwen3-8B + RedHatAI P-EAGLE, parallel drafting, V1 full patches, loosest),
+  complete 2026-10-04 ~16:00Z, 5.2 GPU-h.** P-EAGLE drafts better than the paper's Qwen3 EAGLE-3 head (lossless
+  l_bar 2.16 vs 1.50 on GSM8K, 1.84 on LiveCodeBench) and passes its probabilities to the sampler (every rule moves
+  l_bar). Gains are small: R 0.92-0.98 for mentored_dec, cactus, spec_casc_opt and spec_casc_tok, with accuracy
+  costs from 2 points (mentored_dec, GSM8K) to 22 (spec_casc_opt, LiveCodeBench); r_fuzzy 0.25 inflates (lambda
+  1.3, 56-70% cap-outs, LiveCodeBench accuracy 3% vs 73%).
+- **Step 8 totals:** blocks 1-7 used 124.2 GPU-h on Killarney H100s (1: 34.0, 2: 32.9, 3: 25.2, 4: 16.9, 5: 7.5,
+  6: 2.5, 7: 5.2), plus 6.2 for Block 0. Across the eight completed target-drafter pairs of blocks 1-5, at each
+  rule's loosest setting: cactus +123% l_bar with completions 2.85x longer, spec_casc_opt +55% / 1.48x, mentored_dec
+  +32% / 1.30x, r_fuzzy +23% / 1.78x, spec_casc_tok +16% / 0.92x; spec_casc_tok is the only rule with a rounds
+  saving in 20 of 22 arms (mean R 0.82) at lossless accuracy. The paper's pattern (acceptance up, length up, the
+  head-restricted rule the exception) holds on every new family and drafter; it fades with drafters close to the
+  target (Qwen3-1.7B, DSpark, P-EAGLE).
 
