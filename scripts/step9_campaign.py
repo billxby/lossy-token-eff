@@ -412,7 +412,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
     job_states = {l: {j.get("state") for j in state["lanes"].get(l, {}).get("jobs", [])} for l in LANES}
     wait = {l: 0.0 if "RUNNING" in job_states[l] else 2.0 if job_states[l] & {"PENDING", "CONFIGURING"} else 4.0
             for l in LANES}
-    order = lambda t: (BLOCK_ORDER[t[0]], STAGE_RANK[t[1]["id"].rsplit("|", 1)[1]], -t[3])
+    # Block 0 smoke items first (two cases each, and they gate their whole block), then by block and stage
+    order = lambda t: (t[1]["id"].startswith("b0|") is False, BLOCK_ORDER[t[0]], STAGE_RANK[t[1]["id"].rsplit("|", 1)[1]], -t[3])
     for block, item, missing, hours in sorted(planned, key=order):
         if item["id"] not in assign and missing:
             lane = min((l for l in ready if LANES[l]["host"] == item["host"]),
@@ -449,7 +450,8 @@ def cmd_plan(args: argparse.Namespace) -> int:
         # cycle places some on it) or a calibration / Block 0 check about to release more
         waiting = any(r["host"] == host and r["status"] != "done" and (r["stage"] in ("calib", "smoke") or
                                                                      not r["slurm_job_ids"]) for r in rows)
-        entries.sort(key=lambda e: (BLOCK_ORDER[e[0]], STAGE_RANK[e[1]["id"].rsplit("|", 1)[1]]))
+        entries.sort(key=lambda e: (not e[1]["id"].startswith("b0|"), BLOCK_ORDER[e[0]],
+                                    STAGE_RANK[e[1]["id"].rsplit("|", 1)[1]]))
         # README deviation 43: FlashInfer JIT-builds its sampling module into ~/.cache/flashinfer under one file lock,
         # and its build.ninja names the lane's own venv, so 16 lanes kept rebuilding it in turn (servers hung >20 min
         # in warmup). A workspace per lane: built once per lane from the same sources and flags, then loaded.

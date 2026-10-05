@@ -322,3 +322,7 @@
   2.51, accuracy 70%, 20% cap-outs at 32,768. As on step 8's datasets, DSpark leaves modest, tight gains: mentored_dec
   0.35, cactus 0.03 and spec_casc_tok 0.15 reach R 0.85-0.89 (intervals below 1) at 70-80% accuracy; the looser
   spec_casc_opt / r_fuzzy settings lengthen answers (lambda 1.2-1.5, cap-outs up to 70%) and lose 7-33 points.
+- **Step 9, Block 3b (Qwen3-8B + DSpark, LongBench-v2, 65536-position head copy, Killarney), complete 2026-10-05
+  23:36Z, 8.9 GPU-h.** Lossless l_bar 1.88, accuracy 47%. Every rule saves rounds with tight intervals at near-unchanged
+  length (lambda 0.94-1.10): spec_casc_opt 0.05 R 0.67 [0.62, 0.74], -0.02 R 0.73, cactus 0.35 R 0.74, spec_casc_tok
+  0.8 R 0.81, mentored_dec 0.55 R 0.82; accuracy within ~5 points of lossless (42-53%) except r_fuzzy 0.25 (39%).
