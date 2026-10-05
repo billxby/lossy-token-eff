@@ -185,12 +185,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|cactus|0.18|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|spec_casc_opt|-0.3|calib",
    "step": "9.3d",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "longbench_v2_llama31",
-   "method": "cactus",
-   "alpha": "0.18",
+   "method": "spec_casc_opt",
+   "alpha": "-0.3",
    "seed": 0,
    "cases": [
     "case_001",
@@ -262,12 +262,12 @@
    ]
   },
   {
-   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|cactus|0.08|calib",
+   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|spec_casc_tok|0.35|calib",
    "step": "9.4a",
    "condition": "step9/gpt-oss-20b__rh-eagle3",
    "dataset": "humaneval",
-   "method": "cactus",
-   "alpha": "0.08",
+   "method": "spec_casc_tok",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",
@@ -301,12 +301,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.25|calib",
+   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.35|calib",
    "step": "9.4b",
    "condition": "step9/qwen3-8b__dspark",
    "dataset": "humaneval_qwen3",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
+   "method": "spec_casc_tok",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",
@@ -341,12 +341,50 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|cactus|0.35|calib",
+   "id": "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.02|calib",
+   "step": "9.4c",
+   "condition": "step9/llama31-8b-instruct__eagle3",
+   "dataset": "humaneval_llama31",
+   "method": "spec_casc_opt",
+   "alpha": "-0.02",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/humaneval_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle3",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K8"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.55|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "mentored_dec",
+   "alpha": "0.55",
    "seed": 0,
    "cases": [
     "case_001",
@@ -380,34 +418,36 @@
    ]
   },
   {
-   "id": "b0|llama31-8b-instruct__eagle1|aime24_llama31|strict|strict|smoke",
-   "step": "9.5b",
-   "condition": "step9/llama31-8b-instruct__eagle1",
-   "dataset": "aime24_llama31",
-   "method": "strict",
-   "alpha": "strict",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.35|calib",
+   "step": "9.4e",
+   "condition": "step9/r1-distill-llama-8b__eagle3",
+   "dataset": "humaneval_r1llama",
+   "method": "spec_casc_tok",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",
-    "case_002"
+    "case_002",
+    "case_003"
    ],
-   "prompt_root": "prompts/aime24_llama31",
-   "runs_subroot": "runs/addendum/step9_block0/killarney/llama31-8b-instruct__eagle1",
-   "max_new_tokens": 32768,
+   "prompt_root": "prompts/humaneval_r1llama",
+   "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__eagle3",
+   "max_new_tokens": 9000,
    "model_flags": [
     "--model-path",
-    "RedHatAI/Llama-3.1-8B-Instruct",
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
     "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
     "--served-model-name",
-    "llama31-8b-instruct"
+    "r1-distill-llama-8b"
    ],
    "num_spec": 6,
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
-    "SPEC_METHOD": "eagle",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
+    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast",
     "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K8"
    },
    "host": "killarney",

@@ -1463,3 +1463,11 @@ addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/ca
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_050/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_051/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/strict/strict/case_052/seed_0
+addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/cactus/alpha0.03/case_001/seed_0
+addendum/step9/llama31-8b-instruct__eagle1/longbench_v2_llama31/cactus/alpha0.03/case_002/seed_0
+addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.35/case_001/seed_0
+addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.35/case_002/seed_0
+addendum/step9/llama31-8b-instruct__eagle3/longbench_v2_llama31/cactus/alpha0.35/case_003/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.03/case_001/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.03/case_002/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/cactus/alpha0.03/case_003/seed_0

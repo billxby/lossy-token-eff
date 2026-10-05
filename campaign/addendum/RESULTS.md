@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 22:38 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 22:42 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1156,7 +1156,7 @@ GPU-h actual (lane journals): 3.6.
 | longbench_v2_qwen3 | cactus | extra | 0.03 | 3 | 1.68 (1.51) | 1241 (969) | 1.28 [0.98, 2.29] | 1.20 [0.97, 1.99] | 1.17 · cross-node | 0% (0%) | 67% (67%) | kn169 |
 | longbench_v2_qwen3 | spec_casc_opt | low | -0.3 | 3 | 1.96 (1.51) | 1041 (969) | 1.07 [0.80, 1.70] | 0.91 [0.77, 1.31] | 0.97 · cross-node | 0% (0%) | 67% (67%) | kn176 |
 | longbench_v2_qwen3 | spec_casc_opt | mid | -0.02 | 3 | 2.24 (1.51) | 974 (969) | 1.01 [0.92, 1.14] | 0.80 [0.77, 0.81]↓ | 0.87 · cross-node | 0% (0%) | 67% (67%) | kn169 |
-| longbench_v2_qwen3 | spec_casc_opt | high | 0.05 | 3 | 2.83 (1.51) | 1479 (969) | 1.53 [1.28, 2.02]↑ | 1.01 [0.86, 1.27] | 1.00 | 0% (0%) | - (67%) | kn175 |
+| longbench_v2_qwen3 | spec_casc_opt | high | 0.05 | 3 | 2.83 (1.51) | 1479 (969) | 1.53 [1.28, 2.02]↑ | 1.01 [0.86, 1.27] | 1.00 | 0% (0%) | 67% (67%) | kn175 |
 | longbench_v2_qwen3 | r_fuzzy | low | 0.15 | 3 | 1.82 (1.51) | 1078 (969) | 1.11 [0.84, 2.09] | 1.00 [0.78, 1.74] | 1.01 · cross-node | 0% (0%) | 100% (67%) | kn171 |
 | longbench_v2_qwen3 | r_fuzzy | mid+high | 0.25 | 3 | 2.04 (1.51) | 1152 (969) | 1.19 [1.00, 1.62]↑ | 1.00 [0.88, 1.19] | 1.02 · cross-node | 0% (0%) | 67% (67%) | kn174 |
 | longbench_v2_qwen3 | r_fuzzy | extra | 0.03 | 3 | 1.55 (1.51) | 804 (969) | 0.83 [0.68, 1.31] | 0.83 [0.69, 1.23] | 0.90 · cross-node | 0% (0%) | 67% (67%) | kn176 |
@@ -1165,7 +1165,7 @@ GPU-h actual (lane journals): 3.6.
 
 ### Block 3c: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE3-LLaMA3.1-Instruct-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 0.4.
+GPU-h actual (lane journals): 0.6.
 
 Pending.
 
@@ -1177,13 +1177,13 @@ Pending.
 
 ### Block 3e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 3.8.
+GPU-h actual (lane journals): 4.0.
 
 Pending.
 
 ### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (killarney)
 
-GPU-h actual (lane journals): 2.5.
+GPU-h actual (lane journals): 2.8.
 
 Pending.
 
@@ -1227,7 +1227,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 38.9 over 10 blocks.
+Step 9 GPU-h so far (lane journals): 39.7 over 10 blocks.
 
 ## Observations, failures and anything that looked wrong
 
