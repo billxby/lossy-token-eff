@@ -534,15 +534,24 @@ def cmd_push(args: argparse.Namespace) -> int:
                  and (getattr(args, "all_lanes", False) or lane_ready(lane, state))]
         ok = set(sync_prompts(state, lanes, host))
         verified = (verified - set(lanes)) | ok
+        sent = state.setdefault("pushed", {})
+        code_digest = __import__("hashlib").sha256(code).hexdigest()
         for lane in lanes:
             info = LANES[lane]
-            ac.ssh(f"cd {shlex.quote(info['repo'])} && tar -xf -", input_bytes=code, host=host)
             # a lane whose prompt sets are not verified gets no work (its runs would use other prompts)
             work = (LANES_DIR / f"{lane}.json").read_bytes() if lane in ok else b'{"items": [], "hold_minutes": 0}\n'
-            root = shlex.quote(info["root"])
-            ac.ssh(f"mkdir -p {root}/slurm && cat > {root}/work.json.tmp && mv {root}/work.json.tmp {root}/work.json",
-                   input_bytes=work, host=host)
-            print(f"pushed {len(files)} code files + work list ({len(json.loads(work)['items'])} items) to lane {lane}")
+            work_digest = __import__("hashlib").sha256(work).hexdigest()
+            last = sent.get(lane, {})
+            if last.get("code") != code_digest:  # unchanged code and work lists are not resent (slow Killarney link)
+                ac.ssh(f"cd {shlex.quote(info['repo'])} && tar -xf -", input_bytes=code, host=host)
+            if last.get("work") != work_digest:
+                root = shlex.quote(info["root"])
+                ac.ssh(f"mkdir -p {root}/slurm && cat > {root}/work.json.tmp && mv {root}/work.json.tmp {root}/work.json",
+                       input_bytes=work, host=host)
+            if last != {"code": code_digest, "work": work_digest}:
+                print(f"pushed to lane {lane}: " + ("code + " if last.get("code") != code_digest else "")
+                      + f"work list ({len(json.loads(work)['items'])} items)")
+            sent[lane] = {"code": code_digest, "work": work_digest}
     state["prompts_verified_lanes"] = sorted(verified, key=lane_order)
     save_state(state)
     return 0
@@ -840,6 +849,71 @@ def cmd_events(args: argparse.Namespace) -> int:
     return 0 if new else 3
 
 
+ALERT_EVENTS = ("env_not_ready", "quarantined", "disk_floor", "work_unreadable")
+
+
+def cmd_alerts(args: argparse.Namespace) -> int:
+    """New lane-journal events worth a look since the last call: an item that exited nonzero, a quarantined run
+    dir, a job whose environment was not ready, the disk floor. Prints one line each; exit 0 if any, 3 if none."""
+    state = load_state()
+    seen = state.setdefault("alert_seen", {})
+    lines = []
+    for path in sorted(LANES_DIR.glob("*_status.jsonl")):
+        lane = path.name.removesuffix("_status.jsonl")
+        records = path.read_text(encoding="utf-8").splitlines()
+        for line in records[seen.get(lane, 0):]:
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            ev = r.get("event")
+            if (ev == "item_end" and r.get("rc") not in (0, None)) or ev in ALERT_EVENTS:
+                lines.append(f"ALERT {lane} job {r.get('job')} {r.get('host')} {r['t']} {ev} "
+                             + " ".join(f"{k}={r[k]}" for k in ("item", "rc", "missing_before", "missing_after", "reason",
+                                                                "case", "state") if k in r))
+        seen[lane] = len(records)
+    save_state(state)
+    print("\n".join(lines[:40]) + (f"\n... {len(lines) - 40} more" if len(lines) > 40 else "") if lines else "", end="")
+    return 0 if lines else 3
+
+
+def cmd_b0(args: argparse.Namespace) -> int:
+    """Blocks whose Block 0 smoke runs are all pulled but which are not yet passed (state block0_passed): one line
+    each, newly done ones only unless --all. Exit 0 if any new, 3 if none."""
+    state = load_state()
+    notified = set(state.setdefault("b0_notified", []))
+    new = []
+    for block, pid, base in BLOCKS:
+        if block in state.get("block0_passed", []) or block in DROPPED:
+            continue
+        if smoke_done(block) and (block not in notified or getattr(args, "all", False)):
+            new.append(block)
+            item = smoke_item(block)
+            runs = [s8.run_ok(run_dir(pid, item["dataset"], "strict", "strict", c, item["runs_subroot"].rsplit("/", 1)[0]))
+                    for c in SMOKE_CASES]
+            print(f"B0 {block} {pid} {item['dataset']} {block_host(block)}: "
+                  + ", ".join(f"{c} {r.get('output_tokens')} tok l_bar {r.get('l_bar'):.2f} {r.get('finish_reason')}"
+                              for c, r in zip(SMOKE_CASES, runs) if r))
+    state["b0_notified"] = sorted(notified | set(new), key=lambda b: BLOCK_ORDER[b])
+    save_state(state)
+    return 0 if new else 3
+
+
+def cmd_pass(args: argparse.Namespace) -> int:
+    """Mark blocks as having passed Block 0 (after the smoke outputs were looked at): their work is planned."""
+    state = load_state()
+    passed = set(state.setdefault("block0_passed", []))
+    for block in args.blocks:
+        if block not in BLOCK_ORDER:
+            raise SystemExit(f"unknown block {block}")
+        passed.add(block)
+    state["block0_passed"] = sorted(passed, key=lambda b: BLOCK_ORDER[b])
+    save_state(state)
+    ac.progress(f"step 9 Block 0 passed: {', '.join(args.blocks)}")
+    print(f"block0_passed: {state['block0_passed']}")
+    return 0
+
+
 # ------------------------------------------------------------------ cycle
 
 def cmd_cycle(args: argparse.Namespace) -> int:
@@ -867,7 +941,9 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "grade", "estimate",
-                                        "aimelog", "events", "warm"])
+                                        "aimelog", "events", "warm", "alerts", "b0", "pass"])
+    parser.add_argument("blocks", nargs="*", help="pass: the blocks whose Block 0 passed")
+    parser.add_argument("--all", action="store_true", help="b0: also blocks already reported")
     parser.add_argument("--lanes", type=float, default=12, help="estimate: concurrent lanes")
     parser.add_argument("--duty", type=float, default=0.85, help="estimate: share of lane wall time spent running")
     parser.add_argument("--block0-hours", type=float, default=1.5, help="estimate: hours before Phase 1 starts")
@@ -879,7 +955,7 @@ def main() -> int:
     args = parser.parse_args()
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
             "summary": cmd_summary, "grade": cmd_grade, "estimate": cmd_estimate, "aimelog": cmd_aimelog,
-            "events": cmd_events, "warm": cmd_warm}[args.cmd](args)
+            "events": cmd_events, "warm": cmd_warm, "alerts": cmd_alerts, "b0": cmd_b0, "pass": cmd_pass}[args.cmd](args)
 
 
 if __name__ == "__main__":
