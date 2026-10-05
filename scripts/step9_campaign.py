@@ -122,11 +122,11 @@ BLOCK_OF = {(pid, base): b for b, pid, base in BLOCKS}
 # Llama AIME24 blocks. block -> reason
 DROPPED: dict[str, str] = {}
 PAIRS = {p["id"]: p for p in s8.PAIRS}
-# Every block runs whole on one cluster (lossless and all arms on one node type, as step 8). Killarney's H100s were
-# CPU-bound at launch (new jobs estimated to start 3 h later) while Nibi's started at once (2026-10-05 ~19:15Z), so
-# the pairs whose models Nibi already held (GPT-OSS + RH head, both Llama-3.1 heads) run there (README deviation 42);
-# Qwen3 + DSpark and R1-Distill stay on Killarney with step 8's warm compile caches.
-NIBI_PAIRS = {P_GPT, P_L3, P_L1}
+# Every block runs whole on one cluster (lossless and all arms on one node type, as step 8), and so does every pair's
+# set of step-9 blocks. Both clusters' H100 queues were deep at launch (2026-10-05 ~19:30Z: Killarney estimated 1-4 h,
+# Nibi ~9 h for our next job), so the two Llama-3.1 heads, whose models Nibi already held, run there (README deviation
+# 42); GPT-OSS + RH head, Qwen3 + DSpark and R1-Distill run on Killarney with step 8's warm compile caches.
+NIBI_PAIRS = {P_L3, P_L1}
 BLOCK_HOST = {b: ("nibi" if pid in NIBI_PAIRS else "killarney") for b, pid, _ in BLOCKS}
 # DSpark's config stops at 40960 positions (plain RoPE, theta 1e6); Qwen3's longest LongBench-v2 sequence is 51234 +
 # 8192. This copy differs only in max_position_embeddings = 65536 (weights symlinked, sha256 5c922d1f...), with a
@@ -899,6 +899,23 @@ def cmd_b0(args: argparse.Namespace) -> int:
     return 0 if new else 3
 
 
+def cmd_assign(args: argparse.Namespace) -> int:
+    """Move the not-yet-run items whose id contains --match to --lane (same cluster only), e.g. to put Block 0 smoke
+    items on a lane whose job is already running."""
+    state = load_state()
+    if args.lane not in LANES:
+        raise SystemExit(f"unknown lane {args.lane}")
+    for item_id in sorted(state["assign"]):
+        if args.match in item_id:
+            if LANES[state["assign"][item_id]]["host"] != LANES[args.lane]["host"]:
+                print(f"skip {item_id}: other cluster")
+                continue
+            state["assign"][item_id] = args.lane
+            print(f"{item_id} -> {args.lane}")
+    save_state(state)
+    return 0
+
+
 def cmd_pass(args: argparse.Namespace) -> int:
     """Mark blocks as having passed Block 0 (after the smoke outputs were looked at): their work is planned."""
     state = load_state()
@@ -941,7 +958,9 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "grade", "estimate",
-                                        "aimelog", "events", "warm", "alerts", "b0", "pass"])
+                                        "aimelog", "events", "warm", "alerts", "b0", "pass", "assign"])
+    parser.add_argument("--match", default="", help="assign: substring of the item ids to move")
+    parser.add_argument("--lane", default="", help="assign: the lane to move them to")
     parser.add_argument("blocks", nargs="*", help="pass: the blocks whose Block 0 passed")
     parser.add_argument("--all", action="store_true", help="b0: also blocks already reported")
     parser.add_argument("--lanes", type=float, default=12, help="estimate: concurrent lanes")
@@ -953,9 +972,15 @@ def main() -> int:
     parser.add_argument("--only", nargs="*", help="warm: only these pair ids")
     parser.add_argument("--quiet", action="store_true", help="plan: no summary")
     args = parser.parse_args()
+    # one command at a time: the cycle loop and a manual command must not both rewrite state.json
+    import fcntl
+    S9.mkdir(parents=True, exist_ok=True)
+    lock = (S9 / ".lock").open("w")
+    fcntl.flock(lock, fcntl.LOCK_EX)
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
             "summary": cmd_summary, "grade": cmd_grade, "estimate": cmd_estimate, "aimelog": cmd_aimelog,
-            "events": cmd_events, "warm": cmd_warm, "alerts": cmd_alerts, "b0": cmd_b0, "pass": cmd_pass}[args.cmd](args)
+            "events": cmd_events, "warm": cmd_warm, "alerts": cmd_alerts, "b0": cmd_b0, "pass": cmd_pass,
+            "assign": cmd_assign}[args.cmd](args)
 
 
 if __name__ == "__main__":

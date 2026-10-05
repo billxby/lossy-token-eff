@@ -423,15 +423,17 @@ Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`
    do not verify gets no work). A first push from the Mac, stopped after 10 minutes, had left K1's
    `prompts/longbench_v2_qwen3/case_040/rendered_prompt.txt` truncated (32,256 of 81,537 bytes); the digest check
    caught it and the staged copy replaced it before any step-9 run.
-42. **The GPT-OSS-20B and Llama-3.1-8B-Instruct blocks run on Nibi H100s; Qwen3-8B + DSpark and R1-Distill on
-   Killarney (2026-10-05 ~19:15Z).** At launch Killarney's H100s were CPU-bound (8 idle GPUs with no free CPUs; a new
-   job's estimated start 3 h out, whatever its CPU request) while Nibi's started within minutes. Every block still runs
-   whole on one cluster, H100 80GB HBM3 on both (lossless reference and every arm of a block on the same hardware and
-   compile cache). Nibi holds the same snapshots as Killarney (gpt-oss-20b 6cee5e81, RH head c2825cb4, Llama-3.1
-   83c92747 with all four shard sha256s of deviation 29, yuhuili heads ada412b6 / d0e4a208), the same 65536-position
-   head configs (sha256 3e47bd97 / f8aa3860, weights sha256 16d5bf95 / 875f4613 on both clusters) and the same patched
-   samplers (V2 file 63d52ec3 in every Nibi and Killarney lane venv). Nibi has no per-job /tmp and the patched samplers
-   read per-user /tmp knob files, so the four Nibi lanes (N1/N2 = the addendum's lanes A/B, N3/N4 copies of B) each
-   get a disjoint node set (g1-7, g8-14, g15-21, g22-29); every Nibi pair compiles into its own Nibi cache
+42. **The Llama-3.1-8B-Instruct blocks (EAGLE-3 and EAGLE-1 heads: 3c, 3d, 4c, 4d, 5a, 5b) run on Nibi H100s; the
+   GPT-OSS-20B, Qwen3-8B + DSpark and R1-Distill blocks on Killarney (2026-10-05 ~19:40Z).** Both H100 queues were deep
+   at launch: Killarney's GPUs were CPU-bound (8 idle GPUs, no free CPUs) and Slurm's start estimate for our next
+   Nibi job was ~9 h out, so both clusters take work. Every block runs whole on one cluster, and so does every pair's
+   set of step-9 blocks: H100 80GB HBM3 on both, the lossless reference and every arm of a block on the same hardware
+   and compile cache. (A first split, 19:15Z, also put GPT-OSS on Nibi; it was moved before any run.) Nibi holds the
+   same snapshots as Killarney (Llama-3.1 83c92747 with all four shard sha256s of deviation 29, yuhuili heads ada412b6
+   / d0e4a208; also gpt-oss-20b 6cee5e81 and RH head c2825cb4), the same 65536-position head configs (sha256 3e47bd97
+   / f8aa3860, weights sha256 16d5bf95 / 875f4613 on both clusters) and the same patched samplers (V2 file 63d52ec3 in
+   every Nibi and Killarney lane venv). Nibi has no per-job /tmp and the patched samplers read per-user /tmp knob
+   files, so the four Nibi lanes (N1/N2 = the addendum's lanes A/B, N3/N4 copies of B) each get a disjoint node set
+   (g1-7, g8-14, g15-21, g22-29); each Llama pair compiles into its own Nibi cache
    (`/scratch/billxby/vllm_cache_step9/<pair>`), warmed by one throwaway job before any Block 0 or measured run
    (deviation 35).
