@@ -39,6 +39,8 @@ addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_001/se
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_002/seed_0,aime24,spec_casc_opt,alpha0.05,case_002,0,wrong,0
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_003/seed_0,aime24,spec_casc_opt,alpha0.05,case_003,0,wrong,0
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_004/seed_0,aime24,spec_casc_opt,alpha0.05,case_004,0,wrong,0
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_005/seed_0,aime24,spec_casc_opt,alpha0.05,case_005,0,wrong,0
+addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alpha0.05/case_006/seed_0,aime24,spec_casc_opt,alpha0.05,case_006,0,no_answer,0
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alphaneg0.02/case_001/seed_0,aime24,spec_casc_opt,alphaneg0.02,case_001,0,correct,1
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alphaneg0.02/case_002/seed_0,aime24,spec_casc_opt,alphaneg0.02,case_002,0,wrong,0
 addendum/step9/gpt-oss-20b__rh-eagle3/aime24/spec_casc_opt/alphaneg0.02/case_003/seed_0,aime24,spec_casc_opt,alphaneg0.02,case_003,0,wrong,0
@@ -143,12 +145,15 @@ addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.02/case_001
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.02/case_002/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.02,case_002,0,wrong,0
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.02/case_003/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.02,case_003,0,wrong,0
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.1/case_001/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.1,case_001,0,correct,1
+addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.1/case_002/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.1,case_002,0,wrong,0
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.3/case_001/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.3,case_001,0,correct,1
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.3/case_002/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.3,case_002,0,correct,1
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.3/case_003/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.3,case_003,0,wrong,0
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_001/seed_0,aime24_qwen3,strict,strict,case_001,0,correct,1
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_002/seed_0,aime24_qwen3,strict,strict,case_002,0,correct,1
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_003/seed_0,aime24_qwen3,strict,strict,case_003,0,wrong,0
+addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_004/seed_0,aime24_qwen3,strict,strict,case_004,0,wrong,0
+addendum/step9/qwen3-8b__dspark/aime24_qwen3/strict/strict/case_005/seed_0,aime24_qwen3,strict,strict,case_005,0,correct,1
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/cactus/alpha0.08/case_001/seed_0,humaneval_qwen3,cactus,alpha0.08,case_001,0,passed,1
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/cactus/alpha0.08/case_002/seed_0,humaneval_qwen3,cactus,alpha0.08,case_002,0,no_answer,0
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/cactus/alpha0.08/case_003/seed_0,humaneval_qwen3,cactus,alpha0.08,case_003,0,passed,1

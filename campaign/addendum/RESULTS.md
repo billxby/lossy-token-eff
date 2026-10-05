@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 20:51 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 21:02 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1092,28 +1092,28 @@ The step-8 protocol on AIME24, LongBench-v2 and HumanEval (the paper's budgets a
 
 ### Block 1: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, aime24 (killarney)
 
-GPU-h actual (lane journals): 3.2.
+GPU-h actual (lane journals): 5.0.
 
 `campaign/addendum/tables/step9__gpt-oss-20b__rh-eagle3.csv` (eagle3, V1 full patches):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| aime24 | mentored_dec | low+mid+high | 0.55 | 3 | 1.44 (1.15) | 14624 (10036) | 1.46 [0.68, 2.19] | 1.62 [0.53, 2.54] | 1.62 · cross-node | 33% (0%) | 67% (67%) | kn171 |
+| aime24 | mentored_dec | low+mid+high | 0.55 | 15 | 1.49 (1.40) | 11697 (8258) | 1.42 [1.03, 1.94]↑ | 1.47 [0.93, 2.31] | 1.46 · cross-node | 13% (0%) | - (80%) | kn171 |
 | aime24 | mentored_dec | extra | 0.15 | 3 | 1.20 (1.15) | 15086 (10036) | 1.50 [0.72, 2.49] | 1.76 [0.65, 3.22] | 1.75 | 33% (0%) | 33% (67%) | kn174 |
-| aime24 | mentored_dec | extra | 0.75 | 3 | 1.36 (1.15) | 18811 (10036) | 1.87 [1.16, 2.19]↑ | 2.10 [0.91, 2.42] | 2.10 | 33% (0%) | 67% (67%) | kn174 |
-| aime24 | cactus | low | 0.03 | 3 | 2.11 (1.15) | 8572 (10036) | 0.85 [0.81, 1.23] | 0.50 [0.43, 1.02] | 0.50 · cross-node | 0% (0%) | 33% (67%) | kn173 |
-| aime24 | cactus | mid | 0.08 | 3 | 2.93 (1.15) | 9250 (10036) | 0.92 [0.83, 1.21] | 0.41 [0.33, 0.88]↓ | 0.41 · cross-node | 0% (0%) | 33% (67%) | kn173 |
-| aime24 | cactus | high | 0.18 | 3 | 3.96 (1.15) | 22787 (10036) | 2.27 [1.42, 2.49]↑ | 0.72 [0.59, 1.02] | 0.70 · cross-node | 67% (0%) | 33% (67%) | kn171 |
-| aime24 | spec_casc_opt | low+mid+high | 0.05 | 6 | 1.47 (1.18) | 17508 (10930) | 1.60 [0.93, 2.73] | 1.30 [0.58, 2.79] | 1.30 · cross-node | 17% (0%) | - (67%) | kn173:3+kn171:3 |
+| aime24 | mentored_dec | extra | 0.75 | 16 | 1.48 (1.43) | 12678 (7930) | 1.60 [1.21, 2.16]↑ | 1.61 [1.10, 2.58]↑ | 1.70 · cross-node | 6% (0%) | - (81%) | kn173:13+kn174:3 |
+| aime24 | cactus | low | 0.03 | 27 | 2.09 (1.43) | 8857 (8658) | 1.02 [0.67, 1.62] | 0.66 [0.36, 1.32] | 0.66 · cross-node | 0% (4%) | - (81%) | kn173 |
+| aime24 | cactus | mid | 0.08 | 17 | 2.81 (1.42) | 11190 (7919) | 1.41 [0.80, 2.64] | 0.63 [0.33, 1.42] | 0.68 · cross-node | 6% (0%) | - (82%) | kn173 |
+| aime24 | cactus | high | 0.18 | 30 | 3.58 (1.34) | 12984 (9650) | 1.35 [0.88, 2.03] | 0.46 [0.29, 0.79]↓ | 0.45 · cross-node | 20% (7%) | - (-) | kn171 |
+| aime24 | spec_casc_opt | low+mid+high | 0.05 | 21 | 1.53 (1.44) | 13144 (7727) | 1.70 [1.20, 2.39]↑ | 1.51 [0.90, 2.63] | 1.51 · cross-node | 5% (0%) | - (86%) | kn171:18+kn173:3 |
 | aime24 | spec_casc_opt | extra | -0.3 | 3 | 1.11 (1.15) | 19505 (10036) | 1.94 [1.35, 2.19]↑ | 2.32 [1.22, 2.55]↑ | 2.32 | 33% (0%) | 67% (67%) | kn174 |
-| aime24 | r_fuzzy | low+mid+high | 0.25 | 3 | 1.40 (1.15) | 23349 (10036) | 2.33 [2.19, 2.49]↑ | 2.73 [1.65, 3.10]↑ | 2.75 · cross-node | 67% (0%) | 33% (67%) | kn173 |
-| aime24 | r_fuzzy | extra | 0.03 | 3 | 1.04 (1.15) | 16268 (10036) | 1.62 [1.01, 2.13]↑ | 1.94 [1.00, 2.54]↑ | 1.94 · cross-node | 0% (0%) | 67% (67%) | kn171 |
+| aime24 | r_fuzzy | low+mid+high | 0.25 | 5 | 1.20 (0.98) | 19614 (12253) | 1.60 [0.93, 2.37] | 1.67 [0.70, 2.87] | 1.68 · cross-node | 40% (0%) | - (60%) | kn173:3+kn175:2 |
+| aime24 | r_fuzzy | extra | 0.03 | 16 | 1.42 (1.43) | 9209 (7930) | 1.16 [0.91, 1.51] | 1.23 [0.87, 1.80] | 1.22 · cross-node | 0% (0%) | - (81%) | kn176:13+kn171:3 |
 | aime24 | spec_casc_tok | low+mid+high | 0.8 | 3 | 1.17 (1.15) | 16859 (10036) | 1.68 [0.85, 2.49] | 2.01 [0.75, 3.22] | 1.99 · cross-node | 33% (0%) | 67% (67%) | kn171 |
 | aime24 | spec_casc_tok | extra | 0.15 | 3 | 1.13 (1.15) | 15471 (10036) | 1.54 [0.74, 2.49] | 1.81 [0.68, 3.25] | 1.81 · cross-node | 33% (0%) | 33% (67%) | kn173 |
 
 ### Block 2: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, aime24 (killarney)
 
-GPU-h actual (lane journals): 2.2.
+GPU-h actual (lane journals): 3.0.
 
 Pending.
 
@@ -1155,7 +1155,7 @@ Pending.
 
 ### Block 4b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, humaneval (killarney)
 
-GPU-h actual (lane journals): 0.4.
+GPU-h actual (lane journals): 1.0.
 
 Pending.
 
@@ -1193,7 +1193,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 9.8 over 7 blocks.
+Step 9 GPU-h so far (lane journals): 12.8 over 7 blocks.
 
 ## Observations, failures and anything that looked wrong
 

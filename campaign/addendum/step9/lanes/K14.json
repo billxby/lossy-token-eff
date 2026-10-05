@@ -63,6 +63,40 @@
    "host": "killarney"
   },
   {
+   "id": "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_opt|-0.3|calib",
+   "step": "9.3a",
+   "condition": "step9/gpt-oss-20b__rh-eagle3",
+   "dataset": "longbench_v2",
+   "method": "spec_casc_opt",
+   "alpha": "-0.3",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/longbench_v2",
+   "runs_subroot": "runs/addendum/step9/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 8192,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   },
+   "host": "killarney"
+  },
+  {
    "id": "s9|qwen3-8b__dspark|longbench_v2_qwen3|mentored_dec|0.75|calib",
    "step": "9.3b",
    "condition": "step9/qwen3-8b__dspark",
