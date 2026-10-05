@@ -1,12 +1,12 @@
 {
  "items": [
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|cactus|0.08|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|mentored_dec|0.75|calib",
    "step": "9.3e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "longbench_v2_r1llama",
-   "method": "cactus",
-   "alpha": "0.08",
+   "method": "mentored_dec",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",
@@ -77,12 +77,12 @@
    ]
   },
   {
-   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|cactus|0.35|calib",
+   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|r_fuzzy|0.15|calib",
    "step": "9.4a",
    "condition": "step9/gpt-oss-20b__rh-eagle3",
    "dataset": "humaneval",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "r_fuzzy",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -115,12 +115,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_opt|-0.1|calib",
+   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_opt|-0.02|calib",
    "step": "9.4b",
    "condition": "step9/qwen3-8b__dspark",
    "dataset": "humaneval_qwen3",
    "method": "spec_casc_opt",
-   "alpha": "-0.1",
+   "alpha": "-0.02",
    "seed": 0,
    "cases": [
     "case_001",
@@ -154,12 +154,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.35|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.15|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
    "method": "mentored_dec",
-   "alpha": "0.35",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -192,12 +192,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.08|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.03|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
    "method": "r_fuzzy",
-   "alpha": "0.08",
+   "alpha": "0.03",
    "seed": 0,
    "cases": [
     "case_001",

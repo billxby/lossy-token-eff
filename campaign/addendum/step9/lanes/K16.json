@@ -102,12 +102,12 @@
    ]
   },
   {
-   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|spec_casc_tok|0.15|calib",
+   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|spec_casc_tok|0.55|calib",
    "step": "9.4a",
    "condition": "step9/gpt-oss-20b__rh-eagle3",
    "dataset": "humaneval",
    "method": "spec_casc_tok",
-   "alpha": "0.15",
+   "alpha": "0.55",
    "seed": 0,
    "cases": [
     "case_001",
@@ -140,12 +140,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.03|calib",
+   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.15|calib",
    "step": "9.4b",
    "condition": "step9/qwen3-8b__dspark",
    "dataset": "humaneval_qwen3",
    "method": "r_fuzzy",
-   "alpha": "0.03",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
