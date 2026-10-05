@@ -56,9 +56,11 @@ RLIMIT_AS needs Linux). Killarney: jobs 5966710 (K1) and 5966711 (K2) on kn173, 
 |---|---|---|---|---|
 | 1 | GPT-OSS + RH EAGLE-3 | AIME24 | 1,990, stop, 2.36, boxed 204 correct | 13,186, stop, 0.62, boxed 113 correct |
 | 2 | Qwen3 + DSpark | AIME24 | 7,560, stop, 2.77, boxed 204 correct | 23,543, stop, 2.41, boxed 113 correct |
+| 3a | GPT-OSS + RH EAGLE-3 | LongBench-v2 | 832, stop, 0.06, boxed D correct | 388, stop, 0.07, boxed B correct |
 | 3b | Qwen3 + DSpark (65536 copy) | LongBench-v2 | 1,349, stop, 1.70, boxed D correct | 563, stop, 1.40, boxed C wrong |
 | 3e | R1-Distill + EAGLE-3 | LongBench-v2 | 548, stop, 0.03, boxed D correct | 538, stop, 0.02, boxed C wrong |
 | 4a | GPT-OSS + RH EAGLE-3 | HumanEval | 807, stop, 2.02, fenced block passed | 1,334, stop, 1.48, passed |
+| 4b | Qwen3 + DSpark | HumanEval | 2,220, stop, 2.74, fenced block passed | 9,000, length (cap inside `<think>`), 2.05, no answer |
 | 4e | R1-Distill + EAGLE-3 | HumanEval | 1,706, stop, 2.88, fenced block passed | 9,000, length (cap inside `<think>`), 0.44, no answer |
 
 Every server came up on its pair's warm step-8 cache, except 3b's on the new 65536-position DSpark copy, which
@@ -67,6 +69,11 @@ warm-up). The answer segments are as expected: Harmony final channel (GPT-OSS `f
 `</think>` (Qwen3, R1). R1-Distill's head barely drafts on LongBench-v2 (l_bar 0.02-0.03: every drafted position lies
 past ~10,000, far beyond the ~2,048 it drafts well at; BLOCK0 of step 8) while the answers themselves are normal (~540
 tokens of reasoning, `</think>`, a boxed letter): run as planned, lossless l_bar reported as is. The RH GPT-OSS head
-also drafts less on long answers (l_bar 0.62 on a 13k-token AIME24 answer vs 2.36 on a 2k one).
+behaves the same way at long positions: l_bar 0.06-0.07 on LongBench-v2 (prompts of 10k-45k tokens) and 0.62 on a
+13k-token AIME24 answer, against 2.36 on a 2k one and step 8's 2.13 / 1.57 on GSM8K / LiveCodeBench; its config
+declares 131,072 positions (plain RoPE, theta 10,000), so this is the published head, not a position cap. Run as
+planned; its lossless l_bar is reported as is. The HumanEval cap-outs at 9,000 tokens (Qwen3 and R1 thinking past the
+budget, no code block) are the paper's budget at work, as in the paper's own Qwen3 rows.
 
-Passed 2026-10-05 ~19:50Z (Phase 1 started on Killarney at once): 1, 2, 3b, 3e, 4a, 4e.
+Passed 2026-10-05 ~19:50Z (Phase 1 started on Killarney at once): 1, 2, 3b, 3e, 4a, 4e; ~20:05Z: 3a, 4b.
+The six Llama-3.1 blocks (3c, 3d, 4c, 4d, 5a, 5b) wait for Nibi (warm-up job 23269394, then lanes N1/N2).
