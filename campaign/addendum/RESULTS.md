@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 20:14 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 20:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1092,13 +1092,13 @@ The step-8 protocol on AIME24, LongBench-v2 and HumanEval (the paper's budgets a
 
 ### Block 1: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, aime24 (killarney)
 
-GPU-h actual (lane journals): 2.4.
+GPU-h actual (lane journals): 3.1.
 
 Pending.
 
 ### Block 2: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, aime24 (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 0.2.
 
 Pending.
 
@@ -1110,7 +1110,7 @@ Pending.
 
 ### Block 3b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 0.4.
+GPU-h actual (lane journals): 0.8.
 
 Pending.
 
@@ -1134,7 +1134,7 @@ Pending.
 
 ### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 0.5.
 
 Pending.
 
@@ -1178,7 +1178,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 3.1 over 3 blocks.
+Step 9 GPU-h so far (lane journals): 4.8 over 5 blocks.
 
 ## Observations, failures and anything that looked wrong
 
