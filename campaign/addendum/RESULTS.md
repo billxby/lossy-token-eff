@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-05 22:15 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-05 22:26 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1120,13 +1120,13 @@ GPU-h actual (lane journals): 12.6.
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | aime24_qwen3 | mentored_dec | low | 0.35 | 30 | 2.97 (2.51) | 18927 (19550) | 0.97 [0.86, 1.09] | 0.85 [0.75, 0.97]↓ | 0.84 · T same-node 0.83 (27 pairs) | 20% (20%) | 73% (70%) | kn176:27+kn173:3 |
-| aime24_qwen3 | mentored_dec | mid+high | 0.75 | 30 | 3.38 (2.51) | 22087 (19550) | 1.13 [1.01, 1.27]↑ | 0.90 [0.80, 1.02] | 0.90 · cross-node | 33% (20%) | - (70%) | kn175:27+kn171:3 |
+| aime24_qwen3 | mentored_dec | mid+high | 0.75 | 30 | 3.38 (2.51) | 22087 (19550) | 1.13 [1.01, 1.27]↑ | 0.90 [0.80, 1.02] | 0.90 · cross-node | 33% (20%) | 63% (70%) | kn175:27+kn171:3 |
 | aime24_qwen3 | mentored_dec | extra | 0.15 | 30 | 2.74 (2.51) | 18650 (19550) | 0.95 [0.85, 1.05] | 0.90 [0.80, 1.00]↓ | 0.90 · cross-node | 17% (20%) | 70% (70%) | kn173:29+kn172:1 |
 | aime24_qwen3 | cactus | low | 0.03 | 30 | 2.89 (2.51) | 19311 (19550) | 0.99 [0.91, 1.07] | 0.89 [0.82, 0.96]↓ | 0.89 · cross-node | 20% (20%) | 70% (70%) | kn171:27+kn173:3 |
 | aime24_qwen3 | cactus | mid+high | 0.35 | 30 | 3.47 (2.51) | 21271 (19550) | 1.09 [0.94, 1.26] | 0.84 [0.72, 1.00]↓ | 0.84 · cross-node | 20% (20%) | 70% (70%) | kn171:27+kn175:3 |
 | aime24_qwen3 | spec_casc_opt | low | -0.3 | 30 | 3.20 (2.51) | 20507 (19550) | 1.05 [0.93, 1.18] | 0.87 [0.77, 1.00]↓ | 0.88 · cross-node | 23% (20%) | 67% (70%) | kn169:27+kn171:3 |
-| aime24_qwen3 | spec_casc_opt | mid | -0.1 | 30 | 3.49 (2.51) | 23967 (19550) | 1.23 [1.08, 1.41]↑ | 0.94 [0.82, 1.10] | 0.95 · cross-node | 40% (20%) | - (70%) | kn171:27+kn172:3 |
-| aime24_qwen3 | spec_casc_opt | high | 0.05 | 30 | 4.22 (2.51) | 29687 (19550) | 1.52 [1.32, 1.79]↑ | 0.99 [0.85, 1.19] | 1.01 · cross-node | 70% (20%) | - (70%) | kn173:27+kn176:3 |
+| aime24_qwen3 | spec_casc_opt | mid | -0.1 | 30 | 3.49 (2.51) | 23967 (19550) | 1.23 [1.08, 1.41]↑ | 0.94 [0.82, 1.10] | 0.95 · cross-node | 40% (20%) | 57% (70%) | kn171:27+kn172:3 |
+| aime24_qwen3 | spec_casc_opt | high | 0.05 | 30 | 4.22 (2.51) | 29687 (19550) | 1.52 [1.32, 1.79]↑ | 0.99 [0.85, 1.19] | 1.01 · cross-node | 70% (20%) | 37% (70%) | kn173:27+kn176:3 |
 | aime24_qwen3 | r_fuzzy | low | 0.15 | 30 | 2.88 (2.51) | 22644 (19550) | 1.16 [1.03, 1.32]↑ | 1.04 [0.91, 1.20] | 1.05 · cross-node | 33% (20%) | 63% (70%) | kn175:27+kn172:3 |
 | aime24_qwen3 | r_fuzzy | mid+high | 0.25 | 30 | 3.31 (2.51) | 23542 (19550) | 1.20 [1.06, 1.39]↑ | 0.96 [0.84, 1.12] | 0.97 · cross-node | 23% (20%) | 60% (70%) | kn175:27+kn174:3 |
 | aime24_qwen3 | r_fuzzy | extra | 0.03 | 30 | 2.59 (2.51) | 20008 (19550) | 1.02 [0.90, 1.16] | 1.00 [0.87, 1.14] | 1.00 · cross-node | 20% (20%) | 67% (70%) | kn175:27+kn174:3 |
@@ -1142,7 +1142,7 @@ Pending.
 
 ### Block 3b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 2.2.
+GPU-h actual (lane journals): 2.6.
 
 Pending.
 
@@ -1160,13 +1160,13 @@ Pending.
 
 ### Block 3e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 2.2.
+GPU-h actual (lane journals): 3.0.
 
 Pending.
 
 ### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (killarney)
 
-GPU-h actual (lane journals): 2.1.
+GPU-h actual (lane journals): 2.5.
 
 Pending.
 
@@ -1210,7 +1210,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 34.4 over 8 blocks.
+Step 9 GPU-h so far (lane journals): 36.1 over 8 blocks.
 
 ## Observations, failures and anything that looked wrong
 
@@ -1529,4 +1529,9 @@ Step 9 GPU-h so far (lane journals): 34.4 over 8 blocks.
   saving in 20 of 22 arms (mean R 0.82) at lossless accuracy. The paper's pattern (acceptance up, length up, the
   head-restricted rule the exception) holds on every new family and drafter; it fades with drafters close to the
   target (Qwen3-1.7B, DSpark, P-EAGLE).
+- **Step 9, Block 1 (GPT-OSS-20B + RedHatAI EAGLE-3, AIME24, Killarney), complete 2026-10-05 21:32Z, 10.6 GPU-h.**
+  Lossless l_bar 1.34 (the RH head drafts poorly on long answers; step9/BLOCK0.md), accuracy 77%. Only cactus saves
+  rounds (R 0.46-0.56) and it pays 27-57 accuracy points (20-50%); mentored_dec, spec_casc_opt, r_fuzzy and
+  spec_casc_tok sit at R 0.88-1.67 with intervals spanning 1 and longer answers (lambda up to 1.68); spec_casc_tok
+  0.8 keeps accuracy (77%) at R 1.33 [1.01, 1.86]. n = 30: wide intervals.
 
