@@ -862,6 +862,48 @@ def cmd_aimelog(args: argparse.Namespace) -> int:
     return 0
 
 
+HE_LOG = S9 / "humaneval_lastblock.csv"
+
+
+def cmd_helog(args: argparse.Namespace) -> int:
+    """Block 0 (4c): grade_humaneval.py (unchanged) executes the LAST fenced block of the answer, and Llama-3.1 often
+    ends with a usage block (`print(f(...))`) after the block that defines the function, which then fails with a
+    NameError. Log every step-9 HumanEval run whose last block does not define the entry point while an earlier block
+    does, with the grader's verdict, so they can be re-graded later. Tables keep the campaign's grader."""
+    sys.path.insert(0, str(REPO / "scripts"))
+    from answer_extraction import final_segment
+    import grade_humaneval
+    verdicts = {}
+    if GRADES.is_file():
+        with GRADES.open(newline="", encoding="utf-8") as handle:
+            verdicts = {r["relpath"]: r["verdict"] for r in csv.DictReader(handle)}
+    rows = []
+    for run_json in sorted((REPO / RUN_SUBROOT).glob("*/humaneval*/*/*/case_*/seed_*/run.json")):
+        rel = str(run_json.parent.relative_to(REPO / "runs"))
+        parts = rel.split("/")
+        source = json.loads((REPO / "prompts" / parts[3] / parts[6] / "source.json").read_text(encoding="utf-8"))
+        entry = source.get("entry_point", "")
+        out = run_json.parent / "output.txt"
+        final, _ = final_segment(out.read_text(encoding="utf-8", errors="replace") if out.is_file() else "")
+        for marker in grade_humaneval.END_MARKERS:
+            if final and marker in final:
+                final = final.split(marker, 1)[0]
+        blocks = grade_humaneval.CODE_BLOCK.findall(final or "")
+        defines = [f"def {entry}(" in b for b in blocks]
+        if len(blocks) > 1 and not defines[-1] and any(defines):
+            rows.append({"relpath": rel, "dataset": parts[3], "method": parts[4], "params": parts[5], "case": parts[6],
+                         "n_blocks": len(blocks), "defining_block": defines.index(True) + 1,
+                         "verdict": verdicts.get(rel, "")})
+    with HE_LOG.open("w", newline="", encoding="utf-8") as handle:
+        fields = ["relpath", "dataset", "method", "params", "case", "n_blocks", "defining_block", "verdict"]
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+    print(f"{len(rows)} step-9 HumanEval runs whose last code block does not define the entry point -> "
+          f"{HE_LOG.relative_to(REPO)}")
+    return 0
+
+
 # ------------------------------------------------------------------ block completion events
 
 def block_status() -> dict[str, dict]:
@@ -1008,6 +1050,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
         print(f"grading skipped: {type(exc).__name__}: {exc}")
     cmd_plan(argparse.Namespace(quiet=False))
     cmd_aimelog(args)
+    cmd_helog(args)
     # tables and RESULTS.md regenerated from what is pulled and graded so far (never edited by hand)
     for script, arg in (("addendum_tables.py", "step9"), ("addendum_results.py", None)):
         subprocess.run([sys.executable, str(REPO / "scripts" / script), *([arg] if arg else [])], cwd=REPO,
@@ -1022,7 +1065,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "grade", "estimate",
-                                        "aimelog", "events", "warm", "alerts", "b0", "pass", "assign"])
+                                        "aimelog", "events", "warm", "alerts", "b0", "pass", "assign", "helog"])
     parser.add_argument("--match", default="", help="assign: substring of the item ids to move")
     parser.add_argument("--lane", default="", help="assign: the lane to move them to")
     parser.add_argument("blocks", nargs="*", help="pass: the blocks whose Block 0 passed")
@@ -1044,7 +1087,7 @@ def main() -> int:
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
             "summary": cmd_summary, "grade": cmd_grade, "estimate": cmd_estimate, "aimelog": cmd_aimelog,
             "events": cmd_events, "warm": cmd_warm, "alerts": cmd_alerts, "b0": cmd_b0, "pass": cmd_pass,
-            "assign": cmd_assign}[args.cmd](args)
+            "assign": cmd_assign, "helog": cmd_helog}[args.cmd](args)
 
 
 if __name__ == "__main__":
