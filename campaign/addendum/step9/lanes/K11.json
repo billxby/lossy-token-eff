@@ -1,48 +1,10 @@
 {
  "items": [
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.15|calib",
-   "step": "9.3e",
-   "condition": "step9/r1-distill-llama-8b__eagle3",
-   "dataset": "longbench_v2_r1llama",
-   "method": "spec_casc_tok",
-   "alpha": "0.15",
-   "seed": 0,
-   "cases": [
-    "case_001",
-    "case_002",
-    "case_003"
-   ],
-   "prompt_root": "prompts/longbench_v2_r1llama",
-   "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__eagle3",
-   "max_new_tokens": 8192,
-   "model_flags": [
-    "--model-path",
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-    "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
-    "--served-model-name",
-    "r1-distill-llama-8b"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
-    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
-   },
-   "host": "killarney",
-   "extra_flags": [
-    "--startup-timeout",
-    "1200"
-   ]
-  },
-  {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|calib",
-   "step": "9.3e",
-   "condition": "step9/r1-distill-llama-8b__eagle3",
-   "dataset": "longbench_v2_r1llama",
+   "id": "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.8|calib",
+   "step": "9.3a",
+   "condition": "step9/gpt-oss-20b__rh-eagle3",
+   "dataset": "longbench_v2",
    "method": "spec_casc_tok",
    "alpha": "0.8",
    "seed": 0,
@@ -51,24 +13,24 @@
     "case_002",
     "case_003"
    ],
-   "prompt_root": "prompts/longbench_v2_r1llama",
-   "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__eagle3",
+   "prompt_root": "prompts/longbench_v2",
+   "runs_subroot": "runs/addendum/step9/gpt-oss-20b__rh-eagle3",
    "max_new_tokens": 8192,
    "model_flags": [
     "--model-path",
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "openai/gpt-oss-20b",
     "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
     "--served-model-name",
-    "r1-distill-llama-8b"
+    "gpt-oss-20b"
    ],
    "num_spec": 6,
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
     "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
-    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
    },
    "host": "killarney",
    "extra_flags": [
@@ -77,12 +39,50 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|r_fuzzy|0.25|calib",
+   "id": "s9|gpt-oss-20b__rh-eagle3|humaneval|cactus|0.03|calib",
+   "step": "9.4a",
+   "condition": "step9/gpt-oss-20b__rh-eagle3",
+   "dataset": "humaneval",
+   "method": "cactus",
+   "alpha": "0.03",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/humaneval",
+   "runs_subroot": "runs/addendum/step9/gpt-oss-20b__rh-eagle3",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "openai/gpt-oss-20b",
+    "--draft-model-path",
+    "RedHatAI/gpt-oss-20b-speculator.eagle3",
+    "--served-model-name",
+    "gpt-oss-20b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/gpt-oss-20b__rh-eagle3",
+    "MENTORED_DEC_TEST_V1_ONLY": "1"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|cactus|0.03|calib",
    "step": "9.4b",
    "condition": "step9/qwen3-8b__dspark",
    "dataset": "humaneval_qwen3",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
+   "method": "cactus",
+   "alpha": "0.03",
    "seed": 0,
    "cases": [
     "case_001",
@@ -116,36 +116,37 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|cactus|0.08|calib",
-   "step": "9.4e",
-   "condition": "step9/r1-distill-llama-8b__eagle3",
-   "dataset": "humaneval_r1llama",
-   "method": "cactus",
-   "alpha": "0.08",
+   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.55|calib",
+   "step": "9.4b",
+   "condition": "step9/qwen3-8b__dspark",
+   "dataset": "humaneval_qwen3",
+   "method": "spec_casc_tok",
+   "alpha": "0.55",
    "seed": 0,
    "cases": [
     "case_001",
     "case_002",
     "case_003"
    ],
-   "prompt_root": "prompts/humaneval_r1llama",
-   "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__eagle3",
+   "prompt_root": "prompts/humaneval_qwen3",
+   "runs_subroot": "runs/addendum/step9/qwen3-8b__dspark",
    "max_new_tokens": 9000,
    "model_flags": [
     "--model-path",
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536",
+    "deepseek-ai/dspark_qwen3_8b_block7",
     "--served-model-name",
-    "r1-distill-llama-8b"
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
    ],
    "num_spec": 6,
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__eagle3",
-    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast"
+    "SPEC_METHOD": "dspark",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__dspark"
    },
    "host": "killarney",
    "extra_flags": [
@@ -154,12 +155,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.8|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_opt|-0.02|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
-   "method": "spec_casc_tok",
-   "alpha": "0.8",
+   "method": "spec_casc_opt",
+   "alpha": "-0.02",
    "seed": 0,
    "cases": [
     "case_001",

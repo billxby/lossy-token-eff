@@ -1286,3 +1286,14 @@ addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_tok/al
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_tok/alpha0.55/case_001/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_tok/alpha0.55/case_002/seed_0
 addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_tok/alpha0.55/case_003/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_084/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_085/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_086/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_087/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_088/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_089/seed_0
+addendum/step9/qwen3-8b__dspark/longbench_v2_qwen3/strict/strict/case_090/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_opt/alphaneg0.1/case_001/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_opt/alphaneg0.1/case_002/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_opt/alphaneg0.1/case_003/seed_0
+addendum/step9/r1-distill-llama-8b__eagle3/longbench_v2_r1llama/spec_casc_tok/alpha0.15/case_003/seed_0

@@ -7,6 +7,8 @@ block,cluster,pair,dataset,case,output_tokens,finish_reason,l_bar,wall_s,host,an
 3a,killarney,gpt-oss-20b__rh-eagle3,longbench_v2,case_002,388,stop,0.072,4.5,kn173,boxed,B,correct,RedHatAI/gpt-oss-20b-speculator.eagle3
 3b,killarney,qwen3-8b__dspark,longbench_v2_qwen3,case_001,1349,stop,1.697,7.4,kn173,boxed,D,correct,/home/billxby/projects/aip-hongyanz/billxby/hf/local/dspark_qwen3_8b_block7-maxpos65536
 3b,killarney,qwen3-8b__dspark,longbench_v2_qwen3,case_002,563,stop,1.404,5.0,kn173,boxed,C,wrong,/home/billxby/projects/aip-hongyanz/billxby/hf/local/dspark_qwen3_8b_block7-maxpos65536
+3d,killarney,llama31-8b-instruct__eagle1,longbench_v2_llama31,case_001,285,stop,0.882,3.4,kn173,boxed,D,correct,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536
+3d,killarney,llama31-8b-instruct__eagle1,longbench_v2_llama31,case_002,326,stop,0.565,4.6,kn173,boxed,C,wrong,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536
 3e,killarney,r1-distill-llama-8b__eagle3,longbench_v2_r1llama,case_001,548,stop,0.028,7.5,kn173,boxed,D,correct,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536
 3e,killarney,r1-distill-llama-8b__eagle3,longbench_v2_r1llama,case_002,538,stop,0.023,7.9,kn173,boxed,C,wrong,/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B-maxpos65536
 4a,killarney,gpt-oss-20b__rh-eagle3,humaneval,case_001,807,stop,2.019,2.3,kn173,fenced_block,49 lines,extracted,RedHatAI/gpt-oss-20b-speculator.eagle3
