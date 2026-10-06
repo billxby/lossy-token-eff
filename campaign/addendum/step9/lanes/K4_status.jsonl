@@ -81,3 +81,5 @@
 {"t": "2026-10-06T05:03:03Z", "lane": "K4", "job": "5974018", "host": "kn175", "event": "item_end", "item": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.8|full", "rc": 0, "elapsed_s": 325.1, "missing_before": 27, "missing_after": 0, "of": 27}
 {"t": "2026-10-06T05:03:03Z", "lane": "K4", "job": "5974018", "host": "kn175", "event": "idle_hold", "minutes": 30.0}
 {"t": "2026-10-06T05:11:04Z", "lane": "K4", "job": "5974018", "host": "kn175", "event": "job_end", "failures": 0}
+{"t": "2026-10-06T05:14:16Z", "lane": "K4", "job": "5974272", "host": "kn175", "event": "job_start", "work": "/scratch/billxby/step9/laneK4/work.json"}
+{"t": "2026-10-06T05:14:16Z", "lane": "K4", "job": "5974272", "host": "kn175", "event": "job_end", "failures": 0}

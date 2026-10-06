@@ -58,3 +58,5 @@
 {"t": "2026-10-06T04:56:11Z", "lane": "K7", "job": "5972283", "host": "kn174", "event": "item_end", "item": "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.18|full", "rc": 0, "elapsed_s": 765.0, "missing_before": 27, "missing_after": 0, "of": 27}
 {"t": "2026-10-06T04:56:11Z", "lane": "K7", "job": "5972283", "host": "kn174", "event": "idle_hold", "minutes": 30.0}
 {"t": "2026-10-06T05:11:11Z", "lane": "K7", "job": "5972283", "host": "kn174", "event": "job_end", "failures": 0}
+{"t": "2026-10-06T05:14:18Z", "lane": "K7", "job": "5974274", "host": "kn175", "event": "job_start", "work": "/scratch/billxby/step9/laneK7/work.json"}
+{"t": "2026-10-06T05:14:18Z", "lane": "K7", "job": "5974274", "host": "kn175", "event": "job_end", "failures": 0}

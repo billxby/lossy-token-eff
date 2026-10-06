@@ -57,3 +57,5 @@
 {"t": "2026-10-06T05:00:30Z", "lane": "K14", "job": "5972285", "host": "kn173", "event": "item_end", "item": "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.03|full", "rc": 0, "elapsed_s": 855.3, "missing_before": 27, "missing_after": 0, "of": 27}
 {"t": "2026-10-06T05:00:30Z", "lane": "K14", "job": "5972285", "host": "kn173", "event": "idle_hold", "minutes": 30.0}
 {"t": "2026-10-06T05:11:30Z", "lane": "K14", "job": "5972285", "host": "kn173", "event": "job_end", "failures": 0}
+{"t": "2026-10-06T05:14:23Z", "lane": "K14", "job": "5974278", "host": "kn175", "event": "job_start", "work": "/scratch/billxby/step9/laneK14/work.json"}
+{"t": "2026-10-06T05:14:23Z", "lane": "K14", "job": "5974278", "host": "kn175", "event": "job_end", "failures": 0}

@@ -84,3 +84,5 @@
 {"t": "2026-10-06T05:03:54Z", "lane": "K2", "job": "5973913", "host": "kn171", "event": "item_end", "item": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.08|full", "rc": 0, "elapsed_s": 1787.0, "missing_before": 69, "missing_after": 0, "of": 147}
 {"t": "2026-10-06T05:03:54Z", "lane": "K2", "job": "5973913", "host": "kn171", "event": "idle_hold", "minutes": 30.0}
 {"t": "2026-10-06T05:10:55Z", "lane": "K2", "job": "5973913", "host": "kn171", "event": "job_end", "failures": 0}
+{"t": "2026-10-06T05:14:14Z", "lane": "K2", "job": "5974271", "host": "kn175", "event": "job_start", "work": "/scratch/billxby/step9/laneK2/work.json"}
+{"t": "2026-10-06T05:14:14Z", "lane": "K2", "job": "5974271", "host": "kn175", "event": "job_end", "failures": 0}
