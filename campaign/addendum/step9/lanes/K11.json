@@ -1,12 +1,12 @@
 {
  "items": [
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.03|full",
-   "step": "9.5a",
-   "condition": "step9/llama31-8b-instruct__eagle3",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.02|full",
+   "step": "9.5b",
+   "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "r_fuzzy",
-   "alpha": "0.03",
+   "method": "spec_casc_opt",
+   "alpha": "-0.02",
    "seed": 0,
    "cases": [
     "case_004",
@@ -38,13 +38,13 @@
     "case_030"
    ],
    "prompt_root": "prompts/aime24_llama31",
-   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle3",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
    "max_new_tokens": 32768,
    "model_flags": [
     "--model-path",
     "RedHatAI/Llama-3.1-8B-Instruct",
     "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
     "--served-model-name",
     "llama31-8b-instruct"
    ],
@@ -52,8 +52,8 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3",
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
     "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K11"
    },
    "host": "killarney",

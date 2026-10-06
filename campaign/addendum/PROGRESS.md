@@ -1428,3 +1428,7 @@ for what is done; this file records every action and failure.
 - 2026-10-06T04:32:12Z step 9 lane K1: submitted job 5973912, ~0.2 GPU-h assigned
 - 2026-10-06T04:32:15Z step 9 lane K2: submitted job 5973913, ~0.7 GPU-h assigned
 - 2026-10-06T04:33:58Z step 9 grading: 426 new run dir(s) uploaded, 454 pending, CPU job 23298355
+- 2026-10-06T04:45:21Z step 9: pulled 171 run dir(s)
+- 2026-10-06T04:45:25Z step 9 block 5b: calibrated llama31-8b-instruct__eagle1 aime24_llama31: targets [1.538, 3.011, 4.485], mentored_dec [0.75, 0.15], cactus [0.35, 0.18, 0.08], spec_casc_opt [-0.3, -0.1, -0.02], r_fuzzy [0.25, 0.03], spec_casc_tok [0.35, 0.15, 0.8]
+- 2026-10-06T04:45:32Z step 9 lane K4: submitted job 5974018, ~0.5 GPU-h assigned
+- 2026-10-06T04:47:02Z step 9 grading: 171 new run dir(s) uploaded, 171 pending, CPU job 23298587
