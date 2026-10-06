@@ -38,6 +38,223 @@
     "--startup-timeout",
     "1200"
    ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle1|humaneval_llama31|mentored_dec|0.15|calib",
+   "step": "9.4d",
+   "condition": "step9/llama31-8b-instruct__eagle1",
+   "dataset": "humaneval_llama31",
+   "method": "mentored_dec",
+   "alpha": "0.15",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/humaneval_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.08|calib",
+   "step": "9.4d",
+   "condition": "step9/llama31-8b-instruct__eagle1",
+   "dataset": "humaneval_llama31",
+   "method": "cactus",
+   "alpha": "0.08",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/humaneval_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.15|calib",
+   "step": "9.4d",
+   "condition": "step9/llama31-8b-instruct__eagle1",
+   "dataset": "humaneval_llama31",
+   "method": "r_fuzzy",
+   "alpha": "0.15",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/humaneval_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.18|calib",
+   "step": "9.5a",
+   "condition": "step9/llama31-8b-instruct__eagle3",
+   "dataset": "aime24_llama31",
+   "method": "cactus",
+   "alpha": "0.18",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/aime24_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle3",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|strict",
+   "step": "9.5a",
+   "condition": "step9/llama31-8b-instruct__eagle3",
+   "dataset": "aime24_llama31",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003",
+    "case_004",
+    "case_005",
+    "case_006",
+    "case_007",
+    "case_008",
+    "case_009",
+    "case_010",
+    "case_011",
+    "case_012",
+    "case_013",
+    "case_014",
+    "case_015",
+    "case_016",
+    "case_017",
+    "case_018",
+    "case_019",
+    "case_020",
+    "case_021",
+    "case_022",
+    "case_023",
+    "case_024",
+    "case_025",
+    "case_026",
+    "case_027",
+    "case_028",
+    "case_029",
+    "case_030"
+   ],
+   "prompt_root": "prompts/aime24_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle3",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
   }
  ],
  "hold_minutes": 30
