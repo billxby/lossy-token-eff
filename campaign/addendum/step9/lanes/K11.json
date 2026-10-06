@@ -68,12 +68,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__qwen3-0.6b|humaneval_qwen3|mentored_dec|0.75|full",
+   "id": "s9|qwen3-8b__qwen3-0.6b|humaneval_qwen3|cactus|0.35|full",
    "step": "9.7a",
    "condition": "step9/qwen3-8b__qwen3-0.6b",
    "dataset": "humaneval_qwen3",
-   "method": "mentored_dec",
-   "alpha": "0.75",
+   "method": "cactus",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",
@@ -255,12 +255,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__qwen3-0.6b|aime24_qwen3|cactus|0.35|full",
+   "id": "s9|qwen3-8b__qwen3-0.6b|aime24_qwen3|spec_casc_opt|0.05|full",
    "step": "9.7d",
    "condition": "step9/qwen3-8b__qwen3-0.6b",
    "dataset": "aime24_qwen3",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",

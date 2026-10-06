@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 07:11 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 07:13 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1409,9 +1409,9 @@ GPU-h actual (lane journals): 0.0.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| humaneval_qwen3 | mentored_dec | loosest | 0.75 | 80 | 4.41 (3.65) | 2826 (3307) | 0.85 [0.76, 0.97]↓ | 0.71 [0.63, 0.81]↓ | 0.71 · cross-node | 4% (10%) | - (-) | kn171 |
-| humaneval_qwen3 | spec_casc_opt | loosest | 0.05 | 33 | 4.79 (3.56) | 2488 (3092) | 0.80 [0.62, 1.06] | 0.63 [0.48, 0.83]↓ | 0.63 · cross-node | 6% (9%) | - (88%) | kn177 |
-| humaneval_qwen3 | r_fuzzy | loosest | 0.25 | 46 | 4.52 (3.58) | 2465 (3131) | 0.79 [0.65, 0.96]↓ | 0.64 [0.53, 0.78]↓ | 0.68 · cross-node | 2% (9%) | - (-) | kn173 |
+| humaneval_qwen3 | mentored_dec | loosest | 0.75 | 89 | 4.42 (3.67) | 2908 (3382) | 0.86 [0.77, 0.96]↓ | 0.72 [0.64, 0.81]↓ | 0.72 · cross-node | 4% (10%) | - (-) | kn171 |
+| humaneval_qwen3 | spec_casc_opt | loosest | 0.05 | 44 | 4.80 (3.58) | 2750 (3193) | 0.86 [0.70, 1.06] | 0.68 [0.56, 0.84]↓ | 0.68 · cross-node | 5% (9%) | - (-) | kn177 |
+| humaneval_qwen3 | r_fuzzy | loosest | 0.25 | 58 | 4.55 (3.59) | 2676 (3020) | 0.89 [0.75, 1.05] | 0.71 [0.60, 0.85]↓ | 0.76 · cross-node | 5% (9%) | - (-) | kn173 |
 
 ### Block 6b: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, longbench_v2 (killarney)
 
@@ -1421,10 +1421,10 @@ GPU-h actual (lane journals): 0.0.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 60 | 4.52 (3.11) | 2333 (2704) | 0.86 [0.76, 0.99]↓ | 0.65 [0.57, 0.73]↓ | 0.67 · cross-node | 0% (0%) | - (-) | kn171 |
-| longbench_v2_qwen3 | cactus | loosest | 0.35 | 45 | 4.46 (3.10) | 2549 (2728) | 0.93 [0.82, 1.07] | 0.71 [0.62, 0.81]↓ | 0.73 · cross-node | 2% (0%) | - (-) | kn171 |
-| longbench_v2_qwen3 | r_fuzzy | loosest | 0.25 | 60 | 4.25 (3.11) | 2361 (2704) | 0.87 [0.74, 1.03] | 0.67 [0.58, 0.78]↓ | 0.70 · cross-node | 3% (0%) | - (-) | kn176 |
-| longbench_v2_qwen3 | spec_casc_tok | loosest | 0.8 | 60 | 4.02 (3.11) | 2350 (2704) | 0.87 [0.75, 1.01] | 0.70 [0.61, 0.81]↓ | 0.72 · cross-node | 2% (0%) | - (-) | kn176 |
+| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 70 | 4.50 (3.10) | 2339 (2672) | 0.88 [0.78, 0.99]↓ | 0.66 [0.59, 0.73]↓ | 0.67 · cross-node | 1% (1%) | - (-) | kn171 |
+| longbench_v2_qwen3 | cactus | loosest | 0.35 | 59 | 4.45 (3.11) | 2389 (2716) | 0.88 [0.77, 1.00]↓ | 0.66 [0.59, 0.76]↓ | 0.69 · cross-node | 2% (0%) | - (-) | kn171 |
+| longbench_v2_qwen3 | r_fuzzy | loosest | 0.25 | 70 | 4.25 (3.10) | 2414 (2672) | 0.90 [0.78, 1.05] | 0.70 [0.61, 0.80]↓ | 0.71 · cross-node | 4% (1%) | - (-) | kn176 |
+| longbench_v2_qwen3 | spec_casc_tok | loosest | 0.8 | 70 | 4.01 (3.10) | 2357 (2672) | 0.88 [0.77, 1.01] | 0.72 [0.64, 0.81]↓ | 0.73 · cross-node | 1% (1%) | - (-) | kn176 |
 
 ### Block 6c: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, mtbench (killarney)
 
@@ -1434,11 +1434,11 @@ GPU-h actual (lane journals): 1.4.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| mtbench_qwen3 | mentored_dec | loosest | 0.75 | 80 | 4.48 (3.04) | 1914 (2098) | 0.91 [0.86, 0.97]↓ | 0.67 [0.63, 0.71]↓ | 0.69 · cross-node | 10% (18%) | - (-) | kn173 |
+| mtbench_qwen3 | mentored_dec | loosest | 0.75 | 80 | 4.48 (3.04) | 1914 (2098) | 0.91 [0.85, 0.97]↓ | 0.67 [0.63, 0.71]↓ | 0.69 · cross-node | 10% (18%) | - (-) | kn173 |
 | mtbench_qwen3 | cactus | loosest | 0.35 | 80 | 4.51 (3.04) | 1925 (2098) | 0.92 [0.85, 0.99]↓ | 0.67 [0.62, 0.71]↓ | 0.70 · cross-node | 14% (18%) | - (-) | kn173 |
 | mtbench_qwen3 | spec_casc_opt | loosest | 0.05 | 80 | 4.64 (3.04) | 1946 (2098) | 0.93 [0.86, 1.00]↓ | 0.67 [0.62, 0.72]↓ | 0.68 · cross-node | 12% (18%) | - (-) | kn176 |
 | mtbench_qwen3 | r_fuzzy | loosest | 0.25 | 80 | 4.46 (3.04) | 1889 (2098) | 0.90 [0.84, 0.96]↓ | 0.66 [0.62, 0.70]↓ | 0.66 · cross-node | 9% (18%) | - (-) | kn174 |
-| mtbench_qwen3 | spec_casc_tok | loosest | 0.8 | 80 | 3.88 (3.04) | 1948 (2098) | 0.93 [0.87, 0.99]↓ | 0.77 [0.72, 0.83]↓ | 0.78 · cross-node | 12% (18%) | - (-) | kn174 |
+| mtbench_qwen3 | spec_casc_tok | loosest | 0.8 | 80 | 3.88 (3.04) | 1948 (2098) | 0.93 [0.87, 0.99]↓ | 0.77 [0.73, 0.83]↓ | 0.78 · cross-node | 12% (18%) | - (-) | kn174 |
 
 ### Block 6d: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, aime24 (killarney)
 
@@ -1448,8 +1448,8 @@ GPU-h actual (lane journals): 0.0.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| aime24_qwen3 | mentored_dec | loosest | 0.75 | 13 | 5.45 (4.21) | 15234 (17854) | 0.85 [0.72, 0.98]↓ | 0.68 [0.58, 0.78]↓ | 0.62 · cross-node | 8% (15%) | - (-) | kn176 |
-| aime24_qwen3 | spec_casc_tok | loosest | 0.8 | 6 | 4.92 (4.27) | 20698 (22472) | 0.92 [0.61, 1.42] | 0.80 [0.54, 1.22] | 0.79 · cross-node | 17% (33%) | - (-) | kn176 |
+| aime24_qwen3 | mentored_dec | loosest | 0.75 | 14 | 5.44 (4.17) | 15769 (18919) | 0.83 [0.71, 0.96]↓ | 0.66 [0.57, 0.76]↓ | 0.60 · cross-node | 7% (21%) | - (-) | kn176 |
+| aime24_qwen3 | spec_casc_tok | loosest | 0.8 | 9 | 4.94 (4.28) | 18163 (19492) | 0.93 [0.68, 1.30] | 0.81 [0.60, 1.12] | 0.80 · cross-node | 11% (22%) | - (-) | kn176 |
 
 ### Block 7a: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, humaneval (killarney)
 
