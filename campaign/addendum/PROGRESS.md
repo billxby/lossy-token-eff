@@ -1410,3 +1410,6 @@ for what is done; this file records every action and failure.
 - 2026-10-06T03:03:25Z step 9 block 4e: calibrated r1-distill-llama-8b__eagle3 humaneval_r1llama: targets [1.947, 3.006, 4.065], mentored_dec [0.15, 0.55, 0.75], cactus [0.03, 0.08, 0.18], spec_casc_opt [-0.1, 0.05, -0.3], r_fuzzy [0.08, 0.25, 0.03], spec_casc_tok [0.8, 0.55, 0.15]
 - 2026-10-06T03:05:02Z step 9 grading: 1397 new run dir(s) uploaded, 1397 pending, CPU job 23294656
 - 2026-10-06T03:06:23Z step 9: pulled 114 run dir(s)
+- 2026-10-06T03:19:03Z step 9: pulled 894 run dir(s)
+- 2026-10-06T03:19:06Z step 9 block 4d: calibrated llama31-8b-instruct__eagle1 humaneval_llama31: targets [1.914, 3.194, 4.474], mentored_dec [0.15, 0.75], cactus [0.08, 0.18, 0.35], spec_casc_opt [-0.3, 0.05], r_fuzzy [0.03, 0.25], spec_casc_tok [0.8, 0.15]
+- 2026-10-06T03:21:12Z step 9 grading: 894 new run dir(s) uploaded, 1004 pending, CPU job 23295308
