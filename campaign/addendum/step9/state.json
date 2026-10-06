@@ -2,16 +2,16 @@
  "alert_seen": {
   "K1": 116,
   "K10": 104,
-  "K11": 107,
+  "K11": 109,
   "K12": 127,
   "K13": 97,
   "K14": 86,
-  "K15": 111,
+  "K15": 113,
   "K16": 130,
   "K2": 117,
   "K3": 92,
   "K4": 111,
-  "K5": 122,
+  "K5": 124,
   "K6": 124,
   "K7": 85,
   "K8": 116,
@@ -840,14 +840,20 @@
     {
      "dependency": "5974467",
      "id": "5975140",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:24Z"
     },
     {
      "dependency": "5975140",
      "id": "5975230",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:21Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977044",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:38Z"
     }
    ]
   },
@@ -932,14 +938,20 @@
     {
      "dependency": "5974469",
      "id": "5975142",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:27Z"
     },
     {
      "dependency": "5975142",
      "id": "5975232",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:23Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977045",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:39Z"
     }
    ]
   },
@@ -1024,14 +1036,20 @@
     {
      "dependency": "5974473",
      "id": "5975145",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:32Z"
     },
     {
      "dependency": "5975145",
      "id": "5975234",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:26Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977046",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:41Z"
     }
    ]
   },
@@ -1070,14 +1088,20 @@
     {
      "dependency": "5974474",
      "id": "5975148",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:35Z"
     },
     {
      "dependency": "5975148",
      "id": "5975235",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:28Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977047",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:42Z"
     }
    ]
   },
@@ -1128,14 +1152,20 @@
     {
      "dependency": "5975123",
      "id": "5975124",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:03Z"
     },
     {
      "dependency": "5975124",
      "id": "5975125",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:05Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977038",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:30Z"
     }
    ]
   },
@@ -1180,8 +1210,14 @@
     {
      "dependency": "5975127",
      "id": "5975128",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:08Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977040",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:33Z"
     }
    ]
   },
@@ -1330,8 +1366,14 @@
     {
      "dependency": "5975133",
      "id": "5975134",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:16Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977041",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:34Z"
     }
    ]
   },
@@ -1416,14 +1458,20 @@
     {
      "dependency": "5974463",
      "id": "5974464",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T05:37:18Z"
     },
     {
      "dependency": "5974464",
      "id": "5975229",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:19Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977042",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:35Z"
     }
    ]
   },
@@ -1462,14 +1510,20 @@
     {
      "dependency": "5974465",
      "id": "5975136",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:19Z"
     },
     {
      "dependency": "5975136",
      "id": "5975137",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:20Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977043",
+     "state": "PENDING",
+     "submitted": "2026-10-06T10:52:37Z"
     }
    ]
   },
@@ -1646,7 +1700,7 @@
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d23710c5a19808aee081d8f62503d64dd86eb9c1e72611ada03a4d73d5a48dd0"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1662,11 +1716,11 @@
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "f6c18ebdebba081998832f799077d1c16632ec596ab5e0ade9ccd8d1113d26d3"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "6b5a79c20ab95b75d8e0c7b782d43f23adabfd11c185a6a587a607cac6469d68"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1678,7 +1732,7 @@
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "9a7f3e18915748faa68a52ac99215084adbba2ef9dc8651027f13a7ffbc96096"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1686,11 +1740,11 @@
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "92bd8a84c36bf43c78ca9130c4400691bc72e761f00530bc9a03fc5cea1032e9"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "3a52e8afe886b54245bbd8aa1680ab607e102e0013141ebf60c8ac98902d560e"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
