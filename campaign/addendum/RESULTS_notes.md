@@ -341,3 +341,8 @@
   (lambda 1.25-3.11), so R is 1.02-2.70 everywhere except spec_casc_opt -0.3 (R 0.94 [0.84, 1.03], 93%). Accuracy
   holds for mentored_dec and spec_casc_tok (95-97%) and falls with the looser cactus (63-87%) and r_fuzzy (23-77%).
   As on step 8's LiveCodeBench with this head, the relaxations buy length, not speed.
+- **Step 9, Block 3e (R1-Distill-Llama-8B + yuhuili EAGLE-3, LongBench-v2, Killarney), complete 2026-10-06 02:37Z,
+  15.2 GPU-h.** Lossless l_bar 0.03 (the head does not draft past ~2,048 positions; every prompt is 10k-45k tokens),
+  accuracy 29%, reported as is. cactus pushes l_bar to 2.8-4.0 by accepting what the collapsed head proposes, and the
+  answers run to the cap (lambda 3.9-4.0, 85-88% cap-outs vs 4%) for R 0.86-1.07 and 23-29% accuracy; spec_casc_opt
+  0.05 saves rounds (R 0.83 [0.75, 0.92], lambda 1.23) at 33%; the other rules match lossless (R 0.99-1.04).
