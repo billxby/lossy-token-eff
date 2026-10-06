@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 01:01 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 01:04 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1120,23 +1120,23 @@ GPU-h actual (lane journals): 12.6.
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | aime24_qwen3 | mentored_dec | low | 0.35 | 30 | 2.97 (2.51) | 18927 (19550) | 0.97 [0.86, 1.09] | 0.85 [0.75, 0.96]↓ | 0.84 · T same-node 0.83 (27 pairs) | 20% (20%) | 73% (70%) | kn176:27+kn173:3 |
-| aime24_qwen3 | mentored_dec | mid+high | 0.75 | 30 | 3.38 (2.51) | 22087 (19550) | 1.13 [1.01, 1.27]↑ | 0.90 [0.79, 1.02] | 0.90 · cross-node | 33% (20%) | 63% (70%) | kn175:27+kn171:3 |
+| aime24_qwen3 | mentored_dec | mid+high | 0.75 | 30 | 3.38 (2.51) | 22087 (19550) | 1.13 [1.01, 1.27]↑ | 0.90 [0.80, 1.02] | 0.90 · cross-node | 33% (20%) | 63% (70%) | kn175:27+kn171:3 |
 | aime24_qwen3 | mentored_dec | extra | 0.15 | 30 | 2.74 (2.51) | 18650 (19550) | 0.95 [0.85, 1.05] | 0.90 [0.80, 0.99]↓ | 0.90 · cross-node | 17% (20%) | 70% (70%) | kn173:29+kn172:1 |
-| aime24_qwen3 | cactus | low | 0.03 | 30 | 2.89 (2.51) | 19311 (19550) | 0.99 [0.92, 1.07] | 0.89 [0.82, 0.97]↓ | 0.89 · cross-node | 20% (20%) | 70% (70%) | kn171:27+kn173:3 |
-| aime24_qwen3 | cactus | mid+high | 0.35 | 30 | 3.47 (2.51) | 21271 (19550) | 1.09 [0.95, 1.27] | 0.84 [0.72, 1.00]↓ | 0.84 · cross-node | 20% (20%) | 70% (70%) | kn171:27+kn175:3 |
-| aime24_qwen3 | spec_casc_opt | low | -0.3 | 30 | 3.20 (2.51) | 20507 (19550) | 1.05 [0.93, 1.19] | 0.87 [0.77, 0.99]↓ | 0.88 · cross-node | 23% (20%) | 67% (70%) | kn169:27+kn171:3 |
-| aime24_qwen3 | spec_casc_opt | mid | -0.1 | 30 | 3.49 (2.51) | 23967 (19550) | 1.23 [1.08, 1.42]↑ | 0.94 [0.82, 1.10] | 0.95 · cross-node | 40% (20%) | 57% (70%) | kn171:27+kn172:3 |
-| aime24_qwen3 | spec_casc_opt | high | 0.05 | 30 | 4.22 (2.51) | 29687 (19550) | 1.52 [1.32, 1.78]↑ | 0.99 [0.85, 1.20] | 1.01 · cross-node | 70% (20%) | 37% (70%) | kn173:27+kn176:3 |
-| aime24_qwen3 | r_fuzzy | low | 0.15 | 30 | 2.88 (2.51) | 22644 (19550) | 1.16 [1.03, 1.32]↑ | 1.04 [0.91, 1.20] | 1.05 · cross-node | 33% (20%) | 63% (70%) | kn175:27+kn172:3 |
-| aime24_qwen3 | r_fuzzy | mid+high | 0.25 | 30 | 3.31 (2.51) | 23542 (19550) | 1.20 [1.06, 1.39]↑ | 0.96 [0.84, 1.13] | 0.97 · cross-node | 23% (20%) | 60% (70%) | kn175:27+kn174:3 |
+| aime24_qwen3 | cactus | low | 0.03 | 30 | 2.89 (2.51) | 19311 (19550) | 0.99 [0.92, 1.07] | 0.89 [0.82, 0.96]↓ | 0.89 · cross-node | 20% (20%) | 70% (70%) | kn171:27+kn173:3 |
+| aime24_qwen3 | cactus | mid+high | 0.35 | 30 | 3.47 (2.51) | 21271 (19550) | 1.09 [0.94, 1.26] | 0.84 [0.72, 1.00] | 0.84 · cross-node | 20% (20%) | 70% (70%) | kn171:27+kn175:3 |
+| aime24_qwen3 | spec_casc_opt | low | -0.3 | 30 | 3.20 (2.51) | 20507 (19550) | 1.05 [0.93, 1.19] | 0.87 [0.77, 1.00]↓ | 0.88 · cross-node | 23% (20%) | 67% (70%) | kn169:27+kn171:3 |
+| aime24_qwen3 | spec_casc_opt | mid | -0.1 | 30 | 3.49 (2.51) | 23967 (19550) | 1.23 [1.08, 1.42]↑ | 0.94 [0.81, 1.10] | 0.95 · cross-node | 40% (20%) | 57% (70%) | kn171:27+kn172:3 |
+| aime24_qwen3 | spec_casc_opt | high | 0.05 | 30 | 4.22 (2.51) | 29687 (19550) | 1.52 [1.32, 1.79]↑ | 0.99 [0.86, 1.19] | 1.01 · cross-node | 70% (20%) | 37% (70%) | kn173:27+kn176:3 |
+| aime24_qwen3 | r_fuzzy | low | 0.15 | 30 | 2.88 (2.51) | 22644 (19550) | 1.16 [1.02, 1.32]↑ | 1.04 [0.91, 1.19] | 1.05 · cross-node | 33% (20%) | 63% (70%) | kn175:27+kn172:3 |
+| aime24_qwen3 | r_fuzzy | mid+high | 0.25 | 30 | 3.31 (2.51) | 23542 (19550) | 1.20 [1.06, 1.39]↑ | 0.96 [0.84, 1.12] | 0.97 · cross-node | 23% (20%) | 60% (70%) | kn175:27+kn174:3 |
 | aime24_qwen3 | r_fuzzy | extra | 0.03 | 30 | 2.59 (2.51) | 20008 (19550) | 1.02 [0.90, 1.16] | 1.00 [0.87, 1.14] | 1.00 · cross-node | 20% (20%) | 67% (70%) | kn175:27+kn174:3 |
-| aime24_qwen3 | spec_casc_tok | low | 0.35 | 30 | 2.80 (2.51) | 20184 (19550) | 1.03 [0.90, 1.19] | 0.95 [0.83, 1.12] | 0.96 · cross-node | 20% (20%) | 70% (70%) | kn173:27+kn172:3 |
+| aime24_qwen3 | spec_casc_tok | low | 0.35 | 30 | 2.80 (2.51) | 20184 (19550) | 1.03 [0.91, 1.19] | 0.95 [0.82, 1.11] | 0.96 · cross-node | 20% (20%) | 70% (70%) | kn173:27+kn172:3 |
 | aime24_qwen3 | spec_casc_tok | mid+high | 0.8 | 30 | 3.09 (2.51) | 21452 (19550) | 1.10 [0.99, 1.23] | 0.93 [0.84, 1.05] | 0.94 · cross-node | 27% (20%) | 67% (70%) | kn174:27+kn173:3 |
 | aime24_qwen3 | spec_casc_tok | extra | 0.15 | 30 | 2.76 (2.51) | 18404 (19550) | 0.94 [0.86, 1.03] | 0.87 [0.80, 0.95]↓ | 0.87 · cross-node | 10% (20%) | 80% (70%) | kn172:27+kn171:3 |
 
 ### Block 3a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 10.5.
+GPU-h actual (lane journals): 11.3.
 
 `campaign/addendum/tables/step9__gpt-oss-20b__rh-eagle3.csv` (eagle3, V1 full patches):
 
@@ -1149,11 +1149,11 @@ GPU-h actual (lane journals): 10.5.
 | longbench_v2 | cactus | high | 0.35 | 150 | 3.38 (0.05) | 4089 (1403) | 2.92 [2.37, 3.56]↑ | 0.58 [0.49, 0.70]↓ | 0.58 · cross-node | 37% (1%) | 24% (54%) | kn175:147+kn176:3 |
 | longbench_v2 | spec_casc_opt | low+mid+high | 0.05 | 150 | 0.18 (0.05) | 1414 (1403) | 1.01 [0.86, 1.18] | 0.92 [0.78, 1.08] | 0.90 · cross-node | 1% (1%) | 49% (54%) | kn171:147+kn175:3 |
 | longbench_v2 | spec_casc_opt | extra | -0.3 | 150 | 0.06 (0.05) | 1414 (1403) | 1.01 [0.86, 1.18] | 1.01 [0.86, 1.18] | 1.00 · cross-node | 1% (1%) | 55% (54%) | kn174 |
-| longbench_v2 | r_fuzzy | low+mid+high | 0.15 | 139 | 0.06 (0.05) | 1393 (1429) | 0.97 [0.85, 1.11] | 0.97 [0.85, 1.10] | 0.94 · cross-node | 1% (1%) | - (54%) | kn175:136+kn172:3 |
-| longbench_v2 | r_fuzzy | extra | 0.03 | 150 | 0.06 (0.05) | 1430 (1403) | 1.02 [0.89, 1.16] | 1.02 [0.89, 1.17] | 0.99 · cross-node | 1% (1%) | 51% (54%) | kn171 |
-| longbench_v2 | r_fuzzy | extra | 0.25 | 150 | 0.06 (0.05) | 1556 (1403) | 1.11 [0.97, 1.27] | 1.10 [0.96, 1.27] | 1.08 · cross-node | 2% (1%) | - (54%) | kn173 |
+| longbench_v2 | r_fuzzy | low+mid+high | 0.15 | 150 | 0.06 (0.05) | 1368 (1403) | 0.98 [0.86, 1.10] | 0.97 [0.86, 1.10] | 0.94 · cross-node | 1% (1%) | - (54%) | kn175:147+kn172:3 |
+| longbench_v2 | r_fuzzy | extra | 0.03 | 150 | 0.06 (0.05) | 1430 (1403) | 1.02 [0.89, 1.16] | 1.02 [0.89, 1.16] | 0.99 · cross-node | 1% (1%) | 51% (54%) | kn171 |
+| longbench_v2 | r_fuzzy | extra | 0.25 | 150 | 0.06 (0.05) | 1556 (1403) | 1.11 [0.97, 1.27] | 1.10 [0.96, 1.26] | 1.08 · cross-node | 2% (1%) | - (54%) | kn173 |
 | longbench_v2 | spec_casc_tok | low+mid+high | 0.8 | 150 | 0.06 (0.05) | 1428 (1403) | 1.02 [0.88, 1.17] | 1.02 [0.88, 1.17] | 0.99 · cross-node | 2% (1%) | - (54%) | kn171:147+kn175:3 |
-| longbench_v2 | spec_casc_tok | extra | 0.15 | 150 | 0.05 (0.05) | 1270 (1403) | 0.91 [0.80, 1.02] | 0.90 [0.80, 1.02] | 0.89 · cross-node | 0% (1%) | - (54%) | kn169:147+kn176:3 |
+| longbench_v2 | spec_casc_tok | extra | 0.15 | 150 | 0.05 (0.05) | 1270 (1403) | 0.91 [0.80, 1.02] | 0.90 [0.81, 1.02] | 0.89 · cross-node | 0% (1%) | - (54%) | kn169:147+kn176:3 |
 
 ### Block 3b: Qwen/Qwen3-8B + deepseek-ai/dspark_qwen3_8b_block7, longbench_v2 (killarney)
 
@@ -1186,15 +1186,15 @@ GPU-h actual (lane journals): 9.9.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| longbench_v2_llama31 | mentored_dec | low+mid+high | 0.75 | 150 | 0.27 (0.06) | 1671 (525) | 3.18 [2.33, 4.25]↑ | 2.19 [1.69, 2.80]↑ | 1.98 | 3% (0%) | 37% (37%) | kn171 |
-| longbench_v2_llama31 | mentored_dec | extra | 0.15 | 150 | 0.07 (0.06) | 770 (525) | 1.47 [1.06, 2.01]↑ | 1.36 [1.02, 1.78]↑ | 1.31 · T same-node 1.31 (147 pairs) | 1% (0%) | 35% (37%) | kn171:147+kn169:3 |
-| longbench_v2_llama31 | cactus | low+mid | 0.03 | 150 | 2.65 (0.06) | 7537 (525) | 14.36 [11.23, 18.15]↑ | 4.47 [3.63, 5.44]↑ | 3.91 · cross-node | 83% (0%) | 25% (37%) | kn174:147+kn176:3 |
-| longbench_v2_llama31 | cactus | high | 0.18 | 150 | 3.63 (0.06) | 6938 (525) | 13.22 [10.39, 16.77]↑ | 3.22 [2.63, 3.93]↑ | 2.87 · cross-node | 70% (0%) | 25% (37%) | kn169:147+kn175:3 |
-| longbench_v2_llama31 | cactus | extra | 0.35 | 150 | 4.00 (0.06) | 6725 (525) | 12.81 [10.08, 16.29]↑ | 2.90 [2.33, 3.53]↑ | 2.58 · T same-node 2.56 (147 pairs) | 63% (0%) | 31% (37%) | kn171:147+kn173:3 |
-| longbench_v2_llama31 | spec_casc_opt | low | -0.1 | 150 | 0.91 (0.06) | 2494 (525) | 4.75 [3.62, 6.17]↑ | 2.11 [1.68, 2.62]↑ | 1.92 | 13% (0%) | 27% (37%) | kn171 |
-| longbench_v2_llama31 | spec_casc_opt | mid | -0.02 | 150 | 2.69 (0.06) | 3277 (525) | 6.24 [4.75, 8.15]↑ | 1.49 [1.19, 1.84]↑ | 1.41 · cross-node | 19% (0%) | 25% (37%) | kn169:147+kn171:3 |
-| longbench_v2_llama31 | spec_casc_opt | high | 0.05 | 150 | 4.12 (0.06) | 4336 (525) | 8.26 [6.34, 10.61]↑ | 1.53 [1.22, 1.90]↑ | 1.46 · T same-node 1.45 (147 pairs) | 33% (0%) | 27% (37%) | kn171:147+kn175:3 |
-| longbench_v2_llama31 | r_fuzzy | low+mid+high | 0.25 | 150 | 0.10 (0.06) | 1281 (525) | 2.44 [1.73, 3.29]↑ | 2.18 [1.59, 2.87]↑ | 2.00 · cross-node | 3% (0%) | 32% (37%) | kn175 |
+| longbench_v2_llama31 | mentored_dec | low+mid+high | 0.75 | 150 | 0.27 (0.06) | 1671 (525) | 3.18 [2.34, 4.26]↑ | 2.19 [1.69, 2.80]↑ | 1.98 | 3% (0%) | 37% (37%) | kn171 |
+| longbench_v2_llama31 | mentored_dec | extra | 0.15 | 150 | 0.07 (0.06) | 770 (525) | 1.47 [1.05, 2.01]↑ | 1.36 [1.03, 1.78]↑ | 1.31 · T same-node 1.31 (147 pairs) | 1% (0%) | 35% (37%) | kn171:147+kn169:3 |
+| longbench_v2_llama31 | cactus | low+mid | 0.03 | 150 | 2.65 (0.06) | 7537 (525) | 14.36 [11.26, 18.15]↑ | 4.47 [3.62, 5.44]↑ | 3.91 · cross-node | 83% (0%) | 25% (37%) | kn174:147+kn176:3 |
+| longbench_v2_llama31 | cactus | high | 0.18 | 150 | 3.63 (0.06) | 6938 (525) | 13.22 [10.39, 16.75]↑ | 3.22 [2.63, 3.94]↑ | 2.87 · cross-node | 70% (0%) | 25% (37%) | kn169:147+kn175:3 |
+| longbench_v2_llama31 | cactus | extra | 0.35 | 150 | 4.00 (0.06) | 6725 (525) | 12.81 [10.05, 16.26]↑ | 2.90 [2.33, 3.54]↑ | 2.58 · T same-node 2.56 (147 pairs) | 63% (0%) | 31% (37%) | kn171:147+kn173:3 |
+| longbench_v2_llama31 | spec_casc_opt | low | -0.1 | 150 | 0.91 (0.06) | 2494 (525) | 4.75 [3.62, 6.17]↑ | 2.11 [1.68, 2.64]↑ | 1.92 | 13% (0%) | 27% (37%) | kn171 |
+| longbench_v2_llama31 | spec_casc_opt | mid | -0.02 | 150 | 2.69 (0.06) | 3277 (525) | 6.24 [4.77, 8.13]↑ | 1.49 [1.19, 1.84]↑ | 1.41 · cross-node | 19% (0%) | 25% (37%) | kn169:147+kn171:3 |
+| longbench_v2_llama31 | spec_casc_opt | high | 0.05 | 150 | 4.12 (0.06) | 4336 (525) | 8.26 [6.33, 10.63]↑ | 1.53 [1.22, 1.90]↑ | 1.46 · T same-node 1.45 (147 pairs) | 33% (0%) | 27% (37%) | kn171:147+kn175:3 |
+| longbench_v2_llama31 | r_fuzzy | low+mid+high | 0.25 | 150 | 0.10 (0.06) | 1281 (525) | 2.44 [1.73, 3.29]↑ | 2.18 [1.60, 2.86]↑ | 2.00 · cross-node | 3% (0%) | 32% (37%) | kn175 |
 | longbench_v2_llama31 | r_fuzzy | extra | 0.03 | 150 | 0.06 (0.06) | 536 (525) | 1.02 [1.00, 1.07] | 1.02 [1.00, 1.08] | 1.03 · cross-node | 0% (0%) | 38% (37%) | kn174:147+kn169:3 |
 | longbench_v2_llama31 | spec_casc_tok | low+mid+high | 0.15 | 150 | 0.06 (0.06) | 557 (525) | 1.06 [0.83, 1.33] | 1.04 [0.85, 1.26] | 1.04 · cross-node | 0% (0%) | 37% (37%) | kn175:147+kn171:3 |
 | longbench_v2_llama31 | spec_casc_tok | extra | 0.8 | 150 | 0.07 (0.06) | 555 (525) | 1.06 [0.78, 1.44] | 1.02 [0.80, 1.30] | 1.02 · cross-node | 1% (0%) | 39% (37%) | kn169:147+kn173:3 |
@@ -1208,14 +1208,14 @@ GPU-h actual (lane journals): 2.2.
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | longbench_v2_llama31 | mentored_dec | low+mid+high | 0.35 | 3 | 0.82 (0.73) | 297 (266) | 1.12 [0.85, 1.55] | 1.06 [0.86, 1.39] | 1.03 · cross-node | 0% (0%) | 0% (33%) | kn171 |
-| longbench_v2_llama31 | mentored_dec | extra | 0.15 | 3 | 0.73 (0.73) | 261 (266) | 0.98 [0.93, 1.00] | 0.98 [0.93, 1.00] | 0.99 | 0% (0%) | 67% (33%) | kn169 |
+| longbench_v2_llama31 | mentored_dec | extra | 0.15 | 66 | 1.00 (0.94) | 535 (696) | 0.77 [0.44, 1.39] | 0.75 [0.40, 1.46] | 0.79 · cross-node | 0% (2%) | - (35%) | kn175:63+kn169:3 |
 | longbench_v2_llama31 | mentored_dec | extra | 0.75 | 3 | 0.75 (0.73) | 243 (266) | 0.91 [0.80, 1.12] | 0.91 [0.80, 1.06] | 0.94 · cross-node | 0% (0%) | 33% (33%) | kn175 |
-| longbench_v2_llama31 | cactus | low | 0.03 | 3 | 1.52 (0.73) | 8192 (266) | 30.80 [25.13, 43.81]↑ | 21.15 [18.69, 27.65]↑ | 12.02 · cross-node | 100% (0%) | 0% (33%) | kn175 |
-| longbench_v2_llama31 | cactus | mid | 0.08 | 3 | 1.88 (0.73) | 8192 (266) | 30.80 [25.13, 43.81]↑ | 18.28 [15.03, 25.12]↑ | 10.57 · cross-node | 100% (0%) | 67% (33%) | kn171 |
-| longbench_v2_llama31 | cactus | high | 0.35 | 3 | 2.47 (0.73) | 5649 (266) | 21.24 [1.72, 43.81]↑ | 10.23 [0.82, 22.54] | 6.05 · cross-node | 67% (0%) | 33% (33%) | kn175 |
-| longbench_v2_llama31 | spec_casc_opt | low | -0.3 | 3 | 0.78 (0.73) | 332 (266) | 1.25 [1.16, 1.40]↑ | 1.21 [1.14, 1.35]↑ | 1.11 · cross-node | 0% (0%) | 33% (33%) | kn173 |
-| longbench_v2_llama31 | spec_casc_opt | mid | -0.02 | 3 | 1.58 (0.73) | 444 (266) | 1.67 [0.56, 3.27] | 1.13 [0.52, 1.51] | 1.08 · cross-node | 0% (0%) | 33% (33%) | kn173 |
-| longbench_v2_llama31 | spec_casc_opt | high | 0.05 | 3 | 3.02 (0.73) | 4064 (266) | 15.28 [0.90, 25.13] | 5.69 [0.82, 9.24] | 3.60 · cross-node | 33% (0%) | 0% (33%) | kn175 |
+| longbench_v2_llama31 | cactus | low | 0.03 | 12 | 1.76 (1.09) | 7281 (381) | 19.09 [14.17, 26.03]↑ | 16.96 [13.76, 20.01]↑ | 11.38 · cross-node | 83% (0%) | - (50%) | kn173:9+kn175:3 |
+| longbench_v2_llama31 | cactus | mid | 0.08 | 12 | 2.08 (1.09) | 7515 (381) | 19.70 [14.70, 26.59]↑ | 16.14 [13.31, 18.95]↑ | 10.83 · cross-node | 92% (0%) | - (50%) | kn175:9+kn171:3 |
+| longbench_v2_llama31 | cactus | high | 0.35 | 8 | 2.78 (0.99) | 5246 (339) | 15.46 [8.03, 26.61]↑ | 9.70 [4.83, 14.82]↑ | 6.46 · cross-node | 50% (0%) | - (50%) | kn171:5+kn175:3 |
+| longbench_v2_llama31 | spec_casc_opt | low | -0.3 | 56 | 1.24 (0.94) | 1041 (560) | 1.86 [1.15, 3.04]↑ | 1.25 [0.82, 2.03] | 1.19 · cross-node | 7% (2%) | - (34%) | kn174:53+kn173:3 |
+| longbench_v2_llama31 | spec_casc_opt | mid | -0.02 | 32 | 2.28 (0.98) | 2450 (659) | 3.72 [1.77, 7.57]↑ | 1.68 [0.77, 3.69] | 1.56 · cross-node | 22% (3%) | - (41%) | kn173 |
+| longbench_v2_llama31 | spec_casc_opt | high | 0.05 | 24 | 2.91 (0.99) | 2555 (375) | 6.81 [3.50, 10.68]↑ | 2.63 [1.50, 3.86]↑ | 2.18 · cross-node | 21% (0%) | - (42%) | kn173:21+kn175:3 |
 | longbench_v2_llama31 | r_fuzzy | low+mid+high | 0.03 | 3 | 0.77 (0.73) | 249 (266) | 0.94 [0.56, 1.24] | 0.93 [0.55, 1.22] | 0.97 · cross-node | 0% (0%) | 100% (33%) | kn171 |
 | longbench_v2_llama31 | r_fuzzy | extra | 0.25 | 3 | 0.57 (0.73) | 3956 (266) | 14.87 [0.88, 30.80] | 16.77 [0.81, 33.77] | 9.58 | 0% (0%) | - (33%) | kn169 |
 | longbench_v2_llama31 | spec_casc_tok | low+mid+high | 0.55 | 3 | 0.76 (0.73) | 320 (266) | 1.20 [0.98, 1.38] | 1.18 [0.94, 1.39] | 1.10 · cross-node | 0% (0%) | 67% (33%) | kn171 |
@@ -1224,22 +1224,22 @@ GPU-h actual (lane journals): 2.2.
 
 ### Block 3e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 6.8.
+GPU-h actual (lane journals): 8.5.
 
 `campaign/addendum/tables/step9__r1-distill-llama-8b__eagle3.csv` (eagle3, V2 accept-test-only):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| longbench_v2_r1llama | mentored_dec | low+mid+high | 0.75 | 138 | 0.05 (0.03) | 1966 (1903) | 1.03 [0.93, 1.14] | 1.01 [0.92, 1.12] | 1.02 · cross-node | 1% (4%) | - (30%) | kn173:135+kn174:3 |
-| longbench_v2_r1llama | mentored_dec | extra | 0.15 | 102 | 0.03 (0.03) | 2144 (2014) | 1.06 [0.98, 1.15] | 1.06 [0.98, 1.15] | 1.08 · cross-node | 8% (5%) | - (28%) | kn175:99+kn173:3 |
-| longbench_v2_r1llama | cactus | low+mid | 0.03 | 150 | 2.80 (0.03) | 7413 (1911) | 3.88 [3.32, 4.58]↑ | 1.07 [0.92, 1.27] | 1.08 · cross-node | 85% (4%) | 26% (29%) | kn175:147+kn172:3 |
+| longbench_v2_r1llama | mentored_dec | low+mid+high | 0.75 | 150 | 0.05 (0.03) | 1973 (1911) | 1.03 [0.94, 1.13] | 1.01 [0.92, 1.11] | 1.01 · cross-node | 1% (4%) | - (29%) | kn173:147+kn174:3 |
+| longbench_v2_r1llama | mentored_dec | extra | 0.15 | 130 | 0.03 (0.03) | 1996 (1898) | 1.05 [0.97, 1.13] | 1.05 [0.98, 1.13] | 1.06 · cross-node | 6% (4%) | - (30%) | kn175:127+kn173:3 |
+| longbench_v2_r1llama | cactus | low+mid | 0.03 | 150 | 2.80 (0.03) | 7413 (1911) | 3.88 [3.32, 4.60]↑ | 1.07 [0.92, 1.27] | 1.08 · cross-node | 85% (4%) | 26% (29%) | kn175:147+kn172:3 |
 | longbench_v2_r1llama | cactus | high | 0.08 | 3 | 3.75 (0.04) | 7295 (537) | 13.58 [10.22, 15.60]↑ | 3.05 [2.20, 3.96]↑ | 2.63 · cross-node | 67% (0%) | 0% (33%) | kn176 |
-| longbench_v2_r1llama | cactus | extra | 0.35 | 150 | 4.04 (0.03) | 7713 (1911) | 4.04 [3.46, 4.78]↑ | 0.86 [0.73, 1.02] | 0.87 · cross-node | 87% (4%) | - (29%) | kn173:147+kn172:3 |
-| longbench_v2_r1llama | spec_casc_opt | low+mid+high | 0.05 | 111 | 0.44 (0.03) | 2499 (1993) | 1.25 [1.09, 1.45]↑ | 0.84 [0.75, 0.95]↓ | 0.85 · cross-node | 6% (5%) | - (29%) | kn174:108+kn175:3 |
-| longbench_v2_r1llama | spec_casc_opt | extra | -0.3 | 119 | 0.08 (0.03) | 1915 (1946) | 0.98 [0.88, 1.09] | 0.95 [0.85, 1.05] | 0.95 · T same-node 0.87 (15 pairs) | 5% (4%) | - (30%) | kn169:101+kn171:15+kn172:3 |
-| longbench_v2_r1llama | r_fuzzy | low+mid+high | 0.03 | 87 | 0.03 (0.03) | 1876 (1900) | 0.99 [0.97, 1.00] | 0.99 [0.97, 1.00] | 0.99 · T same-node 0.99 (84 pairs) | 2% (3%) | - (24%) | kn171:84+kn173:3 |
-| longbench_v2_r1llama | r_fuzzy | extra | 0.25 | 57 | 0.04 (0.03) | 1945 (1902) | 1.02 [0.88, 1.21] | 1.02 [0.88, 1.21] | 1.02 · cross-node | 2% (4%) | - (25%) | kn173:54+kn175:3 |
-| longbench_v2_r1llama | spec_casc_tok | low+mid+high | 0.15 | 81 | 0.03 (0.03) | 1938 (1921) | 1.01 [0.92, 1.10] | 1.01 [0.92, 1.10] | 1.02 · cross-node | 7% (4%) | - (25%) | kn169:78+kn175:3 |
+| longbench_v2_r1llama | cactus | extra | 0.35 | 150 | 4.04 (0.03) | 7713 (1911) | 4.04 [3.45, 4.79]↑ | 0.86 [0.73, 1.02] | 0.87 · cross-node | 87% (4%) | - (29%) | kn173:147+kn172:3 |
+| longbench_v2_r1llama | spec_casc_opt | low+mid+high | 0.05 | 148 | 0.44 (0.03) | 2363 (1923) | 1.23 [1.09, 1.39]↑ | 0.83 [0.75, 0.92]↓ | 0.84 · cross-node | 6% (4%) | - (30%) | kn174:145+kn175:3 |
+| longbench_v2_r1llama | spec_casc_opt | extra | -0.3 | 150 | 0.07 (0.03) | 1815 (1911) | 0.95 [0.86, 1.04] | 0.91 [0.83, 1.00] | 0.92 · T same-node 0.87 (15 pairs) | 4% (4%) | - (29%) | kn169:132+kn171:15+kn172:3 |
+| longbench_v2_r1llama | r_fuzzy | low+mid+high | 0.03 | 109 | 0.03 (0.03) | 1978 (2003) | 0.99 [0.97, 1.00] | 0.99 [0.97, 1.00] | 0.99 · T same-node 0.99 (106 pairs) | 4% (5%) | - (28%) | kn171:106+kn173:3 |
+| longbench_v2_r1llama | r_fuzzy | extra | 0.25 | 85 | 0.04 (0.03) | 1937 (1903) | 1.02 [0.90, 1.16] | 1.02 [0.90, 1.16] | 1.02 · cross-node | 2% (4%) | - (25%) | kn173:82+kn175:3 |
+| longbench_v2_r1llama | spec_casc_tok | low+mid+high | 0.15 | 100 | 0.03 (0.03) | 2062 (2021) | 1.02 [0.95, 1.10] | 1.02 [0.95, 1.10] | 1.03 · cross-node | 8% (5%) | - (28%) | kn169:97+kn175:3 |
 | longbench_v2_r1llama | spec_casc_tok | extra | 0.8 | 3 | 0.03 (0.04) | 546 (537) | 1.02 [1.00, 1.05] | 1.02 [1.00, 1.07] | 1.02 · cross-node | 0% (0%) | 33% (33%) | kn175 |
 
 ### Block 4a: openai/gpt-oss-20b + RedHatAI/gpt-oss-20b-speculator.eagle3, humaneval (killarney)
@@ -1268,7 +1268,7 @@ Pending.
 
 ### Block 4e: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + yuhuili/EAGLE3-DeepSeek-R1-Distill-LLaMA-8B, humaneval (killarney)
 
-GPU-h actual (lane journals): 0.5.
+GPU-h actual (lane journals): 0.7.
 
 Pending.
 
@@ -1288,7 +1288,7 @@ Pending.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 67.9 over 11 blocks.
+Step 9 GPU-h so far (lane journals): 70.6 over 11 blocks.
 
 ## Observations, failures and anything that looked wrong
 
@@ -1620,4 +1620,10 @@ Step 9 GPU-h so far (lane journals): 67.9 over 11 blocks.
   23:36Z, 8.9 GPU-h.** Lossless l_bar 1.88, accuracy 47%. Every rule saves rounds with tight intervals at near-unchanged
   length (lambda 0.94-1.10): spec_casc_opt 0.05 R 0.67 [0.62, 0.74], -0.02 R 0.73, cactus 0.35 R 0.74, spec_casc_tok
   0.8 R 0.81, mentored_dec 0.55 R 0.82; accuracy within ~5 points of lossless (42-53%) except r_fuzzy 0.25 (39%).
+- **Step 9, Block 3c (Llama-3.1-8B-Instruct + EAGLE-3, LongBench-v2, Killarney), complete 2026-10-06 00:29Z,
+  9.9 GPU-h.** The head barely drafts at these positions (lossless l_bar 0.06; prompts of 10k-45k tokens), accuracy
+  37%. Relaxing a head that proposes nothing useful only buys runaway answers: cactus raises l_bar to 2.7-4.0 but
+  answers grow 13-14x (63-83% cap-outs at 8,192) and R rises to 2.9-4.5; spec_casc_opt grows them 4.8-8.3x (R
+  1.5-2.1); mentored_dec 0.75 and r_fuzzy 0.25 2.4-3.2x (R ~2.2); accuracy falls to 25-32%. Only spec_casc_tok and
+  the gentlest r_fuzzy stay at lossless (R 1.02-1.04, 37-39%).
 
