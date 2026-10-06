@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 08:52 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 09:05 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1452,7 +1452,7 @@ GPU-h actual (lane journals): 5.5.
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | aime24_qwen3 | mentored_dec | loosest | 0.75 | 30 | 5.43 (4.15) | 16221 (19469) | 0.83 [0.76, 0.90]↓ | 0.66 [0.60, 0.71]↓ | 0.60 · cross-node | 7% (20%) | 80% (73%) | kn176 |
-| aime24_qwen3 | cactus | loosest | 0.35 | 30 | 5.45 (4.15) | 16560 (19469) | 0.85 [0.78, 0.94]↓ | 0.67 [0.61, 0.74]↓ | 0.61 · cross-node | 3% (20%) | - (73%) | kn174 |
+| aime24_qwen3 | cactus | loosest | 0.35 | 30 | 5.45 (4.15) | 16560 (19469) | 0.85 [0.78, 0.94]↓ | 0.67 [0.61, 0.74]↓ | 0.61 · cross-node | 3% (20%) | 70% (73%) | kn174 |
 | aime24_qwen3 | spec_casc_opt | loosest | 0.05 | 30 | 5.30 (4.15) | 17886 (19469) | 0.92 [0.80, 1.06] | 0.74 [0.64, 0.85]↓ | 0.68 · cross-node | 7% (20%) | 73% (73%) | kn176 |
 | aime24_qwen3 | r_fuzzy | loosest | 0.25 | 30 | 5.50 (4.15) | 15323 (19469) | 0.79 [0.68, 0.90]↓ | 0.61 [0.53, 0.71]↓ | 0.56 · cross-node | 3% (20%) | 77% (73%) | kn171 |
 | aime24_qwen3 | spec_casc_tok | loosest | 0.8 | 30 | 4.88 (4.15) | 17269 (19469) | 0.89 [0.78, 1.01] | 0.77 [0.68, 0.87]↓ | 0.77 · cross-node | 7% (20%) | 80% (73%) | kn176 |
@@ -1468,22 +1468,22 @@ GPU-h actual (lane journals): 3.4.
 | humaneval_qwen3 | mentored_dec | loosest | 0.75 | 150 | 3.43 (2.90) | 3509 (3814) | 0.92 [0.86, 0.98]↓ | 0.79 [0.74, 0.84]↓ | 0.77 · cross-node | 7% (13%) | 87% (84%) | kn176 |
 | humaneval_qwen3 | cactus | loosest | 0.35 | 150 | 3.66 (2.90) | 3593 (3814) | 0.94 [0.88, 1.01] | 0.76 [0.71, 0.81]↓ | 0.76 · cross-node | 7% (13%) | 87% (84%) | kn174 |
 | humaneval_qwen3 | spec_casc_opt | loosest | 0.05 | 150 | 3.20 (2.90) | 3608 (3814) | 0.95 [0.88, 1.02] | 0.86 [0.80, 0.92]↓ | 0.92 · cross-node | 12% (13%) | 83% (84%) | kn172 |
-| humaneval_qwen3 | r_fuzzy | loosest | 0.25 | 109 | 4.46 (2.87) | 3476 (3421) | 1.02 [0.94, 1.10] | 0.71 [0.66, 0.77]↓ | 0.72 · cross-node | 5% (9%) | - (87%) | kn169 |
-| humaneval_qwen3 | spec_casc_tok | loosest | 0.8 | 115 | 2.98 (2.88) | 3203 (3465) | 0.92 [0.86, 0.99]↓ | 0.89 [0.83, 0.96]↓ | 0.87 · cross-node | 5% (9%) | - (88%) | kn176 |
+| humaneval_qwen3 | r_fuzzy | loosest | 0.25 | 145 | 4.53 (2.89) | 3852 (3757) | 1.03 [0.97, 1.09] | 0.71 [0.67, 0.75]↓ | 0.72 · cross-node | 9% (12%) | - (85%) | kn169 |
+| humaneval_qwen3 | spec_casc_tok | loosest | 0.8 | 143 | 3.02 (2.89) | 3568 (3772) | 0.95 [0.89, 1.00] | 0.90 [0.85, 0.96]↓ | 0.88 · cross-node | 9% (12%) | - (85%) | kn176 |
 
 ### Block 7b: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 3.3.
+GPU-h actual (lane journals): 4.3.
 
 `campaign/addendum/tables/step9__qwen3-8b__qwen3-0.6b.csv` (draft_model, V1 full patches):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 118 | 3.42 (2.54) | 2528 (3001) | 0.84 [0.78, 0.91]↓ | 0.66 [0.61, 0.72]↓ | 0.73 · cross-node | 3% (5%) | 44% (-) | kn173 |
-| longbench_v2_qwen3 | cactus | loosest | 0.35 | 118 | 3.85 (2.54) | 2274 (3001) | 0.76 [0.69, 0.83]↓ | 0.55 [0.50, 0.60]↓ | 0.58 · cross-node | 2% (5%) | 41% (-) | kn174 |
-| longbench_v2_qwen3 | spec_casc_opt | loosest | 0.05 | 118 | 3.28 (2.54) | 2403 (3001) | 0.80 [0.72, 0.89]↓ | 0.65 [0.59, 0.72]↓ | 0.67 · cross-node | 5% (5%) | 46% (-) | kn177 |
-| longbench_v2_qwen3 | r_fuzzy | loosest | 0.25 | 118 | 4.05 (2.54) | 2468 (3001) | 0.82 [0.74, 0.91]↓ | 0.57 [0.51, 0.63]↓ | 0.60 · cross-node | 3% (5%) | 39% (-) | kn175 |
-| longbench_v2_qwen3 | spec_casc_tok | loosest | 0.8 | 118 | 2.89 (2.54) | 2493 (3001) | 0.83 [0.76, 0.91]↓ | 0.76 [0.70, 0.82]↓ | 0.77 | 3% (5%) | 51% (-) | kn176 |
+| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 150 | 3.40 (2.51) | 2486 (2989) | 0.83 [0.78, 0.89]↓ | 0.65 [0.61, 0.70]↓ | 0.71 · cross-node | 3% (5%) | 44% (-) | kn173 |
+| longbench_v2_qwen3 | cactus | loosest | 0.35 | 150 | 3.84 (2.51) | 2259 (2989) | 0.76 [0.70, 0.82]↓ | 0.54 [0.50, 0.59]↓ | 0.57 · cross-node | 3% (5%) | 43% (-) | kn174 |
+| longbench_v2_qwen3 | spec_casc_opt | loosest | 0.05 | 150 | 3.27 (2.51) | 2399 (2989) | 0.80 [0.73, 0.88]↓ | 0.65 [0.60, 0.71]↓ | 0.67 · cross-node | 5% (5%) | 45% (-) | kn177 |
+| longbench_v2_qwen3 | r_fuzzy | loosest | 0.25 | 150 | 4.03 (2.51) | 2432 (2989) | 0.81 [0.74, 0.89]↓ | 0.56 [0.51, 0.61]↓ | 0.60 · cross-node | 3% (5%) | 39% (-) | kn175 |
+| longbench_v2_qwen3 | spec_casc_tok | loosest | 0.8 | 150 | 2.87 (2.51) | 2528 (2989) | 0.85 [0.79, 0.91]↓ | 0.77 [0.72, 0.82]↓ | 0.78 | 3% (5%) | 51% (-) | kn176 |
 
 ### Block 7c: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, mtbench (killarney)
 
@@ -1493,39 +1493,39 @@ GPU-h actual (lane journals): 1.5.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| mtbench_qwen3 | mentored_dec | loosest | 0.75 | 80 | 3.35 (2.38) | 1876 (1997) | 0.94 [0.88, 1.00] | 0.73 [0.68, 0.77]↓ | 0.72 | 14% (15%) | - (-) | kn171 |
-| mtbench_qwen3 | cactus | loosest | 0.35 | 80 | 4.05 (2.38) | 1823 (1997) | 0.91 [0.84, 0.98]↓ | 0.60 [0.55, 0.65]↓ | 0.61 · cross-node | 10% (15%) | - (-) | kn175 |
+| mtbench_qwen3 | mentored_dec | loosest | 0.75 | 80 | 3.35 (2.38) | 1876 (1997) | 0.94 [0.88, 1.00]↓ | 0.73 [0.68, 0.77]↓ | 0.72 | 14% (15%) | - (-) | kn171 |
+| mtbench_qwen3 | cactus | loosest | 0.35 | 80 | 4.05 (2.38) | 1823 (1997) | 0.91 [0.84, 0.99]↓ | 0.60 [0.55, 0.65]↓ | 0.61 · cross-node | 10% (15%) | - (-) | kn175 |
 | mtbench_qwen3 | spec_casc_opt | loosest | 0.05 | 80 | 3.20 (2.38) | 1740 (1997) | 0.87 [0.81, 0.94]↓ | 0.70 [0.65, 0.75]↓ | 0.69 | 11% (15%) | - (-) | kn171 |
-| mtbench_qwen3 | r_fuzzy | loosest | 0.25 | 80 | 3.99 (2.38) | 1772 (1997) | 0.89 [0.82, 0.95]↓ | 0.58 [0.54, 0.62]↓ | 0.58 · cross-node | 12% (15%) | - (-) | kn174 |
-| mtbench_qwen3 | spec_casc_tok | loosest | 0.8 | 80 | 2.75 (2.38) | 1937 (1997) | 0.97 [0.90, 1.04] | 0.88 [0.83, 0.94]↓ | 0.88 · cross-node | 10% (15%) | - (-) | kn177 |
+| mtbench_qwen3 | r_fuzzy | loosest | 0.25 | 80 | 3.99 (2.38) | 1772 (1997) | 0.89 [0.82, 0.96]↓ | 0.58 [0.54, 0.62]↓ | 0.58 · cross-node | 12% (15%) | - (-) | kn174 |
+| mtbench_qwen3 | spec_casc_tok | loosest | 0.8 | 80 | 2.75 (2.38) | 1937 (1997) | 0.97 [0.91, 1.04] | 0.88 [0.83, 0.95]↓ | 0.88 · cross-node | 10% (15%) | - (-) | kn177 |
 
 ### Block 7d: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, aime24 (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 0.6.
 
 `campaign/addendum/tables/step9__qwen3-8b__qwen3-0.6b.csv` (draft_model, V1 full patches):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| aime24_qwen3 | mentored_dec | loosest | 0.75 | 15 | 4.74 (3.60) | 16358 (17631) | 0.93 [0.81, 1.08] | 0.73 [0.64, 0.85]↓ | 0.70 · cross-node | 0% (13%) | - (-) | kn171 |
-| aime24_qwen3 | cactus | loosest | 0.35 | 15 | 5.03 (3.60) | 13600 (17631) | 0.77 [0.62, 0.95]↓ | 0.58 [0.46, 0.71]↓ | 0.56 · cross-node | 0% (13%) | - (-) | kn175 |
-| aime24_qwen3 | spec_casc_opt | loosest | 0.05 | 12 | 4.36 (3.58) | 15978 (17667) | 0.90 [0.76, 1.04] | 0.76 [0.64, 0.87]↓ | 0.80 · cross-node | 8% (17%) | - (-) | kn172 |
-| aime24_qwen3 | r_fuzzy | loosest | 0.25 | 11 | 5.25 (3.62) | 17480 (18292) | 0.96 [0.72, 1.32] | 0.70 [0.53, 0.97]↓ | 0.68 · cross-node | 18% (18%) | - (-) | kn173 |
-| aime24_qwen3 | spec_casc_tok | loosest | 0.8 | 15 | 4.02 (3.60) | 15631 (17631) | 0.89 [0.73, 1.06] | 0.80 [0.67, 0.94]↓ | 0.79 · cross-node | 0% (13%) | - (-) | kn174 |
+| aime24_qwen3 | mentored_dec | loosest | 0.75 | 23 | 4.74 (3.59) | 17322 (17494) | 0.99 [0.86, 1.15] | 0.79 [0.69, 0.91]↓ | 0.76 · cross-node | 4% (9%) | - (-) | kn171 |
+| aime24_qwen3 | cactus | loosest | 0.35 | 23 | 5.03 (3.59) | 15657 (17494) | 0.89 [0.74, 1.08] | 0.68 [0.56, 0.82]↓ | 0.66 · cross-node | 4% (9%) | - (-) | kn175 |
+| aime24_qwen3 | spec_casc_opt | loosest | 0.05 | 22 | 4.39 (3.61) | 16190 (17494) | 0.93 [0.82, 1.03] | 0.78 [0.70, 0.87]↓ | 0.83 · cross-node | 5% (9%) | - (-) | kn172 |
+| aime24_qwen3 | r_fuzzy | loosest | 0.25 | 20 | 5.26 (3.63) | 18432 (17138) | 1.08 [0.88, 1.31] | 0.79 [0.65, 0.97]↓ | 0.78 · cross-node | 15% (10%) | - (-) | kn173 |
+| aime24_qwen3 | spec_casc_tok | loosest | 0.8 | 23 | 4.05 (3.59) | 16843 (17494) | 0.96 [0.81, 1.14] | 0.87 [0.74, 1.01] | 0.87 · cross-node | 9% (9%) | - (-) | kn174 |
 
 ### Block 8a: Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle, humaneval (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 1.0.
 
 `campaign/addendum/tables/step9__qwen3-8b__peagle.csv` (eagle3, V1 full patches):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| humaneval_qwen3 | mentored_dec | loosest | 0.75 | 88 | 2.16 (1.99) | 3272 (3133) | 1.04 [0.95, 1.16] | 0.98 [0.89, 1.08] | 0.97 · cross-node | 10% (5%) | - (-) | kn171 |
-| humaneval_qwen3 | cactus | loosest | 0.35 | 88 | 2.24 (1.99) | 3422 (3133) | 1.09 [1.02, 1.17]↑ | 1.00 [0.93, 1.07] | 0.99 · cross-node | 8% (5%) | - (-) | kn174 |
-| humaneval_qwen3 | spec_casc_opt | loosest | 0.05 | 88 | 2.15 (1.99) | 3589 (3133) | 1.15 [1.06, 1.24]↑ | 1.08 [1.01, 1.16]↑ | 1.06 · cross-node | 9% (5%) | - (-) | kn173 |
-| humaneval_qwen3 | r_fuzzy | loosest | 0.25 | 70 | 2.57 (1.96) | 5305 (2897) | 1.83 [1.64, 2.05]↑ | 1.54 [1.39, 1.70]↑ | 1.52 · cross-node | 20% (3%) | - (-) | kn171 |
-| humaneval_qwen3 | spec_casc_tok | loosest | 0.8 | 47 | 2.06 (1.97) | 2813 (2873) | 0.98 [0.85, 1.15] | 0.93 [0.82, 1.06] | 0.93 · cross-node | 4% (2%) | - (-) | kn176 |
+| humaneval_qwen3 | mentored_dec | loosest | 0.75 | 144 | 2.21 (2.04) | 3910 (3768) | 1.04 [0.97, 1.11] | 0.98 [0.92, 1.04] | 0.97 · cross-node | 14% (9%) | - (-) | kn171 |
+| humaneval_qwen3 | cactus | loosest | 0.35 | 144 | 2.29 (2.04) | 4036 (3768) | 1.07 [1.02, 1.12]↑ | 0.98 [0.94, 1.03] | 0.97 · cross-node | 12% (9%) | - (-) | kn174 |
+| humaneval_qwen3 | spec_casc_opt | loosest | 0.05 | 144 | 2.20 (2.04) | 4329 (3768) | 1.15 [1.08, 1.22]↑ | 1.09 [1.03, 1.15]↑ | 1.06 · cross-node | 12% (9%) | - (-) | kn173 |
+| humaneval_qwen3 | r_fuzzy | loosest | 0.25 | 115 | 2.61 (2.04) | 6033 (3499) | 1.72 [1.58, 1.89]↑ | 1.47 [1.35, 1.61]↑ | 1.45 · cross-node | 33% (7%) | - (-) | kn171 |
+| humaneval_qwen3 | spec_casc_tok | loosest | 0.8 | 118 | 2.12 (2.04) | 3504 (3583) | 0.98 [0.91, 1.06] | 0.95 [0.89, 1.02] | 0.95 · cross-node | 8% (8%) | - (-) | kn176 |
 
 ### Block 8b: Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle, longbench_v2 (killarney)
 
@@ -1593,7 +1593,7 @@ GPU-h actual (lane journals): 0.0.
 
 Pending.
 
-Step 9 GPU-h so far (lane journals): 154.4 over 21 blocks.
+Step 9 GPU-h so far (lane journals): 156.9 over 23 blocks.
 
 ## Observations, failures and anything that looked wrong
 
