@@ -417,12 +417,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_opt|0.05|calib",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.03|calib",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
-   "method": "spec_casc_opt",
-   "alpha": "0.05",
+   "method": "r_fuzzy",
+   "alpha": "0.03",
    "seed": 0,
    "cases": [
     "case_001",
@@ -456,12 +456,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.35|calib",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.55|calib",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
    "method": "mentored_dec",
-   "alpha": "0.35",
+   "alpha": "0.55",
    "seed": 0,
    "cases": [
     "case_001",
@@ -494,12 +494,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.1|calib",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|0.05|calib",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
    "method": "spec_casc_opt",
-   "alpha": "-0.1",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",
@@ -532,12 +532,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.8|calib",
-   "step": "9.5a",
-   "condition": "step9/llama31-8b-instruct__eagle3",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib",
+   "step": "9.5b",
+   "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "spec_casc_tok",
-   "alpha": "0.8",
+   "method": "mentored_dec",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -545,13 +545,13 @@
     "case_003"
    ],
    "prompt_root": "prompts/aime24_llama31",
-   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle3",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
    "max_new_tokens": 32768,
    "model_flags": [
     "--model-path",
     "RedHatAI/Llama-3.1-8B-Instruct",
     "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
     "--served-model-name",
     "llama31-8b-instruct"
    ],
@@ -559,8 +559,46 @@
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3",
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K13"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib",
+   "step": "9.5b",
+   "condition": "step9/llama31-8b-instruct__eagle1",
+   "dataset": "aime24_llama31",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/aime24_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
     "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K13"
    },
    "host": "killarney",
