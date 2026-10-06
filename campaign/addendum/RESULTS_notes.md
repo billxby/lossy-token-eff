@@ -326,3 +326,9 @@
   23:36Z, 8.9 GPU-h.** Lossless l_bar 1.88, accuracy 47%. Every rule saves rounds with tight intervals at near-unchanged
   length (lambda 0.94-1.10): spec_casc_opt 0.05 R 0.67 [0.62, 0.74], -0.02 R 0.73, cactus 0.35 R 0.74, spec_casc_tok
   0.8 R 0.81, mentored_dec 0.55 R 0.82; accuracy within ~5 points of lossless (42-53%) except r_fuzzy 0.25 (39%).
+- **Step 9, Block 3c (Llama-3.1-8B-Instruct + EAGLE-3, LongBench-v2, Killarney), complete 2026-10-06 00:29Z,
+  9.9 GPU-h.** The head barely drafts at these positions (lossless l_bar 0.06; prompts of 10k-45k tokens), accuracy
+  37%. Relaxing a head that proposes nothing useful only buys runaway answers: cactus raises l_bar to 2.7-4.0 but
+  answers grow 13-14x (63-83% cap-outs at 8,192) and R rises to 2.9-4.5; spec_casc_opt grows them 4.8-8.3x (R
+  1.5-2.1); mentored_dec 0.75 and r_fuzzy 0.25 2.4-3.2x (R ~2.2); accuracy falls to 25-32%. Only spec_casc_tok and
+  the gentlest r_fuzzy stay at lossless (R 1.02-1.04, 37-39%).
