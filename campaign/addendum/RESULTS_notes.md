@@ -336,3 +336,8 @@
   11.3 GPU-h.** Lossless l_bar 0.05 (the RH head does not draft at 10k-45k positions; BLOCK0), accuracy 54%. Only
   cactus moves acceptance (l_bar 0.9-3.4) and saves rounds (R 0.50-0.62) at a 18-30 point accuracy cost (24-36%),
   answers 1.1-2.9x longer; every other rule stays at lossless within noise (R 0.90-1.10, accuracy 49-57%).
+- **Step 9, Block 4a (GPT-OSS-20B + RedHatAI EAGLE-3, HumanEval, Killarney), complete 2026-10-06 02:17Z, 6.6 GPU-h.**
+  Lossless l_bar 2.04, accuracy 98%. No rule saves rounds: acceptance rises (l_bar up to 3.85) but answers grow faster
+  (lambda 1.25-3.11), so R is 1.02-2.70 everywhere except spec_casc_opt -0.3 (R 0.94 [0.84, 1.03], 93%). Accuracy
+  holds for mentored_dec and spec_casc_tok (95-97%) and falls with the looser cactus (63-87%) and r_fuzzy (23-77%).
+  As on step 8's LiveCodeBench with this head, the relaxations buy length, not speed.
