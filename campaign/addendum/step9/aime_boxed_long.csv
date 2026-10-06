@@ -20,16 +20,16 @@ addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.15
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.15/case_014/seed_0,aime24_llama31,mentored_dec,alpha0.15,case_014,1029,17,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.15/case_024/seed_0,aime24_llama31,mentored_dec,alpha0.15,case_024,1000,26,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.75/case_012/seed_0,aime24_llama31,mentored_dec,alpha0.75,case_012,62840,4,last_integer,wrong
-addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.75/case_023/seed_0,aime24_llama31,mentored_dec,alpha0.75,case_023, 1^2+2^2+9^2+9^2+9^2 = 1+4+81+81+81= 248.,248,last_integer,
-addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.75/case_029/seed_0,aime24_llama31,mentored_dec,alpha0.75,case_029,101+22,22,last_integer,
+addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.75/case_023/seed_0,aime24_llama31,mentored_dec,alpha0.75,case_023, 1^2+2^2+9^2+9^2+9^2 = 1+4+81+81+81= 248.,248,last_integer,wrong
+addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/mentored_dec/alpha0.75/case_029/seed_0,aime24_llama31,mentored_dec,alpha0.75,case_029,101+22,22,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/r_fuzzy/alpha0.03/case_022/seed_0,aime24_llama31,r_fuzzy,alpha0.03,case_022,6356,577,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/r_fuzzy/alpha0.25/case_012/seed_0,aime24_llama31,r_fuzzy,alpha0.25,case_012,1820,4,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_opt/alphaneg0.3/case_012/seed_0,aime24_llama31,spec_casc_opt,alphaneg0.3,case_012,1820,4,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.15/case_025/seed_0,aime24_llama31,spec_casc_tok,alpha0.15,case_025,m+n=13+12=25,25,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.35/case_002/seed_0,aime24_llama31,spec_casc_tok,alpha0.35,case_002,45+14 = 59,59,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.8/case_003/seed_0,aime24_llama31,spec_casc_tok,alpha0.8,case_003, 926 - 1,2,last_integer,wrong
-addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.8/case_017/seed_0,aime24_llama31,spec_casc_tok,alpha0.8,case_017,106.25,25,last_integer,
-addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.8/case_022/seed_0,aime24_llama31,spec_casc_tok,alpha0.8,case_022,2670,906,last_integer,
+addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.8/case_017/seed_0,aime24_llama31,spec_casc_tok,alpha0.8,case_017,106.25,25,last_integer,wrong
+addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/spec_casc_tok/alpha0.8/case_022/seed_0,aime24_llama31,spec_casc_tok,alpha0.8,case_022,2670,906,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/strict/strict/case_022/seed_0,aime24_llama31,strict,strict,case_022,1488,28,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/strict/strict/case_024/seed_0,aime24_llama31,strict,strict,case_024,"960,400",400,last_integer,wrong
 addendum/step9/llama31-8b-instruct__eagle1/aime24_llama31/strict/strict/case_027/seed_0,aime24_llama31,strict,strict,case_027,1830,18,last_integer,wrong
