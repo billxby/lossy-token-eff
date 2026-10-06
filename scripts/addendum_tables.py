@@ -831,6 +831,10 @@ def cmd_step9(args) -> int:
             step8_rows = []
         if not rows:
             continue
+        # time_ratio_same_node is a step-8 column that cmd_step8 writes only when some row has >= 10 same-node pairs,
+        # so a step-8 table whose rows never did lacks it (the standalone ones): appended, blank for the step-8 rows
+        if "time_ratio_same_node" not in fields and any("time_ratio_same_node" in r for r in rows):
+            fields.append("time_ratio_same_node")
         extra = sorted({k for r in rows for k in r} - set(fields))
         if extra:
             raise SystemExit(f"step-9 rows of {slug} carry columns the step-8 table lacks: {extra}")
