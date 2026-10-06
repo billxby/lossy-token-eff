@@ -1,21 +1,21 @@
 {
  "alert_seen": {
-  "K1": 116,
-  "K10": 104,
-  "K11": 112,
+  "K1": 120,
+  "K10": 108,
+  "K11": 114,
   "K12": 127,
-  "K13": 102,
-  "K14": 86,
-  "K15": 116,
-  "K16": 133,
-  "K2": 121,
-  "K3": 94,
-  "K4": 111,
+  "K13": 104,
+  "K14": 90,
+  "K15": 118,
+  "K16": 135,
+  "K2": 123,
+  "K3": 96,
+  "K4": 113,
   "K5": 124,
-  "K6": 126,
-  "K7": 85,
-  "K8": 120,
-  "K9": 92,
+  "K6": 128,
+  "K7": 89,
+  "K8": 122,
+  "K9": 94,
   "N1": 2,
   "N2": 2,
   "N3": 2,
@@ -772,7 +772,7 @@
     {
      "dependency": "",
      "id": "5977101",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:42Z"
     }
    ]
@@ -818,7 +818,7 @@
     {
      "dependency": "",
      "id": "5977110",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:55Z"
     }
    ]
@@ -870,7 +870,7 @@
     {
      "dependency": "",
      "id": "5977111",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:57Z"
     }
    ]
@@ -910,13 +910,13 @@
     {
      "dependency": "5974468",
      "id": "5975141",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:26Z"
     },
     {
      "dependency": "5975141",
      "id": "5975231",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:22Z"
     }
    ]
@@ -974,7 +974,7 @@
     {
      "dependency": "",
      "id": "5977112",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:58Z"
     }
    ]
@@ -1026,7 +1026,7 @@
     {
      "dependency": "",
      "id": "5977113",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:05:00Z"
     }
    ]
@@ -1084,7 +1084,7 @@
     {
      "dependency": "",
      "id": "5977114",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:05:01Z"
     }
    ]
@@ -1142,7 +1142,7 @@
     {
      "dependency": "",
      "id": "5977115",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:05:03Z"
     }
    ]
@@ -1212,7 +1212,7 @@
     {
      "dependency": "",
      "id": "5977102",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:44Z"
     }
    ]
@@ -1270,7 +1270,7 @@
     {
      "dependency": "",
      "id": "5977104",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:46Z"
     }
    ]
@@ -1328,7 +1328,7 @@
     {
      "dependency": "",
      "id": "5977105",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:48Z"
     }
    ]
@@ -1374,7 +1374,7 @@
     {
      "dependency": "5975131",
      "id": "5975132",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:13Z"
     }
    ]
@@ -1438,7 +1438,7 @@
     {
      "dependency": "",
      "id": "5977106",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:50Z"
     }
    ]
@@ -1490,7 +1490,7 @@
     {
      "dependency": "",
      "id": "5977107",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:51Z"
     }
    ]
@@ -1548,7 +1548,7 @@
     {
      "dependency": "",
      "id": "5977108",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:53Z"
     }
    ]
@@ -1606,7 +1606,7 @@
     {
      "dependency": "",
      "id": "5977109",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T11:04:54Z"
     }
    ]
@@ -1780,7 +1780,7 @@
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "99f88961ec8d43f2dc4035a520ef1c7dbb2e0cc99f0107da7f6d201baa5e4b2f"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1812,7 +1812,7 @@
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "0e39c046b46127972b659688fdecc9b825ce68818acb42f9202830b56b806cdb"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",

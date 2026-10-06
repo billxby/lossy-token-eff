@@ -33135,3 +33135,7 @@ addendum/step9/r1-distill-llama-8b__llama32-1b/longbench_v2_r1llama/spec_casc_op
 addendum/step9/r1-distill-llama-8b__llama32-1b/longbench_v2_r1llama/spec_casc_opt/alpha0.05/case_148/seed_0
 addendum/step9/r1-distill-llama-8b__llama32-1b/longbench_v2_r1llama/spec_casc_opt/alpha0.05/case_149/seed_0
 addendum/step9/r1-distill-llama-8b__llama32-1b/longbench_v2_r1llama/spec_casc_opt/alpha0.05/case_150/seed_0
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_tok/alpha0.8/case_029/seed_0
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_tok/alpha0.8/case_030/seed_0
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/strict/strict/case_029/seed_0
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/strict/strict/case_030/seed_0

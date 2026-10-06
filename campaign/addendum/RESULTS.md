@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 11:05 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 11:17 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1636,7 +1636,7 @@ GPU-h actual (lane journals): 5.7.
 | humaneval_r1llama | mentored_dec | loosest | 0.75 | 150 | 2.56 (1.69) | 4841 (3857) | 1.26 [1.16, 1.36]↑ | 0.93 [0.86, 1.00] | 0.91 · cross-node | 21% (6%) | 76% (89%) | kn176 |
 | humaneval_r1llama | cactus | loosest | 0.35 | 150 | 5.20 (1.69) | 7250 (3857) | 1.88 [1.71, 2.08]↑ | 0.80 [0.73, 0.88]↓ | 0.79 · cross-node | 59% (6%) | 26% (89%) | kn173 |
 | humaneval_r1llama | spec_casc_opt | loosest | 0.05 | 150 | 2.92 (1.69) | 5386 (3857) | 1.40 [1.28, 1.53]↑ | 0.97 [0.89, 1.06] | 0.97 · cross-node | 21% (6%) | 64% (89%) | kn175 |
-| humaneval_r1llama | r_fuzzy | loosest | 0.25 | 150 | 2.28 (1.69) | 5839 (3857) | 1.51 [1.39, 1.65]↑ | 1.26 [1.16, 1.38]↑ | 1.24 · cross-node | 4% (6%) | - (89%) | kn174 |
+| humaneval_r1llama | r_fuzzy | loosest | 0.25 | 150 | 2.28 (1.69) | 5839 (3857) | 1.51 [1.39, 1.65]↑ | 1.26 [1.16, 1.38]↑ | 1.24 · cross-node | 4% (6%) | 45% (89%) | kn174 |
 | humaneval_r1llama | spec_casc_tok | loosest | 0.8 | 150 | 2.22 (1.69) | 3847 (3857) | 1.00 [0.91, 1.09] | 0.81 [0.74, 0.88]↓ | 0.79 · cross-node | 12% (6%) | 77% (89%) | kn174 |
 
 ### Block 10b: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, longbench_v2 (killarney)
@@ -1649,7 +1649,7 @@ GPU-h actual (lane journals): 4.0.
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | longbench_v2_r1llama | mentored_dec | loosest | 0.75 | 150 | 2.65 (1.62) | 1712 (1802) | 0.95 [0.83, 1.09] | 0.68 [0.60, 0.77]↓ | 0.65 · cross-node | 5% (3%) | 31% (34%) | kn171 |
 | longbench_v2_r1llama | cactus | loosest | 0.35 | 150 | 5.06 (1.62) | 4756 (1802) | 2.64 [2.22, 3.17]↑ | 1.11 [0.95, 1.31] | 1.02 · cross-node | 33% (3%) | 25% (34%) | kn176 |
-| longbench_v2_r1llama | spec_casc_opt | loosest | 0.05 | 150 | 3.40 (1.62) | 5915 (1802) | 3.28 [2.79, 3.91]↑ | 2.05 [1.74, 2.42]↑ | 1.83 · cross-node | 60% (3%) | - (34%) | kn176 |
+| longbench_v2_r1llama | spec_casc_opt | loosest | 0.05 | 150 | 3.40 (1.62) | 5915 (1802) | 3.28 [2.79, 3.91]↑ | 2.05 [1.74, 2.42]↑ | 1.83 · cross-node | 60% (3%) | 34% (34%) | kn176 |
 | longbench_v2_r1llama | r_fuzzy | loosest | 0.25 | 150 | 2.40 (1.62) | 1494 (1802) | 0.83 [0.70, 0.99]↓ | 0.73 [0.60, 0.87]↓ | 0.69 · cross-node | 1% (3%) | 33% (34%) | kn171 |
 | longbench_v2_r1llama | spec_casc_tok | loosest | 0.8 | 150 | 2.24 (1.62) | 1698 (1802) | 0.94 [0.81, 1.08] | 0.72 [0.63, 0.81]↓ | 0.70 · cross-node | 6% (3%) | 33% (34%) | kn173 |
 
@@ -1669,19 +1669,19 @@ GPU-h actual (lane journals): 1.4.
 
 ### Block 10d: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, aime24 (killarney)
 
-GPU-h actual (lane journals): 2.9.
+GPU-h actual (lane journals): 4.2.
 
 `campaign/addendum/tables/step9__r1-distill-llama-8b__llama32-1b.csv` (draft_model, V1 full patches):
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| aime24_r1llama | mentored_dec | loosest | 0.75 | 28 | 2.70 (1.84) | 11180 (10824) | 1.03 [0.88, 1.22] | 0.79 [0.66, 0.95]↓ | 0.78 | 0% (0%) | 21% (-) | kn171 |
-| aime24_r1llama | cactus | loosest | 0.35 | 28 | 5.78 (1.84) | 26313 (10824) | 2.43 [2.00, 2.98]↑ | 0.98 [0.80, 1.21] | 1.04 · T same-node 1.04 (26 pairs) | 71% (0%) | 0% (-) | kn171:26+kn173:2 |
-| aime24_r1llama | spec_casc_opt | loosest | 0.05 | 28 | 3.06 (1.84) | 16374 (10824) | 1.51 [1.11, 2.02]↑ | 1.03 [0.76, 1.39] | 1.06 · cross-node | 18% (0%) | - (-) | kn174 |
-| aime24_r1llama | r_fuzzy | loosest | 0.25 | 28 | 1.82 (1.84) | 7051 (10824) | 0.65 [0.50, 0.87]↓ | 0.68 [0.49, 0.96]↓ | 0.68 · cross-node | 0% (0%) | 4% (-) | kn169 |
-| aime24_r1llama | spec_casc_tok | loosest | 0.8 | 28 | 2.76 (1.84) | 14293 (10824) | 1.32 [1.10, 1.56]↑ | 0.97 [0.82, 1.13] | 1.08 · cross-node | 0% (0%) | - (-) | kn176 |
+| aime24_r1llama | mentored_dec | loosest | 0.75 | 30 | 2.70 (1.83) | 10982 (11025) | 1.00 [0.85, 1.18] | 0.76 [0.63, 0.91]↓ | 0.75 | 0% (0%) | 20% (-) | kn171 |
+| aime24_r1llama | cactus | loosest | 0.35 | 30 | 5.79 (1.83) | 26743 (11025) | 2.43 [2.02, 2.93]↑ | 0.98 [0.81, 1.19] | 1.04 · T same-node 1.03 (28 pairs) | 73% (0%) | 0% (-) | kn171:28+kn173:2 |
+| aime24_r1llama | spec_casc_opt | loosest | 0.05 | 30 | 3.02 (1.83) | 15973 (11025) | 1.45 [1.08, 1.93]↑ | 0.99 [0.73, 1.32] | 1.02 · cross-node | 17% (0%) | 17% (-) | kn174 |
+| aime24_r1llama | r_fuzzy | loosest | 0.25 | 30 | 1.79 (1.83) | 7230 (11025) | 0.66 [0.51, 0.86]↓ | 0.69 [0.52, 0.96]↓ | 0.70 · cross-node | 0% (0%) | 3% (-) | kn169 |
+| aime24_r1llama | spec_casc_tok | loosest | 0.8 | 30 | 2.76 (1.83) | 15051 (11025) | 1.37 [1.15, 1.59]↑ | 1.00 [0.85, 1.15] | 1.11 · cross-node | 3% (0%) | - (-) | kn176 |
 
-Step 9 GPU-h so far (lane journals): 185.9 over 34 blocks.
+Step 9 GPU-h so far (lane journals): 187.2 over 34 blocks.
 
 ## Observations, failures and anything that looked wrong
 

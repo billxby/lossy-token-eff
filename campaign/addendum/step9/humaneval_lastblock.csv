@@ -833,8 +833,8 @@ addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_062/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_062,2,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_065/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_065,2,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_067/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_067,3,1,failed
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_137/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_137,13,1,
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_150/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_150,2,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_137/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_137,13,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_150/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_150,2,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_044/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_044,20,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_045/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_045,14,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_053/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_053,28,1,failed
