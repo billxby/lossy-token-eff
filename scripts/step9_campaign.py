@@ -1024,6 +1024,22 @@ def cmd_assign(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_phase2(args: argparse.Namespace) -> int:
+    """Turn on Phase 2 (GOAL.md: only if Phase 1 ended before 2026-10-08 18:00 ET; checked here)."""
+    state = load_state()
+    rows = read_manifest()
+    open_p1 = [r for r in rows if r["block"] in PHASE1 and r["status"] != "done"]
+    if open_p1:
+        raise SystemExit(f"Phase 1 not done: {len(open_p1)} items open")
+    if utc_now() >= PHASE2_CUTOFF:
+        raise SystemExit("past the Phase 2 cutoff: Phase 2 is skipped")
+    state["phase2"] = True
+    save_state(state)
+    ac.progress("step 9: Phase 1 complete; Phase 2 (standalone pairs, loosest + lossless) started")
+    print("phase2 on")
+    return 0
+
+
 def cmd_pass(args: argparse.Namespace) -> int:
     """Mark blocks as having passed Block 0 (after the smoke outputs were looked at): their work is planned."""
     state = load_state()
@@ -1067,7 +1083,7 @@ def cmd_cycle(args: argparse.Namespace) -> int:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("cmd", choices=["plan", "push", "submit", "collect", "cycle", "summary", "grade", "estimate",
-                                        "aimelog", "events", "warm", "alerts", "b0", "pass", "assign", "helog"])
+                                        "aimelog", "events", "warm", "alerts", "b0", "pass", "assign", "helog", "phase2"])
     parser.add_argument("--match", default="", help="assign: substring of the item ids to move")
     parser.add_argument("--lane", default="", help="assign: the lane to move them to")
     parser.add_argument("blocks", nargs="*", help="pass: the blocks whose Block 0 passed")
@@ -1089,7 +1105,7 @@ def main() -> int:
     return {"plan": cmd_plan, "push": cmd_push, "submit": cmd_submit, "collect": cmd_collect, "cycle": cmd_cycle,
             "summary": cmd_summary, "grade": cmd_grade, "estimate": cmd_estimate, "aimelog": cmd_aimelog,
             "events": cmd_events, "warm": cmd_warm, "alerts": cmd_alerts, "b0": cmd_b0, "pass": cmd_pass,
-            "assign": cmd_assign, "helog": cmd_helog}[args.cmd](args)
+            "assign": cmd_assign, "helog": cmd_helog, "phase2": cmd_phase2}[args.cmd](args)
 
 
 if __name__ == "__main__":
