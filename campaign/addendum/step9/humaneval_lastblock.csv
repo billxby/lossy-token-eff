@@ -13,3 +13,6 @@ addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/strict/strict/case_
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/strict/strict/case_116/seed_0,humaneval_llama31,strict,strict,case_116,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/strict/strict/case_123/seed_0,humaneval_llama31,strict,strict,case_123,2,1,failed
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/spec_casc_opt/alpha0.05/case_003/seed_0,humaneval_qwen3,spec_casc_opt,alpha0.05,case_003,4,3,failed
+addendum/step9/qwen3-8b__dspark/humaneval_qwen3/spec_casc_opt/alphaneg0.1/case_002/seed_0,humaneval_qwen3,spec_casc_opt,alphaneg0.1,case_002,2,1,
+addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_012/seed_0,humaneval_qwen3,strict,strict,case_012,2,1,
+addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_035/seed_0,humaneval_qwen3,strict,strict,case_035,2,1,
