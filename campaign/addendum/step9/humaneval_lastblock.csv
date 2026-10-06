@@ -76,6 +76,7 @@ addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.03/ca
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.03/case_127/seed_0,humaneval_llama31,cactus,alpha0.03,case_127,3,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.03/case_134/seed_0,humaneval_llama31,cactus,alpha0.03,case_134,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.03/case_139/seed_0,humaneval_llama31,cactus,alpha0.03,case_139,2,1,
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.03/case_146/seed_0,humaneval_llama31,cactus,alpha0.03,case_146,5,4,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.08/case_001/seed_0,humaneval_llama31,cactus,alpha0.08,case_001,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_008/seed_0,humaneval_llama31,cactus,alpha0.18,case_008,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_009/seed_0,humaneval_llama31,cactus,alpha0.18,case_009,2,1,failed
@@ -91,6 +92,8 @@ addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/ca
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_112/seed_0,humaneval_llama31,cactus,alpha0.18,case_112,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_124/seed_0,humaneval_llama31,cactus,alpha0.18,case_124,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_127/seed_0,humaneval_llama31,cactus,alpha0.18,case_127,2,1,
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_137/seed_0,humaneval_llama31,cactus,alpha0.18,case_137,4,1,
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.18/case_141/seed_0,humaneval_llama31,cactus,alpha0.18,case_141,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_015/seed_0,humaneval_llama31,cactus,alpha0.35,case_015,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_032/seed_0,humaneval_llama31,cactus,alpha0.35,case_032,5,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_036/seed_0,humaneval_llama31,cactus,alpha0.35,case_036,2,1,
@@ -100,6 +103,8 @@ addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/ca
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_067/seed_0,humaneval_llama31,cactus,alpha0.35,case_067,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_088/seed_0,humaneval_llama31,cactus,alpha0.35,case_088,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_093/seed_0,humaneval_llama31,cactus,alpha0.35,case_093,2,1,
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_096/seed_0,humaneval_llama31,cactus,alpha0.35,case_096,2,1,
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.35/case_105/seed_0,humaneval_llama31,cactus,alpha0.35,case_105,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/mentored_dec/alpha0.15/case_012/seed_0,humaneval_llama31,mentored_dec,alpha0.15,case_012,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/mentored_dec/alpha0.15/case_014/seed_0,humaneval_llama31,mentored_dec,alpha0.15,case_014,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/mentored_dec/alpha0.15/case_021/seed_0,humaneval_llama31,mentored_dec,alpha0.15,case_021,2,1,failed
@@ -130,6 +135,8 @@ addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.08/c
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.08/case_061/seed_0,humaneval_llama31,r_fuzzy,alpha0.08,case_061,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.15/case_002/seed_0,humaneval_llama31,r_fuzzy,alpha0.15,case_002,5,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.25/case_003/seed_0,humaneval_llama31,r_fuzzy,alpha0.25,case_003,3,1,failed
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.25/case_012/seed_0,humaneval_llama31,r_fuzzy,alpha0.25,case_012,5,1,
+addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.25/case_019/seed_0,humaneval_llama31,r_fuzzy,alpha0.25,case_019,3,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/spec_casc_opt/alpha0.05/case_004/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_004,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/spec_casc_opt/alpha0.05/case_006/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_006,2,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/spec_casc_opt/alpha0.05/case_033/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_033,2,1,

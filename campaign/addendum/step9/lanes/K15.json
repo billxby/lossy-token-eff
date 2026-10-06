@@ -1,12 +1,12 @@
 {
  "items": [
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.55|full",
+   "id": "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|cactus|0.08|full",
    "step": "9.4e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "humaneval_r1llama",
-   "method": "mentored_dec",
-   "alpha": "0.55",
+   "method": "cactus",
+   "alpha": "0.08",
    "seed": 0,
    "cases": [
     "case_004",
@@ -184,12 +184,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.3|calib",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.55|calib",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
-   "method": "spec_casc_opt",
-   "alpha": "-0.3",
+   "method": "spec_casc_tok",
+   "alpha": "0.55",
    "seed": 0,
    "cases": [
     "case_001",
@@ -222,12 +222,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.18|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.25|calib",
    "step": "9.5b",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "cactus",
-   "alpha": "0.18",
+   "method": "r_fuzzy",
+   "alpha": "0.25",
    "seed": 0,
    "cases": [
     "case_001",
