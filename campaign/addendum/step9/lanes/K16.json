@@ -443,12 +443,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|spec_casc_opt|0.05|full",
+   "id": "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|mentored_dec|0.75|full",
    "step": "9.9c",
    "condition": "step9/llama31-8b-instruct__llama32-1b",
    "dataset": "mtbench_llama31",
-   "method": "spec_casc_opt",
-   "alpha": "0.05",
+   "method": "mentored_dec",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",
@@ -558,12 +558,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|strict|strict|strict",
-   "step": "9.10b",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full",
+   "step": "9.10a",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
-   "dataset": "longbench_v2_r1llama",
-   "method": "strict",
-   "alpha": "strict",
+   "dataset": "humaneval_r1llama",
+   "method": "cactus",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",
@@ -717,9 +717,9 @@
     "case_149",
     "case_150"
    ],
-   "prompt_root": "prompts/longbench_v2_r1llama",
+   "prompt_root": "prompts/humaneval_r1llama",
    "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__llama32-1b",
-   "max_new_tokens": 8192,
+   "max_new_tokens": 9000,
    "model_flags": [
     "--model-path",
     "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
