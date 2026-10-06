@@ -388,3 +388,28 @@
   drafts (Llama, Qwen3 DSpark); with heads that stop drafting at long positions (R1, the RH GPT-OSS head and
   Llama EAGLE-3 on LongBench-v2) the relaxations either change nothing or, cactus above all, only buy runaway
   answers.
+- **Step 9 Phase 2 (standalone drafters, each rule at its loosest grid alpha + lossless; HumanEval, LongBench-v2,
+  MT-Bench, AIME24; Killarney), started 2026-10-06 05:30Z once Phase 1 was done, all 20 blocks complete by ~11:20Z.**
+  Qwen3-1.7B / 0.6B / P-EAGLE use 65536-position config copies on LongBench-v2 only (README deviation 40).
+  - Qwen3-8B + Qwen3-1.7B (blocks 6a-6d; lossless l_bar 3.0-4.2): every rule saves rounds with shorter answers, R
+    0.54-0.82, lambda 0.79-0.94, accuracy at or near lossless (HumanEval 82-85% vs 84%, AIME24 70-80% vs 73%,
+    LongBench-v2 42-51% vs 45% except spec_casc_opt 33%): the strong-drafter case of step 8, now on all four datasets.
+  - Qwen3-8B + Qwen3-0.6B (7a-7d; l_bar 2.4-3.6): the same, slightly weaker (R 0.54-0.90), accuracy within noise
+    except r_fuzzy 0.25 on AIME24 (50% vs 67%).
+  - Qwen3-8B + P-EAGLE (8a-8d; l_bar 1.4-2.3): little to gain, as in step 8 (R 0.82-0.98 at best); r_fuzzy 0.25
+    inflates (HumanEval R 1.42, 25%; AIME24 R 1.30, 37%) and the other rules cost 0-12 accuracy points.
+  - Llama-3.1-8B-Instruct + Llama-3.2-1B (9a-9d; l_bar 3.1-4.0): spec_casc_tok saves rounds at lossless accuracy
+    (HumanEval R 0.84, 57% vs 55%; LongBench-v2 R 0.56, 36% vs 37%; MT-Bench R 0.83); the other rules save rounds on
+    HumanEval but lose 14-32 points, and cactus / r_fuzzy lengthen LongBench-v2 and MT-Bench answers 1.6-2.5x. AIME24
+    sits at the accuracy floor (0-7%), where every rule shortens answers.
+  - R1-Distill-Llama-8B + Llama-3.2-1B (10a-10d; l_bar 1.6-1.8): mentored_dec and spec_casc_tok save rounds on
+    LongBench-v2 and MT-Bench (R 0.68-0.77) at near-lossless accuracy; on HumanEval only spec_casc_tok keeps accuracy
+    (R 0.81, 77% vs 89%), cactus and spec_casc_opt lengthen answers 1.4-3.3x and lose 25-63 points. On AIME24
+    (lossless 43%) every rule loses accuracy without a real saving (spec_casc_tok R 0.99 at 37%, mentored_dec R 0.76
+    at 20%, cactus / r_fuzzy 0-3%).
+- **Step 9 totals:** 34 blocks (Phase 1: 14 dedicated-drafter blocks; Phase 2: 20 standalone blocks), 597 manifest
+  items, all done in ~16 h of wall time (2026-10-05 19:23Z to 2026-10-06 ~11:20Z) on Killarney H100s, up to 16 lanes.
+  GPU-h (item wall time from the lane journals, as step 8): Phase 1 126.9, Phase 2 60.3, Block 0 smoke + warm-ups 2.1,
+  total 189.3. Open items for a later re-grade (graders unchanged): 101 AIME24 runs whose last boxed answer has more
+  than 3 digits (`step9/aime_boxed_long.csv`), 847 HumanEval runs whose last code block is not the solution
+  (`step9/humaneval_lastblock.csv`, almost all Llama-3.1: its HumanEval accuracies are lower bounds).

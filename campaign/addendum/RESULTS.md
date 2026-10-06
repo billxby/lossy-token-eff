@@ -2091,7 +2091,9 @@ Step 9 GPU-h so far (lane journals): 187.2 over 34 blocks.
     sits at the accuracy floor (0-7%), where every rule shortens answers.
   - R1-Distill-Llama-8B + Llama-3.2-1B (10a-10d; l_bar 1.6-1.8): mentored_dec and spec_casc_tok save rounds on
     LongBench-v2 and MT-Bench (R 0.68-0.77) at near-lossless accuracy; on HumanEval only spec_casc_tok keeps accuracy
-    (R 0.81, 77% vs 89%), cactus and spec_casc_opt lengthen answers 1.4-3.3x and lose 25-63 points.
+    (R 0.81, 77% vs 89%), cactus and spec_casc_opt lengthen answers 1.4-3.3x and lose 25-63 points. On AIME24
+    (lossless 43%) every rule loses accuracy without a real saving (spec_casc_tok R 0.99 at 37%, mentored_dec R 0.76
+    at 20%, cactus / r_fuzzy 0-3%).
 - **Step 9 totals:** 34 blocks (Phase 1: 14 dedicated-drafter blocks; Phase 2: 20 standalone blocks), 597 manifest
   items, all done in ~16 h of wall time (2026-10-05 19:23Z to 2026-10-06 ~11:20Z) on Killarney H100s, up to 16 lanes.
   GPU-h (item wall time from the lane journals, as step 8): Phase 1 126.9, Phase 2 60.3, Block 0 smoke + warm-ups 2.1,

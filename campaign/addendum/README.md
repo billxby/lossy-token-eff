@@ -448,3 +448,13 @@ Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`
    rebuild is also why a server start took ~5 min). Each lane now builds into its own workspace
    (`FLASHINFER_WORKSPACE_BASE=/scratch/billxby/step9/flashinfer/<lane>`): the same sources, flags and compiler, built
    once per lane and loaded afterwards. Outputs are unaffected; server starts get shorter.
+44. **Step-9 tables and two schema details (2026-10-06).** `tables/step9__<target>__<drafter>.csv` keeps exactly the
+   columns of the pair's `step8__` file, with one exception: cmd_step8 writes `time_ratio_same_node` only when some
+   row has 10 or more same-node pairs, so the standalone step-8 tables (Llama-3.2-1B rows, Qwen3-1.7B, P-EAGLE) lack
+   that column; when a step-9 row of such a pair has it, it is appended last (blank in the step-8 rows of
+   `pairs__`). Qwen3-8B + Qwen3-0.6B has no step-8 table (its earlier GSM8K / LiveCodeBench rows are the addendum's
+   step 4.3, `tables/lmdraft__*`, another schema): its step-9 table takes the Qwen3-1.7B standalone columns, and its
+   `pairs__` file holds the step-9 rows only. Phase 2's LongBench-v2 rows for Qwen3-1.7B, Qwen3-0.6B and P-EAGLE
+   draft with 65536-position config copies (as deviation 40; config sha256 1ddb5b89 -> 4df54204, 660db3b7 ->
+   8408670b, ea17a342 -> ecabb1e3), each with its own compile cache; Qwen3-0.6B's own cache was warmed first
+   (Killarney job 5974366, deviation 35).
