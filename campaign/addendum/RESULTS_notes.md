@@ -413,3 +413,14 @@
   total 189.3. Open items for a later re-grade (graders unchanged): 101 AIME24 runs whose last boxed answer has more
   than 3 digits (`step9/aime_boxed_long.csv`), 847 HumanEval runs whose last code block is not the solution
   (`step9/humaneval_lastblock.csv`, almost all Llama-3.1: its HumanEval accuracies are lower bounds).
+- **MT-Bench judge scores for steps 8 and 9 (2026-10-06, `step9/mtbench_judge/mtbench_vs_lossless.csv`; deviation 45,
+  $162.28).** Paired by question against the pair's own lossless run (1-10): spec_casc_tok never loses quality (every
+  arm within noise of lossless or above: +1.01 [0.47, 1.59] with Llama-3.2-1B, +0.57 with Llama EAGLE-3 at 0.8);
+  cactus and the loose r_fuzzy / spec_casc_opt settings lose 1.4-4.8 points wherever the drafter is weak (GPT-OSS RH
+  head, both Llama heads, R1-Distill, P-EAGLE: e.g. Llama EAGLE-1 cactus 1.3-2.0 vs 6.0); with drafters close to the
+  target (Qwen3-1.7B, 0.6B, DSpark at its gentler settings) every rule is near neutral (-0.7 to +0.5). The same
+  ordering as the accuracy columns of the other benchmarks.
+- **HumanEval grader check (deviation 45, `step9/humaneval_regrade.csv`).** Executing the last code block that
+  defines the entry point instead of the last block flips 315 of 897 flagged runs to passed: lossless +0 to +4.0
+  points (Llama-3.1 +0.7 to +4.0, Qwen3 +0 to +3.3), arms +0.7 to +10 points (mostly Llama). It does not make the
+  lossless references of one target agree better and changes no conclusion; the tables keep the campaign's grader.

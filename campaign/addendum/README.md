@@ -458,3 +458,16 @@ Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`
    draft with 65536-position config copies (as deviation 40; config sha256 1ddb5b89 -> 4df54204, 660db3b7 ->
    8408670b, ea17a342 -> ecabb1e3), each with its own compile cache; Qwen3-0.6B's own cache was warmed first
    (Killarney job 5974366, deviation 35).
+45. **MT-Bench judged for steps 8 and 9; HumanEval checked with a defining-block grader (2026-10-06, Bill).** At Bill's
+   request after step 9 (the step-9 plan had said no judge spend), every MT-Bench arm of the step-8 and step-9 tables
+   was judged exactly as the addendum's step 1.9 (scripts/addendum_mtbench_judge.py unchanged, pointed at the step-8 /
+   step-9 run trees by `scripts/step9_mtbench_judge.py`): FastChat single-answer prompts, turn 1, claude-fable-5-1 at
+   effort medium on the Message Batches API, batch msgbatch_011ouT5reDRgUyekZvEADp4T, 7,525 requests (12.77M input /
+   3.94M output tokens, $162.28), plus 635 runs with no readable answer scored 1 without a request; 63 judge refusals
+   are recorded as such. Llama-3.1 answers are the whole completion; Qwen3 / R1-Distill the text outside `<think>`.
+   Outputs `step9/mtbench_judge/` (per run, per arm, and `mtbench_vs_lossless.csv`, paired by question). HumanEval:
+   the 897 runs (all trees: paper grid 46, addendum 4, step 9 847) whose last code block is not the defining one were
+   re-executed on their last DEFINING block (`scripts/humaneval_regrade.py`, grade_humaneval.execute unchanged); 315
+   pass. The official tables keep the campaign's grader: the alternative does not make same-target lossless
+   accuracies agree better (Qwen3 82.7-84.7% -> 84.0-86.7%, Llama 55.3-58.0% -> 56.0-62.0%; within sampling noise at
+   n = 150) and changes no conclusion; the per-run verdicts are in `step9/humaneval_regrade.csv`.
