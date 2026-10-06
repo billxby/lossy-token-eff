@@ -66,5 +66,5 @@ addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alpha0.05/case_030/se
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_opt/alphaneg0.3/case_014/seed_0,aime24_qwen3,spec_casc_opt,alphaneg0.3,case_014,2025,1,last_integer,wrong
 addendum/step9/qwen3-8b__dspark/aime24_qwen3/spec_casc_tok/alpha0.35/case_014/seed_0,aime24_qwen3,spec_casc_tok,alpha0.35,case_014,8503,1,last_integer,wrong
 addendum/step9/qwen3-8b__qwen3-1.7b/aime24_qwen3/mentored_dec/alpha0.75/case_030/seed_0,aime24_qwen3,mentored_dec,alpha0.75,case_030,1022,2,last_integer,wrong
-addendum/step9/qwen3-8b__qwen3-1.7b/aime24_qwen3/spec_casc_tok/alpha0.8/case_030/seed_0,aime24_qwen3,spec_casc_tok,alpha0.8,case_030,1022,2,last_integer,
+addendum/step9/qwen3-8b__qwen3-1.7b/aime24_qwen3/spec_casc_tok/alpha0.8/case_030/seed_0,aime24_qwen3,spec_casc_tok,alpha0.8,case_030,1022,2,last_integer,wrong
 addendum/step9/qwen3-8b__qwen3-1.7b/aime24_qwen3/strict/strict/case_010/seed_0,aime24_qwen3,strict,strict,case_010,1 + 115 = 116,116,last_integer,correct
