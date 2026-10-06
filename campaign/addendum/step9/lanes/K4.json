@@ -189,12 +189,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|cactus|0.35|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|mentored_dec|0.75|full",
    "step": "9.10b",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "longbench_v2_r1llama",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "mentored_dec",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",

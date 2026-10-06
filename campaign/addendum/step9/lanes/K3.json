@@ -69,12 +69,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|spec_casc_opt|0.05|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|spec_casc_tok|0.8|full",
    "step": "9.10a",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "humaneval_r1llama",
-   "method": "spec_casc_opt",
-   "alpha": "0.05",
+   "method": "spec_casc_tok",
+   "alpha": "0.8",
    "seed": 0,
    "cases": [
     "case_001",

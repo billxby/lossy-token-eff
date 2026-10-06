@@ -304,12 +304,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|strict|strict|strict",
-   "step": "9.10b",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|r_fuzzy|0.25|full",
+   "step": "9.10a",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
-   "dataset": "longbench_v2_r1llama",
-   "method": "strict",
-   "alpha": "strict",
+   "dataset": "humaneval_r1llama",
+   "method": "r_fuzzy",
+   "alpha": "0.25",
    "seed": 0,
    "cases": [
     "case_001",
@@ -463,9 +463,9 @@
     "case_149",
     "case_150"
    ],
-   "prompt_root": "prompts/longbench_v2_r1llama",
+   "prompt_root": "prompts/humaneval_r1llama",
    "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__llama32-1b",
-   "max_new_tokens": 8192,
+   "max_new_tokens": 9000,
    "model_flags": [
     "--model-path",
     "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",

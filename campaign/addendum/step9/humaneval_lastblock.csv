@@ -642,6 +642,8 @@ addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_opt/a
 addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_opt/alpha0.05/case_073/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_073,2,1,
 addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_opt/alpha0.05/case_079/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_079,2,1,
 addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_opt/alpha0.05/case_121/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_121,2,1,
+addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_opt/alpha0.05/case_146/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_146,2,1,
+addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_opt/alpha0.05/case_149/seed_0,humaneval_llama31,spec_casc_opt,alpha0.05,case_149,2,1,
 addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_tok/alpha0.8/case_015/seed_0,humaneval_llama31,spec_casc_tok,alpha0.8,case_015,2,1,
 addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_tok/alpha0.8/case_056/seed_0,humaneval_llama31,spec_casc_tok,alpha0.8,case_056,3,1,
 addendum/step9/llama31-8b-instruct__llama32-1b/humaneval_llama31/spec_casc_tok/alpha0.8/case_059/seed_0,humaneval_llama31,spec_casc_tok,alpha0.8,case_059,2,1,
