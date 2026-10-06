@@ -1,12 +1,12 @@
 {
  "items": [
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.35|full",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.15|full",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "spec_casc_tok",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_004",

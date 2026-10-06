@@ -1,17 +1,14 @@
 {
  "items": [
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|strict",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.15|full",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
-   "method": "strict",
-   "alpha": "strict",
+   "method": "mentored_dec",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
-    "case_001",
-    "case_002",
-    "case_003",
     "case_004",
     "case_005",
     "case_006",

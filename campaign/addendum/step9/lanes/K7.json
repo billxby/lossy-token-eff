@@ -1,12 +1,12 @@
 {
  "items": [
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.15|full",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.18|full",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
-   "method": "mentored_dec",
-   "alpha": "0.15",
+   "method": "cactus",
+   "alpha": "0.18",
    "seed": 0,
    "cases": [
     "case_004",
