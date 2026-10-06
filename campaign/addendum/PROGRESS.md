@@ -1502,3 +1502,13 @@ for what is done; this file records every action and failure.
 - 2026-10-06T06:45:30Z step 9 lane K14: submitted job 5975143 (--dependency=afterany:5974471), ~5.0 GPU-h assigned
 - 2026-10-06T06:45:32Z step 9 lane K15: submitted job 5975145 (--dependency=afterany:5974473), ~5.0 GPU-h assigned
 - 2026-10-06T06:45:35Z step 9 lane K16: submitted job 5975148 (--dependency=afterany:5974474), ~5.0 GPU-h assigned
+- 2026-10-06T06:57:05Z step 9: pulled 609 run dir(s)
+- 2026-10-06T06:57:18Z step 9 lane K7: submitted job 5975228 (--dependency=afterany:5975135), ~6.4 GPU-h assigned
+- 2026-10-06T06:57:19Z step 9 lane K8: submitted job 5975229 (--dependency=afterany:5974464), ~5.8 GPU-h assigned
+- 2026-10-06T06:57:21Z step 9 lane K11: submitted job 5975230 (--dependency=afterany:5975140), ~6.1 GPU-h assigned
+- 2026-10-06T06:57:22Z step 9 lane K12: submitted job 5975231 (--dependency=afterany:5975141), ~6.4 GPU-h assigned
+- 2026-10-06T06:57:23Z step 9 lane K13: submitted job 5975232 (--dependency=afterany:5975142), ~6.1 GPU-h assigned
+- 2026-10-06T06:57:25Z step 9 lane K14: submitted job 5975233 (--dependency=afterany:5975143), ~5.9 GPU-h assigned
+- 2026-10-06T06:57:26Z step 9 lane K15: submitted job 5975234 (--dependency=afterany:5975145), ~5.8 GPU-h assigned
+- 2026-10-06T06:57:28Z step 9 lane K16: submitted job 5975235 (--dependency=afterany:5975148), ~5.9 GPU-h assigned
+- 2026-10-06T06:58:29Z step 9 grading: 215 new run dir(s) uploaded, 215 pending, CPU job 23304463

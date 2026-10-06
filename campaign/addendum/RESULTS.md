@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 06:46 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 06:58 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1405,25 +1405,47 @@ GPU-h actual (lane journals): 6.5.
 
 GPU-h actual (lane journals): 0.0.
 
-Pending.
+`campaign/addendum/tables/step9__qwen3-8b__qwen3-1.7b.csv` (draft_model, V1 full patches):
+
+| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| humaneval_qwen3 | mentored_dec | loosest | 0.75 | 35 | 4.30 (3.57) | 2650 (3107) | 0.85 [0.68, 1.08] | 0.71 [0.57, 0.90]↓ | 0.71 · cross-node | 6% (9%) | - (-) | kn171 |
 
 ### Block 6b: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, longbench_v2 (killarney)
 
 GPU-h actual (lane journals): 0.0.
 
-Pending.
+`campaign/addendum/tables/step9__qwen3-8b__qwen3-1.7b.csv` (draft_model, V1 full patches):
+
+| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 26 | 4.40 (3.00) | 2185 (2310) | 0.95 [0.80, 1.14] | 0.70 [0.59, 0.85]↓ | 0.72 · cross-node | 0% (0%) | - (-) | kn171 |
+| longbench_v2_qwen3 | r_fuzzy | loosest | 0.25 | 26 | 4.06 (3.00) | 2063 (2310) | 0.89 [0.74, 1.11] | 0.70 [0.59, 0.85]↓ | 0.71 · cross-node | 0% (0%) | - (-) | kn176 |
+| longbench_v2_qwen3 | spec_casc_tok | loosest | 0.8 | 26 | 3.87 (3.00) | 2090 (2310) | 0.90 [0.76, 1.08] | 0.74 [0.63, 0.87]↓ | 0.75 · cross-node | 0% (0%) | - (-) | kn176 |
 
 ### Block 6c: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, mtbench (killarney)
 
 GPU-h actual (lane journals): 0.0.
 
-Pending.
+`campaign/addendum/tables/step9__qwen3-8b__qwen3-1.7b.csv` (draft_model, V1 full patches):
+
+| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| mtbench_qwen3 | mentored_dec | loosest | 0.75 | 50 | 4.43 (3.00) | 1827 (2050) | 0.89 [0.83, 0.95]↓ | 0.65 [0.60, 0.70]↓ | 0.66 · cross-node | 8% (18%) | - (-) | kn173 |
+| mtbench_qwen3 | cactus | loosest | 0.35 | 50 | 4.44 (3.00) | 1760 (2050) | 0.86 [0.78, 0.93]↓ | 0.63 [0.57, 0.68]↓ | 0.64 · cross-node | 12% (18%) | - (-) | kn173 |
+| mtbench_qwen3 | spec_casc_opt | loosest | 0.05 | 50 | 4.60 (3.00) | 1778 (2050) | 0.87 [0.78, 0.95]↓ | 0.62 [0.56, 0.68]↓ | 0.62 · cross-node | 10% (18%) | - (-) | kn176 |
+| mtbench_qwen3 | r_fuzzy | loosest | 0.25 | 50 | 4.39 (3.00) | 1821 (2050) | 0.89 [0.81, 0.97]↓ | 0.65 [0.60, 0.71]↓ | 0.65 · cross-node | 10% (18%) | - (-) | kn174 |
+| mtbench_qwen3 | spec_casc_tok | loosest | 0.8 | 50 | 3.84 (3.00) | 1900 (2050) | 0.93 [0.86, 1.00] | 0.78 [0.71, 0.84]↓ | 0.78 · cross-node | 12% (18%) | - (-) | kn174 |
 
 ### Block 6d: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, aime24 (killarney)
 
 GPU-h actual (lane journals): 0.0.
 
-Pending.
+`campaign/addendum/tables/step9__qwen3-8b__qwen3-1.7b.csv` (draft_model, V1 full patches):
+
+| dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| aime24_qwen3 | mentored_dec | loosest | 0.75 | 5 | 5.42 (4.23) | 19887 (20413) | 0.97 [0.84, 1.05] | 0.77 [0.69, 0.85]↓ | 0.71 · cross-node | 20% (20%) | - (-) | kn176 |
 
 ### Block 7a: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, humaneval (killarney)
 
