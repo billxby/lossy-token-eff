@@ -346,3 +346,12 @@
   accuracy 29%, reported as is. cactus pushes l_bar to 2.8-4.0 by accepting what the collapsed head proposes, and the
   answers run to the cap (lambda 3.9-4.0, 85-88% cap-outs vs 4%) for R 0.86-1.07 and 23-29% accuracy; spec_casc_opt
   0.05 saves rounds (R 0.83 [0.75, 0.92], lambda 1.23) at 33%; the other rules match lossless (R 0.99-1.04).
+- **Step 9, Block 3d (Llama-3.1-8B-Instruct + EAGLE-1, LongBench-v2, Killarney), complete 2026-10-06 03:07Z,
+  9.7 GPU-h.** EAGLE-1 still drafts at these positions (lossless l_bar 0.92, against EAGLE-3's 0.06 in Block 3c),
+  accuracy 35%. spec_casc_tok is again the one rule that speeds Llama up: R 0.57-0.65 with shorter answers (lambda
+  0.69-0.73) at 35-37% accuracy, as on step 8's datasets. cactus, r_fuzzy 0.25 and mentored_dec 0.75 inflate answers
+  4-10x (cap-outs up to 79%, R 3.9-6.8, accuracy 19-26%); spec_casc_opt lengthens them 1.7-4.2x (R 1.1-1.4).
+- **Step 9, Block 4b (Qwen3-8B + DSpark, HumanEval, Killarney), complete 2026-10-06 03:08Z, 8.1 GPU-h.** Lossless l_bar
+  2.50, accuracy 84% (11% cap-outs at 9,000). Small, tight gains as on Qwen3's other datasets: R 0.92-0.95 for
+  mentored_dec, cactus 0.03 / 0.35, spec_casc_opt -0.1 and spec_casc_tok 0.8 at 80-89% accuracy; spec_casc_opt 0.05
+  (R 1.09, 61%) and r_fuzzy 0.15 / 0.25 (64-70%) cost accuracy without saving rounds.
