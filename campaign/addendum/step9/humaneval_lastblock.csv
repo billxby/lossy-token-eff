@@ -810,3 +810,10 @@ addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/r_fuzzy/alpha0.25/c
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/r_fuzzy/alpha0.25/case_115/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_115,3,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/r_fuzzy/alpha0.25/case_121/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_121,2,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/spec_casc_opt/alphaneg0.3/case_023/seed_0,humaneval_r1llama,spec_casc_opt,alphaneg0.3,case_023,2,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_005/seed_0,humaneval_r1llama,cactus,alpha0.35,case_005,3,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_019/seed_0,humaneval_r1llama,cactus,alpha0.35,case_019,4,2,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_023/seed_0,humaneval_r1llama,cactus,alpha0.35,case_023,4,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_026/seed_0,humaneval_r1llama,cactus,alpha0.35,case_026,2,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_040/seed_0,humaneval_r1llama,cactus,alpha0.35,case_040,3,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_045/seed_0,humaneval_r1llama,cactus,alpha0.35,case_045,3,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_011/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_011,2,1,

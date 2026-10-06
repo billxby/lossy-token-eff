@@ -1,74 +1,6 @@
 {
  "items": [
   {
-   "id": "s9|qwen3-8b__peagle|aime24_qwen3|r_fuzzy|0.25|full",
-   "step": "9.8d",
-   "condition": "step9/qwen3-8b__peagle",
-   "dataset": "aime24_qwen3",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
-   "seed": 0,
-   "cases": [
-    "case_001",
-    "case_002",
-    "case_003",
-    "case_004",
-    "case_005",
-    "case_006",
-    "case_007",
-    "case_008",
-    "case_009",
-    "case_010",
-    "case_011",
-    "case_012",
-    "case_013",
-    "case_014",
-    "case_015",
-    "case_016",
-    "case_017",
-    "case_018",
-    "case_019",
-    "case_020",
-    "case_021",
-    "case_022",
-    "case_023",
-    "case_024",
-    "case_025",
-    "case_026",
-    "case_027",
-    "case_028",
-    "case_029",
-    "case_030"
-   ],
-   "prompt_root": "prompts/aime24_qwen3",
-   "runs_subroot": "runs/addendum/step9/qwen3-8b__peagle",
-   "max_new_tokens": 32768,
-   "model_flags": [
-    "--model-path",
-    "Qwen/Qwen3-8B",
-    "--draft-model-path",
-    "RedHatAI/Qwen3-8B-speculator.peagle",
-    "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "eagle3",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__peagle",
-    "PARALLEL_DRAFTING": "true",
-    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K3"
-   },
-   "host": "killarney",
-   "extra_flags": [
-    "--startup-timeout",
-    "1200"
-   ]
-  },
-  {
    "id": "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|strict",
    "step": "9.10c",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
@@ -185,12 +117,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|r_fuzzy|0.25|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|mentored_dec|0.75|full",
    "step": "9.10c",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "mtbench_r1llama",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
+   "method": "mentored_dec",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",
@@ -301,12 +233,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict",
    "step": "9.10d",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "aime24_r1llama",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "strict",
+   "alpha": "strict",
    "seed": 0,
    "cases": [
     "case_001",

@@ -1,21 +1,21 @@
 {
  "alert_seen": {
-  "K1": 106,
-  "K10": 98,
-  "K11": 103,
-  "K12": 119,
-  "K13": 93,
-  "K14": 82,
+  "K1": 110,
+  "K10": 102,
+  "K11": 107,
+  "K12": 121,
+  "K13": 95,
+  "K14": 86,
   "K15": 109,
-  "K16": 124,
+  "K16": 128,
   "K2": 109,
   "K3": 83,
   "K4": 104,
-  "K5": 113,
-  "K6": 117,
-  "K7": 81,
-  "K8": 112,
-  "K9": 84,
+  "K5": 115,
+  "K6": 121,
+  "K7": 85,
+  "K8": 116,
+  "K9": 88,
   "N1": 2,
   "N2": 2,
   "N3": 2,
@@ -629,12 +629,12 @@
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|calib": "K14",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|full": "K10",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|strict": "K5",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full": "K3",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|mentored_dec|0.75|full": "K1",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K9",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K2",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full": "K2",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|mentored_dec|0.75|full": "K12",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K10",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K1",
   "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full": "K8",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K12",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K3",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full": "K11",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|mentored_dec|0.75|full": "K8",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|r_fuzzy|0.25|full": "K14",
@@ -648,10 +648,10 @@
   "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|spec_casc_tok|0.8|full": "K10",
   "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|strict|strict|strict": "K15",
   "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|cactus|0.35|full": "K12",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|mentored_dec|0.75|full": "K2",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|r_fuzzy|0.25|full": "K3",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_opt|0.05|full": "K1",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_tok|0.8|full": "K2",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|mentored_dec|0.75|full": "K3",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|r_fuzzy|0.25|full": "K2",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_opt|0.05|full": "K12",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_tok|0.8|full": "K1",
   "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|strict": "K3"
  },
  "b0_notified": [
@@ -1272,13 +1272,13 @@
     {
      "dependency": "",
      "id": "5975131",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:12Z"
     },
     {
      "dependency": "5975131",
      "id": "5975132",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T06:45:13Z"
     }
    ]
@@ -1630,11 +1630,11 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "c2b4a6e0d831bc0563bb2c0a18ea09509d69cf95f90a3fe01a90a4359c05858b"
+   "work": "921b7a08a9db3af54a3b96c1f5ed1b475f835cc552cfcc3e1b7cf542a18c67ab"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "7c620f7cce2354108b0f5cd62adfbb9697a1277e4c5bbd876cc4532402d17a2f"
+   "work": "6ce72acc06280653394337f3f355a7e5d431ad9cb67e3004f283e4681a6a6591"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1642,11 +1642,11 @@
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "a10a45828b3b5670db7dbb0f785f657580356c04730e9250af68e5dab1ba6001"
+   "work": "f56f0dbae8df586ebad290320973605ee7a720c0b02a26de0fcd3a98cff30b65"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "bac1ad85a894dd735436f4650928165acae824d042ce12c062beaaafb4388dc6"
+   "work": "772d7da68d7692561a78021515546789e913a3fc318575ad44fd21b1e40c77b5"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1654,7 +1654,7 @@
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "3b595798f10c6db643116772742979b03a4451fcb23403dd8bc4bffba086edae"
+   "work": "b3b89ad06ccc80028ba2e4e94664d7686e025a2ec43414e46c939e368490c0b9"
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1662,19 +1662,19 @@
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "6e08b7a8565cca9fcc3dee0373eed60fd9714194512beb77c23adc8d8ca19247"
+   "work": "07fb684438592b867f01462be6c90451239b87bea0bb8672075c1239ce3ea164"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "7dae570bd12b24ccdd416441b5c53fcf0322a20e8c61506f89d8aaf356f37862"
+   "work": "66263a4382273f485d2db36cba40221b4eb17c79bcfc20b72794e48760201bee"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "5cb2174835e695b9c55c8748231d562a8d361145572b61e78796b1cb3661b36e"
+   "work": "c6adf4ab389a9ad9fc6706e835efc5d04d2ba24c848f29a91a99347bc6866ec8"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "49a2241912da6112cde4b2a2ae894a829d820b775c93eb5f75196bf6392fedd2"
+   "work": "d2f2067496522a21886b37d59d190dd548a3960afe55b4a0700eb934c6a6794f"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1690,7 +1690,7 @@
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "58b2346e50fbf32981a0948c1e5783ff117c2a906cbca3b18185495af21e2015"
+   "work": "e97a3c8d2635f61ed5466bfc20ed5e993a6c5565a867d4f7a6aac4b646dcc112"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1733,7 +1733,9 @@
   "7c",
   "7d",
   "8a",
-  "8c"
+  "8c",
+  "9a",
+  "9c"
  ],
  "warm": {
   "killarney": "5974366",
