@@ -189,12 +189,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|cactus|0.35|full",
+   "id": "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|mentored_dec|0.75|full",
    "step": "9.9c",
    "condition": "step9/llama31-8b-instruct__llama32-1b",
    "dataset": "mtbench_llama31",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "mentored_dec",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",
