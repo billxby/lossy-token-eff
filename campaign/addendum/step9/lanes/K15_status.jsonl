@@ -114,3 +114,5 @@
 {"t": "2026-10-06T10:40:29Z", "lane": "K15", "job": "5975145", "host": "kn172", "event": "job_end", "failures": 0}
 {"t": "2026-10-06T10:40:31Z", "lane": "K15", "job": "5975234", "host": "kn172", "event": "job_start", "work": "/scratch/billxby/step9/laneK15/work.json"}
 {"t": "2026-10-06T10:40:31Z", "lane": "K15", "job": "5975234", "host": "kn172", "event": "job_end", "failures": 0}
+{"t": "2026-10-06T10:53:34Z", "lane": "K15", "job": "5977046", "host": "kn174", "event": "job_start", "work": "/scratch/billxby/step9/laneK15/work.json"}
+{"t": "2026-10-06T10:53:34Z", "lane": "K15", "job": "5977046", "host": "kn174", "event": "job_end", "failures": 0}

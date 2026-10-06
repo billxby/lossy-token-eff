@@ -2,20 +2,20 @@
  "alert_seen": {
   "K1": 116,
   "K10": 104,
-  "K11": 109,
+  "K11": 112,
   "K12": 127,
-  "K13": 97,
+  "K13": 102,
   "K14": 86,
-  "K15": 113,
-  "K16": 130,
-  "K2": 117,
-  "K3": 92,
+  "K15": 116,
+  "K16": 133,
+  "K2": 121,
+  "K3": 94,
   "K4": 111,
   "K5": 124,
-  "K6": 124,
+  "K6": 126,
   "K7": 85,
-  "K8": 116,
-  "K9": 88,
+  "K8": 120,
+  "K9": 92,
   "N1": 2,
   "N2": 2,
   "N3": 2,
@@ -760,14 +760,20 @@
     {
      "dependency": "5975119",
      "id": "5975121",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:44:59Z"
     },
     {
      "dependency": "5975121",
      "id": "5975122",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:00Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977101",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:42Z"
     }
    ]
   },
@@ -800,14 +806,20 @@
     {
      "dependency": "5974466",
      "id": "5975138",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:22Z"
     },
     {
      "dependency": "5975138",
      "id": "5975139",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:23Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977110",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:55Z"
     }
    ]
   },
@@ -852,8 +864,14 @@
     {
      "dependency": "",
      "id": "5977044",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:38Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977111",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:57Z"
     }
    ]
   },
@@ -950,8 +968,14 @@
     {
      "dependency": "",
      "id": "5977045",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:39Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977112",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:58Z"
     }
    ]
   },
@@ -990,14 +1014,20 @@
     {
      "dependency": "5974471",
      "id": "5975143",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:30Z"
     },
     {
      "dependency": "5975143",
      "id": "5975233",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:25Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977113",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:05:00Z"
     }
    ]
   },
@@ -1048,8 +1078,14 @@
     {
      "dependency": "",
      "id": "5977046",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:41Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977114",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:05:01Z"
     }
    ]
   },
@@ -1100,8 +1136,14 @@
     {
      "dependency": "",
      "id": "5977047",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:42Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977115",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:05:03Z"
     }
    ]
   },
@@ -1164,8 +1206,14 @@
     {
      "dependency": "",
      "id": "5977038",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:30Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977102",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:44Z"
     }
    ]
   },
@@ -1216,8 +1264,14 @@
     {
      "dependency": "",
      "id": "5977040",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:33Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977104",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:46Z"
     }
    ]
   },
@@ -1268,8 +1322,14 @@
     {
      "dependency": "5975129",
      "id": "5975130",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:11Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977105",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:48Z"
     }
    ]
   },
@@ -1372,8 +1432,14 @@
     {
      "dependency": "",
      "id": "5977041",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:34Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977106",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:50Z"
     }
    ]
   },
@@ -1412,14 +1478,20 @@
     {
      "dependency": "5974462",
      "id": "5975135",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:18Z"
     },
     {
      "dependency": "5975135",
      "id": "5975228",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:57:18Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977107",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:51Z"
     }
    ]
   },
@@ -1470,8 +1542,14 @@
     {
      "dependency": "",
      "id": "5977042",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:35Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977108",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:53Z"
     }
    ]
   },
@@ -1522,8 +1600,14 @@
     {
      "dependency": "",
      "id": "5977043",
-     "state": "PENDING",
+     "state": "ENDED",
      "submitted": "2026-10-06T10:52:37Z"
+    },
+    {
+     "dependency": "",
+     "id": "5977109",
+     "state": "PENDING",
+     "submitted": "2026-10-06T11:04:54Z"
     }
    ]
   },
@@ -1684,7 +1768,7 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "c2ceed7610174a9c43040a458c14227ca17c58cab8767a30d4ac91aed07f7fb3"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1704,7 +1788,7 @@
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "558bd302aed5aa6214d2ebfdc148d535f3c227f6f994f92d51b4098794510e81"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1724,7 +1808,7 @@
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "73dbdd366cb74ef8fa2d9e6d25ebd17517e7951f676cac4cb2e9b11ce4cfa1b5"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1736,7 +1820,7 @@
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "4cad90646efccc0c9c27ac79f62c0ec0b16e29eee90591eaebd0a61d75569736"
+   "work": "c35116d1dce15c0a19834aeff564ada2f21639eb9a686c68f54c4e24c1700b34"
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",

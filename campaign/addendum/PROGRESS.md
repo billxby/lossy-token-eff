@@ -1561,3 +1561,19 @@ for what is done; this file records every action and failure.
 - 2026-10-06T10:52:41Z step 9 lane K15: submitted job 5977046, ~0.0 GPU-h assigned
 - 2026-10-06T10:52:42Z step 9 lane K16: submitted job 5977047, ~0.0 GPU-h assigned
 - 2026-10-06T10:53:01Z step 9 grading: 150 new run dir(s) uploaded, 150 pending, CPU job 23307660
+- 2026-10-06T11:04:30Z step 9: pulled 60 run dir(s)
+- 2026-10-06T11:04:42Z step 9 lane K1: submitted job 5977101, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:44Z step 9 lane K2: submitted job 5977102, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:46Z step 9 lane K3: submitted job 5977104, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:48Z step 9 lane K4: submitted job 5977105, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:50Z step 9 lane K6: submitted job 5977106, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:51Z step 9 lane K7: submitted job 5977107, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:53Z step 9 lane K8: submitted job 5977108, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:54Z step 9 lane K9: submitted job 5977109, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:55Z step 9 lane K10: submitted job 5977110, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:57Z step 9 lane K11: submitted job 5977111, ~0.0 GPU-h assigned
+- 2026-10-06T11:04:58Z step 9 lane K13: submitted job 5977112, ~0.0 GPU-h assigned
+- 2026-10-06T11:05:00Z step 9 lane K14: submitted job 5977113, ~0.0 GPU-h assigned
+- 2026-10-06T11:05:01Z step 9 lane K15: submitted job 5977114, ~0.0 GPU-h assigned
+- 2026-10-06T11:05:03Z step 9 lane K16: submitted job 5977115, ~0.0 GPU-h assigned
+- 2026-10-06T11:05:19Z step 9 grading: 60 new run dir(s) uploaded, 60 pending, CPU job 23307899

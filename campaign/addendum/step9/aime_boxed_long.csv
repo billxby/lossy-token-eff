@@ -86,12 +86,16 @@ addendum/step9/qwen3-8b__qwen3-1.7b/aime24_qwen3/spec_casc_tok/alpha0.8/case_030
 addendum/step9/qwen3-8b__qwen3-1.7b/aime24_qwen3/strict/strict/case_010/seed_0,aime24_qwen3,strict,strict,case_010,1 + 115 = 116,116,last_integer,correct
 addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/cactus/alpha0.35/case_006/seed_0,aime24_r1llama,cactus,alpha0.35,case_006,41 + 6 + 16 = 63,63,last_integer,wrong
 addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/mentored_dec/alpha0.75/case_014/seed_0,aime24_r1llama,mentored_dec,alpha0.75,case_014,1003,1,last_integer,wrong
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/mentored_dec/alpha0.75/case_024/seed_0,aime24_r1llama,mentored_dec,alpha0.75,case_024,1440,9,last_integer,
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/r_fuzzy/alpha0.25/case_021/seed_0,aime24_r1llama,r_fuzzy,alpha0.25,case_021,10002,1,last_integer,
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/r_fuzzy/alpha0.25/case_024/seed_0,aime24_r1llama,r_fuzzy,alpha0.25,case_024,2024,0,last_integer,
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/mentored_dec/alpha0.75/case_024/seed_0,aime24_r1llama,mentored_dec,alpha0.75,case_024,1440,9,last_integer,wrong
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/r_fuzzy/alpha0.25/case_021/seed_0,aime24_r1llama,r_fuzzy,alpha0.25,case_021,10002,1,last_integer,wrong
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/r_fuzzy/alpha0.25/case_024/seed_0,aime24_r1llama,r_fuzzy,alpha0.25,case_024,2024,0,last_integer,wrong
 addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_003/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_003,17/128,9,boxed,wrong
 addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_009/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_009,1349,676,boxed,wrong
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_011/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_011,62.18,18,last_integer,
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_012/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_012,2450,8,last_integer,
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_tok/alpha0.8/case_014/seed_0,aime24_r1llama,spec_casc_tok,alpha0.8,case_014,4167,2,last_integer,
-addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/strict/strict/case_014/seed_0,aime24_r1llama,strict,strict,case_014,2019,5,last_integer,
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_011/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_011,62.18,18,last_integer,wrong
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_012/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_012,2450,8,last_integer,wrong
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_027/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_027,2047,66,last_integer,
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_opt/alpha0.05/case_028/seed_0,aime24_r1llama,spec_casc_opt,alpha0.05,case_028,9999,7,last_integer,
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_tok/alpha0.8/case_014/seed_0,aime24_r1llama,spec_casc_tok,alpha0.8,case_014,4167,2,last_integer,wrong
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/spec_casc_tok/alpha0.8/case_024/seed_0,aime24_r1llama,spec_casc_tok,alpha0.8,case_024,1000,10,last_integer,
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/strict/strict/case_014/seed_0,aime24_r1llama,strict,strict,case_014,2019,5,last_integer,wrong
+addendum/step9/r1-distill-llama-8b__llama32-1b/aime24_r1llama/strict/strict/case_028/seed_0,aime24_r1llama,strict,strict,case_028,1004,999,last_integer,
