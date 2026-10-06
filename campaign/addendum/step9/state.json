@@ -9,13 +9,13 @@
   "K15": 104,
   "K16": 115,
   "K2": 103,
-  "K3": 79,
-  "K4": 100,
+  "K3": 81,
+  "K4": 102,
   "K5": 105,
   "K6": 115,
   "K7": 72,
   "K8": 109,
-  "K9": 79,
+  "K9": 81,
   "N1": 2,
   "N2": 2,
   "N3": 2,
@@ -361,29 +361,29 @@
   "s9|llama31-8b-instruct__eagle3|longbench_v2_llama31|spec_casc_tok|0.8|full": "K16",
   "s9|llama31-8b-instruct__eagle3|longbench_v2_llama31|strict|strict|strict": "K16",
   "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|cactus|0.35|full": "K3",
-  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|mentored_dec|0.75|full": "K6",
-  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|r_fuzzy|0.25|full": "K10",
-  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|spec_casc_opt|0.05|full": "K5",
-  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|spec_casc_tok|0.8|full": "K16",
-  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|strict|strict|strict": "K15",
+  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|mentored_dec|0.75|full": "K7",
+  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|r_fuzzy|0.25|full": "K16",
+  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|spec_casc_opt|0.05|full": "K15",
+  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|spec_casc_tok|0.8|full": "K9",
+  "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|strict|strict|strict": "K12",
   "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|cactus|0.35|full": "K16",
   "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|mentored_dec|0.75|full": "K5",
-  "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|r_fuzzy|0.25|full": "K1",
+  "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|r_fuzzy|0.25|full": "K5",
   "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|spec_casc_opt|0.05|full": "K2",
-  "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|spec_casc_tok|0.8|full": "K7",
+  "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|spec_casc_tok|0.8|full": "K1",
   "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|strict|strict|strict": "K7",
   "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|cactus|0.35|full": "K2",
   "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|mentored_dec|0.75|full": "K16",
-  "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|r_fuzzy|0.25|full": "K7",
-  "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|spec_casc_opt|0.05|full": "K1",
+  "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|r_fuzzy|0.25|full": "K1",
+  "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|spec_casc_opt|0.05|full": "K5",
   "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|spec_casc_tok|0.8|full": "K11",
-  "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|strict|strict|strict": "K5",
-  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|cactus|0.35|full": "K4",
-  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|mentored_dec|0.75|full": "K8",
+  "s9|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|strict|strict|strict": "K7",
+  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|cactus|0.35|full": "K8",
+  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|mentored_dec|0.75|full": "K14",
   "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|r_fuzzy|0.25|full": "K13",
-  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|spec_casc_opt|0.05|full": "K9",
-  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|spec_casc_tok|0.8|full": "K12",
-  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|strict|strict|strict": "K14",
+  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|spec_casc_opt|0.05|full": "K6",
+  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|spec_casc_tok|0.8|full": "K10",
+  "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|strict|strict|strict": "K9",
   "s9|qwen3-8b__dspark|aime24_qwen3|cactus|0.03|calib": "K12",
   "s9|qwen3-8b__dspark|aime24_qwen3|cactus|0.03|full": "K4",
   "s9|qwen3-8b__dspark|aime24_qwen3|cactus|0.08|calib": "K13",
@@ -630,28 +630,28 @@
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|full": "K10",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|strict": "K5",
   "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full": "K3",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|mentored_dec|0.75|full": "K16",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K2",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K5",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full": "K14",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K10",
-  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full": "K8",
-  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|mentored_dec|0.75|full": "K14",
-  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|r_fuzzy|0.25|full": "K9",
-  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|spec_casc_opt|0.05|full": "K4",
-  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|spec_casc_tok|0.8|full": "K1",
-  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|strict|strict|strict": "K2",
-  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|cactus|0.35|full": "K7",
-  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|mentored_dec|0.75|full": "K12",
-  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|r_fuzzy|0.25|full": "K15",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|mentored_dec|0.75|full": "K9",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K14",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K15",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full": "K8",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K16",
+  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full": "K2",
+  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|mentored_dec|0.75|full": "K8",
+  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|r_fuzzy|0.25|full": "K1",
+  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|spec_casc_opt|0.05|full": "K5",
+  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|spec_casc_tok|0.8|full": "K6",
+  "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|strict|strict|strict": "K14",
+  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|cactus|0.35|full": "K10",
+  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|mentored_dec|0.75|full": "K4",
+  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|r_fuzzy|0.25|full": "K12",
   "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|spec_casc_opt|0.05|full": "K11",
-  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|spec_casc_tok|0.8|full": "K6",
+  "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|spec_casc_tok|0.8|full": "K7",
   "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|strict|strict|strict": "K13",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|cactus|0.35|full": "K10",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|mentored_dec|0.75|full": "K5",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|cactus|0.35|full": "K16",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|mentored_dec|0.75|full": "K15",
   "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|r_fuzzy|0.25|full": "K3",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_opt|0.05|full": "K16",
-  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_tok|0.8|full": "K5",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_opt|0.05|full": "K9",
+  "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|spec_casc_tok|0.8|full": "K15",
   "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|strict": "K3"
  },
  "b0_notified": [
@@ -1364,13 +1364,13 @@
     {
      "dependency": "",
      "id": "5974462",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T05:37:15Z"
     },
     {
      "dependency": "5974462",
      "id": "5975135",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T06:45:18Z"
     },
     {
@@ -1410,13 +1410,13 @@
     {
      "dependency": "",
      "id": "5974463",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T05:37:17Z"
     },
     {
      "dependency": "5974463",
      "id": "5974464",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T05:37:18Z"
     },
     {
@@ -1630,11 +1630,11 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "826a754f6d07c60db1ed4889e58783ac5d2af064f9ad76b51176603d3a26ad3c"
+   "work": "1ca74ceb1c27c643c897fd2d8ef0d8c4d9f74d7dec2f17f3b0969f8c65549e7b"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "4e2e010d7ba264320f1cd388f1814efbd35b6ee81180a8192f6f12d559ba9ff8"
+   "work": "8fcabe54fedc461238bee42c5cd3c33a1c877317b861d75aa7118860fb21c487"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1642,55 +1642,55 @@
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "2b05e449ea8b2ad064c1dc4887b964237036a4e94ada833ea73d57722eff3d22"
+   "work": "51815e803b1c4aab7a583ebd53f8cc32c8e0109038f908aba8cf943505b597e6"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "0527ffde8ae9fa17a2ab6381d00af5faeac97fa7b0d9144b97e1806fdbf047a2"
+   "work": "0c4399781e499e768bc73d4933dc4f1934612757aefd30d4928a98ab2aaf0fa2"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "a3eeaeb35040b81116c635422d0308e7bf4f48eb57fb02a43bacb17107d6d74f"
+   "work": "dd54497660757839326add16eb74c21221af8dfec629738d9d706fbb02323557"
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "0c9e1ce83af9f8cfc9751fdb0e550b5ca0c3e87d6a9695f01ce032a5faa430df"
+   "work": "62c422d2a2c1d0a3f0c0c81c451eb3cf73baed4b3a5d7e8b5dbedb40724a6a17"
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "194290050a670f75496f2554b074cdf1615c684d0f8d3c9626be8f294b2d58e6"
+   "work": "631efe7b3d915abacc8d5b09eae89e67c9006eca6ad9faca7acf07b53517dbf1"
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "e3f8c786851758e8c43777e346074b6abcd1df2b5c849eda13fa419322c3295c"
+   "work": "3636a358ce401c4e69d4786207e7edd553737e58aaf6a6d61649f9f27bc6d385"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "720b55964ee699af9ff9fbc6a367c717658c0b31218e2e08e2701ed1a92687ed"
+   "work": "7064d067a17195309e4aa894a33c57d9429a5d630836947c0686d9766a76440d"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "26ca2dee4678b60878447ba9b72d32611ca7db0f89157a1e47a6efd8f10497b7"
+   "work": "5cb2174835e695b9c55c8748231d562a8d361145572b61e78796b1cb3661b36e"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "23c8e7ec70a348b3090b604ae8f4847d92b7d7ca381aee87f2d3936530d74424"
+   "work": "fb4d1895f8db91d74df9bcfec2a66a9d60991159b4e6c37ff1d930210b812533"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "9297231a04e1b17c561cdbe5700d7c3a3a866133745e575bb27f639a81ecd504"
+   "work": "f9a9e4ce81fb4b467d99f701d2de15a49ee6cabc29bde2e8b911b594516ed485"
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "694662153fa1b30503a3cf08864d673ecf43ddf95b374aaab1b64ee8516edfef"
+   "work": "83555b260e60787956e57be21a094c12960977d369d0d2b90505c856fb222325"
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d20650b4735cabceed8992aa177ae4e1a483e01d97d1b971784ce0fea933ab05"
+   "work": "39e2bd02b915666a513650237e7b3075090f91f936cd585dd3e927025bc7f90d"
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "be0bed7088f2292b5b22e3edccb026464015ebb70f120d787084de5757a417c4"
+   "work": "c711fbf6509e78837fdab3a3eb56e111526c5075a75f5b4ee483c6a8d6b21d27"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",

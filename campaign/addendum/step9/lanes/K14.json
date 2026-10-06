@@ -189,12 +189,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|strict|strict|strict",
+   "id": "s9|llama31-8b-instruct__llama32-1b|mtbench_llama31|mentored_dec|0.75|full",
    "step": "9.9c",
    "condition": "step9/llama31-8b-instruct__llama32-1b",
    "dataset": "mtbench_llama31",
-   "method": "strict",
-   "alpha": "strict",
+   "method": "mentored_dec",
+   "alpha": "0.75",
    "seed": 0,
    "cases": [
     "case_001",
@@ -304,12 +304,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|mentored_dec|0.75|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|strict|strict|strict",
    "step": "9.10a",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "humaneval_r1llama",
-   "method": "mentored_dec",
-   "alpha": "0.75",
+   "method": "strict",
+   "alpha": "strict",
    "seed": 0,
    "cases": [
     "case_001",
@@ -490,12 +490,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full",
    "step": "9.10d",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "aime24_r1llama",
-   "method": "spec_casc_tok",
-   "alpha": "0.8",
+   "method": "r_fuzzy",
+   "alpha": "0.25",
    "seed": 0,
    "cases": [
     "case_001",
