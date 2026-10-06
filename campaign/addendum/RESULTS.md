@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 05:28 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 05:38 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1401,7 +1401,125 @@ GPU-h actual (lane journals): 6.1.
 
 ### Phase 2: standalone drafters at each rule's loosest alpha
 
-Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
+### Block 6a: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 6b: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 6c: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, mtbench (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 6d: Qwen/Qwen3-8B + Qwen/Qwen3-1.7B, aime24 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 7a: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 7b: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 7c: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, mtbench (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 7d: Qwen/Qwen3-8B + Qwen/Qwen3-0.6B, aime24 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 8a: Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 8b: Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 8c: Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle, mtbench (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 8d: Qwen/Qwen3-8B + RedHatAI/Qwen3-8B-speculator.peagle, aime24 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 9a: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 9b: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 9c: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, mtbench (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 9d: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, aime24 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 10a: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, humaneval (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 10b: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, longbench_v2 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 10c: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, mtbench (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
+
+### Block 10d: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, aime24 (killarney)
+
+GPU-h actual (lane journals): 0.0.
+
+Pending.
 
 Step 9 GPU-h so far (lane journals): 126.5 over 14 blocks.
 
@@ -1786,4 +1904,15 @@ Step 9 GPU-h so far (lane journals): 126.5 over 14 blocks.
   14.8 GPU-h.** Lossless l_bar 1.89, accuracy 86% (7% cap-outs at 9,000). No rule saves rounds (R 0.95-1.63);
   spec_casc_tok (R 0.96-0.98, 81-87%) and mentored_dec / spec_casc_opt -0.3 / -0.1 (R 1.00-1.12, 79-84%) stay near
   lossless; cactus runs to the cap (64-77% cap-outs, 16-25%) and r_fuzzy 0.08 / 0.25 lose 35-69 points.
+- **Step 9, Block 5b (Llama-3.1-8B-Instruct + EAGLE-1, AIME24, Killarney), complete 2026-10-06 05:25Z, 6.1 GPU-h.**
+  At the accuracy floor like Block 5a (lossless 3%, arms 0-7%). spec_casc_tok shortens answers (lambda 0.46-0.52)
+  and cuts rounds (R 0.26-0.49); cactus and spec_casc_opt lengthen them 1.9-4.4x (cap-outs 23-53%). Rounds and length
+  only.
+- **Step 9 Phase 1 totals (2026-10-06 05:25Z):** all 14 blocks done on Killarney H100s in ~11 h of wall time
+  (Block 0 at 19:23Z to the last block at 05:25Z), 126.7 GPU-h of arm time (estimate 124; per block 3.4-15.2), up to
+  16 lanes at once. Across the five pairs the step-8 picture holds on the new datasets: acceptance rises with every
+  rule, answers lengthen, and spec_casc_tok is the one rule that saves rounds at lossless accuracy wherever the head
+  drafts (Llama, Qwen3 DSpark); with heads that stop drafting at long positions (R1, the RH GPT-OSS head and
+  Llama EAGLE-3 on LongBench-v2) the relaxations either change nothing or, cactus above all, only buy runaway
+  answers.
 

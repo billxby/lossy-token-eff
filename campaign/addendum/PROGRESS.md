@@ -1453,3 +1453,22 @@ for what is done; this file records every action and failure.
 - 2026-10-06T05:14:42Z step 9 grading: 3 new run dir(s) uploaded, 3 pending, CPU job 23299222
 - 2026-10-06T05:16:14Z step 9: pulled 1 run dir(s)
 - 2026-10-06T05:16:32Z step 9 grading: 1 new run dir(s) uploaded, 1 pending, CPU job 23299233
+- 2026-10-06T05:28:54Z step 9: Phase 1 complete; Phase 2 (standalone pairs, loosest + lossless) started
+- 2026-10-06T05:29:21Z step 9: warm-up job 5974366 on killarney (1 pair caches: qwen3-8b__qwen3-0.6b)
+- 2026-10-06T05:37:04Z step 9 lane K1: submitted job 5974451, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:05Z step 9 lane K2: submitted job 5974452, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:07Z step 9 lane K3: submitted job 5974453, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:10Z step 9 lane K4: submitted job 5974457, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:12Z step 9 lane K5: submitted job 5974459, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:14Z step 9 lane K6: submitted job 5974460, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:15Z step 9 lane K7: submitted job 5974462, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:17Z step 9 lane K8: submitted job 5974463, ~2.7 GPU-h assigned
+- 2026-10-06T05:37:18Z step 9 lane K8: submitted job 5974464 (--dependency=afterany:5974463), ~2.7 GPU-h assigned
+- 2026-10-06T05:37:20Z step 9 lane K9: submitted job 5974465, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:22Z step 9 lane K10: submitted job 5974466, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:23Z step 9 lane K11: submitted job 5974467, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:25Z step 9 lane K12: submitted job 5974468, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:26Z step 9 lane K13: submitted job 5974469, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:28Z step 9 lane K14: submitted job 5974471, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:29Z step 9 lane K15: submitted job 5974473, ~0.0 GPU-h assigned
+- 2026-10-06T05:37:31Z step 9 lane K16: submitted job 5974474, ~0.0 GPU-h assigned

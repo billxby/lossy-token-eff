@@ -1,4 +1,45 @@
 {
- "items": [],
- "hold_minutes": 0
+ "items": [
+  {
+   "id": "b0|qwen3-8b__peagle|aime24_qwen3|strict|strict|smoke",
+   "step": "9.8d",
+   "condition": "step9/qwen3-8b__peagle",
+   "dataset": "aime24_qwen3",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/aime24_qwen3",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__peagle",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "Qwen/Qwen3-8B",
+    "--draft-model-path",
+    "RedHatAI/Qwen3-8B-speculator.peagle",
+    "--served-model-name",
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__peagle",
+    "PARALLEL_DRAFTING": "true",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K12"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  }
+ ],
+ "hold_minutes": 30
 }

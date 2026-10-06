@@ -1,4 +1,80 @@
 {
- "items": [],
- "hold_minutes": 0
+ "items": [
+  {
+   "id": "b0|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|strict|strict|smoke",
+   "step": "9.9b",
+   "condition": "step9/llama31-8b-instruct__llama32-1b",
+   "dataset": "longbench_v2_llama31",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/longbench_v2_llama31",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/llama31-8b-instruct__llama32-1b",
+   "max_new_tokens": 8192,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "alpindale/Llama-3.2-1B-Instruct",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__llama32-1b",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K14"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|smoke",
+   "step": "9.10c",
+   "condition": "step9/r1-distill-llama-8b__llama32-1b",
+   "dataset": "mtbench_r1llama",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/mtbench_r1llama",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/r1-distill-llama-8b__llama32-1b",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "--draft-model-path",
+    "alpindale/Llama-3.2-1B-Instruct",
+    "--served-model-name",
+    "r1-distill-llama-8b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__llama32-1b",
+    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K14"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  }
+ ],
+ "hold_minutes": 30
 }
