@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 13:50 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 21:17 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -591,6 +591,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | lmdraft | gsm8k_qwen3 | mentored_dec | 0.750 | 150.000 | 3.822 | 3.161 | 1232.670 | 1309.720 | 0.941 | 0.800 | 0.707 | 0.827 | 0.767 | 0.200 | 0.273 | 0.884 | kn176 | kn169 | 0.000 | False | 0.900 | 0.985 | 0.762 | 0.839 | 0.674 | 0.743 | - |
 | lmdraft | gsm8k_qwen3 | cactus | 0.350 | 150.000 | 4.072 | 3.161 | 1224.330 | 1309.720 | 0.935 | 0.749 | 0.693 | 0.827 | 0.767 | 0.187 | 0.273 | 0.925 | kn169 | kn169 | 150.000 | True | 0.893 | 0.975 | 0.716 | 0.783 | 0.662 | 0.726 | 0.693 |
 | lmdraft | gsm8k_qwen3 | spec_casc_tok | 0.800 | 150.000 | 3.405 | 3.161 | 1247.030 | 1309.720 | 0.952 | 0.899 | 0.833 | 0.833 | 0.767 | 0.220 | 0.273 | 0.927 | kn176 | kn169 | 0.000 | False | 0.915 | 0.989 | 0.861 | 0.937 | 0.798 | 0.868 | - |
+| lmdraft | gsm8k_qwen3 | spec_casc_opt | 0.050 | 150.000 | 3.656 | 3.161 | 1284.690 | 1309.720 | 0.981 | 0.869 | 0.780 | 0.787 | 0.767 | 0.233 | 0.273 | 0.897 | kn174 | kn169 | 0.000 | False | 0.941 | 1.024 | 0.831 | 0.911 | 0.745 | 0.818 | - |
+| lmdraft | gsm8k_qwen3 | r_fuzzy | 0.250 | 150.000 | 4.681 | 3.161 | 1317.880 | 1309.720 | 1.006 | 0.719 | 0.644 | 0.760 | 0.767 | 0.253 | 0.273 | 0.896 | kn174 | kn169 | 0.000 | False | 0.965 | 1.051 | 0.687 | 0.754 | 0.616 | 0.675 | - |
 
 `campaign/addendum/tables/lmdraft__livecodebench_qwen3.csv`:
 
@@ -599,6 +601,8 @@ Source: `campaign/addendum/seeds/summary.csv` (per-seed tables `campaign/addendu
 | lmdraft | livecodebench_qwen3 | mentored_dec | 0.750 | 90.000 | 3.899 | 3.014 | 7435.800 | 8076.410 | 0.921 | 0.735 | 0.713 | 0.722 | 0.722 | 0.267 | 0.289 | 0.970 | kn176 | kn169 | 0.000 | False | 0.883 | 0.959 | 0.709 | 0.764 | 0.687 | 0.741 | - |
 | lmdraft | livecodebench_qwen3 | cactus | 0.350 | 90.000 | 4.312 | 3.014 | 7649.500 | 8076.410 | 0.947 | 0.695 | 0.683 | 0.756 | 0.722 | 0.244 | 0.289 | 0.983 | kn169 | kn169 | 90.000 | True | 0.908 | 0.988 | 0.668 | 0.725 | 0.656 | 0.713 | 0.683 |
 | lmdraft | livecodebench_qwen3 | spec_casc_tok | 0.800 | 90.000 | 3.275 | 3.014 | 7551.780 | 8076.410 | 0.935 | 0.871 | 0.853 | 0.789 | 0.722 | 0.211 | 0.289 | 0.980 | kn176 | kn169 | 0.000 | False | 0.896 | 0.975 | 0.835 | 0.907 | 0.818 | 0.889 | - |
+| lmdraft | livecodebench_qwen3 | spec_casc_opt | 0.050 | 90.000 | 3.526 | 3.014 | 7657.190 | 8076.410 | 0.948 | 0.825 | 0.833 | 0.700 | 0.722 | 0.300 | 0.289 | 1.010 | kn176 | kn169 | 0.000 | False | 0.906 | 0.990 | 0.790 | 0.860 | 0.798 | 0.870 | - |
+| lmdraft | livecodebench_qwen3 | r_fuzzy | 0.250 | 90.000 | 4.989 | 3.014 | 8246.190 | 8076.410 | 1.021 | 0.677 | 0.681 | 0.611 | 0.722 | 0.344 | 0.289 | 1.005 | kn176 | kn169 | 0.000 | False | 0.976 | 1.069 | 0.648 | 0.709 | 0.650 | 0.713 | - |
 
 ## Step 5: alpha grid completion and best-setting validation
 
@@ -2111,4 +2115,8 @@ Step 9 GPU-h so far (lane journals): 187.2 over 34 blocks.
   defines the entry point instead of the last block flips 315 of 897 flagged runs to passed: lossless +0 to +4.0
   points (Llama-3.1 +0.7 to +4.0, Qwen3 +0 to +3.3), arms +0.7 to +10 points (mostly Llama). It does not make the
   lossless references of one target agree better and changes no conclusion; the tables keep the campaign's grader.
+- **Qwen3-8B + Qwen3-0.6B, GSM8K / LiveCodeBench, the two missing rules (deviation 46).** lambda (accuracy): GSM8K
+  spec_casc_opt 0.05 0.98 (79%), r_fuzzy 0.25 1.01 (76%), lossless 77%; LiveCodeBench spec_casc_opt 0.95 (70%), r_fuzzy
+  1.02 (61%), lossless 72%. Rounds ratio 0.87 / 0.72 (GSM8K) and 0.83 / 0.68 (LiveCodeBench). With this drafter every
+  rule saves rounds; r_fuzzy 0.25 costs 11 points on LiveCodeBench.
 
