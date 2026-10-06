@@ -184,12 +184,50 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.08|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib",
    "step": "9.5b",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "cactus",
-   "alpha": "0.08",
+   "method": "mentored_dec",
+   "alpha": "0.15",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002",
+    "case_003"
+   ],
+   "prompt_root": "prompts/aime24_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle1",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE-LLaMA3.1-Instruct-8B-maxpos65536",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle1",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K13"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.8|calib",
+   "step": "9.5b",
+   "condition": "step9/llama31-8b-instruct__eagle1",
+   "dataset": "aime24_llama31",
+   "method": "spec_casc_tok",
+   "alpha": "0.8",
    "seed": 0,
    "cases": [
     "case_001",

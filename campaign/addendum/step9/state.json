@@ -133,34 +133,34 @@
   "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.8|calib": "K11",
   "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.8|full": "K4",
   "s9|gpt-oss-20b__rh-eagle3|longbench_v2|strict|strict|strict": "K9",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.03|calib": "K10",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.08|calib": "K13",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.18|calib": "K8",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.03|calib": "K11",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.08|calib": "K12",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.18|calib": "K5",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.35|calib": "K11",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib": "K16",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib": "K13",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.35|calib": "K9",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.55|calib": "K6",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.75|calib": "K11",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.75|calib": "K8",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.03|calib": "K13",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.08|calib": "K3",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.08|calib": "K14",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.15|calib": "K2",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.25|calib": "K6",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.25|calib": "K4",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.02|calib": "K7",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.1|calib": "K16",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.3|calib": "K12",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib": "K14",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.15|calib": "K4",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.3|calib": "K16",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib": "K3",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.15|calib": "K6",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.35|calib": "K1",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.55|calib": "K8",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.8|calib": "K16",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|strict|strict|strict": "K11",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.8|calib": "K13",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|strict|strict|strict": "K8",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.03|calib": "K16",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.08|calib": "K2",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.08|full": "K11",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.18|calib": "K12",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.18|full": "K5",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.18|full": "K10",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.35|calib": "K11",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.35|full": "K16",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.35|full": "K8",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|mentored_dec|0.15|calib": "K2",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|mentored_dec|0.15|full": "K5",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|mentored_dec|0.35|calib": "K12",
@@ -168,7 +168,7 @@
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|mentored_dec|0.75|calib": "K15",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|mentored_dec|0.75|full": "K16",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.03|calib": "K13",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.03|full": "K12",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.03|full": "K16",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.08|calib": "K14",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.15|calib": "K2",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.25|calib": "K12",
@@ -176,9 +176,9 @@
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.02|calib": "K8",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.1|calib": "K12",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.3|calib": "K15",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.3|full": "K10",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.3|full": "K12",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|0.05|calib": "K8",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|0.05|full": "K8",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|0.05|full": "K5",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.15|calib": "K5",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.15|full": "K4",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.35|calib": "K6",
@@ -241,7 +241,7 @@
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.35|calib": "K11",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.55|calib": "K1",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.8|calib": "K16",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|strict": "K5",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|strict": "K10",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.03|calib": "K13",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.03|full": "K4",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.08|calib": "K10",
@@ -433,7 +433,7 @@
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.03|calib": "K5",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.03|full": "K6",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.08|calib": "K11",
-  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.08|full": "K9",
+  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.08|full": "K15",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.15|calib": "K16",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.25|calib": "K9",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.25|full": "K13",
@@ -448,7 +448,7 @@
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.15|full": "K1",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.35|calib": "K16",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.55|calib": "K1",
-  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.55|full": "K15",
+  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.55|full": "K9",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.8|calib": "K11",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.8|full": "K14",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|strict": "K10",
@@ -1043,31 +1043,31 @@
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "1a640228ab0db94063ce658ba98226c6e497d7e67352eba0468048748b0612e2"
+   "work": "6f7f65f5299daa047615d0d8945c53d4e51815e2a1e18e888f56e01fc2fa166d"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "98c7866d48d5edd92e0ebc83fd009d2f921efb13b757fdca639539e253316edf"
+   "work": "5ca9601634f525f066160d524bd4cd97c687a2c11cc67c1e6d2bb1a2ded45126"
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "847832faff7df238b72aed77470da2ee857457f24ab05ffdd067514a2d571466"
+   "work": "78907cdf8535a1ed8a47d08aed0951b0b8be4fe168830e43b936f6f57dd53537"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "25b82c3e853684d1884ae4803a7d82e1b0acb809bec4e455c6b940cc2e5a2c46"
+   "work": "e16a00c13031d067288bb9eb74adc2a3acaccf5d60c3b828b8c3cc12bffe298c"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "326946e5c901f73ca325f3da111992d846e0b0440d465b228a2a6f4e0333ea75"
+   "work": "79c04a0d37b1bf930010bb64f949a6aec20f57acbc95882379738bfd92b45ca4"
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "486090ed82092bb61baa5870e8d7e8485acef54fb6eaa9707d11e51749c43ad4"
+   "work": "d75387236e8ee9e15e6a17fe904ade1cddc8dae52ae3b5b76beccba573ad27ac"
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "da9963517e04007665fc5ad1c726911b76bd4884c0f68c9037ecbaa9c52714c0"
+   "work": "582bbb10a70a2c1eaf57ce90a8d85853c401ed41bcd06b478371d6a659900712"
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1075,19 +1075,19 @@
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "daa6695e1361352a7de566dab1f61ce5c47132f30690c5c33e4da7a6b02ef239"
+   "work": "f2d0b98fe62d032c6a5eada557071c02594fb286830d13b1384e9fe8c627f301"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d7cc26ca1dee2811ea3412541c6ca20f78807d27977cadbe6047b1a65ed35a22"
+   "work": "f3abe7139939a0a180d2f0180c5a43c3989198f0b1be0fc68b1b7ac54fe81c4b"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "7e7d54914c37a5c6e322835f98cec71ac4df95d7e202ace4f4b68e220f5bc7fa"
+   "work": "48b3a038a8358cbda1e7a006a38a0e76b17852aa6e08e386a794fec0a2c61750"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "7d46fd1e1b5eb81dcefbfec840504ab3ae1da5724adf7cf4dde0d9b186391bff"
+   "work": "6623dd784ed4505e0c01679dc13376480754b334c0b79783df91fa662866acb7"
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1095,11 +1095,11 @@
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "0686e2b568650a0f894fdc23dba00c6ad1c0de3d67da5217b04ee7d917905c14"
+   "work": "f38fae0b7c408ca5a72585dea9f3035ee3f16dd016fea1229c6545dc537e7dd0"
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "b8562fd053f3e4aea84286627d5724cbb3ca5ebaa29788f02211d6c6bae14cee"
+   "work": "913d31affb5bfa07f8195fe3a90f119de892bf68389c30298d875fd9e0935965"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",

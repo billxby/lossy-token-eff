@@ -366,12 +366,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.08|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib",
    "step": "9.5b",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "r_fuzzy",
-   "alpha": "0.08",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",
