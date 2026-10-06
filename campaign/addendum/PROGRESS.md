@@ -1420,3 +1420,6 @@ for what is done; this file records every action and failure.
 - 2026-10-06T03:51:42Z step 9 grading: 665 new run dir(s) uploaded, 773 pending, CPU job 23297046
 - 2026-10-06T04:03:09Z step 9: pulled 1269 run dir(s)
 - 2026-10-06T04:05:05Z step 9 grading: 1269 new run dir(s) uploaded, 1269 pending, CPU job 23297538
+- 2026-10-06T04:16:22Z step 9: pulled 437 run dir(s)
+- 2026-10-06T04:16:26Z step 9 block 5a: calibrated llama31-8b-instruct__eagle3 aime24_llama31: targets [1.486, 3.078, 4.671], mentored_dec [0.75, 0.15], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.1, 0.05, -0.02], r_fuzzy [0.03, 0.25], spec_casc_tok [0.8, 0.15]
+- 2026-10-06T04:17:27Z step 9 grading: 437 new run dir(s) uploaded, 437 pending, CPU job 23297830
