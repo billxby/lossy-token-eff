@@ -183,12 +183,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|mentored_dec|0.55|full",
+   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|cactus|0.08|full",
    "step": "9.4b",
    "condition": "step9/qwen3-8b__dspark",
    "dataset": "humaneval_qwen3",
-   "method": "mentored_dec",
-   "alpha": "0.55",
+   "method": "cactus",
+   "alpha": "0.08",
    "seed": 0,
    "cases": [
     "case_004",
@@ -367,12 +367,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__dspark|humaneval_qwen3|spec_casc_tok|0.15|full",
-   "step": "9.4b",
-   "condition": "step9/qwen3-8b__dspark",
-   "dataset": "humaneval_qwen3",
-   "method": "spec_casc_tok",
-   "alpha": "0.15",
+   "id": "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.03|full",
+   "step": "9.4c",
+   "condition": "step9/llama31-8b-instruct__eagle3",
+   "dataset": "humaneval_llama31",
+   "method": "cactus",
+   "alpha": "0.03",
    "seed": 0,
    "cases": [
     "case_004",
@@ -523,25 +523,23 @@
     "case_149",
     "case_150"
    ],
-   "prompt_root": "prompts/humaneval_qwen3",
-   "runs_subroot": "runs/addendum/step9/qwen3-8b__dspark",
+   "prompt_root": "prompts/humaneval_llama31",
+   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__eagle3",
    "max_new_tokens": 9000,
    "model_flags": [
     "--model-path",
-    "Qwen/Qwen3-8B",
+    "RedHatAI/Llama-3.1-8B-Instruct",
     "--draft-model-path",
-    "deepseek-ai/dspark_qwen3_8b_block7",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/EAGLE3-LLaMA3.1-Instruct-8B-maxpos65536",
     "--served-model-name",
-    "qwen3-8b",
-    "--rope-scaling-json",
-    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+    "llama31-8b-instruct"
    ],
    "num_spec": 6,
    "temperature": 1.0,
    "top_p": 1.0,
    "env": {
-    "SPEC_METHOD": "dspark",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__dspark",
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__eagle3",
     "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K7"
    },
    "host": "killarney",
@@ -551,12 +549,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.35|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.15|calib",
    "step": "9.4d",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "humaneval_llama31",
    "method": "spec_casc_tok",
-   "alpha": "0.35",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -589,12 +587,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.15|calib",
+   "id": "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.3|calib",
    "step": "9.5a",
    "condition": "step9/llama31-8b-instruct__eagle3",
    "dataset": "aime24_llama31",
-   "method": "r_fuzzy",
-   "alpha": "0.15",
+   "method": "spec_casc_opt",
+   "alpha": "-0.3",
    "seed": 0,
    "cases": [
     "case_001",
@@ -627,12 +625,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.08|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib",
    "step": "9.5b",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "cactus",
-   "alpha": "0.08",
+   "method": "mentored_dec",
+   "alpha": "0.15",
    "seed": 0,
    "cases": [
     "case_001",
@@ -665,12 +663,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.35|calib",
+   "id": "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib",
    "step": "9.5b",
    "condition": "step9/llama31-8b-instruct__eagle1",
    "dataset": "aime24_llama31",
-   "method": "spec_casc_tok",
-   "alpha": "0.35",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",
