@@ -187,12 +187,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full",
    "step": "9.10d",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "aime24_r1llama",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
+   "method": "cactus",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",

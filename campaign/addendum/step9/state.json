@@ -3,15 +3,15 @@
   "K1": 110,
   "K10": 102,
   "K11": 107,
-  "K12": 121,
-  "K13": 95,
+  "K12": 123,
+  "K13": 97,
   "K14": 86,
-  "K15": 109,
+  "K15": 111,
   "K16": 128,
-  "K2": 109,
-  "K3": 83,
-  "K4": 104,
-  "K5": 115,
+  "K2": 111,
+  "K3": 88,
+  "K4": 109,
+  "K5": 120,
   "K6": 121,
   "K7": 85,
   "K8": 116,
@@ -629,12 +629,12 @@
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|calib": "K14",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.8|full": "K10",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|strict": "K5",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full": "K2",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|mentored_dec|0.75|full": "K12",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K10",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K1",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full": "K8",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K3",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full": "K10",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|mentored_dec|0.75|full": "K1",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K12",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K3",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full": "K4",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K2",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full": "K11",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|mentored_dec|0.75|full": "K8",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|r_fuzzy|0.25|full": "K14",
@@ -1324,13 +1324,13 @@
     {
      "dependency": "",
      "id": "5975133",
-     "state": "RUNNING",
+     "state": "ENDED",
      "submitted": "2026-10-06T06:45:15Z"
     },
     {
      "dependency": "5975133",
      "id": "5975134",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T06:45:16Z"
     }
    ]
@@ -1630,11 +1630,11 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "921b7a08a9db3af54a3b96c1f5ed1b475f835cc552cfcc3e1b7cf542a18c67ab"
+   "work": "3993d1262cf162a7d0bb9071d4452deffc0f8a972533b7421eacf5e280466516"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "6ce72acc06280653394337f3f355a7e5d431ad9cb67e3004f283e4681a6a6591"
+   "work": "fe294756dce760a863663fc47e308c9f5edd61076705ed6fc0c053565bc1038c"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1642,7 +1642,7 @@
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "f56f0dbae8df586ebad290320973605ee7a720c0b02a26de0fcd3a98cff30b65"
+   "work": "ef758b6cde376eb4c377f25aafdf3b8e5edf3c46b2cf0ae7af4d815c6884dedd"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1662,15 +1662,15 @@
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "07fb684438592b867f01462be6c90451239b87bea0bb8672075c1239ce3ea164"
+   "work": "0985d7178bbb685f9c1dd2e4b0db0c487aee251360cd379ad95a1b510971a6ae"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "66263a4382273f485d2db36cba40221b4eb17c79bcfc20b72794e48760201bee"
+   "work": "df395137e22521a53aad886f4ca8fcfede03e5d6bfa4c438002e30f8f7aa5052"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "c6adf4ab389a9ad9fc6706e835efc5d04d2ba24c848f29a91a99347bc6866ec8"
+   "work": "a48decd24474669c919271805d7b950439dc7f27b7d48f1e5d13c0d251c62458"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1686,7 +1686,7 @@
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "59c71d366a55024e8f077dd6262ffa86d10f8797fbae81f4209c43ed4671710f"
+   "work": "c3f2549ac11dda5f01cd515102276c6c44bb32e40b74c2a97a4d7156b11ebe91"
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",

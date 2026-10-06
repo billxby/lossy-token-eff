@@ -1,71 +1,6 @@
 {
  "items": [
   {
-   "id": "s9|llama31-8b-instruct__llama32-1b|aime24_llama31|spec_casc_opt|0.05|full",
-   "step": "9.9d",
-   "condition": "step9/llama31-8b-instruct__llama32-1b",
-   "dataset": "aime24_llama31",
-   "method": "spec_casc_opt",
-   "alpha": "0.05",
-   "seed": 0,
-   "cases": [
-    "case_001",
-    "case_002",
-    "case_003",
-    "case_004",
-    "case_005",
-    "case_006",
-    "case_007",
-    "case_008",
-    "case_009",
-    "case_010",
-    "case_011",
-    "case_012",
-    "case_013",
-    "case_014",
-    "case_015",
-    "case_016",
-    "case_017",
-    "case_018",
-    "case_019",
-    "case_020",
-    "case_021",
-    "case_022",
-    "case_023",
-    "case_024",
-    "case_025",
-    "case_026",
-    "case_027",
-    "case_028",
-    "case_029",
-    "case_030"
-   ],
-   "prompt_root": "prompts/aime24_llama31",
-   "runs_subroot": "runs/addendum/step9/llama31-8b-instruct__llama32-1b",
-   "max_new_tokens": 32768,
-   "model_flags": [
-    "--model-path",
-    "RedHatAI/Llama-3.1-8B-Instruct",
-    "--draft-model-path",
-    "alpindale/Llama-3.2-1B-Instruct",
-    "--served-model-name",
-    "llama31-8b-instruct"
-   ],
-   "num_spec": 6,
-   "temperature": 1.0,
-   "top_p": 1.0,
-   "env": {
-    "SPEC_METHOD": "draft_model",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__llama32-1b",
-    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
-   },
-   "host": "killarney",
-   "extra_flags": [
-    "--startup-timeout",
-    "1200"
-   ]
-  },
-  {
    "id": "s9|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|r_fuzzy|0.25|full",
    "step": "9.10c",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
@@ -182,12 +117,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|cactus|0.35|full",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict",
    "step": "9.10d",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
    "dataset": "aime24_r1llama",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "strict",
+   "alpha": "strict",
    "seed": 0,
    "cases": [
     "case_001",

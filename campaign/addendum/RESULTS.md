@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 10:01 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 10:14 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1535,7 +1535,7 @@ GPU-h actual (lane journals): 1.7.
 
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 150 | 1.59 (1.38) | 3131 (3023) | 1.04 [0.96, 1.12] | 0.95 [0.88, 1.02] | 0.94 · cross-node | 5% (2%) | - (55%) | kn171 |
+| longbench_v2_qwen3 | mentored_dec | loosest | 0.75 | 150 | 1.59 (1.38) | 3131 (3023) | 1.04 [0.96, 1.12] | 0.95 [0.88, 1.02] | 0.94 · cross-node | 5% (2%) | 51% (55%) | kn171 |
 | longbench_v2_qwen3 | cactus | loosest | 0.35 | 150 | 2.14 (1.38) | 3237 (3023) | 1.07 [0.99, 1.16] | 0.82 [0.76, 0.88]↓ | 0.84 · cross-node | 6% (2%) | 47% (55%) | kn177 |
 | longbench_v2_qwen3 | spec_casc_opt | loosest | 0.05 | 150 | 1.67 (1.38) | 3324 (3023) | 1.10 [1.01, 1.19]↑ | 0.95 [0.88, 1.03] | 0.97 · cross-node | 11% (2%) | 48% (55%) | kn173 |
 | longbench_v2_qwen3 | r_fuzzy | loosest | 0.25 | 150 | 1.75 (1.38) | 3440 (3023) | 1.14 [1.05, 1.23]↑ | 0.98 [0.90, 1.06] | 0.98 | 13% (2%) | 45% (55%) | kn174 |
@@ -1564,9 +1564,9 @@ GPU-h actual (lane journals): 1.9.
 | dataset | rule | setting | alpha | n | l_bar (lossless) | tokens (lossless) | lambda [95%] | R [95%] | T | cap-out (lossless) | acc (lossless) | nodes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | aime24_qwen3 | mentored_dec | loosest | 0.75 | 30 | 2.59 (2.26) | 19549 (18758) | 1.04 [0.94, 1.14] | 0.95 [0.86, 1.04] | 1.03 · cross-node | 20% (10%) | 70% (73%) | kn176 |
-| aime24_qwen3 | cactus | loosest | 0.35 | 30 | 2.70 (2.26) | 22529 (18758) | 1.20 [1.07, 1.36]↑ | 1.04 [0.92, 1.20] | 1.12 · cross-node | 30% (10%) | - (73%) | kn172 |
+| aime24_qwen3 | cactus | loosest | 0.35 | 30 | 2.70 (2.26) | 22529 (18758) | 1.20 [1.07, 1.36]↑ | 1.04 [0.92, 1.20] | 1.12 · cross-node | 30% (10%) | 60% (73%) | kn172 |
 | aime24_qwen3 | spec_casc_opt | loosest | 0.05 | 30 | 2.57 (2.26) | 20206 (18758) | 1.08 [0.95, 1.22] | 0.98 [0.86, 1.11] | 0.98 · cross-node | 30% (10%) | 67% (73%) | kn175 |
-| aime24_qwen3 | r_fuzzy | loosest | 0.25 | 30 | 2.69 (2.26) | 28149 (18758) | 1.50 [1.30, 1.76]↑ | 1.30 [1.14, 1.54]↑ | 1.36 · cross-node | 60% (10%) | - (73%) | kn169 |
+| aime24_qwen3 | r_fuzzy | loosest | 0.25 | 30 | 2.69 (2.26) | 28149 (18758) | 1.50 [1.30, 1.76]↑ | 1.30 [1.14, 1.54]↑ | 1.36 · cross-node | 60% (10%) | 37% (73%) | kn169 |
 | aime24_qwen3 | spec_casc_tok | loosest | 0.8 | 30 | 2.49 (2.26) | 18391 (18758) | 0.98 [0.86, 1.11] | 0.91 [0.80, 1.04] | 0.93 · cross-node | 23% (10%) | 73% (73%) | kn173 |
 
 ### Block 9a: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, humaneval (killarney)
@@ -1577,7 +1577,7 @@ Pending.
 
 ### Block 9b: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, longbench_v2 (killarney)
 
-GPU-h actual (lane journals): 0.9.
+GPU-h actual (lane journals): 1.4.
 
 Pending.
 
@@ -1589,7 +1589,7 @@ Pending.
 
 ### Block 9d: meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct, aime24 (killarney)
 
-GPU-h actual (lane journals): 0.5.
+GPU-h actual (lane journals): 0.7.
 
 Pending.
 
@@ -1607,7 +1607,7 @@ Pending.
 
 ### Block 10c: deepseek-ai/DeepSeek-R1-Distill-Llama-8B + meta-llama/Llama-3.2-1B-Instruct, mtbench (killarney)
 
-GPU-h actual (lane journals): 0.0.
+GPU-h actual (lane journals): 0.5.
 
 Pending.
 
@@ -1617,7 +1617,7 @@ GPU-h actual (lane journals): 0.0.
 
 Pending.
 
-Step 9 GPU-h so far (lane journals): 171.2 over 30 blocks.
+Step 9 GPU-h so far (lane journals): 172.4 over 31 blocks.
 
 ## Observations, failures and anything that looked wrong
 
