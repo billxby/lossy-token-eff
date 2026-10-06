@@ -606,7 +606,14 @@ addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_012/seed_0,hu
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_035/seed_0,humaneval_qwen3,strict,strict,case_035,2,1,failed
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_039/seed_0,humaneval_qwen3,strict,strict,case_039,2,1,failed
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_110/seed_0,humaneval_qwen3,strict,strict,case_110,2,1,failed
-addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/strict/strict/case_023/seed_0,humaneval_qwen3,strict,strict,case_023,3,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/mentored_dec/alpha0.75/case_076/seed_0,humaneval_qwen3,mentored_dec,alpha0.75,case_076,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/r_fuzzy/alpha0.25/case_002/seed_0,humaneval_qwen3,r_fuzzy,alpha0.25,case_002,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/r_fuzzy/alpha0.25/case_022/seed_0,humaneval_qwen3,r_fuzzy,alpha0.25,case_022,3,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/r_fuzzy/alpha0.25/case_028/seed_0,humaneval_qwen3,r_fuzzy,alpha0.25,case_028,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/r_fuzzy/alpha0.25/case_031/seed_0,humaneval_qwen3,r_fuzzy,alpha0.25,case_031,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_opt/alpha0.05/case_005/seed_0,humaneval_qwen3,spec_casc_opt,alpha0.05,case_005,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_opt/alpha0.05/case_022/seed_0,humaneval_qwen3,spec_casc_opt,alpha0.05,case_022,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/strict/strict/case_023/seed_0,humaneval_qwen3,strict,strict,case_023,3,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.03/case_011/seed_0,humaneval_r1llama,cactus,alpha0.03,case_011,2,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.03/case_019/seed_0,humaneval_r1llama,cactus,alpha0.03,case_019,5,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.03/case_022/seed_0,humaneval_r1llama,cactus,alpha0.03,case_022,2,1,failed
