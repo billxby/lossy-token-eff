@@ -68,12 +68,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__peagle|aime24_qwen3|spec_casc_opt|0.05|full",
+   "id": "s9|qwen3-8b__peagle|aime24_qwen3|cactus|0.35|full",
    "step": "9.8d",
    "condition": "step9/qwen3-8b__peagle",
    "dataset": "aime24_qwen3",
-   "method": "spec_casc_opt",
-   "alpha": "0.05",
+   "method": "cactus",
+   "alpha": "0.35",
    "seed": 0,
    "cases": [
     "case_001",
