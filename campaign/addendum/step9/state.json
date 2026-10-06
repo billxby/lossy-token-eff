@@ -133,27 +133,27 @@
   "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.8|calib": "K11",
   "s9|gpt-oss-20b__rh-eagle3|longbench_v2|spec_casc_tok|0.8|full": "K4",
   "s9|gpt-oss-20b__rh-eagle3|longbench_v2|strict|strict|strict": "K9",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.03|calib": "K3",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.08|calib": "K7",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.03|calib": "K14",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.08|calib": "K16",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.18|calib": "K11",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.35|calib": "K4",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib": "K6",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.35|calib": "K5",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.55|calib": "K14",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.75|calib": "K9",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.03|calib": "K14",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.08|calib": "K9",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.15|calib": "K3",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.25|calib": "K7",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|cactus|0.35|calib": "K5",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.15|calib": "K3",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.35|calib": "K10",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.55|calib": "K4",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|mentored_dec|0.75|calib": "K7",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.03|calib": "K10",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.08|calib": "K4",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.15|calib": "K7",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|r_fuzzy|0.25|calib": "K14",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.02|calib": "K6",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.1|calib": "K1",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.3|calib": "K8",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib": "K5",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.15|calib": "K11",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.35|calib": "K4",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.55|calib": "K8",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.1|calib": "K2",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|-0.3|calib": "K1",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_opt|0.05|calib": "K3",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.15|calib": "K16",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.35|calib": "K11",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.55|calib": "K5",
   "s9|llama31-8b-instruct__eagle1|aime24_llama31|spec_casc_tok|0.8|calib": "K1",
-  "s9|llama31-8b-instruct__eagle1|aime24_llama31|strict|strict|strict": "K6",
+  "s9|llama31-8b-instruct__eagle1|aime24_llama31|strict|strict|strict": "K2",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.03|calib": "K16",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.08|calib": "K2",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|cactus|0.18|calib": "K12",
@@ -167,14 +167,14 @@
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.15|calib": "K2",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|r_fuzzy|0.25|calib": "K12",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.02|calib": "K8",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.1|calib": "K6",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.1|calib": "K1",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|-0.3|calib": "K15",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_opt|0.05|calib": "K8",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.15|calib": "K14",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.35|calib": "K7",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.15|calib": "K2",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.35|calib": "K6",
   "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.55|calib": "K16",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.8|calib": "K6",
-  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|strict|strict|strict": "K8",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|spec_casc_tok|0.8|calib": "K8",
+  "s9|llama31-8b-instruct__eagle1|humaneval_llama31|strict|strict|strict": "K16",
   "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|cactus|0.03|calib": "K14",
   "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|cactus|0.03|full": "K13",
   "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|cactus|0.08|calib": "K10",
@@ -211,26 +211,26 @@
   "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|spec_casc_tok|0.8|full": "K14",
   "s9|llama31-8b-instruct__eagle1|longbench_v2_llama31|strict|strict|strict": "K10",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.03|calib": "K13",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.08|calib": "K7",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.08|calib": "K2",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.18|calib": "K2",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|cactus|0.35|calib": "K12",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.15|calib": "K6",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.35|calib": "K4",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.55|calib": "K9",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.55|calib": "K1",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|mentored_dec|0.75|calib": "K9",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.03|calib": "K15",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.08|calib": "K14",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.15|calib": "K9",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.25|calib": "K3",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.08|calib": "K10",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.15|calib": "K7",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|r_fuzzy|0.25|calib": "K11",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.02|calib": "K11",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.1|calib": "K5",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.1|calib": "K8",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|-0.3|calib": "K6",
   "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_opt|0.05|calib": "K16",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.15|calib": "K7",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.35|calib": "K11",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.55|calib": "K4",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.8|calib": "K1",
-  "s9|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|strict": "K2",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.15|calib": "K5",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.35|calib": "K1",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.55|calib": "K2",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|spec_casc_tok|0.8|calib": "K6",
+  "s9|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|strict": "K8",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.03|calib": "K13",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.03|full": "K4",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|cactus|0.08|calib": "K10",
@@ -246,23 +246,23 @@
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|mentored_dec|0.55|full": "K1",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|mentored_dec|0.75|calib": "K6",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.03|calib": "K13",
-  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.03|full": "K4",
+  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.03|full": "K3",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.08|calib": "K11",
-  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.08|full": "K11",
+  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.08|full": "K5",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.15|calib": "K15",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.25|calib": "K3",
-  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.25|full": "K3",
+  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|r_fuzzy|0.25|full": "K11",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.02|calib": "K12",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.1|calib": "K10",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.1|full": "K8",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.3|calib": "K1",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|-0.3|full": "K16",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|0.05|calib": "K4",
-  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|0.05|full": "K5",
+  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_opt|0.05|full": "K10",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.15|calib": "K8",
-  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.15|full": "K2",
+  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.15|full": "K14",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.35|calib": "K12",
-  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.35|full": "K1",
+  "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.35|full": "K4",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.55|calib": "K16",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.55|full": "K10",
   "s9|llama31-8b-instruct__eagle3|humaneval_llama31|spec_casc_tok|0.8|calib": "K4",
@@ -413,7 +413,7 @@
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.35|calib": "K15",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.55|calib": "K3",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|mentored_dec|0.75|calib": "K15",
-  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.03|calib": "K14",
+  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.03|calib": "K7",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.08|calib": "K11",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.15|calib": "K16",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|r_fuzzy|0.25|calib": "K9",
@@ -425,7 +425,7 @@
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.35|calib": "K16",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.55|calib": "K1",
   "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|spec_casc_tok|0.8|calib": "K11",
-  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|strict": "K16",
+  "s9|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|strict": "K9",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|cactus|0.03|calib": "K7",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|cactus|0.03|full": "K5",
   "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|cactus|0.08|calib": "K8",
@@ -538,7 +538,7 @@
     {
      "dependency": "",
      "id": "5972390",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T02:33:41Z"
     }
    ]
@@ -1013,67 +1013,67 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "e60e042f8b2ba7a0d56e0cfab6f4ca0bfc05d6f12cc5aaff18e4eb20339f6fb6"
+   "work": "22079cf9c61e6327d436f69ca745f8f476b169ac2063779af57a92ed7b20863b"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "59be092d87720a47250a9344b026365de3de9784a7373ffd62c1a1bf2db8c648"
+   "work": "a7ed3923b58507f8a9c70f8a3c6731a4d31e97f23fc782e86a930e5b895aa583"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "72752ecde79d0312bbf8f128a1a2e943a29cf1c2997c159415e3c6a125809c58"
+   "work": "d4ede1b143908a7670d3fd5e71c405dc981400db5c6d029eee2cb5317f5de08d"
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d2c9e07c79beeb8152c73f66586973430ee7105c0351f964608e3f39d9379af3"
+   "work": "9a8e7c2295095af74ded6fbd6f5d6c36c94271ceb3efdf2ec8b0331280ea01f5"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "879ca8dad89057debb041585f618c7c52343ac044ce170ca9ca81c56226d2413"
+   "work": "1603f7202f44b261b88520758fc3b1bcc36115384ec1ee625473fa006d465f22"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "70842cbe9ad0e2519b8b02268c5bea7bea4d01519d409a614d55602a8ecec3be"
+   "work": "0f9b991a90df1a1205e6387f12ce68381cb1386e106d7ede0ce745aad8092cbb"
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "bbd28466e780f5e630dd693c93f35799eb8aab6b14c4bf44c2f03add7b35d7a3"
+   "work": "633c75bf96d344f42112d471db293b2e953897ef520e7eb64d02a698fc70e2cd"
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "8fd44c513337b24a26296e6dfb798fb5d6ebd966114ac8d222e3c7f3d3d45a24"
+   "work": "29b6f697551fe054b0506d91bae96f9264211f683dbf74a5d9293bc3609189b1"
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "7005d72e953743402cc254a971ee50d934d9c452fd2638af8704fdf51c9360d2"
+   "work": "09cdf6d4675f23a4f8aca053349a88c008295a625d42697ef92312e56ddd234f"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "7cfbdd08274dfa4b91fbbe081ef5b53b14ca45de7009fcb6418cb78304d49896"
+   "work": "15fc0867b647cfce86b408d6c301ec24bd8d70ae74c4e6d3444fcb0658980cfc"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "bb2bcc2281dcaaade7f06281c38c18188ad7eb5b44e5fcf185ab5c41c39f6119"
+   "work": "4d40047986860f8e071b0753521d1c5926790b0b276a0a283faa8e1c13cf9c38"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "acbc5daa71bcb7956c13bb9bdae6a74d6c420b67c6c44eaaa43a4c9a99fb9125"
+   "work": "81f830394ac0aeeecad891b7256fa50264431f1d47e0122857a0cbe9524fa04b"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "e6d49562abb797865ca9cf3c485356422d670da8e7c076b2d2b8a111727070d0"
+   "work": "09d900c396b2b9882616629788e66be16fae8611fe5a2c1a43ce3dbb1f1e61d6"
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "26fa7fe9715aa2c2fe61e3808595a9b43be823918b274e32db44cba77d764e67"
+   "work": "2a51d7dae03248f9029d8e34d041c9302f631818e25c840c339ad63b10fd2a50"
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "6e0e66e485c657492a50c28222d9a77a1f66401f435d2d534cdfa7ee768d2bf4"
+   "work": "684f7ccb873f449c162fab76291ddb2b460a8d97c56510a9c6e1b75b95341af6"
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "9fd51d43ac09e2c395ef64e3d6f6bda5f934879199811aaac48b01a6b92b985e"
+   "work": "0054ad0f5e7c2077a9447e9888d28fe80a8a1e9a3f2834c63a58f930d8b34df1"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
