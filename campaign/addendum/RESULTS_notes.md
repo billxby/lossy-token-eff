@@ -332,3 +332,7 @@
   answers grow 13-14x (63-83% cap-outs at 8,192) and R rises to 2.9-4.5; spec_casc_opt grows them 4.8-8.3x (R
   1.5-2.1); mentored_dec 0.75 and r_fuzzy 0.25 2.4-3.2x (R ~2.2); accuracy falls to 25-32%. Only spec_casc_tok and
   the gentlest r_fuzzy stay at lossless (R 1.02-1.04, 37-39%).
+- **Step 9, Block 3a (GPT-OSS-20B + RedHatAI EAGLE-3, LongBench-v2, Killarney), complete 2026-10-06 00:56Z,
+  11.3 GPU-h.** Lossless l_bar 0.05 (the RH head does not draft at 10k-45k positions; BLOCK0), accuracy 54%. Only
+  cactus moves acceptance (l_bar 0.9-3.4) and saves rounds (R 0.50-0.62) at a 18-30 point accuracy cost (24-36%),
+  answers 1.1-2.9x longer; every other rule stays at lossless within noise (R 0.90-1.10, accuracy 49-57%).
