@@ -362,3 +362,9 @@
   unchanged accuracy (R 0.88-0.95, 53-59%); cactus inflates answers ~13x (R 8.3-9.5, 35-61% cap-outs, 4-13%) and
   r_fuzzy 0.08 / 0.25 3-7x with accepted length below lossless (degenerate text; R 5.2-15.0); mentored_dec and
   spec_casc_opt lengthen answers (lambda 1.1-1.9) at 35-53%.
+- **Step 9, Block 5a (Llama-3.1-8B-Instruct + EAGLE-3, AIME24, Killarney), complete 2026-10-06 04:56Z, 3.4 GPU-h.**
+  Llama-3.1-8B is at the floor here (lossless accuracy 3%, 1 of 30; every arm 0-7%), so accuracy cannot separate the
+  rules; lossless l_bar 0.77 on long answers. spec_casc_tok 0.8 and spec_casc_opt -0.02 / 0.05 cut rounds hard (R
+  0.18-0.30) by shortening the answers (lambda 0.40-0.81) at l_bar 1.5-4.5; cactus raises l_bar to 4.2-5.0 but
+  lengthens answers 3-5x (R 0.80-1.43); mentored_dec 0.75 lambda 2.9, R 1.70. n = 30 at the accuracy floor: read the
+  length and rounds columns only.
