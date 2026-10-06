@@ -305,12 +305,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__qwen3-0.6b|aime24_qwen3|cactus|0.35|full",
+   "id": "s9|qwen3-8b__qwen3-0.6b|aime24_qwen3|spec_casc_opt|0.05|full",
    "step": "9.7d",
    "condition": "step9/qwen3-8b__qwen3-0.6b",
    "dataset": "aime24_qwen3",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",
@@ -372,12 +372,12 @@
    ]
   },
   {
-   "id": "s9|qwen3-8b__peagle|mtbench_qwen3|r_fuzzy|0.25|full",
+   "id": "s9|qwen3-8b__peagle|mtbench_qwen3|spec_casc_tok|0.8|full",
    "step": "9.8c",
    "condition": "step9/qwen3-8b__peagle",
    "dataset": "mtbench_qwen3",
-   "method": "r_fuzzy",
-   "alpha": "0.25",
+   "method": "spec_casc_tok",
+   "alpha": "0.8",
    "seed": 0,
    "cases": [
     "case_001",
@@ -490,12 +490,12 @@
    ]
   },
   {
-   "id": "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|cactus|0.35|full",
+   "id": "s9|llama31-8b-instruct__llama32-1b|humaneval_llama31|spec_casc_opt|0.05|full",
    "step": "9.9a",
    "condition": "step9/llama31-8b-instruct__llama32-1b",
    "dataset": "humaneval_llama31",
-   "method": "cactus",
-   "alpha": "0.35",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_001",
