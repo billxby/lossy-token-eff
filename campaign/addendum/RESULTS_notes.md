@@ -355,3 +355,10 @@
   2.50, accuracy 84% (11% cap-outs at 9,000). Small, tight gains as on Qwen3's other datasets: R 0.92-0.95 for
   mentored_dec, cactus 0.03 / 0.35, spec_casc_opt -0.1 and spec_casc_tok 0.8 at 80-89% accuracy; spec_casc_opt 0.05
   (R 1.09, 61%) and r_fuzzy 0.15 / 0.25 (64-70%) cost accuracy without saving rounds.
+- **Step 9, Block 4c (Llama-3.1-8B-Instruct + EAGLE-3, HumanEval, Killarney), complete 2026-10-06 03:53Z, 5.4 GPU-h.**
+  Lossless l_bar 2.70, accuracy 56% by the campaign's grader, which runs the last code block: 189 of this block's runs
+  (9 lossless) end with a usage block after the defining one and score as failures (`step9/humaneval_lastblock.csv`,
+  for a later re-grade), so every Llama HumanEval accuracy here is a lower bound. spec_casc_tok saves rounds at
+  unchanged accuracy (R 0.88-0.95, 53-59%); cactus inflates answers ~13x (R 8.3-9.5, 35-61% cap-outs, 4-13%) and
+  r_fuzzy 0.08 / 0.25 3-7x with accepted length below lossless (degenerate text; R 5.2-15.0); mentored_dec and
+  spec_casc_opt lengthen answers (lambda 1.1-1.9) at 35-53%.
