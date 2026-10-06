@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 05:16 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 05:28 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1379,7 +1379,7 @@ GPU-h actual (lane journals): 3.4.
 
 ### Block 5b: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE-LLaMA3.1-Instruct-8B, aime24 (killarney)
 
-GPU-h actual (lane journals): 5.4.
+GPU-h actual (lane journals): 6.1.
 
 `campaign/addendum/tables/step9__llama31-8b-instruct__eagle1.csv` (eagle1, V2 accept-test-only):
 
@@ -1389,7 +1389,7 @@ GPU-h actual (lane journals): 5.4.
 | aime24_llama31 | mentored_dec | mid+high | 0.15 | 30 | 1.02 (0.77) | 3644 (4842) | 0.75 [0.50, 1.10] | 0.68 [0.45, 1.01] | 0.66 · cross-node | 0% (0%) | 0% (3%) | kn177:27+kn175:3 |
 | aime24_llama31 | cactus | low | 0.35 | 30 | 3.38 (0.77) | 14642 (4842) | 3.02 [1.84, 4.85]↑ | 1.28 [0.74, 2.11] | 1.34 · cross-node | 30% (0%) | 0% (3%) | kn176:27+kn174:3 |
 | aime24_llama31 | cactus | mid | 0.18 | 30 | 3.01 (0.77) | 16627 (4842) | 3.43 [2.32, 5.12]↑ | 1.51 [1.00, 2.31] | 1.55 · cross-node | 30% (0%) | 0% (3%) | kn176:27+kn169:3 |
-| aime24_llama31 | cactus | high | 0.08 | 30 | 3.42 (0.77) | 21347 (4842) | 4.41 [3.01, 6.68]↑ | 1.64 [1.11, 2.49]↑ | 1.71 · cross-node | 53% (0%) | - (3%) | kn173 |
+| aime24_llama31 | cactus | high | 0.08 | 30 | 3.42 (0.77) | 21347 (4842) | 4.41 [3.01, 6.68]↑ | 1.64 [1.11, 2.49]↑ | 1.71 · cross-node | 53% (0%) | 0% (3%) | kn173 |
 | aime24_llama31 | spec_casc_opt | low | -0.3 | 30 | 1.93 (0.77) | 9341 (4842) | 1.93 [0.99, 3.27] | 0.89 [0.47, 1.52] | 0.91 · T same-node 0.97 (27 pairs) | 23% (0%) | 0% (3%) | kn175:27+kn177:3 |
 | aime24_llama31 | spec_casc_opt | mid | -0.1 | 30 | 4.02 (0.77) | 16627 (4842) | 3.43 [2.11, 5.43]↑ | 1.05 [0.63, 1.79] | 1.08 · T same-node 1.11 (27 pairs) | 43% (0%) | 0% (3%) | kn175:27+kn173:3 |
 | aime24_llama31 | spec_casc_opt | high | -0.02 | 30 | 4.13 (0.77) | 13084 (4842) | 2.70 [1.52, 4.44]↑ | 0.80 [0.43, 1.37] | 0.83 · cross-node | 33% (0%) | 0% (3%) | kn169:27+kn177:3 |
@@ -1403,7 +1403,7 @@ GPU-h actual (lane journals): 5.4.
 
 Not started (GOAL.md: only if Phase 1 ends before 2026-10-08 18:00 ET).
 
-Step 9 GPU-h so far (lane journals): 125.8 over 14 blocks.
+Step 9 GPU-h so far (lane journals): 126.5 over 14 blocks.
 
 ## Observations, failures and anything that looked wrong
 
