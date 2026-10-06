@@ -183,12 +183,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|cactus|0.08|full",
+   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_opt|0.05|full",
    "step": "9.3e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "longbench_v2_r1llama",
-   "method": "cactus",
-   "alpha": "0.08",
+   "method": "spec_casc_opt",
+   "alpha": "0.05",
    "seed": 0,
    "cases": [
     "case_004",
