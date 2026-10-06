@@ -634,7 +634,7 @@
   "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|r_fuzzy|0.25|full": "K3",
   "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_opt|0.05|full": "K1",
   "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|spec_casc_tok|0.8|full": "K12",
-  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K10",
+  "s9|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|strict": "K5",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full": "K11",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|mentored_dec|0.75|full": "K8",
   "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|r_fuzzy|0.25|full": "K14",
@@ -1630,11 +1630,11 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "91f11e96cbaeacd20d4d949379766ec52772ed0a4cbdca5010904d1d2e2b4a60"
+   "work": "13447903e435063bccd04c3b6a614749317a674395dc3da8e9915c06bbc80a17"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d4c9befdaeaa49cef4879bbdd30f8c4b00f01d919f304006fdf0f29d93af68b9"
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1642,7 +1642,7 @@
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "28aad080d9b3798f101eecd9bc328b112762f5f60b0e01f0ec12c58eddf2a20d"
+   "work": "21d6eb86ccb95415d3fd6430e01b2a5744c9a5c25106e90d27d983775917cf86"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
@@ -1658,23 +1658,23 @@
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "a54fbce8405a3670d593911b54a73143dab6a431463c0d93daadd9060df91825"
+   "work": "e3593074234c63cdde0ed7a93acc657726c4052c54abf2b92a3f9f3912791529"
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "9fc185bc854443eaf0f4366f808424492363a502684d0117d1cbd2c645dcdfa2"
+   "work": "96f6ac1bb90dca8c224074e01881edd31f53b627fc056673ffb065f8548154d8"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "2f71df812d527364ac3aff11b71a51e82e2a6805f7771c4e6f87d947ae65ce39"
+   "work": "cfff46182a0743c41d64fe445d18a6182ae6fab510ae493f8966df2c4ff942e6"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "9179124856cb37f66e19424a88dca0d7884830fb89596093b5c2b48cf73495bc"
+   "work": "c00e729655d71239646f5a49096a43249fd17b306bc05e4afb03c9d42c6d83b9"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "d2f2067496522a21886b37d59d190dd548a3960afe55b4a0700eb934c6a6794f"
+   "work": "606a549ac5af14257f9c8e42bc09166f3de00daa8e45f1299cf839c018c8950c"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
