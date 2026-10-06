@@ -819,10 +819,12 @@ addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.3
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_058/seed_0,humaneval_r1llama,cactus,alpha0.35,case_058,3,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_069/seed_0,humaneval_r1llama,cactus,alpha0.35,case_069,2,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_075/seed_0,humaneval_r1llama,cactus,alpha0.35,case_075,4,1,failed
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_101/seed_0,humaneval_r1llama,cactus,alpha0.35,case_101,5,3,
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_103/seed_0,humaneval_r1llama,cactus,alpha0.35,case_103,4,1,
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_112/seed_0,humaneval_r1llama,cactus,alpha0.35,case_112,3,1,
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_124/seed_0,humaneval_r1llama,cactus,alpha0.35,case_124,2,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_101/seed_0,humaneval_r1llama,cactus,alpha0.35,case_101,5,3,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_103/seed_0,humaneval_r1llama,cactus,alpha0.35,case_103,4,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_112/seed_0,humaneval_r1llama,cactus,alpha0.35,case_112,3,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_124/seed_0,humaneval_r1llama,cactus,alpha0.35,case_124,2,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_131/seed_0,humaneval_r1llama,cactus,alpha0.35,case_131,3,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/cactus/alpha0.35/case_144/seed_0,humaneval_r1llama,cactus,alpha0.35,case_144,6,4,
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_011/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_011,2,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_039/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_039,4,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/r_fuzzy/alpha0.25/case_050/seed_0,humaneval_r1llama,r_fuzzy,alpha0.25,case_050,4,1,failed
@@ -836,6 +838,7 @@ addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/a
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_053/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_053,28,1,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_068/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_068,18,5,failed
 addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_075/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_075,9,3,failed
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_082/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_082,9,2,
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_088/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_088,3,1,
-addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_102/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_102,3,1,
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_082/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_082,9,2,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_088/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_088,3,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_102/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_102,3,1,failed
+addendum/step9/r1-distill-llama-8b__llama32-1b/humaneval_r1llama/spec_casc_opt/alpha0.05/case_111/seed_0,humaneval_r1llama,spec_casc_opt,alpha0.05,case_111,7,1,
