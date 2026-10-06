@@ -65,7 +65,8 @@ def grades() -> dict[str, int | None]:
         _grades = {}
         # steps 8 and 9 grade their own runs into step8/ and step9/grades.csv (scripts/step{8,9}_campaign.py grade); same
         # format, disjoint keys
-        for path in (ADD / "analysis" / "grades.csv", ADD / "step8" / "grades.csv", ADD / "step9" / "grades.csv"):
+        for path in (ADD / "analysis" / "grades.csv", ADD / "step8" / "grades.csv", ADD / "step9" / "grades.csv",
+                     ADD / "step9" / "grades_lmdraft.csv"):
             if path.is_file():
                 with path.open(newline="", encoding="utf-8") as handle:
                     for r in csv.DictReader(handle):
@@ -427,6 +428,23 @@ def cmd_qwenT(args) -> int:
 def cmd_lmdraft(args) -> int:
     arms = [("strict", "strict"), ("mentored_dec", "0.75"), ("cactus", "0.35"), ("spec_casc_tok", "0.8")]
     arm_table("lmdraft", arms, ["gsm8k_qwen3", "livecodebench_qwen3"])
+    # step 9 (README deviation 46): spec_casc_opt 0.05 and r_fuzzy 0.25 filled in 2026-10-06, against the same lossless
+    # reference; appended with a bootstrap stream of their own so the three step-4.3 rows stay byte-identical
+    rng = np.random.default_rng(RNG_SEED + 1)
+    for ds in ["gsm8k_qwen3", "livecodebench_qwen3"]:
+        path = ADD / "tables" / f"lmdraft__{ds}.csv"
+        with path.open(newline="", encoding="utf-8") as handle:
+            reader = csv.DictReader(handle)
+            fields, rows = list(reader.fieldnames), list(reader)
+        strict = load_cell(ds, "strict", "strict", 0, run_root="runs/addendum/lmdraft")
+        for method, alpha in (("spec_casc_opt", "0.05"), ("r_fuzzy", "0.25")):
+            runs = load_cell(ds, method, alpha, 0, run_root="runs/addendum/lmdraft")
+            if not runs:
+                continue
+            c = compare(runs, strict, rng)
+            rows.append({"condition": "lmdraft", "dataset": ds, "method": method, "alpha": alpha, **c})
+        fields += [k for r in rows for k in r if k not in fields]
+        write_csv(path, rows, list(dict.fromkeys(fields)))
     return 0
 
 

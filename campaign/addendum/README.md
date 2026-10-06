@@ -471,3 +471,10 @@ Branch `addendum-step9` off main 32517782d; plan and protocol in `step9/GOAL.md`
    pass. The official tables keep the campaign's grader: the alternative does not make same-target lossless
    accuracies agree better (Qwen3 82.7-84.7% -> 84.0-86.7%, Llama 55.3-58.0% -> 56.0-62.0%; within sampling noise at
    n = 150) and changes no conclusion; the per-run verdicts are in `step9/humaneval_regrade.csv`.
+46. **Qwen3-8B + Qwen3-0.6B: spec_casc_opt and r_fuzzy filled in on GSM8K and LiveCodeBench (2026-10-06, Bill).** The
+   addendum's step 4.3 ran only mentored_dec 0.75, cactus 0.35 and spec_casc_tok 0.8 for this pair, so the paper's
+   0.6B column had two empty cells per dataset. spec_casc_opt 0.05 and r_fuzzy 0.25 (each rule's loosest grid alpha)
+   ran with the addendum's own step-4.3 item definition (`scripts/step9_lmdraft_fill.py`; Killarney jobs 5987261 /
+   5987262, 2.4 GPU-h) into `runs/addendum/lmdraft`, paired with the same step-4.3 lossless reference, graded with the
+   campaign's graders (`step9/grades_lmdraft.csv`). `tables/lmdraft__*_qwen3.csv` gain two rows each; the three
+   step-4.3 rows are byte-identical (the new rows draw their bootstrap from a stream of their own, seed 20261002).

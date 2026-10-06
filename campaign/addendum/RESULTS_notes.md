@@ -424,3 +424,7 @@
   defines the entry point instead of the last block flips 315 of 897 flagged runs to passed: lossless +0 to +4.0
   points (Llama-3.1 +0.7 to +4.0, Qwen3 +0 to +3.3), arms +0.7 to +10 points (mostly Llama). It does not make the
   lossless references of one target agree better and changes no conclusion; the tables keep the campaign's grader.
+- **Qwen3-8B + Qwen3-0.6B, GSM8K / LiveCodeBench, the two missing rules (deviation 46).** lambda (accuracy): GSM8K
+  spec_casc_opt 0.05 0.98 (79%), r_fuzzy 0.25 1.01 (76%), lossless 77%; LiveCodeBench spec_casc_opt 0.95 (70%), r_fuzzy
+  1.02 (61%), lossless 72%. Rounds ratio 0.87 / 0.72 (GSM8K) and 0.83 / 0.68 (LiveCodeBench). With this drafter every
+  rule saves rounds; r_fuzzy 0.25 costs 11 points on LiveCodeBench.

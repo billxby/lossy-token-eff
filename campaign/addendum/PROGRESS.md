@@ -1579,3 +1579,5 @@ for what is done; this file records every action and failure.
 - 2026-10-06T11:05:19Z step 9 grading: 60 new run dir(s) uploaded, 60 pending, CPU job 23307899
 - 2026-10-06T11:16:42Z step 9: pulled 4 run dir(s)
 - 2026-10-06T11:17:01Z step 9 grading: 4 new run dir(s) uploaded, 4 pending, CPU job 23308130
+- 2026-10-06T19:23:18Z step 9 lmdraft fill: gsm8k_qwen3 spec_casc_opt 0.05 / r_fuzzy 0.25, Killarney job 5987261
+- 2026-10-06T19:23:19Z step 9 lmdraft fill: livecodebench_qwen3 spec_casc_opt 0.05 / r_fuzzy 0.25, Killarney job 5987262
