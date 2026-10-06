@@ -1,10 +1,10 @@
 {
  "items": [
   {
-   "id": "b0|qwen3-8b__qwen3-1.7b|longbench_v2_qwen3|strict|strict|smoke",
-   "step": "9.6b",
+   "id": "b0|qwen3-8b__qwen3-1.7b|mtbench_qwen3|strict|strict|smoke",
+   "step": "9.6c",
    "condition": "step9/qwen3-8b__qwen3-1.7b",
-   "dataset": "longbench_v2_qwen3",
+   "dataset": "mtbench_qwen3",
    "method": "strict",
    "alpha": "strict",
    "seed": 0,
@@ -12,14 +12,14 @@
     "case_001",
     "case_002"
    ],
-   "prompt_root": "prompts/longbench_v2_qwen3",
+   "prompt_root": "prompts/mtbench_qwen3",
    "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__qwen3-1.7b",
-   "max_new_tokens": 8192,
+   "max_new_tokens": 4096,
    "model_flags": [
     "--model-path",
     "Qwen/Qwen3-8B",
     "--draft-model-path",
-    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-1.7B-maxpos65536",
+    "Qwen/Qwen3-1.7B",
     "--served-model-name",
     "qwen3-8b",
     "--rope-scaling-json",
@@ -30,7 +30,318 @@
    "top_p": 1.0,
    "env": {
     "SPEC_METHOD": "draft_model",
-    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__qwen3-1.7b-maxpos65536",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__qwen3-1.7b",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|qwen3-8b__qwen3-1.7b|aime24_qwen3|strict|strict|smoke",
+   "step": "9.6d",
+   "condition": "step9/qwen3-8b__qwen3-1.7b",
+   "dataset": "aime24_qwen3",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/aime24_qwen3",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__qwen3-1.7b",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "Qwen/Qwen3-8B",
+    "--draft-model-path",
+    "Qwen/Qwen3-1.7B",
+    "--served-model-name",
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__qwen3-1.7b",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|qwen3-8b__qwen3-0.6b|mtbench_qwen3|strict|strict|smoke",
+   "step": "9.7c",
+   "condition": "step9/qwen3-8b__qwen3-0.6b",
+   "dataset": "mtbench_qwen3",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/mtbench_qwen3",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__qwen3-0.6b",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "Qwen/Qwen3-8B",
+    "--draft-model-path",
+    "Qwen/Qwen3-0.6B",
+    "--served-model-name",
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__qwen3-0.6b",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|qwen3-8b__peagle|humaneval_qwen3|strict|strict|smoke",
+   "step": "9.8a",
+   "condition": "step9/qwen3-8b__peagle",
+   "dataset": "humaneval_qwen3",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/humaneval_qwen3",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__peagle",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "Qwen/Qwen3-8B",
+    "--draft-model-path",
+    "RedHatAI/Qwen3-8B-speculator.peagle",
+    "--served-model-name",
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__peagle",
+    "PARALLEL_DRAFTING": "true",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|qwen3-8b__peagle|longbench_v2_qwen3|strict|strict|smoke",
+   "step": "9.8b",
+   "condition": "step9/qwen3-8b__peagle",
+   "dataset": "longbench_v2_qwen3",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/longbench_v2_qwen3",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__peagle",
+   "max_new_tokens": 8192,
+   "model_flags": [
+    "--model-path",
+    "Qwen/Qwen3-8B",
+    "--draft-model-path",
+    "/home/billxby/projects/aip-hongyanz/billxby/hf/local/Qwen3-8B-speculator.peagle-maxpos65536",
+    "--served-model-name",
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__peagle-maxpos65536",
+    "PARALLEL_DRAFTING": "true",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|qwen3-8b__peagle|aime24_qwen3|strict|strict|smoke",
+   "step": "9.8d",
+   "condition": "step9/qwen3-8b__peagle",
+   "dataset": "aime24_qwen3",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/aime24_qwen3",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/qwen3-8b__peagle",
+   "max_new_tokens": 32768,
+   "model_flags": [
+    "--model-path",
+    "Qwen/Qwen3-8B",
+    "--draft-model-path",
+    "RedHatAI/Qwen3-8B-speculator.peagle",
+    "--served-model-name",
+    "qwen3-8b",
+    "--rope-scaling-json",
+    "{\"rope_type\":\"yarn\",\"factor\":1.6,\"original_max_position_embeddings\":40960}"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "eagle3",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/qwen3-8b__peagle",
+    "PARALLEL_DRAFTING": "true",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|llama31-8b-instruct__llama32-1b|mtbench_llama31|strict|strict|smoke",
+   "step": "9.9c",
+   "condition": "step9/llama31-8b-instruct__llama32-1b",
+   "dataset": "mtbench_llama31",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/mtbench_llama31",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/llama31-8b-instruct__llama32-1b",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "RedHatAI/Llama-3.1-8B-Instruct",
+    "--draft-model-path",
+    "alpindale/Llama-3.2-1B-Instruct",
+    "--served-model-name",
+    "llama31-8b-instruct"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/llama31-8b-instruct__llama32-1b",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|strict|strict|smoke",
+   "step": "9.10a",
+   "condition": "step9/r1-distill-llama-8b__llama32-1b",
+   "dataset": "humaneval_r1llama",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/humaneval_r1llama",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/r1-distill-llama-8b__llama32-1b",
+   "max_new_tokens": 9000,
+   "model_flags": [
+    "--model-path",
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "--draft-model-path",
+    "alpindale/Llama-3.2-1B-Instruct",
+    "--served-model-name",
+    "r1-distill-llama-8b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__llama32-1b",
+    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast",
+    "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
+   },
+   "host": "killarney",
+   "extra_flags": [
+    "--startup-timeout",
+    "1200"
+   ]
+  },
+  {
+   "id": "b0|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|smoke",
+   "step": "9.10c",
+   "condition": "step9/r1-distill-llama-8b__llama32-1b",
+   "dataset": "mtbench_r1llama",
+   "method": "strict",
+   "alpha": "strict",
+   "seed": 0,
+   "cases": [
+    "case_001",
+    "case_002"
+   ],
+   "prompt_root": "prompts/mtbench_r1llama",
+   "runs_subroot": "runs/addendum/step9_block0/killarney/r1-distill-llama-8b__llama32-1b",
+   "max_new_tokens": 4096,
+   "model_flags": [
+    "--model-path",
+    "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "--draft-model-path",
+    "alpindale/Llama-3.2-1B-Instruct",
+    "--served-model-name",
+    "r1-distill-llama-8b"
+   ],
+   "num_spec": 6,
+   "temperature": 1.0,
+   "top_p": 1.0,
+   "env": {
+    "SPEC_METHOD": "draft_model",
+    "VLLM_CACHE_ROOT": "/scratch/billxby/vllm_cache_step8/r1-distill-llama-8b__llama32-1b",
+    "TOKENIZER": "/home/billxby/projects/aip-hongyanz/billxby/hf/local/DeepSeek-R1-Distill-Llama-8B-tokenizer-fast",
     "FLASHINFER_WORKSPACE_BASE": "/scratch/billxby/step9/flashinfer/K2"
    },
    "host": "killarney",

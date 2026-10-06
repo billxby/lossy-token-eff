@@ -14,7 +14,7 @@
   "K5": 92,
   "K6": 100,
   "K7": 62,
-  "K8": 95,
+  "K8": 97,
   "K9": 65,
   "N3": 2,
   "N4": 2
@@ -29,31 +29,31 @@
   "b0|llama31-8b-instruct__eagle3|aime24_llama31|strict|strict|smoke": "K4",
   "b0|llama31-8b-instruct__eagle3|humaneval_llama31|strict|strict|smoke": "K6",
   "b0|llama31-8b-instruct__eagle3|longbench_v2_llama31|strict|strict|smoke": "K1",
-  "b0|llama31-8b-instruct__llama32-1b|aime24_llama31|strict|strict|smoke": "K16",
-  "b0|llama31-8b-instruct__llama32-1b|humaneval_llama31|strict|strict|smoke": "K13",
-  "b0|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|strict|strict|smoke": "K14",
-  "b0|llama31-8b-instruct__llama32-1b|mtbench_llama31|strict|strict|smoke": "K15",
+  "b0|llama31-8b-instruct__llama32-1b|aime24_llama31|strict|strict|smoke": "K1",
+  "b0|llama31-8b-instruct__llama32-1b|humaneval_llama31|strict|strict|smoke": "K1",
+  "b0|llama31-8b-instruct__llama32-1b|longbench_v2_llama31|strict|strict|smoke": "K1",
+  "b0|llama31-8b-instruct__llama32-1b|mtbench_llama31|strict|strict|smoke": "K2",
   "b0|qwen3-8b__dspark|aime24_qwen3|strict|strict|smoke": "K1",
   "b0|qwen3-8b__dspark|humaneval_qwen3|strict|strict|smoke": "K1",
   "b0|qwen3-8b__dspark|longbench_v2_qwen3|strict|strict|smoke": "K1",
-  "b0|qwen3-8b__peagle|aime24_qwen3|strict|strict|smoke": "K12",
-  "b0|qwen3-8b__peagle|humaneval_qwen3|strict|strict|smoke": "K9",
-  "b0|qwen3-8b__peagle|longbench_v2_qwen3|strict|strict|smoke": "K10",
-  "b0|qwen3-8b__peagle|mtbench_qwen3|strict|strict|smoke": "K11",
-  "b0|qwen3-8b__qwen3-0.6b|aime24_qwen3|strict|strict|smoke": "K8",
-  "b0|qwen3-8b__qwen3-0.6b|humaneval_qwen3|strict|strict|smoke": "K5",
-  "b0|qwen3-8b__qwen3-0.6b|longbench_v2_qwen3|strict|strict|smoke": "K6",
-  "b0|qwen3-8b__qwen3-0.6b|mtbench_qwen3|strict|strict|smoke": "K7",
-  "b0|qwen3-8b__qwen3-1.7b|aime24_qwen3|strict|strict|smoke": "K4",
+  "b0|qwen3-8b__peagle|aime24_qwen3|strict|strict|smoke": "K2",
+  "b0|qwen3-8b__peagle|humaneval_qwen3|strict|strict|smoke": "K2",
+  "b0|qwen3-8b__peagle|longbench_v2_qwen3|strict|strict|smoke": "K2",
+  "b0|qwen3-8b__peagle|mtbench_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__qwen3-0.6b|aime24_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__qwen3-0.6b|humaneval_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__qwen3-0.6b|longbench_v2_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__qwen3-0.6b|mtbench_qwen3|strict|strict|smoke": "K2",
+  "b0|qwen3-8b__qwen3-1.7b|aime24_qwen3|strict|strict|smoke": "K2",
   "b0|qwen3-8b__qwen3-1.7b|humaneval_qwen3|strict|strict|smoke": "K1",
-  "b0|qwen3-8b__qwen3-1.7b|longbench_v2_qwen3|strict|strict|smoke": "K2",
-  "b0|qwen3-8b__qwen3-1.7b|mtbench_qwen3|strict|strict|smoke": "K3",
+  "b0|qwen3-8b__qwen3-1.7b|longbench_v2_qwen3|strict|strict|smoke": "K1",
+  "b0|qwen3-8b__qwen3-1.7b|mtbench_qwen3|strict|strict|smoke": "K2",
   "b0|r1-distill-llama-8b__eagle3|humaneval_r1llama|strict|strict|smoke": "K2",
   "b0|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|strict|strict|smoke": "K2",
-  "b0|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|smoke": "K11",
-  "b0|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|strict|strict|smoke": "K13",
-  "b0|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|strict|strict|smoke": "K15",
-  "b0|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|smoke": "K14",
+  "b0|r1-distill-llama-8b__llama32-1b|aime24_r1llama|strict|strict|smoke": "K1",
+  "b0|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|strict|strict|smoke": "K2",
+  "b0|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|strict|strict|smoke": "K1",
+  "b0|r1-distill-llama-8b__llama32-1b|mtbench_r1llama|strict|strict|smoke": "K2",
   "s9|gpt-oss-20b__rh-eagle3|aime24|cactus|0.03|calib": "K1",
   "s9|gpt-oss-20b__rh-eagle3|aime24|cactus|0.03|full": "K1",
   "s9|gpt-oss-20b__rh-eagle3|aime24|cactus|0.08|calib": "K2",
@@ -605,7 +605,7 @@
     {
      "dependency": "",
      "id": "5974451",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T05:37:04Z"
     }
    ]
@@ -871,7 +871,7 @@
     {
      "dependency": "",
      "id": "5974452",
-     "state": "PENDING",
+     "state": "RUNNING",
      "submitted": "2026-10-06T05:37:05Z"
     }
    ]
@@ -1289,67 +1289,67 @@
  "pushed": {
   "K1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "3d323c96c7c3c9262f93baeae51f78de406491c0299dba6ca629f60a36ed322e"
+   "work": "758900fd5b3f6f8bfe911af2a27d6d20a9c160d046edce3e66e42810426572df"
   },
   "K10": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "187994c9fea1e9df8b5b5a89ba2890a5301e9c0f03459116dbaded181faa8aea"
+   "work": "556180bed1e3e3c52b26a3a4d289ddd698fdf4217323db445c2a7fd1c216c25b"
   },
   "K11": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "0cc61b622402892f49e171a01ff24aa8e584655a79484d2b618b128c0f6c765b"
+   "work": "956738e836d2cb56af070e786c2bb29d7cc55cd454da5a89e793019362a03cd3"
   },
   "K12": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "18fa03dcdee90b45bcb592529c53821916b3fce2b92dc5089e33fcef23d2213a"
+   "work": "c91faa13328c4d73ca7c62a432b57e879bec136cf7657ddf7ac6e9881f0a426c"
   },
   "K13": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "5cdeb94e79068b8be392aa6c6524eda1d116ec2c48009c3fcb753c4785758b07"
+   "work": "dd11533857a357b0ba8e44fb9834fcb58f959f2e6767fbd5c123c948d0b704a7"
   },
   "K14": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "45b8b61859939895383f00d0300edb45b671b149e59ffff6bc16960705757ce3"
+   "work": "229384e35fee2257f68f143995ef7b77dba9b0778fdad09a3877f7da8e2f566a"
   },
   "K15": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "23fea490a5e1f11198aa0e031de2447d0e7617b7876406b8ac19635682cfbdc8"
+   "work": "f1904901644302099a48db158883de165e4f46e72bfda0dda4e2b6e1de0e2843"
   },
   "K16": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "cce40741f09e126b6100f6ca3876443bce68c958bac400693c2c1c8e34dbb98c"
+   "work": "31ddc09f94b1506b71193f47ce08e909fb214a80ac7bbb62019d0ff2b290cdd6"
   },
   "K2": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "1e862f00e9b7c35f94c809c38fc6e46354c5e21f26539c9856f0ddada9721b6e"
+   "work": "28b36d1920f1dd6297355c9088d1a67c57166249ccf6d14d70512650d8f25c13"
   },
   "K3": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "4a839082b47d29ccd2c2c11d790392819e4d33aed7a5826ad423b8a7d9d0d114"
+   "work": "973c66e50daa5fd7c296cdb77677c079abd5610ab7611c6543f87656e35daad1"
   },
   "K4": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "fa3302b13388c78e1af658b20c445d29e5b8a49cb1f16cfe7d408bf1f623c5c8"
+   "work": "ef35f08d51812c274720d6c1a52f0491b9b2c564b33fc383ef0ad14d614a3ddc"
   },
   "K5": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "532ad4aa2bf57ae10432a6f80baf37b34d8b73417372e5dde23d7a515332b81d"
+   "work": "c65f297dd444e509ee58d28d3ac9cad4076f72a404f422e7ec17a1804513961c"
   },
   "K6": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "547135b09a40ab1dfb5c6771a0cd6883b261d2ecea9dee6d0606331fbdd98ef3"
+   "work": "359053284d51e511107c476031b22e41b6f25c8e8621202ff1d93f1b05ed9424"
   },
   "K7": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "3b7e3ff1ee4674210306c3c6543d65083b4420de5142e32ab2f466d7af812dd6"
+   "work": "9e375cdaa7d9fa71a4b0811693a6e12ec08984666adae2c99fa9f9af1ca50f57"
   },
   "K8": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "26f2e476dbdacd0ac630abd323fb1ad7d7f266167978e1d29c3a0b5d312454f0"
+   "work": "0efa449f860c9e61ecfafa42e86fcea25e4bdcdd7046052928b4c7bd38114586"
   },
   "K9": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
-   "work": "a7572fff1f1b8aff644924f899b32905dacbc4e9a7f889de643a1f3cf64a11ce"
+   "work": "5d9a14eb048f84941fc49decaf1f3dc197041c306a155baaea2865bda4b7313c"
   },
   "N1": {
    "code": "73ef4e5bbc241382c3feb665bb52c9f7cc93eaf7073bda33b01e49b62bd7b4a5",
