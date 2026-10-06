@@ -606,7 +606,11 @@ addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_012/seed_0,hu
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_035/seed_0,humaneval_qwen3,strict,strict,case_035,2,1,failed
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_039/seed_0,humaneval_qwen3,strict,strict,case_039,2,1,failed
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_110/seed_0,humaneval_qwen3,strict,strict,case_110,2,1,failed
+addendum/step9/qwen3-8b__qwen3-0.6b/humaneval_qwen3/cactus/alpha0.35/case_149/seed_0,humaneval_qwen3,cactus,alpha0.35,case_149,2,1,
 addendum/step9/qwen3-8b__qwen3-0.6b/humaneval_qwen3/mentored_dec/alpha0.75/case_010/seed_0,humaneval_qwen3,mentored_dec,alpha0.75,case_010,2,1,failed
+addendum/step9/qwen3-8b__qwen3-0.6b/humaneval_qwen3/mentored_dec/alpha0.75/case_125/seed_0,humaneval_qwen3,mentored_dec,alpha0.75,case_125,2,1,
+addendum/step9/qwen3-8b__qwen3-0.6b/humaneval_qwen3/spec_casc_opt/alpha0.05/case_130/seed_0,humaneval_qwen3,spec_casc_opt,alpha0.05,case_130,3,1,
+addendum/step9/qwen3-8b__qwen3-0.6b/humaneval_qwen3/strict/strict/case_116/seed_0,humaneval_qwen3,strict,strict,case_116,4,1,
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/cactus/alpha0.35/case_051/seed_0,humaneval_qwen3,cactus,alpha0.35,case_051,3,2,failed
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/cactus/alpha0.35/case_084/seed_0,humaneval_qwen3,cactus,alpha0.35,case_084,2,1,failed
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/cactus/alpha0.35/case_120/seed_0,humaneval_qwen3,cactus,alpha0.35,case_120,3,1,failed
@@ -639,7 +643,7 @@ addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_tok/alpha0.8/case_
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_tok/alpha0.8/case_038/seed_0,humaneval_qwen3,spec_casc_tok,alpha0.8,case_038,4,1,failed
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_tok/alpha0.8/case_048/seed_0,humaneval_qwen3,spec_casc_tok,alpha0.8,case_048,3,1,failed
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_tok/alpha0.8/case_087/seed_0,humaneval_qwen3,spec_casc_tok,alpha0.8,case_087,2,1,failed
-addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_tok/alpha0.8/case_111/seed_0,humaneval_qwen3,spec_casc_tok,alpha0.8,case_111,2,1,
+addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/spec_casc_tok/alpha0.8/case_111/seed_0,humaneval_qwen3,spec_casc_tok,alpha0.8,case_111,2,1,failed
 addendum/step9/qwen3-8b__qwen3-1.7b/humaneval_qwen3/strict/strict/case_023/seed_0,humaneval_qwen3,strict,strict,case_023,3,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.03/case_011/seed_0,humaneval_r1llama,cactus,alpha0.03,case_011,2,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.03/case_019/seed_0,humaneval_r1llama,cactus,alpha0.03,case_019,5,1,failed

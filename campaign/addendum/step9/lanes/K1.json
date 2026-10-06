@@ -441,10 +441,10 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__llama32-1b|humaneval_r1llama|cactus|0.35|full",
-   "step": "9.10a",
+   "id": "s9|r1-distill-llama-8b__llama32-1b|longbench_v2_r1llama|cactus|0.35|full",
+   "step": "9.10b",
    "condition": "step9/r1-distill-llama-8b__llama32-1b",
-   "dataset": "humaneval_r1llama",
+   "dataset": "longbench_v2_r1llama",
    "method": "cactus",
    "alpha": "0.35",
    "seed": 0,
@@ -600,9 +600,9 @@
     "case_149",
     "case_150"
    ],
-   "prompt_root": "prompts/humaneval_r1llama",
+   "prompt_root": "prompts/longbench_v2_r1llama",
    "runs_subroot": "runs/addendum/step9/r1-distill-llama-8b__llama32-1b",
-   "max_new_tokens": 9000,
+   "max_new_tokens": 8192,
    "model_flags": [
     "--model-path",
     "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
