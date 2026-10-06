@@ -368,3 +368,12 @@
   0.18-0.30) by shortening the answers (lambda 0.40-0.81) at l_bar 1.5-4.5; cactus raises l_bar to 4.2-5.0 but
   lengthens answers 3-5x (R 0.80-1.43); mentored_dec 0.75 lambda 2.9, R 1.70. n = 30 at the accuracy floor: read the
   length and rounds columns only.
+- **Step 9, Block 4d (Llama-3.1-8B-Instruct + EAGLE-1, HumanEval, Killarney), complete 2026-10-06 04:58Z, 4.1 GPU-h.**
+  Lossless l_bar 1.76, accuracy 58% (a lower bound: 344 of this block's runs end with a usage block, as in Block 4c).
+  spec_casc_tok 0.8 saves rounds (R 0.94 [0.88, 1.00]) at 54%; cactus inflates answers 9-12x (R 5.0-9.1, accuracy
+  1-3%), r_fuzzy 0.25 8x (R 9.1, 5%), spec_casc_opt 0.05 5x (R 3.3, 8%); the gentle settings cost 4-13 points at
+  R 1.0-1.6.
+- **Step 9, Block 4e (R1-Distill-Llama-8B + yuhuili EAGLE-3, HumanEval, Killarney), complete 2026-10-06 05:04Z,
+  14.8 GPU-h.** Lossless l_bar 1.89, accuracy 86% (7% cap-outs at 9,000). No rule saves rounds (R 0.95-1.63);
+  spec_casc_tok (R 0.96-0.98, 81-87%) and mentored_dec / spec_casc_opt -0.3 / -0.1 (R 1.00-1.12, 79-84%) stay near
+  lossless; cactus runs to the cap (64-77% cap-outs, 16-25%) and r_fuzzy 0.08 / 0.25 lose 35-69 points.
