@@ -1404,3 +1404,5 @@ for what is done; this file records every action and failure.
 - 2026-10-06T02:33:45Z step 9 lane K15: submitted job 5972395, ~1.2 GPU-h assigned
 - 2026-10-06T02:35:09Z step 9 grading: 949 new run dir(s) uploaded, 949 pending, CPU job 23293202
 - 2026-10-06T02:36:24Z step 9: pulled 145 run dir(s)
+- 2026-10-06T02:49:04Z step 9: pulled 639 run dir(s)
+- 2026-10-06T02:51:49Z step 9 grading: 639 new run dir(s) uploaded, 784 pending, CPU job 23293747
