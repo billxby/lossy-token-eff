@@ -184,12 +184,12 @@
    ]
   },
   {
-   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|spec_casc_tok|0.15|full",
+   "id": "s9|r1-distill-llama-8b__eagle3|longbench_v2_r1llama|r_fuzzy|0.25|full",
    "step": "9.3e",
    "condition": "step9/r1-distill-llama-8b__eagle3",
    "dataset": "longbench_v2_r1llama",
-   "method": "spec_casc_tok",
-   "alpha": "0.15",
+   "method": "r_fuzzy",
+   "alpha": "0.25",
    "seed": 0,
    "cases": [
     "case_004",
