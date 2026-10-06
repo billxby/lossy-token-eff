@@ -1377,3 +1377,11 @@ for what is done; this file records every action and failure.
 - 2026-10-06T01:26:57Z step 9 Block 0 passed: 4d
 - 2026-10-06T01:27:41Z step 9: pulled 112 run dir(s)
 - 2026-10-06T01:28:10Z step 9 grading: 112 new run dir(s) uploaded, 112 pending, CPU job 23289843
+- 2026-10-06T01:39:11Z step 9: pulled 349 run dir(s)
+- 2026-10-06T01:39:14Z step 9 block 4a: calibrated gpt-oss-20b__rh-eagle3 humaneval: targets [2.316, 3.358, 4.4], mentored_dec [0.55, 0.75, 0.15], cactus [0.03, 0.08, 0.18], spec_casc_opt [0.05, -0.02, -0.3], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
+- 2026-10-06T01:39:14Z step 9 block 4b: calibrated qwen3-8b__dspark humaneval_qwen3: targets [2.699, 3.134, 3.569], mentored_dec [0.55, 0.75, 0.15], cactus [0.08, 0.35, 0.03], spec_casc_opt [-0.3, -0.1, 0.05], r_fuzzy [0.15, 0.25, 0.03], spec_casc_tok [0.8, 0.15]
+- 2026-10-06T01:39:14Z step 9 block 4c: calibrated llama31-8b-instruct__eagle3 humaneval_llama31: targets [1.429, 2.906, 4.383], mentored_dec [0.35, 0.55, 0.15], cactus [0.03, 0.18, 0.35], spec_casc_opt [-0.1, -0.3, 0.05], r_fuzzy [0.25, 0.08, 0.03], spec_casc_tok [0.35, 0.55, 0.15]
+- 2026-10-06T01:39:21Z step 9 lane K3: submitted job 5971900, ~2.8 GPU-h assigned
+- 2026-10-06T01:39:22Z step 9 lane K3: submitted job 5971901 (--dependency=afterany:5971900), ~2.8 GPU-h assigned
+- 2026-10-06T01:39:24Z step 9 lane K5: submitted job 5971902, ~1.9 GPU-h assigned
+- 2026-10-06T01:40:08Z step 9 grading: 349 new run dir(s) uploaded, 349 pending, CPU job 23290456

@@ -1,5 +1,14 @@
 relpath,dataset,method,params,case,n_blocks,defining_block,verdict
 addendum/step9/gpt-oss-20b__rh-eagle3/humaneval/cactus/alpha0.08/case_002/seed_0,humaneval,cactus,alpha0.08,case_002,4,1,failed
+addendum/step9/gpt-oss-20b__rh-eagle3/humaneval/cactus/alpha0.18/case_002/seed_0,humaneval,cactus,alpha0.18,case_002,15,11,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/cactus/alpha0.08/case_003/seed_0,humaneval_llama31,cactus,alpha0.08,case_003,2,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/cactus/alpha0.18/case_001/seed_0,humaneval_llama31,cactus,alpha0.18,case_001,6,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/cactus/alpha0.18/case_002/seed_0,humaneval_llama31,cactus,alpha0.18,case_002,9,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/mentored_dec/alpha0.55/case_002/seed_0,humaneval_llama31,mentored_dec,alpha0.55,case_002,4,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/r_fuzzy/alpha0.03/case_003/seed_0,humaneval_llama31,r_fuzzy,alpha0.03,case_003,2,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/r_fuzzy/alpha0.15/case_003/seed_0,humaneval_llama31,r_fuzzy,alpha0.15,case_003,3,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/r_fuzzy/alpha0.25/case_002/seed_0,humaneval_llama31,r_fuzzy,alpha0.25,case_002,4,1,
+addendum/step9/llama31-8b-instruct__eagle1/humaneval_llama31/r_fuzzy/alpha0.25/case_003/seed_0,humaneval_llama31,r_fuzzy,alpha0.25,case_003,8,1,
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/cactus/alpha0.08/case_001/seed_0,humaneval_llama31,cactus,alpha0.08,case_001,2,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.15/case_002/seed_0,humaneval_llama31,r_fuzzy,alpha0.15,case_002,5,1,failed
 addendum/step9/llama31-8b-instruct__eagle3/humaneval_llama31/r_fuzzy/alpha0.25/case_003/seed_0,humaneval_llama31,r_fuzzy,alpha0.25,case_003,3,1,failed
@@ -19,3 +28,4 @@ addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_035/seed_0,hu
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_039/seed_0,humaneval_qwen3,strict,strict,case_039,2,1,failed
 addendum/step9/qwen3-8b__dspark/humaneval_qwen3/strict/strict/case_110/seed_0,humaneval_qwen3,strict,strict,case_110,2,1,failed
 addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.08/case_001/seed_0,humaneval_r1llama,cactus,alpha0.08,case_001,2,1,failed
+addendum/step9/r1-distill-llama-8b__eagle3/humaneval_r1llama/cactus/alpha0.35/case_001/seed_0,humaneval_r1llama,cactus,alpha0.35,case_001,2,1,
