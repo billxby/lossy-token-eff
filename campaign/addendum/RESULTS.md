@@ -1,6 +1,6 @@
 # NAACL-2027 addendum: results
 
-Generated 2026-10-06 05:38 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
+Generated 2026-10-06 05:40 UTC by `scripts/addendum_results.py` from the CSVs it names; hand-written observations are in the last section (from `RESULTS_notes.md`). Settings and deviations: `campaign/addendum/README.md`.
 
 ## Status
 
@@ -1379,7 +1379,7 @@ GPU-h actual (lane journals): 3.4.
 
 ### Block 5b: meta-llama/Llama-3.1-8B-Instruct + yuhuili/EAGLE-LLaMA3.1-Instruct-8B, aime24 (killarney)
 
-GPU-h actual (lane journals): 6.1.
+GPU-h actual (lane journals): 6.5.
 
 `campaign/addendum/tables/step9__llama31-8b-instruct__eagle1.csv` (eagle1, V2 accept-test-only):
 
@@ -1521,7 +1521,7 @@ GPU-h actual (lane journals): 0.0.
 
 Pending.
 
-Step 9 GPU-h so far (lane journals): 126.5 over 14 blocks.
+Step 9 GPU-h so far (lane journals): 126.8 over 14 blocks.
 
 ## Observations, failures and anything that looked wrong
 
